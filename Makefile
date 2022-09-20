@@ -5,6 +5,7 @@ MAKE = /bin/make
 
 define SRCS :=
 	main.c
+	parsing/c3d_parsing_check.c
 	parsing/c3d_parsing_readfile.c
 	parsing/c3d_parsing_set.c
 	parsing/c3d_parsing_utils.c

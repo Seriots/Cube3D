@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 10:28:15 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/19 14:56:15 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/09/20 12:41:58 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 # define C3D_PARSING_H
 
 # include "c3d_struct.h"
+
+/*Check*/
+int		check_map(t_map *map);
 
 /*Set*/
 void	set_map(t_map *map);

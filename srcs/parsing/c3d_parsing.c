@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 11:03:58 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/19 16:55:58 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/09/20 15:56:12 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,20 +22,28 @@
 
 #include <stdio.h>
 
+int	check_file_extension(char *line)
+{
+	if (ft_strlen(line) >= 5 && ft_strncmp(line + ft_strlen(line) - 4, ".cub", 4) == 0 && line[ft_strlen(line) - 5] != '/')
+		return (0);
+	return (11);
+}
+
 int	parsing(t_map *map, char *file)
 {
 	int	error;
-	int	map_size;
 
 	set_map(map);
-	map_size = 0;
-	error = set_map_size(file, &map_size);
+	error = check_file_extension(file);
 	if (error)
 		return (error);
-	map->map = ft_calloc(sizeof(char *), map_size + 1);
+	error = set_map_size(file, &map->height);
+	if (error)
+		return (error);
+	map->map = ft_calloc(sizeof(char *), map->height + 1);
 	if (!map->map)
 		return (10);
-	error = read_file(map, file, map_size);
+	error = read_file(map, file, map->height);
 	if (error)
 		return (error);
 	error = check_map(map);

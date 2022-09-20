@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 10:25:54 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/19 11:17:43 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/09/20 14:48:07 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 typedef struct s_map
 {
 	char	**map;
+	int		height;
+	int		width;
 	char	*NO;
 	char	*SO;
 	char	*WE;
@@ -24,9 +26,17 @@ typedef struct s_map
 	int		C;
 }	t_map;
 
+typedef struct	s_player
+{
+	unsigned int	x;
+	unsigned int	y;
+	char			dir;
+}	t_player;
+
 typedef struct s_game
 {
-	t_map	map;
+	t_map		map;
+	t_player	player;
 }	t_game;
 
 #endif

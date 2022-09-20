@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 14:19:52 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/19 14:23:30 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/09/20 14:48:57 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@
 void	set_map(t_map *map)
 {
 	map->map = 0;
+	map->height = 0;
+	map->width = 0;
 	map->NO = 0;
 	map->SO = 0;
 	map->WE = 0;
