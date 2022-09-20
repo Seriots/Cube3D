@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 11:03:58 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/20 15:56:12 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/09/20 15:59:14 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,9 @@
 
 int	check_file_extension(char *line)
 {
-	if (ft_strlen(line) >= 5 && ft_strncmp(line + ft_strlen(line) - 4, ".cub", 4) == 0 && line[ft_strlen(line) - 5] != '/')
+	if (ft_strlen(line) >= 5
+		&& ft_strncmp(line + ft_strlen(line) - 4, ".cub", 4) == 0
+		&& line[ft_strlen(line) - 5] != '/')
 		return (0);
 	return (11);
 }

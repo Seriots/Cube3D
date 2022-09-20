@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 14:17:54 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/20 15:45:42 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/09/20 16:24:44 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,29 +21,27 @@
 #include "ft.h"
 #include <stdio.h>
 
-
-
 static int	get_elem(t_map *map, char *line)
 {
-	char **split;
+	char	**split;
 
 	split = ft_split(line, ' ');
 	if (!split)
 		return (10);
 	if (ft_arraylen(split) != 2)
 		return (ft_free_tab(split), 3);
-	if (ft_strcmp(split[0], "NO") == 0 && !map->NO)
-		map->NO = ft_strdup(split[1]);
-	else if (ft_strcmp(split[0], "SO") == 0 && !map->SO)
-		map->SO = ft_strdup(split[1]);
-	else if (ft_strcmp(split[0], "WE") == 0 && !map->WE)
-		map->WE = ft_strdup(split[1]);
-	else if (ft_strcmp(split[0], "EA") == 0 && !map->EA)
-		map->EA = ft_strdup(split[1]);
-	else if (ft_strcmp(split[0], "F") == 0 && map->F == -1)
-		map->F = ft_color(split[1]);
-	else if (ft_strcmp(split[0], "C") == 0 && map->C == -1)
-		map->C = ft_color(split[1]);
+	if (ft_strcmp(split[0], "NO") == 0 && !map->no)
+		map->no = ft_strdup(split[1]);
+	else if (ft_strcmp(split[0], "SO") == 0 && !map->so)
+		map->so = ft_strdup(split[1]);
+	else if (ft_strcmp(split[0], "WE") == 0 && !map->we)
+		map->we = ft_strdup(split[1]);
+	else if (ft_strcmp(split[0], "EA") == 0 && !map->ea)
+		map->ea = ft_strdup(split[1]);
+	else if (ft_strcmp(split[0], "F") == 0 && map->f == -1)
+		map->f = ft_color(split[1]);
+	else if (ft_strcmp(split[0], "C") == 0 && map->c == -1)
+		map->c = ft_color(split[1]);
 	else
 		return (ft_free_tab(split), 2);
 	return (ft_free_tab(split), 0);
@@ -70,7 +68,7 @@ static int	get_map(int fd, t_map *map, char *line, int size)
 
 static int	get_all_elem(t_map *map, char *line)
 {
-	int error;
+	int	error;
 
 	if (ft_strlen(line) == 0 || is_only_set(line, " "))
 		return (free(line), 0);

@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 16:56:08 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/20 15:48:34 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/09/20 16:24:10 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@
 
 int	check_elements(t_map *map)
 {
-	if (!map->NO || !map->SO || !map->WE || !map->EA)
+	if (!map->no || !map->so || !map->we || !map->ea)
 		return (6);
-	if (map->F == -1 || map->C == -1)
+	if (map->f == -1 || map->c == -1)
 		return (6);
 	if (!map->map)
 		return (7);
@@ -62,7 +62,8 @@ int	check_walls(t_map *map)
 		j = 0;
 		while (j < map->width)
 		{
-			if (ft_isinset(map->map[i][j], "0NSWE") && check_around(map, i, j) != 0)
+			if (ft_isinset(map->map[i][j], "0NSWE")
+				&& check_around(map, i, j) != 0)
 				return (9);
 			j++;
 		}
@@ -93,46 +94,6 @@ int	check_players(t_map *map)
 	}
 	if (count != 1)
 		return (8);
-	return (0);
-}
-
-int	ft_complete(char *square_line, int width, char *line, char c)
-{
-	int	i;
-
-	i = 0;
-	while (line && line[i])
-	{
-		square_line[i] = line[i];
-		i++;
-	}
-	while (i < width)
-	{
-		square_line[i] = c;
-		i++;
-	}
-	return (0);
-}
-
-int	set_square_map(t_map *map)
-{
-	char	**square_map;
-	int		i;
-
-	square_map = ft_calloc(sizeof(char *), (map->height + 1));
-	if (!square_map)
-		return (10);
-	i = 0;
-	while (i < map->height)
-	{
-		square_map[i] = ft_calloc(sizeof(char), (map->width + 1));
-		if (!square_map[i])
-			return (ft_free_tab(square_map), 10);
-		ft_complete(square_map[i], map->width, map->map[i], ' ');
-		i++;
-	}
-	ft_free_tab(map->map);
-	map->map = square_map;
 	return (0);
 }
 

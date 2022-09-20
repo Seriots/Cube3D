@@ -8,6 +8,7 @@ define SRCS :=
 	parsing/c3d_parsing_check.c
 	parsing/c3d_parsing_readfile.c
 	parsing/c3d_parsing_set.c
+	parsing/c3d_parsing_square_map.c
 	parsing/c3d_parsing_utils.c
 	parsing/c3d_parsing.c
 	utils/c3d_clean.c

@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 14:19:52 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/20 14:48:57 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/09/20 16:25:03 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,12 @@ void	set_map(t_map *map)
 	map->map = 0;
 	map->height = 0;
 	map->width = 0;
-	map->NO = 0;
-	map->SO = 0;
-	map->WE = 0;
-	map->EA = 0;
-	map->F = -1;
-	map->C = -1;
+	map->no = 0;
+	map->so = 0;
+	map->we = 0;
+	map->ea = 0;
+	map->f = -1;
+	map->c = -1;
 }
 
 int	set_map_size(char *file, int *size)
