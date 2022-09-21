@@ -1,0 +1,16 @@
+<MANDATORY>
+
+-> Cast un rayons
+-> Cast tout les rayons et recupere la liste des mur a afficher
+-> afficher les mur
+-> Camera axe x et y avec la souris
+
+<CASTING>
+
+-> balancer un ray au milieux, puis aux 2 autres milieux jusqua que 2 ray touche le meme mur
+-> check si ya un mur uniquement aux intersections possible
+
+<MENU>
+
+-> faire un menu de settings: possibilité de changer les touches directionnels, le fov, la sensibilite, les images des murs (ajouter des images par default) 
+-> Faire un mod pour ouvrir une window qui affiche les ray envoyé
