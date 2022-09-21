@@ -1,31 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   c3d_start.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/08 14:46:35 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/21 13:11:36 by lgiband          ###   ########.fr       */
+/*   Created: 2022/09/21 13:11:55 by lgiband           #+#    #+#             */
+/*   Updated: 2022/09/21 13:16:01 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "c3d_parsing.h"
 #include "c3d_struct.h"
-#include "c3d_utils.h"
 
-int	main(int argc, char *argv[])
+int	start_game(t_game *game)
 {
-	t_game	game;
-	int		error;
-
-	if (argc != 2)
-		return (display_error(1));
-	error = parsing(&(game.map), argv[argc - 1]);
+	int	error;
+	
+	error = init_game(game);
 	if (error)
-		return (free_map(&game.map), display_error(error));
-	error = start_game(&game);
+		return (error);
+	error = init_mlx(game);
 	if (error)
-		return (free_game(&game), display_error(error));
-	return (free_game(&game), 0);
+		return (error);
 }
