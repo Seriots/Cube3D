@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 10:25:54 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/26 14:13:43 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/09/26 14:31:58 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,10 @@ typedef struct s_fct
 	int	(*display_fct)(t_game *game);
 	int	(*keypressed_fct)(int key, t_game *game);
 	int	(*keyreleased_fct)(int key, t_game *game);
+	int	(*mousepressed_fct)(int button, int x, int y, t_game *game);
+	int	(*mousereleased_fct)(int button, int x, int y, t_game *game);
 	int	(*mousemove_fct)(int x, int y, t_game *game);
+	
 }	t_fct;
 
 typedef struct s_game

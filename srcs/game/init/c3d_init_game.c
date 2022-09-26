@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 13:17:26 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/26 13:54:18 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/09/26 14:33:17 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ static int	set_default_fcts(t_game *game)
 	game->fcts.display_fct = default_display;
 	game->fcts.keypressed_fct = default_key_press;
 	game->fcts.keyreleased_fct = default_key_release;
+	game->fcts.mousepressed_fct = default_mouse_press;
+	game->fcts.mousereleased_fct = default_mouse_release;
 	game->fcts.mousemove_fct = default_mouse_move;
 	return (0);
 }
