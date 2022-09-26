@@ -6,13 +6,14 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 13:17:26 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/26 13:01:24 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/09/26 13:54:18 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "c3d_struct.h"
 #include "c3d_event.h"
 #include "c3d_init.h"
+#include "c3d_loop.h"
 
 static int	set_default_fcts(t_game *game)
 {
@@ -20,6 +21,7 @@ static int	set_default_fcts(t_game *game)
 	game->fcts.display_fct = default_display;
 	game->fcts.keypressed_fct = default_key_press;
 	game->fcts.keyreleased_fct = default_key_release;
+	game->fcts.mousemove_fct = default_mouse_move;
 	return (0);
 }
 

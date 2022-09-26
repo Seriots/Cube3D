@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 10:25:54 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/26 11:57:32 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/09/26 14:13:43 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,10 +57,15 @@ typedef struct s_map
 	int		c;
 }	t_map;
 
+typedef struct s_coord
+{
+	float	x;
+	float	y;
+}	t_coord;
+
 typedef struct s_player
 {
-	unsigned int	x;
-	unsigned int	y;
+	t_coord			pos;
 	char			dir;
 }	t_player;
 
@@ -77,6 +82,7 @@ typedef struct s_fct
 	int	(*display_fct)(t_game *game);
 	int	(*keypressed_fct)(int key, t_game *game);
 	int	(*keyreleased_fct)(int key, t_game *game);
+	int	(*mousemove_fct)(int x, int y, t_game *game);
 }	t_fct;
 
 typedef struct s_game

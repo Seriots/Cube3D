@@ -6,12 +6,15 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 11:22:31 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/26 13:02:08 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/09/26 14:15:27 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "c3d_struct.h"
+#include "c3d_settings.h"
 #include "c3d_event.h"
+
+#include "mlx.h"
 
 #include <X11/X.h>
 #include <stdbool.h>
@@ -35,14 +38,10 @@ int	default_key_release(int keycode, t_game *game)
 	return (0);
 }
 
-int	default_update(t_game *game)
+int	default_mouse_move(int x, int y, t_game *game)
 {
-	(void)game;
-	return (0);
-}
-
-int	default_display(t_game *game)
-{
-	(void)game;
+	game->player.pos.x += (float)(x - WIN_WIDTH / 2) * ((SENSIBILITY + 1.0) / 100.0);
+	game->player.pos.y += (float)(y - WIN_HEIGHT / 2) * ((SENSIBILITY + 1.0) / 100.0);
+	mlx_mouse_move(game->mlx.display, game->mlx.window, WIN_WIDTH / 2, WIN_HEIGHT / 2);
 	return (0);
 }

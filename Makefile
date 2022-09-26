@@ -13,6 +13,8 @@ define SRCS :=
 	game/init/c3d_init_mlx.c
 	game/init/c3d_init_player.c
 	game/init/c3d_init_textures.c
+	game/loop/display/c3d_default_display.c
+	game/loop/update/c3d_default_update.c
 	game/loop/c3d_loop.c
 	parsing/c3d_parsing_check.c
 	parsing/c3d_parsing_readfile.c
