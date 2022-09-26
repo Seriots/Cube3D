@@ -5,6 +5,15 @@ MAKE = /bin/make
 
 define SRCS :=
 	main.c
+	game/event/c3d_default_event.c
+	game/event/c3d_event.c
+	game/c3d_start.c
+	game/init/c3d_init_game.c
+	game/init/c3d_init_images.c
+	game/init/c3d_init_mlx.c
+	game/init/c3d_init_player.c
+	game/init/c3d_init_textures.c
+	game/loop/c3d_loop.c
 	parsing/c3d_parsing_check.c
 	parsing/c3d_parsing_readfile.c
 	parsing/c3d_parsing_set.c
@@ -13,6 +22,7 @@ define SRCS :=
 	parsing/c3d_parsing.c
 	utils/c3d_clean.c
 	utils/c3d_error.c
+	utils/c3d_init_image.c
 	
 endef
 SRCS := $(strip $(SRCS))
@@ -105,6 +115,11 @@ fclean: clean
 re:	fclean
 	$(MAKE) all
 .PHONY: re
+
+launch:	all
+	@./cub3D maps/map1.cub
+.PHONY: re
+
 
 # ============================================================================ #
 #                                   Colors                                     #

@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 11:13:57 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/20 16:25:21 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/09/26 12:49:07 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include "c3d_struct.h"
 
 #include "ft.h"
+#include "mlx.h"
 
 void	free_map(t_map *map)
 {
@@ -25,7 +26,24 @@ void	free_map(t_map *map)
 	free(map->ea);
 }
 
+void	free_images(t_game *game)
+{
+	if (game->all_img.no.img)
+		mlx_destroy_image(game->mlx.display, game->all_img.no.img);
+	if (game->all_img.so.img)
+		mlx_destroy_image(game->mlx.display, game->all_img.so.img);
+	if (game->all_img.ea.img)
+		mlx_destroy_image(game->mlx.display, game->all_img.ea.img);
+	if (game->all_img.we.img)
+		mlx_destroy_image(game->mlx.display, game->all_img.we.img);
+}
+
 void	free_game(t_game *game)
 {
+	mlx_do_key_autorepeaton(game->mlx.display);
 	free_map(&game->map);
+	free_images(game);
+	mlx_destroy_window(game->mlx.display, game->mlx.window);
+	mlx_destroy_display(game->mlx.display);
+	free(game->mlx.display);
 }

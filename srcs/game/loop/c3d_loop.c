@@ -1,30 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   c3d_start.c                                        :+:      :+:    :+:   */
+/*   c3d_loop.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/21 13:11:55 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/26 12:12:24 by lgiband          ###   ########.fr       */
+/*   Created: 2022/09/26 11:12:19 by lgiband           #+#    #+#             */
+/*   Updated: 2022/09/26 11:20:27 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "c3d_struct.h"
-#include "c3d_init.h"
-
-#include "mlx.h"
-
-int	start_game(t_game *game)
+#include "c3d_settings.h"
+/* bonus
+int	fps(t_game *game)
 {
-	int	error;
-	
-	error = init_mlx(game);
-	if (error)
-		return (error);
-	error = init_game(game);
-	if (error)
-		return (error);
-	mlx_loop(game->mlx.display);
+	long	new_frame;
+
+	while (timestamp_msec(game->last_frame) < 1000 / FPS)
+		usleep(1000);
+	new_frame = timestamp_msec(0);
+	game->delay = new_frame - game->last_frame;
+	game->last_frame = new_frame;
+	return (0);
+}*/
+
+int	game_loop(t_game *game)
+{
+	//fps(game);
+	if (game->fcts.update_fct)
+		game->fcts.update_fct(game);
+	if (game->fcts.display_fct)
+		game->fcts.display_fct(game);
 	return (0);
 }

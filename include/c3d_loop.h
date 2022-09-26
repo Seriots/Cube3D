@@ -1,30 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   c3d_start.c                                        :+:      :+:    :+:   */
+/*   c3d_loop.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/21 13:11:55 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/26 12:12:24 by lgiband          ###   ########.fr       */
+/*   Created: 2022/09/26 12:19:10 by lgiband           #+#    #+#             */
+/*   Updated: 2022/09/26 12:24:32 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "c3d_struct.h"
-#include "c3d_init.h"
+#ifndef C3D_LOOP_H
+# define C3D_LOOP_H
 
-#include "mlx.h"
+int	game_loop(t_game *game);
 
-int	start_game(t_game *game)
-{
-	int	error;
-	
-	error = init_mlx(game);
-	if (error)
-		return (error);
-	error = init_game(game);
-	if (error)
-		return (error);
-	mlx_loop(game->mlx.display);
-	return (0);
-}
+#endif

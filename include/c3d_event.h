@@ -1,30 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   c3d_start.c                                        :+:      :+:    :+:   */
+/*   c3d_event.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/21 13:11:55 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/26 12:12:24 by lgiband          ###   ########.fr       */
+/*   Created: 2022/09/26 11:09:27 by lgiband           #+#    #+#             */
+/*   Updated: 2022/09/26 12:16:53 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "c3d_struct.h"
-#include "c3d_init.h"
+#ifndef C3D_EVENT_H
+# define C3D_EVENT_H
 
-#include "mlx.h"
+# include "c3d_struct.h"
 
-int	start_game(t_game *game)
-{
-	int	error;
-	
-	error = init_mlx(game);
-	if (error)
-		return (error);
-	error = init_game(game);
-	if (error)
-		return (error);
-	mlx_loop(game->mlx.display);
-	return (0);
-}
+/*Default events*/
+int default_display(t_game *game);
+int default_update(t_game *game);
+int	default_key_release(int keycode, t_game *game);
+int	default_key_press(int keycode, t_game *game);
+
+/*Hooks*/
+int	event_key_press(int keycode, t_game *game);
+int	event_key_release(int keycode, t_game *game);
+int	close_window(t_game *game);
+
+#endif

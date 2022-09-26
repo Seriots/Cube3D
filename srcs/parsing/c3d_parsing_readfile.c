@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 14:17:54 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/20 16:24:44 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/09/26 10:48:21 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ int	read_file(t_map *map, char *file, int size)
 	while (error == 0 && get_next_line(fd, &line) != 0)
 		error = get_all_elem(map, line);
 	if (error != -1)
-		return (7);
+		return (error);
 	error = get_map(fd, map, line, size);
 	if (error)
 		return (error);

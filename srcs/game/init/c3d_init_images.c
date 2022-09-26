@@ -1,35 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   c3d_init_images.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/08 14:46:35 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/26 12:01:54 by lgiband          ###   ########.fr       */
+/*   Created: 2022/09/26 10:51:50 by lgiband           #+#    #+#             */
+/*   Updated: 2022/09/26 11:35:56 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "c3d_parsing.h"
 #include "c3d_struct.h"
-#include "c3d_utils.h"
 #include "c3d_init.h"
 
-#include "ft.h"
-
-int	main(int argc, char *argv[])
+int init_images(t_game *game)
 {
-	t_game	game;
-	int		error;
-	
-	if (argc != 2)
-		return (display_error(1));
-	error = parsing(&(game.map), argv[argc - 1]);
+	int	error;
+
+	error = open_textures(game, &game->map);
 	if (error)
-		return (free_map(&game.map), display_error(error));
-	ft_printarray(game.map.map, 0);
-	error = start_game(&game);
-	if (error)
-		return (free_game(&game), display_error(error));
-	return (free_game(&game), 0);
+		return (error);
+	return (0);
 }

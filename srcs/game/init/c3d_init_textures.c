@@ -1,55 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   c3d_parsing.c                                      :+:      :+:    :+:   */
+/*   c3d_init_textures.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/19 11:03:58 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/26 10:46:10 by lgiband          ###   ########.fr       */
+/*   Created: 2022/09/26 09:59:52 by lgiband           #+#    #+#             */
+/*   Updated: 2022/09/26 12:48:08 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <fcntl.h>
-#include <stdlib.h>
-#include <unistd.h>
-
 #include "c3d_struct.h"
-#include "c3d_utils.h"
-#include "c3d_parsing.h"
 #include "c3d_init.h"
-
-#include "ft.h"
 
 #include <stdio.h>
 
-int	check_file_extension(char *line)
-{
-	if (ft_strlen(line) >= 5
-		&& ft_strncmp(line + ft_strlen(line) - 4, ".cub", 4) == 0
-		&& line[ft_strlen(line) - 5] != '/')
-		return (0);
-	return (11);
-}
-
-int	parsing(t_map *map, char *file)
+int	open_textures(t_game *game, t_map *map)
 {
 	int	error;
 
-	set_map(map);
-	error = check_file_extension(file);
+	game->all_img.no.img = 0;
+	game->all_img.so.img = 0;
+	game->all_img.ea.img = 0;
+	game->all_img.we.img = 0;
+	error = init_xpm_image(game, &game->all_img.no, map->no);
 	if (error)
 		return (error);
-	error = set_map_size(file, &map->height);
+	error = init_xpm_image(game, &game->all_img.so, map->so);
 	if (error)
 		return (error);
-	map->map = ft_calloc(sizeof(char *), map->height + 1);
-	if (!map->map)
-		return (10);
-	error = read_file(map, file, map->height);
+	error = init_xpm_image(game, &game->all_img.we, map->we);
 	if (error)
 		return (error);
-	error = check_map(map);
+	error = init_xpm_image(game, &game->all_img.ea, map->ea);
 	if (error)
 		return (error);
 	return (0);

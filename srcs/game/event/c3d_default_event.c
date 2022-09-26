@@ -1,38 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   c3d_init_game.c                                    :+:      :+:    :+:   */
+/*   c3d_default_event.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/21 13:17:26 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/26 12:13:11 by lgiband          ###   ########.fr       */
+/*   Created: 2022/09/26 11:22:31 by lgiband           #+#    #+#             */
+/*   Updated: 2022/09/26 12:07:57 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "c3d_struct.h"
 #include "c3d_event.h"
-#include "c3d_init.h"
 
-static int	set_default_fcts(t_game *game)
+#include <X11/X.h>
+#include <stdbool.h>
+#include <X11/keysym.h>
+
+#include <stdio.h>
+
+int	default_key_press(int keycode, t_game *game)
 {
-	game->fcts.update_fct = default_update;
-	game->fcts.display_fct = default_display;
-	game->fcts.keypressed_fct = default_key_press;
-	game->fcts.keyreleased_fct = default_key_release;
+	(void)game;
+	printf("Key pressed: %d\n", keycode);
 	return (0);
 }
 
-int	init_game(t_game *game)
+int	default_key_release(int keycode, t_game *game)
 {
-	int	error;
+	(void)game;
+	printf("Key released: %d\n", keycode);
+	if (keycode == XK_Escape)
+		close_window(game);
+	return (0);
+}
 
-	set_default_fcts(game);
-	error = init_player(game);
-	if (error)
-		return (error);
-	error = init_images(game);
-	if (error)
-		return (error);
+int default_update(t_game *game)
+{
+	(void)game;
+	return (0);
+}
+
+int default_display(t_game *game)
+{
+	(void)game;
 	return (0);
 }

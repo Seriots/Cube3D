@@ -6,13 +6,14 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 10:25:54 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/21 13:23:35 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/09/26 11:57:32 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef C3D_STRUCT_H
 # define C3D_STRUCT_H
 
+typedef struct s_game	t_game;
 
 typedef struct s_img_data
 {
@@ -27,10 +28,10 @@ typedef struct s_img_data
 
 typedef struct s_all_img
 {
-	t_img_data	*no;
-	t_img_data	*so;
-	t_img_data	*we;
-	t_img_data	*ea;
+	t_img_data	no;
+	t_img_data	so;
+	t_img_data	we;
+	t_img_data	ea;
 }	t_all_img;	
 
 typedef struct s_wall
@@ -63,10 +64,28 @@ typedef struct s_player
 	char			dir;
 }	t_player;
 
+
+typedef struct s_mlx
+{
+	void		*display;
+	void		*window;
+}	t_mlx;
+
+typedef struct s_fct
+{
+	int	(*update_fct)(t_game *game);
+	int	(*display_fct)(t_game *game);
+	int	(*keypressed_fct)(int key, t_game *game);
+	int	(*keyreleased_fct)(int key, t_game *game);
+}	t_fct;
+
 typedef struct s_game
 {
+	t_mlx		mlx;
 	t_map		map;
 	t_player	player;
+	t_all_img	all_img;
+	t_fct		fcts;
 }	t_game;
 
 #endif
