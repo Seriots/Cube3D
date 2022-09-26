@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 11:22:31 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/26 12:07:57 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/09/26 13:02:08 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,13 @@ int	default_key_release(int keycode, t_game *game)
 	return (0);
 }
 
-int default_update(t_game *game)
+int	default_update(t_game *game)
 {
 	(void)game;
 	return (0);
 }
 
-int default_display(t_game *game)
+int	default_display(t_game *game)
 {
 	(void)game;
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 14:46:35 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/26 12:01:54 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/09/26 13:00:09 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	main(int argc, char *argv[])
 {
 	t_game	game;
 	int		error;
-	
+
 	if (argc != 2)
 		return (display_error(1));
 	error = parsing(&(game.map), argv[argc - 1]);

@@ -6,13 +6,26 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 10:50:47 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/26 10:54:26 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/09/26 13:03:56 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
 #include "ft.h"
+
+int	display_error2(int code)
+{
+	if (code == 11)
+		ft_putstr_fd("Invalid file extension\n", 2);
+	else if (code == 12)
+		ft_putstr_fd("Open Image Fail\n", 2);
+	else if (code == 13)
+		ft_putstr_fd("Mlx load Fail\n", 2);
+	else if (code == 14)
+		ft_putstr_fd("Window load Fail\n", 2);
+	return (code);
+}
 
 int	display_error(int code)
 {
@@ -40,13 +53,7 @@ Usage: One line of each element \
 		ft_putstr_fd("Map must be enclosed\n", 2);
 	else if (code == 10)
 		ft_putstr_fd("Malloc fail\n", 2);
-	else if (code == 11)
-		ft_putstr_fd("Invalid file extension\n", 2);
-	else if (code == 12)
-		ft_putstr_fd("Open Image Fail\n", 2);
-	else if (code == 13)
-		ft_putstr_fd("Mlx load Fail\n", 2);
-	else if (code == 14)
-		ft_putstr_fd("Window load Fail\n", 2);
+	else
+		display_error2(code);
 	return (code);
 }
