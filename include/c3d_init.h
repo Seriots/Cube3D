@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 13:14:21 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/26 12:14:04 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/09/27 11:50:46 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int init_images(t_game *game);
 int	init_player(t_game *game);
 
 /*Game*/
-int	init_game(t_game *game);
+int	init_game(t_game *game, int first);
 
 /*Mlx*/
 int	init_mlx(t_game *game);

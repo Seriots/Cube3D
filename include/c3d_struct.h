@@ -6,12 +6,14 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 10:25:54 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/26 14:31:58 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/09/27 10:55:57 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef C3D_STRUCT_H
 # define C3D_STRUCT_H
+
+# include <X11/X.h>
 
 typedef struct s_game	t_game;
 
@@ -44,6 +46,20 @@ typedef struct s_wall
 	t_img_data		*color;
 }				t_wall;
 
+typedef struct s_settings
+{
+	float	fov;
+	float	sensibility;
+	float	fps;
+	KeySym	left;
+	KeySym	right;
+	KeySym	forward;
+	KeySym	backward;
+	KeySym	turn_left;
+	KeySym	turn_right;
+	KeySym	pause;
+}	t_settings;
+
 typedef struct s_map
 {
 	char	**map;
@@ -66,9 +82,8 @@ typedef struct s_coord
 typedef struct s_player
 {
 	t_coord			pos;
-	char			dir;
+	float			rot;
 }	t_player;
-
 
 typedef struct s_mlx
 {
@@ -85,7 +100,6 @@ typedef struct s_fct
 	int	(*mousepressed_fct)(int button, int x, int y, t_game *game);
 	int	(*mousereleased_fct)(int button, int x, int y, t_game *game);
 	int	(*mousemove_fct)(int x, int y, t_game *game);
-	
 }	t_fct;
 
 typedef struct s_game
@@ -95,6 +109,7 @@ typedef struct s_game
 	t_player	player;
 	t_all_img	all_img;
 	t_fct		fcts;
+	t_settings	settings;
 }	t_game;
 
 #endif

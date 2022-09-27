@@ -1,31 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   c3d_start.c                                        :+:      :+:    :+:   */
+/*   mzg_standardize.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/21 13:11:55 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/27 11:50:58 by lgiband          ###   ########.fr       */
+/*   Created: 2022/09/09 11:33:21 by lgiband           #+#    #+#             */
+/*   Updated: 2022/09/09 13:13:56 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "c3d_struct.h"
-#include "c3d_init.h"
-
-#include "mlx.h"
-
-int	start_game(t_game *game)
+int	standardize_maze(char **map, int width, int height)
 {
-	int	error;
+	int	i;
+	int	j;
 
-	error = init_mlx(game);
-	if (error)
-		return (error);
-	error = init_game(game, 1);
-	if (error)
-		return (error);
-	mlx_loop(game->mlx.display);
-	mlx_mouse_show(game->mlx.display, game->mlx.window);
+	j = 0;
+	while (j < height)
+	{
+		i = 0;
+		while (i < width)
+		{
+			if (map[j][i] == 33)
+				map[j][i] = '1';
+			else if (map[j][i] != 32)
+				map[j][i] = '0';
+			i++;
+		}
+		j++;
+	}
 	return (0);
 }
