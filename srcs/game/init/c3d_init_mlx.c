@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 13:17:23 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/26 14:28:28 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/09/27 12:27:19 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 static int	init_hooks(t_game *game)
 {
 	mlx_do_key_autorepeatoff(game->mlx.display);
+	mlx_mouse_hide(game->mlx.display, game->mlx.window);
+	mlx_mouse_show(game->mlx.display, game->mlx.window);
 	mlx_mouse_hide(game->mlx.display, game->mlx.window);
 	mlx_hook(game->mlx.window, 2, 1L << 0, &event_key_press, game);
 	mlx_hook(game->mlx.window, 3, 1L << 1, &event_key_release, game);
@@ -37,7 +39,7 @@ int	init_mlx(t_game *game)
 	if (!game->mlx.display)
 		return (13);
 	game->mlx.window = mlx_new_window(game->mlx.display,
-			WIN_WIDTH, WIN_HEIGHT, "Cub3D");
+			WIN_WIDTH, WIN_HEIGHT, WIN_TITLE);
 	if (!game->mlx.window)
 		return (14);
 	mlx_mouse_move(game->mlx.display, game->mlx.window, WIN_WIDTH / 2, WIN_HEIGHT / 2);

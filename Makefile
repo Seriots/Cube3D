@@ -16,6 +16,15 @@ define SRCS :=
 	game/loop/display/c3d_default_display.c
 	game/loop/update/c3d_default_update.c
 	game/loop/c3d_loop.c
+	map_generator/mzg_clean.c
+	map_generator/mzg_fillmap.c
+	map_generator/mzg_generator.c
+	map_generator/mzg_get_maze.c
+	map_generator/mzg_makemaze.c
+	map_generator/mzg_makeshape.c
+	map_generator/mzg_post_player.c
+	map_generator/mzg_printmaze.c
+	map_generator/mzg_standardize.c
 	parsing/c3d_parsing_check.c
 	parsing/c3d_parsing_readfile.c
 	parsing/c3d_parsing_set.c

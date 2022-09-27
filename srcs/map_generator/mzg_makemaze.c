@@ -6,13 +6,13 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 11:31:53 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/11 15:27:08 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/09/27 12:14:55 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-#include "c3d_incs.h"
+#include "mzg_incs.h"
 
 int	is_maze(char **map, int width, int height)
 {

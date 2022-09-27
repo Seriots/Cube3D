@@ -6,14 +6,14 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 11:28:34 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/09 12:53:45 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/09/27 12:15:00 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <stdio.h>
 
-#include "c3d_incs.h"
+#include "mzg_incs.h"
 
 #define VAR_FACTOR 800
 

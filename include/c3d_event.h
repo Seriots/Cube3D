@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 11:09:27 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/26 14:34:27 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/09/27 13:31:43 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,15 @@
 # include "c3d_struct.h"
 
 /*Default events*/
-int	default_key_release(int keycode, t_game *game);
-int	default_key_press(int keycode, t_game *game);
+int	default_key_release(KeySym keycode, t_game *game);
+int	default_key_press(KeySym keycode, t_game *game);
 int	default_mouse_press(int button, int x, int y, t_game *game);
 int	default_mouse_release(int button, int x, int y, t_game *game);
 int	default_mouse_move(int x, int y, t_game *game);
 
 /*Hooks*/
-int	event_key_press(int keycode, t_game *game);
-int	event_key_release(int keycode, t_game *game);
+int	event_key_press(KeySym keycode, t_game *game);
+int	event_key_release(KeySym keycode, t_game *game);
 int	event_mouse_move(int x, int y, t_game *game);
 int	event_mouse_press(int button, int x, int y, t_game *game);
 int	event_mouse_release(int button, int x, int y, t_game *game);

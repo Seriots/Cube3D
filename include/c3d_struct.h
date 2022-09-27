@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 10:25:54 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/27 10:55:57 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/09/27 13:32:36 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define C3D_STRUCT_H
 
 # include <X11/X.h>
+# include <stdbool.h>
 
 typedef struct s_game	t_game;
 
@@ -34,6 +35,8 @@ typedef struct s_all_img
 	t_img_data	so;
 	t_img_data	we;
 	t_img_data	ea;
+	t_img_data	screen_img;
+	t_img_data	menu_img;
 }	t_all_img;	
 
 typedef struct s_wall
@@ -83,6 +86,12 @@ typedef struct s_player
 {
 	t_coord			pos;
 	float			rot;
+	bool			forward;
+	bool			backward;
+	bool			left;
+	bool			right;
+	bool			turn_left;
+	bool			turn_right;
 }	t_player;
 
 typedef struct s_mlx
@@ -95,8 +104,8 @@ typedef struct s_fct
 {
 	int	(*update_fct)(t_game *game);
 	int	(*display_fct)(t_game *game);
-	int	(*keypressed_fct)(int key, t_game *game);
-	int	(*keyreleased_fct)(int key, t_game *game);
+	int	(*keypressed_fct)(KeySym key, t_game *game);
+	int	(*keyreleased_fct)(KeySym key, t_game *game);
 	int	(*mousepressed_fct)(int button, int x, int y, t_game *game);
 	int	(*mousereleased_fct)(int button, int x, int y, t_game *game);
 	int	(*mousemove_fct)(int x, int y, t_game *game);

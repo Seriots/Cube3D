@@ -1,32 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   c3d_start.c                                        :+:      :+:    :+:   */
+/*   mzg_post_player.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/21 13:11:55 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/27 13:44:40 by lgiband          ###   ########.fr       */
+/*   Created: 2022/09/27 12:07:06 by lgiband           #+#    #+#             */
+/*   Updated: 2022/09/27 12:09:29 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "c3d_struct.h"
-#include "c3d_init.h"
-#include "mzg_incs.h"
+#include <stdlib.h>
 
-#include "mlx.h"
-
-int	start_game(t_game *game)
+int	post_player(char **map, int width, int height)
 {
-	int	error;
+	int	x;
+	int	y;
+	char	base[] = "NSEW";
 
-	error = init_mlx(game);
-	if (error)
-		return (error);
-	error = init_game(game, 1);
-	if (error)
-		return (error);
-	//get_maze(game);
-	mlx_loop(game->mlx.display);
+	x = rand() % width;
+	y = rand() % height;
+	while (map[y][x] != '0')
+	{
+		x = rand() % width;
+		y = rand() % height;
+	}
+	map[y][x] = base[rand() % 4];
 	return (0);
 }

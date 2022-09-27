@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 13:43:02 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/27 10:36:02 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/09/27 13:11:37 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,15 @@ void	my_mlx_pixel_put(t_img_data *data, int x, int y, int color)
 
 int	default_display(t_game *game)
 {
-	mlx_clear_window(game->mlx.display, game->mlx.window);
+	//mlx_clear_window(game->mlx.display, game->mlx.window);
 	for (int k = 0; k < 50; k++)
 	{
 		for (int l = 0; l < 50; l++)
 			mlx_pixel_put(game->mlx.display, game->mlx.window,
 					game->player.pos.x + l, game->player.pos.y + k, COLOR);
 	}
+	mlx_set_font(game->mlx.display, game->mlx.window, "-sony-*-*-*-*-*-*-250-*-*-*-*-iso8859-*");
+	mlx_string_put(game->mlx.display, game->mlx.window, 30, 30, 0x2e8b57, "Hello world!");
 	usleep(10000);
 	return (0);
 }

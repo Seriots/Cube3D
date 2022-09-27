@@ -6,16 +6,28 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 13:42:48 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/26 14:17:04 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/09/27 13:37:48 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "c3d_struct.h"
+#include "c3d_settings.h"
 
 #include "mlx.h"
 
 int	default_update(t_game *game)
 {
-	(void)game;
+	if (game->player.forward == 0)
+		game->player.pos.y -= MOVE_SPEED;
+	if (game->player.backward == 0)
+		game->player.pos.y += MOVE_SPEED;
+	if (game->player.left == 0)
+		game->player.pos.x -= MOVE_SPEED;
+	if (game->player.right == 0)
+		game->player.pos.x += MOVE_SPEED;
+	if (game->player.turn_left == 0)
+		game->player.rot -= TURN_SPEED;
+	if (game->player.turn_right == 0)
+		game->player.rot += TURN_SPEED;
 	return (0);
 }

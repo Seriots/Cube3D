@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 11:22:31 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/26 14:34:46 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/09/27 13:32:14 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,17 +22,40 @@
 
 #include <stdio.h>
 
-int	default_key_press(int keycode, t_game *game)
+int	default_key_press(KeySym keycode, t_game *game)
 {
-	(void)game;
-	printf("Key pressed: %d\n", keycode);
+	printf("Key pressed: %lu\n", keycode);
+	if (keycode == game->settings.left)
+		game->player.left = 1;
+	else if (keycode == game->settings.right)
+		game->player.right = 1;
+	else if (keycode == game->settings.forward)
+		game->player.forward = 1;
+	else if (keycode == game->settings.backward)
+		game->player.backward = 1;
+	else if (keycode == game->settings.turn_left)
+		game->player.turn_left = 1;
+	else if (keycode == game->settings.turn_right)
+		game->player.turn_right = 1;
 	return (0);
 }
 
-int	default_key_release(int keycode, t_game *game)
+int	default_key_release(KeySym keycode, t_game *game)
 {
 	(void)game;
-	printf("Key released: %d\n", keycode);
+	printf("Key released: %lu\n", keycode);
+	if (keycode == game->settings.left)
+		game->player.left = 0;
+	else if (keycode == game->settings.right)
+		game->player.right = 0;
+	else if (keycode == game->settings.forward)
+		game->player.forward = 0;
+	else if (keycode == game->settings.backward)
+		game->player.backward = 0;
+	else if (keycode == game->settings.turn_left)
+		game->player.turn_left = 0;
+	else if (keycode == game->settings.turn_right)
+		game->player.turn_right = 0;
 	if (keycode == XK_Escape)
 		close_window(game);
 	return (0);

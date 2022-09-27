@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 10:51:13 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/27 10:51:27 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/09/27 13:24:37 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,5 +57,11 @@ static void	set_player_coord(t_map *map, t_player *player)
 int	init_player(t_game *game)
 {
 	set_player_coord(&game->map, &game->player);
+	game->player.forward = 0;
+	game->player.backward = 0;
+	game->player.left = 0;
+	game->player.right = 0;
+	game->player.turn_right = 0;
+	game->player.turn_left = 0;
 	return (0);
 }

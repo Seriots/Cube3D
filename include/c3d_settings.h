@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 10:26:58 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/27 11:04:56 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/09/27 13:37:23 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,11 @@
 /*Window Settings*/
 # define WIN_WIDTH 1280
 # define WIN_HEIGHT 720
+# define WIN_TITLE "Cub3D"
+
+/*Menu Settings*/
+# define MENU_WIDTH 400
+# define MENU_HEIGHT 300
 
 # define COLOR 0x00FF0000
 
@@ -32,6 +37,9 @@
 
 # define FPS 120
 # define FOV 60.0f
+
+# define MOVE_SPEED 1.0f
+# define TURN_SPEED 1.0f
 
 /*Default Key*/
 # define DEFAULT_LEFT XK_a

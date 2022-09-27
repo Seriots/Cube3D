@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 11:05:33 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/09 13:21:11 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/09/27 12:14:41 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 #include "mlx.h"
 #include "ft.h"
 
-#include "c3d_incs.h"
+#include "mzg_incs.h"
 
 /*
 * Parmaeters:
@@ -58,5 +58,6 @@ int	gen_maze(char ***map, int width, int height)
 	make_maze((*map), width, height);
 	standardize_maze((*map), width, height);
 	clean_maze((*map), width, height);
+	post_player((*map), width, height);
 	return (0);
 }
