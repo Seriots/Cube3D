@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 10:26:58 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/27 13:37:23 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/09/27 14:43:53 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 # define MENU_WIDTH 400
 # define MENU_HEIGHT 300
 
+
 # define COLOR 0x00FF0000
 
 # define MAX_LONG 9223372036854775807
@@ -36,7 +37,8 @@
 # define SENSIBILITY 25.0f
 
 # define FPS 120
-# define FOV 60.0f
+# define FOV 32.0f
+# define VIEW_SCREEN 64
 
 # define MOVE_SPEED 1.0f
 # define TURN_SPEED 1.0f

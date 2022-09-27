@@ -6,11 +6,9 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 13:43:02 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/27 13:11:37 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/09/27 14:46:31 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include <unistd.h>
 
 #include "c3d_struct.h"
 #include "c3d_settings.h"
@@ -27,15 +25,8 @@ void	my_mlx_pixel_put(t_img_data *data, int x, int y, int color)
 
 int	default_display(t_game *game)
 {
-	//mlx_clear_window(game->mlx.display, game->mlx.window);
-	for (int k = 0; k < 50; k++)
-	{
-		for (int l = 0; l < 50; l++)
-			mlx_pixel_put(game->mlx.display, game->mlx.window,
-					game->player.pos.x + l, game->player.pos.y + k, COLOR);
-	}
-	mlx_set_font(game->mlx.display, game->mlx.window, "-sony-*-*-*-*-*-*-250-*-*-*-*-iso8859-*");
-	mlx_string_put(game->mlx.display, game->mlx.window, 30, 30, 0x2e8b57, "Hello world!");
-	usleep(10000);
+	//for i in ....
+	raycasting(game);
+	mlx_put_image_to_window(game->mlx.display, game->mlx.window, game->all_img.screen_img.img, 0, 0);
 	return (0);
 }
