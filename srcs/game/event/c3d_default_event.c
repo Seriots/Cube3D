@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 11:22:31 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/27 13:32:14 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/09/27 17:26:44 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,8 +82,10 @@ int	default_mouse_release(int button, int x, int y, t_game *game)
 
 int	default_mouse_move(int x, int y, t_game *game)
 {
-	game->player.pos.x += (float)(x - WIN_WIDTH / 2) * ((SENSIBILITY + 1.0) / 100.0);
-	game->player.pos.y += (float)(y - WIN_HEIGHT / 2) * ((SENSIBILITY + 1.0) / 100.0);
-	mlx_mouse_move(game->mlx.display, game->mlx.window, WIN_WIDTH / 2, WIN_HEIGHT / 2);
+	(void)y;
+	(void)x;
+	(void)game;
+	//game->player.pos.x += (float)(x - WIN_WIDTH / 2) * ((SENSIBILITY + 1.0) / 100.0);
+	//mlx_mouse_move(game->mlx.display, game->mlx.window, WIN_WIDTH / 2, WIN_HEIGHT / 2);
 	return (0);
 }

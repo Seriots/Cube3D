@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 10:26:58 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/27 16:54:46 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/09/27 18:48:49 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@
 # define VIEW_SCREEN 64
 
 # define MOVE_SPEED 1.0f
-# define TURN_SPEED 1.0f
+# define TURN_SPEED -0.01f
 
 /*Default Key*/
 # define DEFAULT_LEFT XK_a

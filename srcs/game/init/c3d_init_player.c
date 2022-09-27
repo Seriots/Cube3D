@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 10:51:13 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/27 13:24:37 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/09/27 18:42:57 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,13 @@
 static float	get_rotation(char c)
 {
 	if (c == 'N')
-		return (0);
+		return (M_PI / 2);
 	else if (c == 'S')
-		return (180);
-	else if (c == 'E')
-		return (90);
+		return (M_PI * 1.5);
 	else if (c == 'W')
-		return (270);
+		return (M_PI);
+	else if (c == 'E')
+		return (0);
 	return (0);
 }
 
@@ -43,8 +43,6 @@ static void	set_player_coord(t_map *map, t_player *player)
 			{
 				player->pos.x = j * CASE_SIZE + CASE_SIZE / 2;
 				player->pos.y = i * CASE_SIZE + CASE_SIZE / 2;
-				player->pos.x = WIN_WIDTH / 2 - 25;
-				player->pos.y = WIN_HEIGHT / 2 - 25;
 				player->rot = get_rotation(map->map[i][j]);
 				return ;
 			}

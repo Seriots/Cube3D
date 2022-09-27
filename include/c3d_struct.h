@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 10:25:54 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/27 16:30:18 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/09/27 18:03:33 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ typedef struct s_all_img
 
 typedef struct s_wall
 {
-	float			dist;
+	double			dist;
 	int				dist_from_start;
 	char			face;
 }				t_wall;
