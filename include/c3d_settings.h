@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 10:26:58 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/27 14:43:53 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/09/27 16:54:46 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define C3D_SETTINGS_H
 
 # include <X11/keysym.h>
+# include <math.h>
 
 /*Window Settings*/
 # define WIN_WIDTH 1280
@@ -38,6 +39,7 @@
 
 # define FPS 120
 # define FOV 32.0f
+# define VIEW_SIZE M_PI / 6
 # define VIEW_SCREEN 64
 
 # define MOVE_SPEED 1.0f
