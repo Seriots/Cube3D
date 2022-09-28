@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 13:17:23 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/26 14:28:28 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/09/28 18:46:56 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	init_mlx(t_game *game)
 	if (!game->mlx.display)
 		return (13);
 	game->mlx.window = mlx_new_window(game->mlx.display,
-			WIN_WIDTH, WIN_HEIGHT, "Cub3D");
+			WIN_WIDTH, WIN_HEIGHT, WIN_TITLE);
 	if (!game->mlx.window)
 		return (14);
 	mlx_mouse_move(game->mlx.display, game->mlx.window, WIN_WIDTH / 2, WIN_HEIGHT / 2);

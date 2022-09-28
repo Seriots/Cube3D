@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 10:59:18 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/26 14:35:16 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/09/27 13:31:50 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 #include "mlx.h"
 
-int	event_key_press(int keycode, t_game *game)
+int	event_key_press(KeySym keycode, t_game *game)
 {
 	if (game->fcts.keypressed_fct)
 		return (game->fcts.keypressed_fct(keycode, game));
 	return (0);
 }
 
-int	event_key_release(int keycode, t_game *game)
+int	event_key_release(KeySym keycode, t_game *game)
 {
 	if (game->fcts.keyreleased_fct)
 		return (game->fcts.keyreleased_fct(keycode, game));

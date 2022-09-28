@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 10:51:13 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/26 13:59:15 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/09/28 15:26:48 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,19 @@
 #include "c3d_settings.h"
 
 #include "ft.h"
+
+static float	get_rotation(char c)
+{
+	if (c == 'N')
+		return (M_PI / 2);
+	else if (c == 'S')
+		return (M_PI * 1.5);
+	else if (c == 'W')
+		return (M_PI);
+	else if (c == 'E')
+		return (0);
+	return (0);
+}
 
 static void	set_player_coord(t_map *map, t_player *player)
 {
@@ -30,9 +43,7 @@ static void	set_player_coord(t_map *map, t_player *player)
 			{
 				player->pos.x = j * CASE_SIZE + CASE_SIZE / 2;
 				player->pos.y = i * CASE_SIZE + CASE_SIZE / 2;
-				player->pos.x = WIN_WIDTH / 2 - 25;
-				player->pos.y = WIN_HEIGHT / 2 - 25;
-				player->dir = map->map[i][j];
+				player->rot = get_rotation(map->map[i][j]);
 				return ;
 			}
 			j++;
@@ -44,5 +55,11 @@ static void	set_player_coord(t_map *map, t_player *player)
 int	init_player(t_game *game)
 {
 	set_player_coord(&game->map, &game->player);
+	game->player.forward = 0;
+	game->player.backward = 0;
+	game->player.left = 0;
+	game->player.right = 0;
+	game->player.turn_right = 0;
+	game->player.turn_left = 0;
 	return (0);
 }

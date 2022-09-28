@@ -1,40 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   c3d_loop.c                                         :+:      :+:    :+:   */
+/*   mzg_get_maze.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/26 11:12:19 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/28 18:30:52 by lgiband          ###   ########.fr       */
+/*   Created: 2022/09/08 14:46:35 by lgiband           #+#    #+#             */
+/*   Updated: 2022/09/27 12:19:04 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <time.h>
+#include <sys/types.h>
 #include <unistd.h>
+#include <stdlib.h>
 
 #include "c3d_struct.h"
-#include "c3d_settings.h"
-#include "c3d_utils.h"
+#include "mzg_incs.h"
 
-/* bonus*/
-int	fps(t_game *game)
+#include "ft.h"
+
+int	get_maze(t_game *game)
 {
-	long	new_frame;
+	char	**map;
 
-	while (timestamp_msec(game->last_frame) < 1000 / FPS)
-		usleep(1000);
-	new_frame = timestamp_msec(0);
-	game->delay = new_frame - game->last_frame;
-	game->last_frame = new_frame;
-	return (0);
-}
-
-int	game_loop(t_game *game)
-{
-	//fps(game);
-	if (game->fcts.update_fct)
-		game->fcts.update_fct(game);
-	if (game->fcts.display_fct)
-		game->fcts.display_fct(game);
+	(void)game;
+	srand(time(NULL) * getpid());
+	gen_maze(&map, MAZE_WIDTH, MAZE_HEIGHT);
+	printmaze(map, MAZE_WIDTH, MAZE_HEIGHT); //pas vraiment
+	/*Need to free game into init game again with the new map, and the new player settings*/
+	ft_free_tab(map);
 	return (0);
 }

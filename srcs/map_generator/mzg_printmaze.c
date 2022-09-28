@@ -1,29 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   c3d_utils.h                                        :+:      :+:    :+:   */
+/*   mzg_printmaze.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/19 10:51:33 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/28 10:48:45 by lgiband          ###   ########.fr       */
+/*   Created: 2022/09/09 11:27:34 by lgiband           #+#    #+#             */
+/*   Updated: 2022/09/09 12:15:50 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef C3D_UTILS_H
-# define C3D_UTILS_H
+#include <stdio.h>
 
-# include "c3d_struct.h"
+int	printmaze(char **map, int width, int height)
+{
+	int	i;
+	int	j;
 
-/*Time*/
-long	timestamp_msec(long start);
-long	timestamp_sec(long start);
-
-/*Error*/
-int		display_error(int code);
-
-/*Free*/
-void	free_map(t_map *map);
-void	free_game(t_game *game);
-
-#endif
+	j = 0;
+	while (j < height)
+	{
+		i = 0;
+		while (i < width)
+		{
+			printf("%c", map[j][i]);
+			i++;
+		}
+		printf("\n");
+		j++;
+	}
+	return (0);
+}

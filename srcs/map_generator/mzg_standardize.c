@@ -1,29 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   c3d_utils.h                                        :+:      :+:    :+:   */
+/*   mzg_standardize.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/19 10:51:33 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/28 10:48:45 by lgiband          ###   ########.fr       */
+/*   Created: 2022/09/09 11:33:21 by lgiband           #+#    #+#             */
+/*   Updated: 2022/09/09 13:13:56 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef C3D_UTILS_H
-# define C3D_UTILS_H
+int	standardize_maze(char **map, int width, int height)
+{
+	int	i;
+	int	j;
 
-# include "c3d_struct.h"
-
-/*Time*/
-long	timestamp_msec(long start);
-long	timestamp_sec(long start);
-
-/*Error*/
-int		display_error(int code);
-
-/*Free*/
-void	free_map(t_map *map);
-void	free_game(t_game *game);
-
-#endif
+	j = 0;
+	while (j < height)
+	{
+		i = 0;
+		while (i < width)
+		{
+			if (map[j][i] == 33)
+				map[j][i] = '1';
+			else if (map[j][i] != 32)
+				map[j][i] = '0';
+			i++;
+		}
+		j++;
+	}
+	return (0);
+}

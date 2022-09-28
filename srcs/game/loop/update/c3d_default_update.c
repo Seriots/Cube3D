@@ -6,16 +6,16 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 13:42:48 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/26 14:17:04 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/09/28 10:40:47 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "c3d_struct.h"
-
-#include "mlx.h"
+#include "c3d_loop.h"
 
 int	default_update(t_game *game)
 {
-	(void)game;
+	update_player(game);
+	update_minimap(game);
 	return (0);
 }

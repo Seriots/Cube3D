@@ -13,9 +13,21 @@ define SRCS :=
 	game/init/c3d_init_mlx.c
 	game/init/c3d_init_player.c
 	game/init/c3d_init_textures.c
+	game/loop/display/raycasting/c3d_raycasting.c
 	game/loop/display/c3d_default_display.c
 	game/loop/update/c3d_default_update.c
+	game/loop/update/c3d_minimap_update.c
+	game/loop/update/c3d_player_update.c
 	game/loop/c3d_loop.c
+	map_generator/mzg_clean.c
+	map_generator/mzg_fillmap.c
+	map_generator/mzg_generator.c
+	map_generator/mzg_get_maze.c
+	map_generator/mzg_makemaze.c
+	map_generator/mzg_makeshape.c
+	map_generator/mzg_post_player.c
+	map_generator/mzg_printmaze.c
+	map_generator/mzg_standardize.c
 	parsing/c3d_parsing_check.c
 	parsing/c3d_parsing_readfile.c
 	parsing/c3d_parsing_set.c
@@ -25,6 +37,7 @@ define SRCS :=
 	utils/c3d_clean.c
 	utils/c3d_error.c
 	utils/c3d_init_image.c
+	utils/c3d_time.c
 	
 endef
 SRCS := $(strip $(SRCS))
