@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 13:17:26 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/27 11:50:29 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/09/28 10:47:33 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include "c3d_init.h"
 #include "c3d_loop.h"
 #include "c3d_settings.h"
+#include "c3d_utils.h"
 
 static int	set_default_fcts(t_game *game)
 {
@@ -45,6 +46,13 @@ static int	set_default_settings(t_game *game)
 	return (0);
 }
 
+static int	set_variable(t_game *game)
+{
+	game->last_frame = timestamp_msec(0);
+	game->delay = 0;
+	return (0);
+}
+
 int	init_game(t_game *game, int first)
 {
 	int	error;
@@ -53,6 +61,7 @@ int	init_game(t_game *game, int first)
 		set_default_fcts(game);
 	if (first)
 		set_default_settings(game);
+	set_variable(game);
 	error = init_player(game);
 	if (error)
 		return (error);

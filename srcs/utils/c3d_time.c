@@ -1,29 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   c3d_utils.h                                        :+:      :+:    :+:   */
+/*   c3d_time.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/19 10:51:33 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/28 10:48:45 by lgiband          ###   ########.fr       */
+/*   Created: 2022/09/28 10:47:51 by lgiband           #+#    #+#             */
+/*   Updated: 2022/09/28 10:48:19 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef C3D_UTILS_H
-# define C3D_UTILS_H
+#include <sys/time.h>
 
-# include "c3d_struct.h"
+long	timestamp_msec(long start)
+{
+	struct timeval	time;
+	long			time_value;
 
-/*Time*/
-long	timestamp_msec(long start);
-long	timestamp_sec(long start);
+	gettimeofday(&time, 0);
+	time_value = time.tv_sec * 1000 + time.tv_usec / 1000;
+	return (time_value - start);
+}
 
-/*Error*/
-int		display_error(int code);
+long	timestamp_sec(long start)
+{
+	struct timeval	time;
+	long			time_value;
 
-/*Free*/
-void	free_map(t_map *map);
-void	free_game(t_game *game);
-
-#endif
+	gettimeofday(&time, 0);
+	time_value = time.tv_sec;
+	return (time_value - start);
+}

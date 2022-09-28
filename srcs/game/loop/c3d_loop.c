@@ -6,13 +6,17 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 11:12:19 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/26 13:00:50 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/09/28 10:49:29 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <unistd.h>
+
 #include "c3d_struct.h"
 #include "c3d_settings.h"
-/* bonus
+#include "c3d_utils.h"
+
+/* bonus*/
 int	fps(t_game *game)
 {
 	long	new_frame;
@@ -23,11 +27,11 @@ int	fps(t_game *game)
 	game->delay = new_frame - game->last_frame;
 	game->last_frame = new_frame;
 	return (0);
-}*/
+}
 
-/*fps(game);*/
 int	game_loop(t_game *game)
 {
+	fps(game);
 	if (game->fcts.update_fct)
 		game->fcts.update_fct(game);
 	if (game->fcts.display_fct)

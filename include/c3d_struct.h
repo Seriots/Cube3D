@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 10:25:54 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/27 18:03:33 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/09/28 14:29:40 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ typedef struct s_all_img
 	t_img_data	ea;
 	t_img_data	screen_img;
 	t_img_data	menu_img;
+	t_img_data	minimap_img;
 }	t_all_img;	
 
 typedef struct s_wall
@@ -75,8 +76,8 @@ typedef struct s_map
 
 typedef struct s_coord
 {
-	float	x;
-	float	y;
+	double	x;
+	double	y;
 }	t_coord;
 
 typedef struct s_vector
@@ -123,6 +124,8 @@ typedef struct s_game
 	t_all_img	all_img;
 	t_fct		fcts;
 	t_settings	settings;
+	long		last_frame;
+	long		delay;
 }	t_game;
 
 #endif

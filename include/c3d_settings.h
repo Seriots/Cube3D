@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 10:26:58 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/27 18:48:49 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/09/28 16:56:46 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,10 @@
 # define MENU_WIDTH 400
 # define MENU_HEIGHT 300
 
+/*MiniMap Settings*/
+# define MMAP_WIDTH 200
+# define MMAP_HEIGHT 200
+# define MMAP_CASE_SIZE 10
 
 # define COLOR 0x00FF0000
 
@@ -38,12 +42,12 @@
 # define SENSIBILITY 25.0f
 
 # define FPS 120
-# define FOV 32.0f
+# define FOV 24.0f
 # define VIEW_SIZE M_PI / 6
-# define VIEW_SCREEN 64
+# define VIEW_SCREEN 16
 
-# define MOVE_SPEED 1.0f
-# define TURN_SPEED -0.01f
+# define MOVE_SPEED 5.0f
+# define TURN_SPEED -0.08f
 
 /*Default Key*/
 # define DEFAULT_LEFT XK_a
