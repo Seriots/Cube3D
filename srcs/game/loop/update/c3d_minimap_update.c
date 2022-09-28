@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 10:41:01 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/28 13:25:17 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/09/28 18:51:00 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,8 @@ int	update_minimap(t_game *game)
 				color = 0x000000;
 			else if (game->map.map[(player_y / CASE_SIZE) + i][(player_x / CASE_SIZE) + j] == '1')
 				color = 0x398AE6;
+			else if (game->map.map[(player_y / CASE_SIZE) + i][(player_x / CASE_SIZE) + j] == ' ')
+				color = 0x000000;
 			else
 				color = 0x00ACCFF7;
 			put_one_case(game, j * MMAP_CASE_SIZE - (((int)game->player.pos.x % CASE_SIZE) * MMAP_CASE_SIZE / CASE_SIZE), i * MMAP_CASE_SIZE - (((int)game->player.pos.y % CASE_SIZE) * MMAP_CASE_SIZE / CASE_SIZE), color);

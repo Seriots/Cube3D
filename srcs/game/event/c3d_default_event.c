@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 11:22:31 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/28 18:16:47 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/09/28 18:47:10 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ int	default_mouse_move(int x, int y, t_game *game)
 	(void)y;
 	(void)x;
 	(void)game;
-	//game->player.pos.x += (float)(x - WIN_WIDTH / 2) * ((SENSIBILITY + 1.0) / 100.0);
-	//mlx_mouse_move(game->mlx.display, game->mlx.window, WIN_WIDTH / 2, WIN_HEIGHT / 2);
+	game->player.rot -= (float)(x - WIN_WIDTH / 2) * ((SENSIBILITY + 1.0) / 5000.0);
+	mlx_mouse_move(game->mlx.display, game->mlx.window, WIN_WIDTH / 2, WIN_HEIGHT / 2);
 	return (0);
 }

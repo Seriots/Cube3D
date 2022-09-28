@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 10:26:58 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/28 18:18:04 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/09/28 18:45:42 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,14 +39,14 @@
 /*Default Settings*/
 
 /*Mouse sensibility between 0-100*/
-# define SENSIBILITY 25.0f
+# define SENSIBILITY 0.0f
 
 # define FPS 120
 # define FOV 16.0f
 # define VIEW_SIZE 9
 # define VIEW_SCREEN 16
 
-# define MOVE_SPEED 5.0f
+# define MOVE_SPEED 10.0f
 # define TURN_SPEED 0.06f
 
 /*Default Key*/

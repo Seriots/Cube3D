@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 14:42:38 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/28 18:29:05 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/09/28 18:49:24 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -208,7 +208,7 @@ int	raycasting(t_game *game)
 {
 	int i;
 
-	i = 60;	
+	i = -1;	
 	while (++i < WIN_WIDTH)
 		cast_ray(game, i);
 	return (0);
