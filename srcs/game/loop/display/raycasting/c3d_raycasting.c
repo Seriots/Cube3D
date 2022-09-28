@@ -6,13 +6,15 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 14:42:38 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/28 16:59:51 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/09/28 18:29:05 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "c3d_struct.h"
 #include "c3d_settings.h"
 #include "c3d_loop.h"
+
+#include "mlx.h"
 
 #include <math.h>
 
@@ -85,7 +87,7 @@ int	check_wall(t_game *game, t_map *map, t_vector vec, t_wall *wall)
 			wall->face = 'W';
 		if (map->map[((int)vec.y) / CASE_SIZE][((int)vec.x - 1)/ CASE_SIZE] == '1')
 			wall->face = 'E';
-		wall->dist_from_start = (int)vec.x - (int)vec.x / CASE_SIZE;
+		wall->dist_from_start = (int)vec.y % CASE_SIZE;
 	}
 	else
 	{
@@ -93,8 +95,9 @@ int	check_wall(t_game *game, t_map *map, t_vector vec, t_wall *wall)
 			wall->face = 'N';
 		if (map->map[((int)vec.y - 1)/ CASE_SIZE][((int)vec.x) / CASE_SIZE] == '1')
 			wall->face = 'S';
-		wall->dist_from_start = (int)vec.y - (int)vec.y / CASE_SIZE;
+		wall->dist_from_start = (int)vec.x % CASE_SIZE;
 	}
+	//printf("dist: %d\n", wall->dist_from_start);
 	return (wall->face);
 }
 
@@ -115,21 +118,51 @@ int	intersect_wall(t_game *game, t_vector ray, t_wall *wall)
 	return (0);
 }
 
-int	get_pixel_color(t_game *game, t_wall *wall, int y)
+unsigned int	get_wall_color(t_game *game, t_wall *wall, int pixel, double d)
 {
-	if (y > WIN_HEIGHT - (tan(VIEW_SIZE) * wall->dist - WIN_HEIGHT * CASE_SIZE / (2 * 2 * wall->dist * tan(VIEW_SIZE))))
+	void	*color;
+	int	x;
+	int	y;
+	int min;
+	int max;
+	
+	min = WIN_HEIGHT / 2 - CASE_SIZE * game->settings.fov * WIN_HEIGHT / (wall->dist * 2 * VIEW_SIZE * cos(dabs(atan(d / game->settings.fov))));
+	max = WIN_HEIGHT - min;
+	x = (int)wall->dist_from_start * game->all_img.no.width / CASE_SIZE;
+	y = (int)((pixel - min) * game->all_img.no.height / (max - min));
+	//printf("x: %d, y: %d, min: %d, max: %d\n", x, y, min, max);
+	if (wall->face == 'N')
+		color = (game->all_img.no.addr + (y * game->all_img.no.line_length + x * (game->all_img.no.bits_per_pixel / 8)));
+	else if (wall->face == 'S')
+		color = (game->all_img.so.addr + (y * game->all_img.so.line_length + x * (game->all_img.so.bits_per_pixel / 8)));
+	else if (wall->face == 'W')
+		color = (game->all_img.we.addr + (y * game->all_img.we.line_length + x * (game->all_img.we.bits_per_pixel / 8)));
+	else
+		color = (game->all_img.ea.addr + (y * game->all_img.ea.line_length + x * (game->all_img.ea.bits_per_pixel / 8)));
+	return (*(unsigned int *)(color));
+}
+
+int	get_pixel_color(t_game *game, t_wall *wall, int y, int i)
+{
+	double 		d;
+
+	d = (i - (double)WIN_WIDTH / 2.0) * (double)VIEW_SCREEN / (double)WIN_WIDTH;
+	//if (y < tan(VIEW_SIZE) * wall->dist - WIN_HEIGHT * CASE_SIZE / (2 * 2 * wall->dist * tan(VIEW_SIZE)))
+	if ( y < WIN_HEIGHT / 2 - CASE_SIZE * game->settings.fov * WIN_HEIGHT / (wall->dist * 2 * VIEW_SIZE * cos(dabs(atan(d / game->settings.fov)))))
 		return (game->map.c);
-	else if (y < tan(VIEW_SIZE) * wall->dist - WIN_HEIGHT * CASE_SIZE / (2 * 2 * wall->dist * tan(VIEW_SIZE)))
+	else if (WIN_HEIGHT - y < WIN_HEIGHT / 2 - CASE_SIZE * game->settings.fov * WIN_HEIGHT / (wall->dist * 2 * VIEW_SIZE * cos(dabs(atan(d / game->settings.fov)))))
 		return (game->map.f);
 	else
 	{
-		if (wall->face == 'N')
+		/*if (wall->face == 'N')
 			return (0x00000000);
 		if (wall->face == 'S')
 			return (0x00D300FF);
 		if (wall->face == 'E')
 			return (0x00D3FF00);
 		return (0x00FFD300);
+		*/
+		return (get_wall_color(game, wall, y, d));
 	}
 	return (0);
 }
@@ -137,12 +170,15 @@ int	get_pixel_color(t_game *game, t_wall *wall, int y)
 int	display_wall(t_game *game, t_wall *wall, int i)
 {
 	int	j;
+	int	color;
 
 	j = 0;
 	while (j < WIN_HEIGHT)
 	{
 		//printf ("y: %d, limit: %f\n", j, tan(VIEW_SIZE) * wall->dist - (double)(CASE_SIZE / 2));
-		my_mlx_pixel_put(&game->all_img.screen_img, i, j, get_pixel_color(game, wall, j));  
+		color = get_pixel_color(game, wall, j, i);
+	
+		my_mlx_pixel_put(&game->all_img.screen_img, i, j, color);
 		j++;
 	}
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 11:12:19 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/28 10:49:29 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/09/28 18:30:52 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	fps(t_game *game)
 
 int	game_loop(t_game *game)
 {
-	fps(game);
+	//fps(game);
 	if (game->fcts.update_fct)
 		game->fcts.update_fct(game);
 	if (game->fcts.display_fct)

@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 11:22:31 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/27 17:26:44 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/09/28 18:16:47 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 
 int	default_key_press(KeySym keycode, t_game *game)
 {
-	printf("Key pressed: %lu\n", keycode);
+	//printf("Key pressed: %lu\n", keycode);
 	if (keycode == game->settings.left)
 		game->player.left = 1;
 	else if (keycode == game->settings.right)
@@ -43,7 +43,7 @@ int	default_key_press(KeySym keycode, t_game *game)
 int	default_key_release(KeySym keycode, t_game *game)
 {
 	(void)game;
-	printf("Key released: %lu\n", keycode);
+	//printf("Key released: %lu\n", keycode);
 	if (keycode == game->settings.left)
 		game->player.left = 0;
 	else if (keycode == game->settings.right)
