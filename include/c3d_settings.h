@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   c3d_settings.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ppajot <ppajot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 10:26:58 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/28 18:45:42 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/09/28 20:01:06 by ppajot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@
 # define SENSIBILITY 0.0f
 
 # define FPS 120
-# define FOV 16.0f
+# define FOV 20.0f
 # define VIEW_SIZE 9
 # define VIEW_SCREEN 16
 
