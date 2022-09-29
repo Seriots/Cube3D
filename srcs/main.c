@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 14:46:35 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/27 17:16:26 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/09/29 11:32:49 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 
 #include "ft.h"
 
+/*ft_printarray(game.map.map, 0);
+*/
 int	main(int argc, char *argv[])
 {
 	t_game	game;
@@ -27,7 +29,6 @@ int	main(int argc, char *argv[])
 	error = parsing(&(game.map), argv[argc - 1]);
 	if (error)
 		return (free_map(&game.map), display_error(error));
-	//ft_printarray(game.map.map, 0);
 	error = start_game(&game);
 	if (error)
 		return (free_game(&game), display_error(error));

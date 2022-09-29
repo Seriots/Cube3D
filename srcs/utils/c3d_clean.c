@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 11:13:57 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/27 12:25:27 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/09/29 17:53:07 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,23 @@ void	free_map(t_map *map)
 	free(map->ea);
 }
 
+void	free_img_array(t_game *game, t_img_data **imgs_ptr, int number)
+{
+	int			i;
+	t_img_data	*imgs;
+
+	i = 0;
+	imgs = *imgs_ptr;
+	(void)game;
+	while (i < number)
+	{
+		mlx_destroy_image(game->mlx.display, imgs[i].img);
+		i++;
+	}
+	free(imgs);
+	*imgs_ptr = NULL;
+}
+
 void	free_images(t_game *game)
 {
 	if (game->all_img.no.img)
@@ -40,6 +57,9 @@ void	free_images(t_game *game)
 		mlx_destroy_image(game->mlx.display, game->all_img.menu_img.img);
 	if (game->all_img.screen_img.img)
 		mlx_destroy_image(game->mlx.display, game->all_img.screen_img.img);
+	if (game->all_img.minimap_img.img)
+		mlx_destroy_image(game->mlx.display, game->all_img.minimap_img.img);
+	free_img_array(game, &game->all_img.all_cursor_img, 8);
 }
 
 void	free_game(t_game *game)

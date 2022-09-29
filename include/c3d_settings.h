@@ -6,7 +6,7 @@
 /*   By: ppajot <ppajot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 10:26:58 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/28 20:01:06 by ppajot           ###   ########.fr       */
+/*   Updated: 2022/09/29 17:59:21 by ppajot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,10 @@
 # define MMAP_HEIGHT 200
 # define MMAP_CASE_SIZE 10
 
+# define IMAGE_EXTENSION ".xpm"
+# define NAME_BUFFER_SIZE 256
+# define NUMBER_BUFFER_SIZE 11
+
 # define COLOR 0x00FF0000
 
 # define MAX_LONG 9223372036854775807
@@ -45,11 +49,13 @@
 # define FOV 20.0f
 # define VIEW_SIZE 9
 # define VIEW_SCREEN 16
+# define QUALITY 1 // 1 - 64
 
 # define MOVE_SPEED 10.0f
 # define TURN_SPEED 0.06f
 
 /*Default Key*/
+/*
 # define DEFAULT_LEFT XK_a
 # define DEFAULT_RIGHT XK_d
 # define DEFAULT_FORWARD XK_w
@@ -57,5 +63,5 @@
 # define DEFAULT_TURN_LEFT XK_Left
 # define DEFAULT_TURN_RIGHT XK_Right
 # define DEFAULT_PAUSE XK_Escape
-
+*/
 #endif

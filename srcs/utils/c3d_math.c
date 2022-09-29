@@ -1,31 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   c3d_start.c                                        :+:      :+:    :+:   */
+/*   c3d_math.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/21 13:11:55 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/29 10:57:27 by lgiband          ###   ########.fr       */
+/*   Created: 2022/09/29 10:28:23 by lgiband           #+#    #+#             */
+/*   Updated: 2022/09/29 17:47:53 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "c3d_struct.h"
-#include "c3d_init.h"
-#include "mzg_incs.h"
-
-#include "mlx.h"
-
-int	start_game(t_game *game)
+int	sign(float x)
 {
-	int	error;
-
-	error = init_mlx(game);
-	if (error)
-		return (error);
-	error = init_game(game, 1);
-	if (error)
-		return (error);
-	mlx_loop(game->mlx.display);
+	if (x < 0)
+		return (-1);
+	if (x > 0)
+		return (1);
 	return (0);
+}
+
+int	pure_sign(float x)
+{
+	if (x < 0)
+		return (-1);
+	return (1);
+}
+
+double	dabs(double nbr)
+{
+	if (nbr < 0)
+		return (-nbr);
+	return (nbr);
+}
+
+double	min(double a, double b)
+{
+	if (a < b)
+		return (a);
+	return (b);
 }

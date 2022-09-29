@@ -3,7 +3,8 @@
 -> Cast un rayons
 -> Cast tout les rayons et recupere la liste des mur a afficher
 -> afficher les mur
--> Camera axe x et y avec la souris
+-> Camera axe x et y avec la souris --Problem: crash quand play qvec souris trop longtemps; hide mouse leak.
+-> collisions qui doivent check toutes la trajectoire et pas seulement le point d'arrive.
 
 <CASTING>
 

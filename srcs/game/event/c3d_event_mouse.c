@@ -1,40 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   c3d_loop.c                                         :+:      :+:    :+:   */
+/*   c3d_event_mouse.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/26 11:12:19 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/29 10:52:21 by lgiband          ###   ########.fr       */
+/*   Created: 2022/09/29 11:31:34 by lgiband           #+#    #+#             */
+/*   Updated: 2022/09/29 11:32:00 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-
 #include "c3d_struct.h"
-#include "c3d_settings.h"
-#include "c3d_utils.h"
 
-/* bonus*/
-int	fps(t_game *game)
+int	event_mouse_move(int x, int y, t_game *game)
 {
-	long	new_frame;
-
-	while (timestamp_msec(game->last_frame) < 1000 / FPS)
-		usleep(1000);
-	new_frame = timestamp_msec(0);
-	game->delay = new_frame - game->last_frame;
-	game->last_frame = new_frame;
+	if (game->fcts.mousemove_fct)
+		return (game->fcts.mousemove_fct(x, y, game));
 	return (0);
 }
 
-int	game_loop(t_game *game)
+int	event_mouse_press(int button, int x, int y, t_game *game)
 {
-	fps(game);
-	if (game->fcts.update_fct)
-		game->fcts.update_fct(game);
-	if (game->fcts.display_fct)
-		game->fcts.display_fct(game);
+	if (game->fcts.mousepressed_fct)
+		return (game->fcts.mousepressed_fct(button, x, y, game));
+	return (0);
+}
+
+int	event_mouse_release(int button, int x, int y, t_game *game)
+{
+	if (game->fcts.mousereleased_fct)
+		return (game->fcts.mousereleased_fct(button, x, y, game));
 	return (0);
 }
