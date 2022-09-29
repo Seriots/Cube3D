@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 10:41:01 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/28 18:51:00 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/09/29 11:18:09 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,10 @@ int	put_one_case(t_game *game, int x, int y, int color)
 		j = 0;
 		while (j < MMAP_CASE_SIZE)
 		{
-			if (x + i < MMAP_WIDTH && y + j < MMAP_HEIGHT && x + i >= 0 && y + j >= 0)
-				my_mlx_pixel_put(&game->all_img.minimap_img, x + i, y + j, color);
+			if (x + i < MMAP_WIDTH && y + j < MMAP_HEIGHT
+				&& x + i >= 0 && y + j >= 0)
+				my_mlx_pixel_put(&game->all_img.minimap_img,
+					x + i, y + j, color);
 			j++;
 		}
 		i++;
@@ -47,7 +49,9 @@ int	put_player(t_game *game)
 		j = 2;
 		while (j < MMAP_CASE_SIZE - 2)
 		{
-			my_mlx_pixel_put(&game->all_img.minimap_img, (MMAP_WIDTH / 2) - (MMAP_CASE_SIZE / 2) + i, (MMAP_HEIGHT / 2) - (MMAP_CASE_SIZE / 2) + j, 0xFF0000);
+			my_mlx_pixel_put(&game->all_img.minimap_img,
+				(MMAP_WIDTH / 2) - (MMAP_CASE_SIZE / 2) + i,
+				(MMAP_HEIGHT / 2) - (MMAP_CASE_SIZE / 2) + j, 0xFF0000);
 			j++;
 		}
 		i++;
@@ -59,26 +63,31 @@ int	update_minimap(t_game *game)
 {
 	int	i;
 	int	j;
-	int	player_x;
-	int	player_y;
+	int	case_x;
+	int	case_y;
 	int	color;
 
 	i = 0;
 	color = 0;
-	player_x = ((game->player.pos.x) - (CASE_SIZE * (MMAP_WIDTH / MMAP_CASE_SIZE) / 2));
-	player_y = ((game->player.pos.y) - (CASE_SIZE * (MMAP_HEIGHT / MMAP_CASE_SIZE) / 2));
+	case_x = ((game->player.pos.x)
+			- (CASE_SIZE * (MMAP_WIDTH / MMAP_CASE_SIZE) / 2));
+	case_y = ((game->player.pos.y)
+			- (CASE_SIZE * (MMAP_HEIGHT / MMAP_CASE_SIZE) / 2));
 	while (i < MMAP_HEIGHT / MMAP_CASE_SIZE + 1)
 	{
 		j = 0;
 		while (j < MMAP_WIDTH / MMAP_CASE_SIZE + 1)
 		{
-			if ((player_y / CASE_SIZE) + i < 0 || (player_x / CASE_SIZE) + j < 0)
+			if ((case_y / CASE_SIZE) + i < 0 || (case_x / CASE_SIZE) + j < 0)
 				color = 0x000000;
-			else if ((player_y / CASE_SIZE) + i >= game->map.height || (player_x / CASE_SIZE) + j >= game->map.width)
+			else if ((case_y / CASE_SIZE) + i >= game->map.height
+				|| (case_x / CASE_SIZE) + j >= game->map.width)
 				color = 0x000000;
-			else if (game->map.map[(player_y / CASE_SIZE) + i][(player_x / CASE_SIZE) + j] == '1')
+			else if (game->map.map[(case_y / CASE_SIZE) + i]
+				[(case_x / CASE_SIZE) + j] == '1')
 				color = 0x398AE6;
-			else if (game->map.map[(player_y / CASE_SIZE) + i][(player_x / CASE_SIZE) + j] == ' ')
+			else if (game->map.map[(case_y / CASE_SIZE) + i]
+				[(case_x / CASE_SIZE) + j] == ' ')
 				color = 0x000000;
 			else
 				color = 0x00ACCFF7;

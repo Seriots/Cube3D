@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 10:26:58 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/28 18:45:42 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/09/29 10:56:08 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,13 @@
 # define FOV 16.0f
 # define VIEW_SIZE 9
 # define VIEW_SCREEN 16
+# define QUALITY 1 // 1 - 64
 
 # define MOVE_SPEED 10.0f
 # define TURN_SPEED 0.06f
 
 /*Default Key*/
+/*
 # define DEFAULT_LEFT XK_a
 # define DEFAULT_RIGHT XK_d
 # define DEFAULT_FORWARD XK_w
@@ -57,5 +59,5 @@
 # define DEFAULT_TURN_LEFT XK_Left
 # define DEFAULT_TURN_RIGHT XK_Right
 # define DEFAULT_PAUSE XK_Escape
-
+*/
 #endif

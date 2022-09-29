@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   c3d_default_event.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ppajot <ppajot@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 11:22:31 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/28 19:10:11 by ppajot           ###   ########.fr       */
+/*   Updated: 2022/09/29 11:31:05 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 
 int	default_key_press(KeySym keycode, t_game *game)
 {
-	//printf("Key pressed: %lu\n", keycode);
+	printf("Key pressed: %lu\n", keycode);
 	if (keycode == game->settings.left)
 		game->player.left = 1;
 	else if (keycode == game->settings.right)
@@ -43,7 +43,7 @@ int	default_key_press(KeySym keycode, t_game *game)
 int	default_key_release(KeySym keycode, t_game *game)
 {
 	(void)game;
-	//printf("Key released: %lu\n", keycode);
+	printf("Key released: %lu\n", keycode);
 	if (keycode == game->settings.left)
 		game->player.left = 0;
 	else if (keycode == game->settings.right)
@@ -79,13 +79,12 @@ int	default_mouse_release(int button, int x, int y, t_game *game)
 	return (0);
 }
 
-
 int	default_mouse_move(int x, int y, t_game *game)
 {
 	(void)y;
-	(void)x;
-	(void)game;
-	game->player.rot -= (float)(x - WIN_WIDTH / 2) * ((SENSIBILITY + 1.0) / 5000.0);
-	mlx_mouse_move(game->mlx.display, game->mlx.window, WIN_WIDTH / 2, WIN_HEIGHT / 2);
+	game->player.rot -= (((float)(x - WIN_WIDTH / 2))
+			* ((SENSIBILITY + 1.0) / 5000.0));
+	mlx_mouse_move(game->mlx.display, game->mlx.window,
+		WIN_WIDTH / 2, WIN_HEIGHT / 2);
 	return (0);
 }

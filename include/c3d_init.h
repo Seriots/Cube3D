@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 13:14:21 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/27 11:50:46 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/09/29 10:53:08 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	init_image(t_game *game, int width, int height, t_img_data *img);
 int	open_textures(t_game *game, t_map *map);
 
 /*Image*/
-int init_images(t_game *game);
+int	init_images(t_game *game);
 
 /*Player*/
 int	init_player(t_game *game);

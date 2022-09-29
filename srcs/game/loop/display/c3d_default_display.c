@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 13:43:02 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/28 18:30:33 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/09/29 10:57:50 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,15 @@ void	my_mlx_pixel_put(t_img_data *data, int x, int y, int color)
 	char	*dst;
 
 	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
-	*(unsigned int*)dst = color;
+	*(unsigned int *)dst = color;
 }
 
 int	default_display(t_game *game)
 {
 	raycasting(game);
-	mlx_put_image_to_window(game->mlx.display, game->mlx.window, game->all_img.screen_img.img, 0, 0);
-	mlx_put_image_to_window(game->mlx.display, game->mlx.window, game->all_img.minimap_img.img, 10, 500);
+	mlx_put_image_to_window(game->mlx.display, game->mlx.window,
+		game->all_img.screen_img.img, 0, 0);
+	mlx_put_image_to_window(game->mlx.display, game->mlx.window,
+		game->all_img.minimap_img.img, 10, 500);
 	return (0);
 }

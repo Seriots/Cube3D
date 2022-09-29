@@ -6,6 +6,7 @@ MAKE = /bin/make
 define SRCS :=
 	main.c
 	game/event/c3d_default_event.c
+	game/event/c3d_event_mouse.c
 	game/event/c3d_event.c
 	game/c3d_start.c
 	game/init/c3d_init_game.c
@@ -13,6 +14,8 @@ define SRCS :=
 	game/init/c3d_init_mlx.c
 	game/init/c3d_init_player.c
 	game/init/c3d_init_textures.c
+	game/loop/display/raycasting/c3d_raycasting_display.c
+	game/loop/display/raycasting/c3d_raycasting_getwall.c
 	game/loop/display/raycasting/c3d_raycasting.c
 	game/loop/display/c3d_default_display.c
 	game/loop/update/c3d_default_update.c

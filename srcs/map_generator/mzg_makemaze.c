@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 11:31:53 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/27 12:14:55 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/09/29 11:36:44 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 
 int	is_maze(char **map, int width, int height)
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
 	char	c;
 
 	c = 0;
@@ -74,6 +74,17 @@ int	set_random_value(char **map, int width, int height)
 	}
 	return (0);
 }
+/*r = rand() % 4;
+y2 = y;
+x2 = x;
+if (r == 0)
+	y2 = y + 2;
+else if (r == 1)
+	y2 = y - 2;
+else if (r == 2)
+	x2 = x + 2;
+else if (r == 3)
+	x2 = x - 2;*/
 
 int	make_maze(char **map, int width, int height)
 {
@@ -82,30 +93,19 @@ int	make_maze(char **map, int width, int height)
 	int	y;
 	int	x2;
 	int	y2;
-	//int	r;
-	
+
 	i = 0;
 	set_random_value(map, width, height);
 	while (!is_maze(map, width, height) && i < 1000)
 	{
-		x = (rand() % (width - 2)) + 1;	 	
-		y = (rand() % (height - 2)) + 1;	 	
+		x = (rand() % (width - 2)) + 1;
+		y = (rand() % (height - 2)) + 1;
 		if (map[y][x] > 33)
 		{
-			/*r = rand() % 4;
-			y2 = y;
-			x2 = x;
-			if (r == 0)
-				y2 = y + 2;
-			else if (r == 1)
-				y2 = y - 2;
-			else if (r == 2)
-				x2 = x + 2;
-			else if (r == 3)
-				x2 = x - 2;*/
 			y2 = y + (2 * (rand() % 3 - 1));
 			x2 = x + (2 * (rand() % 3 - 1));
-			if (y2 > 0 && x2 > 0 && y2 < height - 1 && x2 < width - 1 && map[y2][x2] > 33 && map[y2][x2] != map[y][x])
+			if (y2 > 0 && x2 > 0 && y2 < height - 1 && x2 < width - 1
+					&& map[y2][x2] > 33 && map[y2][x2] != map[y][x])
 			{
 				map[abs((y + y2) / 2)][abs((x + x2) / 2)] = map[y][x];
 				fill(map, x2, y2, map[y][x]);

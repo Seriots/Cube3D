@@ -6,12 +6,12 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 11:07:20 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/27 17:18:02 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/09/29 10:52:03 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef C3D_INCS_H
-# define C3D_INCS_H
+#ifndef MZG_INCS_H
+# define MZG_INCS_H
 
 # define MAZE_HEIGHT 30
 # define MAZE_WIDTH 30
