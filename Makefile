@@ -38,6 +38,7 @@ define SRCS :=
 	utils/c3d_error.c
 	utils/c3d_init_image.c
 	utils/c3d_time.c
+	utils/c3d_math.c
 	
 endef
 SRCS := $(strip $(SRCS))

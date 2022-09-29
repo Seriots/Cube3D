@@ -6,35 +6,20 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 14:42:38 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/28 18:49:24 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/09/29 10:32:56 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "c3d_struct.h"
 #include "c3d_settings.h"
 #include "c3d_loop.h"
+#include "c3d_utils.h"
 
 #include "mlx.h"
 
 #include <math.h>
 
 #include <stdio.h>
-
-int	sign(float x)
-{
-	if (x < 0)
-		return (-1);
-	if (x > 0)
-		return (1);
-	return (0);
-}
-
-double	dabs(double nbr)
-{
-	if (nbr < 0)
-		return (-nbr);
-	return (nbr);
-}
 
 t_vector	get_next_wall(t_vector pre_pos)
 {

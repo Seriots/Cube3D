@@ -1,34 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   c3d_utils.h                                        :+:      :+:    :+:   */
+/*   c3d_math.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/19 10:51:33 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/29 10:30:09 by lgiband          ###   ########.fr       */
+/*   Created: 2022/09/29 10:28:23 by lgiband           #+#    #+#             */
+/*   Updated: 2022/09/29 10:29:58 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef C3D_UTILS_H
-# define C3D_UTILS_H
+int	sign(float x)
+{
+	if (x < 0)
+		return (-1);
+	if (x > 0)
+		return (1);
+	return (0);
+}
 
-# include "c3d_struct.h"
+int	pure_sign(float x)
+{
+	if (x < 0)
+		return (-1);
+	return (1);
+}
 
-/*Math*/
-int		sign(float x);
-int		pure_sign(float x);
-double	dabs(double nbr);
-
-/*Time*/
-long	timestamp_msec(long start);
-long	timestamp_sec(long start);
-
-/*Error*/
-int		display_error(int code);
-
-/*Free*/
-void	free_map(t_map *map);
-void	free_game(t_game *game);
-
-#endif
+double	dabs(double nbr)
+{
+	if (nbr < 0)
+		return (-nbr);
+	return (nbr);
+}
