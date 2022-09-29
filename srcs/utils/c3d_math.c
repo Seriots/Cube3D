@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 10:28:23 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/29 10:29:58 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/09/29 17:47:53 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,4 +31,11 @@ double	dabs(double nbr)
 	if (nbr < 0)
 		return (-nbr);
 	return (nbr);
+}
+
+double	min(double a, double b)
+{
+	if (a < b)
+		return (a);
+	return (b);
 }

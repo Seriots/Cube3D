@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 13:14:21 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/29 10:53:08 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/09/29 14:50:02 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "c3d_struct.h"
 
 /*Init images*/
+int	init_images_group(t_game *game, char *path, int nb_of_images, t_img_data **dst_ptr);
 int	init_xpm_image(t_game *game, t_img_data *img, char *name);
 int	init_image(t_game *game, int width, int height, t_img_data *img);
 

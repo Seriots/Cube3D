@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 10:26:58 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/29 10:56:08 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/09/29 15:56:18 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,10 @@
 # define MMAP_WIDTH 200
 # define MMAP_HEIGHT 200
 # define MMAP_CASE_SIZE 10
+
+# define IMAGE_EXTENSION ".xpm"
+# define NAME_BUFFER_SIZE 256
+# define NUMBER_BUFFER_SIZE 11
 
 # define COLOR 0x00FF0000
 

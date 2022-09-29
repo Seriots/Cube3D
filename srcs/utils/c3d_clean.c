@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 11:13:57 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/27 12:25:27 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/09/29 14:53:43 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,23 @@ void	free_map(t_map *map)
 	free(map->so);
 	free(map->we);
 	free(map->ea);
+}
+
+void	free_img_array(t_game *game, t_img_data **imgs_ptr, int number)
+{
+	int			i;
+	t_img_data	*imgs;
+
+	i = 0;
+	imgs = *imgs_ptr;
+	(void)game;
+	while (i < number)
+	{
+		mlx_destroy_image(game->mlx.display, imgs[i].img);
+		i++;
+	}
+	free(imgs);
+	*imgs_ptr = NULL;
 }
 
 void	free_images(t_game *game)

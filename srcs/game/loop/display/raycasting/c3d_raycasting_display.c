@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 10:41:24 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/29 11:02:22 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/09/29 16:37:51 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,7 @@ unsigned int	get_wall_color(t_game *game, t_wall *wall, int pixel, double d)
 	int		min;
 	int		max;
 
-	min = WIN_HEIGHT / 2 - CASE_SIZE * game->settings.fov * WIN_HEIGHT
-		/ (wall->dist * 2 * VIEW_SIZE
-			* cos(dabs(atan(d / game->settings.fov))));
+	min = WIN_HEIGHT / 2 - CASE_SIZE * game->settings.fov * WIN_HEIGHT / ((wall->dist + game->settings.fov / cos(dabs(atan(d / game->settings.fov)))) * 2 * VIEW_SIZE * cos(dabs(atan(d / game->settings.fov))));
 	max = WIN_HEIGHT - min;
 	x = (int)wall->dist_from_start * game->all_img.no.width / CASE_SIZE;
 	y = (int)((pixel - min) * game->all_img.no.height / (max - min));
@@ -49,15 +47,15 @@ unsigned int	get_wall_color(t_game *game, t_wall *wall, int pixel, double d)
 int	get_pixel_color(t_game *game, t_wall *wall, int y, int i)
 {
 	double	d;
+	double	angle;
 
 	d = (i - (double)WIN_WIDTH / 2.0) * (double)VIEW_SCREEN / (double)WIN_WIDTH;
-	if (y < WIN_HEIGHT / 2 - CASE_SIZE * game->settings.fov * WIN_HEIGHT
-		/ (wall->dist * 2 * VIEW_SIZE
-			* cos(dabs(atan(d / game->settings.fov)))))
+	angle = dabs(atan(d / game->settings.fov));
+	if (y < WIN_HEIGHT / 2 - CASE_SIZE * game->settings.fov * WIN_HEIGHT / ((wall->dist + game->settings.fov / cos(angle)) * 2 * VIEW_SIZE * cos(angle)))
 		return (game->map.c);
 	else if (WIN_HEIGHT - y < WIN_HEIGHT / 2 - CASE_SIZE * game->settings.fov
-		* WIN_HEIGHT / (wall->dist * 2 * VIEW_SIZE
-			* cos(dabs(atan(d / game->settings.fov)))))
+		* WIN_HEIGHT / ((wall->dist + game->settings.fov / cos(angle)) * 2 * VIEW_SIZE
+			* cos(angle)))
 		return (game->map.f);
 	else
 		return (get_wall_color(game, wall, y, d));

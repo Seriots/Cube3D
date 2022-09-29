@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 10:25:54 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/29 10:54:07 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/09/29 14:50:12 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ typedef struct s_all_img
 	t_img_data	screen_img;
 	t_img_data	menu_img;
 	t_img_data	minimap_img;
+	t_img_data	*all_cursor_img;
 }	t_all_img;	
 
 typedef struct s_wall

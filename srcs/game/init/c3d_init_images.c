@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 10:51:50 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/29 11:27:50 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/09/29 14:51:36 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,9 @@ int	init_images(t_game *game)
 		return (error);
 	error = init_image(game, MMAP_WIDTH, MMAP_HEIGHT,
 			&game->all_img.minimap_img);
+	if (error)
+		return (error);
+	error = init_images_group(game, "imgs/xpm/cursor", 8, &game->all_img.all_cursor_img);
 	if (error)
 		return (error);
 	return (0);
