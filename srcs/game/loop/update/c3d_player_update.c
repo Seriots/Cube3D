@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   c3d_player_update.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ppajot <ppajot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 10:38:52 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/29 17:47:39 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/09/29 20:16:32 by ppajot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,18 +59,35 @@ double	get_wall_angle(char c)
 	return (0);
 }
 
+int	slide (t_game *game, t_wall wall, double limit, int mov_x, int mov_y)
+{
+	int	new_mov_x;
+	int	new_mov_y;
+
+	new_mov_x = 0;
+	new_mov_y = 0;
+	if (wall.face == 'N' || wall.face == 'S')
+		new_mov_x = mov_x * limit / MOVE_SPEED;
+	else
+		new_mov_y = mov_y * limit / MOVE_SPEED;
+	check_collide(game, new_mov_x, new_mov_y);
+	return (0);
+}
+
 int	check_collide (t_game *game, int mov_x, int mov_y)
 {
 	t_wall		wall;
 	t_wall		wall2;
 	t_vector	player;
 
+	if (mov_x == 0 && mov_y == 0)
+		return (0);
 	player.x = game->player.pos.x + VIEW_SCREEN * sin(game->player.rot) / 2;
 	player.y = game->player.pos.y + VIEW_SCREEN * cos(game->player.rot) / 2;
 	if (mov_y > 0)
-		player.angle = 2 * M_PI - acos(mov_x / MOVE_SPEED);
+		player.angle = 2 * M_PI - acos(mov_x / norm((double)mov_x, (double)mov_y));
 	else
-		player.angle = acos(mov_x / MOVE_SPEED);
+		player.angle = acos(mov_x / norm((double)mov_x, (double)mov_y));
 	wall.face = 0;
 	wall.dist = 0;
 	wall.dist_from_start = 0;
@@ -84,12 +101,17 @@ int	check_collide (t_game *game, int mov_x, int mov_y)
 	intersect_wall(game, player, &wall2);
 	wall2.dist = wall2.dist * dabs(cos(get_wall_angle(wall2.face) + M_PI / 2 - player.angle));
 	if (min(wall.dist, wall2.dist) == wall2.dist)
+	{
 		wall.dist = wall2.dist;
-	if (wall.dist > MOVE_SPEED && wall.dist > 3 * VIEW_SCREEN / 2)
+		wall.face = wall2.face;
+	}
+	if (wall.dist > norm((double)mov_x, (double)mov_y) && wall.dist > 3 * VIEW_SCREEN / 2)
 	{
 		game->player.pos.x += mov_x;
 		game->player.pos.y += mov_y;
 	}
+	else
+		slide (game, wall, wall.dist,  mov_x, mov_y);
 	return (0);
 }
 

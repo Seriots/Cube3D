@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   c3d_loop.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ppajot <ppajot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 12:19:10 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/29 10:52:52 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/09/29 18:46:33 by ppajot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ int		update_minimap(t_game *game);
 int		update_player(t_game *game);
 
 /*Update*/
+int		check_collide (t_game *game, int mov_x, int mov_y);
 int		default_update(t_game *game);
 
 /*Loop*/

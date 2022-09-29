@@ -3,12 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   c3d_math.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ppajot <ppajot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 10:28:23 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/29 17:47:53 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/09/29 19:07:17 by ppajot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include <math.h>
 
 int	sign(float x)
 {
@@ -38,4 +40,16 @@ double	min(double a, double b)
 	if (a < b)
 		return (a);
 	return (b);
+}
+
+double	max(double a, double b)
+{
+	if (a > b)
+		return (a);
+	return (b);
+}
+
+double norm(double x, double y)
+{
+	return (sqrt(pow(x, 2.0) + pow(y, 2.0)));
 }
