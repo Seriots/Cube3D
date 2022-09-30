@@ -15,7 +15,11 @@
 <MENU>
 
 -> faire un menu de settings: possibilité de changer les touches directionnels, le fov, la sensibilite, les images des murs (ajouter des images par default ? de differentes qualites ?)
--> Faire un mod pour ouvrir une window qui affiche les ray envoyé
+-> faire les differents objets (checkbox, slide bar, case ou on rentre du texte, button)
+	-> need collidebox
+	-> action par rapport a la souris
+-> faire un dict avec tout les object
+-> if menu on and mouse press and touch a collide box -> renvoi l'objets' et applique la fonction de l'objets'
 
 <BONUS>
 

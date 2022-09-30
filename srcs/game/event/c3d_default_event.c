@@ -6,13 +6,15 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 11:22:31 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/30 11:05:00 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/09/30 14:55:49 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "c3d_struct.h"
 #include "c3d_settings.h"
 #include "c3d_event.h"
+#include "c3d_menu.h"
+#include "c3d_loop.h"
 
 #include "mlx.h"
 
@@ -86,6 +88,6 @@ int	default_key_release(KeySym keycode, t_game *game)
 	else if (keycode == game->settings.turn_right)
 		game->player.turn_right = 0;
 	if (keycode == XK_Escape)
-		close_window(game);
+		open_menu(game);
 	return (0);
 }

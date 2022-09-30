@@ -19,10 +19,10 @@ define SRCS :=
 	game/loop/display/raycasting/c3d_raycasting_getwall.c
 	game/loop/display/raycasting/c3d_raycasting.c
 	game/loop/display/c3d_default_display.c
-	game/loop/update/c3d_default_update.c
-	game/loop/update/c3d_minimap_update.c
-	game/loop/update/c3d_player_collide.c
-	game/loop/update/c3d_player_update.c
+	game/loop/update/default/c3d_default_update.c
+	game/loop/update/default/c3d_minimap_update.c
+	game/loop/update/default/c3d_player_collide.c
+	game/loop/update/default/c3d_player_update.c
 	game/loop/c3d_loop.c
 	map_generator/mzg_clean.c
 	map_generator/mzg_fillmap_check.c
@@ -46,6 +46,12 @@ define SRCS :=
 	utils/c3d_math.c
 	utils/c3d_math2.c
 	utils/c3d_time.c
+
+	game/loop/display/c3d_menu_display.c
+	game/loop/update/menu/c3d_menu_update.c
+	game/event/c3d_menu_event.c
+	game/event/c3d_menu_event_mouse.c
+	game/event/c3d_openclose_menu.c
 	
 endef
 SRCS := $(strip $(SRCS))

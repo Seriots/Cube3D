@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 10:26:58 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/30 10:36:21 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/09/30 14:48:17 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@
 # define WIN_TITLE "Cub3D"
 
 /*Menu Settings*/
-# define MENU_WIDTH 400
-# define MENU_HEIGHT 300
+# define MENU_WIDTH 800
+# define MENU_HEIGHT 600
 
 /*MiniMap Settings*/
 # define MMAP_WIDTH 200
