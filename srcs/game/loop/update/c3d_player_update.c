@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   c3d_player_update.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ppajot <ppajot@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 10:38:52 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/29 20:16:32 by ppajot           ###   ########.fr       */
+/*   Updated: 2022/09/30 10:59:12 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,18 +30,18 @@ int	get_movement(t_game *game, float *mov_x, float *mov_y)
 	}
 	else if (game->player.backward == 1)
 	{
-		*mov_y += MOVE_SPEED * sin(game->player.rot);
-		*mov_x -= MOVE_SPEED * cos(game->player.rot);
+		*mov_y += (MOVE_SPEED * sin(game->player.rot)) / 2.0;
+		*mov_x -= (MOVE_SPEED * cos(game->player.rot)) / 2.0;
 	}
 	else if (game->player.left == 1)
 	{
-		*mov_y -= MOVE_SPEED * cos(game->player.rot);
-		*mov_x -= MOVE_SPEED * sin(game->player.rot);
+		*mov_y -= (MOVE_SPEED * cos(game->player.rot)) / 2.0;
+		*mov_x -= (MOVE_SPEED * sin(game->player.rot)) / 2.0;
 	}
 	else if (game->player.right == 1)
 	{
-		*mov_y += MOVE_SPEED * cos(game->player.rot);
-		*mov_x += MOVE_SPEED * sin(game->player.rot);
+		*mov_y += (MOVE_SPEED * cos(game->player.rot)) / 2.0;
+		*mov_x += (MOVE_SPEED * sin(game->player.rot)) / 2.0;
 	}
 	return (0);
 }

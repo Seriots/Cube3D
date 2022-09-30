@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 10:25:54 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/29 14:50:12 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/09/30 10:40:15 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,23 @@ typedef struct s_coord
 	double	y;
 }	t_coord;
 
+typedef struct s_point
+{
+	int	x;
+	int	y;
+}	t_point;
+
+typedef struct s_display
+{
+	int			min;
+	int			max;
+	double		d;
+	double		angle;
+	t_img_data	*img;
+	int			x;
+}	t_display;
+
+
 typedef struct s_vector
 {
 	double	x;
@@ -92,12 +109,12 @@ typedef struct s_player
 {
 	t_coord			pos;
 	double			rot;
-	bool			forward;
-	bool			backward;
-	bool			left;
-	bool			right;
-	bool			turn_left;
-	bool			turn_right;
+	int				forward;
+	int				backward;
+	int				left;
+	int				right;
+	int				turn_left;
+	int				turn_right;
 }	t_player;
 
 typedef struct s_mlx

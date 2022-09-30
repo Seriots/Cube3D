@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 11:12:19 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/29 10:52:21 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/09/30 09:46:57 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 #include "c3d_struct.h"
 #include "c3d_settings.h"
 #include "c3d_utils.h"
+
+#include <stdio.h>
 
 /* bonus*/
 int	fps(t_game *game)
@@ -32,6 +34,7 @@ int	fps(t_game *game)
 int	game_loop(t_game *game)
 {
 	fps(game);
+	printf("delay: %ld\n", game->delay);
 	if (game->fcts.update_fct)
 		game->fcts.update_fct(game);
 	if (game->fcts.display_fct)

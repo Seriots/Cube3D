@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   c3d_settings.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ppajot <ppajot@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 10:26:58 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/29 17:59:21 by ppajot           ###   ########.fr       */
+/*   Updated: 2022/09/30 10:36:21 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@
 /*Mouse sensibility between 0-100*/
 # define SENSIBILITY 0.0f
 
-# define FPS 120
+# define FPS 30
 # define FOV 20.0f
 # define VIEW_SIZE 9
 # define VIEW_SCREEN 16
