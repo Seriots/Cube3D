@@ -46,7 +46,11 @@ define SRCS :=
 	utils/c3d_math.c
 	utils/c3d_math2.c
 	utils/c3d_time.c
+	
+endef
+SRCS := $(strip $(SRCS))
 
+define SRCS_BONUS :=
 	game/loop/display/c3d_menu_display.c
 	game/loop/update/menu/c3d_menu_update.c
 	game/event/c3d_menu_event.c
@@ -54,7 +58,7 @@ define SRCS :=
 	game/event/c3d_openclose_menu.c
 	
 endef
-SRCS := $(strip $(SRCS))
+SRCS_BONUS := $(strip $(SRCS_BONUS))
 
 define HDRS :=
 	ft.h
@@ -101,7 +105,9 @@ LIB_NAMES := $(strip $(LIB_NAMES))
 # ============================================================================ #
 
 OBJ_FILES := $(patsubst %.c,$(OBJS_DIR)/%.o,$(SRCS))
+OBJ_FILES_BONUS := $(patsubst %.c,$(OBJS_DIR)/%.o,$(SRCS_BONUS))
 DEP_FILES := $(OBJ_FILES:.o=.d)
+DEP_FILES_BONUS := $(OBJ_FILES_BONUS:.o=.d)
 HDR_FILES := $(addprefix $(INCS_DIR)/,$(HDRS))
 
 CFLAGS := $(CFLAGS) -Wall -Wextra -g3
@@ -124,7 +130,7 @@ start_compiling:
 
 clean:
 	@echo "$(_RED)Objs and Deps: removing$(_NO_COLOR)"
-	@rm -vf $(OBJ_FILES) $(DEP_FILES)
+	@rm -vf $(OBJ_FILES) $(OBJ_FILES_BONUS) $(DEP_FILES) $(DEP_FILES_BONUS)
 	@if [ -d $(OBJS_DIR) ]; then \
 		find $(OBJS_DIR) -type d | xargs rmdir -p --ignore-fail-on-non-empty; \
 	fi
@@ -168,9 +174,9 @@ _NO_COLOR	= \033[0m
 #                                   Rules                                      #
 # ============================================================================ #
 
-$(NAME): Makefile $(LIBS) $(OBJ_FILES) 
+$(NAME): Makefile $(LIBS) $(OBJ_FILES) $(OBJ_FILES_BONUS)
 	@echo "\n$(_BLUE)Linkage $(NAME)$(_NO_COLOR)"
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJ_FILES) $(LIBS) -lXext -lX11 -lm
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJ_FILES) $(OBJ_FILES_BONUS) $(LIBS) -lXext -lX11 -lm
 
 $(OBJS_DIR)/%.o: $(SRCS_DIR)/%.c  start_compiling
 	@if [ ! -d $(dir $@) ]; then \
@@ -180,6 +186,7 @@ $(OBJS_DIR)/%.o: $(SRCS_DIR)/%.c  start_compiling
 	$(CC) $(CFLAGS) -MMD -I $(INCS_DIR) -o $@ -c $<
 
 -include $(DEP_FILES)
+-include $(DEP_FILES_BONUS)
 
 %.a:
 	@echo "$(_GREEN)$(dir $@): make$(_NO_COLOR)"
