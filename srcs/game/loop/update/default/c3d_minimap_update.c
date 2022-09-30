@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 10:41:01 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/30 11:23:10 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/09/30 18:14:45 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int	put_player(t_game *game)
 		while (j < MMAP_CASE_SIZE - 1)
 		{
 			color = get_player_color(game, i, j);
-			if (*(unsigned int *)color != 4278190080)
+			if (*(unsigned int *)color != 0xFF000000)
 				my_mlx_pixel_put(&game->all_img.minimap_img,
 					(MMAP_WIDTH / 2) - (MMAP_CASE_SIZE / 2) + i,
 					(MMAP_HEIGHT / 2) - (MMAP_CASE_SIZE / 2) + j,
@@ -67,13 +67,25 @@ int	put_player(t_game *game)
 	return (0);
 }
 
+int	is_in_circle(int x, int y, unsigned int color)
+{
+	int	dist_x;
+	int	dist_y;
+
+	dist_x = x - (MMAP_WIDTH / 2);
+	dist_y = y - (MMAP_HEIGHT / 2);
+	if (norm(dist_x, dist_y) < MMAP_HEIGHT / 2)
+		return (color);
+	return (0xFF000000);
+}
+
 int	update_minimap(t_game *game)
 {
-	int		i;
-	int		j;
-	int		color;
-	int		x;
-	int		y;
+	unsigned int		color;
+	int					i;
+	int					j;
+	int					x;
+	int					y;
 
 	i = 0;
 	while (i < MMAP_HEIGHT)
@@ -86,6 +98,7 @@ int	update_minimap(t_game *game)
 			y = floor(((game->player.pos.y * MMAP_CASE_SIZE / CASE_SIZE)
 						+ i - MMAP_HEIGHT / 2) / MMAP_CASE_SIZE);
 			color = get_map_color(game, x, y);
+			color = is_in_circle(j, i, color);
 			my_mlx_pixel_put(&game->all_img.minimap_img, j, i, color);
 			j++;
 		}

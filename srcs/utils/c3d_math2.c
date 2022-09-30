@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 11:02:27 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/30 11:03:08 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/09/30 17:47:07 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,4 +15,11 @@
 double	norm(double x, double y)
 {
 	return (sqrt(pow(x, 2.0) + pow(y, 2.0)));
+}
+
+int	abs(int x)
+{
+	if (x < 0)
+		return (-x);
+	return (x);
 }

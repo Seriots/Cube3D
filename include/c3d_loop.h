@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 12:19:10 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/30 14:44:05 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/09/30 18:16:13 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ int		display_wall(t_game *game, t_wall *wall, int i);
 int		raycasting(t_game *game);
 
 /*Display*/
+void	my_mlx_put_image_to_window(t_game *game, t_img_data *data, int x, int y);
 void	my_mlx_pixel_put(t_img_data *data, int x, int y, int color);
 int		default_display(t_game *game);
 

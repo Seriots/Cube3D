@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   c3d_utils.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ppajot <ppajot@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 10:51:33 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/29 19:05:37 by ppajot           ###   ########.fr       */
+/*   Updated: 2022/09/30 17:47:27 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "c3d_struct.h"
 
 /*Math*/
+int		abs(int x);
 double	max(double a, double b);
 double	min(double a, double b);
 int		sign(float x);

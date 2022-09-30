@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 11:31:53 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/30 11:58:42 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/09/30 17:50:48 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,6 @@ int	is_maze(char **map, int width, int height)
 		}
 	}
 	return (1);
-}
-
-int	abs(int n)
-{
-	if (n > 0)
-		return (n);
-	return (-n);
 }
 
 int	fill(char **map, int x, int y, char c)

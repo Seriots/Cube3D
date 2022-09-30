@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 10:26:58 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/30 14:48:17 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/09/30 18:33:07 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 /*Menu Settings*/
 # define MENU_WIDTH 800
 # define MENU_HEIGHT 600
+# define BORDER_SIZE 5
 
 /*MiniMap Settings*/
 # define MMAP_WIDTH 200
