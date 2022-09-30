@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 14:42:38 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/30 09:52:19 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/09/30 22:54:14 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 #include "mlx.h"
 
 #include <math.h>
+
+#include <stdio.h>
 
 int	cast_ray(t_game *game, int i)
 {

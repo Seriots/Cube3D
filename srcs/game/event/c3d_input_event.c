@@ -1,29 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   c3d_menu_display.c                                 :+:      :+:    :+:   */
+/*   c3d_input_event.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/30 14:34:59 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/30 21:48:17 by lgiband          ###   ########.fr       */
+/*   Created: 2022/09/30 21:48:34 by lgiband           #+#    #+#             */
+/*   Updated: 2022/09/30 21:49:13 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "c3d_struct.h"
 #include "c3d_settings.h"
-#include "c3d_loop.h"
+#include "c3d_event.h"
+#include "c3d_menu.h"
 
 #include "mlx.h"
 
-int	menu_display(t_game *game)
+#include <X11/X.h>
+#include <stdbool.h>
+#include <X11/keysym.h>
+
+int	menu_key_press(KeySym keycode, t_game *game)
 {
-	my_mlx_put_image_to_window(
-		game,
-		&game->all_img.menu_img,
-		WIN_WIDTH / 2 - MENU_WIDTH / 2,
-		WIN_HEIGHT / 2 - MENU_HEIGHT / 2
-	);
-	mlx_put_image_to_window(game->mlx.display, game->mlx.window, game->all_img.screen_img.img, 0, 0);
+	(void)keycode;
+	(void)game;
+	return (0);
+}
+
+int	menu_key_release(KeySym keycode, t_game *game)
+{
+	if (keycode == XK_Escape)
+		close_menu(game);
 	return (0);
 }

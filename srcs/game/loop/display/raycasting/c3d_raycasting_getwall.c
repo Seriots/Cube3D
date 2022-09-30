@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 10:39:05 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/29 11:10:34 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/09/30 22:54:22 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ int	check_wall(t_game *game, t_map *map, t_vector vec, t_wall *wall)
 		if (map->map[((int)vec.y) / CASE_SIZE][((int)vec.x - 1) / CASE_SIZE]
 				== '1')
 			wall->face = 'E';
-		wall->dist_from_start = (int)vec.y % CASE_SIZE;
+		wall->dist_from_start = vec.y;
 	}
 	else
 	{
@@ -83,7 +83,7 @@ int	check_wall(t_game *game, t_map *map, t_vector vec, t_wall *wall)
 		if (map->map[((int)vec.y - 1) / CASE_SIZE][((int)vec.x) / CASE_SIZE]
 				== '1')
 			wall->face = 'S';
-		wall->dist_from_start = (int)vec.x % CASE_SIZE;
+		wall->dist_from_start = vec.x;
 	}
 	return (wall->face);
 }

@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 10:41:24 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/30 10:39:45 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/09/30 22:54:10 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 #include "c3d_utils.h"
 
 #include <math.h>
+
+#include <stdio.h>
 
 t_img_data	*get_image(t_all_img *all_img, char c)
 {
@@ -36,8 +38,9 @@ unsigned int	get_wall_color(t_game *game, t_wall *wall,
 	int		x;
 	int		y;
 
-	x = (int)wall->dist_from_start * game->all_img.no.width / CASE_SIZE;
-	y = (int)((pixel - display.min) * game->all_img.no.height
+	(void)game;
+	x = (int)(wall->dist_from_start * display.img->width / CASE_SIZE) % display.img->width;
+	y = (int)((pixel - display.min) * display.img->height
 			/ (display.max - display.min));
 	color = (display.img->addr
 			+ (y * display.img->line_length
