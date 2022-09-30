@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 10:04:14 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/29 14:56:28 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/09/30 11:03:30 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,8 @@ static void	make_image_path(char *name, char *path, int number)
 	name[i] = 0;
 }
 
-int	init_images_group(t_game *game, char *path, int nb_of_images, t_img_data **dst_ptr)
+int	init_images_group(t_game *game, char *path,
+	int nb_of_images, t_img_data **dst_ptr)
 {
 	int			error;
 	char		name[NAME_BUFFER_SIZE + 1];

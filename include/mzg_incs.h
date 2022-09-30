@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 11:07:20 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/29 10:52:03 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/09/30 11:56:49 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,18 @@ typedef struct s_shape
 	int		nb_end;
 }		t_shape;
 
+typedef struct s_wdestroy
+{
+	int		x;
+	int		y;
+	int		x2;
+	int		y2;
+}		t_wdestroy;
+
 int	gen_maze(char ***map, int width, int height);
 int	clean_maze(char **map, int width, int height);
+int	is_ver_ok(char **map, int x, int y);
+int	is_hor_ok(char **map, int x, int y);
 int	fillmap(char **map);
 int	make_maze(char **map, int width, int height);
 int	makeshape_maze(char **map, int width, int height);

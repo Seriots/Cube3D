@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 10:25:54 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/30 10:40:15 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/09/30 11:47:35 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,6 @@ typedef struct s_display
 	t_img_data	*img;
 	int			x;
 }	t_display;
-
 
 typedef struct s_vector
 {

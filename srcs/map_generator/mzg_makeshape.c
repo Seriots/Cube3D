@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 11:28:34 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/27 12:15:00 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/09/30 11:49:12 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ int	update_shape(t_shape *shape, int width)
 	{
 		if (rand() % VAR_FACTOR < 10 * (shape->nb_end - 2))
 		{
-			shape->end = rand() % ((width / 2) - 2) + (width / 2) + 2 + (width % 2);
+			shape->end = rand() % ((width / 2) - 2)
+				+ (width / 2) + 2 + (width % 2);
 			shape->nb_end = 0;
 		}
 	}
@@ -77,7 +78,6 @@ int	makeshape_maze(char **map, int width, int height)
 	while (i < height)
 	{
 		generate_line(&shape, map[i], width);
-		
 		if (i > 5 && i < height - 5)
 			update_shape(&shape, width);
 		i++;

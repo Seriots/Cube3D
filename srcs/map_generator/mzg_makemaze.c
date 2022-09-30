@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 11:31:53 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/29 11:36:44 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/09/30 11:58:42 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,31 +88,27 @@ else if (r == 3)
 
 int	make_maze(char **map, int width, int height)
 {
-	int	i;
-	int	x;
-	int	y;
-	int	x2;
-	int	y2;
+	int			i;
+	t_wdestroy	w;
 
 	i = 0;
 	set_random_value(map, width, height);
-	while (!is_maze(map, width, height) && i < 1000)
+	while (!is_maze(map, width, height) && i++ < 1000)
 	{
-		x = (rand() % (width - 2)) + 1;
-		y = (rand() % (height - 2)) + 1;
-		if (map[y][x] > 33)
+		w.x = (rand() % (width - 2)) + 1;
+		w.y = (rand() % (height - 2)) + 1;
+		if (map[w.y][w.x] > 33)
 		{
-			y2 = y + (2 * (rand() % 3 - 1));
-			x2 = x + (2 * (rand() % 3 - 1));
-			if (y2 > 0 && x2 > 0 && y2 < height - 1 && x2 < width - 1
-					&& map[y2][x2] > 33 && map[y2][x2] != map[y][x])
+			w.y2 = w.y + (2 * (rand() % 3 - 1));
+			w.x2 = w.x + (2 * (rand() % 3 - 1));
+			if (w.y2 > 0 && w.x2 > 0 && w.y2 < height - 1 && w.x2 < width - 1
+				&& map[w.y2][w.x2] > 33 && map[w.y2][w.x2] != map[w.y][w.x])
 			{
-				map[abs((y + y2) / 2)][abs((x + x2) / 2)] = map[y][x];
-				fill(map, x2, y2, map[y][x]);
+				map[abs((w.y + w.y2) / 2)][abs((w.x + w.x2) / 2)]
+					= map[w.y][w.x];
+				fill(map, w.x2, w.y2, map[w.y][w.x]);
 				i = 0;
 			}
-			else
-				i++;
 		}		
 	}
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 11:05:33 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/27 12:14:41 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/09/30 11:54:08 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@
 * Description:
 * This function generates a maze and fills the map with it.
 * This generate a maze with the height as fixed value and with a variable width.
-* you can use different fonction to clean the maze at the end. (no diago, no alone, only_alone) in the fill mzg_clean.c
+* you can use different fonction to clean the maze at the end.
+* (no diago, no alone, only_alone) in the fill mzg_clean.c
 */
 
 int	gen_maze(char ***map, int width, int height)

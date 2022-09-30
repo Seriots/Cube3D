@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 12:07:06 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/27 12:09:29 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/09/30 11:50:27 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int	post_player(char **map, int width, int height)
 {
-	int	x;
-	int	y;
-	char	base[] = "NSEW";
+	int			x;
+	int			y;
+	const char	base[4] = {'N', 'S', 'E', 'W'};
 
 	x = rand() % width;
 	y = rand() % height;
