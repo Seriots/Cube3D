@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 11:12:19 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/30 18:26:12 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/01 17:23:27 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include "c3d_struct.h"
 #include "c3d_settings.h"
 #include "c3d_utils.h"
+#include "c3d_menu.h"
 
 #include <stdio.h>
 
@@ -38,5 +39,6 @@ int	game_loop(t_game *game)
 		game->fcts.update_fct(game);
 	if (game->fcts.display_fct)
 		game->fcts.display_fct(game);
+	//printf("%p %p\n", game->fcts.display_fct, menu_display);
 	return (0);
 }

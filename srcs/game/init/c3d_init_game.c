@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 13:17:26 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/30 09:40:20 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/01 10:49:39 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ static int	set_variable(t_game *game)
 {
 	game->last_frame = timestamp_msec(0);
 	game->delay = 0;
+	game->menu.all_objects = 0;
 	return (0);
 }
 
@@ -66,6 +67,9 @@ int	init_game(t_game *game, int first)
 	if (error)
 		return (error);
 	error = init_images(game);
+	if (error)
+		return (error);
+	error = init_menu(game);
 	if (error)
 		return (error);
 	return (0);

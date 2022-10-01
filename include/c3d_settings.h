@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 10:26:58 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/30 18:33:07 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/01 13:50:47 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@
 # define SENSIBILITY 0.0f
 
 # define FPS 30
-# define FOV 20.0f
+# define FOV 10.0f
 # define VIEW_SIZE 9
 # define VIEW_SCREEN 16
 # define QUALITY 1 // 1 - 64

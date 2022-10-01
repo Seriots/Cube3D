@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 10:25:54 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/30 22:52:32 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/01 20:45:33 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,9 @@
 
 # include <X11/X.h>
 # include <stdbool.h>
+
+# include "dict.h"
+
 
 typedef struct s_game	t_game;
 
@@ -52,6 +55,7 @@ typedef struct s_settings
 {
 	float	fov;
 	float	sensibility;
+	float	quality;
 	float	fps;
 	KeySym	left;
 	KeySym	right;
@@ -116,6 +120,42 @@ typedef struct s_player
 	int				turn_right;
 }	t_player;
 
+typedef struct s_collide_box
+{
+	int		x;
+	int		y;
+	int		x_text;
+	int		y_text;
+	int		width;
+	int		height;
+	char	font[256];
+	char	description[256];
+	int		(*mouse_press)(int button, int x, int y, t_game *game);
+	int		(*mouse_release)(int button, int x, int y, t_game *game);
+}	t_collide_box;
+
+typedef struct s_button
+{
+	t_collide_box	box;
+}	t_button;
+
+typedef struct s_slidebar
+{
+	t_collide_box	box;
+	int				min;
+	int				max;
+	int				value;
+	int				x;
+	int				y;
+	int				width;
+	int				height;
+}	t_slidebar;
+
+typedef struct s_menu
+{
+	t_dict	*all_objects;
+}	t_menu;
+
 typedef struct s_mlx
 {
 	void		*display;
@@ -141,6 +181,7 @@ typedef struct s_game
 	t_all_img	all_img;
 	t_fct		fcts;
 	t_settings	settings;
+	t_menu		menu;
 	long		last_frame;
 	long		delay;
 }	t_game;

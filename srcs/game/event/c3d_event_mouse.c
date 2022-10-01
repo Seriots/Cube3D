@@ -6,11 +6,13 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 11:31:34 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/29 11:32:00 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/01 11:42:10 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "c3d_struct.h"
+
+#include <stdio.h>
 
 int	event_mouse_move(int x, int y, t_game *game)
 {

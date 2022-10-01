@@ -6,13 +6,18 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 14:42:08 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/30 18:33:19 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/01 21:06:21 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "c3d_struct.h"
 #include "c3d_loop.h"
 #include "c3d_settings.h"
+#include "c3d_menu.h"
+
+#include "ft.h"
+
+#include "mlx.h"
 
 #include <stdio.h>
 
@@ -39,8 +44,27 @@ int	make_border(t_game *game)
 	return (0);
 }
 
+int	draw_all_objects(t_game *game)
+{
+	t_dict	*tmp;
+	void	*value;
+	
+	tmp = game->menu.all_objects;
+	while (tmp)
+	{
+		value = tmp->value;
+		if (ft_strcmp(tmp->key, "BUTTON") == 0)
+			draw_button(game, (t_button *)value);
+		if (ft_strcmp(tmp->key, "SLIDEBAR") == 0)
+			draw_slidebar(game, (t_slidebar *)value);
+		tmp = tmp->next;
+	}
+	return (0);
+}
+
 int	menu_update(t_game *game)
 {
 	make_border(game);
+	draw_all_objects(game);
 	return (0);
 }

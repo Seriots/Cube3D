@@ -1,9 +1,9 @@
-NO ./imgs/xpm/blueWall64x64.xpm
-EA ./imgs/xpm/redWall64x64.xpm
+NO ./imgs/xpm/image2000x2000.xpm
+EA ./imgs/xpm/image2000x2000.xpm
 
-WE      ./imgs/xpm/wall626x626.xpm
+WE      ./imgs/xpm/image2000x2000.xpm
 
-SO    ./imgs/xpm/wall626x626.xpm
+SO    ./imgs/xpm/image2000x2000.xpm
 
 
 

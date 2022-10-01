@@ -53,9 +53,15 @@ SRCS := $(strip $(SRCS))
 define SRCS_BONUS :=
 	game/loop/display/c3d_menu_display.c
 	game/loop/update/menu/c3d_menu_update.c
+	game/loop/update/menu/c3d_draw_button.c
+	game/loop/update/menu/c3d_draw_slidebar.c
 	game/event/c3d_menu_event.c
 	game/event/c3d_menu_event_mouse.c
 	game/event/c3d_openclose_menu.c
+	game/init/c3d_init_menu.c
+	menu/c3d_button_exit.c
+	menu/c3d_button_resume.c
+	menu/c3d_slidebar_fov.c
 	
 endef
 SRCS_BONUS := $(strip $(SRCS_BONUS))
