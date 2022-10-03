@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 13:17:26 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/01 10:49:39 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/03 10:51:13 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,14 @@ static int	set_default_settings(t_game *game)
 	game->settings.fps = FPS;
 	game->settings.fov = FOV;
 	game->settings.sensibility = SENSIBILITY;
-	game->settings.left = XK_q;
+	game->settings.left = XK_a;
 	game->settings.right = XK_d;
-	game->settings.forward = XK_z;
+	game->settings.forward = XK_w;
 	game->settings.backward = XK_s;
 	game->settings.turn_left = XK_Left;
 	game->settings.turn_right = XK_Right;
 	game->settings.pause = XK_Escape;
+	game->settings.color = 1;
 	return (0);
 }
 

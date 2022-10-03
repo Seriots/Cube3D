@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 10:25:54 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/01 20:45:33 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/03 10:56:52 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ typedef struct s_settings
 	KeySym	turn_left;
 	KeySym	turn_right;
 	KeySym	pause;
+	int		color;
 }	t_settings;
 
 typedef struct s_map
@@ -149,7 +150,15 @@ typedef struct s_slidebar
 	int				y;
 	int				width;
 	int				height;
+	float			*modified_value;
 }	t_slidebar;
+
+typedef struct s_checkbox
+{
+	t_collide_box	box;
+	bool			is_check;
+	int				*modified_value;
+}	t_checkbox;
 
 typedef struct s_menu
 {

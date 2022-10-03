@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 14:12:59 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/01 21:05:24 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/03 11:09:53 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int	menu_display(t_game *game);
 /*Update*/
 int	draw_slidebar(t_game *game, t_slidebar *slidebar);
 int	draw_button(t_game *game, t_button *box);
+int	draw_checkbox(t_game *game, t_checkbox *checkbox);
 int	menu_update(t_game *game);
 
 int	open_menu(t_game *game);
@@ -36,6 +37,6 @@ int	menu_key_press(KeySym keycode, t_game *game);
 t_dict	*init_exit_button(t_game *game);
 t_dict	*init_resume_button(t_game *game);
 t_dict	*init_fov_slidebar(t_game *game);
-
+t_dict	*init_color_checkbox(t_game *game);
 
 #endif

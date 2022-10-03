@@ -35,6 +35,7 @@ int		ft_islong(const char *str);
 int		ft_isprint(int c);
 int		ft_isinset(char c, char *set);
 void	ft_printarray(char **array, int is_n);
+char	*ft_itoa_noalloc(char dst[32], int n);
 char	*ft_itoa(int n);
 void	*ft_memchr(const void *s, int c, size_t n);
 int		ft_memcmp(const void *s1, const void *s2, size_t n);

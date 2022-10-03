@@ -18,7 +18,7 @@ define SRCS :=
 	game/loop/display/raycasting/c3d_raycasting_display.c
 	game/loop/display/raycasting/c3d_raycasting_getwall.c
 	game/loop/display/raycasting/c3d_raycasting.c
-	game/loop/display/c3d_default_display.c
+	game/loop/display/raycasting/c3d_default_display.c
 	game/loop/update/default/c3d_default_update.c
 	game/loop/update/default/c3d_minimap_update.c
 	game/loop/update/default/c3d_player_collide.c
@@ -51,9 +51,10 @@ endef
 SRCS := $(strip $(SRCS))
 
 define SRCS_BONUS :=
-	game/loop/display/c3d_menu_display.c
+	game/loop/display/menu/c3d_menu_display.c
 	game/loop/update/menu/c3d_menu_update.c
 	game/loop/update/menu/c3d_draw_button.c
+	game/loop/update/menu/c3d_draw_checkbox.c
 	game/loop/update/menu/c3d_draw_slidebar.c
 	game/event/c3d_menu_event.c
 	game/event/c3d_menu_event_mouse.c
@@ -61,6 +62,7 @@ define SRCS_BONUS :=
 	game/init/c3d_init_menu.c
 	menu/c3d_button_exit.c
 	menu/c3d_button_resume.c
+	menu/c3d_checkbox_color.c
 	menu/c3d_slidebar_fov.c
 	
 endef

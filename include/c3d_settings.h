@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 10:26:58 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/01 13:50:47 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/03 10:55:06 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,10 @@
 # define MENU_WIDTH 800
 # define MENU_HEIGHT 600
 # define BORDER_SIZE 5
+
+# define BUTTON "BUTTON"
+# define SLIDEBAR "SLIDEBAR"
+# define CHECKBOX "CHECKBOX"
 
 /*MiniMap Settings*/
 # define MMAP_WIDTH 200

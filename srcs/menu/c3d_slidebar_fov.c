@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 13:52:10 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/01 18:29:12 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/03 11:34:52 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	fov_mouse_move(int x, int y, t_game *game)
 		value->box.x = value->width + value->x - value->box.width;
 	else
 		value->box.x = x;
-	game->settings.fov = value->min + (value->box.x - value->x)
+	*(value->modified_value) = value->min + (value->box.x - value->x)
 			* (value->max - value->min + 1) / value->width;
 	return (0);
 }
@@ -71,7 +71,7 @@ int	fov_event(int button, int x, int y, t_game *game)
 t_dict	*init_fov_slidebar(t_game *game)
 {
 	t_slidebar	*slidebar;
-	t_dict		*button;
+	t_dict		*obj;
 
 	(void)game;
 	slidebar = malloc(sizeof(t_slidebar));
@@ -89,13 +89,14 @@ t_dict	*init_fov_slidebar(t_game *game)
 	slidebar->box.x = slidebar->x + (game->settings.fov - slidebar->min) * slidebar->width / (slidebar->max - slidebar->min);
 	slidebar->box.y = slidebar->y - (slidebar->box.height - slidebar->height) / 2;
 	slidebar->box.x_text = slidebar->x - 80;
-	slidebar->box.y_text = slidebar->y + 8;
+	slidebar->box.y_text = slidebar->y + 10;
 	ft_strlcpy(slidebar->box.description, "Fov", 4);
 	ft_strlcpy(slidebar->box.font, "-sony-*-*-*-*-*-*-230-*-*-*-*-iso8859-*", 40);
 	slidebar->box.mouse_press = fov_event;
 	slidebar->box.mouse_release = NULL;
-	button = dict_new("SLIDEBAR", slidebar);
-	if (!button)
+	slidebar->modified_value = &game->settings.fov;
+	obj = dict_new(SLIDEBAR, slidebar);
+	if (!obj)
 		return (free(slidebar), (void *)0);
-	return (button);
+	return (obj);
 }

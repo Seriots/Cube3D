@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 20:33:36 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/09/19 11:31:01 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/03 10:27:46 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int		ft_islong(const char *str);
 int		ft_isprint(int c);
 int		ft_isinset(char c, char *set);
 void	ft_printarray(char **array, int is_n);
+char	*ft_itoa_noalloc(char dst[32], int n);
 char	*ft_itoa(int n);
 void	*ft_memchr(const void *s, int c, size_t n);
 int		ft_memcmp(const void *s1, const void *s2, size_t n);
