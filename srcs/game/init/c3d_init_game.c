@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 13:17:26 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/03 10:51:13 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/03 12:27:20 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ static int	set_variable(t_game *game)
 	game->last_frame = timestamp_msec(0);
 	game->delay = 0;
 	game->menu.all_objects = 0;
+	game->shift = 0;
 	return (0);
 }
 

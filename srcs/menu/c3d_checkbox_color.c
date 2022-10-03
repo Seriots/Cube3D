@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 10:50:39 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/03 11:45:57 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/03 12:13:18 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ t_dict	*init_color_checkbox(t_game *game)
 	checkbox->box.x = 100; 
 	checkbox->box.y = 100;
 	checkbox->box.x_text = checkbox->box.x - 80;
-	checkbox->box.y_text = checkbox->box.x + 15;
+	checkbox->box.y_text = checkbox->box.y + 15;
 	ft_strlcpy(checkbox->box.description, "Color", 6);
 	ft_strlcpy(checkbox->box.font, "-sony-*-*-*-*-*-*-230-*-*-*-*-iso8859-*", 40);
 	checkbox->box.mouse_press = color_press;

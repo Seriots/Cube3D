@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 11:22:31 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/30 14:55:49 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/03 12:25:03 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ int	down_everyone(t_game *game, int *value)
 
 int	default_key_press(KeySym keycode, t_game *game)
 {
+	printf("keycode = %ld\n", keycode);
 	if (keycode == game->settings.left
 		|| keycode == game->settings.right
 		|| keycode == game->settings.forward

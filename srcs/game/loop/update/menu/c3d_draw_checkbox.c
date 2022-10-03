@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 11:05:39 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/03 11:32:42 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/03 12:15:45 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ int	draw_checkbox(t_game *game, t_checkbox *checkbox)
 		x = checkbox->box.x;
 		while (x < checkbox->box.x + checkbox->box.width)
 		{
-			if (x < checkbox->box.x + (checkbox->box.width / 10) || x > checkbox->box.x + checkbox->box.width - (checkbox->box.width / 10 + 1)
-				|| y < checkbox->box.y + (checkbox->box.width / 10) || y > checkbox->box.y + checkbox->box.height - (checkbox->box.width / 10 + 1))
+			if (x < checkbox->box.x + (checkbox->box.width / 10) || x >= checkbox->box.x + checkbox->box.width - (checkbox->box.width / 10)
+				|| y < checkbox->box.y + (checkbox->box.width / 10) || y >= checkbox->box.y + checkbox->box.height - (checkbox->box.width / 10))
 				my_mlx_pixel_put(&game->all_img.menu_img, x, y, 0x777777);
 			else
 				draw_in(game, checkbox, x, y);

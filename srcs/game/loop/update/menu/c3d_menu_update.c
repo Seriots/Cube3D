@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 14:42:08 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/03 11:05:22 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/03 12:06:13 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,8 @@ int	draw_all_objects(t_game *game)
 			draw_slidebar(game, (t_slidebar *)value);
 		if (ft_strcmp(tmp->key, CHECKBOX) == 0)
 			draw_checkbox(game, (t_checkbox *)value);
+		if (ft_strcmp(tmp->key, KEYINPUT) == 0)
+			draw_keyinput(game, (t_keyinput *)value);
 		tmp = tmp->next;
 	}
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 10:26:58 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/03 10:55:06 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/03 12:02:34 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@
 # define BUTTON "BUTTON"
 # define SLIDEBAR "SLIDEBAR"
 # define CHECKBOX "CHECKBOX"
+# define KEYINPUT "KEYINPUT"
 
 /*MiniMap Settings*/
 # define MMAP_WIDTH 200
