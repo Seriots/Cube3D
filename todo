@@ -24,7 +24,8 @@ x -> button
 x -> slidebar
 x -> checkbox
 x -> keyinput
--> textinput image
+x -> textinput image
+x	-> need to clean every selected when resume pressed
 -> numinput color
 -> (bar de defilement)
 
