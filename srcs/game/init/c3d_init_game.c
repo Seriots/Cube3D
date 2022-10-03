@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 13:17:26 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/03 12:27:20 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/03 15:03:31 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,10 @@ static int	set_variable(t_game *game)
 	game->last_frame = timestamp_msec(0);
 	game->delay = 0;
 	game->menu.all_objects = 0;
-	game->shift = 0;
+	game->all_img.menu_img.img = NULL;
+	game->all_img.screen_img.img = NULL;
+	game->all_img.minimap_img.img = NULL;
+	game->all_img.all_cursor_img = NULL;
 	return (0);
 }
 

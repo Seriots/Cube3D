@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 13:17:23 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/30 11:06:54 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/03 16:17:06 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 static int	init_hooks(t_game *game)
 {
 	mlx_do_key_autorepeatoff(game->mlx.display);
-	mlx_mouse_hide(game->mlx.display, game->mlx.window);
-	mlx_mouse_show(game->mlx.display, game->mlx.window);
+	if (HIDE == 1)
+		mlx_mouse_hide(game->mlx.display, game->mlx.window);
 	mlx_hook(game->mlx.window, 2, 1L << 0, &event_key_press, game);
 	mlx_hook(game->mlx.window, 3, 1L << 1, &event_key_release, game);
 	mlx_hook(game->mlx.window, 4, 1L << 2, &event_mouse_press, game);

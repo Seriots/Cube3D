@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 10:25:54 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/03 13:07:42 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/03 17:56:28 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,9 @@
 
 # include "dict.h"
 
+# ifndef HIDE
+#  define HIDE 0
+# endif
 
 typedef struct s_game	t_game;
 
@@ -168,6 +171,21 @@ typedef struct s_keyinput
 	KeySym			*modified_value;
 }	t_keyinput;
 
+typedef struct s_textinput
+{
+	t_collide_box	box;
+	int				shift;
+	int				caps_lock;
+	bool			is_selected;
+	int				size;
+	int				max_size;
+	t_img_data		*modified_value;
+	char			**modified_path;
+	int				max_char_display;
+	int				start_display;
+	char			path[256];
+}	t_textinput;
+
 typedef struct s_menu
 {
 	t_dict	*all_objects;
@@ -198,7 +216,6 @@ typedef struct s_game
 	t_all_img	all_img;
 	t_fct		fcts;
 	t_settings	settings;
-	int			shift;
 	t_menu		menu;
 	long		last_frame;
 	long		delay;

@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 11:12:19 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/03 11:57:46 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/03 17:35:53 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,6 @@ int	game_loop(t_game *game)
 		game->fcts.update_fct(game);
 	if (game->fcts.display_fct)
 		game->fcts.display_fct(game);
-	//printf("%p %p\n", game->fcts.display_fct, menu_display);
+	//printf("%p %p\n", game->fcts.keypressed_fct, north_keypress);
 	return (0);
 }

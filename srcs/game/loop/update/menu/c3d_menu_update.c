@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 14:42:08 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/03 12:06:13 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/03 15:20:01 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,12 +55,14 @@ int	draw_all_objects(t_game *game)
 		value = tmp->value;
 		if (ft_strcmp(tmp->key, BUTTON) == 0)
 			draw_button(game, (t_button *)value);
-		if (ft_strcmp(tmp->key, SLIDEBAR) == 0)
+		else if (ft_strcmp(tmp->key, SLIDEBAR) == 0)
 			draw_slidebar(game, (t_slidebar *)value);
-		if (ft_strcmp(tmp->key, CHECKBOX) == 0)
+		else if (ft_strcmp(tmp->key, CHECKBOX) == 0)
 			draw_checkbox(game, (t_checkbox *)value);
-		if (ft_strcmp(tmp->key, KEYINPUT) == 0)
+		else if (ft_strcmp(tmp->key, KEYINPUT) == 0)
 			draw_keyinput(game, (t_keyinput *)value);
+		else if (ft_strcmp(tmp->key, TEXTINPUT) == 0)
+			draw_textinput(game, (t_textinput *)value);
 		tmp = tmp->next;
 	}
 	return (0);

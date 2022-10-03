@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 13:13:44 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/03 13:29:19 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/03 16:00:38 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,32 +18,6 @@
 #include "ft.h"
 
 #include <stdlib.h>
-
-int	left_release(int button, int x, int y, t_game *game)
-{
-	t_keyinput	*keyinput;
-
-	if (button == 1)
-	{
-		keyinput = dict_getelem_number(game->menu.all_objects, 5)->value;
-		if (x - (WIN_WIDTH / 2 - MENU_WIDTH / 2) >= keyinput->box.x
-			&& x - (WIN_WIDTH / 2 - MENU_WIDTH / 2) <= keyinput->box.x + keyinput->box.width
-			&& y - (WIN_HEIGHT / 2 - MENU_HEIGHT / 2) >= keyinput->box.y
-			&& y - (WIN_HEIGHT / 2 - MENU_HEIGHT / 2) <= keyinput->box.y + keyinput->box.height)
-		{
-			keyinput->is_selected = !keyinput->is_selected;
-			if (keyinput->is_selected)
-				clear_all_other_selected(game, keyinput);
-			else
-			{
-				game->fcts.keypressed_fct = menu_key_press;
-				game->fcts.keyreleased_fct = menu_key_release;
-			}
-		}
-		game->fcts.mousereleased_fct = menu_mouse_release;
-	}
-	return (0);
-}
 
 int	left_keypress(KeySym key, t_game *game)
 {
@@ -76,6 +50,36 @@ int	left_keyrelease(KeySym key, t_game *game)
 	return (0);
 }
 
+int	left_release(int button, int x, int y, t_game *game)
+{
+	t_keyinput	*keyinput;
+
+	if (button == 1)
+	{
+		keyinput = dict_getelem_number(game->menu.all_objects, 5)->value;
+		if (x - (WIN_WIDTH / 2 - MENU_WIDTH / 2) >= keyinput->box.x
+			&& x - (WIN_WIDTH / 2 - MENU_WIDTH / 2) <= keyinput->box.x + keyinput->box.width
+			&& y - (WIN_HEIGHT / 2 - MENU_HEIGHT / 2) >= keyinput->box.y
+			&& y - (WIN_HEIGHT / 2 - MENU_HEIGHT / 2) <= keyinput->box.y + keyinput->box.height)
+		{
+			keyinput->is_selected = !keyinput->is_selected;
+			if (keyinput->is_selected)
+			{
+				game->fcts.keypressed_fct = left_keypress;
+				game->fcts.keyreleased_fct = left_keyrelease;
+				clear_all_other_selected(game, keyinput);
+			}
+			else
+			{
+				game->fcts.keypressed_fct = menu_key_press;
+				game->fcts.keyreleased_fct = menu_key_release;
+			}
+		}
+		game->fcts.mousereleased_fct = menu_mouse_release;
+	}
+	return (0);
+}
+
 int	left_press(int button, int x, int y, t_game *game)
 {
 	(void)x;
@@ -83,8 +87,7 @@ int	left_press(int button, int x, int y, t_game *game)
 	if (button == 1)
 	{
 		game->fcts.mousereleased_fct = left_release;
-		game->fcts.keypressed_fct = left_keypress;
-		game->fcts.keyreleased_fct = left_keyrelease;
+
 	}
 	return (0);
 }

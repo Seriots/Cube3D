@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 13:04:03 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/03 13:27:34 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/03 17:59:17 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 #include "c3d_settings.h"
 
 #include "ft.h"
+#include "mlx.h"
 
-int	clear_all_other_selected(t_game *game, t_keyinput *keyinput)
+int	clear_all_other_selected(t_game *game, void *keyinput)
 {
 	t_dict	*tmp;
 
@@ -24,6 +25,15 @@ int	clear_all_other_selected(t_game *game, t_keyinput *keyinput)
 	{
 		if (tmp->value != keyinput && ft_strcmp(tmp->key, KEYINPUT) == 0)
 			((t_keyinput *)tmp->value)->is_selected = 0;
+		else if (tmp->value != keyinput && ft_strcmp(tmp->key, TEXTINPUT) == 0 
+		&& ((t_textinput *)tmp->value)->is_selected == 1)
+		{
+			((t_textinput *)tmp->value)->is_selected = 0;
+			((t_textinput *)tmp->value)->start_display = 0;
+			ft_strlcpy(((t_textinput *)tmp->value)->path, *((t_textinput *)tmp->value)->modified_path, 256);
+			((t_textinput *)tmp->value)->size = ft_strlen(((t_textinput *)tmp->value)->path);
+			mlx_do_key_autorepeaton(game->mlx.display);
+		}
 		tmp = tmp->next;
 	}
 	return (0);

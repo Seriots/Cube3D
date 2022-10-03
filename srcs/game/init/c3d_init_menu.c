@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 10:10:34 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/03 13:16:10 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/03 15:17:33 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	init_menu(t_game *game)
 {
 	static	t_dict	*(*objs[])(t_game *game) = {init_resume_button,
 		init_exit_button, init_fov_slidebar, init_color_checkbox,
-		init_forward_keyinput, init_left_keyinput};
+		init_forward_keyinput, init_left_keyinput, init_textinput_north};
 	t_dict	*elem;
 	long unsigned int		i;
 	

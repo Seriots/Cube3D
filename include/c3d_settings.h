@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 10:26:58 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/03 12:02:34 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/03 16:17:47 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@
 # define SLIDEBAR "SLIDEBAR"
 # define CHECKBOX "CHECKBOX"
 # define KEYINPUT "KEYINPUT"
+# define TEXTINPUT "TEXTINPUT"
 
 /*MiniMap Settings*/
 # define MMAP_WIDTH 200
@@ -37,7 +38,7 @@
 # define MMAP_CASE_SIZE 10
 
 # define IMAGE_EXTENSION ".xpm"
-# define NAME_BUFFER_SIZE 256
+# define NAME_BUFFER_SIZE 251
 # define NUMBER_BUFFER_SIZE 11
 
 # define COLOR 0x00FF0000

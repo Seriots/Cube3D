@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 14:12:59 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/03 13:28:06 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/03 17:26:00 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,11 @@
 # include "dict.h"
 
 /*Display*/
+int	display_slidebar_text(t_game *game, t_slidebar *slidebar);
+int	display_button_text(t_game *game, t_button *button);
+int	display_keyinput_text(t_game *game, t_keyinput *keyinput);
+int	display_textinput_text(t_game *game, t_textinput *textinput);
+int	display_checkbox_text(t_game *game, t_checkbox *checkbox);
 int	menu_display(t_game *game);
 
 /*Update*/
@@ -25,6 +30,7 @@ int	draw_slidebar(t_game *game, t_slidebar *slidebar);
 int	draw_button(t_game *game, t_button *box);
 int	draw_checkbox(t_game *game, t_checkbox *checkbox);
 int	draw_keyinput(t_game *game, t_keyinput *box);
+int	draw_textinput(t_game *game, t_textinput *box);
 int	menu_update(t_game *game);
 
 /*Event*/
@@ -43,9 +49,10 @@ t_dict	*init_fov_slidebar(t_game *game);
 t_dict	*init_color_checkbox(t_game *game);
 t_dict	*init_forward_keyinput(t_game *game);
 t_dict	*init_left_keyinput(t_game *game);
+t_dict	*init_textinput_north(t_game *game);
 
 /*Utils*/
-int	clear_all_other_selected(t_game *game, t_keyinput *keyinput);
+int	clear_all_other_selected(t_game *game, void *keyinput);
 int	get_key_color(t_game *game, KeySym *key);
 int	update_key_color(t_game *game, t_menu *menu);
 

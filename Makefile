@@ -51,11 +51,17 @@ endef
 SRCS := $(strip $(SRCS))
 
 define SRCS_BONUS :=
+	game/loop/display/menu/c3d_display_button.c
+	game/loop/display/menu/c3d_display_checkbox.c
+	game/loop/display/menu/c3d_display_keyinput.c
+	game/loop/display/menu/c3d_display_slidebar.c
+	game/loop/display/menu/c3d_display_textinput.c
 	game/loop/display/menu/c3d_menu_display.c
 	game/loop/update/menu/c3d_menu_update.c
 	game/loop/update/menu/c3d_draw_button.c
 	game/loop/update/menu/c3d_draw_checkbox.c
 	game/loop/update/menu/c3d_draw_keyinput.c
+	game/loop/update/menu/c3d_draw_textinput.c
 	game/loop/update/menu/c3d_draw_slidebar.c
 	game/event/c3d_menu_event.c
 	game/event/c3d_menu_event_mouse.c
@@ -67,6 +73,7 @@ define SRCS_BONUS :=
 	menu/c3d_keyinput_forward.c
 	menu/c3d_keyinput_left.c
 	menu/c3d_slidebar_fov.c
+	menu/c3d_textinput_north.c
 	utils/c3d_menu_utils.c
 	
 endef
@@ -128,6 +135,12 @@ ifdef DEBUG
 	CFLAGS := $(CFLAGS) -g3 -D DEBUG=1
 else
 	CFLAGS := $(CFLAGS) -Werror -D DEBUG=0
+endif
+
+ifdef HIDE
+	CFLAGS := $(CFLAGS) -g3 -D HIDE=1
+else
+	CFLAGS := $(CFLAGS) -Werror -D HIDE=0
 endif
 
 # ============================================================================ #

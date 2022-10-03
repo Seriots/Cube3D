@@ -23,8 +23,9 @@ x-> if menu on and mouse press and touch a collide box -> renvoi l'objets' et ap
 x -> button
 x -> slidebar
 x -> checkbox
--> key input
--> text input
+x -> keyinput
+-> textinput image
+-> numinput color
 -> (bar de defilement)
 
 
