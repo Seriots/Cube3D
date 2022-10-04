@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 11:04:48 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/30 11:05:53 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/04 15:02:55 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ int	default_mouse_press(int button, int x, int y, t_game *game)
 	(void)game;
 	(void)x;
 	(void)y;
-	printf("Mouse pressed: %d\n", button);
+	(void)button;
+	//printf("Mouse pressed: %d\n", button);
 	return (0);
 }
 
@@ -33,7 +34,8 @@ int	default_mouse_release(int button, int x, int y, t_game *game)
 	(void)game;
 	(void)x;
 	(void)y;
-	printf("Mouse released: %d\n", button);
+	(void)button;
+	//printf("Mouse released: %d\n", button);
 	return (0);
 }
 

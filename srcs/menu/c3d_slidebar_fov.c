@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 13:52:10 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/03 14:27:17 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/04 17:51:15 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ t_dict	*init_fov_slidebar(t_game *game)
 	slidebar->max = 60 + 1;
 	slidebar->value = game->settings.fov;
 	slidebar->x = 100;
-	slidebar->y = 60;
+	slidebar->y = 50;
 	slidebar->width = 200;
 	slidebar->height = 10;
 	slidebar->box.height = 18;

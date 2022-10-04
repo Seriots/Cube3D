@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 10:10:34 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/03 15:17:33 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/04 18:38:35 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,13 @@
 #include "ft.h"
 #include "dict.h"
 
+/*the order is important, scroll bar need to be last*/
 int	init_menu(t_game *game)
 {
 	static	t_dict	*(*objs[])(t_game *game) = {init_resume_button,
 		init_exit_button, init_fov_slidebar, init_color_checkbox,
-		init_forward_keyinput, init_left_keyinput, init_textinput_north};
+		init_forward_keyinput, init_left_keyinput, init_textinput_north,
+		init_numinput_floor, init_scrollbar};
 	t_dict	*elem;
 	long unsigned int		i;
 	
@@ -37,5 +39,6 @@ int	init_menu(t_game *game)
 		dict_add_back(&game->menu.all_objects, elem);
 		i++;
 	}
+	game->menu.scroll_amount = 0;
 	return (0);
 }

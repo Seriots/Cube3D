@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 10:50:39 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/03 12:13:18 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/04 19:54:02 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ int	color_release(int button, int x, int y, t_game *game)
 		checkbox = dict_getelem_number(game->menu.all_objects, 3)->value;
 		if (x - (WIN_WIDTH / 2 - MENU_WIDTH / 2) >= checkbox->box.x
 			&& x - (WIN_WIDTH / 2 - MENU_WIDTH / 2) <= checkbox->box.x + checkbox->box.width
-			&& y - (WIN_HEIGHT / 2 - MENU_HEIGHT / 2) >= checkbox->box.y
-			&& y - (WIN_HEIGHT / 2 - MENU_HEIGHT / 2) <= checkbox->box.y + checkbox->box.height)
+			&& y - (WIN_HEIGHT / 2 - MENU_HEIGHT / 2) >= checkbox->box.y + game->menu.scroll_amount
+			&& y - (WIN_HEIGHT / 2 - MENU_HEIGHT / 2) <= checkbox->box.y + checkbox->box.height + game->menu.scroll_amount)
 		{
 			*(checkbox->modified_value) = !(*(checkbox->modified_value));
 			checkbox->is_check = !checkbox->is_check;
@@ -57,18 +57,18 @@ t_dict	*init_color_checkbox(t_game *game)
 	checkbox = malloc(sizeof(t_checkbox));
 	if (!checkbox)
 		return (0);
-	checkbox->is_check = game->settings.color;
+	checkbox->modified_value = &game->settings.color;
+	checkbox->is_check = *checkbox->modified_value;
 	checkbox->box.height = 20;
 	checkbox->box.width = 20;
 	checkbox->box.x = 100; 
-	checkbox->box.y = 100;
+	checkbox->box.y = 10000;
 	checkbox->box.x_text = checkbox->box.x - 80;
 	checkbox->box.y_text = checkbox->box.y + 15;
 	ft_strlcpy(checkbox->box.description, "Color", 6);
 	ft_strlcpy(checkbox->box.font, "-sony-*-*-*-*-*-*-230-*-*-*-*-iso8859-*", 40);
 	checkbox->box.mouse_press = color_press;
 	checkbox->box.mouse_release = NULL;
-	checkbox->modified_value = &game->settings.color;
 	obj = dict_new(CHECKBOX, checkbox);
 	if (!obj)
 		return (free(checkbox), (void *)0);

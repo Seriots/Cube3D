@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 12:02:06 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/03 16:03:15 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/04 16:00:06 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,8 @@ int	forward_release(int button, int x, int y, t_game *game)
 		keyinput = dict_getelem_number(game->menu.all_objects, 4)->value;
 		if (x - (WIN_WIDTH / 2 - MENU_WIDTH / 2) >= keyinput->box.x
 			&& x - (WIN_WIDTH / 2 - MENU_WIDTH / 2) <= keyinput->box.x + keyinput->box.width
-			&& y - (WIN_HEIGHT / 2 - MENU_HEIGHT / 2) >= keyinput->box.y
-			&& y - (WIN_HEIGHT / 2 - MENU_HEIGHT / 2) <= keyinput->box.y + keyinput->box.height)
+			&& y - (WIN_HEIGHT / 2 - MENU_HEIGHT / 2) >= keyinput->box.y + game->menu.scroll_amount
+			&& y - (WIN_HEIGHT / 2 - MENU_HEIGHT / 2) <= keyinput->box.y + game->menu.scroll_amount + keyinput->box.height)
 		{
 			keyinput->is_selected = !keyinput->is_selected;
 			if (keyinput->is_selected)

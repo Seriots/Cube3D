@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 14:54:14 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/03 15:04:07 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/04 17:12:06 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,12 @@
 
 int	display_checkbox_text(t_game *game, t_checkbox *checkbox)
 {
-	mlx_string_put(game->mlx.display, game->mlx.window,
-		(WIN_WIDTH / 2) - (MENU_WIDTH / 2) + checkbox->box.x_text,
-		(WIN_HEIGHT / 2) - (MENU_HEIGHT / 2) + checkbox->box.y_text,
-		0xAAAAAA, checkbox->box.description);
+	if (checkbox->box.y_text + game->menu.scroll_amount >= 9
+		&& checkbox->box.y_text + game->menu.scroll_amount
+			< (MENU_HEIGHT - (15 * MENU_HEIGHT / 100)))
+		mlx_string_put(game->mlx.display, game->mlx.window,
+			(WIN_WIDTH / 2) - (MENU_WIDTH / 2) + checkbox->box.x_text,
+			(WIN_HEIGHT / 2) - (MENU_HEIGHT / 2) + checkbox->box.y_text + game->menu.scroll_amount,
+			0xAAAAAA, checkbox->box.description);
 	return (0);
 }

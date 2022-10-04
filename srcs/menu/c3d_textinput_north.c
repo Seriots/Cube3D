@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 14:25:01 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/03 18:00:56 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/04 15:59:34 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,8 +133,8 @@ int	north_release(int button, int x, int y, t_game *game)
 		textinput = dict_getelem_number(game->menu.all_objects, 6)->value;
 		if (x - (WIN_WIDTH / 2 - MENU_WIDTH / 2) >= textinput->box.x
 			&& x - (WIN_WIDTH / 2 - MENU_WIDTH / 2) <= textinput->box.x + textinput->box.width
-			&& y - (WIN_HEIGHT / 2 - MENU_HEIGHT / 2) >= textinput->box.y
-			&& y - (WIN_HEIGHT / 2 - MENU_HEIGHT / 2) <= textinput->box.y + textinput->box.height)
+			&& y - (WIN_HEIGHT / 2 - MENU_HEIGHT / 2) >= textinput->box.y + game->menu.scroll_amount
+			&& y - (WIN_HEIGHT / 2 - MENU_HEIGHT / 2) <= textinput->box.y + game->menu.scroll_amount + textinput->box.height)
 		{
 			textinput->is_selected = !textinput->is_selected;
 			if (textinput->is_selected)

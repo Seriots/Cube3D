@@ -56,13 +56,16 @@ define SRCS_BONUS :=
 	game/loop/display/menu/c3d_display_keyinput.c
 	game/loop/display/menu/c3d_display_slidebar.c
 	game/loop/display/menu/c3d_display_textinput.c
+	game/loop/display/menu/c3d_display_numinput.c
 	game/loop/display/menu/c3d_menu_display.c
 	game/loop/update/menu/c3d_menu_update.c
 	game/loop/update/menu/c3d_draw_button.c
 	game/loop/update/menu/c3d_draw_checkbox.c
 	game/loop/update/menu/c3d_draw_keyinput.c
 	game/loop/update/menu/c3d_draw_textinput.c
+	game/loop/update/menu/c3d_draw_numinput.c
 	game/loop/update/menu/c3d_draw_slidebar.c
+	game/loop/update/menu/c3d_draw_scrollbar.c
 	game/event/c3d_menu_event.c
 	game/event/c3d_menu_event_mouse.c
 	game/event/c3d_openclose_menu.c
@@ -72,8 +75,11 @@ define SRCS_BONUS :=
 	menu/c3d_checkbox_color.c
 	menu/c3d_keyinput_forward.c
 	menu/c3d_keyinput_left.c
+	menu/c3d_numinput_floor.c
+	menu/c3d_scrollbar.c
 	menu/c3d_slidebar_fov.c
 	menu/c3d_textinput_north.c
+	utils/c3d_menu_utils2.c
 	utils/c3d_menu_utils.c
 	
 endef

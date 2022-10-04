@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 14:34:59 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/03 15:13:03 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/04 15:13:09 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ int	display_text(t_game *game)
 			display_keyinput_text(game, (t_keyinput *)tmp->value);
 		else if (ft_strcmp(tmp->key, TEXTINPUT) == 0)
 			display_textinput_text(game, (t_textinput *)tmp->value);
+		else if (ft_strcmp(tmp->key, NUMINPUT) == 0)
+			display_numinput_text(game, (t_numinput *)tmp->value);
 		tmp = tmp->next;
 	}
 	return (0);

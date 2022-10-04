@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 13:43:02 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/30 18:14:37 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/04 16:16:59 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ void	my_mlx_pixel_put(t_img_data *data, int x, int y, int color)
 {
 	char	*dst;
 
+	if (x < 0 || x >= data->width || y < 0 || y >= data->height)
+		return ;
 	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
 	*(unsigned int *)dst = color;
 }

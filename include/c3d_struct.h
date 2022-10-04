@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 10:25:54 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/03 17:56:28 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/04 19:25:45 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,6 +124,7 @@ typedef struct s_player
 	int				turn_right;
 }	t_player;
 
+/*x y are positive*/
 typedef struct s_collide_box
 {
 	int		x;
@@ -186,9 +187,42 @@ typedef struct s_textinput
 	char			path[256];
 }	t_textinput;
 
+typedef struct s_numbox
+{
+	int	x;
+	int	y;
+	int	width;
+	int	height;
+	int	value;
+}	t_numbox;
+
+typedef struct s_numtinput
+{
+	t_collide_box	box;
+	int				is_selected;
+	int				red;
+	int				green;
+	int				blue;
+	int				*modified_value;
+	int				press_case;
+}	t_numinput;
+
+typedef struct s_scrollbar
+{
+	t_collide_box	box;
+	int				min;
+	int				max;
+	int				max_obj;
+	int				click_position;
+	int				is_selected;
+	int				*modified_value;
+}	t_scrollbar;
+
+/*for all type of object, box need to be the first elem*/
 typedef struct s_menu
 {
 	t_dict	*all_objects;
+	int		scroll_amount;
 }	t_menu;
 
 typedef struct s_mlx

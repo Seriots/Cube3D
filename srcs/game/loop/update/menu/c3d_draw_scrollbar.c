@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   c3d_draw_keyinput.c                                :+:      :+:    :+:   */
+/*   c3d_draw_scrollbar.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/03 12:06:31 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/04 17:48:43 by lgiband          ###   ########.fr       */
+/*   Created: 2022/10/04 18:34:06 by lgiband           #+#    #+#             */
+/*   Updated: 2022/10/04 18:39:39 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,25 +16,21 @@
 
 #include <stdlib.h>
 
-int	draw_keyinput(t_game *game, t_keyinput *box)
+int	draw_scrollbar(t_game *game, t_scrollbar *box)
 {
 	int	x;
 	int	y;
 	
-	y = box->box.y + game->menu.scroll_amount;
-	while (y < box->box.y + box->box.height + game->menu.scroll_amount)
+	y = box->box.y;
+	while (y < box->box.y + box->box.height)
 	{
 		x = box->box.x;
 		while (x < box->box.x + box->box.width)
 		{
 			if (y >= 0 && y < MENU_HEIGHT - (15 * MENU_HEIGHT / 100))
 			{
-				if (x < box->box.x + 1 || x >= box->box.x + box->box.width - 1
-					|| y < box->box.y + game->menu.scroll_amount + 1
-					|| y >= box->box.y + game->menu.scroll_amount + box->box.height - 1)
-					my_mlx_pixel_put(&game->all_img.menu_img, x, y, 0xAAAAAA);
-				else if (box->is_selected)
-					my_mlx_pixel_put(&game->all_img.menu_img, x, y, 0x686898);
+				if (box->is_selected)
+					my_mlx_pixel_put(&game->all_img.menu_img, x, y, 0x999999);
 				else
 					my_mlx_pixel_put(&game->all_img.menu_img, x, y, 0x383838);
 			}

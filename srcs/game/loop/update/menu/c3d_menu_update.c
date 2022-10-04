@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 14:42:08 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/03 15:20:01 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/04 18:45:11 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,29 @@ int	make_border(t_game *game)
 		x = 0;
 		while (x < MENU_WIDTH)
 		{
-			if (x < BORDER_SIZE || x > MENU_WIDTH - BORDER_SIZE
-				|| y < BORDER_SIZE || y > MENU_HEIGHT - BORDER_SIZE)
+			if (x < BORDER_SIZE || x >= MENU_WIDTH - BORDER_SIZE
+				|| y < BORDER_SIZE || y >= MENU_HEIGHT - BORDER_SIZE)
+				my_mlx_pixel_put(&game->all_img.menu_img, x, y, 0xAAAAAA);
+			x++;
+		}
+		y++;
+	}
+	return (0);
+}
+
+int	make_background(t_game *game)
+{
+	int	x;
+	int	y;
+	
+	y = 0;
+	while (y < MENU_HEIGHT)
+	{
+		x = 0;
+		while (x < MENU_WIDTH)
+		{
+			if (x < BORDER_SIZE || x >= MENU_WIDTH - BORDER_SIZE
+				|| y < BORDER_SIZE || y >= MENU_HEIGHT - BORDER_SIZE)
 				my_mlx_pixel_put(&game->all_img.menu_img, x, y, 0xDDDDDD);
 			else
 				my_mlx_pixel_put(&game->all_img.menu_img, x, y, 0x222222);
@@ -63,6 +84,10 @@ int	draw_all_objects(t_game *game)
 			draw_keyinput(game, (t_keyinput *)value);
 		else if (ft_strcmp(tmp->key, TEXTINPUT) == 0)
 			draw_textinput(game, (t_textinput *)value);
+		else if (ft_strcmp(tmp->key, NUMINPUT) == 0)
+			draw_numinput(game, (t_numinput *)value);
+		else if (ft_strcmp(tmp->key, SCROLLBAR) == 0)
+			draw_scrollbar(game, (t_scrollbar *)value);
 		tmp = tmp->next;
 	}
 	return (0);
@@ -70,7 +95,8 @@ int	draw_all_objects(t_game *game)
 
 int	menu_update(t_game *game)
 {
-	make_border(game);
+	make_background(game);
 	draw_all_objects(game);
+	make_border(game);
 	return (0);
 }

@@ -6,13 +6,13 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 19:57:28 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/10/03 10:27:06 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/04 15:00:28 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-static int	size_int(int n)
+int	ft_size_int(int n)
 {
 	int	size;
 
@@ -34,7 +34,7 @@ char	*ft_itoa(int n)
 	int		i;
 
 	is_positive = (n >= 0);
-	i = size_int(n);
+	i = ft_size_int(n);
 	str = malloc(i + 1);
 	if (!str)
 		return (0);
@@ -58,7 +58,7 @@ char	*ft_itoa_noalloc(char dst[32], int n)
 	int		i;
 
 	is_positive = (n >= 0);
-	i = size_int(n);
+	i = ft_size_int(n);
 	if (i > 31)
 		return (0);
 	dst[i] = '\0';

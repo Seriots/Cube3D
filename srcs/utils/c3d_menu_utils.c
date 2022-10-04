@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 13:04:03 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/03 17:59:17 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/04 14:27:25 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,16 @@ int	clear_all_other_selected(t_game *game, void *keyinput)
 		if (tmp->value != keyinput && ft_strcmp(tmp->key, KEYINPUT) == 0)
 			((t_keyinput *)tmp->value)->is_selected = 0;
 		else if (tmp->value != keyinput && ft_strcmp(tmp->key, TEXTINPUT) == 0 
-		&& ((t_textinput *)tmp->value)->is_selected == 1)
+			&& ((t_textinput *)tmp->value)->is_selected == 1)
 		{
 			((t_textinput *)tmp->value)->is_selected = 0;
 			((t_textinput *)tmp->value)->start_display = 0;
 			ft_strlcpy(((t_textinput *)tmp->value)->path, *((t_textinput *)tmp->value)->modified_path, 256);
 			((t_textinput *)tmp->value)->size = ft_strlen(((t_textinput *)tmp->value)->path);
-			mlx_do_key_autorepeaton(game->mlx.display);
 		}
+		else if (tmp->value != keyinput && ft_strcmp(tmp->key, NUMINPUT) == 0 
+			&& ((t_numinput *)tmp->value)->is_selected != 0)
+			((t_numinput *)tmp->value)->is_selected = 0;
 		tmp = tmp->next;
 	}
 	return (0);

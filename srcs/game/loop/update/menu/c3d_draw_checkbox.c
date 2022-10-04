@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 11:05:39 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/03 12:15:45 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/04 17:48:37 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,14 @@
 
 static int	draw_in(t_game *game, t_checkbox *checkbox, int x, int y)
 {
-	if (checkbox->is_check && abs(x) - abs(y) < (checkbox->box.width / 10) && abs(x) - abs(y) > -(checkbox->box.width / 10))
-		my_mlx_pixel_put(&game->all_img.menu_img, x, y, 0x888888);
+	if (checkbox->is_check && abs(x) - abs(y) < (checkbox->box.width / 15) && abs(x) - abs(y) > - (checkbox->box.width / 15))
+		my_mlx_pixel_put(&game->all_img.menu_img, x + checkbox->box.x, y + checkbox->box.y + game->menu.scroll_amount, 0xAAAAAA);
 	else if (checkbox->is_check
-			&& abs(x - checkbox->box.x) + abs(y - checkbox->box.y) > checkbox->box.width - (checkbox->box.width / 10) 
-			&& abs(x - checkbox->box.x) + abs(y - checkbox->box.y) < checkbox->box.width + (checkbox->box.width / 10))
-		my_mlx_pixel_put(&game->all_img.menu_img, x, y, 0x888888);
+			&& abs(x - checkbox->box.width) + abs(y - checkbox->box.height) > checkbox->box.width - (checkbox->box.width / 15) 
+			&& abs(x - checkbox->box.width) + abs(y - checkbox->box.height) < checkbox->box.width + (checkbox->box.width / 15))
+		my_mlx_pixel_put(&game->all_img.menu_img, x + checkbox->box.x, y + checkbox->box.y + game->menu.scroll_amount, 0xAAAAAA);
 	else
-		my_mlx_pixel_put(&game->all_img.menu_img, x, y, 0xFFDDDD);
+		my_mlx_pixel_put(&game->all_img.menu_img, x + checkbox->box.x, y + checkbox->box.y + game->menu.scroll_amount, 0x383838);
 	return (0);
 }
 
@@ -35,17 +35,22 @@ int	draw_checkbox(t_game *game, t_checkbox *checkbox)
 	int	x;
 	int	y;
 	
-	y = checkbox->box.y;
-	while (y < checkbox->box.y + checkbox->box.height)
+	y = checkbox->box.y + game->menu.scroll_amount;
+	while (y < checkbox->box.y + game->menu.scroll_amount + checkbox->box.height)
 	{
 		x = checkbox->box.x;
 		while (x < checkbox->box.x + checkbox->box.width)
 		{
-			if (x < checkbox->box.x + (checkbox->box.width / 10) || x >= checkbox->box.x + checkbox->box.width - (checkbox->box.width / 10)
-				|| y < checkbox->box.y + (checkbox->box.width / 10) || y >= checkbox->box.y + checkbox->box.height - (checkbox->box.width / 10))
-				my_mlx_pixel_put(&game->all_img.menu_img, x, y, 0x777777);
-			else
-				draw_in(game, checkbox, x, y);
+			if (y >= 0 && y < MENU_HEIGHT - (15 * MENU_HEIGHT / 100))
+			{
+				if (x < checkbox->box.x + (checkbox->box.width / 15)
+					|| x >= checkbox->box.x + checkbox->box.width - (checkbox->box.width / 15)
+					|| y < checkbox->box.y + game->menu.scroll_amount + (checkbox->box.width / 15)
+					|| y >= checkbox->box.y + game->menu.scroll_amount + checkbox->box.height - (checkbox->box.width / 15))
+					my_mlx_pixel_put(&game->all_img.menu_img, x, y, 0xAAAAAA);
+				else
+					draw_in(game, checkbox, x - checkbox->box.x, y - checkbox->box.y - game->menu.scroll_amount);
+			}
 			x++;
 		}
 		y++;
