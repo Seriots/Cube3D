@@ -26,9 +26,9 @@ x -> checkbox
 x -> keyinput
 x -> textinput image
 x	-> need to clean every selected when resume pressed
--> numinput color
--> (bar de defilement)
-
+x-> numinput color
+x-> (bar de defilement)
+-> faire des fonctions pour les event approprier
 
 <BONUS>
 

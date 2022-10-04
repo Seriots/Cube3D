@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 11:13:57 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/03 14:21:07 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/05 00:05:24 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	free_images(t_game *game)
 
 int	free_menu(t_menu *menu)
 {
-	dict_clear(menu->all_objects, 0, free);	
+	dict_clear(menu->all_objects, 0, free);
 	return (0);
 }
 

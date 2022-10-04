@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 12:02:06 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/04 16:00:06 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/04 23:29:22 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,29 +55,27 @@ int	forward_release(int button, int x, int y, t_game *game)
 {
 	t_keyinput	*keyinput;
 
-	if (button == 1)
+	if (button != 1)
+		return (0);
+	keyinput = dict_getelem_number(game->menu.all_objects, 4)->value;
+	if (x - (WIN_WIDTH / 2 - MENU_WIDTH / 2) >= keyinput->box.x
+		&& x - (WIN_WIDTH / 2 - MENU_WIDTH / 2) <= keyinput->box.x
+		+ keyinput->box.width && y - (WIN_HEIGHT / 2 - MENU_HEIGHT / 2)
+		>= keyinput->box.y + game->menu.scroll_amount
+		&& y - (WIN_HEIGHT / 2 - MENU_HEIGHT / 2) <= keyinput->box.y
+		+ game->menu.scroll_amount + keyinput->box.height)
 	{
-		keyinput = dict_getelem_number(game->menu.all_objects, 4)->value;
-		if (x - (WIN_WIDTH / 2 - MENU_WIDTH / 2) >= keyinput->box.x
-			&& x - (WIN_WIDTH / 2 - MENU_WIDTH / 2) <= keyinput->box.x + keyinput->box.width
-			&& y - (WIN_HEIGHT / 2 - MENU_HEIGHT / 2) >= keyinput->box.y + game->menu.scroll_amount
-			&& y - (WIN_HEIGHT / 2 - MENU_HEIGHT / 2) <= keyinput->box.y + game->menu.scroll_amount + keyinput->box.height)
+		keyinput->is_selected = !keyinput->is_selected;
+		if (keyinput->is_selected)
 		{
-			keyinput->is_selected = !keyinput->is_selected;
-			if (keyinput->is_selected)
-			{
-				game->fcts.keypressed_fct = forward_keypress;
-				game->fcts.keyreleased_fct = forward_keyrelease;
-				clear_all_other_selected(game, keyinput);
-			}
-			else
-			{
-				game->fcts.keypressed_fct = menu_key_press;
-				game->fcts.keyreleased_fct = menu_key_release;
-			}
+			game->fcts.keypressed_fct = forward_keypress;
+			game->fcts.keyreleased_fct = forward_keyrelease;
+			clear_all_other_selected(game, keyinput);
 		}
-		game->fcts.mousereleased_fct = menu_mouse_release;
+		if (!keyinput->is_selected)
+			reset_key_event(game);
 	}
+	game->fcts.mousereleased_fct = menu_mouse_release;
 	return (0);
 }
 
@@ -107,7 +105,8 @@ t_dict	*init_forward_keyinput(t_game *game)
 	keyinput->box.x_text = keyinput->box.x - 80;
 	keyinput->box.y_text = keyinput->box.y + 15;
 	ft_strlcpy(keyinput->box.description, "Forward", 8);
-	ft_strlcpy(keyinput->box.font, "-sony-*-*-*-*-*-*-230-*-*-*-*-iso8859-*", 40);
+	ft_strlcpy(keyinput->box.font,
+		"-sony-*-*-*-*-*-*-230-*-*-*-*-iso8859-*", 40);
 	keyinput->box.mouse_press = forward_press;
 	keyinput->box.mouse_release = NULL;
 	keyinput->modified_value = &game->settings.forward;

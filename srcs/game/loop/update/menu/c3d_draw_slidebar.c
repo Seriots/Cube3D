@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 20:47:41 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/04 17:49:50 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/04 22:07:20 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	draw_bar(t_game *game, t_slidebar *slidebar)
 {
 	int	x;
 	int	y;
-	
+
 	y = slidebar->y + game->menu.scroll_amount;
 	while (y < slidebar->height + slidebar->y + game->menu.scroll_amount)
 	{
@@ -47,7 +47,8 @@ int	draw_slider(t_game *game, t_slidebar *slidebar)
 	int	y;
 
 	y = slidebar->box.y + game->menu.scroll_amount;
-	while (y < slidebar->box.y + game->menu.scroll_amount + slidebar->box.height)
+	while (y < slidebar->box.y
+		+ game->menu.scroll_amount + slidebar->box.height)
 	{
 		x = slidebar->box.x;
 		while (x < slidebar->box.x + slidebar->box.width)

@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 14:12:59 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/04 18:37:32 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/05 00:40:10 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,5 +65,13 @@ int	get_number_from_key(KeySym key);
 int	add_number(t_numinput *numinput, int n);
 int	delete_number(t_numinput *numinput);
 int	get_case_clicked(t_game *game, t_numinput *numinput, int x, int y);
+int	reset_key_event(t_game *game);
+int	reset_key_event_num(t_game *game, t_numinput *numinput);
+char	get_char_from_key(KeySym key, int shift, int caps);
+void	load_path(t_game *game, t_textinput *textinput, char **path);
+void	init_textinput(t_textinput *textinput);
+void	reset_textinput(t_game *game, t_textinput *textinput);
+int		release_cond_textinput(t_game *game,
+		t_textinput *textinput, int x, int y);
 
 #endif

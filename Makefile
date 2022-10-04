@@ -79,8 +79,9 @@ define SRCS_BONUS :=
 	menu/c3d_scrollbar.c
 	menu/c3d_slidebar_fov.c
 	menu/c3d_textinput_north.c
-	utils/c3d_menu_utils2.c
 	utils/c3d_menu_utils.c
+	utils/c3d_menu_utils2.c
+	utils/c3d_menu_utils3.c
 	
 endef
 SRCS_BONUS := $(strip $(SRCS_BONUS))

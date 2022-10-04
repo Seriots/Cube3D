@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 10:25:54 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/04 19:25:45 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/04 23:43:55 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,7 +149,6 @@ typedef struct s_slidebar
 	t_collide_box	box;
 	int				min;
 	int				max;
-	int				value;
 	int				x;
 	int				y;
 	int				width;

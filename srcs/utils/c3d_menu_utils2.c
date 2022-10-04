@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 14:57:29 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/04 15:41:00 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/05 00:05:06 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,17 +71,20 @@ int	get_case_clicked(t_game *game, t_numinput *numinput, int x, int y)
 	y -= (WIN_HEIGHT / 2 - MENU_HEIGHT / 2);
 	if (x >= numinput->box.x && x <= numinput->box.x + numinput->box.width / 4
 		&& y >= numinput->box.y + game->menu.scroll_amount
-		&& y <= numinput->box.y + game->menu.scroll_amount + numinput->box.height)
+		&& y <= numinput->box.y + game->menu.scroll_amount
+		+ numinput->box.height)
 		return (1);
 	else if (x >= numinput->box.x + (3 * (numinput->box.width / 8))
 		&& x <= numinput->box.x + (5 * numinput->box.width / 8)
 		&& y >= numinput->box.y + game->menu.scroll_amount
-		&& y <= numinput->box.y + game->menu.scroll_amount + numinput->box.height)
+		&& y <= numinput->box.y + game->menu.scroll_amount
+		+ numinput->box.height)
 		return (2);
 	else if (x >= numinput->box.x + (3 * (numinput->box.width / 4))
 		&& x <= numinput->box.x + numinput->box.width
 		&& y >= numinput->box.y + game->menu.scroll_amount
-		&& y <= numinput->box.y + game->menu.scroll_amount + numinput->box.height)
+		&& y <= numinput->box.y + game->menu.scroll_amount
+		+ numinput->box.height)
 		return (3);
 	else
 		return (0);

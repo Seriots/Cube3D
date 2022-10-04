@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 14:42:08 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/04 18:45:11 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/04 22:11:34 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	make_border(t_game *game)
 {
 	int	x;
 	int	y;
-	
+
 	y = 0;
 	while (y < MENU_HEIGHT)
 	{
@@ -46,7 +46,7 @@ int	make_background(t_game *game)
 {
 	int	x;
 	int	y;
-	
+
 	y = 0;
 	while (y < MENU_HEIGHT)
 	{
@@ -69,7 +69,7 @@ int	draw_all_objects(t_game *game)
 {
 	t_dict	*tmp;
 	void	*value;
-	
+
 	tmp = game->menu.all_objects;
 	while (tmp)
 	{

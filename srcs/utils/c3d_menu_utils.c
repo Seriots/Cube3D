@@ -6,12 +6,13 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 13:04:03 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/04 14:27:25 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/05 00:04:34 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "c3d_struct.h"
 #include "c3d_settings.h"
+#include "c3d_menu.h"
 
 #include "ft.h"
 #include "mlx.h"
@@ -25,15 +26,17 @@ int	clear_all_other_selected(t_game *game, void *keyinput)
 	{
 		if (tmp->value != keyinput && ft_strcmp(tmp->key, KEYINPUT) == 0)
 			((t_keyinput *)tmp->value)->is_selected = 0;
-		else if (tmp->value != keyinput && ft_strcmp(tmp->key, TEXTINPUT) == 0 
+		else if (tmp->value != keyinput && ft_strcmp(tmp->key, TEXTINPUT) == 0
 			&& ((t_textinput *)tmp->value)->is_selected == 1)
 		{
 			((t_textinput *)tmp->value)->is_selected = 0;
 			((t_textinput *)tmp->value)->start_display = 0;
-			ft_strlcpy(((t_textinput *)tmp->value)->path, *((t_textinput *)tmp->value)->modified_path, 256);
-			((t_textinput *)tmp->value)->size = ft_strlen(((t_textinput *)tmp->value)->path);
+			ft_strlcpy(((t_textinput *)tmp->value)->path,
+				*((t_textinput *)tmp->value)->modified_path, 256);
+			((t_textinput *)tmp->value)->size
+				= ft_strlen(((t_textinput *)tmp->value)->path);
 		}
-		else if (tmp->value != keyinput && ft_strcmp(tmp->key, NUMINPUT) == 0 
+		else if (tmp->value != keyinput && ft_strcmp(tmp->key, NUMINPUT) == 0
 			&& ((t_numinput *)tmp->value)->is_selected != 0)
 			((t_numinput *)tmp->value)->is_selected = 0;
 		tmp = tmp->next;
@@ -63,8 +66,25 @@ int	update_key_color(t_game *game, t_menu *menu)
 	while (tmp)
 	{
 		if (ft_strcmp(tmp->key, KEYINPUT) == 0)
-			((t_keyinput *)tmp->value)->color = get_key_color(game, ((t_keyinput *)tmp->value)->modified_value);
+			((t_keyinput *)tmp->value)->color = get_key_color(game,
+					((t_keyinput *)tmp->value)->modified_value);
 		tmp = tmp->next;
 	}
+	return (0);
+}
+
+int	reset_key_event(t_game *game)
+{
+	game->fcts.keypressed_fct = menu_key_press;
+	game->fcts.keyreleased_fct = menu_key_release;
+	return (0);
+}
+
+int	reset_key_event_num(t_game *game, t_numinput *numinput)
+{
+	game->fcts.keypressed_fct = menu_key_press;
+	game->fcts.keyreleased_fct = menu_key_release;
+	numinput->is_selected = 0;
+	mlx_do_key_autorepeatoff(game->mlx.display);
 	return (0);
 }

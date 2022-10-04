@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 14:34:59 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/04 15:13:09 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/04 22:14:22 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,9 @@ int	menu_display(t_game *game)
 		&game->all_img.menu_img,
 		WIN_WIDTH / 2 - MENU_WIDTH / 2,
 		WIN_HEIGHT / 2 - MENU_HEIGHT / 2
-	);
-	mlx_put_image_to_window(game->mlx.display, game->mlx.window, game->all_img.screen_img.img, 0, 0);
+		);
+	mlx_put_image_to_window(game->mlx.display, game->mlx.window,
+		game->all_img.screen_img.img, 0, 0);
 	display_text(game);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 13:09:29 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/03 18:08:51 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/04 23:56:49 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,16 @@
 
 int	resume_event(int button, int x, int y, t_game *game)
 {
+	t_scrollbar	*scrollbar;
+
 	(void)x;
 	(void)y;
 	if (button == 1)
 	{
+		scrollbar = dict_getelem_key(game->menu.all_objects, SCROLLBAR)->value;
 		close_menu(game);
+		game->menu.scroll_amount = 0;
+		scrollbar->box.y = scrollbar->min;
 		clear_all_other_selected(game, NULL);
 	}
 	return (0);

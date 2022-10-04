@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 18:34:06 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/04 18:39:39 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/04 22:06:40 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	draw_scrollbar(t_game *game, t_scrollbar *box)
 {
 	int	x;
 	int	y;
-	
+
 	y = box->box.y;
 	while (y < box->box.y + box->box.height)
 	{
