@@ -31,6 +31,7 @@ x -> setup the menu
 x -> add scroll with mouse in menu event mouse
 -> add everything to menu
 	x-> quality
+	-> fps
 	-> generate new map button
 -> save file
 

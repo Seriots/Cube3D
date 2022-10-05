@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 10:26:58 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/05 14:04:40 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/05 16:40:56 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,9 +78,9 @@
 # define CAM_SENSIBILITY_X 30.0f
 # define CAM_SENSIBILITY_Y 1.0f
 
-/*Field of view between 1-120*/
-# define FPS 30
+/*Field of view between 1-60*/
 # define FOV 10.0f
+# define FPS 60
 # define VIEW_SIZE 9
 # define VIEW_SCREEN 16
 # define RESOLUTION 100 // 1 - 100
