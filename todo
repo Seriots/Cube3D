@@ -1,10 +1,9 @@
 <MANDATORY>
 
--> Cast un rayons
--> Cast tout les rayons et recupere la liste des mur a afficher
--> afficher les mur
+x-> Cast un rayons
 -> Camera axe x et y avec la souris --Problem: crash quand play qvec souris trop longtemps; hide mouse leak.
--> collisions qui doivent check toutes la trajectoire et pas seulement le point d'arrive.
+	-> fix: desactiver mouse move toute les x frames
+x -> collisions qui doivent check toutes la trajectoire et pas seulement le point d'arrive.
 
 <CASTING>
 
@@ -29,8 +28,10 @@ x	-> need to clean every selected when resume pressed
 x -> numinput color
 x -> scrollbar
 x -> setup the menu
--> add scroll with mouse in menu event mouse
+x -> add scroll with mouse in menu event mouse
 -> add everything to menu
+	x-> quality
+	-> generate new map button
 -> save file
 
 
@@ -40,4 +41,4 @@ x -> setup the menu
 -> sprite en plus (je sais pas quoi)
 -> ciel mais surement relou avec la vue veres le haut
 
--> le slide est un peu rapide j'ai l'impression
+-> bug du slide qui accelere le player

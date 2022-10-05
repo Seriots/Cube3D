@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 10:25:54 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/05 13:09:11 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/05 13:47:15 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ typedef struct s_settings
 	float	fov;
 	float	cam_sensibility_x;
 	float	cam_sensibility_y;
-	float	quality;
+	float	resolution;
 	float	fps;
 	float	scroll_speed;
 	KeySym	left;
@@ -165,7 +165,7 @@ typedef struct s_checkbox
 {
 	t_collide_box	box;
 	bool			is_check;
-	int				*modified_value;
+	bool			*modified_value;
 }	t_checkbox;
 
 typedef struct s_keyinput

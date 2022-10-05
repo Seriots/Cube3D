@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 13:43:02 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/05 13:07:29 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/05 13:23:57 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "c3d_settings.h"
 #include "c3d_loop.h"
 
+#include "ft.h"
 #include "mlx.h"
 
 void	my_mlx_pixel_put(t_img_data *data, int x, int y, int color)
@@ -49,12 +50,23 @@ void	my_mlx_put_image_to_window(t_game *game, t_img_data *data, int x, int y)
 	}
 }
 
+int	show_fps(t_game *game)
+{
+	char	fps[24];
+
+	ft_itoa_noalloc(fps, 1000 / game->delay);
+	ft_strlcat(fps, " fps", 24);
+	mlx_string_put(game->mlx.display, game->mlx.window, 10, 10, 0xFFFFFF, fps);
+	return (0);
+}
+
 int	default_display(t_game *game)
 {
 	raycasting(game);
 	my_mlx_put_image_to_window(game, &game->all_img.minimap_img, 10, 500);
 	mlx_put_image_to_window(game->mlx.display, game->mlx.window,
 		game->all_img.screen_img.img, 0, 0);
-	
+	if (game->settings.show_fps)
+		show_fps(game);
 	return (0);
 }

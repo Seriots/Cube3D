@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 10:41:24 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/30 22:54:10 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/05 14:00:18 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ int	display_wall(t_game *game, t_wall *wall, int i)
 	while (p.y < WIN_HEIGHT)
 	{
 		color = get_pixel_color(game, wall, p, display);
-		my_mlx_pixel_put(&game->all_img.screen_img, p.x, p.y, color);
+		my_mlx_pixel_put(&game->all_img.screen_img, p.x, p.y, get_color(game, color));
 		p.y++;
 	}
 	return (0);

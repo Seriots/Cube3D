@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 14:12:59 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/05 12:49:33 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/05 13:47:30 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,9 @@ t_dict	*init_scrollspeed_slidebar(t_game *game);
 t_dict	*init_invertscroll_checkbox(t_game *game);
 t_dict	*init_camspeedx_slidebar(t_game *game);
 t_dict	*init_camspeedy_slidebar(t_game *game);
+t_dict	*init_showfps_checkbox(t_game *game);
+t_dict	*init_invertmouse_checkbox(t_game *game);
+t_dict	*init_resolution_slidebar(t_game *game);
 
 /*Utils*/
 int	clear_all_other_selected(t_game *game, void *keyinput);

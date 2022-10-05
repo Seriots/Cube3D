@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 10:26:58 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/05 13:06:58 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/05 14:04:40 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@
 
 # define MARGE 40
 /*BETWEEN 1-20*/
-# define SCROLL_SPEED 2.0
+# define SCROLL_SPEED 8.0
 
 # define KEYINPUT_START_X 125
 # define KEYINPUT_START_Y 50
@@ -53,7 +53,7 @@
 
 /*MENU_WIDTH - 275*/
 # define CHECKBOX_START_X 525
-# define CHECKBOX_START_Y 250
+# define CHECKBOX_START_Y 275
 
 # define FONT "-sony-*-*-*-*-*-*-230-*-*-*-*-iso8859-*"
 
@@ -78,11 +78,12 @@
 # define CAM_SENSIBILITY_X 30.0f
 # define CAM_SENSIBILITY_Y 1.0f
 
+/*Field of view between 1-120*/
 # define FPS 30
 # define FOV 10.0f
 # define VIEW_SIZE 9
 # define VIEW_SCREEN 16
-# define QUALITY 1 // 1 - 64
+# define RESOLUTION 100 // 1 - 100
 
 # define MOVE_SPEED 10.0f
 # define TURN_SPEED 0.06f

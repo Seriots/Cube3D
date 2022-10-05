@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 11:12:19 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/03 17:35:53 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/05 13:34:13 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	fps(t_game *game)
 {
 	long	new_frame;
 
-	while (timestamp_msec(game->last_frame) < 1000 / FPS)
+	while (timestamp_msec(game->last_frame) < 1000 / game->settings.fps)
 		usleep(1000);
 	new_frame = timestamp_msec(0);
 	game->delay = new_frame - game->last_frame;
@@ -35,11 +35,9 @@ int	fps(t_game *game)
 int	game_loop(t_game *game)
 {
 	fps(game);
-	//printf("%ld\n", game->delay);
 	if (game->fcts.update_fct)
 		game->fcts.update_fct(game);
 	if (game->fcts.display_fct)
 		game->fcts.display_fct(game);
-	//printf("%p %p\n", game->fcts.keypressed_fct, north_keypress);
 	return (0);
 }

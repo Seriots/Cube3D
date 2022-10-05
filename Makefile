@@ -73,7 +73,9 @@ define SRCS_BONUS :=
 	menu/c3d_button_exit.c
 	menu/c3d_button_resume.c
 	menu/c3d_checkbox_color.c
+	menu/c3d_checkbox_invertmouse.c
 	menu/c3d_checkbox_invertscroll.c
+	menu/c3d_checkbox_showfps.c
 	menu/c3d_keyinput_forward.c
 	menu/c3d_keyinput_backward.c
 	menu/c3d_keyinput_left.c
@@ -85,6 +87,7 @@ define SRCS_BONUS :=
 	menu/c3d_slidebar_camspeedy.c
 	menu/c3d_slidebar_fov.c
 	menu/c3d_slidebar_scrollspeed.c
+	menu/c3d_slidebar_resolution.c
 	menu/c3d_textinput_east.c
 	menu/c3d_textinput_north.c
 	menu/c3d_textinput_south.c
@@ -93,6 +96,7 @@ define SRCS_BONUS :=
 	utils/c3d_menu_utils2.c
 	utils/c3d_menu_utils3.c
 	utils/c3d_menu_utils4.c
+	utils/c3d_color.c
 	
 endef
 SRCS_BONUS := $(strip $(SRCS_BONUS))

@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 13:17:26 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/05 13:08:51 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/05 14:06:05 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ static int	set_default_settings(t_game *game)
 	game->settings.scroll_speed = SCROLL_SPEED;
 	game->settings.cam_sensibility_x = CAM_SENSIBILITY_X;
 	game->settings.cam_sensibility_y = CAM_SENSIBILITY_Y;
+	game->settings.resolution = RESOLUTION;
 	game->settings.left = XK_a;
 	game->settings.right = XK_d;
 	game->settings.forward = XK_w;

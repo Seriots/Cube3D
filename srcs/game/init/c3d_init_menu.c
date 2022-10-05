@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 10:10:34 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/05 12:50:18 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/05 13:49:20 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ int	init_menu(t_game *game)
 		init_numinput_floor, init_backward_keyinput, init_right_keyinput,
 		init_textinput_south, init_textinput_east, init_textinput_west,
 		init_numinput_ceil, init_scrollspeed_slidebar, init_invertscroll_checkbox,
-		init_camspeedx_slidebar, init_camspeedy_slidebar,
+		init_camspeedx_slidebar, init_camspeedy_slidebar, init_showfps_checkbox,
+		init_invertmouse_checkbox, init_resolution_slidebar,
 		init_scrollbar};
 	t_dict	*elem;
 	long unsigned int		i;
