@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 14:12:59 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/05 00:40:10 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/05 12:49:33 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,16 @@ t_dict	*init_left_keyinput(t_game *game);
 t_dict	*init_textinput_north(t_game *game);
 t_dict	*init_numinput_floor(t_game *game);
 t_dict	*init_scrollbar(t_game *game);
+t_dict	*init_backward_keyinput(t_game *game);
+t_dict	*init_right_keyinput(t_game *game);
+t_dict	*init_textinput_south(t_game *game);
+t_dict	*init_textinput_east(t_game *game);
+t_dict	*init_textinput_west(t_game *game);
+t_dict	*init_numinput_ceil(t_game *game);
+t_dict	*init_scrollspeed_slidebar(t_game *game);
+t_dict	*init_invertscroll_checkbox(t_game *game);
+t_dict	*init_camspeedx_slidebar(t_game *game);
+t_dict	*init_camspeedy_slidebar(t_game *game);
 
 /*Utils*/
 int	clear_all_other_selected(t_game *game, void *keyinput);
@@ -71,7 +81,10 @@ char	get_char_from_key(KeySym key, int shift, int caps);
 void	load_path(t_game *game, t_textinput *textinput, char **path);
 void	init_textinput(t_textinput *textinput);
 void	reset_textinput(t_game *game, t_textinput *textinput);
+int		event_enter_textinput(t_game *game, t_textinput *textinput);
 int		release_cond_textinput(t_game *game,
 		t_textinput *textinput, int x, int y);
+int	scroll_up(t_game *game);
+int	scroll_down(t_game *game);
 
 #endif

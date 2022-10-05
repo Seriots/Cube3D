@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 10:26:58 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/04 17:58:24 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/05 13:06:58 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,29 @@
 # define NUMINPUT "NUMINPUT"
 # define SCROLLBAR "SCROLLBAR"
 
+# define MARGE 40
+/*BETWEEN 1-20*/
+# define SCROLL_SPEED 2.0
+
+# define KEYINPUT_START_X 125
+# define KEYINPUT_START_Y 50
+
+# define TEXTINPUT_START_X 125
+# define TEXTINPUT_START_Y 225
+
+# define NUMINPUT_START_X 125
+# define NUMINPUT_START_Y 400
+
+/*MENU_WIDTH - 275*/
+# define SLIDEBAR_START_X 525
+# define SLIDEBAR_START_Y 50
+
+/*MENU_WIDTH - 275*/
+# define CHECKBOX_START_X 525
+# define CHECKBOX_START_Y 250
+
+# define FONT "-sony-*-*-*-*-*-*-230-*-*-*-*-iso8859-*"
+
 /*MiniMap Settings*/
 # define MMAP_WIDTH 200
 # define MMAP_HEIGHT 200
@@ -51,8 +74,9 @@
 
 /*Default Settings*/
 
-/*Mouse sensibility between 0-100*/
-# define SENSIBILITY 0.0f
+/*Mouse sensibility between 1-100*/
+# define CAM_SENSIBILITY_X 30.0f
+# define CAM_SENSIBILITY_Y 1.0f
 
 # define FPS 30
 # define FOV 10.0f

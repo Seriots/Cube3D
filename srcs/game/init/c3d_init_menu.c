@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 10:10:34 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/04 18:38:35 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/05 12:50:18 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,11 @@ int	init_menu(t_game *game)
 	static	t_dict	*(*objs[])(t_game *game) = {init_resume_button,
 		init_exit_button, init_fov_slidebar, init_color_checkbox,
 		init_forward_keyinput, init_left_keyinput, init_textinput_north,
-		init_numinput_floor, init_scrollbar};
+		init_numinput_floor, init_backward_keyinput, init_right_keyinput,
+		init_textinput_south, init_textinput_east, init_textinput_west,
+		init_numinput_ceil, init_scrollspeed_slidebar, init_invertscroll_checkbox,
+		init_camspeedx_slidebar, init_camspeedy_slidebar,
+		init_scrollbar};
 	t_dict	*elem;
 	long unsigned int		i;
 	
@@ -35,7 +39,7 @@ int	init_menu(t_game *game)
 	{
 		elem = objs[i](game);
 		if (!elem)
-			return (0);
+			return (3);
 		dict_add_back(&game->menu.all_objects, elem);
 		i++;
 	}

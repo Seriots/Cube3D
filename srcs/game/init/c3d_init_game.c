@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 13:17:26 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/03 15:03:31 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/05 13:08:51 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,9 @@ static int	set_default_settings(t_game *game)
 {
 	game->settings.fps = FPS;
 	game->settings.fov = FOV;
-	game->settings.sensibility = SENSIBILITY;
+	game->settings.scroll_speed = SCROLL_SPEED;
+	game->settings.cam_sensibility_x = CAM_SENSIBILITY_X;
+	game->settings.cam_sensibility_y = CAM_SENSIBILITY_Y;
 	game->settings.left = XK_a;
 	game->settings.right = XK_d;
 	game->settings.forward = XK_w;
@@ -44,6 +46,9 @@ static int	set_default_settings(t_game *game)
 	game->settings.turn_right = XK_Right;
 	game->settings.pause = XK_Escape;
 	game->settings.color = 1;
+	game->settings.invert_scroll = 0;
+	game->settings.invert_mouse = 0;
+	game->settings.show_fps = 0;
 	return (0);
 }
 

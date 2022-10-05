@@ -26,9 +26,13 @@ x -> checkbox
 x -> keyinput
 x -> textinput image
 x	-> need to clean every selected when resume pressed
-x-> numinput color
-x-> (bar de defilement)
--> faire des fonctions pour les event approprier
+x -> numinput color
+x -> scrollbar
+x -> setup the menu
+-> add scroll with mouse in menu event mouse
+-> add everything to menu
+-> save file
+
 
 <BONUS>
 

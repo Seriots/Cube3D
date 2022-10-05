@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 14:54:19 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/04 22:17:33 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/05 11:10:33 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	display_keyinput_text(t_game *game, t_keyinput *keyinput)
 			(WIN_WIDTH / 2) - (MENU_WIDTH / 2) + keyinput->box.x
 			+ (keyinput->box.width / 2) - 2,
 			(WIN_HEIGHT / 2) - (MENU_HEIGHT / 2) + keyinput->box.y_text
-			+ game->menu.scroll_amount,
+			+ game->menu.scroll_amount + 2,
 			keyinput->color, buf);
 	return (0);
 }

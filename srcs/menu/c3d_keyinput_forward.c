@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 12:02:06 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/04 23:29:22 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/05 12:52:34 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,20 +93,18 @@ t_dict	*init_forward_keyinput(t_game *game)
 	t_keyinput	*keyinput;
 	t_dict		*obj;
 
-	(void)game;
 	keyinput = malloc(sizeof(t_keyinput));
 	if (!keyinput)
 		return (0);
 	keyinput->is_selected = 0;
 	keyinput->box.height = 24;
 	keyinput->box.width = 40;
-	keyinput->box.x = 100;
-	keyinput->box.y = 150;
-	keyinput->box.x_text = keyinput->box.x - 80;
+	keyinput->box.x = KEYINPUT_START_X;
+	keyinput->box.y = KEYINPUT_START_Y;
+	keyinput->box.x_text = keyinput->box.x - 100;
 	keyinput->box.y_text = keyinput->box.y + 15;
 	ft_strlcpy(keyinput->box.description, "Forward", 8);
-	ft_strlcpy(keyinput->box.font,
-		"-sony-*-*-*-*-*-*-230-*-*-*-*-iso8859-*", 40);
+	ft_strlcpy(keyinput->box.font, FONT, ft_strlen(FONT));
 	keyinput->box.mouse_press = forward_press;
 	keyinput->box.mouse_release = NULL;
 	keyinput->modified_value = &game->settings.forward;

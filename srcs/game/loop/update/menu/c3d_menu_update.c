@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 14:42:08 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/04 22:11:34 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/05 10:42:32 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,8 @@ int	make_background(t_game *game)
 			if (x < BORDER_SIZE || x >= MENU_WIDTH - BORDER_SIZE
 				|| y < BORDER_SIZE || y >= MENU_HEIGHT - BORDER_SIZE)
 				my_mlx_pixel_put(&game->all_img.menu_img, x, y, 0xDDDDDD);
+			else if (y >= (MENU_HEIGHT - (15 * MENU_HEIGHT / 100)))
+				my_mlx_pixel_put(&game->all_img.menu_img, x, y, 0x282828);
 			else
 				my_mlx_pixel_put(&game->all_img.menu_img, x, y, 0x222222);
 			x++;

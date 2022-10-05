@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 23:58:22 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/05 00:40:02 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/05 11:27:27 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,9 @@ void	init_textinput(t_textinput *textinput)
 	textinput->caps_lock = 0;
 	textinput->max_size = 256;
 	textinput->start_display = 0;
-	textinput->size = ft_strlen(textinput->path);
 	textinput->max_char_display = (textinput->box.width / 6) - 1;
 	ft_strlcpy(textinput->path, *textinput->modified_path, 256);
+	textinput->size = ft_strlen(textinput->path);
 }
 
 void	reset_textinput(t_game *game, t_textinput *textinput)

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   c3d_slidebar_fov.c                                 :+:      :+:    :+:   */
+/*   c3d_slidebar_camspeedy.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/01 13:52:10 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/05 12:53:31 by lgiband          ###   ########.fr       */
+/*   Created: 2022/10/05 12:48:40 by lgiband           #+#    #+#             */
+/*   Updated: 2022/10/05 12:55:11 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 
 #include <stdio.h>
 
-int	fov_mouse_release(int button, int x, int y, t_game *game)
+int	camspeedy_mouse_release(int button, int x, int y, t_game *game)
 {
 	(void)x;
 	(void)y;
@@ -36,12 +36,12 @@ int	fov_mouse_release(int button, int x, int y, t_game *game)
 	return (0);
 }
 
-int	fov_mouse_move(int x, int y, t_game *game)
+int	camspeedy_mouse_move(int x, int y, t_game *game)
 {
 	t_slidebar	*value;
 
 	(void)y;
-	value = dict_getelem_number(game->menu.all_objects, 2)->value;
+	value = dict_getelem_number(game->menu.all_objects, 17)->value;
 	x = x - (WIN_WIDTH / 2 - MENU_WIDTH / 2);
 	if (x < value->x)
 		value->box.x = value->x;
@@ -54,19 +54,19 @@ int	fov_mouse_move(int x, int y, t_game *game)
 	return (0);
 }
 
-int	fov_press(int button, int x, int y, t_game *game)
+int	camspeedy_press(int button, int x, int y, t_game *game)
 {
 	(void)x;
 	(void)y;
 	if (button == 1)
 	{
-		game->fcts.mousereleased_fct = fov_mouse_release;
-		game->fcts.mousemove_fct = fov_mouse_move;
+		game->fcts.mousereleased_fct = camspeedy_mouse_release;
+		game->fcts.mousemove_fct = camspeedy_mouse_move;
 	}
 	return (0);
 }
 
-void	fov_init(t_slidebar *slidebar)
+void	camspeedy_init(t_slidebar *slidebar)
 {
 	slidebar->box.x = slidebar->x + (*slidebar->modified_value - slidebar->min)
 		* slidebar->width / (slidebar->max - slidebar->min);
@@ -74,11 +74,11 @@ void	fov_init(t_slidebar *slidebar)
 		- (slidebar->box.height - slidebar->height) / 2;
 	slidebar->box.x_text = slidebar->x - 100;
 	slidebar->box.y_text = slidebar->y + 10;
-	ft_strlcpy(slidebar->box.description, "Fov", 4);
+	ft_strlcpy(slidebar->box.description, "Camera speed Y", 15);
 	ft_strlcpy(slidebar->box.font, FONT, ft_strlen(FONT));
 }
 
-t_dict	*init_fov_slidebar(t_game *game)
+t_dict	*init_camspeedy_slidebar(t_game *game)
 {
 	t_slidebar	*slidebar;
 	t_dict		*obj;
@@ -87,16 +87,16 @@ t_dict	*init_fov_slidebar(t_game *game)
 	if (!slidebar)
 		return (0);
 	slidebar->x = SLIDEBAR_START_X;
-	slidebar->y = SLIDEBAR_START_Y;
+	slidebar->y = SLIDEBAR_START_Y + 3 * MARGE;
 	slidebar->width = 200;
 	slidebar->height = 10;
 	slidebar->min = 1;
-	slidebar->max = 60;
+	slidebar->max = 100;
 	slidebar->box.height = 18;
 	slidebar->box.width = 6;
-	slidebar->modified_value = &game->settings.fov;
-	fov_init(slidebar);
-	slidebar->box.mouse_press = fov_press;
+	slidebar->modified_value = &game->settings.cam_sensibility_y;
+	camspeedy_init(slidebar);
+	slidebar->box.mouse_press = camspeedy_press;
 	slidebar->box.mouse_release = NULL;
 	obj = dict_new(SLIDEBAR, slidebar);
 	if (!obj)

@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 11:04:48 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/04 15:02:55 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/05 12:46:01 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	default_mouse_move(int x, int y, t_game *game)
 {
 	(void)y;
 	game->player.rot -= (((float)(x - WIN_WIDTH / 2))
-			* ((SENSIBILITY + 1.0) / 5000.0));
+		* (game->settings.cam_sensibility_x / 70000.0));
 	if (game->player.rot > 2 * M_PI)
 		game->player.rot -= 2 * M_PI;
 	else if (game->player.rot < 0)

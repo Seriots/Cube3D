@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 17:55:22 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/04 23:11:24 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/05 12:53:11 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,11 +90,12 @@ int	set_height(t_game *game, int *max_obj)
 	while (elem)
 	{
 		if (ft_strcmp(elem->key, BUTTON) != 0
-			&& ((t_collide_box *)elem->value)->y
-			+ ((t_collide_box *)elem->value)->height > max)
+			&& (((t_collide_box *)elem->value)->y
+				+ ((t_collide_box *)elem->value)->height
+				- (MENU_HEIGHT - (15 * MENU_HEIGHT / 100)) + 10 > max))
 			max = ((t_collide_box *)elem->value)->y
 				+ ((t_collide_box *)elem->value)->height
-				- (MENU_HEIGHT - (15 * MENU_HEIGHT / 100));
+				- (MENU_HEIGHT - (15 * MENU_HEIGHT / 100)) + 10;
 		elem = elem->next;
 	}
 	*max_obj = max;
@@ -122,8 +123,7 @@ t_dict	*init_scrollbar(t_game *game)
 	scrollbar->box.y = scrollbar->min;
 	scrollbar->box.x_text = 0;
 	scrollbar->box.y_text = 0;
-	ft_strlcpy(scrollbar->box.font,
-		"-sony-*-*-*-*-*-*-230-*-*-*-*-iso8859-*", 40);
+	ft_strlcpy(scrollbar->box.font, FONT, ft_strlen(FONT));
 	scrollbar->box.mouse_press = scrollbar_press;
 	scrollbar->box.mouse_release = NULL;
 	scrollbar->modified_value = &game->menu.scroll_amount;

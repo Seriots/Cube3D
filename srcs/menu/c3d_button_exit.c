@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 13:07:58 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/03 10:59:45 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/05 12:18:01 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ t_dict	*init_exit_button(t_game *game)
 	box->box.x_text = box->box.x + 90;
 	box->box.y_text = box->box.y + 30;
 	ft_strlcpy(box->box.description, "Exit", 5);
-	ft_strlcpy(box->box.font, "-sony-*-*-*-*-*-*-230-*-*-*-*-iso8859-*", 40);
+	ft_strlcpy(box->box.font, FONT,  ft_strlen(FONT));
 	box->box.mouse_press = NULL;
 	box->box.mouse_release = exit_event;
 	dict = dict_new(BUTTON, box);

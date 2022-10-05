@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   c3d_numinput_floor.c                               :+:      :+:    :+:   */
+/*   c3d_numinput_ceil.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/04 12:13:00 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/05 12:53:01 by lgiband          ###   ########.fr       */
+/*   Created: 2022/10/05 11:30:54 by lgiband           #+#    #+#             */
+/*   Updated: 2022/10/05 12:52:55 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,12 @@
 
 #include <stdio.h>
 
-int	floor_keypress(KeySym key, t_game *game)
+int	ceil_keypress(KeySym key, t_game *game)
 {
 	t_numinput	*numinput;
 	int			keyint;
 
-	numinput = dict_getelem_number(game->menu.all_objects, 7)->value;
+	numinput = dict_getelem_number(game->menu.all_objects, 13)->value;
 	if ((key == XK_Delete || key == XK_KP_Delete || key == 65288))
 		delete_number(numinput);
 	else if (key == XK_Return || key == XK_KP_Enter)
@@ -51,11 +51,11 @@ int	floor_keypress(KeySym key, t_game *game)
 	return (0);
 }
 
-int	floor_keyrelease(KeySym key, t_game *game)
+int	ceil_keyrelease(KeySym key, t_game *game)
 {
 	t_numinput	*numinput;
 
-	numinput = dict_getelem_number(game->menu.all_objects, 7)->value;
+	numinput = dict_getelem_number(game->menu.all_objects, 13)->value;
 	if (key == XK_Escape)
 	{
 		reset_key_event_num(game, numinput);
@@ -64,13 +64,13 @@ int	floor_keyrelease(KeySym key, t_game *game)
 	return (0);
 }
 
-int	floor_release(int button, int x, int y, t_game *game)
+int	ceil_release(int button, int x, int y, t_game *game)
 {
 	t_numinput	*numinput;
 
 	if (button != 1)
 		return (0);
-	numinput = dict_getelem_number(game->menu.all_objects, 7)->value;
+	numinput = dict_getelem_number(game->menu.all_objects, 13)->value;
 	if (numinput->press_case == get_case_clicked(game, numinput, x, y))
 	{
 		if (numinput->is_selected == numinput->press_case)
@@ -79,8 +79,8 @@ int	floor_release(int button, int x, int y, t_game *game)
 			numinput->is_selected = numinput->press_case;
 		if (numinput->is_selected)
 		{
-			game->fcts.keypressed_fct = floor_keypress;
-			game->fcts.keyreleased_fct = floor_keyrelease;
+			game->fcts.keypressed_fct = ceil_keypress;
+			game->fcts.keyreleased_fct = ceil_keyrelease;
 			mlx_do_key_autorepeaton(game->mlx.display);
 			clear_all_other_selected(game, numinput);
 		}
@@ -93,21 +93,21 @@ int	floor_release(int button, int x, int y, t_game *game)
 	return (0);
 }
 
-int	floor_press(int button, int x, int y, t_game *game)
+int	ceil_press(int button, int x, int y, t_game *game)
 {
 	t_numinput	*numinput;
 
-	numinput = dict_getelem_number(game->menu.all_objects, 7)->value;
+	numinput = dict_getelem_number(game->menu.all_objects, 13)->value;
 	if (button == 1)
 	{
 		numinput->press_case = get_case_clicked(game, numinput, x, y);
 		if (numinput->press_case != 0)
-			game->fcts.mousereleased_fct = floor_release;
+			game->fcts.mousereleased_fct = ceil_release;
 	}
 	return (0);
 }
 
-t_dict	*init_numinput_floor(t_game *game)
+t_dict	*init_numinput_ceil(t_game *game)
 {
 	t_numinput	*numinput;
 	t_dict		*obj;
@@ -118,15 +118,15 @@ t_dict	*init_numinput_floor(t_game *game)
 	numinput->box.height = 24;
 	numinput->box.width = 200;
 	numinput->box.x = NUMINPUT_START_X;
-	numinput->box.y = NUMINPUT_START_Y + MARGE;
+	numinput->box.y = NUMINPUT_START_Y;
 	numinput->box.x_text = numinput->box.x - 100;
 	numinput->box.y_text = numinput->box.y + 16;
 	ft_strlcpy(numinput->box.font, FONT, ft_strlen(FONT));
-	ft_strlcpy(numinput->box.description, "Floor Color", 12);
-	numinput->box.mouse_press = floor_press;
+	ft_strlcpy(numinput->box.description, "Ceil Color", 11);
+	numinput->box.mouse_press = ceil_press;
 	numinput->box.mouse_release = NULL;
 	numinput->is_selected = 0;
-	numinput->modified_value = &game->map.f;
+	numinput->modified_value = &game->map.c;
 	edit_rgb(numinput);
 	obj = dict_new(NUMINPUT, numinput);
 	if (!obj)

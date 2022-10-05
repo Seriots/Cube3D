@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   c3d_checkbox_color.c                               :+:      :+:    :+:   */
+/*   c3d_checkbox_invertscroll.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/03 10:50:39 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/05 12:55:50 by lgiband          ###   ########.fr       */
+/*   Created: 2022/10/05 12:23:07 by lgiband           #+#    #+#             */
+/*   Updated: 2022/10/05 12:52:22 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@
 
 #include <stdlib.h>
 
-int	color_release(int button, int x, int y, t_game *game)
+int	invertscroll_release(int button, int x, int y, t_game *game)
 {
 	t_checkbox	*checkbox;
 
 	if (button == 1)
 	{
-		checkbox = dict_getelem_number(game->menu.all_objects, 3)->value;
+		checkbox = dict_getelem_number(game->menu.all_objects, 15)->value;
 		if (x - (WIN_WIDTH / 2 - MENU_WIDTH / 2) >= checkbox->box.x
 			&& x - (WIN_WIDTH / 2 - MENU_WIDTH / 2)
 			<= checkbox->box.x + checkbox->box.width
@@ -42,16 +42,16 @@ int	color_release(int button, int x, int y, t_game *game)
 	return (0);
 }
 
-int	color_press(int button, int x, int y, t_game *game)
+int	invertscroll_press(int button, int x, int y, t_game *game)
 {
 	(void)x;
 	(void)y;
 	if (button == 1)
-		game->fcts.mousereleased_fct = color_release;
+		game->fcts.mousereleased_fct = invertscroll_release;
 	return (0);
 }
 
-t_dict	*init_color_checkbox(t_game *game)
+t_dict	*init_invertscroll_checkbox(t_game *game)
 {
 	t_checkbox	*checkbox;
 	t_dict		*obj;
@@ -60,16 +60,16 @@ t_dict	*init_color_checkbox(t_game *game)
 	if (!checkbox)
 		return (0);
 	checkbox->box.x = CHECKBOX_START_X;
-	checkbox->box.y = CHECKBOX_START_Y + 1000;
-	checkbox->modified_value = &game->settings.color;
+	checkbox->box.y = CHECKBOX_START_Y + MARGE;
+	checkbox->modified_value = &game->settings.invert_scroll;
 	checkbox->is_check = *checkbox->modified_value;
 	checkbox->box.height = 20;
 	checkbox->box.width = 20;
 	checkbox->box.x_text = checkbox->box.x - 100;
 	checkbox->box.y_text = checkbox->box.y + 15;
-	ft_strlcpy(checkbox->box.description, "Color", 6);
+	ft_strlcpy(checkbox->box.description, "Invert scroll", 14);
 	ft_strlcpy(checkbox->box.font, FONT, ft_strlen(FONT));
-	checkbox->box.mouse_press = color_press;
+	checkbox->box.mouse_press = invertscroll_press;
 	checkbox->box.mouse_release = NULL;
 	obj = dict_new(CHECKBOX, checkbox);
 	if (!obj)

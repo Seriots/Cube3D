@@ -73,15 +73,26 @@ define SRCS_BONUS :=
 	menu/c3d_button_exit.c
 	menu/c3d_button_resume.c
 	menu/c3d_checkbox_color.c
+	menu/c3d_checkbox_invertscroll.c
 	menu/c3d_keyinput_forward.c
+	menu/c3d_keyinput_backward.c
 	menu/c3d_keyinput_left.c
+	menu/c3d_keyinput_right.c
+	menu/c3d_numinput_ceil.c
 	menu/c3d_numinput_floor.c
 	menu/c3d_scrollbar.c
+	menu/c3d_slidebar_camspeedx.c
+	menu/c3d_slidebar_camspeedy.c
 	menu/c3d_slidebar_fov.c
+	menu/c3d_slidebar_scrollspeed.c
+	menu/c3d_textinput_east.c
 	menu/c3d_textinput_north.c
+	menu/c3d_textinput_south.c
+	menu/c3d_textinput_west.c
 	utils/c3d_menu_utils.c
 	utils/c3d_menu_utils2.c
 	utils/c3d_menu_utils3.c
+	utils/c3d_menu_utils4.c
 	
 endef
 SRCS_BONUS := $(strip $(SRCS_BONUS))
