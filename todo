@@ -75,6 +75,10 @@ x -> slide bar collide sur bar
 -> autre porte, slider au milieux si possible sinon sur un side, objet dans la map, (door != final door)
 -> message d'erreur quelque part si mauvaise interactions
 -> detection de objets porte par rapport au coord sur la map
+-> faire un systeme d'equipement
+	-> shield
+	-> boost de vitesse
+-> faire un mode marche and run
 
 Error
 
@@ -85,7 +89,15 @@ Error
 -> porte de sortie
 -> fantome
 
+<GENERATEUR MAP>
+-> parametre char **map, difficulte(impact la taille de la map et les objs (lampe en mode hard))
+-> faire en sorte de generer un labyrhinte plus ou moins ouvert avec x salle fermer par des portes
+-> generer une shape
+	-> generer une map de x * y, choisir z point dans le tableau
+	-> faire grossir les points jusqua qu'il rencontre un autre objet 
+	-> trouver un moyens pour link plusieurs block separer
+
 <LEO DEMAIN>
 x -> Clean la mandatory part
+x-> continuer le menu
 -> changer le generateur de map
--> continuer le menu

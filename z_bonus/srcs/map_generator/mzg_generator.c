@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 11:05:33 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/06 21:20:50 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/06 23:08:50 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,4 +61,12 @@ int	gen_maze(char ***map, int width, int height)
 	clean_maze((*map), width, height);
 	post_player((*map), width, height);
 	return (0);
+}
+
+int	main()
+{
+	char	**map;
+
+	gen_maze(&map, 50, 50);
+	printmaze(map, 50, 50);
 }
