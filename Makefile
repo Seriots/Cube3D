@@ -63,7 +63,7 @@ OBJS_DIR := objs
 LIBS_INCS_DIR := include/libs
 HDRS_INCS_DIR := include/mandatory
 HDRS_INCS_DIR_BONUS := include/bonus
-INCS	:= -I $(LIBS_INCS_DIR)
+INCS	:= -I$(LIBS_INCS_DIR) -I$(HDRS_INCS_DIR) -I$(HDRS_INCS_DIR_BONUS)
 LIB_DIR  := lib
 
 define LIBS :=
@@ -108,17 +108,10 @@ endif
 #                                 Functions                                    #
 # ============================================================================ #
 
-all: set_include_mandatory  $(NAME)
+all: $(NAME)
 
-bonus: set_include_bonus m_bonus
+bonus:  m_bonus
 .PHONY: bonus
-
-set_include_bonus: 
-	$(eval INCS := -I $(LIBS_INCS_DIR) -I $(HDRS_INCS_DIR_BONUS))
-
-set_include_mandatory: Makefile $(LIBS) $(OBJ_FILES)
-	$(eval INCS := -I $(LIBS_INCS_DIR) -I $(HDRS_INCS_DIR))
-.PHONY: set_include_bonus set_include_mandatory
 
 start_compiling:
 	@echo "$(_GREEN)Start Compiling $(_NO_COLOR)"
@@ -170,9 +163,9 @@ _NO_COLOR	= \033[0m
 #                                   Rules                                      #
 # ============================================================================ #
 
-$(NAME): Makefile $(LIBS) $(OBJ_FILES) $(OBJ_FILES_BONUS)
+$(NAME): Makefile $(LIBS) $(OBJ_FILES)
 	@echo "\n$(_BLUE)Linkage $(NAME)$(_NO_COLOR)"
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJ_FILES) $(OBJ_FILES_BONUS) $(LIBS) -lXext -lX11 -lm
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJ_FILES) $(LIBS) -lXext -lX11 -lm
 
 m_bonus: Makefile $(LIBS) $(OBJ_FILES_BONUS)
 	@echo "\n$(_BLUE)Linkage $(NAME)$(_NO_COLOR)"
@@ -183,7 +176,7 @@ $(OBJS_DIR)/%.o: $(SRCS_DIR)/%.c  start_compiling
 		mkdir -p $(dir $@); \
 		echo "\n$(_BLUE)$(dir $@): Create$(_NO_COLOR)"; \
 	fi
-	$(CC) $(CFLAGS) -MMD -I$(HDRS_INCS_DIR) -I$(LIBS_INCS_DIR) -o $@ -c $<
+	$(CC) $(CFLAGS) -MMD $(INCS) -o $@ -c $<
 
 -include $(DEP_FILES)
 -include $(DEP_FILES_BONUS)
