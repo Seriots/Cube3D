@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 10:26:58 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/06 14:09:10 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/06 16:02:59 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@
 
 /*MENU_WIDTH - 275*/
 # define CHECKBOX_START_X 525
-# define CHECKBOX_START_Y 275
+# define CHECKBOX_START_Y 305
 
 # define FONT "-sony-*-*-*-*-*-*-230-*-*-*-*-iso8859-*"
 

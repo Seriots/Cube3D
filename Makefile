@@ -104,6 +104,7 @@ define SRCS_BONUS :=
 	srcs_bonus/menu/c3d_slidebar_camspeedx.c
 	srcs_bonus/menu/c3d_slidebar_camspeedy.c
 	srcs_bonus/menu/c3d_slidebar_fov.c
+	srcs_bonus/menu/c3d_slidebar_fps.c
 	srcs_bonus/menu/c3d_slidebar_resolution.c
 	srcs_bonus/menu/c3d_slidebar_scrollspeed.c
 	srcs_bonus/menu/c3d_textinput_east.c

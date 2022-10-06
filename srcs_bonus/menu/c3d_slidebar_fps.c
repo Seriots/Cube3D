@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   c3d_slidebar_resolution.c                          :+:      :+:    :+:   */
+/*   c3d_slidebar_fps.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/05 13:45:30 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/06 16:30:18 by lgiband          ###   ########.fr       */
+/*   Created: 2022/10/06 16:00:25 by lgiband           #+#    #+#             */
+/*   Updated: 2022/10/06 16:30:11 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 
 #include <stdio.h>
 
-int	resolution_mouse_release(int button, int x, int y, t_game *game)
+int	fps_mouse_release(int button, int x, int y, t_game *game)
 {
 	(void)x;
 	(void)y;
@@ -36,12 +36,12 @@ int	resolution_mouse_release(int button, int x, int y, t_game *game)
 	return (0);
 }
 
-int	resolution_mouse_move(int x, int y, t_game *game)
+int	fps_mouse_move(int x, int y, t_game *game)
 {
 	t_slidebar	*value;
 
 	(void)y;
-	value = dict_getelem_number(game->menu.all_objects, 20)->value;
+	value = dict_getelem_number(game->menu.all_objects, 21)->value;
 	x = x - (WIN_WIDTH / 2 - MENU_WIDTH / 2);
 	if (x < value->box.x)
 		value->x = value->box.x;
@@ -54,20 +54,20 @@ int	resolution_mouse_move(int x, int y, t_game *game)
 	return (0);
 }
 
-int	resolution_press(int button, int x, int y, t_game *game)
+int	fps_press(int button, int x, int y, t_game *game)
 {
 	(void)x;
 	(void)y;
 	if (button == 1)
 	{
-		game->fcts.mousereleased_fct = resolution_mouse_release;
-		game->fcts.mousemove_fct = resolution_mouse_move;
-		resolution_mouse_move(x, y, game);
+		game->fcts.mousereleased_fct = fps_mouse_release;
+		game->fcts.mousemove_fct = fps_mouse_move;
+		fps_mouse_move(x, y, game);
 	}
 	return (0);
 }
 
-void	resolution_init(t_slidebar *slidebar)
+void	fps_init(t_slidebar *slidebar)
 {
 	slidebar->x = slidebar->box.x - slidebar->width + (*slidebar->modified_value - slidebar->min)
 		* slidebar->box.width / (slidebar->max - slidebar->min);
@@ -75,11 +75,11 @@ void	resolution_init(t_slidebar *slidebar)
 		- (slidebar->height - slidebar->box.height) / 2;
 	slidebar->box.x_text = slidebar->box.x - 100;
 	slidebar->box.y_text = slidebar->box.y + 10;
-	ft_strlcpy(slidebar->box.description, "Resolution", 11);
+	ft_strlcpy(slidebar->box.description, "Fps", 4);
 	ft_strlcpy(slidebar->box.font, FONT, ft_strlen(FONT));
 }
 
-t_dict	*init_resolution_slidebar(t_game *game)
+t_dict	*init_fps_slidebar(t_game *game)
 {
 	t_slidebar	*slidebar;
 	t_dict		*obj;
@@ -88,16 +88,16 @@ t_dict	*init_resolution_slidebar(t_game *game)
 	if (!slidebar)
 		return (0);
 	slidebar->box.x = SLIDEBAR_START_X;
-	slidebar->box.y = SLIDEBAR_START_Y + 4 * MARGE;
+	slidebar->box.y = SLIDEBAR_START_Y + 5 * MARGE;
 	slidebar->box.width = 200;
 	slidebar->box.height = 10;
-	slidebar->min = 1;
-	slidebar->max = 100;
+	slidebar->min = 10;
+	slidebar->max = 120;
 	slidebar->height = 18;
 	slidebar->width = 6;
-	slidebar->modified_value = &game->settings.resolution;
-	resolution_init(slidebar);
-	slidebar->box.mouse_press = resolution_press;
+	slidebar->modified_value = &game->settings.fps;
+	fps_init(slidebar);
+	slidebar->box.mouse_press = fps_press;
 	slidebar->box.mouse_release = NULL;
 	obj = dict_new(SLIDEBAR, slidebar);
 	if (!obj)

@@ -31,11 +31,11 @@ x -> setup the menu
 x -> add scroll with mouse in menu event mouse
 -> add everything to menu
 	x-> quality
-	-> fps
+	x -> fps
 	-> generate new map button
+x -> slide bar collide sur bar
 -> save file
 -> set font
--> slide bar collide sur bar
 
 -> start menu avec choix de le difficulte, level preset ou genere a partir d'une seed
 

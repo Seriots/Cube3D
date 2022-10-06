@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 12:37:56 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/06 14:16:10 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/06 16:29:57 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,14 +43,14 @@ int	camspeedx_mouse_move(int x, int y, t_game *game)
 	(void)y;
 	value = dict_getelem_number(game->menu.all_objects, 16)->value;
 	x = x - (WIN_WIDTH / 2 - MENU_WIDTH / 2);
-	if (x < value->x)
-		value->box.x = value->x;
-	else if (x > value->x + value->width - value->box.width)
-		value->box.x = value->width + value->x - value->box.width;
+	if (x < value->box.x)
+		value->x = value->box.x;
+	else if (x > value->box.x + value->box.width - value->width)
+		value->x = value->box.width + value->box.x - value->width;
 	else
-		value->box.x = x;
-	*(value->modified_value) = value->min + (value->box.x - value->x)
-		* (value->max - value->min) / (value->width - value->box.width);
+		value->x = x;
+	*(value->modified_value) = value->min + (value->x - value->box.x)
+		* (value->max - value->min) / (value->box.width - value->width);
 	return (0);
 }
 
@@ -62,19 +62,20 @@ int	camspeedx_press(int button, int x, int y, t_game *game)
 	{
 		game->fcts.mousereleased_fct = camspeedx_mouse_release;
 		game->fcts.mousemove_fct = camspeedx_mouse_move;
-	}
+		camspeedx_mouse_move(x, y, game);
+	}		
 	return (0);
 }
 
 void	camspeedx_init(t_slidebar *slidebar)
 {
-	slidebar->box.x = slidebar->x + (*slidebar->modified_value - slidebar->min)
-		* slidebar->width / (slidebar->max - slidebar->min);
-	slidebar->box.y = slidebar->y
-		- (slidebar->box.height - slidebar->height) / 2;
-	slidebar->box.x_text = slidebar->x - 100;
-	slidebar->box.y_text = slidebar->y + 10;
-	ft_strlcpy(slidebar->box.description, "Camera speed X", 15);
+	slidebar->x = slidebar->box.x - slidebar->width + (*slidebar->modified_value - slidebar->min)
+		* slidebar->box.width / (slidebar->max - slidebar->min);
+	slidebar->y = slidebar->box.y
+		- (slidebar->height - slidebar->box.height) / 2;
+	slidebar->box.x_text = slidebar->box.x - 100;
+	slidebar->box.y_text = slidebar->box.y + 10;
+	ft_strlcpy(slidebar->box.description, "Sensibility X", 14);
 	ft_strlcpy(slidebar->box.font, FONT, ft_strlen(FONT));
 }
 
@@ -86,14 +87,14 @@ t_dict	*init_camspeedx_slidebar(t_game *game)
 	slidebar = malloc(sizeof(t_slidebar));
 	if (!slidebar)
 		return (0);
-	slidebar->x = SLIDEBAR_START_X;
-	slidebar->y = SLIDEBAR_START_Y + 2 * MARGE;
-	slidebar->width = 200;
-	slidebar->height = 10;
+	slidebar->box.x = SLIDEBAR_START_X;
+	slidebar->box.y = SLIDEBAR_START_Y + 2 * MARGE;
+	slidebar->box.width = 200;
+	slidebar->box.height = 10;
 	slidebar->min = 1;
 	slidebar->max = 100;
-	slidebar->box.height = 18;
-	slidebar->box.width = 6;
+	slidebar->height = 18;
+	slidebar->width = 6;
 	slidebar->modified_value = &game->settings.cam_sensibility_x;
 	camspeedx_init(slidebar);
 	slidebar->box.mouse_press = camspeedx_press;
