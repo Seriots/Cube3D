@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 13:43:02 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/06 21:20:50 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/06 21:36:09 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	my_mlx_put_image_to_window(t_game *game, t_img_data *data, int x, int y)
 
 int	show_fps(t_game *game)
 {
-	char	fps[24];
+	char	fps[32];
 
 	ft_itoa_noalloc(fps, 1000 / game->delay);
 	ft_strlcat(fps, " fps", 24);
