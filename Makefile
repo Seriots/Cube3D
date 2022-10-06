@@ -1,4 +1,5 @@
 NAME := cub3D
+NAME_BONUS := Cub3D
 CFLAGS := 
 CC := cc
 MAKE = /bin/make
@@ -204,7 +205,7 @@ endif
 
 all: $(NAME)
 
-bonus:  m_bonus
+bonus: $(NAME_BONUS)
 .PHONY: bonus
 
 start_compiling:
@@ -221,7 +222,7 @@ clean:
 
 fclean: clean
 	@echo "\n$(_RED)$(NAME): removing$(_NO_COLOR)"
-	rm -f $(NAME)
+	rm -f $(NAME) $(NAME_BONUS)
 	@for lib in $(LIB_NAMES); do \
 		echo "\n$(_RED)$${lib}: cleaning$(_NO_COLOR)"; \
 		$(MAKE) --no-print-directory -C $(LIB_DIR)/$${lib}/ fclean 2> /dev/null \
@@ -261,9 +262,9 @@ $(NAME): Makefile $(LIBS) $(OBJ_FILES)
 	@echo "\n$(_BLUE)Linkage $(NAME)$(_NO_COLOR)"
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJ_FILES) $(LIBS) -lXext -lX11 -lm
 
-m_bonus: Makefile $(LIBS) $(OBJ_FILES_BONUS)
-	@echo "\n$(_BLUE)Linkage $(NAME)$(_NO_COLOR)"
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJ_FILES_BONUS) $(LIBS) -lXext -lX11 -lm
+$(NAME_BONUS): Makefile $(LIBS) $(OBJ_FILES_BONUS)
+	@echo "\n$(_BLUE)Linkage $(NAME_BONUS)$(_NO_COLOR)"
+	$(CC) $(CFLAGS) -o $(NAME_BONUS) $(OBJ_FILES_BONUS) $(LIBS) -lXext -lX11 -lm
 
 $(OBJS_DIR)/%.o: %.c  start_compiling
 	@if [ ! -d $(dir $@) ]; then \
