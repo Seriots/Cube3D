@@ -6,13 +6,13 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 13:11:55 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/29 10:57:27 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/06 14:17:04 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "c3d_struct.h"
-#include "c3d_init.h"
-#include "mzg_incs.h"
+#include "c3d_struct_bonus.h"
+#include "c3d_init_bonus.h"
+#include "mzg_incs_bonus.h"
 
 #include "mlx.h"
 

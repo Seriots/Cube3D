@@ -6,14 +6,14 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 10:41:24 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/30 22:54:10 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/06 14:16:34 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "c3d_struct.h"
-#include "c3d_settings.h"
-#include "c3d_loop.h"
-#include "c3d_utils.h"
+#include "c3d_struct_bonus.h"
+#include "c3d_settings_bonus.h"
+#include "c3d_loop_bonus.h"
+#include "c3d_utils_bonus.h"
 
 #include <math.h>
 
@@ -78,7 +78,7 @@ int	display_wall(t_game *game, t_wall *wall, int i)
 	while (p.y < WIN_HEIGHT)
 	{
 		color = get_pixel_color(game, wall, p, display);
-		my_mlx_pixel_put(&game->all_img.screen_img, p.x, p.y, color);
+		my_mlx_pixel_put(&game->all_img.screen_img, p.x, p.y, get_color(game, color));
 		p.y++;
 	}
 	return (0);

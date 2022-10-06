@@ -6,14 +6,14 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 11:28:34 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/30 11:49:12 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/06 14:17:04 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <stdio.h>
 
-#include "mzg_incs.h"
+#include "mzg_incs_bonus.h"
 
 #define VAR_FACTOR 800
 

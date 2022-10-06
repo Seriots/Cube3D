@@ -6,35 +6,100 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 15:03:03 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/30 15:09:33 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/06 14:16:10 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "c3d_settings.h"
-#include "c3d_struct.h"
-#include "c3d_event.h"
+#include "c3d_settings_bonus.h"
+#include "c3d_struct_bonus.h"
+#include "c3d_event_bonus.h"
+#include "c3d_menu_bonus.h"
 
+#include "ft.h"
 #include "mlx.h"
 
 #include <stdio.h>
 
+int	check_all_objects_press(t_game *game, int x, int y)
+{
+	t_dict			*tmp;
+	t_collide_box	*box;
+	
+	tmp = game->menu.all_objects;
+	while (tmp)
+	{
+		box = tmp->value;
+		if (x - (WIN_WIDTH / 2 - MENU_WIDTH / 2) >= box->x
+			&& x - (WIN_WIDTH / 2 - MENU_WIDTH / 2) <= box->x + box->width
+			&& y - (WIN_HEIGHT / 2 - MENU_HEIGHT / 2)
+			>= box->y + game->menu.scroll_amount
+			&& y - (WIN_HEIGHT / 2 - MENU_HEIGHT / 2)
+			<= box->y + game->menu.scroll_amount + box->height)
+		{
+			if (box->mouse_press)
+				box->mouse_press(1, x, y, game);
+			break ;
+		}
+		else if (ft_strcmp(tmp->key, SCROLLBAR) == 0)
+		{
+			if (x - (WIN_WIDTH / 2 - MENU_WIDTH / 2) >= box->x
+				&& x - (WIN_WIDTH / 2 - MENU_WIDTH / 2) <= box->x + box->width
+				&& y - (WIN_HEIGHT / 2 - MENU_HEIGHT / 2) >= box->y
+				&& y - (WIN_HEIGHT / 2 - MENU_HEIGHT / 2) 
+				<= box->y + box->height)
+			{
+				if (box->mouse_press)
+					box->mouse_press(1, x, y, game);
+				break ;
+			}
+		}
+		tmp = tmp->next;
+	}
+	return (0);
+}
+
+int	check_all_objects_release(t_game *game, int x, int y)
+{
+	t_dict			*tmp;
+	t_collide_box	*box;
+	
+	tmp = game->menu.all_objects;
+	while (tmp)
+	{
+		box = tmp->value;
+		if (x - (WIN_WIDTH / 2 - MENU_WIDTH / 2) >= box->x
+			&& x - (WIN_WIDTH / 2 - MENU_WIDTH / 2) <= box->x + box->width
+			&& y - (WIN_HEIGHT / 2 - MENU_HEIGHT / 2) >= box->y
+			&& y - (WIN_HEIGHT / 2 - MENU_HEIGHT / 2) <= box->y + box->height)
+		{
+			if (box->mouse_release)
+				box->mouse_release(1, x, y, game);
+			break ;
+		}
+		tmp = tmp->next;
+	}
+	return (0);
+}
+
 int	menu_mouse_press(int button, int x, int y, t_game *game)
 {
-	(void)game;
-	(void)x;
-	(void)y;
-	printf("Mouse pressed: %d\n", button);
 	if (button == 1)
-		close_window(game);
+		check_all_objects_press(game, x, y);
 	return (0);
 }
 
 int	menu_mouse_release(int button, int x, int y, t_game *game)
 {
-	(void)game;
-	(void)x;
-	(void)y;
-	printf("Mouse released: %d\n", button);
+	if (button == 3)
+		close_window(game);
+	else if (button == 1)
+		check_all_objects_release(game, x, y);
+	else if ((button == 4 && !game->settings.invert_scroll)
+		|| (button == 5 && game->settings.invert_scroll))
+		scroll_up(game);
+	else if ((button == 4 && game->settings.invert_scroll)
+		|| (button == 5 && !game->settings.invert_scroll))
+		scroll_down(game);
 	return (0);
 }
 

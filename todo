@@ -1,10 +1,9 @@
 <MANDATORY>
 
--> Cast un rayons
--> Cast tout les rayons et recupere la liste des mur a afficher
--> afficher les mur
+x-> Cast un rayons
 -> Camera axe x et y avec la souris --Problem: crash quand play qvec souris trop longtemps; hide mouse leak.
--> collisions qui doivent check toutes la trajectoire et pas seulement le point d'arrive.
+	-> fix: desactiver mouse move toute les x frames
+x -> collisions qui doivent check toutes la trajectoire et pas seulement le point d'arrive.
 
 <CASTING>
 
@@ -14,12 +13,31 @@
 
 <MENU>
 
--> faire un menu de settings: possibilité de changer les touches directionnels, le fov, la sensibilite, les images des murs (ajouter des images par default ? de differentes qualites ?)
--> faire les differents objets (checkbox, slide bar, case ou on rentre du texte, button)
-	-> need collidebox
-	-> action par rapport a la souris
--> faire un dict avec tout les object
--> if menu on and mouse press and touch a collide box -> renvoi l'objets' et applique la fonction de l'objets'
+x-> faire un menu de settings: possibilité de changer les touches directionnels, le fov, la sensibilite, les images des murs (ajouter des images par default ? de differentes qualites ?)
+x-> faire les differents objets (checkbox, slide bar, case ou on rentre du texte, button)
+x	-> need collidebox
+x	-> action par rapport a la souris
+x-> faire un dict avec tout les object
+x-> if menu on and mouse press and touch a collide box -> renvoi l'objets' et applique la fonction de l'objets'
+x -> button
+x -> slidebar
+x -> checkbox
+x -> keyinput
+x -> textinput image
+x	-> need to clean every selected when resume pressed
+x -> numinput color
+x -> scrollbar
+x -> setup the menu
+x -> add scroll with mouse in menu event mouse
+-> add everything to menu
+	x-> quality
+	-> fps
+	-> generate new map button
+-> save file
+-> set font
+-> slide bar collide sur bar
+
+-> start menu avec choix de le difficulte, level preset ou genere a partir d'une seed
 
 <BONUS>
 
@@ -27,4 +45,47 @@
 -> sprite en plus (je sais pas quoi)
 -> ciel mais surement relou avec la vue veres le haut
 
--> le slide est un peu rapide j'ai l'impression
+-> bug du slide qui accelere le player
+-> move speed en fonction du delai
+
+<GAME>
+-> horror / puzzle
+-> ajouter du son
+-> faire un point au milieux de l'ecran'
+-> rammasser les cle pour ouvrir les portes correspondantes et sortir into nouvelle map
+-> Sortie plusieur portes a ouvrir avec des cle rammasser dans la map
+-> Inventaire (facile plusieurs slot, difficile 1 slot) + 1 slot pour la lampe
+-> Ennemies fantome qui te fonce dessus en ligne droite pas de mur car fantome mdr
+-> si collisions player-fantome mort instant
+-> fantome appariton a en endroit aleatoire sur la map et frequence increase avec le temps passer dans la map
+-> fantome mort si eclairer par la lampe torche (aniamtion de mort)
+	-> pv en fonction du temps eclairer, eclairer le fantome au centre charge plus vite que sur le cote
+		-> faire evoluer la couleur du fantome en fonction du pv
+-> Score en fonction du temps et du nombre de fantome tuee et du nombre de deplacement(par rapport a la taille de la map)
+-> lampe decharge lineaire si allumer, recharge exponentielle si eteinte
+-> clic droit allumer eteindre
+	-> click droit use, other touch to take, other touch to drop
+-> lampe torche fais baisser les pv des fantomes (de plus en plus vite)
+-> lampe torche objet comme un autre peux etre drop et est a besoin d'etre ramasser au debut en mode difficile
+-> lampe torche eclairage en halo exponentielle en fonction de la dist au centre
+-> ajouter parametre gamma
+-> touche pour les slots d'inventaires
+-> modifier le generateur de map pour ajouter les objets en dessous et pour mode easy/hard
+-> Porte de sortie: porte d'hopital exit open door = fade noir into loading screen -> new map
+-> autre porte, slider au milieux si possible sinon sur un side, objet dans la map, (door != final door)
+-> message d'erreur quelque part si mauvaise interactions
+-> detection de objets porte par rapport au coord sur la map
+
+Error
+
+<OBJECT>
+-> lampe
+-> key
+-> porte simple == porte colore
+-> porte de sortie
+-> fantome
+
+<LEO DEMAIN>
+-> Clean la mandatory part
+-> changer le generateur de map
+-> continuer le menu

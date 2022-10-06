@@ -6,14 +6,14 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 14:59:33 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/30 15:01:11 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/06 14:16:10 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "c3d_struct.h"
-#include "c3d_settings.h"
-#include "c3d_event.h"
-#include "c3d_menu.h"
+#include "c3d_struct_bonus.h"
+#include "c3d_settings_bonus.h"
+#include "c3d_event_bonus.h"
+#include "c3d_menu_bonus.h"
 
 #include "mlx.h"
 

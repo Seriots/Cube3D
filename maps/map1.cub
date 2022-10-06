@@ -1,14 +1,12 @@
-NO ./imgs/xpm/blueWall64x64.xpm
-EA ./imgs/xpm/redWall64x64.xpm
-
-WE      ./imgs/xpm/wall626x626.xpm
-
-SO    ./imgs/xpm/wall626x626.xpm
+NO ./imgs/xpm/wall626x626.xpm
+EA ./imgs/xpm/blueWall64x64.xpm
+WE ./imgs/xpm/blueWall64x64.xpm
+SO ./imgs/xpm/blueWall64x64.xpm
 
 
 
 C  255,0,0
-F  0,0,255
+F  0,75,255
 
 11111111111111
 10000000000001

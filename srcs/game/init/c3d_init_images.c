@@ -6,13 +6,13 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 10:51:50 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/30 11:07:21 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/06 14:15:47 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "c3d_struct.h"
-#include "c3d_settings.h"
-#include "c3d_init.h"
+#include "c3d_struct_bonus.h"
+#include "c3d_settings_bonus.h"
+#include "c3d_init_bonus.h"
 
 int	init_images(t_game *game)
 {

@@ -6,12 +6,12 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 16:56:08 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/26 10:01:54 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/06 14:13:45 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "c3d_struct.h"
-#include "c3d_parsing.h"
+#include "c3d_struct_bonus.h"
+#include "c3d_parsing_bonus.h"
 
 #include "ft.h"
 

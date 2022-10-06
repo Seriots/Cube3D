@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 11:05:33 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/30 11:54:08 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/06 14:17:04 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 #include "mlx.h"
 #include "ft.h"
 
-#include "mzg_incs.h"
+#include "mzg_incs_bonus.h"
 
 /*
 * Parmaeters:

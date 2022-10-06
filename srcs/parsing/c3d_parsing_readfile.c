@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 14:17:54 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/26 10:48:21 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/06 14:14:19 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-#include "c3d_struct.h"
-#include "c3d_utils.h"
-#include "c3d_parsing.h"
+#include "c3d_struct_bonus.h"
+#include "c3d_utils_bonus.h"
+#include "c3d_parsing_bonus.h"
 
 #include "ft.h"
 #include <stdio.h>

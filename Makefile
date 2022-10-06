@@ -15,7 +15,7 @@ define SRCS :=
 	game/loop/display/raycasting/c3d_raycasting_display.c
 	game/loop/display/raycasting/c3d_raycasting_getwall.c
 	game/loop/display/raycasting/c3d_raycasting.c
-	game/loop/display/c3d_default_display.c
+	game/loop/display/raycasting/c3d_default_display.c
 	game/loop/update/default/c3d_default_update.c
 	game/loop/update/default/c3d_minimap_update.c
 	game/loop/update/default/c3d_player_collide.c
@@ -38,7 +38,6 @@ endef
 SRCS := $(strip $(SRCS))
 
 define SRCS_BONUS :=
-
 endef
 SRCS_BONUS := $(strip $(SRCS_BONUS))
 
@@ -102,6 +101,12 @@ ifdef DEBUG
 	CFLAGS := $(CFLAGS) -g3 -D DEBUG=1
 else
 	CFLAGS := $(CFLAGS) -Werror -D DEBUG=0
+endif
+
+ifdef HIDE
+	CFLAGS := $(CFLAGS) -g3 -D HIDE=1
+else
+	CFLAGS := $(CFLAGS) -Werror -D HIDE=0
 endif
 
 # ============================================================================ #

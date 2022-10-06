@@ -6,15 +6,16 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 11:12:19 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/30 18:26:12 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/06 14:16:10 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-#include "c3d_struct.h"
-#include "c3d_settings.h"
-#include "c3d_utils.h"
+#include "c3d_struct_bonus.h"
+#include "c3d_settings_bonus.h"
+#include "c3d_utils_bonus.h"
+#include "c3d_menu_bonus.h"
 
 #include <stdio.h>
 
@@ -23,7 +24,7 @@ int	fps(t_game *game)
 {
 	long	new_frame;
 
-	while (timestamp_msec(game->last_frame) < 1000 / FPS)
+	while (timestamp_msec(game->last_frame) < 1000 / game->settings.fps)
 		usleep(1000);
 	new_frame = timestamp_msec(0);
 	game->delay = new_frame - game->last_frame;

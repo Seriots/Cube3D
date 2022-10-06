@@ -6,11 +6,11 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 10:59:18 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/29 11:31:45 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/06 14:13:45 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "c3d_struct.h"
+#include "c3d_struct_bonus.h"
 
 #include "mlx.h"
 

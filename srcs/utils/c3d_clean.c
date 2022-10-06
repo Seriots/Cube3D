@@ -6,14 +6,15 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 11:13:57 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/29 17:53:07 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/06 14:13:45 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-#include "c3d_struct.h"
+#include "c3d_struct_bonus.h"
 
+#include "dict.h"
 #include "ft.h"
 #include "mlx.h"
 
@@ -36,7 +37,8 @@ void	free_img_array(t_game *game, t_img_data **imgs_ptr, int number)
 	(void)game;
 	while (i < number)
 	{
-		mlx_destroy_image(game->mlx.display, imgs[i].img);
+		if (imgs[i].img)
+			mlx_destroy_image(game->mlx.display, imgs[i].img);
 		i++;
 	}
 	free(imgs);
@@ -59,15 +61,24 @@ void	free_images(t_game *game)
 		mlx_destroy_image(game->mlx.display, game->all_img.screen_img.img);
 	if (game->all_img.minimap_img.img)
 		mlx_destroy_image(game->mlx.display, game->all_img.minimap_img.img);
-	free_img_array(game, &game->all_img.all_cursor_img, 8);
+	if (game->all_img.all_cursor_img)
+		free_img_array(game, &game->all_img.all_cursor_img, 8);
+}
+
+int	free_menu(t_menu *menu)
+{
+	dict_clear(menu->all_objects, 0, free);
+	return (0);
 }
 
 void	free_game(t_game *game)
 {
 	mlx_do_key_autorepeaton(game->mlx.display);
-	mlx_mouse_show(game->mlx.display, game->mlx.window);
+	if (HIDE)
+		mlx_mouse_show(game->mlx.display, game->mlx.window);
 	free_map(&game->map);
 	free_images(game);
+	free_menu(&game->menu);
 	mlx_destroy_window(game->mlx.display, game->mlx.window);
 	mlx_destroy_display(game->mlx.display);
 	free(game->mlx.display);
