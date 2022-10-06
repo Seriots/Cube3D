@@ -5,11 +5,8 @@ MAKE = /bin/make
 
 define SRCS :=
 	main.c
-	game/event/c3d_default_event_mouse.c
 	game/event/c3d_default_event.c
-	game/event/c3d_event_mouse.c
 	game/event/c3d_event.c
-	game/c3d_start.c
 	game/init/c3d_init_game.c
 	game/init/c3d_init_images.c
 	game/init/c3d_init_mlx.c
@@ -24,16 +21,7 @@ define SRCS :=
 	game/loop/update/default/c3d_player_collide.c
 	game/loop/update/default/c3d_player_update.c
 	game/loop/c3d_loop.c
-	map_generator/mzg_clean.c
-	map_generator/mzg_fillmap_check.c
-	map_generator/mzg_fillmap.c
-	map_generator/mzg_generator.c
-	map_generator/mzg_get_maze.c
-	map_generator/mzg_makemaze.c
-	map_generator/mzg_makeshape.c
-	map_generator/mzg_post_player.c
-	map_generator/mzg_printmaze.c
-	map_generator/mzg_standardize.c
+	game/c3d_start.c
 	parsing/c3d_parsing_check.c
 	parsing/c3d_parsing_readfile.c
 	parsing/c3d_parsing_set.c
@@ -45,18 +33,12 @@ define SRCS :=
 	utils/c3d_init_image.c
 	utils/c3d_math.c
 	utils/c3d_math2.c
-	utils/c3d_time.c
 	
 endef
 SRCS := $(strip $(SRCS))
 
 define SRCS_BONUS :=
-	game/loop/display/c3d_menu_display.c
-	game/loop/update/menu/c3d_menu_update.c
-	game/event/c3d_menu_event.c
-	game/event/c3d_menu_event_mouse.c
-	game/event/c3d_openclose_menu.c
-	
+
 endef
 SRCS_BONUS := $(strip $(SRCS_BONUS))
 
@@ -75,9 +57,13 @@ define HDRS :=
 endef
 HDRS := $(strip $(HDRS))
 
-SRCS_DIR := srcs
+SRCS_DIR := srcs_mandatory
+SRCS_BONUS_DIR := srcs_bonus
 OBJS_DIR := objs
-INCS_DIR := include
+LIBS_INCS_DIR := include/libs
+HDRS_INCS_DIR := include/mandatory
+HDRS_INCS_DIR_BONUS := include/bonus
+INCS	:= -I $(LIBS_INCS_DIR)
 LIB_DIR  := lib
 
 define LIBS :=
@@ -104,8 +90,8 @@ LIB_NAMES := $(strip $(LIB_NAMES))
 #                               Intermediates                                  #
 # ============================================================================ #
 
-OBJ_FILES := $(patsubst %.c,$(OBJS_DIR)/%.o,$(SRCS))
-OBJ_FILES_BONUS := $(patsubst %.c,$(OBJS_DIR)/%.o,$(SRCS_BONUS))
+OBJ_FILES := $(patsubst %.c,$(OBJS_DIR)/%.o, $(SRCS))
+OBJ_FILES_BONUS := $(patsubst %.c,$(OBJS_DIR)/%.o, $(SRCS_BONUS))
 DEP_FILES := $(OBJ_FILES:.o=.d)
 DEP_FILES_BONUS := $(OBJ_FILES_BONUS:.o=.d)
 HDR_FILES := $(addprefix $(INCS_DIR)/,$(HDRS))
@@ -122,7 +108,17 @@ endif
 #                                 Functions                                    #
 # ============================================================================ #
 
-all: $(NAME)
+all: set_include_mandatory  $(NAME)
+
+bonus: set_include_bonus m_bonus
+.PHONY: bonus
+
+set_include_bonus: 
+	$(eval INCS := -I $(LIBS_INCS_DIR) -I $(HDRS_INCS_DIR_BONUS))
+
+set_include_mandatory: Makefile $(LIBS) $(OBJ_FILES)
+	$(eval INCS := -I $(LIBS_INCS_DIR) -I $(HDRS_INCS_DIR))
+.PHONY: set_include_bonus set_include_mandatory
 
 start_compiling:
 	@echo "$(_GREEN)Start Compiling $(_NO_COLOR)"
@@ -178,12 +174,16 @@ $(NAME): Makefile $(LIBS) $(OBJ_FILES) $(OBJ_FILES_BONUS)
 	@echo "\n$(_BLUE)Linkage $(NAME)$(_NO_COLOR)"
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJ_FILES) $(OBJ_FILES_BONUS) $(LIBS) -lXext -lX11 -lm
 
+m_bonus: Makefile $(LIBS) $(OBJ_FILES_BONUS)
+	@echo "\n$(_BLUE)Linkage $(NAME)$(_NO_COLOR)"
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJ_FILES_BONUS) $(LIBS) -lXext -lX11 -lm
+
 $(OBJS_DIR)/%.o: $(SRCS_DIR)/%.c  start_compiling
 	@if [ ! -d $(dir $@) ]; then \
 		mkdir -p $(dir $@); \
 		echo "\n$(_BLUE)$(dir $@): Create$(_NO_COLOR)"; \
 	fi
-	$(CC) $(CFLAGS) -MMD -I $(INCS_DIR) -o $@ -c $<
+	$(CC) $(CFLAGS) -MMD -I$(HDRS_INCS_DIR) -I$(LIBS_INCS_DIR) -o $@ -c $<
 
 -include $(DEP_FILES)
 -include $(DEP_FILES_BONUS)
