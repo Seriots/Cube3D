@@ -90,12 +90,13 @@ Error
 -> fantome
 
 <GENERATEUR MAP>
--> parametre char **map, difficulte(impact la taille de la map et les objs (lampe en mode hard))
--> faire en sorte de generer un labyrhinte plus ou moins ouvert avec x salle fermer par des portes
--> generer une shape
-	-> generer une map de x * y, choisir z point dans le tableau
-	-> faire grossir les points jusqua quil rencontre un autre objet 
-	-> trouver un moyens pour link plusieurs block separer
+x-> parametre char **map, difficulte(impact la taille de la map et les objs (lampe en mode hard))
+x-> faire en sorte de generer un labyrhinte plus ou moins ouvert avec x salle fermer par des portes
+x-> generer une shape
+	x-> generer une map de x * y, choisir z point dans le tableau
+	x-> faire grossir les points jusqua quil rencontre un autre objet 
+	x-> trouver un moyens pour link plusieurs block separer
+-> link le tout
 
 <LEO DEMAIN>
 x -> Clean la mandatory part
