@@ -94,7 +94,7 @@ Error
 -> faire en sorte de generer un labyrhinte plus ou moins ouvert avec x salle fermer par des portes
 -> generer une shape
 	-> generer une map de x * y, choisir z point dans le tableau
-	-> faire grossir les points jusqua qu'il rencontre un autre objet 
+	-> faire grossir les points jusqua quil rencontre un autre objet 
 	-> trouver un moyens pour link plusieurs block separer
 
 <LEO DEMAIN>

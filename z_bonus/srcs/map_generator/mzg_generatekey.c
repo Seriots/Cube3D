@@ -1,33 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mzg_get_maze.c                                     :+:      :+:    :+:   */
+/*   mzg_generatekey.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/08 14:46:35 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/07 09:33:23 by lgiband          ###   ########.fr       */
+/*   Created: 2022/10/07 12:15:01 by lgiband           #+#    #+#             */
+/*   Updated: 2022/10/07 15:02:01 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <time.h>
-#include <sys/types.h>
-#include <unistd.h>
 #include <stdlib.h>
 
 #include "c3d_struct.h"
-#include "mzg_incs.h"
+#include "c3d_init.h"
 
-#include "ft.h"
-
-int	get_maze(t_game *game)
+int	make_key(t_map *map, int width, int height, char c)
 {
-	char	**map;
+	int x;
+	int y;
 
-	(void)game;
-	srand(time(NULL) * getpid());
-	gen_maze(&map, MAZE_WIDTH, MAZE_HEIGHT);
-	printmaze(map, MAZE_WIDTH, MAZE_HEIGHT);
-	ft_free_tab(map);
+	x = rand() % width;
+	y = rand() % height;
+	while (map->map[y][x] != c)
+	{
+		x = rand() % width;
+		y = rand() % height;
+	}
+	init_key(&map->all_objects, x, y);
+	return (0);
+}
+
+int	generate_key(t_map *map, int width, int height, int door)
+{
+	int i;
+
+	i = 0;
+	while (i < door)
+	{
+		make_key(map, width, height, 'A' + i);
+		i++;
+	}
 	return (0);
 }

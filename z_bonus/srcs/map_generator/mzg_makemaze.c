@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 11:31:53 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/06 21:20:50 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/07 11:22:39 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,22 +62,29 @@ int	set_random_value(char **map, int width, int height)
 		while (++i < width)
 		{
 			if (map[j][i] == '0')
-				fill(map, i, j, rand() % 90 + 34);
+				fill(map, i, j, rand() % 90 + 35);
 		}
 	}
 	return (0);
 }
-/*r = rand() % 4;
-y2 = y;
-x2 = x;
-if (r == 0)
-	y2 = y + 2;
-else if (r == 1)
-	y2 = y - 2;
-else if (r == 2)
-	x2 = x + 2;
-else if (r == 3)
-	x2 = x - 2;*/
+
+int	get_wall_destroy(t_wdestroy *w)
+{
+	int r;
+
+	r = rand() % 4;
+	w->y2 = w->y;
+	w->x2 = w->x;
+	if (r == 0)
+		w->y2 = w->y + 2;
+	else if (r == 1)
+		w->y2 = w->y - 2;
+	else if (r == 2)
+		w->x2 = w->x + 2;
+	else if (r == 3)
+		w->x2 = w->x - 2;
+	return (0);
+}
 
 int	make_maze(char **map, int width, int height)
 {
@@ -86,14 +93,13 @@ int	make_maze(char **map, int width, int height)
 
 	i = 0;
 	set_random_value(map, width, height);
-	while (!is_maze(map, width, height) && i++ < 1000)
+	while (!is_maze(map, width, height) && i++ < 100000)
 	{
 		w.x = (rand() % (width - 2)) + 1;
 		w.y = (rand() % (height - 2)) + 1;
 		if (map[w.y][w.x] > 33)
 		{
-			w.y2 = w.y + (2 * (rand() % 3 - 1));
-			w.x2 = w.x + (2 * (rand() % 3 - 1));
+			get_wall_destroy(&w);
 			if (w.y2 > 0 && w.x2 > 0 && w.y2 < height - 1 && w.x2 < width - 1
 				&& map[w.y2][w.x2] > 33 && map[w.y2][w.x2] != map[w.y][w.x])
 			{

@@ -9,6 +9,10 @@ all:
 	@rm -f $(BONUS_FOLDER)/$(NAME)
 	@cp $(MANDATORY_FOLDER)/$(NAME) .
 
+mgen:
+	@$(MAKE) -C $(BONUS_FOLDER)/srcs/map_generator
+	@cp $(BONUS_FOLDER)/srcs/map_generator/gen .
+
 bonus:
 	@$(MAKE) -C $(BONUS_FOLDER)
 	@rm -f $(MANDATORY_FOLDER)/$(NAME)

@@ -44,7 +44,25 @@ typedef struct s_all_img
 	t_img_data	menu_img;
 	t_img_data	minimap_img;
 	t_img_data	*all_cursor_img;
-}	t_all_img;	
+}	t_all_img;
+
+typedef struct s_coord
+{
+	double	x;
+	double	y;
+}	t_coord;
+
+typedef struct s_player
+{
+	t_coord			pos;
+	double			rot;
+	int				forward;
+	int				backward;
+	int				left;
+	int				right;
+	int				turn_left;
+	int				turn_right;
+}	t_player;
 
 typedef struct s_wall
 {
@@ -74,24 +92,43 @@ typedef struct s_settings
 	bool	show_fps;
 }	t_settings;
 
+typedef struct s_door
+{
+	int x;
+	int y;
+	int rotation; //1=vertical, 2=horizontal
+	int state; //0=closed, 1=opened
+}	t_door;
+
+typedef struct s_key
+{
+	int x;
+	int y;
+	int state; //0=on floor, 1=grabbed
+}	t_key;
+
+typedef struct s_lamp
+{
+	int x;
+	int y;
+	int state; //0=on floor, 1=grabbed
+	int	is_on;	//0=off, 1=on
+}	t_lamp;
+
 typedef struct s_map
 {
-	char	**map;
-	int		height;
-	int		width;
-	char	*no;
-	char	*so;
-	char	*we;
-	char	*ea;
-	int		f;
-	int		c;
+	char		**map;
+	int			height;
+	int			width;
+	char		*no;
+	char		*so;
+	char		*we;
+	char		*ea;
+	int			f;
+	int			c;
+	t_dict		*all_objects;
 }	t_map;
 
-typedef struct s_coord
-{
-	double	x;
-	double	y;
-}	t_coord;
 
 typedef struct s_point
 {
@@ -116,17 +153,6 @@ typedef struct s_vector
 	double	angle;
 }	t_vector;
 
-typedef struct s_player
-{
-	t_coord			pos;
-	double			rot;
-	int				forward;
-	int				backward;
-	int				left;
-	int				right;
-	int				turn_left;
-	int				turn_right;
-}	t_player;
 
 /*x y are positive*/
 typedef struct s_collide_box

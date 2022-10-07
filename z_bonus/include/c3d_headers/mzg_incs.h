@@ -20,7 +20,13 @@
 # define X 380
 # define Y 300
 # define COLOR 0x88888888
-
+# define BASE "NSWE"
+# define DEFAULT_IMAGE_PATH_NO "textures/blueWall64x64.xpm"
+# define DEFAULT_IMAGE_PATH_SO "textures/redWall64x64.xpm"
+# define DEFAULT_IMAGE_PATH_WE "textures/blueWall64x64.xpm"
+# define DEFAULT_IMAGE_PATH_EA "textures/redWall64x64.xpm"
+# define DEFAULT_CEIL	"255,0,0"
+# define DEFAULT_FLOOR	"0,0,255"
 # include "c3d_struct.h"
 
 typedef struct s_shape
@@ -39,17 +45,32 @@ typedef struct s_wdestroy
 	int		y2;
 }		t_wdestroy;
 
-int	gen_maze(char ***map, int width, int height);
+typedef struct s_starter
+{
+	int		x;
+	int		y;
+	int		start_delay;
+	int		radius;
+}		t_starter;
+
+int	gen_maze(t_map *map, int width, int height, int door);
 int	clean_maze(char **map, int width, int height);
 int	is_ver_ok(char **map, int x, int y);
 int	is_hor_ok(char **map, int x, int y);
 int	fillmap(char **map);
 int	make_maze(char **map, int width, int height);
 int	makeshape_maze(char **map, int width, int height);
-int	printmaze(char **map, int width, int height);
+int	printmaze(t_map *map, int width, int height);
 int	standardize_maze(char **map, int width, int height);
+int	standardize_maze_predoor(char **map, int width, int height);
 int	post_player(char **map, int width, int height);
 
 int	get_maze(t_game *game);
+
+/*V2*/
+int	make_door(char **map, int width, int height, int door);
+int open_maze(char **map, int width, int height);
+int generate_player(t_map *map, int width, int height);
+int	generate_key(t_map *map, int width, int height, int door);
 
 #endif
