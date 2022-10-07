@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 14:46:35 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/06 21:42:06 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/07 17:45:28 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "c3d_struct.h"
 #include "c3d_utils.h"
 #include "c3d_init.h"
+#include "mzg_incs.h"
 
 #include "ft.h"
 
@@ -24,11 +25,20 @@ int	main(int argc, char *argv[])
 	t_game	game;
 	int		error;
 
-	if (argc != 2)
+	if (argc > 2)
 		return (display_error(1));
-	error = parsing(&(game.map), argv[argc - 1]);
-	if (error)
-		return (free_map(&game.map), display_error(error));
+	if (argc == 2)
+	{
+		error = parsing(&(game.map), argv[argc - 1]);
+		if (error)
+			return (free_map(&game.map), display_error(error));
+	}
+	if (argc == 1)
+	{
+		error = get_maze(&game.map, 50, 50 ,12);
+		if (error)
+			return (free_map(&game.map), display_error(error));
+	}
 	error = start_game(&game);
 	if (error)
 		return (free_game(&game), display_error(error));

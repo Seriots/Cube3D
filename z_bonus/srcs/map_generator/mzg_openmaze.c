@@ -6,11 +6,13 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 12:19:23 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/07 14:14:24 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/07 18:05:54 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
+
+#include "mzg_incs.h"
 
 #include "ft.h"
 
@@ -90,10 +92,8 @@ char	is_between_room(char **map, int x, int y)
 
 char	is_destroyable(char **map, int x, int y)
 {
-	int		count;
 	char	c;
 
-	count = 0;
 	if (is_door(map, x, y))
 		return (0);
 	if (!is_aligned(map, x, y))
@@ -114,7 +114,7 @@ int open_maze(char **map, int width, int height)
 	nb_wall = count_wall(map, width, height);
 	i = 0;
 	j = 0;
-	while (i < nb_wall / 4 && j < 200)
+	while (i < nb_wall / OPEN_FACTOR && j < 200)
 	{
 		x = 1 + rand() % (width - 2);
 		y = 1 + rand() % (height - 2);

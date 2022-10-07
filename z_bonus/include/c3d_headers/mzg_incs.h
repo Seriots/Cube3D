@@ -21,12 +21,13 @@
 # define Y 300
 # define COLOR 0x88888888
 # define BASE "NSWE"
-# define DEFAULT_IMAGE_PATH_NO "textures/blueWall64x64.xpm"
-# define DEFAULT_IMAGE_PATH_SO "textures/redWall64x64.xpm"
-# define DEFAULT_IMAGE_PATH_WE "textures/blueWall64x64.xpm"
-# define DEFAULT_IMAGE_PATH_EA "textures/redWall64x64.xpm"
+# define DEFAULT_IMAGE_PATH_NO "imgs/xpm/blueWall64x64.xpm"
+# define DEFAULT_IMAGE_PATH_SO "imgs/xpm/redWall64x64.xpm"
+# define DEFAULT_IMAGE_PATH_WE "imgs/xpm/blueWall64x64.xpm"
+# define DEFAULT_IMAGE_PATH_EA "imgs/xpm/redWall64x64.xpm"
 # define DEFAULT_CEIL	"255,0,0"
 # define DEFAULT_FLOOR	"0,0,255"
+# define OPEN_FACTOR 4
 # include "c3d_struct.h"
 
 typedef struct s_shape
@@ -65,7 +66,8 @@ int	standardize_maze(char **map, int width, int height);
 int	standardize_maze_predoor(char **map, int width, int height);
 int	post_player(char **map, int width, int height);
 
-int	get_maze(t_game *game);
+int	get_maze(t_map *map, int width, int height, int door);
+
 
 /*V2*/
 int	make_door(char **map, int width, int height, int door);

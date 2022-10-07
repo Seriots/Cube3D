@@ -12,6 +12,8 @@ define SRCS :=
 		game/event/c3d_menu_event_mouse.c
 		game/event/c3d_menu_event.c
 		game/event/c3d_openclose_menu.c
+		game/init/objects/c3d_obj_init.c
+		game/init/objects/c3d_init_key.c
 		game/init/c3d_init_game.c
 		game/init/c3d_init_images.c
 		game/init/c3d_init_menu.c
@@ -43,16 +45,6 @@ define SRCS :=
 		game/loop/update/menu/c3d_menu_update.c
 		game/loop/c3d_loop.c
 		game/c3d_start.c
-		map_generator/mzg_clean.c
-		map_generator/mzg_fillmap_check.c
-		map_generator/mzg_fillmap.c
-		map_generator/mzg_generator.c
-		map_generator/mzg_get_maze.c
-		map_generator/mzg_makemaze.c
-		map_generator/mzg_makeshape.c
-		map_generator/mzg_post_player.c
-		map_generator/mzg_printmaze.c
-		map_generator/mzg_standardize.c
 		menu/c3d_button_exit.c
 		menu/c3d_button_resume.c
 		menu/c3d_checkbox_color.c
@@ -93,6 +85,19 @@ define SRCS :=
 		utils/c3d_menu_utils3.c
 		utils/c3d_menu_utils4.c
 		utils/c3d_time.c
+		map_generator/mzg_generator.c
+		map_generator/mzg_clean.c
+		map_generator/mzg_fillmap_check.c
+		map_generator/mzg_fillmap.c
+		map_generator/mzg_makemaze.c
+		map_generator/mzg_makedoor.c
+		map_generator/mzg_makeshape.c
+		map_generator/mzg_post_player.c
+		map_generator/mzg_printmaze.c
+		map_generator/mzg_standardize.c
+		map_generator/mzg_openmaze.c
+		map_generator/mzg_generate_player.c
+		map_generator/mzg_generatekey.c
 
 endef
 SRCS := $(strip $(SRCS))

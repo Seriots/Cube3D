@@ -36,6 +36,7 @@ x -> add scroll with mouse in menu event mouse
 x -> slide bar collide sur bar
 -> save file
 -> set font
+-> activer le keypad pour textinput
 
 -> start menu avec choix de le difficulte, level preset ou genere a partir d'une seed
 
@@ -47,6 +48,7 @@ x -> slide bar collide sur bar
 
 -> bug du slide qui accelere le player
 -> move speed en fonction du delai
+-> cacher la minimap
 
 <GAME>
 -> horror / puzzle
