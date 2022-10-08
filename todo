@@ -100,7 +100,7 @@ x-> generer une shape
 	x-> faire grossir les points jusqua quil rencontre un autre objet 
 	x-> trouver un moyens pour link plusieurs block separer
 x-> link le tout
--> ya une boucle inf quelque pqrt j'arrive pas a la trouver
+x-> ya une boucle inf quelque pqrt j'arrive pas a la trouver
 
 <LEO DEMAIN>
 x -> Clean la mandatory part
@@ -109,8 +109,8 @@ x -> changer le generateur de map
 x -> Setup un start menu
 	-> add seed
 	-> path to map
--> fix la boucle inf dans le generateur
--> Setup les message d'erreur
+x-> fix la boucle inf dans le generateur
 -> reconstruire le projet pour load les map lorsque le bouton play est presse et faire les
 remonter d'erreur sur le screen sans leave le programme
--> fix la boucle inf dans le generatuer de map
+-> Setup les message d'erreur
+-> clean le projet et mieux ranger le tout j'ai fais un peu de la merde
