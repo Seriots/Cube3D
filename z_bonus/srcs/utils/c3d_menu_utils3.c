@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 23:58:22 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/06 21:20:50 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/08 10:36:56 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 
 #include "ft.h"
 #include "mlx.h"
+
+#include <stdio.h>
 
 void	load_path(t_game *game, t_textinput *textinput, char **path)
 {
@@ -49,6 +51,10 @@ void	load_path(t_game *game, t_textinput *textinput, char **path)
 
 char	get_char_from_key(KeySym key, int shift, int caps)
 {
+	const char	base[10] = "7486293150";
+
+	if (key >= 65429 && key <= 65438)
+		return (base[key - 65429]);
 	if (key < 32 || key > 126)
 		return (0);
 	if ((shift && caps) || (!shift && !caps))

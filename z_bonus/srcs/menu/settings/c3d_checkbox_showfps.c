@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 13:11:14 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/06 21:20:50 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/08 11:16:59 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ t_dict	*init_showfps_checkbox(t_game *game)
 	if (!checkbox)
 		return (0);
 	checkbox->box.x = CHECKBOX_START_X;
-	checkbox->box.y = CHECKBOX_START_Y + 2 * MARGE;
+	checkbox->box.y = CHECKBOX_START_Y + 2 * MARGE + 1000;
 	checkbox->modified_value = &game->settings.show_fps;
 	checkbox->is_check = *checkbox->modified_value;
 	checkbox->box.height = 20;

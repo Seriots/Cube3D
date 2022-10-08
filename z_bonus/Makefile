@@ -26,6 +26,7 @@ define SRCS :=
 		game/loop/display/menu/c3d_display_numinput.c
 		game/loop/display/menu/c3d_display_slidebar.c
 		game/loop/display/menu/c3d_display_textinput.c
+		game/loop/display/menu/c3d_display_multichoice.c
 		game/loop/display/menu/c3d_menu_display.c
 		game/loop/display/raycasting/c3d_default_display.c
 		game/loop/display/raycasting/c3d_raycasting_display.c
@@ -38,6 +39,7 @@ define SRCS :=
 		game/loop/update/menu/c3d_draw_button.c
 		game/loop/update/menu/c3d_draw_checkbox.c
 		game/loop/update/menu/c3d_draw_keyinput.c
+		game/loop/update/menu/c3d_draw_multichoice.c
 		game/loop/update/menu/c3d_draw_numinput.c
 		game/loop/update/menu/c3d_draw_scrollbar.c
 		game/loop/update/menu/c3d_draw_slidebar.c
@@ -45,29 +47,30 @@ define SRCS :=
 		game/loop/update/menu/c3d_menu_update.c
 		game/loop/c3d_loop.c
 		game/c3d_start.c
-		menu/c3d_button_exit.c
-		menu/c3d_button_resume.c
-		menu/c3d_checkbox_color.c
-		menu/c3d_checkbox_invertmouse.c
-		menu/c3d_checkbox_invertscroll.c
-		menu/c3d_checkbox_showfps.c
-		menu/c3d_keyinput_backward.c
-		menu/c3d_keyinput_forward.c
-		menu/c3d_keyinput_left.c
-		menu/c3d_keyinput_right.c
-		menu/c3d_numinput_ceil.c
-		menu/c3d_numinput_floor.c
-		menu/c3d_scrollbar.c
-		menu/c3d_slidebar_camspeedx.c
-		menu/c3d_slidebar_camspeedy.c
-		menu/c3d_slidebar_fov.c
-		menu/c3d_slidebar_fps.c
-		menu/c3d_slidebar_resolution.c
-		menu/c3d_slidebar_scrollspeed.c
-		menu/c3d_textinput_east.c
-		menu/c3d_textinput_north.c
-		menu/c3d_textinput_south.c
-		menu/c3d_textinput_west.c
+		menu/settings/c3d_button_exit.c
+		menu/settings/c3d_button_resume.c
+		menu/settings/c3d_checkbox_color.c
+		menu/settings/c3d_checkbox_invertmouse.c
+		menu/settings/c3d_checkbox_invertscroll.c
+		menu/settings/c3d_checkbox_showfps.c
+		menu/settings/c3d_keyinput_backward.c
+		menu/settings/c3d_keyinput_forward.c
+		menu/settings/c3d_keyinput_left.c
+		menu/settings/c3d_keyinput_right.c
+		menu/settings/c3d_multichoice_difficulty.c
+		menu/settings/c3d_numinput_ceil.c
+		menu/settings/c3d_numinput_floor.c
+		menu/settings/c3d_scrollbar.c
+		menu/settings/c3d_slidebar_camspeedx.c
+		menu/settings/c3d_slidebar_camspeedy.c
+		menu/settings/c3d_slidebar_fov.c
+		menu/settings/c3d_slidebar_fps.c
+		menu/settings/c3d_slidebar_resolution.c
+		menu/settings/c3d_slidebar_scrollspeed.c
+		menu/settings/c3d_textinput_east.c
+		menu/settings/c3d_textinput_north.c
+		menu/settings/c3d_textinput_south.c
+		menu/settings/c3d_textinput_west.c
 		parsing/c3d_parsing_check.c
 		parsing/c3d_parsing_readfile.c
 		parsing/c3d_parsing_set.c

@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 14:34:59 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/06 21:20:50 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/08 12:15:51 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ int	display_text(t_game *game)
 			display_textinput_text(game, (t_textinput *)tmp->value);
 		else if (ft_strcmp(tmp->key, NUMINPUT) == 0)
 			display_numinput_text(game, (t_numinput *)tmp->value);
+		else if (ft_strcmp(tmp->key, MULTICHOICE) == 0)
+			display_multichoice_text(game, (t_multichoice *)tmp->value);
 		tmp = tmp->next;
 	}
 	return (0);

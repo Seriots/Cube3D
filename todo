@@ -32,11 +32,10 @@ x -> add scroll with mouse in menu event mouse
 -> add everything to menu
 	x-> quality
 	x -> fps
-	-> generate new map button
 x -> slide bar collide sur bar
--> save file
+x-> activer le keypad pour textinput
 -> set font
--> activer le keypad pour textinput
+-> save file
 
 -> start menu avec choix de le difficulte, level preset ou genere a partir d'une seed
 
@@ -102,5 +101,10 @@ x-> generer une shape
 
 <LEO DEMAIN>
 x -> Clean la mandatory part
-x-> continuer le menu
--> changer le generateur de map
+x -> continuer le menu
+x -> changer le generateur de map
+-> Setup un start menu
+-> Setup les message d'erreur
+-> reconstruire le projet pour load les map lorsque le bouton play est presse et faire les
+remonter d'erreur sur le screen sans leave le programme
+-> fix la boucle inf dans le generatuer de map

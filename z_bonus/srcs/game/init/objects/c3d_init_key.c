@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 14:43:09 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/07 15:13:20 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/08 10:24:41 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 #include "c3d_struct.h"
 #include "c3d_init.h"
+
+#include "dict.h"
 
 int	init_key(t_dict **all_objects, int x, int y)
 {

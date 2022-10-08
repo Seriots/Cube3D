@@ -186,6 +186,16 @@ typedef struct s_slidebar
 	float			*modified_value;
 }	t_slidebar;
 
+typedef struct s_multichoice
+{
+	t_collide_box	box;
+	int				min;
+	int				max;
+	int				current;
+	char			all_values[256][256];
+	int				*modified_value;
+}	t_multichoice;
+
 typedef struct s_checkbox
 {
 	t_collide_box	box;
@@ -251,6 +261,7 @@ typedef struct s_scrollbar
 typedef struct s_menu
 {
 	t_dict	*all_objects;
+	t_dict	*all_errors;
 	int		scroll_amount;
 }	t_menu;
 
@@ -280,6 +291,7 @@ typedef struct s_game
 	t_fct		fcts;
 	t_settings	settings;
 	t_menu		menu;
+	t_menu		start_menu;
 	long		last_frame;
 	long		delay;
 }	t_game;

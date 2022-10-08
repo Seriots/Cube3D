@@ -24,6 +24,7 @@ int	display_keyinput_text(t_game *game, t_keyinput *keyinput);
 int	display_textinput_text(t_game *game, t_textinput *textinput);
 int	display_checkbox_text(t_game *game, t_checkbox *checkbox);
 int	display_numinput_text(t_game *game, t_numinput *numinput);
+int	display_multichoice_text(t_game *game, t_multichoice *multichoice);
 int	menu_display(t_game *game);
 
 /*Update*/
@@ -33,6 +34,7 @@ int	draw_checkbox(t_game *game, t_checkbox *checkbox);
 int	draw_keyinput(t_game *game, t_keyinput *box);
 int	draw_textinput(t_game *game, t_textinput *box);
 int	draw_numinput(t_game *game, t_numinput *box);
+int	draw_multichoice(t_game *game, t_multichoice *box);
 int	draw_scrollbar(t_game *game, t_scrollbar *box);
 int	menu_update(t_game *game);
 
@@ -69,6 +71,7 @@ t_dict	*init_showfps_checkbox(t_game *game);
 t_dict	*init_invertmouse_checkbox(t_game *game);
 t_dict	*init_resolution_slidebar(t_game *game);
 t_dict	*init_fps_slidebar(t_game *game);
+t_dict	*init_multichoice_difficulty(t_game *game);
 
 /*Utils*/
 int	clear_all_other_selected(t_game *game, void *keyinput);
