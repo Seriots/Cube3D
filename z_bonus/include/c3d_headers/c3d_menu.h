@@ -89,8 +89,12 @@ char	get_char_from_key(KeySym key, int shift, int caps);
 void	load_path(t_game *game, t_textinput *textinput, char **path);
 void	init_textinput(t_textinput *textinput);
 void	reset_textinput(t_game *game, t_textinput *textinput);
+void	reset_textinput_start(t_game *game, t_textinput *textinput);
 int		event_enter_textinput(t_game *game, t_textinput *textinput);
+int		event_enter_textinput_start(t_game *game, t_textinput *textinput);
 int		release_cond_textinput(t_game *game,
+		t_textinput *textinput, int x, int y);
+int		release_cond_textinput_start(t_game *game,
 		t_textinput *textinput, int x, int y);
 int	scroll_up(t_game *game);
 int	scroll_down(t_game *game);

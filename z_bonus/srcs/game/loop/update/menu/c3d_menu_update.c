@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 14:42:08 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/08 15:59:11 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/08 21:10:41 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,8 @@ int	draw_all_objects(t_game *game, t_dict *dict)
 			draw_multichoice(game, (t_multichoice *)value);
 		else if (ft_strcmp(tmp->key, SEED) == 0)
 			draw_seed(game, (t_seed *)value);
+		else if (ft_strcmp(tmp->key, TEXTINPUT2) == 0)
+			draw_textinput_start(game, (t_textinput *)value);
 		else if (ft_strcmp(tmp->key, SCROLLBAR) == 0)
 			draw_scrollbar(game, (t_scrollbar *)value);
 		tmp = tmp->next;

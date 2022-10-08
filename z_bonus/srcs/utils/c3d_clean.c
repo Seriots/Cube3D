@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 11:13:57 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/08 14:29:01 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/08 21:45:39 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ void	free_game(t_game *game)
 	mlx_do_key_autorepeaton(game->mlx.display);
 	if (HIDE)
 		mlx_mouse_show(game->mlx.display, game->mlx.window);
+	free(game->settings.map_path);
 	free_map(&game->map);
 	free_images(game);
 	free_menu(&game->menu);

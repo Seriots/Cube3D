@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 14:54:12 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/06 21:20:50 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/08 23:19:25 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,5 +56,21 @@ int	display_textinput_text(t_game *game, t_textinput *textinput)
 			(WIN_HEIGHT / 2) - (MENU_HEIGHT / 2)
 			+ textinput->box.y_text + game->menu.scroll_amount,
 			0xAAAAAA, get_reduce_path(path, textinput));
+	return (0);
+}
+
+int	display_textinput_text_start(t_game *game, t_textinput *textinput)
+{
+	char	path[256];
+
+	path[0] = 0;
+	mlx_string_put(game->mlx.display, game->mlx.window,
+		textinput->box.x_text,
+		textinput->box.y_text + game->menu.scroll_amount,
+		0xAAAAAA, textinput->box.description);
+	mlx_string_put(game->mlx.display, game->mlx.window,
+		textinput->box.x + 5,
+		textinput->box.y_text + game->menu.scroll_amount,
+		0xAAAAAA, get_reduce_path(path, textinput));
 	return (0);
 }

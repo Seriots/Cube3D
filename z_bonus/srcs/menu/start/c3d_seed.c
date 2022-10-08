@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 15:21:16 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/08 16:38:56 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/08 23:20:17 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,9 +112,9 @@ t_dict	*init_seed(t_game *game)
 		return (0);
 	seed->box.height = 24;
 	seed->box.width = 200;
-	seed->box.x = 200;
-	seed->box.y = 50;
-	seed->box.x_text = seed->box.x - 100;
+	seed->box.x = 1000;
+	seed->box.y = WIN_HEIGHT - 100;
+	seed->box.x_text = seed->box.x - 50;
 	seed->box.y_text = seed->box.y + 16;
 	ft_strlcpy(seed->box.font, FONT, ft_strlen(FONT));
 	ft_strlcpy(seed->box.description, "Seed", 5);

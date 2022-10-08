@@ -6,15 +6,19 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 10:36:50 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/08 15:43:59 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/08 22:04:29 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "c3d_struct.h"
 #include "c3d_settings.h"
 #include "c3d_menu.h"
+#include "c3d_startscreen.h"
 
 #include "mlx.h"
+#include "ft.h"
+
+#include <stdlib.h>
 
 int	event_enter_textinput(t_game *game, t_textinput *textinput)
 {
@@ -23,6 +27,25 @@ int	event_enter_textinput(t_game *game, t_textinput *textinput)
 	game->fcts.keyreleased_fct = menu_key_release;
 	textinput->is_selected = 0;
 	textinput->start_display = 0;
+	return (0);
+}
+
+int	event_enter_textinput_start(t_game *game, t_textinput *textinput)
+{
+	char	*path;
+
+	game->fcts.keypressed_fct = startscreen_key_press;
+	game->fcts.keyreleased_fct = startscreen_key_release;
+	textinput->is_selected = 0;
+	textinput->start_display = 0;
+	path = ft_strdup(textinput->path);
+	if (!path)
+		ft_strlcpy(textinput->path, *textinput->modified_path, 256);
+	else
+	{
+		free(*textinput->modified_path);
+		*textinput->modified_path = path;
+	}
 	return (0);
 }
 

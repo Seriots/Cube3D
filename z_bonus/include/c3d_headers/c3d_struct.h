@@ -229,6 +229,23 @@ typedef struct s_textinput
 	char			path[256];
 }	t_textinput;
 
+typedef struct s_mapinput
+{
+	t_collide_box	box;
+	int				shift;
+	int				caps_lock;
+	bool			is_selected;
+	int				size;
+	int				max_size;
+	t_img_data		*modified_value;
+	char			**modified_path;
+	int				max_char_display;
+	int				start_display;
+	char			path[256];
+	char			*map_path;
+	int				use_map_path;
+}	t_mapinput;
+
 typedef struct s_numbox
 {
 	int	x;

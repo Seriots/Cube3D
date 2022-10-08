@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 13:11:55 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/06 21:20:50 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/08 21:36:11 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,14 @@
 
 #include "mlx.h"
 
-int	start_game(t_game *game)
+int	start_game(t_game *game, char *path)
 {
 	int	error;
 
 	error = init_mlx(game);
 	if (error)
 		return (error);
-	error = init_game(game, 1);
+	error = init_game(game, path, 1);
 	if (error)
 		return (error);
 	mlx_loop(game->mlx.display);

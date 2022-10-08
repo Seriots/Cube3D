@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 10:54:10 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/08 13:17:19 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/08 22:59:01 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,16 +73,13 @@ int	draw_multichoice(t_game *game, t_multichoice *box)
 		x = box->box.x;
 		while (x < box->box.x + box->box.width)
 		{
-			if (y >= 0 && y < MENU_HEIGHT - (15 * MENU_HEIGHT / 100))
-			{
-				if (x - box->box.x <= box->box.width / 8)
-					draw_first_triangle(game, box, x, y);
-				else if (x - box->box.x >= 7 * box->box.width / 8)
-					draw_second_triangle(game, box, x, y);
-				else if (x - box->box.x > 3 * box->box.width / 16
-					&& x - box->box.x < 13 * box->box.width / 16)
-					is_border(game, box, x, y);
-			}
+			if (x - box->box.x <= box->box.width / 8)
+				draw_first_triangle(game, box, x, y);
+			else if (x - box->box.x >= 7 * box->box.width / 8)
+				draw_second_triangle(game, box, x, y);
+			else if (x - box->box.x > 3 * box->box.width / 16
+				&& x - box->box.x < 13 * box->box.width / 16)
+				is_border(game, box, x, y);
 			x++;
 		}
 		y++;

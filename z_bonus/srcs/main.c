@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 14:46:35 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/07 17:45:28 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/08 23:17:20 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ int	main(int argc, char *argv[])
 		return (display_error(1));
 	if (argc == 2)
 	{
+		game.map.all_objects = 0;
 		error = parsing(&(game.map), argv[argc - 1]);
 		if (error)
 			return (free_map(&game.map), display_error(error));
@@ -39,7 +40,7 @@ int	main(int argc, char *argv[])
 		if (error)
 			return (free_map(&game.map), display_error(error));
 	}
-	error = start_game(&game);
+	error = start_game(&game, argv[1]);
 	if (error)
 		return (free_game(&game), display_error(error));
 	return (free_game(&game), 0);

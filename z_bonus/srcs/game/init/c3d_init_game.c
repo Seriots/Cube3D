@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 13:17:26 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/08 16:16:08 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/08 21:35:22 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,15 @@
 #include "c3d_utils.h"
 #include "c3d_startscreen.h"
 
+#include "ft.h"
+
 static int	set_default_fcts(t_game *game)
 {
 	load_startscreen(game);
 	return (0);
 }
 
-static int	set_default_settings(t_game *game)
+static int	set_default_settings(t_game *game, char *path)
 {
 	game->settings.fps = FPS;
 	game->settings.fov = FOV;
@@ -47,7 +49,12 @@ static int	set_default_settings(t_game *game)
 	game->settings.show_fps = 0;
 	game->settings.seed = 0;
 	game->settings.difficulty = 0;
-	game->settings.map_path = NULL;
+	if (path)
+		game->settings.map_path = ft_strdup(path);
+	else
+		game->settings.map_path = NULL;
+	if (path && !game->settings.map_path)
+		return (10);
 	return (0);
 }
 
@@ -64,15 +71,16 @@ static int	set_variable(t_game *game)
 	return (0);
 }
 
-int	init_game(t_game *game, int first)
+int	init_game(t_game *game, char *path, int first)
 {
 	int	error;
 
-	if (first)
-		set_default_fcts(game);
-	if (first)
-		set_default_settings(game);
+	(void)first;
 	set_variable(game);
+	set_default_fcts(game);
+	error = set_default_settings(game, path);
+	if (error)
+		return (error);
 	error = init_player(game);
 	if (error)
 		return (error);
