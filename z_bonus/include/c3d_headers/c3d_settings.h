@@ -27,6 +27,7 @@
 # define BORDER_SIZE 5
 
 # define BUTTON "BUTTON"
+# define BUTTON2 "BUTTON2"
 # define SLIDEBAR "SLIDEBAR"
 # define CHECKBOX "CHECKBOX"
 # define KEYINPUT "KEYINPUT"

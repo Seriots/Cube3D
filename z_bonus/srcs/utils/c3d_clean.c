@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 11:13:57 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/07 17:58:31 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/08 14:29:01 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ void	free_game(t_game *game)
 	free_map(&game->map);
 	free_images(game);
 	free_menu(&game->menu);
+	free_menu(&game->start_menu);
 	mlx_destroy_window(game->mlx.display, game->mlx.window);
 	mlx_destroy_display(game->mlx.display);
 	free(game->mlx.display);

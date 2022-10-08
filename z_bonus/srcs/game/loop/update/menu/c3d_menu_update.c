@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 14:42:08 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/08 10:54:48 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/08 14:04:23 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "c3d_loop.h"
 #include "c3d_settings.h"
 #include "c3d_menu.h"
+#include "c3d_startscreen.h"
 
 #include "ft.h"
 
@@ -67,17 +68,19 @@ int	make_background(t_game *game)
 	return (0);
 }
 
-int	draw_all_objects(t_game *game)
+int	draw_all_objects(t_game *game, t_dict *dict)
 {
 	t_dict	*tmp;
 	void	*value;
 
-	tmp = game->menu.all_objects;
+	tmp = dict;
 	while (tmp)
 	{
 		value = tmp->value;
 		if (ft_strcmp(tmp->key, BUTTON) == 0)
 			draw_button(game, (t_button *)value);
+		if (ft_strcmp(tmp->key, BUTTON2) == 0)
+			draw_button_start(game, (t_button *)value);
 		else if (ft_strcmp(tmp->key, SLIDEBAR) == 0)
 			draw_slidebar(game, (t_slidebar *)value);
 		else if (ft_strcmp(tmp->key, CHECKBOX) == 0)
@@ -100,7 +103,7 @@ int	draw_all_objects(t_game *game)
 int	menu_update(t_game *game)
 {
 	make_background(game);
-	draw_all_objects(game);
+	draw_all_objects(game, game->menu.all_objects);
 	make_border(game);
 	return (0);
 }

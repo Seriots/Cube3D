@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 23:58:22 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/08 10:36:56 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/08 14:15:13 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,6 @@ void	reset_textinput(t_game *game, t_textinput *textinput)
 	textinput->start_display = 0;
 	textinput->shift = 0;
 	textinput->caps_lock = 0;
-	mlx_do_key_autorepeatoff(game->mlx.display);
 }
 
 int	release_cond_textinput(t_game *game, t_textinput *textinput, int x, int y)

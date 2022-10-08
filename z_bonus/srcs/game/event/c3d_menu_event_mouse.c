@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 15:03:03 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/06 21:20:50 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/08 13:42:27 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,12 @@
 
 #include <stdio.h>
 
-int	check_all_objects_press(t_game *game, int x, int y)
+int	check_all_objects_press(t_game *game, int x, int y, t_dict *dict)
 {
 	t_dict			*tmp;
 	t_collide_box	*box;
 	
-	tmp = game->menu.all_objects;
+	tmp = dict;
 	while (tmp)
 	{
 		box = tmp->value;
@@ -58,12 +58,12 @@ int	check_all_objects_press(t_game *game, int x, int y)
 	return (0);
 }
 
-int	check_all_objects_release(t_game *game, int x, int y)
+int	check_all_objects_release(t_game *game, int x, int y, t_dict *dict)
 {
 	t_dict			*tmp;
 	t_collide_box	*box;
 	
-	tmp = game->menu.all_objects;
+	tmp = dict;
 	while (tmp)
 	{
 		box = tmp->value;
@@ -84,7 +84,7 @@ int	check_all_objects_release(t_game *game, int x, int y)
 int	menu_mouse_press(int button, int x, int y, t_game *game)
 {
 	if (button == 1)
-		check_all_objects_press(game, x, y);
+		check_all_objects_press(game, x, y, game->menu.all_objects);
 	return (0);
 }
 
@@ -93,7 +93,7 @@ int	menu_mouse_release(int button, int x, int y, t_game *game)
 	if (button == 3)
 		close_window(game);
 	else if (button == 1)
-		check_all_objects_release(game, x, y);
+		check_all_objects_release(game, x, y, game->menu.all_objects);
 	else if ((button == 4 && !game->settings.invert_scroll)
 		|| (button == 5 && game->settings.invert_scroll))
 		scroll_up(game);

@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 13:17:26 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/06 21:20:50 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/08 14:27:55 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,11 @@
 #include "c3d_loop.h"
 #include "c3d_settings.h"
 #include "c3d_utils.h"
+#include "c3d_startscreen.h"
 
 static int	set_default_fcts(t_game *game)
 {
-	game->fcts.update_fct = default_update;
-	game->fcts.display_fct = default_display;
-	game->fcts.keypressed_fct = default_key_press;
-	game->fcts.keyreleased_fct = default_key_release;
-	game->fcts.mousepressed_fct = default_mouse_press;
-	game->fcts.mousereleased_fct = default_mouse_release;
-	game->fcts.mousemove_fct = default_mouse_move;
+	load_startscreen(game);
 	return (0);
 }
 
@@ -58,6 +53,7 @@ static int	set_variable(t_game *game)
 	game->last_frame = timestamp_msec(0);
 	game->delay = 0;
 	game->menu.all_objects = 0;
+	game->start_menu.all_objects = 0;
 	game->all_img.menu_img.img = NULL;
 	game->all_img.screen_img.img = NULL;
 	game->all_img.minimap_img.img = NULL;

@@ -1,32 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   c3d_default_update.c                               :+:      :+:    :+:   */
+/*   c3d_startscreen_event.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/26 13:42:48 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/08 14:19:55 by lgiband          ###   ########.fr       */
+/*   Created: 2022/10/08 13:25:48 by lgiband           #+#    #+#             */
+/*   Updated: 2022/10/08 13:27:08 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "c3d_struct.h"
-#include "c3d_loop.h"
-#include "c3d_event.h"
 
-int	default_update(t_game *game)
+#include <X11/keysym.h>
+
+int	startscreen_key_press(KeySym keycode, t_game *game)
 {
-	static int	i;
+	(void)keycode;
+	(void)game;
+	return (0);
+}
 
-	if (i == 100)
-		game->fcts.mousemove_fct = NULL;
-	if (i == 101)
-	{
-		i = 0;
-		game->fcts.mousemove_fct = default_mouse_move;
-	}
-	update_player(game);
-	update_minimap(game);
-	i++;
+int	startscreen_key_release(KeySym keycode, t_game *game)
+{
+	(void)keycode;
+	(void)game;
 	return (0);
 }

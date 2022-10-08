@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 14:34:59 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/08 12:15:51 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/08 14:24:41 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "c3d_settings.h"
 #include "c3d_loop.h"
 #include "c3d_menu.h"
+#include "c3d_startscreen.h"
 
 #include "dict.h"
 #include "ft.h"
@@ -22,15 +23,17 @@
 
 #include <stdio.h>
 
-int	display_text(t_game *game)
+int	display_text(t_game *game, t_dict *dict)
 {
 	t_dict			*tmp;
 
-	tmp = game->menu.all_objects;
+	tmp = dict;
 	while (tmp)
 	{
 		if (ft_strcmp(tmp->key, BUTTON) == 0)
 			display_button_text(game, (t_button *)tmp->value);
+		if (ft_strcmp(tmp->key, BUTTON2) == 0)
+			display_button_text_start(game, (t_button *)tmp->value);
 		else if (ft_strcmp(tmp->key, SLIDEBAR) == 0)
 			display_slidebar_text(game, (t_slidebar *)tmp->value);
 		else if (ft_strcmp(tmp->key, CHECKBOX) == 0)
@@ -51,14 +54,13 @@ int	display_text(t_game *game)
 int	menu_display(t_game *game)
 {
 	my_mlx_put_image_to_window(
-		game,
-		&game->all_img.menu_img,
+		game, &game->all_img.menu_img,
 		WIN_WIDTH / 2 - MENU_WIDTH / 2,
-		WIN_HEIGHT / 2 - MENU_HEIGHT / 2
-		);
+		WIN_HEIGHT / 2 - MENU_HEIGHT / 2);
+
 	mlx_put_image_to_window(game->mlx.display, game->mlx.window,
 		game->all_img.screen_img.img, 0, 0);
-	display_text(game);
+	display_text(game, game->menu.all_objects);
 	if (game->settings.show_fps)
 		show_fps(game);
 	return (0);

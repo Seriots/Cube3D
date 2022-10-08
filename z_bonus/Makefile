@@ -11,7 +11,8 @@ define SRCS :=
 		game/event/c3d_event.c
 		game/event/c3d_menu_event_mouse.c
 		game/event/c3d_menu_event.c
-		game/event/c3d_openclose_menu.c
+		game/event/c3d_startscreen_event_mouse.c
+		game/event/c3d_startscreen_event.c
 		game/init/objects/c3d_obj_init.c
 		game/init/objects/c3d_init_key.c
 		game/init/c3d_init_game.c
@@ -20,6 +21,7 @@ define SRCS :=
 		game/init/c3d_init_mlx.c
 		game/init/c3d_init_player.c
 		game/init/c3d_init_textures.c
+		game/init/c3d_load_screen.c
 		game/loop/display/menu/c3d_display_button.c
 		game/loop/display/menu/c3d_display_checkbox.c
 		game/loop/display/menu/c3d_display_keyinput.c
@@ -28,6 +30,7 @@ define SRCS :=
 		game/loop/display/menu/c3d_display_textinput.c
 		game/loop/display/menu/c3d_display_multichoice.c
 		game/loop/display/menu/c3d_menu_display.c
+		game/loop/display/start_screen/c3d_startscreen_display.c
 		game/loop/display/raycasting/c3d_default_display.c
 		game/loop/display/raycasting/c3d_raycasting_display.c
 		game/loop/display/raycasting/c3d_raycasting_getwall.c
@@ -45,6 +48,7 @@ define SRCS :=
 		game/loop/update/menu/c3d_draw_slidebar.c
 		game/loop/update/menu/c3d_draw_textinput.c
 		game/loop/update/menu/c3d_menu_update.c
+		game/loop/update/start_screen/c3d_startscreen_update.c
 		game/loop/c3d_loop.c
 		game/c3d_start.c
 		menu/settings/c3d_button_exit.c
@@ -57,7 +61,6 @@ define SRCS :=
 		menu/settings/c3d_keyinput_forward.c
 		menu/settings/c3d_keyinput_left.c
 		menu/settings/c3d_keyinput_right.c
-		menu/settings/c3d_multichoice_difficulty.c
 		menu/settings/c3d_numinput_ceil.c
 		menu/settings/c3d_numinput_floor.c
 		menu/settings/c3d_scrollbar.c
@@ -71,6 +74,9 @@ define SRCS :=
 		menu/settings/c3d_textinput_north.c
 		menu/settings/c3d_textinput_south.c
 		menu/settings/c3d_textinput_west.c
+		menu/start/c3d_multichoice_difficulty.c
+		menu/start/c3d_button_quit.c
+		menu/start/c3d_button_play.c
 		parsing/c3d_parsing_check.c
 		parsing/c3d_parsing_readfile.c
 		parsing/c3d_parsing_set.c

@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 10:43:52 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/08 12:35:23 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/08 13:05:59 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	multichoice_press(int button, int x, int y, t_game *game)
 	(void)y;
 	if (button == 1)
 	{
-		multichoice = dict_getelem_number(game->menu.all_objects, 22)->value;
+		multichoice = dict_getelem_number(game->start_menu.all_objects, 0)->value;
 		if (x <= (WIN_WIDTH / 2) - (MENU_WIDTH / 2) + multichoice->box.x + multichoice->box.width / 8)
 			multichoice->current--;
 		else if (x >= (WIN_WIDTH / 2) - (MENU_WIDTH / 2)
@@ -59,7 +59,7 @@ t_dict	*init_multichoice_difficulty(t_game *game)
 	multichoice->box.height = 24;
 	multichoice->box.width = 200;
 	multichoice->box.x = KEYINPUT_START_X;
-	multichoice->box.y = 600;
+	multichoice->box.y = 200;
 	multichoice->box.x_text = multichoice->box.x - 100;
 	multichoice->box.y_text = multichoice->box.y + 17;
 	ft_strlcpy(multichoice->box.description, "Difficulty", 11);

@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 14:25:01 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/06 21:20:50 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/08 14:14:51 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,8 +87,7 @@ int	north_release(int button, int x, int y, t_game *game)
 			textinput->start_display = textinput->size;
 			game->fcts.keypressed_fct = north_keypress;
 			game->fcts.keyreleased_fct = north_keyrelease;
-			mlx_do_key_autorepeaton(game->mlx.display);
-			clear_all_other_selected(game, textinput);
+			clear_all_other_selected(game, textinput, game->menu.all_objects);
 		}
 		else
 			reset_textinput(game, textinput);

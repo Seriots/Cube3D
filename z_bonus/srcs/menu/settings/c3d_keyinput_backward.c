@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 10:59:41 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/06 21:20:50 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/08 13:51:21 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ int	backward_release(int button, int x, int y, t_game *game)
 		{
 			game->fcts.keypressed_fct = backward_keypress;
 			game->fcts.keyreleased_fct = backward_keyrelease;
-			clear_all_other_selected(game, keyinput);
+			clear_all_other_selected(game, keyinput, game->menu.all_objects);
 		}
 		if (!keyinput->is_selected)
 			reset_key_event(game);

@@ -33,10 +33,12 @@ x -> add scroll with mouse in menu event mouse
 	x-> quality
 	x -> fps
 x -> slide bar collide sur bar
-x-> activer le keypad pour textinput
+x -> activer le keypad pour textinput
+x -> add multichoice
 -> set font
 -> save file
 
+-> faire une fonction update et display associe a chaque object des menu
 -> start menu avec choix de le difficulte, level preset ou genere a partir d'une seed
 
 <BONUS>
@@ -97,13 +99,17 @@ x-> generer une shape
 	x-> generer une map de x * y, choisir z point dans le tableau
 	x-> faire grossir les points jusqua quil rencontre un autre objet 
 	x-> trouver un moyens pour link plusieurs block separer
--> link le tout
+x-> link le tout
+-> ya une boucle inf quelque pqrt j'arrive pas a la trouver
 
 <LEO DEMAIN>
 x -> Clean la mandatory part
 x -> continuer le menu
 x -> changer le generateur de map
--> Setup un start menu
+x -> Setup un start menu
+	-> add seed
+	-> path to map
+-> fix la boucle inf dans le generateur
 -> Setup les message d'erreur
 -> reconstruire le projet pour load les map lorsque le bouton play est presse et faire les
 remonter d'erreur sur le screen sans leave le programme

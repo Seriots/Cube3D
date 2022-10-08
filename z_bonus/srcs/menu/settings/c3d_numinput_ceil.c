@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 11:30:54 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/06 21:20:50 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/08 14:14:38 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,8 +81,7 @@ int	ceil_release(int button, int x, int y, t_game *game)
 		{
 			game->fcts.keypressed_fct = ceil_keypress;
 			game->fcts.keyreleased_fct = ceil_keyrelease;
-			mlx_do_key_autorepeaton(game->mlx.display);
-			clear_all_other_selected(game, numinput);
+			clear_all_other_selected(game, numinput, game->menu.all_objects);
 		}
 		if (!numinput->is_selected)
 			reset_key_event_num(game, numinput);

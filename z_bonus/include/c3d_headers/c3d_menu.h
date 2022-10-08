@@ -46,6 +46,8 @@ int	menu_mouse_release(int button, int x, int y, t_game *game);
 int	menu_mouse_press(int button, int x, int y, t_game *game);
 int	menu_key_release(KeySym keycode, t_game *game);
 int	menu_key_press(KeySym keycode, t_game *game);
+int	check_all_objects_press(t_game *game, int x, int y, t_dict *dict);
+int	check_all_objects_release(t_game *game, int x, int y, t_dict *dict);
 
 /*Init*/
 t_dict	*init_exit_button(t_game *game);
@@ -71,10 +73,9 @@ t_dict	*init_showfps_checkbox(t_game *game);
 t_dict	*init_invertmouse_checkbox(t_game *game);
 t_dict	*init_resolution_slidebar(t_game *game);
 t_dict	*init_fps_slidebar(t_game *game);
-t_dict	*init_multichoice_difficulty(t_game *game);
 
 /*Utils*/
-int	clear_all_other_selected(t_game *game, void *keyinput);
+int	clear_all_other_selected(t_game *game, void *keyinput, t_dict *dict);
 int	get_key_color(t_game *game, KeySym *key);
 int	update_key_color(t_game *game, t_menu *menu);
 int	edit_rgb(t_numinput *numinput);

@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 13:09:29 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/06 21:20:50 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/08 13:51:13 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include "c3d_settings.h"
 #include "c3d_menu.h"
 #include "c3d_utils.h"
+#include "c3d_init.h"
 
 #include "ft.h"
 #include "dict.h"
@@ -30,10 +31,10 @@ int	resume_event(int button, int x, int y, t_game *game)
 	if (button == 1)
 	{
 		scrollbar = dict_getelem_key(game->menu.all_objects, SCROLLBAR)->value;
-		close_menu(game);
+		load_default(game);
 		game->menu.scroll_amount = 0;
 		scrollbar->box.y = scrollbar->min;
-		clear_all_other_selected(game, NULL);
+		clear_all_other_selected(game, NULL, game->menu.all_objects);
 	}
 	return (0);
 }

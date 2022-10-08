@@ -261,7 +261,6 @@ typedef struct s_scrollbar
 typedef struct s_menu
 {
 	t_dict	*all_objects;
-	t_dict	*all_errors;
 	int		scroll_amount;
 }	t_menu;
 

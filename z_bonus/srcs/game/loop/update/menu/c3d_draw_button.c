@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 21:04:21 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/06 21:20:50 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/08 14:00:31 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,31 @@ int	draw_button(t_game *game, t_button *box)
 				my_mlx_pixel_put(&game->all_img.menu_img, x, y, 0xAAAAAA);
 			else
 				my_mlx_pixel_put(&game->all_img.menu_img, x, y, 0x111111);
+			x++;
+		}
+		y++;
+	}
+	return (0);
+}
+
+int	draw_button_start(t_game *game, t_button *box)
+{
+	int	x;
+	int	y;
+
+	y = box->box.y;
+	while (y < box->box.y + box->box.height)
+	{
+		x = box->box.x;
+		while (x < box->box.x + box->box.width)
+		{
+			if (x < box->box.x + BORDER_SIZE
+				|| x > box->box.x + box->box.width - BORDER_SIZE
+				|| y < box->box.y + BORDER_SIZE
+				|| y > box->box.y + box->box.height - BORDER_SIZE)
+				my_mlx_pixel_put(&game->all_img.screen_img, x, y, 0xAAAAAA);
+			else
+				my_mlx_pixel_put(&game->all_img.screen_img, x, y, 0x111111);
 			x++;
 		}
 		y++;

@@ -1,32 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   c3d_default_update.c                               :+:      :+:    :+:   */
+/*   c3d_startscreen_display.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/26 13:42:48 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/08 14:19:55 by lgiband          ###   ########.fr       */
+/*   Created: 2022/10/08 12:49:56 by lgiband           #+#    #+#             */
+/*   Updated: 2022/10/08 14:25:23 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "c3d_struct.h"
 #include "c3d_loop.h"
-#include "c3d_event.h"
+#include "c3d_settings.h"
 
-int	default_update(t_game *game)
+#include "mlx.h"
+
+int	startscreen_display(t_game *game)
 {
-	static int	i;
-
-	if (i == 100)
-		game->fcts.mousemove_fct = NULL;
-	if (i == 101)
-	{
-		i = 0;
-		game->fcts.mousemove_fct = default_mouse_move;
-	}
-	update_player(game);
-	update_minimap(game);
-	i++;
+	mlx_put_image_to_window(game->mlx.display, game->mlx.window,
+		game->all_img.screen_img.img, 0, 0);
+	display_text(game, game->start_menu.all_objects);
 	return (0);
 }

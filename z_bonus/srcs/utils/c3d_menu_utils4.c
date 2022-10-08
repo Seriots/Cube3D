@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 10:36:50 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/06 21:20:50 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/08 14:15:16 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ int	event_enter_textinput(t_game *game, t_textinput *textinput)
 	game->fcts.keyreleased_fct = menu_key_release;
 	textinput->is_selected = 0;
 	textinput->start_display = 0;
-	mlx_do_key_autorepeatoff(game->mlx.display);
 	return (0);
 }
 

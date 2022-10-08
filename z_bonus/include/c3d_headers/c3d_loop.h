@@ -15,6 +15,10 @@
 
 # include "c3d_struct.h"
 
+/*Menuing*/
+int	draw_all_objects(t_game *game, t_dict *dict);
+int	display_text(t_game *game, t_dict *dict);
+
 /*Ray Casting*/
 int		intersect_wall(t_game *game, t_vector ray, t_wall *wall);
 int		display_wall(t_game *game, t_wall *wall, int i);

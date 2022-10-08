@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 13:04:03 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/06 21:20:50 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/08 14:15:06 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,12 @@
 #include "ft.h"
 #include "mlx.h"
 
-int	clear_all_other_selected(t_game *game, void *keyinput)
+int	clear_all_other_selected(t_game *game, void *keyinput, t_dict *dict)
 {
 	t_dict	*tmp;
 
-	tmp = game->menu.all_objects;
+	(void)game;
+	tmp = dict;
 	while (tmp)
 	{
 		if (tmp->value != keyinput && ft_strcmp(tmp->key, KEYINPUT) == 0)
@@ -85,6 +86,5 @@ int	reset_key_event_num(t_game *game, t_numinput *numinput)
 	game->fcts.keypressed_fct = menu_key_press;
 	game->fcts.keyreleased_fct = menu_key_release;
 	numinput->is_selected = 0;
-	mlx_do_key_autorepeatoff(game->mlx.display);
 	return (0);
 }
