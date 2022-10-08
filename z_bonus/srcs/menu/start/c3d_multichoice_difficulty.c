@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 10:43:52 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/08 13:05:59 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/08 15:20:01 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,15 @@ int	multichoice_press(int button, int x, int y, t_game *game)
 	if (button == 1)
 	{
 		multichoice = dict_getelem_number(game->start_menu.all_objects, 0)->value;
-		if (x <= (WIN_WIDTH / 2) - (MENU_WIDTH / 2) + multichoice->box.x + multichoice->box.width / 8)
+		if (x <= multichoice->box.x + multichoice->box.width / 8)
 			multichoice->current--;
-		else if (x >= (WIN_WIDTH / 2) - (MENU_WIDTH / 2)
-			+ multichoice->box.x + 7 * multichoice->box.width / 8)
+		else if (x >= multichoice->box.x + 7 * (multichoice->box.width / 8))
 			multichoice->current++;
 		if (multichoice->current < 0)
 			multichoice->current = multichoice->current = multichoice->max;
 		else if (multichoice->current > multichoice->max)
 			multichoice->current = 0;
+		*multichoice->modified_value = multichoice->current;
 	}
 	return (0);
 }
@@ -46,7 +46,6 @@ t_dict	*init_multichoice_difficulty(t_game *game)
 	t_multichoice	*multichoice;
 	t_dict		*obj;
 
-	(void)game;
 	multichoice = malloc(sizeof(t_multichoice));
 	if (!multichoice)
 		return (0);
@@ -66,7 +65,7 @@ t_dict	*init_multichoice_difficulty(t_game *game)
 	ft_strlcpy(multichoice->box.font, FONT, ft_strlen(FONT));
 	multichoice->box.mouse_press = multichoice_press;
 	multichoice->box.mouse_release = NULL;
-	multichoice->modified_value = NULL;
+	multichoice->modified_value = &game->settings.difficulty;
 	obj = dict_new(MULTICHOICE, multichoice);
 	if (!obj)
 		return (free(multichoice), (void *)0);

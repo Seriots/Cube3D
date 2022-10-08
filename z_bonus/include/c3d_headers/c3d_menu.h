@@ -94,5 +94,6 @@ int		release_cond_textinput(t_game *game,
 		t_textinput *textinput, int x, int y);
 int	scroll_up(t_game *game);
 int	scroll_down(t_game *game);
+int	add_number_seed(t_seed *seed, int keyint);
 
 #endif

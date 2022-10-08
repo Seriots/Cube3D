@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 12:56:26 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/08 14:02:41 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/08 15:58:16 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,15 @@ int	startscreen_key_press(KeySym keycode, t_game *game);
 
 /*Update*/
 int	draw_button_start(t_game *game, t_button *box);
+int	draw_seed(t_game *game, t_seed *box);
 
 /*Display*/
+int	display_seed_text(t_game *game, t_seed *seed);
 int	display_button_text_start(t_game *game, t_button *button);
 
 /*Init*/
 t_dict	*init_play_button(t_game *game);
 t_dict	*init_quit_button(t_game *game);
 t_dict	*init_multichoice_difficulty(t_game *game);
+t_dict	*init_seed(t_game *game);
 #endif

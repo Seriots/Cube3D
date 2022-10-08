@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 13:17:26 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/08 14:27:55 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/08 16:16:08 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,9 @@ static int	set_default_settings(t_game *game)
 	game->settings.invert_scroll = 0;
 	game->settings.invert_mouse = 0;
 	game->settings.show_fps = 0;
+	game->settings.seed = 0;
+	game->settings.difficulty = 0;
+	game->settings.map_path = NULL;
 	return (0);
 }
 

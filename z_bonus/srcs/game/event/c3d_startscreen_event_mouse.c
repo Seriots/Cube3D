@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 13:27:27 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/08 13:42:38 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/08 16:07:01 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,16 +35,6 @@ int	check_all_objects_press_start(t_game *game, int x, int y, t_dict *dict)
 			if (box->mouse_press)
 				box->mouse_press(1, x, y, game);
 			break ;
-		}
-		else if (ft_strcmp(tmp->key, SCROLLBAR) == 0)
-		{
-			if (x >= box->x && x <= box->x + box->width
-				&& y >= box->y && y <= box->y + box->height)
-			{
-				if (box->mouse_press)
-					box->mouse_press(1, x, y, game);
-				break ;
-			}
 		}
 		tmp = tmp->next;
 	}

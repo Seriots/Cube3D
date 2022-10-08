@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 19:57:28 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/10/04 15:00:28 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/08 16:35:24 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,19 @@ int	ft_size_int(int n)
 	size = 1;
 	if (n < 0)
 		size++;
+	while (n / 10 != 0)
+	{
+		n /= 10;
+		size++;
+	}
+	return (size);
+}
+
+int	ft_size_long(unsigned long n)
+{
+	int	size;
+
+	size = 1;
 	while (n / 10 != 0)
 	{
 		n /= 10;
@@ -74,3 +87,20 @@ char	*ft_itoa_noalloc(char dst[32], int n)
 		dst[0] = '-';
 	return (dst);
 }
+
+char	*ft_itoal_noalloc(char dst[32], unsigned long n)
+{
+	int		i;
+
+	i = ft_size_long(n);
+	if (i > 31)
+		return (0);
+	dst[i] = '\0';
+	while (--i >= 0)
+	{
+		dst[i] = '0' + n % 10;
+		n /= 10;
+	}
+	return (dst);
+}
+

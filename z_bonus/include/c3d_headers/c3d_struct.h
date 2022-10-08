@@ -73,23 +73,26 @@ typedef struct s_wall
 
 typedef struct s_settings
 {
-	float	fov;
-	float	cam_sensibility_x;
-	float	cam_sensibility_y;
-	float	resolution;
-	float	fps;
-	float	scroll_speed;
-	KeySym	left;
-	KeySym	right;
-	KeySym	forward;
-	KeySym	backward;
-	KeySym	turn_left;
-	KeySym	turn_right;
-	KeySym	pause;
-	bool	color;
-	bool	invert_scroll;
-	bool	invert_mouse;
-	bool	show_fps;
+	float			fov;
+	float			cam_sensibility_x;
+	float			cam_sensibility_y;
+	float			resolution;
+	float			fps;
+	float			scroll_speed;
+	KeySym			left;
+	KeySym			right;
+	KeySym			forward;
+	KeySym			backward;
+	KeySym			turn_left;
+	KeySym			turn_right;
+	KeySym			pause;
+	bool			color;
+	bool			invert_scroll;
+	bool			invert_mouse;
+	bool			show_fps;
+	int				difficulty;
+	char			*map_path;
+	unsigned long	seed;
 }	t_settings;
 
 typedef struct s_door
@@ -245,6 +248,14 @@ typedef struct s_numtinput
 	int				*modified_value;
 	int				press_case;
 }	t_numinput;
+
+typedef struct s_seed
+{
+	t_collide_box	box;
+	int				is_selected;
+	unsigned long	tmp_value;
+	unsigned long	*modified_value;
+}	t_seed;
 
 typedef struct s_scrollbar
 {

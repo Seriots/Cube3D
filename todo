@@ -32,6 +32,7 @@ x -> add scroll with mouse in menu event mouse
 -> add everything to menu
 	x-> quality
 	x -> fps
+	-> show mininmap
 x -> slide bar collide sur bar
 x -> activer le keypad pour textinput
 x -> add multichoice
@@ -107,7 +108,7 @@ x -> Clean la mandatory part
 x -> continuer le menu
 x -> changer le generateur de map
 x -> Setup un start menu
-	-> add seed
+	x -> add seed
 	-> path to map
 x-> fix la boucle inf dans le generateur
 -> reconstruire le projet pour load les map lorsque le bouton play est presse et faire les

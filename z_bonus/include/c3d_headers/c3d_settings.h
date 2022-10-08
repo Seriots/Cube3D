@@ -35,6 +35,7 @@
 # define NUMINPUT "NUMINPUT"
 # define SCROLLBAR "SCROLLBAR"
 # define MULTICHOICE "MULTICHOICE"
+# define SEED "SEED"
 
 # define MARGE 40
 /*BETWEEN 1-20*/

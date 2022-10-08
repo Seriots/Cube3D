@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 20:33:36 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/10/04 15:00:44 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/08 15:57:55 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int		ft_islong(const char *str);
 int		ft_isprint(int c);
 int		ft_isinset(char c, char *set);
 void	ft_printarray(char **array, int is_n);
+char	*ft_itoal_noalloc(char dst[32], unsigned long n);
 char	*ft_itoa_noalloc(char dst[32], int n);
 int		ft_size_int(int n);
 char	*ft_itoa(int n);

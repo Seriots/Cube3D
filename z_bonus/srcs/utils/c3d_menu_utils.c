@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 13:04:03 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/08 14:15:06 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/08 16:38:01 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,11 @@ int	clear_all_other_selected(t_game *game, void *keyinput, t_dict *dict)
 	{
 		if (tmp->value != keyinput && ft_strcmp(tmp->key, KEYINPUT) == 0)
 			((t_keyinput *)tmp->value)->is_selected = 0;
+		if (tmp->value != keyinput && ft_strcmp(tmp->key, SEED) == 0)
+		{
+			((t_seed *)tmp->value)->is_selected = 0;
+			((t_seed *)tmp->value)->tmp_value = *((t_seed *)tmp->value)->modified_value;
+		}
 		else if (tmp->value != keyinput && ft_strcmp(tmp->key, TEXTINPUT) == 0
 			&& ((t_textinput *)tmp->value)->is_selected == 1)
 		{

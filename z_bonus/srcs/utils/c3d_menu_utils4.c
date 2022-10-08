@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 10:36:50 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/08 14:15:16 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/08 15:43:59 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,5 +63,13 @@ int	scroll_down(t_game *game)
 	percent_pos = (float)(scrollbar->box.y - scrollbar->min)
 		/ (float)(scrollbar->max - scrollbar->min);
 	*scrollbar->modified_value = -(percent_pos * scrollbar->max_obj);
+	return (0);
+}
+
+int	add_number_seed(t_seed *seed, int keyint)
+{
+	if (seed->tmp_value * 10 + keyint > 9999999999)
+		return (0);
+	seed->tmp_value = seed->tmp_value * 10 + keyint;
 	return (0);
 }
