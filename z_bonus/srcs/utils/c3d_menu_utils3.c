@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 23:58:22 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/10 12:18:52 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/10 15:50:58 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,49 +22,6 @@
 #include "mlx.h"
 
 #include <stdio.h>
-
-void	load_path(t_game *game, t_textinput *textinput, char **path)
-{
-	t_img_data	img_data;
-	char		*new_path;
-	int			error;
-
-	error = init_xpm_image(game, &img_data, textinput->path);
-	if (error)
-	{
-		game->menu.error = error;
-		ft_strlcpy(textinput->path, *path, 256);
-		textinput->size = ft_strlen(*path);
-		return ;
-	}
-	new_path = ft_calloc(sizeof(char), ft_strlen(textinput->path) + 1);
-	if (!new_path)
-	{
-		game->menu.error = 10;
-		ft_strlcpy(textinput->path, *path, 256);
-		textinput->size = ft_strlen(*path);
-		return ;
-	}
-	ft_strlcpy(new_path, textinput->path, ft_strlen(textinput->path) + 1);
-	free(*path);
-	*path = new_path;
-	mlx_destroy_image(game->mlx.display, (*textinput->modified_value).img);
-	*textinput->modified_value = img_data;
-}
-
-char	get_char_from_key(KeySym key, int shift, int caps)
-{
-	const char	base[10] = "7486293150";
-
-	if (key >= 65429 && key <= 65438)
-		return (base[key - 65429]);
-	if (key < 32 || key > 126)
-		return (0);
-	if ((shift && caps) || (!shift && !caps))
-		return (key);
-	else
-		return (key - 32);
-}
 
 void	init_textinput(t_textinput *textinput)
 {
@@ -127,13 +84,14 @@ int	release_cond_textinput(t_game *game, t_textinput *textinput, int x, int y)
 	return (0);
 }
 
-int	release_cond_textinput_start(t_game *game, t_textinput *textinput, int x, int y)
+int	release_cond_textinput_start(t_game *game, t_textinput *textinput,
+	int x, int y)
 {
 	(void)game;
 	if (x >= textinput->box.x
-		&& x<= textinput->box.x + textinput->box.width
-		&& y>= textinput->box.y
-		&& y<= textinput->box.y + textinput->box.height)
+		&& x <= textinput->box.x + textinput->box.width
+		&& y >= textinput->box.y
+		&& y <= textinput->box.y + textinput->box.height)
 		return (1);
 	return (0);
 }

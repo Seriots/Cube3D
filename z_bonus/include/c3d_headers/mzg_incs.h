@@ -74,10 +74,13 @@ int	standardize_maze(char **map, int width, int height);
 int	standardize_maze_predoor(char **map, int width, int height);
 int	post_player(char **map, int width, int height);
 
-int	get_maze(t_map *map, t_genparams params, unsigned long *seed);
-
+int	get_maze(t_map *map, t_genparams params, unsigned long *seed, int print);
 
 /*V2*/
+int	is_door(char **map, int x, int y);
+int	is_aligned(char **map, int x, int y);
+char	is_between_room(char **map, int x, int y);
+char	is_destroyable(char **map, int x, int y);
 int	make_door(char **map, int width, int height, int door);
 int open_maze(char **map, int width, int height);
 int generate_player(t_map *map, int width, int height);

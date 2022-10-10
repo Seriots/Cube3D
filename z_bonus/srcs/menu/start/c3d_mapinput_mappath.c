@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   c3d_textinput_mappath.c                             :+:      :+:    :+:   */
+/*   c3d_mapinput_mappath.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/08 20:50:00 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/08 20:57:33 by lgiband          ###   ########.fr       */
+/*   Created: 2022/10/10 15:52:49 by lgiband           #+#    #+#             */
+/*   Updated: 2022/10/10 15:53:10 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,8 @@ int	mappath_release(int button, int x, int y, t_game *game)
 			textinput->start_display = textinput->size;
 			game->fcts.keypressed_fct = mappath_keypress;
 			game->fcts.keyreleased_fct = mappath_keyrelease;
-			clear_all_other_selected(game, textinput, game->start_menu.all_objects);
+			clear_all_other_selected(game, textinput,
+				game->start_menu.all_objects);
 		}
 		else
 			reset_textinput_start(game, textinput);

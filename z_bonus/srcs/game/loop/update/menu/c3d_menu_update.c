@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 14:42:08 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/08 21:10:41 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/10 16:47:30 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,33 @@ int	make_background(t_game *game)
 	return (0);
 }
 
+int	check_draw_update(t_game *game, t_dict *tmp, void *value)
+{
+	if (ft_strcmp(tmp->key, BUTTON) == 0)
+		draw_button(game, (t_button *)value);
+	if (ft_strcmp(tmp->key, BUTTON2) == 0)
+		draw_button_start(game, (t_button *)value);
+	else if (ft_strcmp(tmp->key, SLIDEBAR) == 0)
+		draw_slidebar(game, (t_slidebar *)value);
+	else if (ft_strcmp(tmp->key, CHECKBOX) == 0)
+		draw_checkbox(game, (t_checkbox *)value);
+	else if (ft_strcmp(tmp->key, KEYINPUT) == 0)
+		draw_keyinput(game, (t_keyinput *)value);
+	else if (ft_strcmp(tmp->key, TEXTINPUT) == 0)
+		draw_textinput(game, (t_textinput *)value);
+	else if (ft_strcmp(tmp->key, NUMINPUT) == 0)
+		draw_numinput(game, (t_numinput *)value);
+	else if (ft_strcmp(tmp->key, MULTICHOICE) == 0)
+		draw_multichoice(game, (t_multichoice *)value);
+	else if (ft_strcmp(tmp->key, SEED) == 0)
+		draw_seed(game, (t_seed *)value);
+	else if (ft_strcmp(tmp->key, TEXTINPUT2) == 0)
+		draw_textinput_start(game, (t_textinput *)value);
+	else if (ft_strcmp(tmp->key, SCROLLBAR) == 0)
+		draw_scrollbar(game, (t_scrollbar *)value);
+	return (0);
+}
+
 int	draw_all_objects(t_game *game, t_dict *dict)
 {
 	t_dict	*tmp;
@@ -77,28 +104,7 @@ int	draw_all_objects(t_game *game, t_dict *dict)
 	while (tmp)
 	{
 		value = tmp->value;
-		if (ft_strcmp(tmp->key, BUTTON) == 0)
-			draw_button(game, (t_button *)value);
-		if (ft_strcmp(tmp->key, BUTTON2) == 0)
-			draw_button_start(game, (t_button *)value);
-		else if (ft_strcmp(tmp->key, SLIDEBAR) == 0)
-			draw_slidebar(game, (t_slidebar *)value);
-		else if (ft_strcmp(tmp->key, CHECKBOX) == 0)
-			draw_checkbox(game, (t_checkbox *)value);
-		else if (ft_strcmp(tmp->key, KEYINPUT) == 0)
-			draw_keyinput(game, (t_keyinput *)value);
-		else if (ft_strcmp(tmp->key, TEXTINPUT) == 0)
-			draw_textinput(game, (t_textinput *)value);
-		else if (ft_strcmp(tmp->key, NUMINPUT) == 0)
-			draw_numinput(game, (t_numinput *)value);
-		else if (ft_strcmp(tmp->key, MULTICHOICE) == 0)
-			draw_multichoice(game, (t_multichoice *)value);
-		else if (ft_strcmp(tmp->key, SEED) == 0)
-			draw_seed(game, (t_seed *)value);
-		else if (ft_strcmp(tmp->key, TEXTINPUT2) == 0)
-			draw_textinput_start(game, (t_textinput *)value);
-		else if (ft_strcmp(tmp->key, SCROLLBAR) == 0)
-			draw_scrollbar(game, (t_scrollbar *)value);
+		check_draw_update(game, tmp, value);
 		tmp = tmp->next;
 	}
 	return (0);

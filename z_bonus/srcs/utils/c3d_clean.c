@@ -6,29 +6,18 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 11:13:57 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/10 11:25:59 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/10 15:49:21 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
 #include "c3d_struct.h"
+#include "c3d_utils.h"
 
 #include "dict.h"
 #include "ft.h"
 #include "mlx.h"
-
-void	free_textures(t_game *game, t_all_img *all_img)
-{
-	if (all_img->no.img)
-		mlx_destroy_image(game->mlx.display, all_img->no.img);
-	if (all_img->so.img)
-		mlx_destroy_image(game->mlx.display, all_img->so.img);
-	if (all_img->ea.img)
-		mlx_destroy_image(game->mlx.display, all_img->ea.img);
-	if (all_img->we.img)
-		mlx_destroy_image(game->mlx.display, all_img->we.img);
-}
 
 void	free_map(t_map *map)
 {
@@ -44,37 +33,8 @@ void	free_map(t_map *map)
 		free(map->ea);
 	if (map->all_objects)
 		dict_clear(map->all_objects, 0, free);
-	*map = (t_map){.map = 0, .no = 0, .so = 0, .we = 0, .ea = 0, .all_objects = 0};
-}
-
-void	free_img_array(t_game *game, t_img_data **imgs_ptr, int number)
-{
-	int			i;
-	t_img_data	*imgs;
-
-	i = 0;
-	imgs = *imgs_ptr;
-	(void)game;
-	while (i < number)
-	{
-		if (imgs[i].img)
-			mlx_destroy_image(game->mlx.display, imgs[i].img);
-		i++;
-	}
-	free(imgs);
-	*imgs_ptr = NULL;
-}
-
-void	free_images(t_game *game)
-{
-	if (game->all_img.menu_img.img)
-		mlx_destroy_image(game->mlx.display, game->all_img.menu_img.img);
-	if (game->all_img.screen_img.img)
-		mlx_destroy_image(game->mlx.display, game->all_img.screen_img.img);
-	if (game->all_img.minimap_img.img)
-		mlx_destroy_image(game->mlx.display, game->all_img.minimap_img.img);
-	if (game->all_img.all_cursor_img)
-		free_img_array(game, &game->all_img.all_cursor_img, 8);
+	*map = (t_map){.map = 0, .no = 0, .so = 0,
+		.we = 0, .ea = 0, .all_objects = 0};
 }
 
 int	free_menu(t_menu *menu)

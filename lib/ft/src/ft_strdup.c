@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 16:26:17 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/10/10 11:29:19 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/10 16:26:49 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ char	*ft_strdup(const char *s)
 	int		len_s;
 	int		i;
 
+	if (!s)
+		return (NULL);
 	len_s = ft_strlen(s);
 	copy = malloc(sizeof(char) * (len_s + 1));
 	if (!copy)

@@ -19,6 +19,7 @@
 unsigned int	get_color(t_game *game, unsigned int color);
 
 /*Math*/
+int	is_in_circle(int x, int y, unsigned int color);
 int				abs(int x);
 double			max(double a, double b);
 double			min(double a, double b);
@@ -40,6 +41,7 @@ int				display_error(int code);
 /*Free*/
 void			free_textures(t_game *game, t_all_img *all_img);
 void			free_img_array(t_game *game, t_img_data **imgs_ptr, int number);
+void			free_images(t_game *game);
 void			free_map(t_map *map);
 void			free_game(t_game *game);
 

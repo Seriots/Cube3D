@@ -36,4 +36,8 @@ int	exit_event(int button, int x, int y, t_game *game);
 /*Button resume*/
 int	resume_event(int button, int x, int y, t_game *game);
 
+/*Utils*/
+int	press_collide_cond(t_game *game, int x, int y, t_dict *tmp);
+int	press_scrollbar_cond(t_game *game, int x, int y, t_dict *tmp);
+
 #endif

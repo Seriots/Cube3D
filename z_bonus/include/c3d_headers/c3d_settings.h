@@ -59,7 +59,7 @@
 # define CHECKBOX_START_X 525
 # define CHECKBOX_START_Y 305
 
-# define FONT "-sony-*-*-*-*-*-*-230-*-*-*-*-iso8859-*"
+# define FONT "-sony-*-*-*-*-*-*-400-*-*-*-*-iso8859-*"
 
 /*WIN WIDTH / 2*/
 # define START_MENU_ERROR_X 640 

@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 10:41:24 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/06 21:20:50 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/10 16:38:26 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,8 @@ unsigned int	get_wall_color(t_game *game, t_wall *wall,
 	int		y;
 
 	(void)game;
-	x = (int)(wall->dist_from_start * display.img->width / CASE_SIZE) % display.img->width;
+	x = (int)(wall->dist_from_start * display.img->width / CASE_SIZE)
+		% display.img->width;
 	y = (int)((pixel - display.min) * display.img->height
 			/ (display.max - display.min));
 	color = (display.img->addr
@@ -78,7 +79,8 @@ int	display_wall(t_game *game, t_wall *wall, int i)
 	while (p.y < WIN_HEIGHT)
 	{
 		color = get_pixel_color(game, wall, p, display);
-		my_mlx_pixel_put(&game->all_img.screen_img, p.x, p.y, get_color(game, color));
+		my_mlx_pixel_put(&game->all_img.screen_img,
+			p.x, p.y, get_color(game, color));
 		p.y++;
 	}
 	return (0);

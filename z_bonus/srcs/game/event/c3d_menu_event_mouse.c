@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 15:03:03 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/10 12:32:56 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/10 16:13:30 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,34 +24,22 @@ int	check_all_objects_press(t_game *game, int x, int y, t_dict *dict)
 {
 	t_dict			*tmp;
 	t_collide_box	*box;
-	
+
 	tmp = dict;
 	while (tmp)
 	{
 		box = tmp->value;
-		if (x - (WIN_WIDTH / 2 - MENU_WIDTH / 2) >= box->x
-			&& x - (WIN_WIDTH / 2 - MENU_WIDTH / 2) <= box->x + box->width
-			&& y - (WIN_HEIGHT / 2 - MENU_HEIGHT / 2)
-			>= box->y + game->menu.scroll_amount
-			&& y - (WIN_HEIGHT / 2 - MENU_HEIGHT / 2)
-			<= box->y + game->menu.scroll_amount + box->height)
+		if (press_collide_cond(game, x, y, tmp))
 		{
 			if (box->mouse_press)
 				box->mouse_press(1, x, y, game);
 			break ;
 		}
-		else if (ft_strcmp(tmp->key, SCROLLBAR) == 0)
+		else if (press_scrollbar_cond(game, x, y, tmp))
 		{
-			if (x - (WIN_WIDTH / 2 - MENU_WIDTH / 2) >= box->x
-				&& x - (WIN_WIDTH / 2 - MENU_WIDTH / 2) <= box->x + box->width
-				&& y - (WIN_HEIGHT / 2 - MENU_HEIGHT / 2) >= box->y
-				&& y - (WIN_HEIGHT / 2 - MENU_HEIGHT / 2) 
-				<= box->y + box->height)
-			{
-				if (box->mouse_press)
-					box->mouse_press(1, x, y, game);
-				break ;
-			}
+			if (box->mouse_press)
+				box->mouse_press(1, x, y, game);
+			break ;
 		}
 		tmp = tmp->next;
 	}
@@ -62,7 +50,7 @@ int	check_all_objects_release(t_game *game, int x, int y, t_dict *dict)
 {
 	t_dict			*tmp;
 	t_collide_box	*box;
-	
+
 	tmp = dict;
 	while (tmp)
 	{

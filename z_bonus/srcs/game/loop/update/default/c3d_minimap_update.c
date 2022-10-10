@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 10:41:01 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/10 13:08:37 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/10 17:59:49 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,18 +69,6 @@ int	put_player(t_game *game)
 		i++;
 	}
 	return (0);
-}
-
-int	is_in_circle(int x, int y, unsigned int color)
-{
-	int	dist_x;
-	int	dist_y;
-
-	dist_x = x - (MMAP_WIDTH / 2);
-	dist_y = y - (MMAP_HEIGHT / 2);
-	if (norm(dist_x, dist_y) < MMAP_HEIGHT / 2)
-		return (color);
-	return (0xFF000000);
 }
 
 int	update_minimap(t_game *game)

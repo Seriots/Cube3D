@@ -6,13 +6,14 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 13:11:55 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/10 10:27:58 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/10 16:28:17 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "c3d_struct.h"
 #include "c3d_init.h"
 #include "mzg_incs.h"
+#include "c3d_settings.h"
 
 #include "mlx.h"
 
@@ -20,7 +21,7 @@ int	start_game(t_game *game, char **argv, int argc)
 {
 	int		error;
 	char	*path;
-	
+
 	if (argc == 2)
 		path = argv[argc - 1];
 	else

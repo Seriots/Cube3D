@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 17:55:22 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/10 14:10:50 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/10 16:00:39 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ int	set_height(t_game *game, int *max_obj)
 	if (max <= MENU_HEIGHT - (15 * MENU_HEIGHT / 100))
 		return (0);
 	return ((float)(MENU_HEIGHT - (15 * MENU_HEIGHT / 100) - 14)
-		* ((float)(MENU_HEIGHT - (15 * MENU_HEIGHT / 100) - 14)
+		*((float)(MENU_HEIGHT - (15 * MENU_HEIGHT / 100) - 14)
 		/ ((float)max)));
 }
 

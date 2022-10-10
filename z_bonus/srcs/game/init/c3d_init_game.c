@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 13:17:26 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/10 13:17:13 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/10 16:26:30 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,7 @@ static int	set_default_settings(t_game *game, char *path)
 	game->settings.show_mmap = 1;
 	game->settings.seed = 0;
 	game->settings.difficulty = 0;
-	if (path)
-		game->settings.map_path = ft_strdup(path);
-	else
-		game->settings.map_path = NULL;
+	game->settings.map_path = ft_strdup(path);
 	if (path && !game->settings.map_path)
 		return (10);
 	return (0);

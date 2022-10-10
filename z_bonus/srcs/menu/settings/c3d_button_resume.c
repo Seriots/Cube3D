@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 13:09:29 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/08 13:51:13 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/10 15:59:26 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ t_dict	*init_resume_button(t_game *game)
 	box->box.x_text = box->box.x + 90;
 	box->box.y_text = box->box.y + 30;
 	ft_strlcpy(box->box.description, "Resume", 7);
-	ft_strlcpy(box->box.font, FONT,  ft_strlen(FONT));
+	ft_strlcpy(box->box.font, FONT, ft_strlen(FONT));
 	box->box.mouse_press = NULL;
 	box->box.mouse_release = resume_event;
 	dict = dict_new(BUTTON, box);

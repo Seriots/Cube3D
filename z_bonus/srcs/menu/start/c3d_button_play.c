@@ -24,6 +24,20 @@
 #include "ft.h"
 #include "dict.h"
 
+int	load_random_map(t_game *game, t_genparams *params)
+{
+	if (game->settings.difficulty == 0)
+		*params = (t_genparams){.width = 30, .height = 30, .door = 5,
+			.seed = game->settings.seed, .difficulty = 0};
+	else if (game->settings.difficulty == 1)
+		*params = (t_genparams){.width = 50, .height = 50, .door = 12,
+			.seed = game->settings.seed, .difficulty = 1};
+	else
+		*params = (t_genparams){.width = 80, .height = 80, .door = 20,
+			.seed = game->settings.seed, .difficulty = 2};
+	return (get_maze(&game->map, *params, &game->settings.seed, 0));
+}
+
 int	load_new_map(t_game *game, char *map_path)
 {
 	int			error;
@@ -37,16 +51,7 @@ int	load_new_map(t_game *game, char *map_path)
 	}
 	else
 	{
-		if (game->settings.difficulty == 0)
-			params = (t_genparams){.width = 30, .height = 30, .door = 5,
-				.seed = game->settings.seed, .difficulty = 0};
-		else if (game->settings.difficulty == 1)
-			params = (t_genparams){.width = 50, .height = 50, .door = 12,
-				.seed = game->settings.seed, .difficulty = 1};
-		else
-			params = (t_genparams){.width = 80, .height = 80, .door = 20,
-				.seed = game->settings.seed, .difficulty = 2};
-		error = get_maze(&game->map, params, &game->settings.seed);
+		error = load_random_map(game, &params);
 		if (error)
 			return (free_map(&game->map), display_error(error));
 	}
@@ -62,7 +67,7 @@ int	load_new_map(t_game *game, char *map_path)
 
 int	set_map_settings(t_game *game, t_dict **menu)
 {
-	t_dict *tmp;
+	t_dict	*tmp;
 
 	(void)game;
 	tmp = *menu;
@@ -108,7 +113,8 @@ t_dict	*init_play_button(t_game *game)
 	box->box.x = WIN_WIDTH / 2 - box->box.width / 2;
 	box->box.y = (WIN_HEIGHT / 3 - box->box.height / 2);
 	ft_strlcpy(box->box.description, "Play", 5);
-	box->box.x_text = box->box.x + box->box.width / 2 - (6 * ft_strlen(box->box.description) / 2);
+	box->box.x_text = box->box.x + box->box.width / 2
+		- (6 * ft_strlen(box->box.description) / 2);
 	box->box.y_text = box->box.y + box->box.height / 2 + 10 / 2;
 	ft_strlcpy(box->box.font, FONT, ft_strlen(FONT));
 	box->box.mouse_press = NULL;

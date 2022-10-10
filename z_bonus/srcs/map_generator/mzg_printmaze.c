@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 11:27:34 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/07 15:27:44 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/10 15:32:11 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 #include <stdio.h>
 
-int print_objects(t_dict *all_objects)
+int	print_objects(t_dict *all_objects)
 {
 	t_dict	*tmp;
 
@@ -27,7 +27,8 @@ int print_objects(t_dict *all_objects)
 	while (tmp)
 	{
 		if (ft_strcmp(tmp->key, "KEY") == 0)
-			printf("%s: %d %d\n", (char *)tmp->key, ((t_key *)tmp->value)->x, ((t_key *)tmp->value)->y);
+			printf("%s: %d %d\n", (char *)tmp->key,
+				((t_key *)tmp->value)->x, ((t_key *)tmp->value)->y);
 		tmp = tmp->next;
 	}
 	return (0);
@@ -64,5 +65,4 @@ int	printmaze(t_map *map, int width, int height)
 		j++;
 	}
 	return (0);
-
 }

@@ -90,8 +90,10 @@ define SRCS :=
 		parsing/c3d_parsing_utils.c
 		parsing/c3d_parsing.c
 		utils/c3d_clean.c
+		utils/c3d_clean2.c
 		utils/c3d_color.c
 		utils/c3d_error.c
+		utils/c3d_event_utils.c
 		utils/c3d_init_image.c
 		utils/c3d_math.c
 		utils/c3d_math2.c
@@ -99,6 +101,7 @@ define SRCS :=
 		utils/c3d_menu_utils2.c
 		utils/c3d_menu_utils3.c
 		utils/c3d_menu_utils4.c
+		utils/c3d_menu_utils5.c
 		utils/c3d_time.c
 		map_generator/mzg_generator.c
 		map_generator/mzg_clean.c
@@ -110,6 +113,7 @@ define SRCS :=
 		map_generator/mzg_post_player.c
 		map_generator/mzg_printmaze.c
 		map_generator/mzg_standardize.c
+		map_generator/mzg_openmaze_check.c
 		map_generator/mzg_openmaze.c
 		map_generator/mzg_generate_player.c
 		map_generator/mzg_generatekey.c

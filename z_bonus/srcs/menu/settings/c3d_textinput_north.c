@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 14:25:01 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/08 14:14:51 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/10 16:01:38 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,7 @@ int	north_keypress(KeySym key, t_game *game)
 	textinput = dict_getelem_number(game->menu.all_objects, 6)->value;
 	if ((key == XK_Delete || key == XK_KP_Delete || key == 65288)
 		&& textinput->size > 0)
-	{
-		textinput->size -= 1;
-		textinput->path[textinput->size] = '\0';
-	}
+		textinput->path[--textinput->size] = '\0';
 	else if (key == XK_Return || key == XK_KP_Enter)
 		event_enter_textinput(game, textinput);
 	else if (key == XK_Shift_L || key == XK_Shift_R)

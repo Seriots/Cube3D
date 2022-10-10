@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 10:10:34 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/10 13:15:57 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/10 16:36:43 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,20 +24,21 @@
 /*the order is important, scroll bar need to be last*/
 int	init_settings_menu(t_game *game)
 {
-	static	t_dict	*(*objs[])(t_game *game) = {init_resume_button,
+	static t_dict		*(*objs[])(t_game *game) = {init_resume_button,
 		init_exit_button, init_fov_slidebar, init_color_checkbox,
 		init_forward_keyinput, init_left_keyinput, init_textinput_north,
 		init_numinput_floor, init_backward_keyinput, init_right_keyinput,
 		init_textinput_south, init_textinput_east, init_textinput_west,
-		init_numinput_ceil, init_scrollspeed_slidebar, init_invertscroll_checkbox,
-		init_camspeedx_slidebar, init_camspeedy_slidebar, init_showfps_checkbox,
+		init_numinput_ceil, init_scrollspeed_slidebar,
+		init_invertscroll_checkbox, init_camspeedx_slidebar,
+		init_camspeedy_slidebar, init_showfps_checkbox,
 		init_invertmouse_checkbox, init_resolution_slidebar, init_fps_slidebar,
-		init_showmmap_checkbox, init_showseed_checkbox,
-		init_scrollbar};
-	t_dict	*elem;
-	long unsigned int		i;
-	
+		init_showmmap_checkbox, init_showseed_checkbox, init_scrollbar};
+	t_dict				*elem;
+	long unsigned int	i;
+
 	i = 0;
+	game->menu = (t_menu){.scroll_amount = 0, .error = 0};
 	while (i < sizeof(objs) / sizeof(objs[0]))
 	{
 		elem = objs[i](game);
@@ -46,8 +47,6 @@ int	init_settings_menu(t_game *game)
 		dict_add_back(&game->menu.all_objects, elem);
 		i++;
 	}
-	game->menu.scroll_amount = 0;
-	game->menu.error = 0;
 	return (0);
 }
 
@@ -57,7 +56,7 @@ int	init_start_menu(t_game *game)
 		init_play_button, init_quit_button, init_seed, init_textinput_mappath};
 	t_dict				*elem;
 	long unsigned int	i;
-	
+
 	i = 0;
 	while (i < sizeof(objs) / sizeof(objs[0]))
 	{
@@ -71,9 +70,9 @@ int	init_start_menu(t_game *game)
 	return (0);
 }
 
-int init_menu(t_game *game)
+int	init_menu(t_game *game)
 {
-	int error;
+	int	error;
 
 	error = init_settings_menu(game);
 	if (error)

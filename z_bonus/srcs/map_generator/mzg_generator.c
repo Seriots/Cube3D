@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 11:05:33 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/10 13:25:26 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/10 15:37:49 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,7 @@ int	set_default_image(t_map *map, int width, int height)
 	return (0);
 }
 
+/*generate_player(map, width, height); //generate lampe in hard mode*/
 int	gen_maze(t_map *map, int width, int height, int door)
 {
 	int		error;
@@ -117,7 +118,7 @@ int	gen_maze(t_map *map, int width, int height, int door)
 	make_door(map->map, width, height, door);
 	open_maze(map->map, width, height);
 	clean_maze(map->map, width, height);
-	generate_player(map, width, height); //generate lampe in hard mode
+	generate_player(map, width, height);
 	generate_key(map, width, height, door);
 	standardize_maze(map->map, width, height);
 	error = set_default_image(map, width, height);
@@ -126,7 +127,7 @@ int	gen_maze(t_map *map, int width, int height, int door)
 	return (0);
 }
 
-int	get_maze(t_map *map, t_genparams params, unsigned long *seed)
+int	get_maze(t_map *map, t_genparams params, unsigned long *seed, int print)
 {
 	int		error;
 
@@ -137,6 +138,7 @@ int	get_maze(t_map *map, t_genparams params, unsigned long *seed)
 	error = gen_maze(map, params.width, params.height, params.door);
 	if (error)
 		return (error);
-	//printmaze(map, width, height);
+	if (print)
+		printmaze(map, params.width, params.height);
 	return (0);
 }

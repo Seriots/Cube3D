@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 11:12:38 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/07 12:52:11 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/10 15:30:32 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,11 @@ int	is_doorable(char **map, int x, int y)
 {
 	if (ft_isinset(map[y][x], " +/"))
 		return (0);
-	if (map[y][x - 1] == '+' && map[y][x + 1] == '+' && map[y - 1][x] == map[y + 1][x])
+	if (map[y][x - 1] == '+' && map[y][x + 1] == '+'
+		&& map[y - 1][x] == map[y + 1][x])
 		return (1);
-	if (map[y - 1][x] == '+' && map[y + 1][x] == '+' && map[y][x - 1] == map[y][x + 1])
+	if (map[y - 1][x] == '+' && map[y + 1][x] == '+'
+		&& map[y][x - 1] == map[y][x + 1])
 		return (2);
 	return (0);
 }
@@ -42,8 +44,8 @@ int	floud_fill(char **map, int x, int y, char c)
 
 int	generate_door(char **map, int width, int height, char newroom)
 {
-	int x;
-	int y;
+	int	x;
+	int	y;
 	int	door;
 
 	x = 1 + rand() % (width - 2);

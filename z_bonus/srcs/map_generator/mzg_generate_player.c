@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 12:17:42 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/07 14:38:07 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/10 15:31:03 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ char	get_size_area(char **map, int width, int height, char c)
 
 char	make_player(t_map *map, int width, int height)
 {
-	int x;
-	int y;
+	int		x;
+	int		y;
 	char	c;
 
 	while (1)
@@ -62,8 +62,8 @@ char	make_player(t_map *map, int width, int height)
 
 char	make_exit(t_map *map, int width, int height, char c)
 {
-	int x;
-	int y;
+	int	x;
+	int	y;
 
 	while (1)
 	{
@@ -79,7 +79,7 @@ char	make_exit(t_map *map, int width, int height, char c)
 	return (c);
 }
 
-int generate_player(t_map *map, int width, int height)
+int	generate_player(t_map *map, int width, int height)
 {
 	char	c;
 

@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 12:15:01 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/08 14:45:10 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/10 15:31:33 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 
 int	get_key_pos_force(t_map *map, int width, int height)
 {
-	int x;
-	int y;
+	int	x;
+	int	y;
 	int	i;
 
 	x = rand() % width;
@@ -58,11 +58,10 @@ int	get_key_pos(t_map *map, int width, int height, char c)
 	return (0);
 }
 
-
 int	make_key(t_map *map, int width, int height, char c)
 {
-	int x;
-	int y;
+	int	x;
+	int	y;
 	int	i;
 
 	x = rand() % width;
@@ -83,7 +82,7 @@ int	make_key(t_map *map, int width, int height, char c)
 
 int	generate_key(t_map *map, int width, int height, int door)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < door)

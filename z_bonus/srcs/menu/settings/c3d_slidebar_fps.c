@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 16:00:25 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/06 21:20:50 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/10 15:59:37 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,8 @@ int	fps_press(int button, int x, int y, t_game *game)
 
 void	fps_init(t_slidebar *slidebar)
 {
-	slidebar->x = slidebar->box.x - slidebar->width + (*slidebar->modified_value - slidebar->min)
+	slidebar->x = slidebar->box.x - slidebar->width
+		+ (*slidebar->modified_value - slidebar->min)
 		* slidebar->box.width / (slidebar->max - slidebar->min);
 	slidebar->y = slidebar->box.y
 		- (slidebar->height - slidebar->box.height) / 2;

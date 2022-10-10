@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 13:27:27 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/10 12:33:16 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/10 16:19:06 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,13 @@ int	check_all_objects_press_start(t_game *game, int x, int y, t_dict *dict)
 {
 	t_dict			*tmp;
 	t_collide_box	*box;
-	
+
 	tmp = dict;
 	while (tmp)
 	{
 		box = tmp->value;
 		if (x >= box->x && x <= box->x + box->width
-			&& y>= box->y && y <= box->y + box->height)
+			&& y >= box->y && y <= box->y + box->height)
 		{
 			if (box->mouse_press)
 				box->mouse_press(1, x, y, game);
@@ -45,7 +45,7 @@ int	check_all_objects_release_start(t_game *game, int x, int y, t_dict *dict)
 {
 	t_dict			*tmp;
 	t_collide_box	*box;
-	
+
 	tmp = dict;
 	while (tmp)
 	{
@@ -77,7 +77,8 @@ int	startscreen_mouse_press(int button, int x, int y, t_game *game)
 int	startscreen_mouse_release(int button, int x, int y, t_game *game)
 {
 	if (button == 1)
-		check_all_objects_release_start(game, x, y, game->start_menu.all_objects);
+		check_all_objects_release_start(game, x, y,
+			game->start_menu.all_objects);
 	return (0);
 }
 

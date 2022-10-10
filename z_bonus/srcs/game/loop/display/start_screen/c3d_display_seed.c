@@ -6,10 +6,9 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 15:52:04 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/08 16:34:58 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/10 16:39:07 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "c3d_struct.h"
 #include "c3d_settings.h"
@@ -31,7 +30,7 @@ int	get_seed_text(char path[256], t_seed *seed)
 int	display_seed_text(t_game *game, t_seed *seed)
 {
 	char	path[256];
-	
+
 	get_seed_text(path, seed);
 	mlx_string_put(game->mlx.display, game->mlx.window,
 		seed->box.x_text, seed->box.y_text,
