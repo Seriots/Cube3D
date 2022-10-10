@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 10:36:50 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/08 22:04:29 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/10 11:30:32 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,12 @@ int	event_enter_textinput_start(t_game *game, t_textinput *textinput)
 	game->fcts.keyreleased_fct = startscreen_key_release;
 	textinput->is_selected = 0;
 	textinput->start_display = 0;
+	if (ft_strlen(textinput->path) == 0)
+	{
+		free(*textinput->modified_path);
+		*textinput->modified_path = 0;
+		return (0);
+	}
 	path = ft_strdup(textinput->path);
 	if (!path)
 		ft_strlcpy(textinput->path, *textinput->modified_path, 256);

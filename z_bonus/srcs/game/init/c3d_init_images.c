@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 10:51:50 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/08 12:48:36 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/10 10:24:15 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,6 @@ int	init_images(t_game *game)
 {
 	int	error;
 
-	error = open_textures(game, &game->map);
-	if (error)
-		return (error);
 	error = init_image(game, WIN_WIDTH, WIN_HEIGHT, &game->all_img.screen_img);
 	if (error)
 		return (error);

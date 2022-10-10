@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 13:07:58 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/08 14:08:23 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/10 11:23:46 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include "c3d_event.h"
 #include "c3d_settings.h"
 #include "c3d_init.h"
+#include "c3d_utils.h"
 
 #include "ft.h"
 #include "dict.h"
@@ -25,7 +26,11 @@ int	exit_event(int button, int x, int y, t_game *game)
 	(void)x;
 	(void)y;
 	if (button == 1)
+	{
+		free_map(&game->map);
+		free_textures(game, &game->all_img);
 		load_startscreen(game);
+	}
 	return (0);
 }
 

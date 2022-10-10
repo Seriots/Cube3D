@@ -18,17 +18,67 @@
 #include "c3d_menu.h"
 #include "c3d_utils.h"
 #include "c3d_init.h"
+#include "mzg_incs.h"
+#include "c3d_parsing.h"
 
 #include "ft.h"
 #include "dict.h"
 
+int	load_new_map(t_game *game, char *map_path)
+{
+	int	error;
+
+	if (map_path)
+	{
+		error = parsing(&(game->map), map_path);
+		if (error)
+			return (free_map(&game->map), display_error(error));
+	}
+	else
+	{
+		error = get_maze(&game->map, 50, 50 ,12); //add seed, difficulty....
+		if (error)
+			return (free_map(&game->map), display_error(error));
+	}
+	error = init_player(game);
+	if (error)
+		return (free_map(&game->map), display_error(error));
+	error = open_textures(game, &game->map);
+	if (error)
+		return (free_map(&game->map), display_error(error));
+	load_default(game);
+	return (0);
+}
+
+int	set_map_settings(t_game *game, t_dict **menu)
+{
+	t_dict *tmp;
+
+	(void)game;
+	tmp = *menu;
+	while (tmp)
+	{
+		if (ft_strcmp(tmp->key, TEXTINPUT) == 0)
+			init_textinput((t_textinput *)tmp->value);
+		else if (ft_strcmp(tmp->key, NUMINPUT) == 0)
+			edit_rgb((t_numinput *)tmp->value);
+		tmp = tmp->next;
+	}
+	return (0);
+}
+
 int	play_event(int button, int x, int y, t_game *game)
 {
+	int	error;
+
 	(void)x;
 	(void)y;
 	if (button == 1)
 	{
-		load_default(game);
+		error = load_new_map(game, game->settings.map_path);
+		if (error)
+			return (1);
+		set_map_settings(game, &game->menu.all_objects);
 		clear_all_other_selected(game, NULL, game->start_menu.all_objects);
 	}
 	return (0);

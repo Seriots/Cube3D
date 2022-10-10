@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 13:17:26 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/08 21:35:22 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/10 10:57:53 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,20 +68,18 @@ static int	set_variable(t_game *game)
 	game->all_img.screen_img.img = NULL;
 	game->all_img.minimap_img.img = NULL;
 	game->all_img.all_cursor_img = NULL;
+	game->map = (t_map){.c = -1, .f = -1, .ea = NULL, .no = NULL, .so = NULL,
+		.we = NULL, .height = 0, .width = 0, .all_objects = 0};
 	return (0);
 }
 
-int	init_game(t_game *game, char *path, int first)
+int	init_game(t_game *game, char *path)
 {
 	int	error;
 
-	(void)first;
 	set_variable(game);
 	set_default_fcts(game);
 	error = set_default_settings(game, path);
-	if (error)
-		return (error);
-	error = init_player(game);
 	if (error)
 		return (error);
 	error = init_images(game);
@@ -92,3 +90,8 @@ int	init_game(t_game *game, char *path, int first)
 		return (error);
 	return (0);
 }
+/*
+	error = init_player(game);
+	if (error)
+		return (error);
+*/

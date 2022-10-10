@@ -89,7 +89,7 @@ Error
 <OBJECT>
 -> lampe
 -> key
--> porte simple == porte colore
+-> porte simple
 -> porte de sortie
 -> fantome
 
@@ -109,9 +109,10 @@ x -> continuer le menu
 x -> changer le generateur de map
 x -> Setup un start menu
 	x -> add seed
-	-> path to map
+	x -> path to map
 x-> fix la boucle inf dans le generateur
--> reconstruire le projet pour load les map lorsque le bouton play est presse et faire les
+x -> reconstruire le projet pour load les map lorsque le bouton play est presse et faire les
 remonter d'erreur sur le screen sans leave le programme
 -> Setup les message d'erreur
 -> clean le projet et mieux ranger le tout j'ai fais un peu de la merde
+-> handle Ctrl+c

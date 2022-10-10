@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 23:58:22 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/08 21:55:11 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/10 11:37:49 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,8 +83,11 @@ void	reset_textinput(t_game *game, t_textinput *textinput)
 {
 	ft_strlcpy(textinput->path, *textinput->modified_path, 256);
 	textinput->size = ft_strlen(textinput->path);
-	game->fcts.keypressed_fct = menu_key_press;
-	game->fcts.keyreleased_fct = menu_key_release;
+	if (game)
+	{
+		game->fcts.keypressed_fct = menu_key_press;
+		game->fcts.keyreleased_fct = menu_key_release;
+	}
 	textinput->is_selected = 0;
 	textinput->start_display = 0;
 	textinput->shift = 0;
@@ -93,11 +96,16 @@ void	reset_textinput(t_game *game, t_textinput *textinput)
 
 void	reset_textinput_start(t_game *game, t_textinput *textinput)
 {
-	if (!*textinput->modified_path)
+	if (*textinput->modified_path)
 		ft_strlcpy(textinput->path, *textinput->modified_path, 256);
+	else
+		textinput->path[0] = 0;
 	textinput->size = ft_strlen(textinput->path);
-	game->fcts.keypressed_fct = startscreen_key_press;
-	game->fcts.keyreleased_fct = startscreen_key_release;
+	if (game)
+	{
+		game->fcts.keypressed_fct = startscreen_key_press;
+		game->fcts.keyreleased_fct = startscreen_key_release;
+	}
 	textinput->is_selected = 0;
 	textinput->start_display = 0;
 	textinput->shift = 0;

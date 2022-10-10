@@ -6,11 +6,12 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 13:30:36 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/08 14:15:54 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/10 10:30:44 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "c3d_struct.h"
+#include "c3d_settings.h"
 #include "c3d_startscreen.h"
 #include "c3d_event.h"
 #include "c3d_menu.h"
@@ -61,5 +62,7 @@ int	load_default(t_game *game)
 	if (HIDE)
 		mlx_mouse_hide(game->mlx.display, game->mlx.window);
 	mlx_do_key_autorepeatoff(game->mlx.display);
+	mlx_mouse_move(game->mlx.display, game->mlx.window,
+		WIN_WIDTH / 2, WIN_HEIGHT / 2);
 	return (0);
 }

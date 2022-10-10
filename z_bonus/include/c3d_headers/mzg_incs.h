@@ -19,7 +19,6 @@
 # define WIDTH 70
 # define X 380
 # define Y 300
-# define COLOR 0x88888888
 # define BASE "NSWE"
 # define DEFAULT_IMAGE_PATH_NO "imgs/xpm/blueWall64x64.xpm"
 # define DEFAULT_IMAGE_PATH_SO "imgs/xpm/redWall64x64.xpm"

@@ -43,12 +43,12 @@ int	init_images(t_game *game);
 int	init_player(t_game *game);
 
 /*Game*/
-int	init_game(t_game *game, char *path, int first);
+int	init_game(t_game *game, char *path);
 
 /*Mlx*/
 int	init_mlx(t_game *game);
 
 /*Start*/
-int	start_game(t_game *game, char *path);
+int	start_game(t_game *game, char **argv, int argc);
 
 #endif

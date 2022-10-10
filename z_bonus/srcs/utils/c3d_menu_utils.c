@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 13:04:03 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/08 16:38:01 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/10 11:37:23 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,10 @@ int	clear_all_other_selected(t_game *game, void *keyinput, t_dict *dict)
 		}
 		else if (tmp->value != keyinput && ft_strcmp(tmp->key, TEXTINPUT) == 0
 			&& ((t_textinput *)tmp->value)->is_selected == 1)
-		{
-			((t_textinput *)tmp->value)->is_selected = 0;
-			((t_textinput *)tmp->value)->start_display = 0;
-			ft_strlcpy(((t_textinput *)tmp->value)->path,
-				*((t_textinput *)tmp->value)->modified_path, 256);
-			((t_textinput *)tmp->value)->size
-				= ft_strlen(((t_textinput *)tmp->value)->path);
-		}
+			reset_textinput(0, (t_textinput *)tmp->value);
+		else if (tmp->value != keyinput && ft_strcmp(tmp->key, TEXTINPUT2) == 0
+			&& ((t_textinput *)tmp->value)->is_selected == 1)
+			reset_textinput_start(0, (t_textinput *)tmp->value);
 		else if (tmp->value != keyinput && ft_strcmp(tmp->key, NUMINPUT) == 0
 			&& ((t_numinput *)tmp->value)->is_selected != 0)
 			((t_numinput *)tmp->value)->is_selected = 0;

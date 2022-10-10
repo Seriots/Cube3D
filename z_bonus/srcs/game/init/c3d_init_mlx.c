@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 13:17:23 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/06 21:20:50 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/10 10:30:17 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,6 @@ int	init_mlx(t_game *game)
 			WIN_WIDTH, WIN_HEIGHT, WIN_TITLE);
 	if (!game->mlx.window)
 		return (14);
-	mlx_mouse_move(game->mlx.display, game->mlx.window,
-		WIN_WIDTH / 2, WIN_HEIGHT / 2);
 	init_hooks(game);
 	return (0);
 }

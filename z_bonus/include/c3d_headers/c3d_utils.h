@@ -34,7 +34,8 @@ long			timestamp_sec(long start);
 /*Error*/
 int				display_error(int code);
 
-/*Free*/		
+/*Free*/
+void			free_textures(t_game *game, t_all_img *all_img);
 void			free_img_array(t_game *game, t_img_data **imgs_ptr, int number);
 void			free_map(t_map *map);
 void			free_game(t_game *game);
