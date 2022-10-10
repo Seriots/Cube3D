@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 10:41:01 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/07 18:00:55 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/10 13:08:37 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ unsigned int	get_map_color(t_game *game, int x, int y)
 		return (0x398AE6);
 	else if (game->map.map[y][x] == '2')
 		return (0xF11616);
+	else if (game->map.map[y][x] == '3')
+		return (0x07E529);
 	else if (game->map.map[y][x] == ' ')
 		return (0x000000);
 	else

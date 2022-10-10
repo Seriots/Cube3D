@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 11:05:33 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/10 12:11:32 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/10 13:25:26 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,13 +126,15 @@ int	gen_maze(t_map *map, int width, int height, int door)
 	return (0);
 }
 
-int	get_maze(t_map *map, int width, int height, int door)
+int	get_maze(t_map *map, t_genparams params, unsigned long *seed)
 {
 	int		error;
 
-	error = 0;
-	srand(time(NULL) * getpid());
-	error = gen_maze(map, width, height, door);
+	if (params.seed == 0)
+		params.seed = time(NULL);
+	*seed = params.seed;
+	srand(params.seed);
+	error = gen_maze(map, params.width, params.height, params.door);
 	if (error)
 		return (error);
 	//printmaze(map, width, height);

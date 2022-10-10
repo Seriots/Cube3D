@@ -91,6 +91,7 @@ typedef struct s_settings
 	bool			invert_mouse;
 	bool			show_fps;
 	bool			show_mmap;
+	bool			show_seed;
 	int				difficulty;
 	char			*map_path;
 	unsigned long	seed;

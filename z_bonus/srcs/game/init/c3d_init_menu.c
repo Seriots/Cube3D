@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 10:10:34 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/10 12:42:29 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/10 13:15:57 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	init_settings_menu(t_game *game)
 		init_numinput_ceil, init_scrollspeed_slidebar, init_invertscroll_checkbox,
 		init_camspeedx_slidebar, init_camspeedy_slidebar, init_showfps_checkbox,
 		init_invertmouse_checkbox, init_resolution_slidebar, init_fps_slidebar,
-		init_showmmap_checkbox,
+		init_showmmap_checkbox, init_showseed_checkbox,
 		init_scrollbar};
 	t_dict	*elem;
 	long unsigned int		i;

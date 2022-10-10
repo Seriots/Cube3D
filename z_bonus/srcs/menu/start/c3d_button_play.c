@@ -26,7 +26,8 @@
 
 int	load_new_map(t_game *game, char *map_path)
 {
-	int	error;
+	int			error;
+	t_genparams	params;
 
 	if (map_path)
 	{
@@ -36,7 +37,16 @@ int	load_new_map(t_game *game, char *map_path)
 	}
 	else
 	{
-		error = get_maze(&game->map, 50, 50 ,12); //add seed, difficulty....
+		if (game->settings.difficulty == 0)
+			params = (t_genparams){.width = 30, .height = 30, .door = 5,
+				.seed = game->settings.seed, .difficulty = 0};
+		else if (game->settings.difficulty == 1)
+			params = (t_genparams){.width = 50, .height = 50, .door = 12,
+				.seed = game->settings.seed, .difficulty = 1};
+		else
+			params = (t_genparams){.width = 80, .height = 80, .door = 20,
+				.seed = game->settings.seed, .difficulty = 2};
+		error = get_maze(&game->map, params, &game->settings.seed);
 		if (error)
 			return (free_map(&game->map), display_error(error));
 	}
@@ -75,11 +85,11 @@ int	play_event(int button, int x, int y, t_game *game)
 	(void)y;
 	if (button == 1)
 	{
+		clear_all_other_selected(game, NULL, game->start_menu.all_objects);
 		error = load_new_map(game, game->settings.map_path);
 		if (error)
 			return (set_error_value(&game->start_menu, error), error);
 		set_map_settings(game, &game->menu.all_objects);
-		clear_all_other_selected(game, NULL, game->start_menu.all_objects);
 	}
 	return (0);
 }

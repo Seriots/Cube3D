@@ -26,6 +26,7 @@ int		raycasting(t_game *game);
 
 /*Display*/
 int		show_fps(t_game *game);
+int		show_seed(t_game *game);
 void	my_mlx_put_image_to_window(t_game *game, t_img_data *data, int x, int y);
 void	my_mlx_pixel_put(t_img_data *data, int x, int y, int color);
 int		default_display(t_game *game);

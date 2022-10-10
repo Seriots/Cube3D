@@ -42,6 +42,12 @@ x -> start menu avec choix de le difficulte, level preset ou genere a partir d'u
 
 -> faire une fonction update et display associe a chaque object des menu
 
+<SPRITES>
+-> key
+-> door
+-> all default wall
+-> exit area
+
 <BONUS>
 
 -> lumiere ?
@@ -51,6 +57,7 @@ x -> start menu avec choix de le difficulte, level preset ou genere a partir d'u
 -> bug du slide qui accelere le player
 -> move speed en fonction du delai
 -> cacher la minimap
+-> handle Ctrl+c
 
 <GAME>
 -> horror / puzzle
@@ -92,6 +99,7 @@ Error
 -> porte simple
 -> porte de sortie
 -> fantome
+-> minimap
 
 <GENERATEUR MAP>
 x-> parametre char **map, difficulte(impact la taille de la map et les objs (lampe en mode hard))
@@ -114,6 +122,5 @@ x-> fix la boucle inf dans le generateur
 x -> reconstruire le projet pour load les map lorsque le bouton play est presse et faire les
 remonter d'erreur sur le screen sans leave le programme
 x -> Setup les message d'erreur
--> envoyer la seed et la difficulte au generateur
+x -> envoyer la seed et la difficulte au generateur
 -> clean le projet et mieux ranger le tout j'ai fais un peu de la merde
--> handle Ctrl+c

@@ -60,6 +60,7 @@ define SRCS :=
 		menu/settings/c3d_checkbox_invertscroll.c
 		menu/settings/c3d_checkbox_showfps.c
 		menu/settings/c3d_checkbox_showmmap.c
+		menu/settings/c3d_checkbox_showseed.c
 		menu/settings/c3d_keyinput_backward.c
 		menu/settings/c3d_keyinput_forward.c
 		menu/settings/c3d_keyinput_left.c

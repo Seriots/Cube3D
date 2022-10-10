@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 13:43:02 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/10 12:44:23 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/10 13:24:19 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,17 @@ int	show_fps(t_game *game)
 	char	fps[32];
 
 	ft_itoa_noalloc(fps, 1000 / game->delay);
-	ft_strlcat(fps, " fps", 24);
-	mlx_string_put(game->mlx.display, game->mlx.window, 10, 10, 0xFFFFFF, fps);
+	ft_strlcat(fps, " fps", 32);
+	mlx_string_put(game->mlx.display, game->mlx.window, 10, 15, 0xFFFFFF, fps);
+	return (0);
+}
+
+int	show_seed(t_game *game)
+{
+	char	seed[32];
+
+	ft_itoal_noalloc(seed, game->settings.seed);
+	mlx_string_put(game->mlx.display, game->mlx.window, WIN_WIDTH - 10 - (6 * ft_strlen(seed)), 15, 0xFFFFFF, seed);
 	return (0);
 }
 
@@ -37,5 +46,7 @@ int	default_display(t_game *game)
 		game->all_img.screen_img.img, 0, 0);
 	if (game->settings.show_fps)
 		show_fps(game);
+	if (game->settings.show_seed)
+		show_seed(game);
 	return (0);
 }

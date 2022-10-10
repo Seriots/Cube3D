@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 14:34:59 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/10 12:15:06 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/10 13:20:02 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,8 @@ int	menu_display(t_game *game)
 	display_text(game, game->menu.all_objects);
 	if (game->settings.show_fps)
 		show_fps(game);
+	if (game->settings.show_seed)
+		show_seed(game);
 	if (game->menu.error != 0)
 		display_error_on_screen(game, get_error(game->menu.error),
 		MENU_ERROR_X, MENU_ERROR_Y);

@@ -53,6 +53,15 @@ typedef struct s_starter
 	int		radius;
 }		t_starter;
 
+typedef struct s_genparams
+{
+	unsigned long	seed;
+	int				difficulty;
+	int				width;
+	int				height;
+	int				door;
+}	t_genparams;
+
 int	gen_maze(t_map *map, int width, int height, int door);
 int	clean_maze(char **map, int width, int height);
 int	is_ver_ok(char **map, int x, int y);
@@ -65,7 +74,7 @@ int	standardize_maze(char **map, int width, int height);
 int	standardize_maze_predoor(char **map, int width, int height);
 int	post_player(char **map, int width, int height);
 
-int	get_maze(t_map *map, int width, int height, int door);
+int	get_maze(t_map *map, t_genparams params, unsigned long *seed);
 
 
 /*V2*/

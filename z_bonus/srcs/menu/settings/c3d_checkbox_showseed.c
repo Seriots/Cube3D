@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   c3d_checkbox_showmmap.c                            :+:      :+:    :+:   */
+/*   c3d_checkbox_showseed.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/10 12:40:54 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/10 13:14:46 by lgiband          ###   ########.fr       */
+/*   Created: 2022/10/10 13:14:36 by lgiband           #+#    #+#             */
+/*   Updated: 2022/10/10 13:20:23 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@
 
 #include <stdlib.h>
 
-int	showmmap_release(int button, int x, int y, t_game *game)
+int	showseed_release(int button, int x, int y, t_game *game)
 {
 	t_checkbox	*checkbox;
 
 	if (button == 1)
 	{
-		checkbox = dict_getelem_number(game->menu.all_objects, 22)->value;
+		checkbox = dict_getelem_number(game->menu.all_objects, 23)->value;
 		if (x - (WIN_WIDTH / 2 - MENU_WIDTH / 2) >= checkbox->box.x
 			&& x - (WIN_WIDTH / 2 - MENU_WIDTH / 2)
 			<= checkbox->box.x + checkbox->box.width
@@ -42,16 +42,16 @@ int	showmmap_release(int button, int x, int y, t_game *game)
 	return (0);
 }
 
-int	showmmap_press(int button, int x, int y, t_game *game)
+int	showseed_press(int button, int x, int y, t_game *game)
 {
 	(void)x;
 	(void)y;
 	if (button == 1)
-		game->fcts.mousereleased_fct = showmmap_release;
+		game->fcts.mousereleased_fct = showseed_release;
 	return (0);
 }
 
-t_dict	*init_showmmap_checkbox(t_game *game)
+t_dict	*init_showseed_checkbox(t_game *game)
 {
 	t_checkbox	*checkbox;
 	t_dict		*obj;
@@ -60,16 +60,16 @@ t_dict	*init_showmmap_checkbox(t_game *game)
 	if (!checkbox)
 		return (0);
 	checkbox->box.x = CHECKBOX_START_X;
-	checkbox->box.y = CHECKBOX_START_Y + 4 * MARGE;
-	checkbox->modified_value = &game->settings.show_mmap;
+	checkbox->box.y = CHECKBOX_START_Y + 5 * MARGE;
+	checkbox->modified_value = &game->settings.show_seed;
 	checkbox->is_check = *checkbox->modified_value;
 	checkbox->box.height = 20;
 	checkbox->box.width = 20;
 	checkbox->box.x_text = checkbox->box.x - 100;
 	checkbox->box.y_text = checkbox->box.y + 15;
-	ft_strlcpy(checkbox->box.description, "Show Minimap", 13);
+	ft_strlcpy(checkbox->box.description, "Show Seed", 10);
 	ft_strlcpy(checkbox->box.font, FONT, ft_strlen(FONT));
-	checkbox->box.mouse_press = showmmap_press;
+	checkbox->box.mouse_press = showseed_press;
 	checkbox->box.mouse_release = NULL;
 	obj = dict_new(CHECKBOX, checkbox);
 	if (!obj)
