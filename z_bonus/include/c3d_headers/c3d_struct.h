@@ -90,6 +90,7 @@ typedef struct s_settings
 	bool			invert_scroll;
 	bool			invert_mouse;
 	bool			show_fps;
+	bool			show_mmap;
 	int				difficulty;
 	char			*map_path;
 	unsigned long	seed;
@@ -289,6 +290,7 @@ typedef struct s_scrollbar
 typedef struct s_menu
 {
 	t_dict	*all_objects;
+	int		error;
 	int		scroll_amount;
 }	t_menu;
 

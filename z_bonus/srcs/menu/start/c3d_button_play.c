@@ -77,7 +77,7 @@ int	play_event(int button, int x, int y, t_game *game)
 	{
 		error = load_new_map(game, game->settings.map_path);
 		if (error)
-			return (1);
+			return (set_error_value(&game->start_menu, error), error);
 		set_map_settings(game, &game->menu.all_objects);
 		clear_all_other_selected(game, NULL, game->start_menu.all_objects);
 	}

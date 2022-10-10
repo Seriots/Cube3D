@@ -32,6 +32,9 @@ long			timestamp_msec(long start);
 long			timestamp_sec(long start);
 
 /*Error*/
+void			set_error_value(t_menu *menu, int code);
+char			*get_error(int code);
+void			display_error_on_screen(t_game *game, char *error, int x, int y);
 int				display_error(int code);
 
 /*Free*/

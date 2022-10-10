@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 13:43:02 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/08 12:51:50 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/10 12:44:23 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,9 @@ int	show_fps(t_game *game)
 int	default_display(t_game *game)
 {
 	raycasting(game);
-	my_mlx_put_image_to_window(game, &game->all_img.minimap_img,
-		10, WIN_HEIGHT - game->all_img.minimap_img.height - 10);
+	if (game->settings.show_mmap)
+		my_mlx_put_image_to_window(game, &game->all_img.minimap_img,
+			10, WIN_HEIGHT - game->all_img.minimap_img.height - 10);
 	mlx_put_image_to_window(game->mlx.display, game->mlx.window,
 		game->all_img.screen_img.img, 0, 0);
 	if (game->settings.show_fps)

@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 10:36:50 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/10 11:30:32 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/10 12:18:06 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "c3d_settings.h"
 #include "c3d_menu.h"
 #include "c3d_startscreen.h"
+#include "c3d_utils.h"
 
 #include "mlx.h"
 #include "ft.h"
@@ -46,7 +47,10 @@ int	event_enter_textinput_start(t_game *game, t_textinput *textinput)
 	}
 	path = ft_strdup(textinput->path);
 	if (!path)
+	{
 		ft_strlcpy(textinput->path, *textinput->modified_path, 256);
+		set_error_value(&game->menu, 10);
+	}
 	else
 	{
 		free(*textinput->modified_path);
@@ -97,8 +101,7 @@ int	scroll_down(t_game *game)
 
 int	add_number_seed(t_seed *seed, int keyint)
 {
-	if (seed->tmp_value * 10 + keyint > 9999999999)
-		return (0);
-	seed->tmp_value = seed->tmp_value * 10 + keyint;
+	if (seed->tmp_value * 10 + keyint <= 9999999999)
+		seed->tmp_value = seed->tmp_value * 10 + keyint;
 	return (0);
 }

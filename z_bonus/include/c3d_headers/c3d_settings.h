@@ -61,6 +61,14 @@
 
 # define FONT "-sony-*-*-*-*-*-*-230-*-*-*-*-iso8859-*"
 
+/*WIN WIDTH / 2*/
+# define START_MENU_ERROR_X 640 
+# define START_MENU_ERROR_Y 150
+
+/*WIN WIDTH / 2*/
+# define MENU_ERROR_X 640
+# define MENU_ERROR_Y 585
+
 /*MiniMap Settings*/
 # define MMAP_WIDTH 200
 # define MMAP_HEIGHT 200

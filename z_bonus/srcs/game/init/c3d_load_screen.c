@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 13:30:36 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/10 10:30:44 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/10 12:39:37 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ int	load_startscreen(t_game *game)
 	game->fcts.mousereleased_fct = startscreen_mouse_release;
 	game->fcts.mousemove_fct = startscreen_mouse_move;
 	game->menu.scroll_amount = 0;
+	game->start_menu.error = 0;
 	if (HIDE)
 		mlx_mouse_show(game->mlx.display, game->mlx.window);
 	mlx_do_key_autorepeaton(game->mlx.display);
@@ -44,6 +45,7 @@ int	load_menu(t_game *game)
 	game->fcts.mousemove_fct = menu_mouse_move;
 	game->fcts.mousepressed_fct = menu_mouse_press;
 	game->fcts.mousereleased_fct = menu_mouse_release;
+	game->menu.error = 0;
 	if (HIDE)
 		mlx_mouse_show(game->mlx.display, game->mlx.window);
 	mlx_do_key_autorepeaton(game->mlx.display);
@@ -64,5 +66,11 @@ int	load_default(t_game *game)
 	mlx_do_key_autorepeatoff(game->mlx.display);
 	mlx_mouse_move(game->mlx.display, game->mlx.window,
 		WIN_WIDTH / 2, WIN_HEIGHT / 2);
+	game->player.left = 0;
+	game->player.right = 0;
+	game->player.forward = 0;
+	game->player.backward = 0;
+	game->player.turn_left = 0;
+	game->player.turn_right = 0;
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 13:27:27 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/08 16:07:01 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/10 12:33:16 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,10 @@ int	check_all_objects_release_start(t_game *game, int x, int y, t_dict *dict)
 int	startscreen_mouse_press(int button, int x, int y, t_game *game)
 {
 	if (button == 1)
+	{
+		game->menu.error = 0;
 		check_all_objects_press_start(game, x, y, game->start_menu.all_objects);
+	}
 	return (0);
 }
 

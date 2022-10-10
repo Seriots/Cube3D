@@ -73,6 +73,7 @@ t_dict	*init_showfps_checkbox(t_game *game);
 t_dict	*init_invertmouse_checkbox(t_game *game);
 t_dict	*init_resolution_slidebar(t_game *game);
 t_dict	*init_fps_slidebar(t_game *game);
+t_dict	*init_showmmap_checkbox(t_game *game);
 
 /*Utils*/
 int	clear_all_other_selected(t_game *game, void *keyinput, t_dict *dict);

@@ -2,14 +2,14 @@
 
 x-> Cast un rayons
 -> Camera axe x et y avec la souris --Problem: crash quand play qvec souris trop longtemps; hide mouse leak.
-	-> fix: desactiver mouse move toute les x frames
+	x -> fix: desactiver mouse move toute les x frames
 x -> collisions qui doivent check toutes la trajectoire et pas seulement le point d'arrive.
 
 <CASTING>
 
--> raycasting avec axe vertical en plus
--> balancer un ray au milieux, puis aux 2 autres milieux jusqua que 2 ray touche le meme mur
--> check si ya un mur uniquement aux intersections possible
+x -> raycasting avec axe vertical en plus
+x -> balancer un ray au milieux, puis aux 2 autres milieux jusqua que 2 ray touche le meme mur
+x -> check si ya un mur uniquement aux intersections possible
 
 <MENU>
 
@@ -29,18 +29,18 @@ x -> numinput color
 x -> scrollbar
 x -> setup the menu
 x -> add scroll with mouse in menu event mouse
--> add everything to menu
+x -> add everything to menu
 	x-> quality
 	x -> fps
-	-> show mininmap
+	x -> show mininmap
 x -> slide bar collide sur bar
 x -> activer le keypad pour textinput
 x -> add multichoice
+x -> start menu avec choix de le difficulte, level preset ou genere a partir d'une seed
 -> set font
 -> save file
 
 -> faire une fonction update et display associe a chaque object des menu
--> start menu avec choix de le difficulte, level preset ou genere a partir d'une seed
 
 <BONUS>
 
@@ -113,7 +113,7 @@ x -> Setup un start menu
 x-> fix la boucle inf dans le generateur
 x -> reconstruire le projet pour load les map lorsque le bouton play est presse et faire les
 remonter d'erreur sur le screen sans leave le programme
--> Setup les message d'erreur
+x -> Setup les message d'erreur
 -> envoyer la seed et la difficulte au generateur
 -> clean le projet et mieux ranger le tout j'ai fais un peu de la merde
 -> handle Ctrl+c

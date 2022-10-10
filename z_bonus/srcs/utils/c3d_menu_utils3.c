@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 23:58:22 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/10 11:37:49 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/10 12:18:52 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	load_path(t_game *game, t_textinput *textinput, char **path)
 	error = init_xpm_image(game, &img_data, textinput->path);
 	if (error)
 	{
+		game->menu.error = error;
 		ft_strlcpy(textinput->path, *path, 256);
 		textinput->size = ft_strlen(*path);
 		return ;
@@ -39,6 +40,7 @@ void	load_path(t_game *game, t_textinput *textinput, char **path)
 	new_path = ft_calloc(sizeof(char), ft_strlen(textinput->path) + 1);
 	if (!new_path)
 	{
+		game->menu.error = 10;
 		ft_strlcpy(textinput->path, *path, 256);
 		textinput->size = ft_strlen(*path);
 		return ;

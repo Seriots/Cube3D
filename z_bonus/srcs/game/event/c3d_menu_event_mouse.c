@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 15:03:03 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/08 13:42:27 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/10 12:32:56 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,15 +84,16 @@ int	check_all_objects_release(t_game *game, int x, int y, t_dict *dict)
 int	menu_mouse_press(int button, int x, int y, t_game *game)
 {
 	if (button == 1)
+	{
+		game->menu.error = 0;
 		check_all_objects_press(game, x, y, game->menu.all_objects);
+	}
 	return (0);
 }
 
 int	menu_mouse_release(int button, int x, int y, t_game *game)
 {
-	if (button == 3)
-		close_window(game);
-	else if (button == 1)
+	if (button == 1)
 		check_all_objects_release(game, x, y, game->menu.all_objects);
 	else if ((button == 4 && !game->settings.invert_scroll)
 		|| (button == 5 && game->settings.invert_scroll))

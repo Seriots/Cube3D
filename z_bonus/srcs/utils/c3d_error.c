@@ -6,13 +6,16 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 10:50:47 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/26 13:03:56 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/10 12:09:51 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
+#include "c3d_struct.h"
+
 #include "ft.h"
+#include "mlx.h"
 
 int	display_error2(int code)
 {
@@ -56,4 +59,57 @@ Usage: One line of each element \
 	else
 		display_error2(code);
 	return (code);
+}
+
+char	*get_error2(int code)
+{
+	if (code == 11)
+		return("Invalid file extension");
+	else if (code == 12)
+		return("Open Image Fail");
+	else if (code == 13)
+		return("Mlx load Fail");
+	else if (code == 14)
+		return("Window load Fail");
+	else
+		return("An error occurred");
+}
+
+char	*get_error(int code)
+{
+	if (code == 1)
+		return("Wrong arguments numbersUsage: ./cub3D <map.cub>");
+	else if (code == 2)
+		return("Invalid description lineUsage: One line of each element \
+``NO, SO, WE, EA, F, C`` only !");
+	else if (code == 3)
+		return("Invalid number of element in description line");
+	else if (code == 4)
+		return("Map is only composed of these character: ` 01NSEW`");
+	else if (code == 5)
+		return("Open Fail");
+	else if (code == 6)
+		return("Not all description line are present \
+Usage: One line of each element \
+``NO, SO, WE, EA, F, C`` only !");
+	else if (code == 7)
+		return("No map in file");
+	else if (code == 8)
+		return("One player (only) is needed");
+	else if (code == 9)
+		return("Map must be enclosed");
+	else if (code == 10)
+		return("Malloc fail");
+	else
+		return (get_error2(code));
+}
+
+void	display_error_on_screen(t_game *game, char *error, int x, int y)
+{
+	mlx_string_put(game->mlx.display, game->mlx.window, x - (6 * ft_strlen(error) / 2), y, 0xFF0000, error);
+}
+
+void	set_error_value(t_menu *menu, int code)
+{
+	menu->error = code;
 }
