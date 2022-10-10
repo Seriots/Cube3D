@@ -114,5 +114,6 @@ x-> fix la boucle inf dans le generateur
 x -> reconstruire le projet pour load les map lorsque le bouton play est presse et faire les
 remonter d'erreur sur le screen sans leave le programme
 -> Setup les message d'erreur
+-> envoyer la seed et la difficulte au generateur
 -> clean le projet et mieux ranger le tout j'ai fais un peu de la merde
 -> handle Ctrl+c
