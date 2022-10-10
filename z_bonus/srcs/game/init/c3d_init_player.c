@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   c3d_init_player.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ppajot <ppajot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 10:51:13 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/06 21:20:50 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/10 21:30:35 by ppajot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,9 @@ static void	set_player_coord(t_map *map, t_player *player)
 			{
 				player->pos.x = j * CASE_SIZE + CASE_SIZE / 2;
 				player->pos.y = i * CASE_SIZE + CASE_SIZE / 2;
-				player->rot = get_rotation(map->map[i][j]);
+				player->angle_plane = get_rotation(map->map[i][j]);
+				player->updown = 0;
+				player->z = CASE_SIZE / 2;
 				return ;
 			}
 			j++;

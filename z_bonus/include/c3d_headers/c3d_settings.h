@@ -86,7 +86,7 @@
 
 /*Mouse sensibility between 1-100*/
 # define CAM_SENSIBILITY_X 30.0f
-# define CAM_SENSIBILITY_Y 1.0f
+# define CAM_SENSIBILITY_Y 30.0f
 
 /*Field of view between 1-60*/
 # define FOV 10.0f

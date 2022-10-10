@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mzg_generator.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ppajot <ppajot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 11:05:33 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/10 15:37:49 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/10 19:12:26 by ppajot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,7 +138,7 @@ int	get_maze(t_map *map, t_genparams params, unsigned long *seed, int print)
 	error = gen_maze(map, params.width, params.height, params.door);
 	if (error)
 		return (error);
-	if (print)
-		printmaze(map, params.width, params.height);
+	(void)print;
+	//printmaze(map, params.width, params.height);
 	return (0);
 }

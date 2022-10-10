@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   c3d_minimap_update.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ppajot <ppajot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 10:41:01 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/10 17:59:49 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/10 19:06:10 by ppajot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 int	get_cursor_image(t_game *game)
 {
-	return ((int)((game->player.rot + (M_PI / 8)) / (2 * M_PI) * 8) % 8);
+	return ((int)((game->player.angle_plane + (M_PI / 8)) / (2 * M_PI) * 8) % 8);
 }
 
 void	*get_player_color(t_game *game, int i, int j)

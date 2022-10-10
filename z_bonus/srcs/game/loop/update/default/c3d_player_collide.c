@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   c3d_player_collide.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ppajot <ppajot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 11:42:39 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/06 21:20:50 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/10 19:06:10 by ppajot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,16 +76,16 @@ int	check_collide(t_game *game, t_point mov)
 
 	if (mov.x == 0 && mov.y == 0)
 		return (0);
-	player.x = game->player.pos.x + VIEW_SCREEN * sin(game->player.rot) / 2;
-	player.y = game->player.pos.y + VIEW_SCREEN * cos(game->player.rot) / 2;
+	player.x = game->player.pos.x + VIEW_SCREEN * sin(game->player.angle_plane) / 2;
+	player.y = game->player.pos.y + VIEW_SCREEN * cos(game->player.angle_plane) / 2;
 	if (mov.y > 0)
 		player.angle = 2 * M_PI
 			- acos(mov.x / norm((double)mov.x, (double)mov.y));
 	else
 		player.angle = acos(mov.x / norm((double)mov.x, (double)mov.y));
 	get_new_wall(game, player, &wall);
-	player.x = game->player.pos.x - VIEW_SCREEN * sin(game->player.rot) / 2;
-	player.y = game->player.pos.y - VIEW_SCREEN * cos(game->player.rot) / 2;
+	player.x = game->player.pos.x - VIEW_SCREEN * sin(game->player.angle_plane) / 2;
+	player.y = game->player.pos.y - VIEW_SCREEN * cos(game->player.angle_plane) / 2;
 	get_new_wall(game, player, &wall2);
 	if (min(wall.dist, wall2.dist) == wall2.dist)
 	{

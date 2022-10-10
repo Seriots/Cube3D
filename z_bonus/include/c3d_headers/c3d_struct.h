@@ -55,7 +55,9 @@ typedef struct s_coord
 typedef struct s_player
 {
 	t_coord			pos;
-	double			rot;
+	double			angle_plane;
+	double			updown;
+	double			z;
 	int				forward;
 	int				backward;
 	int				left;

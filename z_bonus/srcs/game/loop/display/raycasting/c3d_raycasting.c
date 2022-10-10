@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   c3d_raycasting.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ppajot <ppajot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 14:42:38 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/10 16:38:05 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/10 21:27:52 by ppajot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,14 @@
 int	cast_ray(t_game *game, int i)
 {
 	double		d;
+	double		up;
 	t_vector	ray;
 	t_wall		wall;
 
 	d = (i - (double)WIN_WIDTH / 2.0) * (double)VIEW_SCREEN / (double)WIN_WIDTH;
-	ray.angle = atan (-d / game->settings.fov) + game->player.rot;
-	ray.x = game->player.pos.x + d * sin(game->player.rot);
-	ray.y = game->player.pos.y + d * cos(game->player.rot);
+	ray.angle = atan (-d / game->settings.fov) + game->player.angle_plane;
+	ray.x = game->player.pos.x + d * sin(game->player.angle_plane);
+	ray.y = game->player.pos.y + d * cos(game->player.angle_plane);
 	wall.face = 0;
 	wall.dist = 0;
 	wall.dist_from_start = 0;
@@ -38,6 +39,8 @@ int	cast_ray(t_game *game, int i)
 	display_wall(game, &wall, i);
 	return (0);
 }
+
+
 
 int	raycasting(t_game *game)
 {
