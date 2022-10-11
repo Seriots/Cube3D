@@ -25,6 +25,11 @@ int	mapinput_press(int button, int x, int y, t_game *game);
 int	multichoice_press(int button, int x, int y, t_game *game);
 int	seed_press(int button, int x, int y, t_game *game);
 
+/*Check Value*/
+int	check_value_checkbox(bool *value);
+int	check_value_keyinput(KeySym *value, int default_value);
+int	check_value_slidebar(float *value, int min, int max);
+
 /*Default events*/
 int	default_key_release(KeySym keycode, t_game *game);
 int	default_key_press(KeySym keycode, t_game *game);

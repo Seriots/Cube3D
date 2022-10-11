@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 13:13:44 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/11 10:35:50 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/11 12:57:43 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ t_dict	*init_left_keyinput(t_game *game)
 	ft_strlcpy(keyinput->box.font, FONT, ft_strlen(FONT));
 	keyinput->box.mouse_press = keyinput_press;
 	keyinput->box.mouse_release = NULL;
+	check_value_keyinput(&game->settings.left, XK_a);
 	keyinput->modified_value = &game->settings.left;
 	keyinput->color = get_key_color(game, &game->settings.left);
 	obj = dict_new(KEYINPUT, keyinput);

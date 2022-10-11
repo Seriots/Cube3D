@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 13:09:29 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/10 15:59:26 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/11 11:51:58 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,16 @@
 int	resume_event(int button, int x, int y, t_game *game)
 {
 	t_scrollbar	*scrollbar;
+	int			error;
 
 	(void)x;
 	(void)y;
 	if (button == 1)
 	{
 		scrollbar = dict_getelem_key(game->menu.all_objects, SCROLLBAR)->value;
+		error = save_settings(game);
+		if (error)
+			display_error(error);
 		load_default(game);
 		game->menu.scroll_amount = 0;
 		scrollbar->box.y = scrollbar->min;

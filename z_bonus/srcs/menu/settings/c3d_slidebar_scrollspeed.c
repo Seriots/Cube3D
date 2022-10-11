@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 12:16:18 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/11 10:52:42 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/11 13:16:58 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ t_dict	*init_scrollspeed_slidebar(t_game *game)
 	slidebar->max = 20;
 	slidebar->height = 18;
 	slidebar->width = 6;
+	check_value_slidebar(&game->settings.scroll_speed, slidebar->min, slidebar->max);
 	slidebar->modified_value = &game->settings.scroll_speed;
 	scrollspeed_init(slidebar);
 	slidebar->box.mouse_press = slidebar_press;

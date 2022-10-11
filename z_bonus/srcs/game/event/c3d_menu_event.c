@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 14:59:33 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/08 13:34:14 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/11 11:42:12 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,9 @@ int	menu_key_press(KeySym keycode, t_game *game)
 int	menu_key_release(KeySym keycode, t_game *game)
 {
 	if (keycode == XK_Escape)
+	{
+		save_settings(game);
 		load_default(game);
+	}
 	return (0);
 }

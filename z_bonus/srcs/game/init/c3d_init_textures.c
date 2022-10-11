@@ -6,12 +6,13 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 09:59:52 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/06 21:20:50 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/11 14:07:10 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "c3d_struct.h"
 #include "c3d_init.h"
+#include "mzg_incs.h"
 
 #include "ft.h"
 
@@ -27,15 +28,31 @@ int	open_textures(t_game *game, t_map *map)
 	game->all_img.we.img = 0;
 	error = init_xpm_image(game, &game->all_img.no, map->no);
 	if (error)
-		return (error);
+	{
+		error = init_xpm_image(game, &game->all_img.no, DEFAULT_IMAGE_PATH_NO);
+		if (error)
+			return (error);
+	}
 	error = init_xpm_image(game, &game->all_img.so, map->so);
 	if (error)
-		return (error);
+	{
+		error = init_xpm_image(game, &game->all_img.no, DEFAULT_IMAGE_PATH_SO);
+		if (error)
+			return (error);
+	}
 	error = init_xpm_image(game, &game->all_img.we, map->we);
 	if (error)
-		return (error);
+	{
+		error = init_xpm_image(game, &game->all_img.no, DEFAULT_IMAGE_PATH_WE);
+		if (error)
+			return (error);
+	}
 	error = init_xpm_image(game, &game->all_img.ea, map->ea);
 	if (error)
-		return (error);
+	{
+		error = init_xpm_image(game, &game->all_img.no, DEFAULT_IMAGE_PATH_EA);
+		if (error)
+			return (error);
+	}
 	return (0);
 }

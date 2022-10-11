@@ -15,6 +15,10 @@
 
 # include "c3d_struct.h"
 
+/*Save*/
+int	load_settings(t_game *game);
+int	save_settings(t_game *game);
+
 /*Load*/
 int	load_startscreen(t_game *game);
 int	load_default(t_game *game);

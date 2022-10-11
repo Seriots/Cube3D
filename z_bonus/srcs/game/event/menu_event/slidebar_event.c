@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 10:41:56 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/11 10:53:10 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/11 13:17:41 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,5 +54,14 @@ int	slidebar_press(int button, int x, int y, t_game *game)
 		game->fcts.mousemove_fct = slidebar_mouse_move;
 		slidebar_mouse_move(x, y, game);
 	}		
+	return (0);
+}
+
+int	check_value_slidebar(float *value, int min, int max)
+{
+	if (*value < min)
+		*value = min;
+	else if (*value > max)
+		*value = max;
 	return (0);
 }

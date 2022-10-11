@@ -26,6 +26,9 @@
 # define MENU_HEIGHT 600
 # define BORDER_SIZE 5
 
+/*Font settings*/
+# define FONT_WIDTH 6
+
 # define BUTTON "BUTTON"
 # define BUTTON2 "BUTTON2"
 # define SLIDEBAR "SLIDEBAR"

@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 16:00:25 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/11 10:46:17 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/11 13:16:38 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ t_dict	*init_fps_slidebar(t_game *game)
 	slidebar->max = 120;
 	slidebar->height = 18;
 	slidebar->width = 6;
+	check_value_slidebar(&game->settings.fps, slidebar->min, slidebar->max);
 	slidebar->modified_value = &game->settings.fps;
 	fps_init(slidebar);
 	slidebar->box.mouse_press = slidebar_press;

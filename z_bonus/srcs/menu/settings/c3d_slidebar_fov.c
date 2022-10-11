@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 13:52:10 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/11 10:45:43 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/11 13:16:31 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ t_dict	*init_fov_slidebar(t_game *game)
 	slidebar->max = 60;
 	slidebar->height = 18;
 	slidebar->width = 6;
+	check_value_slidebar(&game->settings.fov, slidebar->min, slidebar->max);
 	slidebar->modified_value = &game->settings.fov;
 	fov_init(slidebar);
 	slidebar->box.mouse_press = slidebar_press;

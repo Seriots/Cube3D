@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 13:43:02 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/10 16:37:37 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/11 11:28:09 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	show_seed(t_game *game)
 
 	ft_itoal_noalloc(seed, game->settings.seed);
 	mlx_string_put(game->mlx.display, game->mlx.window, WIN_WIDTH
-		- 10 - (6 * ft_strlen(seed)), 15, 0xFFFFFF, seed);
+		- 10 - (FONT_WIDTH * ft_strlen(seed)), 15, 0xFFFFFF, seed);
 	return (0);
 }
 

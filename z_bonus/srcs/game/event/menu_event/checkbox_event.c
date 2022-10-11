@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 10:25:07 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/11 10:28:43 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/11 13:11:27 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,12 @@ int	checkbox_press(int button, int x, int y, t_game *game)
 	(void)y;
 	if (button == 1)
 		game->fcts.mousereleased_fct = checkbox_release;
+	return (0);
+}
+
+int	check_value_checkbox(bool *value)
+{
+	if (*value != 0 && *value != 1)
+		*value = 1;
 	return (0);
 }

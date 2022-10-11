@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 12:48:40 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/11 10:45:01 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/11 13:16:24 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ t_dict	*init_camspeedy_slidebar(t_game *game)
 	slidebar->max = 100;
 	slidebar->height = 18;
 	slidebar->width = 6;
+	check_value_slidebar(&game->settings.cam_sensibility_y, slidebar->min, slidebar->max);
 	slidebar->modified_value = &game->settings.cam_sensibility_y;
 	camspeedy_init(slidebar);
 	slidebar->box.mouse_press = slidebar_press;

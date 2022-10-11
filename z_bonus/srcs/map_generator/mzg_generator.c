@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 11:05:33 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/10 15:37:49 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/11 14:01:55 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,24 +79,24 @@ int	init_map(t_map *map, int width, int height)
 
 int	set_default_image(t_map *map, int width, int height)
 {
-	map->no = ft_strdup(DEFAULT_IMAGE_PATH_NO);
+	map->no = ft_strdup(map->default_north);
 	if (!map->no)
 		return (10);
-	map->so = ft_strdup(DEFAULT_IMAGE_PATH_SO);
+	map->so = ft_strdup(map->default_south);
 	if (!map->so)
 		return (10);
-	map->we = ft_strdup(DEFAULT_IMAGE_PATH_WE);
+	map->we = ft_strdup(map->default_west);
 	if (!map->we)
 		return (10);
-	map->ea = ft_strdup(DEFAULT_IMAGE_PATH_EA);
+	map->ea = ft_strdup(map->default_east);
 	if (!map->ea)
 		return (10);
-	map->f = ft_color(DEFAULT_FLOOR);
-	if (!map->f)
-		return (10);
-	map->c = ft_color(DEFAULT_CEIL);
-	if (!map->c)
-		return (10);
+	map->f = ft_color(map->default_floor);
+	if (map->f == -1)
+		map->f = ft_color(DEFAULT_FLOOR);
+	map->c = ft_color(map->default_ceil);
+	if (map->c == -1)
+		map->c = ft_color(DEFAULT_CEIL);
 	map->width = width;
 	map->height = height;
 	return (0);
@@ -123,7 +123,7 @@ int	gen_maze(t_map *map, int width, int height, int door)
 	standardize_maze(map->map, width, height);
 	error = set_default_image(map, width, height);
 	if (error)
-		return (ft_free_tab(map->map), error);
+		return (error);
 	return (0);
 }
 

@@ -23,6 +23,12 @@
 
 typedef struct s_game	t_game;
 
+typedef struct	s_save
+{
+	char	*key;
+	void	*value;
+}	t_save;
+
 typedef struct s_img_data
 {
 	void	*img;
@@ -132,6 +138,12 @@ typedef struct s_map
 	int			f;
 	int			c;
 	t_dict		*all_objects;
+	char		default_north[256];
+	char		default_south[256];
+	char		default_west[256];
+	char		default_east[256];
+	char		default_ceil[256];
+	char		default_floor[256];
 }	t_map;
 
 

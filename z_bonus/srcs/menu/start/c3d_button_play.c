@@ -95,6 +95,9 @@ int	play_event(int button, int x, int y, t_game *game)
 		if (error)
 			return (set_error_value(&game->start_menu, error), error);
 		set_map_settings(game, &game->menu.all_objects);
+		error = save_settings(game);
+		if (error)
+			display_error(error);
 	}
 	return (0);
 }
@@ -114,7 +117,7 @@ t_dict	*init_play_button(t_game *game)
 	box->box.y = (WIN_HEIGHT / 3 - box->box.height / 2);
 	ft_strlcpy(box->box.description, "Play", 5);
 	box->box.x_text = box->box.x + box->box.width / 2
-		- (6 * ft_strlen(box->box.description) / 2);
+		- (FONT_WIDTH * ft_strlen(box->box.description) / 2);
 	box->box.y_text = box->box.y + box->box.height / 2 + 10 / 2;
 	ft_strlcpy(box->box.font, FONT, ft_strlen(FONT));
 	box->box.mouse_press = NULL;

@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 10:32:49 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/11 10:34:23 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/11 13:12:13 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,5 +79,12 @@ int	keyinput_press(int button, int x, int y, t_game *game)
 	(void)y;
 	if (button == 1)
 		game->fcts.mousereleased_fct = keyinput_release;
+	return (0);
+}
+
+int	check_value_keyinput(KeySym *value, int default_value)
+{
+	if (*value < 32 || *value > 126)
+		*value = default_value;
 	return (0);
 }

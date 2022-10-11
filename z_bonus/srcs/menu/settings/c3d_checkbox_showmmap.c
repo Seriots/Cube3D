@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 12:40:54 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/11 10:29:56 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/11 12:52:36 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ t_dict	*init_showmmap_checkbox(t_game *game)
 		return (0);
 	checkbox->box.x = CHECKBOX_START_X;
 	checkbox->box.y = CHECKBOX_START_Y + 4 * MARGE;
+	check_value_checkbox(&game->settings.show_mmap);
 	checkbox->modified_value = &game->settings.show_mmap;
 	checkbox->is_check = *checkbox->modified_value;
 	checkbox->box.height = 20;

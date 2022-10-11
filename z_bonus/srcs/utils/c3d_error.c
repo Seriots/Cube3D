@@ -6,13 +6,14 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 10:50:47 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/10 15:46:47 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/11 11:28:24 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
 #include "c3d_struct.h"
+#include "c3d_settings.h"
 
 #include "ft.h"
 #include "mlx.h"
@@ -107,5 +108,5 @@ Usage: One line of each element \
 void	display_error_on_screen(t_game *game, char *error, int x, int y)
 {
 	mlx_string_put(game->mlx.display, game->mlx.window,
-		x - (6 * ft_strlen(error) / 2), y, 0xFF0000, error);
+		x - (FONT_WIDTH * ft_strlen(error) / 2), y, 0xFF0000, error);
 }

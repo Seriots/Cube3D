@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 13:17:26 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/11 10:18:58 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/11 14:10:04 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 #include "c3d_settings.h"
 #include "c3d_utils.h"
 #include "c3d_startscreen.h"
+#include "mzg_incs.h"
 
 #include "ft.h"
 
@@ -51,6 +52,12 @@ static int	set_default_settings(t_game *game, char *path)
 	game->settings.show_mmap = 1;
 	game->settings.seed = 0;
 	game->settings.difficulty = 0;
+	ft_strlcpy(game->map.default_ceil, DEFAULT_CEIL, 256);
+	ft_strlcpy(game->map.default_floor, DEFAULT_FLOOR, 256);
+	ft_strlcpy(game->map.default_north, DEFAULT_IMAGE_PATH_NO, 256);
+	ft_strlcpy(game->map.default_south, DEFAULT_IMAGE_PATH_SO, 256);
+	ft_strlcpy(game->map.default_west, DEFAULT_IMAGE_PATH_WE, 256);
+	ft_strlcpy(game->map.default_east, DEFAULT_IMAGE_PATH_EA, 256);
 	game->settings.map_path = ft_strdup(path);
 	if (path && !game->settings.map_path)
 		return (10);
@@ -69,7 +76,7 @@ static int	set_variable(t_game *game)
 	game->all_img.minimap_img.img = NULL;
 	game->all_img.all_cursor_img = NULL;
 	game->map = (t_map){.c = -1, .f = -1, .ea = NULL, .no = NULL, .so = NULL,
-		.we = NULL, .height = 0, .width = 0, .all_objects = 0};
+		.we = NULL, .height = 0, .width = 0, .all_objects = 0, .map = NULL};
 	return (0);
 }
 
@@ -82,6 +89,9 @@ int	init_game(t_game *game, char *path)
 	error = set_default_settings(game, path);
 	if (error)
 		return (error);
+	error = load_settings(game);
+	if (error)
+		display_error(error);
 	error = init_images(game);
 	if (error)
 		return (error);
@@ -90,8 +100,3 @@ int	init_game(t_game *game, char *path)
 		return (error);
 	return (0);
 }
-/*
-	error = init_player(game);
-	if (error)
-		return (error);
-*/
