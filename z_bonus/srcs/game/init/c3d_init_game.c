@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   c3d_init_game.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
+/*   By: pierre-yves <pierre-yves@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 13:17:26 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/10 16:26:30 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/11 18:30:13 by pierre-yves      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ static int	set_default_settings(t_game *game, char *path)
 	game->settings.backward = XK_s;
 	game->settings.turn_left = XK_Left;
 	game->settings.turn_right = XK_Right;
+	game->settings.turn_up = XK_Up;
+	game->settings.turn_down = XK_Down;
 	game->settings.pause = XK_Escape;
 	game->settings.color = 1;
 	game->settings.invert_scroll = 0;

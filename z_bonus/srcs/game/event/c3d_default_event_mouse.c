@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   c3d_default_event_mouse.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ppajot <ppajot@student.42.fr>              +#+  +:+       +#+        */
+/*   By: pierre-yves <pierre-yves@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 11:04:48 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/10 21:31:36 by ppajot           ###   ########.fr       */
+/*   Updated: 2022/10/11 19:45:25 by pierre-yves      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ int	is_invert(t_game *game)
 
 int	default_mouse_move(int x, int y, t_game *game)
 {
+	(void)y;
 	game->player.angle_plane -= (((float)(x - WIN_WIDTH / 2))
 			* (game->settings.cam_sensibility_x / 70000.0)) * (is_invert(game));
 	if (game->player.angle_plane > 2 * M_PI)

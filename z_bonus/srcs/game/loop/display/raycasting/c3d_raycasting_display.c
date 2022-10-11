@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   c3d_raycasting_display.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
+/*   By: pierre-yves <pierre-yves@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 10:41:24 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/10 16:38:26 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/11 20:02:11 by pierre-yves      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,10 +72,16 @@ int	display_wall(t_game *game, t_wall *wall, int i)
 	display.d = (p.x - (double)WIN_WIDTH / 2.0)
 		* (double)VIEW_SCREEN / (double)WIN_WIDTH;
 	display.angle = dabs(atan(display.d / game->settings.fov));
-	display.min = WIN_HEIGHT / 2 - CASE_SIZE * game->settings.fov * WIN_HEIGHT
-		/ ((wall->dist + game->settings.fov / cos((display.angle)))
-			* 2 * VIEW_SIZE * cos(display.angle));
-	display.max = WIN_HEIGHT - display.min;
+	//display.min = WIN_HEIGHT / 2 - CASE_SIZE * game->settings.fov * WIN_HEIGHT
+	//	/ ((wall->dist + game->settings.fov / cos((display.angle)))
+	//		* 2 * VIEW_SIZE * cos(display.angle));
+	//display.max = WIN_HEIGHT - display.min;
+	display.min = VIEW_SIZE / 2 - game->player.updown + game->player.z - (CASE_SIZE / 2 - game->player.updown) * game->settings.fov / (cos(display.angle) * (wall->dist + game->settings.fov / cos((display.angle))));
+	display.max = VIEW_SIZE / 2 - game->player.updown + game->player.z - (CASE_SIZE / 2 + game->player.updown) * game->settings.fov / (cos(display.angle) * (wall->dist + game->settings.fov / cos((display.angle))));
+	display.min *= WIN_HEIGHT / VIEW_SIZE;
+	display.max *= -WIN_HEIGHT / VIEW_SIZE;
+	display.max += WIN_HEIGHT;
+	printf("ud: %f, z: %f max: %f, min: %f\n", game->player.updown, game->player.z, display.max, display.min);
 	while (p.y < WIN_HEIGHT)
 	{
 		color = get_pixel_color(game, wall, p, display);

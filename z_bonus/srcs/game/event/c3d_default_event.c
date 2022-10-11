@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   c3d_default_event.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
+/*   By: pierre-yves <pierre-yves@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 11:22:31 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/08 13:33:43 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/11 18:29:38 by pierre-yves      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,10 @@ int	default_key_press(KeySym keycode, t_game *game)
 		game->player.turn_left = 1;
 	else if (keycode == game->settings.turn_right)
 		game->player.turn_right = 1;
+	else if (keycode == game->settings.turn_left)
+		game->player.turn_up = 1;
+	else if (keycode == game->settings.turn_right)
+		game->player.turn_down = 1;
 	return (0);
 }
 
@@ -87,6 +91,10 @@ int	default_key_release(KeySym keycode, t_game *game)
 	else if (keycode == game->settings.turn_left)
 		game->player.turn_left = 0;
 	else if (keycode == game->settings.turn_right)
+		game->player.turn_right = 0;
+	else if (keycode == game->settings.turn_up)
+		game->player.turn_up = 0;
+	else if (keycode == game->settings.turn_down)
 		game->player.turn_right = 0;
 	if (keycode == XK_Escape)
 		load_menu(game);

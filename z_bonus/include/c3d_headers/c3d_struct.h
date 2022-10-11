@@ -64,6 +64,8 @@ typedef struct s_player
 	int				right;
 	int				turn_left;
 	int				turn_right;
+	int				turn_up;
+	int				turn_down;
 }	t_player;
 
 typedef struct s_wall
@@ -87,6 +89,8 @@ typedef struct s_settings
 	KeySym			backward;
 	KeySym			turn_left;
 	KeySym			turn_right;
+	KeySym			turn_up;
+	KeySym			turn_down;
 	KeySym			pause;
 	bool			color;
 	bool			invert_scroll;
@@ -145,8 +149,8 @@ typedef struct s_point
 
 typedef struct s_display
 {
-	int			min;
-	int			max;
+	double			min;
+	double			max;
 	double		d;
 	double		angle;
 	t_img_data	*img;
