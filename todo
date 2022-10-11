@@ -58,6 +58,7 @@ x -> start menu avec choix de le difficulte, level preset ou genere a partir d'u
 -> move speed en fonction du delai
 -> cacher la minimap
 -> handle Ctrl+c
+-> revoir la map pour handle differentes images
 
 <GAME>
 -> horror / puzzle
@@ -126,4 +127,8 @@ x -> envoyer la seed et la difficulte au generateur
 x -> clean le projet et mieux ranger le tout j'ai fais un peu de la merde
 x -> fix  la slidebar
 x -> fix les objets avec variable int dans game lors de la collide
--> add save file "key=value"
+x -> add save file "key=value"
+-> faire le setup pour tout les objs
+-> refaire le parsing pour handle les objs
+-> mettre en place l'inventaires
+-> ajouter la touch use, take and drop

@@ -22,10 +22,10 @@
 # define BASE "NSWE"
 # define DEFAULT_IMAGE_PATH_NO "imgs/xpm/blueWall64x64.xpm"
 # define DEFAULT_IMAGE_PATH_SO "imgs/xpm/redWall64x64.xpm"
-# define DEFAULT_IMAGE_PATH_WE "imgs/xpm/blueWall64x64.xpm"
-# define DEFAULT_IMAGE_PATH_EA "imgs/xpm/redWall64x64.xpm"
-# define DEFAULT_CEIL	"255,0,0"
-# define DEFAULT_FLOOR	"0,0,255"
+# define DEFAULT_IMAGE_PATH_WE "imgs/xpm/purpleWall64x64.xpm"
+# define DEFAULT_IMAGE_PATH_EA "imgs/xpm/greenWall64x64.xpm"
+# define DEFAULT_CEIL	"37,37,37"
+# define DEFAULT_FLOOR	"110,110,110"
 # define OPEN_FACTOR 4
 # include "c3d_struct.h"
 
