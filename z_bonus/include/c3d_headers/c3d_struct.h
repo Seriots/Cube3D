@@ -322,6 +322,7 @@ typedef struct s_game
 	t_settings	settings;
 	t_menu		menu;
 	t_menu		start_menu;
+	int			pick_obj;
 	long		last_frame;
 	long		delay;
 }	t_game;

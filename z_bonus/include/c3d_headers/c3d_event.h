@@ -15,6 +15,16 @@
 
 # include "c3d_struct.h"
 
+/*Menu Event*/
+int	checkbox_press(int button, int x, int y, t_game *game);
+int	keyinput_press(int button, int x, int y, t_game *game);
+int	numinput_press(int button, int x, int y, t_game *game);
+int	slidebar_press(int button, int x, int y, t_game *game);
+int	textinput_press(int button, int x, int y, t_game *game);
+int	mapinput_press(int button, int x, int y, t_game *game);
+int	multichoice_press(int button, int x, int y, t_game *game);
+int	seed_press(int button, int x, int y, t_game *game);
+
 /*Default events*/
 int	default_key_release(KeySym keycode, t_game *game);
 int	default_key_press(KeySym keycode, t_game *game);

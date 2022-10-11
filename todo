@@ -39,7 +39,7 @@ x -> add multichoice
 x -> start menu avec choix de le difficulte, level preset ou genere a partir d'une seed
 -> set font
 -> save file
-
+-> clean tout les headers
 -> faire une fonction update et display associe a chaque object des menu
 
 <SPRITES>
@@ -123,4 +123,7 @@ x -> reconstruire le projet pour load les map lorsque le bouton play est presse 
 remonter d'erreur sur le screen sans leave le programme
 x -> Setup les message d'erreur
 x -> envoyer la seed et la difficulte au generateur
--> clean le projet et mieux ranger le tout j'ai fais un peu de la merde
+x -> clean le projet et mieux ranger le tout j'ai fais un peu de la merde
+x -> fix  la slidebar
+x -> fix les objets avec variable int dans game lors de la collide
+-> add save file "key=value"

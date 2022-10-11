@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 13:17:26 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/10 16:26:30 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/11 10:18:58 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ static int	set_variable(t_game *game)
 	game->delay = 0;
 	game->menu.all_objects = 0;
 	game->start_menu.all_objects = 0;
+	game->pick_obj = 0;
 	game->all_img.menu_img.img = NULL;
 	game->all_img.screen_img.img = NULL;
 	game->all_img.minimap_img.img = NULL;

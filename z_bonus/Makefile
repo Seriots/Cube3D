@@ -5,6 +5,14 @@ MAKE = /bin/make --no-print-directory
 
 define SRCS :=
 		main.c
+		game/event/menu_event/checkbox_event.c
+		game/event/menu_event/keyinput_event.c
+		game/event/menu_event/numinput_event.c
+		game/event/menu_event/slidebar_event.c
+		game/event/menu_event/textinput_event.c
+		game/event/menu_event/mapinput_event.c
+		game/event/menu_event/multichoice_event.c
+		game/event/menu_event/seed_event.c
 		game/event/c3d_default_event_mouse.c
 		game/event/c3d_default_event.c
 		game/event/c3d_event_mouse.c
