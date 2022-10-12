@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 14:43:09 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/12 12:34:31 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/12 14:50:37 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	key_update(t_game *game, t_dict *dict, t_object *obj)
 	(void)game;
 	(void)dict;
 	(void)obj;
-	printf("key_update = %f, %f, %d\n", obj->pos.x, obj->pos.y, obj->is_visible);
+	//printf("key_update = %f, %f, %d\n", obj->pos.x, obj->pos.y, obj->is_visible);
 	return (0);
 }
 

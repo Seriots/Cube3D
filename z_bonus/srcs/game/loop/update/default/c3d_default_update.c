@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 13:42:48 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/12 11:50:39 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/12 14:06:16 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	default_update(t_game *game)
 {
 	refresh_mouse_move(game);
 	update_player(game);
-	update_minimap(game);
 	update_objects(game, game->map.all_objects);
+	update_minimap(game);
 	return (0);
 }

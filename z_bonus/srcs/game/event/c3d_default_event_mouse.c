@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 11:04:48 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/10 18:01:28 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/12 15:02:21 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,18 @@ int	default_mouse_press(int button, int x, int y, t_game *game)
 
 int	default_mouse_release(int button, int x, int y, t_game *game)
 {
-	(void)game;
 	(void)x;
 	(void)y;
-	(void)button;
+	if ((button == 4 && game->settings.invert_scroll)
+		|| (button == 5 && !game->settings.invert_scroll))
+		game->inventory.selected++;
+	if ((button == 5 && game->settings.invert_scroll)
+		|| (button == 4 && !game->settings.invert_scroll))
+		game->inventory.selected--;
+	if (game->inventory.selected < 0)
+		game->inventory.selected = game->inventory.size - 1;
+	if (game->inventory.selected >= game->inventory.size)
+		game->inventory.selected = 0;
 	return (0);
 }
 

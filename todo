@@ -91,6 +91,7 @@ x -> start menu avec choix de le difficulte, level preset ou genere a partir d'u
 	-> shield
 	-> boost de vitesse
 -> faire un mode marche and run
+-> appuyer sur <touche> pendant le jeu, desactive la souris pour permettre l'acces au slot de l'inventaire et bouger les objets.
 
 Error
 
@@ -131,4 +132,4 @@ x -> add save file "key=value"
 x -> faire le setup pour tout les objs
 x -> refaire le parsing pour handle les objs
 -> mettre en place l'inventaire
--> ajouter la touch use, take and drop
+-> ajouter la touch use, take and drop, interact, et lestouche hotbar.

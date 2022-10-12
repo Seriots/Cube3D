@@ -26,6 +26,14 @@
 # define MENU_HEIGHT 600
 # define BORDER_SIZE 5
 
+/*Hot bar*/
+# define HOTBAR_CASE_SIZE 60
+# define HOTBAR_CASE_BIG_BORDER 2
+# define HOTBAR_CASE_BORDER 2
+
+//HOTBAR_Y WIN_HEIGHT - HOTBAR_CASE_SIZE - 10
+# define HOTBAR_Y WIN_HEIGHT - HOTBAR_CASE_SIZE - 10
+
 /*Font settings*/
 # define FONT_WIDTH 6
 

@@ -82,6 +82,21 @@ int	set_map_settings(t_game *game, t_dict **menu)
 	return (0);
 }
 
+int	set_inventory(t_game *game)
+{
+	ft_bzero(game->inventory.items, sizeof(game->inventory.items));
+	if (game->settings.difficulty == 0)
+		game->inventory.size = 8;
+	else if (game->settings.difficulty == 1)
+		game->inventory.size = 4;
+	else
+		game->inventory.size = 2;
+	game->inventory.selected = 0;
+	//if (game->settings.difficulty < 2)
+	//	add_items(game, LAMP, 0);
+	return (0);
+}
+
 int	play_event(int button, int x, int y, t_game *game)
 {
 	int	error;
@@ -95,6 +110,7 @@ int	play_event(int button, int x, int y, t_game *game)
 		if (error)
 			return (set_error_value(&game->start_menu, error), error);
 		set_map_settings(game, &game->menu.all_objects);
+		set_inventory(game);
 		error = save_settings(game);
 		if (error)
 			display_error(error);

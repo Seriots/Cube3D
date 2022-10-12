@@ -334,11 +334,19 @@ typedef struct s_fct
 	int	(*mousemove_fct)(int x, int y, t_game *game);
 }	t_fct;
 
+typedef struct s_inventory
+{
+	t_object	*items[8];
+	int			size;
+	int			selected;
+}	t_inventory;
+
 typedef struct s_game
 {
 	t_mlx		mlx;
 	t_map		map;
 	t_player	player;
+	t_inventory	inventory;
 	t_all_img	all_img;
 	t_fct		fcts;
 	t_settings	settings;
