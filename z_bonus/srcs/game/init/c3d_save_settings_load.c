@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 12:13:27 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/12 16:42:52 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/12 17:36:52 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,74 +18,59 @@
 #include <fcntl.h>
 #include <stdlib.h>
 
+int	sf(void *ptr, char *value)
+{
+	*(float *)ptr = (float)ft_atoi(value);
+	return (0);
+}
+
+int	si(void *ptr, char *value)
+{
+	*(int *)ptr = ft_atoi(value);
+	return (0);
+}
+
+int	ss(void *ptr, char *value)
+{
+	ft_strlcpy((char *)ptr, value, 256);
+	return (0);
+}
+
 int	set_settings(t_game *game, char *key, char *value)
 {
-	if (ft_strcmp(key, VFPS) == 0)
-		game->settings.fps = (float)ft_atoi(value);
-	else if (ft_strcmp(key, VCAM_X) == 0)
-		game->settings.cam_sensibility_x = (float)ft_atoi(value);
-	else if (ft_strcmp(key, VCAM_Y) == 0)
-		game->settings.cam_sensibility_y = (float)ft_atoi(value);
-	else if (ft_strcmp(key, VRES) == 0)
-		game->settings.resolution = (float)ft_atoi(value);
-	else if (ft_strcmp(key, VFOV) == 0)
-		game->settings.fov = (float)ft_atoi(value);
-	else if (ft_strcmp(key, VSCROLL_SPEED) == 0)
-		game->settings.scroll_speed = (float)ft_atoi(value);
-	else if (ft_strcmp(key, VLEFT) == 0)
-		game->settings.left = ft_atoi(value);
-	else if (ft_strcmp(key, VRIGHT) == 0)
-		game->settings.right = ft_atoi(value);
-	else if (ft_strcmp(key, VFORWARD) == 0)
-		game->settings.forward = ft_atoi(value);
-	else if (ft_strcmp(key, VBACKWARD) == 0)
-		game->settings.backward = ft_atoi(value);
-	else if (ft_strcmp(key, VPAUSE) == 0)
-		game->settings.pause = ft_atoi(value);
-	else if (ft_strcmp(key, VCOLOR) == 0)
-		game->settings.color = ft_atoi(value);
-	else if (ft_strcmp(key, VINVERT_SCROLL) == 0)
-		game->settings.invert_scroll = ft_atoi(value);
-	else if (ft_strcmp(key, VINVERT_MOUSE) == 0)
-		game->settings.invert_mouse = ft_atoi(value);
-	else if (ft_strcmp(key, VSHOWFPS) == 0)
-		game->settings.show_fps = ft_atoi(value);
-	else if (ft_strcmp(key, VSHOWMINIMAP) == 0)
-		game->settings.show_mmap = ft_atoi(value);
-	else if (ft_strcmp(key, VSHOWSEED) == 0)
-		game->settings.show_seed = ft_atoi(value);
-	else if (ft_strcmp(key, VNO) == 0)
-		ft_strlcpy(game->map.default_north, value, 256);
-	else if (ft_strcmp(key, VSO) == 0)
-		ft_strlcpy(game->map.default_south, value, 256);
-	else if (ft_strcmp(key, VWE) == 0)
-		ft_strlcpy(game->map.default_west, value, 256);
-	else if (ft_strcmp(key, VEA) == 0)
-		ft_strlcpy(game->map.default_east, value, 256);
-	else if (ft_strcmp(key, VFLOOR) == 0 )
-		ft_strlcpy(game->map.default_floor, value, 256);
-	else if (ft_strcmp(key, VCEIL) == 0)
-		ft_strlcpy(game->map.default_ceil, value, 256);
-	else if (ft_strcmp(key, VINTER) == 0)
-		game->settings.interact = ft_atoi(value);
-	else if (ft_strcmp(key, VDROP) == 0)
-		game->settings.drop = ft_atoi(value);
-	else if (ft_strcmp(key, V1) == 0)
-		game->settings.slot1 = ft_atoi(value);
-	else if (ft_strcmp(key, V2) == 0)
-		game->settings.slot2 = ft_atoi(value);
-	else if (ft_strcmp(key, V3) == 0)
-		game->settings.slot3 = ft_atoi(value);
-	else if (ft_strcmp(key, V4) == 0)
-		game->settings.slot4 = ft_atoi(value);
-	else if (ft_strcmp(key, V5) == 0)
-		game->settings.slot5 = ft_atoi(value);
-	else if (ft_strcmp(key, V6) == 0)
-		game->settings.slot6 = ft_atoi(value);
-	else if (ft_strcmp(key, V7) == 0)
-		game->settings.slot7 = ft_atoi(value);
-	else if (ft_strcmp(key, V8) == 0)
-		game->settings.slot8 = ft_atoi(value);
+	const t_savset	all[] = {{VFPS, &game->settings.fps, sf},
+		{VCAM_X, &game->settings.cam_sensibility_x, sf},
+		{VCAM_Y, &game->settings.cam_sensibility_y, sf},
+		{VRES, &game->settings.resolution, sf}, {VFOV, &game->settings.fov, sf},
+		{VSCROLL_SPEED, &game->settings.scroll_speed, sf},
+		{VLEFT, &game->settings.left, si}, {VRIGHT, &game->settings.right, si},
+		{VFORWARD, &game->settings.forward, si},
+		{VPAUSE, &game->settings.pause, si},
+		{VCOLOR, &game->settings.color, si}, {VDROP, &game->settings.drop, si},
+		{VINVERT_SCROLL, &game->settings.invert_scroll, si},
+		{VINVERT_MOUSE, &game->settings.invert_mouse, si},
+		{VSHOWFPS, &game->settings.show_fps, si},
+		{VSHOWMINIMAP, &game->settings.show_mmap, si},
+		{VSHOWSEED, &game->settings.show_seed, si},
+		{VNO, &game->map.default_north, ss},
+		{VSO, &game->map.default_south, ss},
+		{VEA, &game->map.default_east, ss}, {VWE, &game->map.default_west, ss},
+		{VFLOOR, &game->map.default_floor, ss},
+		{VCEIL, &game->map.default_ceil, ss},
+		{VINTER, &game->settings.interact, si},
+		{V1, &game->settings.slot1, si}, {V2, &game->settings.slot2, si},
+		{V3, &game->settings.slot3, si}, {V4, &game->settings.slot4, si},
+		{V5, &game->settings.slot5, si}, {V6, &game->settings.slot6, si},
+		{V7, &game->settings.slot7, si}, {V8, &game->settings.slot8, si}};
+	unsigned int	i;
+	
+	i = 0;
+	while (i < sizeof(all) / sizeof(t_savset))
+	{
+		if (ft_strcmp(all[i].tag, key) == 0)
+			return (all[i].fct(all[i].ptr, value));
+		i++;
+	}
 	return (0);
 }
 

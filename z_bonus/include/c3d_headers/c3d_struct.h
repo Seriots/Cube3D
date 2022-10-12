@@ -29,6 +29,13 @@ typedef struct s_objinit
 	int		(*fct)(t_game *, char *, char *);
 }	t_objinit;
 
+typedef struct s_savset
+{
+	char	*tag;
+	void	*ptr;
+	int		(*fct)(void *, char *);
+}	t_savset;
+
 typedef struct	s_save
 {
 	char	*key;
