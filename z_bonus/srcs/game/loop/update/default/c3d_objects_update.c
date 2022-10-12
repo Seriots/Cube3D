@@ -1,39 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   c3d_default_update.c                               :+:      :+:    :+:   */
+/*   c3d_objects_update.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/26 13:42:48 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/12 11:50:39 by lgiband          ###   ########.fr       */
+/*   Created: 2022/10/12 11:46:39 by lgiband           #+#    #+#             */
+/*   Updated: 2022/10/12 11:49:25 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "c3d_struct.h"
-#include "c3d_loop.h"
-#include "c3d_event.h"
 
-static int	refresh_mouse_move(t_game *game)
+int	update_objects(t_game *game, t_dict *all_objects)
 {
-	static int	i;
+	t_dict		*tmp;
+	t_object	*obj;
 
-	if (i == 100)
-		game->fcts.mousemove_fct = NULL;
-	if (i == 101)
+	tmp = all_objects;
+	while (tmp)
 	{
-		i = 0;
-		game->fcts.mousemove_fct = default_mouse_move;
+		obj = tmp->value;
+		obj->update(game, tmp, obj);
+		tmp = tmp->next;
 	}
-	i++;
-	return (0);
-}
-
-int	default_update(t_game *game)
-{
-	refresh_mouse_move(game);
-	update_player(game);
-	update_minimap(game);
-	update_objects(game, game->map.all_objects);
 	return (0);
 }

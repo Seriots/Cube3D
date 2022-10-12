@@ -38,7 +38,9 @@ int		update_minimap(t_game *game);
 int		check_collide(t_game *game, t_point mov);
 int		update_player(t_game *game);
 
+
 /*Update*/
+int		update_objects(t_game *game, t_dict *all_objects);
 int		check_collide(t_game *game, t_point mov);
 int		default_update(t_game *game);
 

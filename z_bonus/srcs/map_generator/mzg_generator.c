@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 11:05:33 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/11 14:01:55 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/12 11:32:42 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,31 +103,31 @@ int	set_default_image(t_map *map, int width, int height)
 }
 
 /*generate_player(map, width, height); //generate lampe in hard mode*/
-int	gen_maze(t_map *map, int width, int height, int door)
+int	gen_maze(t_game *game, int width, int height, int door)
 {
 	int		error;
 
-	error = init_map(map, width, height);
+	error = init_map(&game->map, width, height);
 	if (error)
 		return (1);
-	set_space(map->map, width, height);
-	makeshape_maze(map->map, width, height);
-	fillmap(map->map);
-	make_maze(map->map, width, height);
-	standardize_maze_predoor(map->map, width, height);
-	make_door(map->map, width, height, door);
-	open_maze(map->map, width, height);
-	clean_maze(map->map, width, height);
-	generate_player(map, width, height);
-	generate_key(map, width, height, door);
-	standardize_maze(map->map, width, height);
-	error = set_default_image(map, width, height);
+	set_space(game->map.map, width, height);
+	makeshape_maze(game->map.map, width, height);
+	fillmap(game->map.map);
+	make_maze(game->map.map, width, height);
+	standardize_maze_predoor(game->map.map, width, height);
+	make_door(game->map.map, width, height, door);
+	open_maze(game->map.map, width, height);
+	clean_maze(game->map.map, width, height);
+	generate_player(&game->map, width, height);
+	generate_key(game, width, height, door);
+	standardize_maze(game->map.map, width, height);
+	error = set_default_image(&game->map, width, height);
 	if (error)
 		return (error);
 	return (0);
 }
 
-int	get_maze(t_map *map, t_genparams params, unsigned long *seed, int print)
+int	get_maze(t_game *game, t_genparams params, unsigned long *seed, int print)
 {
 	int		error;
 
@@ -135,10 +135,10 @@ int	get_maze(t_map *map, t_genparams params, unsigned long *seed, int print)
 		params.seed = time(NULL);
 	*seed = params.seed;
 	srand(params.seed);
-	error = gen_maze(map, params.width, params.height, params.door);
+	error = gen_maze(game, params.width, params.height, params.door);
 	if (error)
 		return (error);
 	if (print)
-		printmaze(map, params.width, params.height);
+		printmaze(&game->map, params.width, params.height);
 	return (0);
 }

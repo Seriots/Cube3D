@@ -35,7 +35,7 @@ int	load_random_map(t_game *game, t_genparams *params)
 	else
 		*params = (t_genparams){.width = 80, .height = 80, .door = 20,
 			.seed = game->settings.seed, .difficulty = 2};
-	return (get_maze(&game->map, *params, &game->settings.seed, 0));
+	return (get_maze(game, *params, &game->settings.seed, 0));
 }
 
 int	load_new_map(t_game *game, char *map_path)

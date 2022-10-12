@@ -24,10 +24,6 @@ int	load_startscreen(t_game *game);
 int	load_default(t_game *game);
 int	load_menu(t_game *game);
 
-/*Objects*/
-int	init_key(t_dict **all_objects, int x, int y);
-int	init_obj(t_dict *dict, void *obj, int size);
-
 /*Init images*/
 int	init_images_group(t_game *game, char *path,
 		int nb_of_images, t_img_data **dst_ptr);

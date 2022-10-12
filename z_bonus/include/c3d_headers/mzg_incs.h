@@ -62,7 +62,7 @@ typedef struct s_genparams
 	int				door;
 }	t_genparams;
 
-int	gen_maze(t_map *map, int width, int height, int door);
+int	gen_maze(t_game *game, int width, int height, int door);
 int	clean_maze(char **map, int width, int height);
 int	is_ver_ok(char **map, int x, int y);
 int	is_hor_ok(char **map, int x, int y);
@@ -74,7 +74,7 @@ int	standardize_maze(char **map, int width, int height);
 int	standardize_maze_predoor(char **map, int width, int height);
 int	post_player(char **map, int width, int height);
 
-int	get_maze(t_map *map, t_genparams params, unsigned long *seed, int print);
+int	get_maze(t_game *game, t_genparams params, unsigned long *seed, int print);
 
 /*V2*/
 int	is_door(char **map, int x, int y);
@@ -84,6 +84,6 @@ char	is_destroyable(char **map, int x, int y);
 int	make_door(char **map, int width, int height, int door);
 int open_maze(char **map, int width, int height);
 int generate_player(t_map *map, int width, int height);
-int	generate_key(t_map *map, int width, int height, int door);
+int	generate_key(t_game *game, int width, int height, int door);
 
 #endif

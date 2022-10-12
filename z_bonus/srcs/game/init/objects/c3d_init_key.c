@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 14:43:09 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/10 16:27:40 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/12 11:58:25 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,20 +17,65 @@
 
 #include "dict.h"
 
-int	init_key(t_dict **all_objects, int x, int y)
-{
-	t_dict	*new;
-	t_key	*key;
+#include <stdio.h>
 
-	key = malloc(sizeof(t_key));
-	if (!key)
-		return (10);
-	key->x = x;
-	key->y = y;
-	key->state = 0;
-	new = dict_new("KEY", key);
-	if (!new)
-		return (free(key), 10);
-	dict_add_back(all_objects, new);
+int	key_use(t_game *game, t_dict *dict, t_object *obj)
+{
+	(void)game;
+	(void)dict;
+	(void)obj;
+	return (0);
+}
+
+int	key_drop(t_game *game, t_dict *dict, t_object *obj)
+{
+	(void)game;
+	(void)dict;
+	(void)obj;
+	return (0);
+}
+
+int	key_collide(t_game *game, t_dict *dict, t_object *obj)
+{
+	(void)game;
+	(void)dict;
+	(void)obj;
+	return (0);
+}
+
+int	key_update(t_game *game, t_dict *dict, t_object *obj)
+{
+	(void)game;
+	(void)dict;
+	(void)obj;
+	//printf("key_update = %f, %f, %d\n", obj->pos.x, obj->pos.y, obj->is_visible);
+	return (0);
+}
+
+int	key_delete(t_game *game, t_dict *dict, t_object *obj)
+{
+	(void)game;
+	(void)dict;
+	(void)obj;
+	return (0);
+}
+
+int	init_key(t_game *game, t_object **obj)
+{
+	(*obj)->all_img = 0;
+	(*obj)->game_img = 0;
+	(*obj)->menu_img = 0;
+	(*obj)->state = 0;
+	(*obj)->use_count = 0;
+	(*obj)->is_visible = 1;
+	(*obj)->is_collide = 0;
+	(*obj)->start_frame = game->last_frame + game->delay;
+	(*obj)->nb_image = 1;
+	(*obj)->animation_duration = 0;
+	(*obj)->use = key_use;
+	(*obj)->drop = key_drop;
+	(*obj)->collide = key_collide;
+	(*obj)->update = key_update;
+	(*obj)->delete = key_delete;
 	return (0);
 }

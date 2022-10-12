@@ -1,7 +1,7 @@
 fov=10
 x_sensibility=55
 y_sensibility=1
-resolution=100
+resolution=31
 fps=60
 scroll_speed=8
 key_left=97
@@ -20,4 +20,4 @@ south_image=imgs/xpm/wood.xpm
 west_image=imgs/xpm/wood.xpm
 east_image=imgs/xpm/wood.xpm
 ceil_color=37,37,37
-floor_color=79,47,4
+floor_color=74,37,4

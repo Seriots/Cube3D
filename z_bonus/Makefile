@@ -50,6 +50,7 @@ define SRCS :=
 		game/loop/update/default/c3d_minimap_update.c
 		game/loop/update/default/c3d_player_collide.c
 		game/loop/update/default/c3d_player_update.c
+		game/loop/update/default/c3d_objects_update.c
 		game/loop/update/menu/c3d_draw_button.c
 		game/loop/update/menu/c3d_draw_checkbox.c
 		game/loop/update/menu/c3d_draw_keyinput.c

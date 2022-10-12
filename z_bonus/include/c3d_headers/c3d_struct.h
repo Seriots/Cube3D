@@ -29,6 +29,7 @@ typedef struct	s_save
 	void	*value;
 }	t_save;
 
+
 typedef struct s_img_data
 {
 	void	*img;
@@ -103,28 +104,31 @@ typedef struct s_settings
 	unsigned long	seed;
 }	t_settings;
 
-typedef struct s_door
+typedef struct s_object
 {
-	int x;
-	int y;
-	int rotation; //1=vertical, 2=horizontal
-	int state; //0=closed, 1=opened
-}	t_door;
+	t_img_data	*all_img;
+	t_img_data	*game_img;
+	t_img_data	*menu_img;
+	t_coord		pos;
+	int			state;
+	int			use_count;
+	int			is_visible;	
+	int			is_collide;
+	int			start_frame;
+	int			nb_image;
+	int			animation_duration;
+	int			(*use)(t_game *game, t_dict *elem, struct s_object *obj);
+	int			(*drop)(t_game *game, t_dict *elem, struct s_object *obj);
+	int			(*collide)(t_game *game, t_dict *elem, struct s_object *obj);
+	int			(*update)(t_game *game, t_dict *elem, struct s_object *obj);
+	int			(*delete)(t_game *game, t_dict *elem, struct s_object *obj);
+}	t_object;
 
-typedef struct s_key
+typedef struct s_init
 {
-	int x;
-	int y;
-	int state; //0=on floor, 1=grabbed
-}	t_key;
-
-typedef struct s_lamp
-{
-	int x;
-	int y;
-	int state; //0=on floor, 1=grabbed
-	int	is_on;	//0=off, 1=on
-}	t_lamp;
+	char	*tag;
+	int		(*fct)(t_game *game, t_object **object);
+}	t_init;
 
 typedef struct s_map
 {
