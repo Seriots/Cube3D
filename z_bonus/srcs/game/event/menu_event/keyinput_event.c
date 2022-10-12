@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 10:32:49 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/12 21:44:56 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/12 23:08:09 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,15 @@
 #include "c3d_settings.h"
 #include "c3d_menu.h"
 
+#include <stdio.h>
+
 int	keyinput_keypress(KeySym key, t_game *game)
 {
 	t_keyinput	*keyinput;
 
-	if (key > 32 && key < 127)
+	if ((key > 32 && key < 255)
+		|| key == XK_Shift_L || key == XK_Control_L
+		|| key == XK_Caps_Lock || key == XK_Tab)
 	{
 		keyinput = dict_getelem_number(game->menu.all_objects,
 				game->pick_obj)->value;

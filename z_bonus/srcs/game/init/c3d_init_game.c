@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 13:17:26 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/12 21:49:14 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/12 22:14:23 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,8 @@ static int	set_default_settings2(t_game *game)
 
 static int	set_default_settings(t_game *game, char *path)
 {
+	game->settings.run = XK_Shift_L;
+	game->settings.crouch = XK_Control_L;
 	game->settings.color = 1;
 	game->settings.invert_scroll = 0;
 	game->settings.invert_mouse = 0;

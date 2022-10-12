@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 12:02:06 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/11 12:57:31 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/12 22:37:31 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ t_dict	*init_forward_keyinput(t_game *game)
 	keyinput->box.mouse_release = NULL;
 	check_value_keyinput(&game->settings.forward, XK_w);
 	keyinput->modified_value = &game->settings.forward;
-	keyinput->color = get_key_color(game, &game->settings.forward);
+	keyinput->color = get_key_color(game, &game->menu, &game->settings.forward);
 	obj = dict_new(KEYINPUT, keyinput);
 	if (!obj)
 		return (free(keyinput), (void *)0);

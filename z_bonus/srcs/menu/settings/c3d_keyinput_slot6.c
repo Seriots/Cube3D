@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 16:57:15 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/12 16:57:28 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/12 22:38:28 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ t_dict	*init_slot6_keyinput(t_game *game)
 	keyinput->box.height = 24;
 	keyinput->box.width = 40;
 	keyinput->box.x = KEYINPUT_START_X;
-	keyinput->box.y = KEYINPUT_START_Y + 11 * MARGE;
+	keyinput->box.y = KEYINPUT_START_Y + 13 * MARGE;
 	keyinput->box.x_text = keyinput->box.x - 100;
 	keyinput->box.y_text = keyinput->box.y + 15;
 	ft_strlcpy(keyinput->box.description, "Slot6", 6);
@@ -41,7 +41,7 @@ t_dict	*init_slot6_keyinput(t_game *game)
 	keyinput->box.mouse_release = NULL;
 	check_value_keyinput(&game->settings.slot6, XK_6);
 	keyinput->modified_value = &game->settings.slot6;
-	keyinput->color = get_key_color(game, keyinput->modified_value);
+	keyinput->color = get_key_color(game, &game->menu, keyinput->modified_value);
 	obj = dict_new(KEYINPUT, keyinput);
 	if (!obj)
 		return (free(keyinput), (void *)0);

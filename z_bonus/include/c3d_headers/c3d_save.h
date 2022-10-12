@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 11:59:11 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/12 16:23:06 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/12 22:15:40 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@
 # define VFLOOR "floor_color"
 # define VINTER	"interact"
 # define VDROP "drop"
+# define VRUN "run"
+# define VCR "crouch"
 # define V1 "slot1"
 # define V2 "slot2"
 # define V3 "slot3"

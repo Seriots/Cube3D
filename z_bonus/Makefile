@@ -76,6 +76,8 @@ define SRCS :=
 		menu/settings/c3d_checkbox_showseed.c
 		menu/settings/c3d_keyinput_backward.c
 		menu/settings/c3d_keyinput_drop.c
+		menu/settings/c3d_keyinput_run.c
+		menu/settings/c3d_keyinput_crouch.c
 		menu/settings/c3d_keyinput_forward.c
 		menu/settings/c3d_keyinput_interact.c
 		menu/settings/c3d_keyinput_left.c

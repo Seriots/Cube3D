@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 11:29:25 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/12 21:00:19 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/12 22:17:06 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ int	save_settings2(t_game *game, int fd)
 	save_color(fd, VFLOOR, game->map.f);
 	save_int(fd, VINTER, (int)game->settings.interact);
 	save_int(fd, VDROP, (int)game->settings.drop);
+	save_int(fd, VRUN, (int)game->settings.run);
+	save_int(fd, VCR, (int)game->settings.crouch);
 	save_int(fd, V1, (int)game->settings.slot1);
 	save_int(fd, V2, (int)game->settings.slot2);
 	save_int(fd, V3, (int)game->settings.slot3);

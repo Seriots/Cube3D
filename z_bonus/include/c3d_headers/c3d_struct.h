@@ -99,6 +99,8 @@ typedef struct s_settings
 	float			resolution;
 	float			fps;
 	float			scroll_speed;
+	KeySym			run;
+	KeySym			crouch;
 	KeySym			left;
 	KeySym			right;
 	KeySym			forward;

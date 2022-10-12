@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 16:53:41 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/12 16:55:14 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/12 22:38:28 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ t_dict	*init_interact_keyinput(t_game *game)
 	keyinput->box.mouse_release = NULL;
 	check_value_keyinput(&game->settings.interact, XK_e);
 	keyinput->modified_value = &game->settings.interact;
-	keyinput->color = get_key_color(game, keyinput->modified_value);
+	keyinput->color = get_key_color(game, &game->menu, keyinput->modified_value);
 	obj = dict_new(KEYINPUT, keyinput);
 	if (!obj)
 		return (free(keyinput), (void *)0);

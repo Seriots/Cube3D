@@ -132,4 +132,7 @@ x -> add save file "key=value"
 x -> faire le setup pour tout les objs
 x -> refaire le parsing pour handle les objs
 x -> mettre en place l'inventaire
--> ajouter la touch use (clicdroit), and drop, interact, et lestouche hotbar.
+x -> ajouter la touch use (clicdroit), and drop, interact, et lestouche hotbar.
+x -> add run and crouch
+x -> add tab, capslock, shift, control to game key
+-> error click bouton exit

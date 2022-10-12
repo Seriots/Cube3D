@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 10:10:34 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/12 17:00:55 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/12 22:22:45 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@
 #include "ft.h"
 #include "dict.h"
 
-/*the order is important, scroll bar need to be last*/
 int	init_settings_menu(t_game *game)
 {
 	static t_dict		*(*objs[])(t_game *game) = {init_resume_button,
@@ -37,7 +36,8 @@ int	init_settings_menu(t_game *game)
 		init_drop_keyinput, init_interact_keyinput, init_slot1_keyinput,
 		init_slot2_keyinput, init_slot3_keyinput, init_slot4_keyinput,
 		init_slot5_keyinput, init_slot6_keyinput, init_slot7_keyinput,
-		init_slot8_keyinput, init_scrollbar};
+		init_slot8_keyinput, init_run_keyinput, init_crouch_keyinput,
+		init_scrollbar};
 	t_dict				*elem;
 	long unsigned int	i;
 

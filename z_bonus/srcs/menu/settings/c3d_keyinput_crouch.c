@@ -1,11 +1,11 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   c3d_keyinput_slot5.c                               :+:      :+:    :+:   */
+/*   c3d_keyinput_crouch.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/12 16:56:56 by lgiband           #+#    #+#             */
+/*   Created: 2022/10/12 22:20:59 by lgiband           #+#    #+#             */
 /*   Updated: 2022/10/12 22:38:28 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -20,7 +20,7 @@
 
 #include <stdlib.h>
 
-t_dict	*init_slot5_keyinput(t_game *game)
+t_dict	*init_crouch_keyinput(t_game *game)
 {
 	t_keyinput	*keyinput;
 	t_dict		*obj;
@@ -32,15 +32,15 @@ t_dict	*init_slot5_keyinput(t_game *game)
 	keyinput->box.height = 24;
 	keyinput->box.width = 40;
 	keyinput->box.x = KEYINPUT_START_X;
-	keyinput->box.y = KEYINPUT_START_Y + 12 * MARGE;
+	keyinput->box.y = KEYINPUT_START_Y + 7 * MARGE;
 	keyinput->box.x_text = keyinput->box.x - 100;
 	keyinput->box.y_text = keyinput->box.y + 15;
-	ft_strlcpy(keyinput->box.description, "Slot5", 6);
+	ft_strlcpy(keyinput->box.description, "Crouch", 7);
 	ft_strlcpy(keyinput->box.font, FONT, ft_strlen(FONT));
 	keyinput->box.mouse_press = keyinput_press;
 	keyinput->box.mouse_release = NULL;
-	check_value_keyinput(&game->settings.slot5, XK_5);
-	keyinput->modified_value = &game->settings.slot5;
+	check_value_keyinput(&game->settings.crouch, XK_Control_L);
+	keyinput->modified_value = &game->settings.crouch;
 	keyinput->color = get_key_color(game, &game->menu, keyinput->modified_value);
 	obj = dict_new(KEYINPUT, keyinput);
 	if (!obj)

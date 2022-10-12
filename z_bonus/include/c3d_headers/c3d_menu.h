@@ -77,6 +77,8 @@ t_dict	*init_showmmap_checkbox(t_game *game);
 t_dict	*init_showseed_checkbox(t_game *game);
 t_dict	*init_drop_keyinput(t_game *game);
 t_dict	*init_interact_keyinput(t_game *game);
+t_dict	*init_run_keyinput(t_game *game);
+t_dict	*init_crouch_keyinput(t_game *game);
 t_dict	*init_slot1_keyinput(t_game *game);
 t_dict	*init_slot2_keyinput(t_game *game);
 t_dict	*init_slot3_keyinput(t_game *game);
@@ -88,7 +90,7 @@ t_dict	*init_slot8_keyinput(t_game *game);
 
 /*Utils*/
 int	clear_all_other_selected(t_game *game, void *keyinput, t_dict *dict);
-int	get_key_color(t_game *game, KeySym *key);
+int	get_key_color(t_game *game, t_menu *menu, KeySym *key);
 int	update_key_color(t_game *game, t_menu *menu);
 int	edit_rgb(t_numinput *numinput);
 int	get_number_from_key(KeySym key);
