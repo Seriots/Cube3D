@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 14:17:54 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/06 21:20:50 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/12 12:32:04 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,32 +20,6 @@
 
 #include "ft.h"
 #include <stdio.h>
-
-static int	get_elem(t_map *map, char *line)
-{
-	char	**split;
-
-	split = ft_split(line, ' ');
-	if (!split)
-		return (10);
-	if (ft_arraylen(split) != 2)
-		return (ft_free_tab(split), 3);
-	if (ft_strcmp(split[0], "NO") == 0 && !map->no)
-		map->no = ft_strdup(split[1]);
-	else if (ft_strcmp(split[0], "SO") == 0 && !map->so)
-		map->so = ft_strdup(split[1]);
-	else if (ft_strcmp(split[0], "WE") == 0 && !map->we)
-		map->we = ft_strdup(split[1]);
-	else if (ft_strcmp(split[0], "EA") == 0 && !map->ea)
-		map->ea = ft_strdup(split[1]);
-	else if (ft_strcmp(split[0], "F") == 0 && map->f == -1)
-		map->f = ft_color(split[1]);
-	else if (ft_strcmp(split[0], "C") == 0 && map->c == -1)
-		map->c = ft_color(split[1]);
-	else
-		return (ft_free_tab(split), 2);
-	return (ft_free_tab(split), 0);
-}
 
 static int	get_map(int fd, t_map *map, char *line, int size)
 {
@@ -66,17 +40,17 @@ static int	get_map(int fd, t_map *map, char *line, int size)
 	return (0);
 }
 
-static int	get_all_elem(t_map *map, char *line)
+static int	get_all_elem(t_game *game, t_map *map, char *line)
 {
 	int	error;
 
-	if (ft_strlen(line) == 0 || is_only_set(line, " "))
+	if (ft_strlen(line) == 0 || is_only_set(line, " \t\n\r\v\f"))
 		return (free(line), 0);
 	else
 	{
-		if (is_only_set(line, " 01NSEW"))
+		if (is_only_set(line, " 1"))
 			return (-1);
-		error = get_elem(map, line);
+		error = get_elem(game, map, line);
 		free(line);
 		if (error)
 			return (error);
@@ -84,7 +58,7 @@ static int	get_all_elem(t_map *map, char *line)
 	return (0);
 }
 
-int	read_file(t_map *map, char *file, int size)
+int	read_file(t_game *game, t_map *map, char *file, int size)
 {
 	int		fd;
 	int		error;
@@ -95,7 +69,7 @@ int	read_file(t_map *map, char *file, int size)
 	if (fd == -1)
 		return (5);
 	while (error == 0 && get_next_line(fd, &line) != 0)
-		error = get_all_elem(map, line);
+		error = get_all_elem(game, map, line);
 	if (error != -1)
 		return (error);
 	error = get_map(fd, map, line, size);

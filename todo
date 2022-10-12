@@ -128,7 +128,7 @@ x -> clean le projet et mieux ranger le tout j'ai fais un peu de la merde
 x -> fix  la slidebar
 x -> fix les objets avec variable int dans game lors de la collide
 x -> add save file "key=value"
--> faire le setup pour tout les objs
--> refaire le parsing pour handle les objs
--> mettre en place l'inventaires
+x -> faire le setup pour tout les objs
+x -> refaire le parsing pour handle les objs
+-> mettre en place l'inventaire
 -> ajouter la touch use, take and drop

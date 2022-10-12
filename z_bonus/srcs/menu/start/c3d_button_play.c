@@ -45,7 +45,7 @@ int	load_new_map(t_game *game, char *map_path)
 
 	if (map_path)
 	{
-		error = parsing(&(game->map), map_path);
+		error = parsing(game, &(game->map), map_path);
 		if (error)
 			return (free_map(&game->map), display_error(error));
 	}

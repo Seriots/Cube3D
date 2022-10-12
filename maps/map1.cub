@@ -4,6 +4,7 @@ EA imgs/xpm/blueWall64x64.xpm
 WE imgs/xpm/blueWall64x64.xpm
 F 255,0,0
 C 0,0,255
+KEY 50,50
 
 11111111111
 10000000001

@@ -95,6 +95,7 @@ define SRCS :=
 		menu/start/c3d_seed.c
 		menu/start/c3d_mapinput_mappath.c
 		parsing/c3d_parsing_check.c
+		parsing/c3d_parsing_getelem.c
 		parsing/c3d_parsing_readfile.c
 		parsing/c3d_parsing_set.c
 		parsing/c3d_parsing_square_map.c

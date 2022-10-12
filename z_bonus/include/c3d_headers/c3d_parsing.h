@@ -15,6 +15,9 @@
 
 # include "c3d_struct.h"
 
+/*get elem*/
+int	get_elem(t_game *game, t_map *map, char *line);
+
 /*Square Map*/
 int		set_square_map(t_map *map);
 
@@ -26,12 +29,12 @@ void	set_map(t_map *map);
 int		set_map_size(char *file, int *size);
 
 /*Readfile*/
-int		read_file(t_map *map, char *file, int size);
+int		read_file(t_game *game, t_map *map, char *file, int size);
 
 /*Utils*/
 int		is_only_set(char *line, char *set);
 int		ft_color(char *line);
 
-int		parsing(t_map *map, char *file);
+int		parsing(t_game *game, t_map *map, char *file);
 
 #endif
