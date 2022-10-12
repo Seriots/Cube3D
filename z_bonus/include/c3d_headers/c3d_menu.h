@@ -75,6 +75,16 @@ t_dict	*init_resolution_slidebar(t_game *game);
 t_dict	*init_fps_slidebar(t_game *game);
 t_dict	*init_showmmap_checkbox(t_game *game);
 t_dict	*init_showseed_checkbox(t_game *game);
+t_dict	*init_drop_keyinput(t_game *game);
+t_dict	*init_interact_keyinput(t_game *game);
+t_dict	*init_slot1_keyinput(t_game *game);
+t_dict	*init_slot2_keyinput(t_game *game);
+t_dict	*init_slot3_keyinput(t_game *game);
+t_dict	*init_slot4_keyinput(t_game *game);
+t_dict	*init_slot5_keyinput(t_game *game);
+t_dict	*init_slot6_keyinput(t_game *game);
+t_dict	*init_slot7_keyinput(t_game *game);
+t_dict	*init_slot8_keyinput(t_game *game);
 
 /*Utils*/
 int	clear_all_other_selected(t_game *game, void *keyinput, t_dict *dict);

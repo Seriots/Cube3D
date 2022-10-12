@@ -99,6 +99,16 @@ typedef struct s_settings
 	KeySym			turn_left;
 	KeySym			turn_right;
 	KeySym			pause;
+	KeySym			interact;
+	KeySym			drop;
+	KeySym			slot1;
+	KeySym			slot2;
+	KeySym			slot3;
+	KeySym			slot4;
+	KeySym			slot5;
+	KeySym			slot6;
+	KeySym			slot7;
+	KeySym			slot8;
 	bool			color;
 	bool			invert_scroll;
 	bool			invert_mouse;

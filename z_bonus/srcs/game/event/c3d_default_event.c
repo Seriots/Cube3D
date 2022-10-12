@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 11:22:31 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/08 13:33:43 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/12 16:49:18 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,38 @@ int	down_everyone(t_game *game, int *value)
 	return (0);
 }
 
+int	move_slot(KeySym keycode, t_game *game)
+{
+	int	value;
+
+	if (keycode == game->settings.slot1)
+		value = 0;
+	else if (keycode == game->settings.slot2)
+		value = 1;
+	else if (keycode == game->settings.slot3)
+		value = 2;
+	else if (keycode == game->settings.slot4)
+		value = 3;
+	else if (keycode == game->settings.slot5)
+		value = 4;
+	else if (keycode == game->settings.slot6)
+		value = 5;
+	else if (keycode == game->settings.slot7)
+		value = 6;
+	else if (keycode == game->settings.slot8)
+		value = 7;
+	else
+		return (0);
+	if (value == game->inventory.selected)
+		game->inventory.selected = -1;
+	else if (value > game->inventory.size - 1)
+		return (0);
+	else
+		game->inventory.selected = value;
+	return (0);
+}
+
+
 int	default_key_press(KeySym keycode, t_game *game)
 {
 	if (keycode == game->settings.left
@@ -71,6 +103,19 @@ int	default_key_press(KeySym keycode, t_game *game)
 		game->player.turn_left = 1;
 	else if (keycode == game->settings.turn_right)
 		game->player.turn_right = 1;
+	move_slot( keycode, game);
+	return (0);
+}
+
+int	interact(t_game *game)
+{
+	(void)game;
+	return (0);
+}
+
+int	drop(t_game *game)
+{
+	(void)game;
 	return (0);
 }
 
@@ -88,7 +133,11 @@ int	default_key_release(KeySym keycode, t_game *game)
 		game->player.turn_left = 0;
 	else if (keycode == game->settings.turn_right)
 		game->player.turn_right = 0;
-	if (keycode == XK_Escape)
+	else if (keycode == XK_Escape)
 		load_menu(game);
+	else if (keycode == game->settings.interact)
+		interact(game);
+	else if (keycode == game->settings.drop)
+		drop(game);
 	return (0);
 }

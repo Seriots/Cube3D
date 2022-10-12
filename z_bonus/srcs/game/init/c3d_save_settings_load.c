@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 12:13:27 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/11 13:53:09 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/12 16:42:52 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,26 @@ int	set_settings(t_game *game, char *key, char *value)
 		ft_strlcpy(game->map.default_floor, value, 256);
 	else if (ft_strcmp(key, VCEIL) == 0)
 		ft_strlcpy(game->map.default_ceil, value, 256);
+	else if (ft_strcmp(key, VINTER) == 0)
+		game->settings.interact = ft_atoi(value);
+	else if (ft_strcmp(key, VDROP) == 0)
+		game->settings.drop = ft_atoi(value);
+	else if (ft_strcmp(key, V1) == 0)
+		game->settings.slot1 = ft_atoi(value);
+	else if (ft_strcmp(key, V2) == 0)
+		game->settings.slot2 = ft_atoi(value);
+	else if (ft_strcmp(key, V3) == 0)
+		game->settings.slot3 = ft_atoi(value);
+	else if (ft_strcmp(key, V4) == 0)
+		game->settings.slot4 = ft_atoi(value);
+	else if (ft_strcmp(key, V5) == 0)
+		game->settings.slot5 = ft_atoi(value);
+	else if (ft_strcmp(key, V6) == 0)
+		game->settings.slot6 = ft_atoi(value);
+	else if (ft_strcmp(key, V7) == 0)
+		game->settings.slot7 = ft_atoi(value);
+	else if (ft_strcmp(key, V8) == 0)
+		game->settings.slot8 = ft_atoi(value);
 	return (0);
 }
 

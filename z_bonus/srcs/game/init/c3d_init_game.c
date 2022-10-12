@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 13:17:26 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/11 14:10:04 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/12 16:21:50 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,16 @@ static int	set_default_settings(t_game *game, char *path)
 	game->settings.turn_left = XK_Left;
 	game->settings.turn_right = XK_Right;
 	game->settings.pause = XK_Escape;
+	game->settings.interact = XK_e;
+	game->settings.drop = XK_z;
+	game->settings.slot1 = XK_1;
+	game->settings.slot2 = XK_2;
+	game->settings.slot3 = XK_3;
+	game->settings.slot4 = XK_4;
+	game->settings.slot5 = XK_5;
+	game->settings.slot6 = XK_6;
+	game->settings.slot7 = XK_7;
+	game->settings.slot8 = XK_8;
 	game->settings.color = 1;
 	game->settings.invert_scroll = 0;
 	game->settings.invert_mouse = 0;

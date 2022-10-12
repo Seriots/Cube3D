@@ -131,5 +131,5 @@ x -> fix les objets avec variable int dans game lors de la collide
 x -> add save file "key=value"
 x -> faire le setup pour tout les objs
 x -> refaire le parsing pour handle les objs
--> mettre en place l'inventaire
--> ajouter la touch use, take and drop, interact, et lestouche hotbar.
+x -> mettre en place l'inventaire
+-> ajouter la touch use (clicdroit), and drop, interact, et lestouche hotbar.

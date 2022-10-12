@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 11:59:11 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/11 13:29:53 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/12 16:23:06 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,15 @@
 # define VEA "east_image"
 # define VCEIL "ceil_color"
 # define VFLOOR "floor_color"
+# define VINTER	"interact"
+# define VDROP "drop"
+# define V1 "slot1"
+# define V2 "slot2"
+# define V3 "slot3"
+# define V4 "slot4"
+# define V5 "slot5"
+# define V6 "slot6"
+# define V7 "slot7"
+# define V8 "slot8"
  
 #endif
