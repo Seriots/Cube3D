@@ -6,7 +6,7 @@
 /*   By: pierre-yves <pierre-yves@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 10:38:52 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/11 19:34:17 by pierre-yves      ###   ########.fr       */
+/*   Updated: 2022/10/11 20:57:23 by pierre-yves      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,16 +75,16 @@ int	update_rotation(t_game *game)
 	}
 	if (game->player.turn_up == 1)
 	{
-		game->player.updown -= 1.0;
-		if (game->player.updown < -CASE_SIZE / 4)
-			game->player.updown = -CASE_SIZE / 4;
+		game->player.updown -= 0.3;
+		if (game->player.updown < -9.0)
+			game->player.updown = -9.0;
 		game->player.z = -game->player.updown;
 	}
 	if (game->player.turn_down == 1)
 	{
-		game->player.updown += 1.0;
-		if (game->player.updown > CASE_SIZE / 4)
-			game->player.updown = CASE_SIZE / 4;
+		game->player.updown += 0.3;
+		if (game->player.updown > 9.0)
+			game->player.updown = 9.0;
 		game->player.z = -game->player.updown;
 	}
 	return (0);

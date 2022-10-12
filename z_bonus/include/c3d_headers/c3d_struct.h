@@ -17,6 +17,8 @@
 
 # include "dict.h"
 
+# include "c3d_settings.h"
+
 # ifndef HIDE
 #  define HIDE 0
 # endif
@@ -149,10 +151,11 @@ typedef struct s_point
 
 typedef struct s_display
 {
-	double			min;
-	double			max;
+	double		min;
+	double		max;
 	double		d;
 	double		angle;
+	double		fc_dist[WIN_HEIGHT];
 	t_img_data	*img;
 	int			x;
 }	t_display;
@@ -328,6 +331,7 @@ typedef struct s_game
 	t_settings	settings;
 	t_menu		menu;
 	t_menu		start_menu;
+	t_display	display;
 	long		last_frame;
 	long		delay;
 }	t_game;

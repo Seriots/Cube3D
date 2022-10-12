@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   c3d_load_screen.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
+/*   By: pierre-yves <pierre-yves@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 13:30:36 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/10 12:39:37 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/11 20:47:29 by pierre-yves      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,5 +72,7 @@ int	load_default(t_game *game)
 	game->player.backward = 0;
 	game->player.turn_left = 0;
 	game->player.turn_right = 0;
+	game->player.turn_up = 0;
+	game->player.turn_down = 0;
 	return (0);
 }

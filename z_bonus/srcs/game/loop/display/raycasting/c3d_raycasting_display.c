@@ -6,7 +6,7 @@
 /*   By: pierre-yves <pierre-yves@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 10:41:24 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/11 20:02:11 by pierre-yves      ###   ########.fr       */
+/*   Updated: 2022/10/12 22:38:43 by pierre-yves      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,14 +49,46 @@ unsigned int	get_wall_color(t_game *game, t_wall *wall,
 	return (*(unsigned int *)(color));
 }
 
+int	shade_pixel(int color, double dist, t_point p)
+{
+	int	r;
+	int	g;
+	int	b;
+	double	light;
+
+	//if (p.x == 500)
+	//	printf("dist: %f\n", dist);
+	//if (pow(p.x - WIN_WIDTH / 2, 2) + pow(p.y - WIN_HEIGHT / 2, 2) < 40000)
+	//{
+	//	//if (dist < 256)
+	//	//	light = 1 - dist / (2 * 256);
+	//	//else
+	//	//	light = 1 / 2 - (dist - 256) / (2 * dist);
+	//	light = 4 / sqrt(dist);
+	//}
+	//else
+	(void)p;
+	(void)dist;
+		light = 0.1;
+	light = max(light, 0.1);
+	light = min(light, 1);
+	r = (color & 0xFF0000) >> 16;
+	g = (color & 0X00FF00) >> 8;
+	b = color & 0X0000FF;
+	r *= light;
+	g *= light;
+	b *= light;
+	return ((r << 16) | (g << 8) | b);
+}
+
 int	get_pixel_color(t_game *game, t_wall *wall, t_point p, t_display display)
 {
 	if (p.y < display.min)
-		return (game->map.c);
+		return (shade_pixel(game->map.c, display.fc_dist[p.y], p));
 	else if (p.y > display.max)
-		return (game->map.f);
+		return (shade_pixel(game->map.f, display.fc_dist[p.y], p));
 	else
-		return (get_wall_color(game, wall, p.y, display));
+		return (shade_pixel(get_wall_color(game, wall, p.y, display), wall->dist, p));
 	return (0);
 }
 
@@ -64,27 +96,20 @@ int	display_wall(t_game *game, t_wall *wall, int i)
 {
 	t_point		p;
 	int			color;
-	t_display	display;
 
 	p.y = 0;
 	p.x = i;
-	display.img = get_image(&game->all_img, wall->face);
-	display.d = (p.x - (double)WIN_WIDTH / 2.0)
-		* (double)VIEW_SCREEN / (double)WIN_WIDTH;
-	display.angle = dabs(atan(display.d / game->settings.fov));
-	//display.min = WIN_HEIGHT / 2 - CASE_SIZE * game->settings.fov * WIN_HEIGHT
-	//	/ ((wall->dist + game->settings.fov / cos((display.angle)))
-	//		* 2 * VIEW_SIZE * cos(display.angle));
-	//display.max = WIN_HEIGHT - display.min;
-	display.min = VIEW_SIZE / 2 - game->player.updown + game->player.z - (CASE_SIZE / 2 - game->player.updown) * game->settings.fov / (cos(display.angle) * (wall->dist + game->settings.fov / cos((display.angle))));
-	display.max = VIEW_SIZE / 2 - game->player.updown + game->player.z - (CASE_SIZE / 2 + game->player.updown) * game->settings.fov / (cos(display.angle) * (wall->dist + game->settings.fov / cos((display.angle))));
-	display.min *= WIN_HEIGHT / VIEW_SIZE;
-	display.max *= -WIN_HEIGHT / VIEW_SIZE;
-	display.max += WIN_HEIGHT;
-	printf("ud: %f, z: %f max: %f, min: %f\n", game->player.updown, game->player.z, display.max, display.min);
+	game->display.img = get_image(&game->all_img, wall->face);
+	game->display.d = (p.x - (double)WIN_WIDTH / 2.0)
+		* (double)VIEW_WIDTH / (double)WIN_WIDTH;
+	game->display.angle = dabs(atan(game->display.d / game->settings.fov));
+	game->display.min = (double)VIEW_HEIGHT / 2 - game->player.updown + game->player.z - ((double)CASE_SIZE / 2 - game->player.updown) * game->settings.fov / (cos(game->display.angle) * (wall->dist + game->settings.fov / cos((game->display.angle))));
+	game->display.max = -(double)VIEW_HEIGHT / 2 + game->player.updown - game->player.z - ((double)CASE_SIZE / 2 + game->player.updown) * game->settings.fov / (cos(game->display.angle) * (wall->dist + game->settings.fov / cos((game->display.angle))));
+	game->display.min *= (double)WIN_HEIGHT / (double)VIEW_HEIGHT;
+	game->display.max *= -(double)WIN_HEIGHT / (double)VIEW_HEIGHT;
 	while (p.y < WIN_HEIGHT)
 	{
-		color = get_pixel_color(game, wall, p, display);
+		color = get_pixel_color(game, wall, p, game->display);
 		my_mlx_pixel_put(&game->all_img.screen_img,
 			p.x, p.y, get_color(game, color));
 		p.y++;

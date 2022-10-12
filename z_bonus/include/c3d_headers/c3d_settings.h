@@ -91,8 +91,8 @@
 /*Field of view between 1-60*/
 # define FOV 10.0f
 # define FPS 60
-# define VIEW_SIZE 9
-# define VIEW_SCREEN 16
+# define VIEW_HEIGHT 9
+# define VIEW_WIDTH 16
 # define RESOLUTION 100 // 1 - 100
 
 # define MOVE_SPEED 10.0f
