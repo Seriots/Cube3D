@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 10:37:40 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/11 10:39:41 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/12 21:45:23 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ int	numinput_keypress(KeySym key, t_game *game)
 	t_numinput	*numinput;
 	int			keyint;
 
-	numinput = dict_getelem_number(game->menu.all_objects, game->pick_obj)->value;
+	numinput = dict_getelem_number(game->menu.all_objects,
+			game->pick_obj)->value;
 	if ((key == XK_Delete || key == XK_KP_Delete || key == 65288))
 		delete_number(numinput);
 	else if (key == XK_Return || key == XK_KP_Enter)
@@ -47,7 +48,8 @@ int	numinput_keyrelease(KeySym key, t_game *game)
 {
 	t_numinput	*numinput;
 
-	numinput = dict_getelem_number(game->menu.all_objects, game->pick_obj)->value;
+	numinput = dict_getelem_number(game->menu.all_objects,
+			game->pick_obj)->value;
 	if (key == XK_Escape)
 	{
 		reset_key_event_num(game, numinput);
@@ -62,7 +64,8 @@ int	numinput_release(int button, int x, int y, t_game *game)
 
 	if (button != 1)
 		return (0);
-	numinput = dict_getelem_number(game->menu.all_objects, game->pick_obj)->value;
+	numinput = dict_getelem_number(game->menu.all_objects,
+			game->pick_obj)->value;
 	if (numinput->press_case == get_case_clicked(game, numinput, x, y))
 	{
 		if (numinput->is_selected == numinput->press_case)
@@ -88,7 +91,8 @@ int	numinput_press(int button, int x, int y, t_game *game)
 {
 	t_numinput	*numinput;
 
-	numinput = dict_getelem_number(game->menu.all_objects, game->pick_obj)->value;
+	numinput = dict_getelem_number(game->menu.all_objects,
+			game->pick_obj)->value;
 	if (button == 1)
 	{
 		numinput->press_case = get_case_clicked(game, numinput, x, y);

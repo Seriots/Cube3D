@@ -65,23 +65,6 @@ int	load_new_map(t_game *game, char *map_path)
 	return (0);
 }
 
-int	set_map_settings(t_game *game, t_dict **menu)
-{
-	t_dict	*tmp;
-
-	(void)game;
-	tmp = *menu;
-	while (tmp)
-	{
-		if (ft_strcmp(tmp->key, TEXTINPUT) == 0)
-			init_textinput((t_textinput *)tmp->value);
-		else if (ft_strcmp(tmp->key, NUMINPUT) == 0)
-			edit_rgb((t_numinput *)tmp->value);
-		tmp = tmp->next;
-	}
-	return (0);
-}
-
 int	set_inventory(t_game *game)
 {
 	ft_bzero(game->inventory.items, sizeof(game->inventory.items));

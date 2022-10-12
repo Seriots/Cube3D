@@ -112,5 +112,8 @@ int		release_cond_textinput_start(t_game *game,
 int	scroll_up(t_game *game);
 int	scroll_down(t_game *game);
 int	add_number_seed(t_seed *seed, int keyint);
+int	set_map_settings(t_game *game, t_dict **menu);
+int	check_one_obj_press(t_game *game, int x, int y, t_dict *tmp);
+int	validate_seed(t_game *game, t_seed *seed);
 
 #endif

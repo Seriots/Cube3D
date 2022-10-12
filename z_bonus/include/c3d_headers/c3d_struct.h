@@ -140,6 +140,7 @@ typedef struct s_object
 	int			start_frame;
 	int			nb_image;
 	int			animation_duration;
+	int			(*take)(t_game *game, t_dict *elem, struct s_object *obj);
 	int			(*use)(t_game *game, t_dict *elem, struct s_object *obj);
 	int			(*drop)(t_game *game, t_dict *elem, struct s_object *obj);
 	int			(*collide)(t_game *game, t_dict *elem, struct s_object *obj);

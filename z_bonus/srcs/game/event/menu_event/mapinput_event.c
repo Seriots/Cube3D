@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 11:02:33 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/11 11:22:05 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/12 21:44:40 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ int	mapinput_keypress(KeySym key, t_game *game)
 {
 	t_textinput	*textinput;
 
-	textinput = dict_getelem_number(game->start_menu.all_objects, game->pick_obj)->value;
+	textinput = dict_getelem_number(game->start_menu.all_objects,
+			game->pick_obj)->value;
 	if ((key == XK_Delete || key == XK_KP_Delete || key == 65288)
 		&& textinput->size > 0)
 		textinput->path[--textinput->size] = '\0';
@@ -49,7 +50,8 @@ int	mapinput_keyrelease(KeySym key, t_game *game)
 {
 	t_textinput	*textinput;
 
-	textinput = dict_getelem_number(game->start_menu.all_objects, game->pick_obj)->value;
+	textinput = dict_getelem_number(game->start_menu.all_objects,
+			game->pick_obj)->value;
 	if (key == XK_Escape)
 		reset_textinput_start(game, textinput);
 	else if (key == XK_Shift_L || key == XK_Shift_R)
@@ -68,7 +70,8 @@ int	mapinput_release(int button, int x, int y, t_game *game)
 
 	if (button != 1)
 		return (0);
-	textinput = dict_getelem_number(game->start_menu.all_objects, game->pick_obj)->value;
+	textinput = dict_getelem_number(game->start_menu.all_objects,
+			game->pick_obj)->value;
 	if (release_cond_textinput_start(game, textinput, x, y))
 	{
 		textinput->is_selected = !textinput->is_selected;

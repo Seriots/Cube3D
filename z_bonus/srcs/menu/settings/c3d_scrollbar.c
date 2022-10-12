@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 17:55:22 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/11 10:16:55 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/12 21:22:35 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,9 +91,9 @@ int	set_height(t_game *game, int *max_obj)
 	{
 		if (ft_strcmp(elem->key, BUTTON) != 0
 			&& (((t_collide_box *)elem->value)->y
-				+ ((t_collide_box *)elem->value)->height > max))
+				+ ((t_collide_box *)elem->value)->height + 50 > max))
 			max = ((t_collide_box *)elem->value)->y
-				+ ((t_collide_box *)elem->value)->height;
+				+ ((t_collide_box *)elem->value)->height + 50;
 		elem = elem->next;
 	}
 	*max_obj = max - MENU_HEIGHT + (15 * MENU_HEIGHT / 100);

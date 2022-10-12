@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 10:25:07 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/11 13:11:27 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/12 21:45:33 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ int	checkbox_release(int button, int x, int y, t_game *game)
 
 	if (button == 1)
 	{
-		checkbox = dict_getelem_number(game->menu.all_objects, game->pick_obj)->value;
+		checkbox = dict_getelem_number(game->menu.all_objects,
+				game->pick_obj)->value;
 		if (x - (WIN_WIDTH / 2 - MENU_WIDTH / 2) >= checkbox->box.x
 			&& x - (WIN_WIDTH / 2 - MENU_WIDTH / 2)
 			<= checkbox->box.x + checkbox->box.width

@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 11:27:34 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/12 11:23:13 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/12 20:45:26 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ int	print_objects(t_dict *all_objects)
 	{
 		if (ft_strcmp(tmp->key, "KEY") == 0)
 			printf("%s: %f %f\n", (char *)tmp->key,
-				((t_object *)tmp->value)->pos.x, ((t_object *)tmp->value)->pos.y);
+				((t_object *)tmp->value)->pos.x,
+				((t_object *)tmp->value)->pos.y);
 		tmp = tmp->next;
 	}
 	return (0);

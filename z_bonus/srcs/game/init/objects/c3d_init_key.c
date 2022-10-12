@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 14:43:09 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/12 14:50:37 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/12 20:46:51 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +48,18 @@ int	key_update(t_game *game, t_dict *dict, t_object *obj)
 	(void)game;
 	(void)dict;
 	(void)obj;
-	//printf("key_update = %f, %f, %d\n", obj->pos.x, obj->pos.y, obj->is_visible);
 	return (0);
 }
 
 int	key_delete(t_game *game, t_dict *dict, t_object *obj)
+{
+	(void)game;
+	(void)dict;
+	(void)obj;
+	return (0);
+}
+
+int	key_take(t_game *game, t_dict *dict, t_object *obj)
 {
 	(void)game;
 	(void)dict;
@@ -72,6 +79,7 @@ int	init_key(t_game *game, t_object **obj)
 	(*obj)->start_frame = game->last_frame + game->delay;
 	(*obj)->nb_image = 1;
 	(*obj)->animation_duration = 0;
+	(*obj)->take = key_take;
 	(*obj)->use = key_use;
 	(*obj)->drop = key_drop;
 	(*obj)->collide = key_collide;

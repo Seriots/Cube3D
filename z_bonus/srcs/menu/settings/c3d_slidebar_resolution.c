@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 13:45:30 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/11 13:16:45 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/12 20:40:45 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,8 @@ t_dict	*init_resolution_slidebar(t_game *game)
 	slidebar->max = 100;
 	slidebar->height = 18;
 	slidebar->width = 6;
-	check_value_slidebar(&game->settings.resolution, slidebar->min, slidebar->max);
+	check_value_slidebar(&game->settings.resolution,
+		slidebar->min, slidebar->max);
 	slidebar->modified_value = &game->settings.resolution;
 	resolution_init(slidebar);
 	slidebar->box.mouse_press = slidebar_press;

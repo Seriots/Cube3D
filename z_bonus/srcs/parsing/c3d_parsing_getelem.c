@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 12:12:09 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/12 12:43:44 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/12 20:41:36 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ int	default_parse(t_game *game, char *tag, char *arg)
 		return (10);
 	if (ft_arraylen(split) != 2)
 		return (ft_free_tab(split), 3);
-	if (is_only_set(split[0], "0123456789") && is_only_set(split[1], "0123456789"))
+	if (is_only_set(split[0], "0123456789")
+		&& is_only_set(split[1], "0123456789"))
 	{
 		x = ft_atoi(split[0]);
 		y = ft_atoi(split[1]);
@@ -63,7 +64,6 @@ int	get_object(t_game *game, char **split)
 
 int	get_elem(t_game *game, t_map *map, char *line)
 {
-	
 	char	**split;
 
 	split = ft_split(line, ' ');

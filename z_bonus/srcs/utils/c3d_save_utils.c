@@ -1,28 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   c3d_objects_update.c                               :+:      :+:    :+:   */
+/*   c3d_save_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/12 11:46:39 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/12 20:44:22 by lgiband          ###   ########.fr       */
+/*   Created: 2022/10/12 21:50:35 by lgiband           #+#    #+#             */
+/*   Updated: 2022/10/12 21:51:05 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "c3d_struct.h"
+#include "ft.h"
 
-int	update_objects(t_game *game, t_dict *all_objects)
+int	sf(void *ptr, char *value)
 {
-	t_dict		*tmp;
-	t_object	*obj;
+	*(float *)ptr = (float)ft_atoi(value);
+	return (0);
+}
 
-	tmp = all_objects;
-	while (tmp)
-	{
-		obj = tmp->value;
-		obj->update(game, tmp, obj);
-		tmp = tmp->next;
-	}
+int	si(void *ptr, char *value)
+{
+	*(int *)ptr = ft_atoi(value);
+	return (0);
+}
+
+int	ss(void *ptr, char *value)
+{
+	ft_strlcpy((char *)ptr, value, 256);
 	return (0);
 }

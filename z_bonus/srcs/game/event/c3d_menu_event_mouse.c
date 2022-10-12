@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 15:03:03 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/11 10:22:01 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/12 21:30:42 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,23 +31,10 @@ int	check_all_objects_press(t_game *game, int x, int y, t_dict *dict)
 	while (tmp)
 	{
 		box = tmp->value;
-		if (press_collide_cond(game, x, y, tmp))
+		if (check_one_obj_press(game, x, y, tmp))
 		{
-			if (box->mouse_press)
-			{
-				game->pick_obj = i;
-				box->mouse_press(1, x, y, game);
-			}
-			break ;
-		}
-		else if (press_scrollbar_cond(game, x, y, tmp))
-		{
-			if (box->mouse_press)
-			{
-				game->pick_obj = i;
-				box->mouse_press(1, x, y, game);
-			}
-			break ;
+			game->pick_obj = i;
+			box->mouse_press(1, x, y, game);
 		}
 		i++;
 		tmp = tmp->next;

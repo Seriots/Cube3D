@@ -15,6 +15,11 @@
 
 # include "c3d_struct.h"
 
+/*Save*/
+int	sf(void *ptr, char *value);
+int	si(void *ptr, char *value);
+int	ss(void *ptr, char *value);
+
 /*Color*/
 unsigned int	get_color(t_game *game, unsigned int color);
 

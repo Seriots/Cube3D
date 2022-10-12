@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 13:17:26 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/12 16:21:50 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/12 21:49:14 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static int	set_default_fcts(t_game *game)
 	return (0);
 }
 
-static int	set_default_settings(t_game *game, char *path)
+static int	set_default_settings2(t_game *game)
 {
 	game->settings.fps = FPS;
 	game->settings.fov = FOV;
@@ -54,6 +54,11 @@ static int	set_default_settings(t_game *game, char *path)
 	game->settings.slot6 = XK_6;
 	game->settings.slot7 = XK_7;
 	game->settings.slot8 = XK_8;
+	return (0);
+}
+
+static int	set_default_settings(t_game *game, char *path)
+{
 	game->settings.color = 1;
 	game->settings.invert_scroll = 0;
 	game->settings.invert_mouse = 0;
@@ -96,6 +101,7 @@ int	init_game(t_game *game, char *path)
 
 	set_variable(game);
 	set_default_fcts(game);
+	set_default_settings2(game);
 	error = set_default_settings(game, path);
 	if (error)
 		return (error);

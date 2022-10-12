@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 11:22:31 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/12 16:49:18 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/12 21:05:17 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,15 +74,12 @@ int	move_slot(KeySym keycode, t_game *game)
 		value = 7;
 	else
 		return (0);
-	if (value == game->inventory.selected)
-		game->inventory.selected = -1;
-	else if (value > game->inventory.size - 1)
+	if (value > game->inventory.size - 1)
 		return (0);
 	else
 		game->inventory.selected = value;
 	return (0);
 }
-
 
 int	default_key_press(KeySym keycode, t_game *game)
 {
@@ -103,19 +100,7 @@ int	default_key_press(KeySym keycode, t_game *game)
 		game->player.turn_left = 1;
 	else if (keycode == game->settings.turn_right)
 		game->player.turn_right = 1;
-	move_slot( keycode, game);
-	return (0);
-}
-
-int	interact(t_game *game)
-{
-	(void)game;
-	return (0);
-}
-
-int	drop(t_game *game)
-{
-	(void)game;
+	move_slot(keycode, game);
 	return (0);
 }
 

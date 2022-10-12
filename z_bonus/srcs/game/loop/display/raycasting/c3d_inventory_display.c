@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 13:18:11 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/12 14:56:16 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/12 20:43:34 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,20 @@
 
 unsigned int	get_hotbar_color(int x, int y, int is_selected)
 {
-	if (x < HOTBAR_CASE_BIG_BORDER || x > HOTBAR_CASE_SIZE - HOTBAR_CASE_BIG_BORDER
-		|| y < HOTBAR_CASE_BIG_BORDER || y > HOTBAR_CASE_SIZE - HOTBAR_CASE_BIG_BORDER)
+	if (x < HOTBAR_BIG_BORDER
+		|| x > HOTBAR_CASE_SIZE - HOTBAR_BIG_BORDER
+		|| y < HOTBAR_BIG_BORDER
+		|| y > HOTBAR_CASE_SIZE - HOTBAR_BIG_BORDER)
 		return (0x949494);
-	else if (x < HOTBAR_CASE_BIG_BORDER + HOTBAR_CASE_BORDER || x > HOTBAR_CASE_SIZE - HOTBAR_CASE_BIG_BORDER - HOTBAR_CASE_BORDER
-		|| y < HOTBAR_CASE_BIG_BORDER + HOTBAR_CASE_BORDER || y > HOTBAR_CASE_SIZE - HOTBAR_CASE_BIG_BORDER - HOTBAR_CASE_BORDER)
+	else if (x < HOTBAR_BIG_BORDER + HOTBAR_CASE_BORDER
+		|| x > HOTBAR_CASE_SIZE - HOTBAR_BIG_BORDER - HOTBAR_CASE_BORDER
+		|| y < HOTBAR_BIG_BORDER + HOTBAR_CASE_BORDER
+		|| y > HOTBAR_CASE_SIZE - HOTBAR_BIG_BORDER - HOTBAR_CASE_BORDER)
 		return (0xDDDDDD);
-	else if (x < 2 * HOTBAR_CASE_BIG_BORDER + HOTBAR_CASE_BORDER || x > HOTBAR_CASE_SIZE - 2 * HOTBAR_CASE_BIG_BORDER - HOTBAR_CASE_BORDER
-		|| y < 2 * HOTBAR_CASE_BIG_BORDER + HOTBAR_CASE_BORDER || y > HOTBAR_CASE_SIZE - 2 * HOTBAR_CASE_BIG_BORDER - HOTBAR_CASE_BORDER)
+	else if (x < 2 * HOTBAR_BIG_BORDER + HOTBAR_CASE_BORDER
+		|| x > HOTBAR_CASE_SIZE - 2 * HOTBAR_BIG_BORDER - HOTBAR_CASE_BORDER
+		|| y < 2 * HOTBAR_BIG_BORDER + HOTBAR_CASE_BORDER
+		|| y > HOTBAR_CASE_SIZE - 2 * HOTBAR_BIG_BORDER - HOTBAR_CASE_BORDER)
 		return (0x949494);
 	else if (is_selected)
 		return (0x686898);

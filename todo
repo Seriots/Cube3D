@@ -38,7 +38,7 @@ x -> activer le keypad pour textinput
 x -> add multichoice
 x -> start menu avec choix de le difficulte, level preset ou genere a partir d'une seed
 -> set font
--> save file
+x -> save file
 -> clean tout les headers
 -> faire une fonction update et display associe a chaque object des menu
 

@@ -19,6 +19,7 @@ define SRCS :=
 		game/event/c3d_event.c
 		game/event/c3d_menu_event_mouse.c
 		game/event/c3d_menu_event.c
+		game/event/c3d_player_action.c
 		game/event/c3d_startscreen_event_mouse.c
 		game/event/c3d_startscreen_event.c
 		game/init/objects/c3d_obj_init.c
@@ -125,6 +126,8 @@ define SRCS :=
 		utils/c3d_menu_utils3.c
 		utils/c3d_menu_utils4.c
 		utils/c3d_menu_utils5.c
+		utils/c3d_menu_utils6.c
+		utils/c3d_save_utils.c
 		utils/c3d_time.c
 		map_generator/mzg_generator.c
 		map_generator/mzg_clean.c

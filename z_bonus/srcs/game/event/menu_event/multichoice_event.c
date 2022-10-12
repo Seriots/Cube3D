@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 11:06:55 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/11 11:08:41 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/12 21:40:09 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ int	multichoice_press(int button, int x, int y, t_game *game)
 	(void)y;
 	if (button == 1)
 	{
-		multichoice
-			= dict_getelem_number(game->start_menu.all_objects, game->pick_obj)->value;
+		multichoice = dict_getelem_number(game->start_menu.all_objects,
+				game->pick_obj)->value;
 		if (x <= multichoice->box.x + multichoice->box.width / 8)
 			multichoice->current--;
 		else if (x >= multichoice->box.x + 7 * (multichoice->box.width / 8))

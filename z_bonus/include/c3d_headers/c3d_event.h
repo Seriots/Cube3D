@@ -55,4 +55,7 @@ int	resume_event(int button, int x, int y, t_game *game);
 int	press_collide_cond(t_game *game, int x, int y, t_dict *tmp);
 int	press_scrollbar_cond(t_game *game, int x, int y, t_dict *tmp);
 
+/*Action*/
+int	interact(t_game *game);
+int	drop(t_game *game);
 #endif

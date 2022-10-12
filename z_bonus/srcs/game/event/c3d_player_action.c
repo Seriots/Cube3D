@@ -1,28 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   c3d_objects_update.c                               :+:      :+:    :+:   */
+/*   c3d_player_action.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/12 11:46:39 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/12 20:44:22 by lgiband          ###   ########.fr       */
+/*   Created: 2022/10/12 21:05:06 by lgiband           #+#    #+#             */
+/*   Updated: 2022/10/12 21:05:25 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "c3d_struct.h"
 
-int	update_objects(t_game *game, t_dict *all_objects)
+int	interact(t_game *game)
 {
-	t_dict		*tmp;
-	t_object	*obj;
+	(void)game;
+	return (0);
+}
 
-	tmp = all_objects;
-	while (tmp)
-	{
-		obj = tmp->value;
-		obj->update(game, tmp, obj);
-		tmp = tmp->next;
-	}
+int	drop(t_game *game)
+{
+	(void)game;
 	return (0);
 }
