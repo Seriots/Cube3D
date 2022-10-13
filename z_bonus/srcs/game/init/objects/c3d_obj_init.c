@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 14:45:40 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/12 11:34:13 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/13 12:45:01 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,15 @@
 
 int	set_obj(t_game *game, t_object **object, char *key)
 {
-	const t_init	all_tag[][2] = {{{KEY, init_key}}};
+	const t_init	all_tag[] = {{KEY, init_key}, {DOOR, init_door},
+		{ENDOOR, init_endoor}, {LAMP, init_lamp}};
 	unsigned int	i;
 
 	i = 0;
 	while (i < sizeof(all_tag) / sizeof(all_tag[0]))
 	{
-		if (!ft_strcmp(key, all_tag[i]->tag))
-			return (all_tag[i]->fct(game, object));
+		if (!ft_strcmp(key, all_tag[i].tag))
+			return (all_tag[i].fct(game, object));
 		i++;
 	}
 	return (0);

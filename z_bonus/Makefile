@@ -23,7 +23,10 @@ define SRCS :=
 		game/event/c3d_startscreen_event_mouse.c
 		game/event/c3d_startscreen_event.c
 		game/init/objects/c3d_obj_init.c
+		game/init/objects/c3d_init_door.c
+		game/init/objects/c3d_init_endoor.c
 		game/init/objects/c3d_init_key.c
+		game/init/objects/c3d_init_lamp.c
 		game/init/c3d_init_game.c
 		game/init/c3d_init_images.c
 		game/init/c3d_init_menu.c
@@ -121,6 +124,7 @@ define SRCS :=
 		utils/c3d_error.c
 		utils/c3d_event_utils.c
 		utils/c3d_init_image.c
+		utils/c3d_inventory_utils.c
 		utils/c3d_math.c
 		utils/c3d_math2.c
 		utils/c3d_menu_utils.c

@@ -109,6 +109,11 @@
 # define MOVE_SPEED 10.0f
 # define TURN_SPEED 0.06f
 
+# define RUN_SPEED_FACTOR 1.5f
+# define CROUCH_SPEED_FACTOR 0.5f
+
+# define MIN_DIST_OBJ 1.0f
+
 /*Default Key*/
 /*
 # define DEFAULT_LEFT XK_a

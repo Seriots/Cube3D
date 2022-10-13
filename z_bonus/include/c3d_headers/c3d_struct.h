@@ -64,6 +64,8 @@ typedef struct s_all_img
 	t_img_data	menu_img;
 	t_img_data	minimap_img;
 	t_img_data	*all_cursor_img;
+	t_img_data	key_icon;
+	t_img_data	lamp_icon;
 }	t_all_img;
 
 typedef struct s_coord
@@ -142,7 +144,7 @@ typedef struct s_object
 	int			start_frame;
 	int			nb_image;
 	int			animation_duration;
-	int			(*take)(t_game *game, t_dict *elem, struct s_object *obj);
+	int			(*interact)(t_game *game, t_dict *elem, struct s_object *obj);
 	int			(*use)(t_game *game, t_dict *elem, struct s_object *obj);
 	int			(*drop)(t_game *game, t_dict *elem, struct s_object *obj);
 	int			(*collide)(t_game *game, t_dict *elem, struct s_object *obj);

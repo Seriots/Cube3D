@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 13:30:36 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/10 12:39:37 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/13 10:42:49 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int	load_startscreen(t_game *game)
 	game->fcts.mousepressed_fct = startscreen_mouse_press;
 	game->fcts.mousereleased_fct = startscreen_mouse_release;
 	game->fcts.mousemove_fct = startscreen_mouse_move;
+	game->start_menu.scroll_amount = 0;
 	game->menu.scroll_amount = 0;
 	game->start_menu.error = 0;
 	if (HIDE)
@@ -46,6 +47,7 @@ int	load_menu(t_game *game)
 	game->fcts.mousepressed_fct = menu_mouse_press;
 	game->fcts.mousereleased_fct = menu_mouse_release;
 	game->menu.error = 0;
+	game->menu.scroll_amount = 0;
 	if (HIDE)
 		mlx_mouse_show(game->mlx.display, game->mlx.window);
 	mlx_do_key_autorepeaton(game->mlx.display);

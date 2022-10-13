@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   c3d_init_key.c                                     :+:      :+:    :+:   */
+/*   c3d_init_door.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/07 14:43:09 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/13 12:22:10 by lgiband          ###   ########.fr       */
+/*   Created: 2022/10/13 11:53:11 by lgiband           #+#    #+#             */
+/*   Updated: 2022/10/13 12:08:36 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 #include <stdio.h>
 
-int	key_use(t_game *game, t_dict *dict, t_object *obj)
+int	door_use(t_game *game, t_dict *dict, t_object *obj)
 {
 	(void)game;
 	(void)dict;
@@ -27,7 +27,7 @@ int	key_use(t_game *game, t_dict *dict, t_object *obj)
 	return (0);
 }
 
-int	key_drop(t_game *game, t_dict *dict, t_object *obj)
+int	door_drop(t_game *game, t_dict *dict, t_object *obj)
 {
 	(void)game;
 	(void)dict;
@@ -35,7 +35,7 @@ int	key_drop(t_game *game, t_dict *dict, t_object *obj)
 	return (0);
 }
 
-int	key_collide(t_game *game, t_dict *dict, t_object *obj)
+int	door_collide(t_game *game, t_dict *dict, t_object *obj)
 {
 	(void)game;
 	(void)dict;
@@ -43,7 +43,16 @@ int	key_collide(t_game *game, t_dict *dict, t_object *obj)
 	return (0);
 }
 
-int	key_update(t_game *game, t_dict *dict, t_object *obj)
+int	door_update(t_game *game, t_dict *dict, t_object *obj)
+{
+	(void)game;
+	(void)dict;
+	(void)obj;
+	//printf("door_update, %f %f\n", obj->pos.x, obj->pos.y);
+	return (0);
+}
+
+int	door_delete(t_game *game, t_dict *dict, t_object *obj)
 {
 	(void)game;
 	(void)dict;
@@ -51,7 +60,7 @@ int	key_update(t_game *game, t_dict *dict, t_object *obj)
 	return (0);
 }
 
-int	key_delete(t_game *game, t_dict *dict, t_object *obj)
+int	door_interact(t_game *game, t_dict *dict, t_object *obj)
 {
 	(void)game;
 	(void)dict;
@@ -59,19 +68,11 @@ int	key_delete(t_game *game, t_dict *dict, t_object *obj)
 	return (0);
 }
 
-int	key_interact(t_game *game, t_dict *dict, t_object *obj)
-{
-	(void)game;
-	(void)dict;
-	(void)obj;
-	return (0);
-}
-
-int	init_key(t_game *game, t_object **obj)
+int	init_door(t_game *game, t_object **obj)
 {
 	(*obj)->all_img = 0;
 	(*obj)->game_img = 0;
-	(*obj)->menu_img = &game->all_img.key_icon;
+	(*obj)->menu_img = 0;
 	(*obj)->state = 0;
 	(*obj)->use_count = 0;
 	(*obj)->is_visible = 1;
@@ -79,11 +80,11 @@ int	init_key(t_game *game, t_object **obj)
 	(*obj)->start_frame = game->last_frame + game->delay;
 	(*obj)->nb_image = 1;
 	(*obj)->animation_duration = 0;
-	(*obj)->interact = key_interact;
-	(*obj)->use = key_use;
-	(*obj)->drop = key_drop;
-	(*obj)->collide = key_collide;
-	(*obj)->update = key_update;
-	(*obj)->delete = key_delete;
+	(*obj)->interact = door_interact;
+	(*obj)->use = door_use;
+	(*obj)->drop = door_drop;
+	(*obj)->collide = door_collide;
+	(*obj)->update = door_update;
+	(*obj)->delete = door_delete;
 	return (0);
 }

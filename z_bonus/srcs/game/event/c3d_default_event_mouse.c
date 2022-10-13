@@ -6,12 +6,13 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 11:04:48 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/12 15:02:21 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/13 10:53:29 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "c3d_settings.h"
 #include "c3d_struct.h"
+#include "c3d_event.h"
 
 #include "mlx.h"
 
@@ -25,6 +26,8 @@ int	default_mouse_press(int button, int x, int y, t_game *game)
 	(void)x;
 	(void)y;
 	(void)button;
+	if (button == 3)
+		objects_use(game);
 	return (0);
 }
 

@@ -16,6 +16,7 @@ SRC_NAMES	= dict_add_back \
 			  dict_getelem_key \
 			  dict_getelem_number \
 			  dict_getelem_value \
+			  dict_getelem_ptr \
 			  dict_get_first \
 			  dict_get_last \
 			  dict_new \

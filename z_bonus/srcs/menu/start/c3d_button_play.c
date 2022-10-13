@@ -20,6 +20,7 @@
 #include "c3d_init.h"
 #include "mzg_incs.h"
 #include "c3d_parsing.h"
+#include "c3d_object.h"
 
 #include "ft.h"
 #include "dict.h"
@@ -36,6 +37,32 @@ int	load_random_map(t_game *game, t_genparams *params)
 		*params = (t_genparams){.width = 80, .height = 80, .door = 20,
 			.seed = game->settings.seed, .difficulty = 2};
 	return (get_maze(game, *params, &game->settings.seed, 0));
+}
+
+int	get_all_doors(t_game *game, t_map *map)
+{
+	int	i;
+	int	j;
+	int	error;
+
+	i = 0;
+	error = 0;
+	while (i < map->height)
+	{
+		j = 0;
+		while (j < map->width)
+		{
+			if (map->map[i][j] == '2')
+				error = init_obj(game, DOOR, j, i);
+			if (map->map[i][j] == '3')
+				error = init_obj(game, ENDOOR, j, i);
+			if (error)
+				return (error);
+			j++;
+		}
+		i++;
+	}
+	return (0);
 }
 
 int	load_new_map(t_game *game, char *map_path)
@@ -55,6 +82,12 @@ int	load_new_map(t_game *game, char *map_path)
 		if (error)
 			return (free_map(&game->map), display_error(error));
 	}
+	error = get_all_doors(game, &game->map);
+	if (error)
+		return (free_map(&game->map), display_error(error));
+	error = init_obj(game, LAMP, 0, 0);
+	if (error)
+		return (free_map(&game->map), display_error(error));
 	error = init_player(game);
 	if (error)
 		return (free_map(&game->map), display_error(error));
@@ -74,9 +107,8 @@ int	set_inventory(t_game *game)
 		game->inventory.size = 4;
 	else
 		game->inventory.size = 2;
-	game->inventory.selected = 0;
-	//if (game->settings.difficulty < 2)
-	//	add_items(game, LAMP, 0);
+	game->inventory.selected = -1;
+	add_items(&game->inventory, dict_getelem_key(game->map.all_objects, LAMP)->value);
 	return (0);
 }
 

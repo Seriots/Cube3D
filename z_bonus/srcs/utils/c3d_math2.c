@@ -6,12 +6,14 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 11:02:27 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/10 18:01:17 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/13 11:11:47 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <math.h>
+#include "c3d_struct.h"
 #include "c3d_settings.h"
+
+#include <math.h>
 
 double	norm(double x, double y)
 {
@@ -35,4 +37,9 @@ int	is_in_circle(int x, int y, unsigned int color)
 	if (norm(dist_x, dist_y) < MMAP_HEIGHT / 2)
 		return (color);
 	return (0xFF000000);
+}
+
+double	dist_to_obj(t_coord player, t_coord obj)
+{
+	return (norm(player.x - obj.x, player.y - obj.y));
 }

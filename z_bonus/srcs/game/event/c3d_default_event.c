@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 11:22:31 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/12 21:05:17 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/13 10:50:55 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,8 +121,8 @@ int	default_key_release(KeySym keycode, t_game *game)
 	else if (keycode == XK_Escape)
 		load_menu(game);
 	else if (keycode == game->settings.interact)
-		interact(game);
+		objects_interact(game);
 	else if (keycode == game->settings.drop)
-		drop(game);
+		objects_drop(game);
 	return (0);
 }
