@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 13:43:02 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/12 14:06:32 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/13 16:56:54 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ int	default_display(t_game *game)
 		show_fps(game);
 	if (game->settings.show_seed)
 		show_seed(game);
+	display_hand(game);
 	display_inventory(game);
 	return (0);
 }

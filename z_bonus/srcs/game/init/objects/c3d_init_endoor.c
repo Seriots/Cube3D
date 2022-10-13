@@ -73,6 +73,7 @@ int	init_endoor(t_game *game, t_object **obj)
 	(*obj)->all_img = 0;
 	(*obj)->game_img = 0;
 	(*obj)->menu_img = 0;
+	(*obj)->hand_img = 0;
 	(*obj)->state = 0;
 	(*obj)->use_count = 0;
 	(*obj)->is_visible = 1;

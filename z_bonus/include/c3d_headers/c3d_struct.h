@@ -65,7 +65,7 @@ typedef struct s_all_img
 	t_img_data	minimap_img;
 	t_img_data	*all_cursor_img;
 	t_img_data	key_icon;
-	t_img_data	lamp_icon;
+	t_img_data	flashlight[3];
 }	t_all_img;
 
 typedef struct s_coord
@@ -138,6 +138,7 @@ typedef struct s_object
 {
 	t_img_data	*all_img;
 	t_img_data	*game_img;
+	t_img_data	*hand_img;
 	t_img_data	*menu_img;
 	t_coord		pos;
 	int			state;

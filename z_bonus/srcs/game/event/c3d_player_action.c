@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 21:05:06 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/13 11:12:24 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/13 17:06:27 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,11 @@ int	objects_drop(t_game *game)
 	t_dict		*d_obj;
 	t_object	*obj;
 
+	if (game->inventory.selected < 0)
+		return (0);
 	obj = game->inventory.items[game->inventory.selected];
+	if (obj == NULL)
+		return (0);
 	d_obj = dict_getelem_ptr(game->map.all_objects, obj);
 	obj->drop(game, d_obj, obj);
 	return (0);
@@ -51,7 +55,11 @@ int	objects_use(t_game *game)
 	t_dict		*d_obj;
 	t_object	*obj;
 
+	if (game->inventory.selected < 0)
+		return (0);
 	obj = game->inventory.items[game->inventory.selected];
+	if (obj == NULL)
+		return (0);
 	d_obj = dict_getelem_ptr(game->map.all_objects, obj);
 	obj->use(game, d_obj, obj);
 	return (0);

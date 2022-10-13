@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 13:17:26 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/13 13:03:38 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/13 16:45:50 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,9 @@ static int	set_variable(t_game *game)
 	game->all_img.screen_img.img = NULL;
 	game->all_img.minimap_img.img = NULL;
 	game->all_img.all_cursor_img = NULL;
-	game->all_img.lamp_icon.img = NULL;
+	game->all_img.flashlight[0].img = NULL;
+	game->all_img.flashlight[1].img = NULL;
+	game->all_img.flashlight[2].img = NULL;
 	game->all_img.key_icon.img = NULL;
 	game->map = (t_map){.c = -1, .f = -1, .ea = NULL, .no = NULL, .so = NULL,
 		.we = NULL, .height = 0, .width = 0, .all_objects = 0, .map = NULL};

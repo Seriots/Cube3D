@@ -106,11 +106,11 @@
 # define VIEW_SCREEN 16
 # define RESOLUTION 100 // 1 - 100
 
-# define MOVE_SPEED 0.15
+# define MOVE_SPEED 0.1
 # define TURN_SPEED 0.06f
 
-# define RUN_SPEED_FACTOR 1.5f
-# define CROUCH_SPEED_FACTOR 0.5f
+# define RUN_SPEED_FACTOR 2.0
+# define CROUCH_SPEED_FACTOR 0.3
 
 # define MIN_DIST_OBJ 1.0f
 

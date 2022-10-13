@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 23:58:22 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/10 15:50:58 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/13 14:49:40 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,10 @@ void	init_textinput(t_textinput *textinput)
 
 void	reset_textinput(t_game *game, t_textinput *textinput)
 {
-	ft_strlcpy(textinput->path, *textinput->modified_path, 256);
+	if (*textinput->modified_path)
+		ft_strlcpy(textinput->path, *textinput->modified_path, 256);
+	else
+		textinput->path[0] = 0;
 	textinput->size = ft_strlen(textinput->path);
 	if (game)
 	{

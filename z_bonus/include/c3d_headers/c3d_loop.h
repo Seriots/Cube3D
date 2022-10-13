@@ -25,6 +25,8 @@ int		display_wall(t_game *game, t_wall *wall, int i);
 int		raycasting(t_game *game);
 
 /*Display*/
+int		display_hand(t_game *game);
+int		display_inventory(t_game *game);
 int		show_fps(t_game *game);
 int		show_seed(t_game *game);
 void	my_mlx_put_image_to_window(t_game *game, t_img_data *data, int x, int y);
@@ -40,7 +42,6 @@ int		update_player(t_game *game);
 
 
 /*Update*/
-int		display_inventory(t_game *game);
 int		update_objects(t_game *game, t_dict *all_objects);
 int		default_update(t_game *game);
 
