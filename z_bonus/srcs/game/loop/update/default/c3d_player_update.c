@@ -6,7 +6,7 @@
 /*   By: ppajot <ppajot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 10:38:52 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/13 21:08:32 by ppajot           ###   ########.fr       */
+/*   Updated: 2022/10/13 21:29:40 by ppajot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,18 +82,23 @@ int	update_rotation(t_game *game)
 	game->player.plane.cos = cos(game->player.plane.value);
 	if (game->player.turn_up == 1)
 	{
-		game->player.updown -= 0.3;
-		if (game->player.updown < -9.0)
-			game->player.updown = -9.0;
-		game->player.z = -game->player.updown;
+		game->player.angleup += 0.3;
+		if (game->player.angleup > 6.0)
+			game->player.angleup = 6.0;
+		
 	}
 	if (game->player.turn_down == 1)
 	{
-		game->player.updown += 0.3;
-		if (game->player.updown > 9.0)
-			game->player.updown = 9.0;
-		game->player.z = -game->player.updown;
+		game->player.angleup -= 0.3;
+		if (game->player.angleup < -6.0)
+			game->player.angleup = -6.0;
 	}
+	if (game->player.crouch)
+		game->player.elevation = -CASE_SIZE / 5;
+	else
+		game->player.elevation = 0;
+	game->player.z = -game->player.angleup + game->player.elevation;
+	game->player.updown = game->player.angleup + game->player.elevation;
 	return (0);
 }
 

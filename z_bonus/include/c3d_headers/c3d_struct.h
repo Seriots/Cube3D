@@ -101,6 +101,8 @@ typedef struct s_player
 	int		crouch;
 	int		run;
 	double	speed;
+	double	angleup;
+	double	elevation;
 }	t_player;
 
 typedef struct s_wall

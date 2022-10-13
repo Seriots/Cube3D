@@ -6,7 +6,7 @@
 /*   By: ppajot <ppajot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 10:51:13 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/13 21:06:36 by ppajot           ###   ########.fr       */
+/*   Updated: 2022/10/13 21:22:04 by ppajot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,5 +70,7 @@ int	init_player(t_game *game)
 	game->player.turn_down = 0;
 	game->player.run = 0;
 	game->player.crouch = 0;
+	game->player.angleup = 0;
+	game->player.elevation = 0;
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: ppajot <ppajot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 11:04:48 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/13 21:05:42 by ppajot           ###   ########.fr       */
+/*   Updated: 2022/10/13 21:29:42 by ppajot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,18 +59,14 @@ int	is_invert(t_game *game)
 
 int	default_mouse_move(int x, int y, t_game *game)
 {
-	double	z_move;
-	
 	game->player.plane.value -= (((float)(x - WIN_WIDTH / 2))
 			* (game->settings.cam_sensibility_x / 70000.0)) * (is_invert(game));
-	z_move = (((float)(y - WIN_HEIGHT / 2))
+	game->player.angleup += (((float)(y - WIN_HEIGHT / 2))
 			* (game->settings.cam_sensibility_y / 50000.0)) * (is_invert(game));
-	game->player.z -= z_move;
-	game->player.updown += z_move;
-	if (dabs(game->player.z) > 6)
-		game->player.z = 6.0 * sign(game->player.z);
-	if (dabs(game->player.updown) > 6)
-		game->player.updown = 6.0 * sign(game->player.updown);
+	if (dabs(game->player.angleup) > 6)
+		game->player.angleup = 6.0 * sign(game->player.angleup);
+	game->player.z = -game->player.angleup + game->player.elevation;
+	game->player.updown = game->player.angleup + game->player.elevation;
 	if (game->player.plane.value > 2 * M_PI)
 		game->player.plane.value -= 2 * M_PI;
 	else if (game->player.plane.value < 0)
