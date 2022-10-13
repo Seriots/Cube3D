@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 11:42:39 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/06 21:20:50 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/13 13:37:13 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,21 +30,21 @@ double	get_wall_angle(char c)
 	return (0);
 }
 
-int	slide(t_game *game, t_wall wall, double limit, t_point mov)
+int	slide(t_game *game, t_wall wall, double limit, t_coord mov)
 {
-	t_point	new_mov;
+	t_coord	new_mov;
 
 	new_mov.x = 0;
 	new_mov.y = 0;
 	if (wall.face == 'N' || wall.face == 'S')
-		new_mov.x = mov.x * limit / MOVE_SPEED;
+		new_mov.x = mov.x * limit / (game->player.speed * game->delay);
 	else
-		new_mov.y = mov.y * limit / MOVE_SPEED;
+		new_mov.y = mov.y * limit / (game->player.speed * game->delay);
 	check_collide(game, new_mov);
 	return (0);
 }
 
-int	apply_collide(t_game *game, t_wall wall, t_point mov)
+int	apply_collide(t_game *game, t_wall wall, t_coord mov)
 {
 	if (wall.dist > norm((double)mov.x, (double)mov.y)
 		&& wall.dist > 3 * VIEW_SCREEN / 2)
@@ -68,7 +68,7 @@ int	get_new_wall(t_game *game, t_vector player, t_wall *wall)
 	return (0);
 }
 
-int	check_collide(t_game *game, t_point mov)
+int	check_collide(t_game *game, t_coord mov)
 {
 	t_wall		wall;
 	t_wall		wall2;

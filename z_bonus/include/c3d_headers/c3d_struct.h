@@ -76,14 +76,17 @@ typedef struct s_coord
 
 typedef struct s_player
 {
-	t_coord			pos;
-	double			rot;
-	int				forward;
-	int				backward;
-	int				left;
-	int				right;
-	int				turn_left;
-	int				turn_right;
+	t_coord	pos;
+	double	rot;
+	int		forward;
+	int		backward;
+	int		left;
+	int		right;
+	int		turn_left;
+	int		turn_right;
+	int		crouch;
+	int		run;
+	double	speed;
 }	t_player;
 
 typedef struct s_wall

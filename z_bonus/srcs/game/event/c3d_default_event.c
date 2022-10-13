@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 11:22:31 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/13 10:50:55 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/13 13:15:12 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,10 @@ int	default_key_press(KeySym keycode, t_game *game)
 		game->player.turn_left = 1;
 	else if (keycode == game->settings.turn_right)
 		game->player.turn_right = 1;
+	else if (keycode == game->settings.crouch)
+		game->player.crouch = 1;
+	else if (keycode == game->settings.run)
+		game->player.run = 1;
 	move_slot(keycode, game);
 	return (0);
 }
@@ -118,6 +122,10 @@ int	default_key_release(KeySym keycode, t_game *game)
 		game->player.turn_left = 0;
 	else if (keycode == game->settings.turn_right)
 		game->player.turn_right = 0;
+	else if (keycode == game->settings.crouch)
+		game->player.crouch = 0;
+	else if (keycode == game->settings.run)
+		game->player.run = 0;
 	else if (keycode == XK_Escape)
 		load_menu(game);
 	else if (keycode == game->settings.interact)

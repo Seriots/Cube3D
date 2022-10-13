@@ -1,5 +1,5 @@
 fov=10
-x_sensibility=28
+x_sensibility=38
 y_sensibility=98
 resolution=21
 fps=24
@@ -23,7 +23,7 @@ ceil_color=0,0,255
 floor_color=255,0,0
 interact=101
 drop=122
-run=65505
+run=113
 crouch=65507
 slot1=49
 slot2=50

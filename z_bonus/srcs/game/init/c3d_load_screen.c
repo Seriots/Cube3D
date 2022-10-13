@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 13:30:36 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/13 10:42:49 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/13 13:16:01 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,5 +74,7 @@ int	load_default(t_game *game)
 	game->player.backward = 0;
 	game->player.turn_left = 0;
 	game->player.turn_right = 0;
+	game->player.crouch = 0;
+	game->player.run = 0;
 	return (0);
 }

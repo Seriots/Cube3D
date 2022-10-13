@@ -136,11 +136,11 @@ x -> ajouter la touch use (clicdroit), and drop, interact, et lestouche hotbar.
 x -> add run and crouch
 x -> add tab, capslock, shift, control to game key
 x -> error click bouton exit
-	-> peut etre segfault dans un cas tres specifique (pqs reussi a reproduire)
+	-> peut etre segfault dans un cas tres specifique (pas reussi a reproduire)
 x -> faire les fonctions de gestion d'inventaire
 x -> ajouter les portes lors du parsing
--> ajouter l'affichage d'image dans la hotbar
--> faire la gestion du player
-	-> en fonction des inputs clavier
-	-> en foction des frames
+x -> ajouter l'affichage d'image dans la hotbar
+x -> faire la gestion du player
+	x -> en fonction des inputs clavier
+	x -> en foction des frames
 -> trouver des images
