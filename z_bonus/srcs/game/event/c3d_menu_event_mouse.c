@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 15:03:03 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/10 16:13:30 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/12 21:30:42 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,23 +24,19 @@ int	check_all_objects_press(t_game *game, int x, int y, t_dict *dict)
 {
 	t_dict			*tmp;
 	t_collide_box	*box;
+	int				i;
 
 	tmp = dict;
+	i = 0;
 	while (tmp)
 	{
 		box = tmp->value;
-		if (press_collide_cond(game, x, y, tmp))
+		if (check_one_obj_press(game, x, y, tmp))
 		{
-			if (box->mouse_press)
-				box->mouse_press(1, x, y, game);
-			break ;
+			game->pick_obj = i;
+			box->mouse_press(1, x, y, game);
 		}
-		else if (press_scrollbar_cond(game, x, y, tmp))
-		{
-			if (box->mouse_press)
-				box->mouse_press(1, x, y, game);
-			break ;
-		}
+		i++;
 		tmp = tmp->next;
 	}
 	return (0);
@@ -50,8 +46,10 @@ int	check_all_objects_release(t_game *game, int x, int y, t_dict *dict)
 {
 	t_dict			*tmp;
 	t_collide_box	*box;
+	int				i;
 
 	tmp = dict;
+	i = 0;
 	while (tmp)
 	{
 		box = tmp->value;
@@ -61,9 +59,13 @@ int	check_all_objects_release(t_game *game, int x, int y, t_dict *dict)
 			&& y - (WIN_HEIGHT / 2 - MENU_HEIGHT / 2) <= box->y + box->height)
 		{
 			if (box->mouse_release)
+			{
+				game->pick_obj = i;
 				box->mouse_release(1, x, y, game);
+			}
 			break ;
 		}
+		i++;
 		tmp = tmp->next;
 	}
 	return (0);

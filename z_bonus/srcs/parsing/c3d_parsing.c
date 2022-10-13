@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 11:03:58 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/06 21:20:50 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/12 12:33:12 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	check_file_extension(char *line)
 	return (11);
 }
 
-int	parsing(t_map *map, char *file)
+int	parsing(t_game *game, t_map *map, char *file)
 {
 	int	error;
 
@@ -46,7 +46,7 @@ int	parsing(t_map *map, char *file)
 	map->map = ft_calloc(sizeof(char *), map->height + 1);
 	if (!map->map)
 		return (10);
-	error = read_file(map, file, map->height);
+	error = read_file(game, map, file, map->height);
 	if (error)
 		return (error);
 	error = check_map(map);

@@ -15,14 +15,14 @@
 
 # include "c3d_struct.h"
 
+/*Save*/
+int	load_settings(t_game *game);
+int	save_settings(t_game *game);
+
 /*Load*/
 int	load_startscreen(t_game *game);
 int	load_default(t_game *game);
 int	load_menu(t_game *game);
-
-/*Objects*/
-int	init_key(t_dict **all_objects, int x, int y);
-int	init_obj(t_dict *dict, void *obj, int size);
 
 /*Init images*/
 int	init_images_group(t_game *game, char *path,

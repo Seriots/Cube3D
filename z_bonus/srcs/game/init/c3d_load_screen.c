@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   c3d_load_screen.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pierre-yves <pierre-yves@student.42.fr>    +#+  +:+       +#+        */
+/*   By: ppajot <ppajot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 13:30:36 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/11 20:47:29 by pierre-yves      ###   ########.fr       */
+/*   Updated: 2022/10/13 21:06:42 by ppajot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int	load_startscreen(t_game *game)
 	game->fcts.mousepressed_fct = startscreen_mouse_press;
 	game->fcts.mousereleased_fct = startscreen_mouse_release;
 	game->fcts.mousemove_fct = startscreen_mouse_move;
+	game->start_menu.scroll_amount = 0;
 	game->menu.scroll_amount = 0;
 	game->start_menu.error = 0;
 	if (HIDE)
@@ -46,6 +47,7 @@ int	load_menu(t_game *game)
 	game->fcts.mousepressed_fct = menu_mouse_press;
 	game->fcts.mousereleased_fct = menu_mouse_release;
 	game->menu.error = 0;
+	game->menu.scroll_amount = 0;
 	if (HIDE)
 		mlx_mouse_show(game->mlx.display, game->mlx.window);
 	mlx_do_key_autorepeaton(game->mlx.display);
@@ -74,5 +76,7 @@ int	load_default(t_game *game)
 	game->player.turn_right = 0;
 	game->player.turn_up = 0;
 	game->player.turn_down = 0;
+	game->player.crouch = 0;
+	game->player.run = 0;
 	return (0);
 }

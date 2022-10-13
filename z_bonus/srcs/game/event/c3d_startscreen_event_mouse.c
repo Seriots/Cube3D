@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 13:27:27 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/10 16:19:06 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/11 11:17:05 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,10 @@ int	check_all_objects_press_start(t_game *game, int x, int y, t_dict *dict)
 {
 	t_dict			*tmp;
 	t_collide_box	*box;
+	int				i;
 
 	tmp = dict;
+	i = 0;
 	while (tmp)
 	{
 		box = tmp->value;
@@ -33,9 +35,13 @@ int	check_all_objects_press_start(t_game *game, int x, int y, t_dict *dict)
 			&& y >= box->y && y <= box->y + box->height)
 		{
 			if (box->mouse_press)
+			{
+				game->pick_obj = i;
 				box->mouse_press(1, x, y, game);
+			}
 			break ;
 		}
+		i++;
 		tmp = tmp->next;
 	}
 	return (0);

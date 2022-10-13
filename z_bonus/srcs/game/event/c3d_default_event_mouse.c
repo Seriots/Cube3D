@@ -6,7 +6,7 @@
 /*   By: ppajot <ppajot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 11:04:48 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/13 20:26:05 by ppajot           ###   ########.fr       */
+/*   Updated: 2022/10/13 21:05:42 by ppajot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "c3d_struct.h"
 #include "c3d_utils.h"
 
+#include "c3d_event.h"
 
 #include "mlx.h"
 
@@ -27,15 +28,25 @@ int	default_mouse_press(int button, int x, int y, t_game *game)
 	(void)x;
 	(void)y;
 	(void)button;
+	if (button == 3)
+		objects_use(game);
 	return (0);
 }
 
 int	default_mouse_release(int button, int x, int y, t_game *game)
 {
-	(void)game;
 	(void)x;
 	(void)y;
-	(void)button;
+	if ((button == 4 && game->settings.invert_scroll)
+		|| (button == 5 && !game->settings.invert_scroll))
+		game->inventory.selected++;
+	if ((button == 5 && game->settings.invert_scroll)
+		|| (button == 4 && !game->settings.invert_scroll))
+		game->inventory.selected--;
+	if (game->inventory.selected < 0)
+		game->inventory.selected = game->inventory.size - 1;
+	if (game->inventory.selected >= game->inventory.size)
+		game->inventory.selected = 0;
 	return (0);
 }
 

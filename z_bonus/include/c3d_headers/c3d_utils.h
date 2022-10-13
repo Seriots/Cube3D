@@ -15,11 +15,20 @@
 
 # include "c3d_struct.h"
 
+/*Inventory*/
+int	add_items(t_inventory *inventory, t_object *object);
+int	drop_items(t_game *game, t_inventory *inventory, t_object *object);
+
+/*Save*/
+int				sf(void *ptr, char *value);
+int				si(void *ptr, char *value);
+int				ss(void *ptr, char *value);
+
 /*Color*/
 unsigned int	get_color(int color_settings, unsigned int color);
 
 /*Math*/
-int	is_in_circle(int x, int y, unsigned int color);
+int				is_in_circle(int x, int y, unsigned int color);
 int				abs(int x);
 double			max(double a, double b);
 double			min(double a, double b);
@@ -29,6 +38,7 @@ double			dabs(double nbr);
 double			norm(double x, double y);
 double			ft_floor(double nbr);
 double			ft_ceil(double nbr);
+double			dist_to_obj(t_coord player, t_coord obj);
 
 /*Time*/		
 long			timestamp_msec(long start);

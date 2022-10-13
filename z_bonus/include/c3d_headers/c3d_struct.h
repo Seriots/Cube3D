@@ -25,6 +25,26 @@
 
 typedef struct s_game	t_game;
 
+typedef struct s_objinit
+{
+	char	*tag;
+	int		(*fct)(t_game *, char *, char *);
+}	t_objinit;
+
+typedef struct s_savset
+{
+	char	*tag;
+	void	*ptr;
+	int		(*fct)(void *, char *);
+}	t_savset;
+
+typedef struct	s_save
+{
+	char	*key;
+	void	*value;
+}	t_save;
+
+
 typedef struct s_img_data
 {
 	void	*img;
@@ -46,6 +66,8 @@ typedef struct s_all_img
 	t_img_data	menu_img;
 	t_img_data	minimap_img;
 	t_img_data	*all_cursor_img;
+	t_img_data	key_icon;
+	t_img_data	flashlight[3];
 }	t_all_img;
 
 typedef struct s_coord
@@ -64,18 +86,21 @@ typedef struct s_angle
 
 typedef struct s_player
 {
-	t_coord			pos;
-	t_angle			plane;
-	double			updown;
-	double			z;
-	int				forward;
-	int				backward;
-	int				left;
-	int				right;
-	int				turn_left;
-	int				turn_right;
-	int				turn_up;
-	int				turn_down;
+	t_coord	pos;
+	t_angle	plane;
+	double	updown;
+	double	z;
+	int		forward;
+	int		backward;
+	int		left;
+	int		right;
+	int		turn_left;
+	int		turn_right;
+	int		turn_up;
+	int		turn_down;
+	int		crouch;
+	int		run;
+	double	speed;
 }	t_player;
 
 typedef struct s_wall
@@ -93,6 +118,8 @@ typedef struct s_settings
 	float			resolution;
 	float			fps;
 	float			scroll_speed;
+	KeySym			run;
+	KeySym			crouch;
 	KeySym			left;
 	KeySym			right;
 	KeySym			forward;
@@ -102,6 +129,16 @@ typedef struct s_settings
 	KeySym			turn_up;
 	KeySym			turn_down;
 	KeySym			pause;
+	KeySym			interact;
+	KeySym			drop;
+	KeySym			slot1;
+	KeySym			slot2;
+	KeySym			slot3;
+	KeySym			slot4;
+	KeySym			slot5;
+	KeySym			slot6;
+	KeySym			slot7;
+	KeySym			slot8;
 	bool			color;
 	bool			invert_scroll;
 	bool			invert_mouse;
@@ -113,28 +150,33 @@ typedef struct s_settings
 	unsigned long	seed;
 }	t_settings;
 
-typedef struct s_door
+typedef struct s_object
 {
-	int x;
-	int y;
-	int rotation; //1=vertical, 2=horizontal
-	int state; //0=closed, 1=opened
-}	t_door;
+	t_img_data	*all_img;
+	t_img_data	*game_img;
+	t_img_data	*hand_img;
+	t_img_data	*menu_img;
+	t_coord		pos;
+	int			state;
+	int			use_count;
+	int			is_visible;	
+	int			is_collide;
+	int			start_frame;
+	int			nb_image;
+	int			animation_duration;
+	int			(*interact)(t_game *game, t_dict *elem, struct s_object *obj);
+	int			(*use)(t_game *game, t_dict *elem, struct s_object *obj);
+	int			(*drop)(t_game *game, t_dict *elem, struct s_object *obj);
+	int			(*collide)(t_game *game, t_dict *elem, struct s_object *obj);
+	int			(*update)(t_game *game, t_dict *elem, struct s_object *obj);
+	int			(*delete)(t_game *game, t_dict *elem, struct s_object *obj);
+}	t_object;
 
-typedef struct s_key
+typedef struct s_init
 {
-	int x;
-	int y;
-	int state; //0=on floor, 1=grabbed
-}	t_key;
-
-typedef struct s_lamp
-{
-	int x;
-	int y;
-	int state; //0=on floor, 1=grabbed
-	int	is_on;	//0=off, 1=on
-}	t_lamp;
+	char	*tag;
+	int		(*fct)(t_game *game, t_object **object);
+}	t_init;
 
 typedef struct s_map
 {
@@ -148,6 +190,12 @@ typedef struct s_map
 	int			f;
 	int			c;
 	t_dict		*all_objects;
+	char		default_north[256];
+	char		default_south[256];
+	char		default_west[256];
+	char		default_east[256];
+	char		default_ceil[256];
+	char		default_floor[256];
 }	t_map;
 
 typedef struct s_point
@@ -330,17 +378,26 @@ typedef struct s_fct
 	int	(*mousemove_fct)(int x, int y, t_game *game);
 }	t_fct;
 
+typedef struct s_inventory
+{
+	t_object	*items[8];
+	int			size;
+	int			selected;
+}	t_inventory;
+
 typedef struct s_game
 {
 	t_mlx		mlx;
 	t_map		map;
 	t_player	player;
+	t_inventory	inventory;
 	t_all_img	all_img;
 	t_fct		fcts;
 	t_settings	settings;
 	t_menu		menu;
 	t_menu		start_menu;
 	t_display	display;
+	int			pick_obj;
 	long		last_frame;
 	long		delay;
 }	t_game;

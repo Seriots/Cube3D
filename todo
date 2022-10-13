@@ -38,8 +38,8 @@ x -> activer le keypad pour textinput
 x -> add multichoice
 x -> start menu avec choix de le difficulte, level preset ou genere a partir d'une seed
 -> set font
--> save file
-
+x -> save file
+-> clean tout les headers
 -> faire une fonction update et display associe a chaque object des menu
 
 <SPRITES>
@@ -58,6 +58,7 @@ x -> start menu avec choix de le difficulte, level preset ou genere a partir d'u
 -> move speed en fonction du delai
 -> cacher la minimap
 -> handle Ctrl+c
+-> revoir la map pour handle differentes images
 
 <GAME>
 -> horror / puzzle
@@ -90,6 +91,7 @@ x -> start menu avec choix de le difficulte, level preset ou genere a partir d'u
 	-> shield
 	-> boost de vitesse
 -> faire un mode marche and run
+-> appuyer sur <touche> pendant le jeu, desactive la souris pour permettre l'acces au slot de l'inventaire et bouger les objets.
 
 Error
 
@@ -123,4 +125,26 @@ x -> reconstruire le projet pour load les map lorsque le bouton play est presse 
 remonter d'erreur sur le screen sans leave le programme
 x -> Setup les message d'erreur
 x -> envoyer la seed et la difficulte au generateur
--> clean le projet et mieux ranger le tout j'ai fais un peu de la merde
+x -> clean le projet et mieux ranger le tout j'ai fais un peu de la merde
+x -> fix  la slidebar
+x -> fix les objets avec variable int dans game lors de la collide
+x -> add save file "key=value"
+x -> faire le setup pour tout les objs
+x -> refaire le parsing pour handle les objs
+x -> mettre en place l'inventaire
+x -> ajouter la touch use (clicdroit), and drop, interact, et lestouche hotbar.
+x -> add run and crouch
+x -> add tab, capslock, shift, control to game key
+x -> error click bouton exit
+	x -> peut etre segfault dans un cas tres specifique (pas reussi a reproduire)
+		x-> when : click sur le textinput into exit
+		x-> fix : fixed like reset textinput start
+x -> faire les fonctions de gestion d'inventaire
+x -> ajouter les portes lors du parsing
+x -> ajouter l'affichage d'image dans la hotbar
+x -> faire la gestion du player
+	x -> en fonction des inputs clavier
+	x -> en foction des frames
+-> trouver des images
+-> faire la bar de stamina
+-> faire la bar d'epuisement de la lampe

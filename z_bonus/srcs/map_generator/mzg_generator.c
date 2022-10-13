@@ -6,7 +6,7 @@
 /*   By: ppajot <ppajot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 11:05:33 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/10 19:12:26 by ppajot           ###   ########.fr       */
+/*   Updated: 2022/10/13 21:10:54 by ppajot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,55 +79,55 @@ int	init_map(t_map *map, int width, int height)
 
 int	set_default_image(t_map *map, int width, int height)
 {
-	map->no = ft_strdup(DEFAULT_IMAGE_PATH_NO);
+	map->no = ft_strdup(map->default_north);
 	if (!map->no)
 		return (10);
-	map->so = ft_strdup(DEFAULT_IMAGE_PATH_SO);
+	map->so = ft_strdup(map->default_south);
 	if (!map->so)
 		return (10);
-	map->we = ft_strdup(DEFAULT_IMAGE_PATH_WE);
+	map->we = ft_strdup(map->default_west);
 	if (!map->we)
 		return (10);
-	map->ea = ft_strdup(DEFAULT_IMAGE_PATH_EA);
+	map->ea = ft_strdup(map->default_east);
 	if (!map->ea)
 		return (10);
-	map->f = ft_color(DEFAULT_FLOOR);
-	if (!map->f)
-		return (10);
-	map->c = ft_color(DEFAULT_CEIL);
-	if (!map->c)
-		return (10);
+	map->f = ft_color(map->default_floor);
+	if (map->f == -1)
+		map->f = ft_color(DEFAULT_FLOOR);
+	map->c = ft_color(map->default_ceil);
+	if (map->c == -1)
+		map->c = ft_color(DEFAULT_CEIL);
 	map->width = width;
 	map->height = height;
 	return (0);
 }
 
 /*generate_player(map, width, height); //generate lampe in hard mode*/
-int	gen_maze(t_map *map, int width, int height, int door)
+int	gen_maze(t_game *game, int width, int height, int door)
 {
 	int		error;
 
-	error = init_map(map, width, height);
+	error = init_map(&game->map, width, height);
 	if (error)
 		return (1);
-	set_space(map->map, width, height);
-	makeshape_maze(map->map, width, height);
-	fillmap(map->map);
-	make_maze(map->map, width, height);
-	standardize_maze_predoor(map->map, width, height);
-	make_door(map->map, width, height, door);
-	open_maze(map->map, width, height);
-	clean_maze(map->map, width, height);
-	generate_player(map, width, height);
-	generate_key(map, width, height, door);
-	standardize_maze(map->map, width, height);
-	error = set_default_image(map, width, height);
+	set_space(game->map.map, width, height);
+	makeshape_maze(game->map.map, width, height);
+	fillmap(game->map.map);
+	make_maze(game->map.map, width, height);
+	standardize_maze_predoor(game->map.map, width, height);
+	make_door(game->map.map, width, height, door);
+	open_maze(game->map.map, width, height);
+	clean_maze(game->map.map, width, height);
+	generate_player(&game->map, width, height);
+	generate_key(game, width, height, door);
+	standardize_maze(game->map.map, width, height);
+	error = set_default_image(&game->map, width, height);
 	if (error)
-		return (ft_free_tab(map->map), error);
+		return (error);
 	return (0);
 }
 
-int	get_maze(t_map *map, t_genparams params, unsigned long *seed, int print)
+int	get_maze(t_game *game, t_genparams params, unsigned long *seed, int print)
 {
 	int		error;
 
@@ -135,10 +135,10 @@ int	get_maze(t_map *map, t_genparams params, unsigned long *seed, int print)
 		params.seed = time(NULL);
 	*seed = params.seed;
 	srand(params.seed);
-	error = gen_maze(map, params.width, params.height, params.door);
+	error = gen_maze(game, params.width, params.height, params.door);
 	if (error)
 		return (error);
-	(void)print;
-	//printmaze(map, params.width, params.height);
+	if (print)
+		printmaze(&game->map, params.width, params.height);
 	return (0);
 }

@@ -26,6 +26,17 @@
 # define MENU_HEIGHT 600
 # define BORDER_SIZE 5
 
+/*Hot bar*/
+# define HOTBAR_CASE_SIZE 60
+# define HOTBAR_BIG_BORDER 2
+# define HOTBAR_CASE_BORDER 2
+
+//HOTBAR_Y WIN_HEIGHT - HOTBAR_CASE_SIZE - 10
+# define HOTBAR_Y WIN_HEIGHT - HOTBAR_CASE_SIZE - 10
+
+/*Font settings*/
+# define FONT_WIDTH 6
+
 # define BUTTON "BUTTON"
 # define BUTTON2 "BUTTON2"
 # define SLIDEBAR "SLIDEBAR"
@@ -45,19 +56,19 @@
 # define KEYINPUT_START_X 125
 # define KEYINPUT_START_Y 50
 
-# define TEXTINPUT_START_X 125
-# define TEXTINPUT_START_Y 225
+# define TEXTINPUT_START_X 325
+# define TEXTINPUT_START_Y 50
 
-# define NUMINPUT_START_X 125
-# define NUMINPUT_START_Y 400
-
-/*MENU_WIDTH - 275*/
-# define SLIDEBAR_START_X 525
-# define SLIDEBAR_START_Y 50
+# define NUMINPUT_START_X 325
+# define NUMINPUT_START_Y 225
 
 /*MENU_WIDTH - 275*/
-# define CHECKBOX_START_X 525
-# define CHECKBOX_START_Y 305
+# define SLIDEBAR_START_X 325
+# define SLIDEBAR_START_Y 350
+
+/*MENU_WIDTH - 275*/
+# define CHECKBOX_START_X 700
+# define CHECKBOX_START_Y 50
 
 # define FONT "-sony-*-*-*-*-*-*-400-*-*-*-*-iso8859-*"
 
@@ -95,8 +106,13 @@
 # define VIEW_WIDTH 16
 # define RESOLUTION 100 // 1 - 100
 
-# define MOVE_SPEED 10.0f
+# define MOVE_SPEED 0.1
 # define TURN_SPEED 0.06f
+
+# define RUN_SPEED_FACTOR 2.0
+# define CROUCH_SPEED_FACTOR 0.3
+
+# define MIN_DIST_OBJ 1.0f
 
 /*Default Key*/
 /*

@@ -22,10 +22,10 @@
 # define BASE "NSWE"
 # define DEFAULT_IMAGE_PATH_NO "imgs/xpm/blueWall64x64.xpm"
 # define DEFAULT_IMAGE_PATH_SO "imgs/xpm/redWall64x64.xpm"
-# define DEFAULT_IMAGE_PATH_WE "imgs/xpm/blueWall64x64.xpm"
-# define DEFAULT_IMAGE_PATH_EA "imgs/xpm/redWall64x64.xpm"
-# define DEFAULT_CEIL	"255,0,0"
-# define DEFAULT_FLOOR	"0,0,255"
+# define DEFAULT_IMAGE_PATH_WE "imgs/xpm/purpleWall64x64.xpm"
+# define DEFAULT_IMAGE_PATH_EA "imgs/xpm/greenWall64x64.xpm"
+# define DEFAULT_CEIL	"37,37,37"
+# define DEFAULT_FLOOR	"110,110,110"
 # define OPEN_FACTOR 4
 # include "c3d_struct.h"
 
@@ -62,7 +62,7 @@ typedef struct s_genparams
 	int				door;
 }	t_genparams;
 
-int	gen_maze(t_map *map, int width, int height, int door);
+int	gen_maze(t_game *game, int width, int height, int door);
 int	clean_maze(char **map, int width, int height);
 int	is_ver_ok(char **map, int x, int y);
 int	is_hor_ok(char **map, int x, int y);
@@ -74,7 +74,7 @@ int	standardize_maze(char **map, int width, int height);
 int	standardize_maze_predoor(char **map, int width, int height);
 int	post_player(char **map, int width, int height);
 
-int	get_maze(t_map *map, t_genparams params, unsigned long *seed, int print);
+int	get_maze(t_game *game, t_genparams params, unsigned long *seed, int print);
 
 /*V2*/
 int	is_door(char **map, int x, int y);
@@ -84,6 +84,6 @@ char	is_destroyable(char **map, int x, int y);
 int	make_door(char **map, int width, int height, int door);
 int open_maze(char **map, int width, int height);
 int generate_player(t_map *map, int width, int height);
-int	generate_key(t_map *map, int width, int height, int door);
+int	generate_key(t_game *game, int width, int height, int door);
 
 #endif

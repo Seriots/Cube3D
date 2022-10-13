@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 12:37:56 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/10 15:59:53 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/12 20:40:35 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include "c3d_event.h"
 #include "c3d_settings.h"
 #include "c3d_menu.h"
+#include "c3d_event.h"
 
 #include "ft.h"
 #include "dict.h"
@@ -23,49 +24,6 @@
 #include "mlx.h"
 
 #include <stdio.h>
-
-int	camspeedx_mouse_release(int button, int x, int y, t_game *game)
-{
-	(void)x;
-	(void)y;
-	if (button == 1)
-	{
-		game->fcts.mousereleased_fct = menu_mouse_release;
-		game->fcts.mousemove_fct = menu_mouse_move;
-	}
-	return (0);
-}
-
-int	camspeedx_mouse_move(int x, int y, t_game *game)
-{
-	t_slidebar	*value;
-
-	(void)y;
-	value = dict_getelem_number(game->menu.all_objects, 16)->value;
-	x = x - (WIN_WIDTH / 2 - MENU_WIDTH / 2);
-	if (x < value->box.x)
-		value->x = value->box.x;
-	else if (x > value->box.x + value->box.width - value->width)
-		value->x = value->box.width + value->box.x - value->width;
-	else
-		value->x = x;
-	*(value->modified_value) = value->min + (value->x - value->box.x)
-		* (value->max - value->min) / (value->box.width - value->width);
-	return (0);
-}
-
-int	camspeedx_press(int button, int x, int y, t_game *game)
-{
-	(void)x;
-	(void)y;
-	if (button == 1)
-	{
-		game->fcts.mousereleased_fct = camspeedx_mouse_release;
-		game->fcts.mousemove_fct = camspeedx_mouse_move;
-		camspeedx_mouse_move(x, y, game);
-	}		
-	return (0);
-}
 
 void	camspeedx_init(t_slidebar *slidebar)
 {
@@ -91,14 +49,16 @@ t_dict	*init_camspeedx_slidebar(t_game *game)
 	slidebar->box.x = SLIDEBAR_START_X;
 	slidebar->box.y = SLIDEBAR_START_Y + 2 * MARGE;
 	slidebar->box.width = 200;
-	slidebar->box.height = 10;
+	slidebar->box.height = 18;
 	slidebar->min = 1;
 	slidebar->max = 100;
 	slidebar->height = 18;
 	slidebar->width = 6;
+	check_value_slidebar(&game->settings.cam_sensibility_x,
+		slidebar->min, slidebar->max);
 	slidebar->modified_value = &game->settings.cam_sensibility_x;
 	camspeedx_init(slidebar);
-	slidebar->box.mouse_press = camspeedx_press;
+	slidebar->box.mouse_press = slidebar_press;
 	slidebar->box.mouse_release = NULL;
 	obj = dict_new(SLIDEBAR, slidebar);
 	if (!obj)

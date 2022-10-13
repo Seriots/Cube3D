@@ -5,16 +5,28 @@ MAKE = /bin/make --no-print-directory
 
 define SRCS :=
 		main.c
+		game/event/menu_event/checkbox_event.c
+		game/event/menu_event/keyinput_event.c
+		game/event/menu_event/numinput_event.c
+		game/event/menu_event/slidebar_event.c
+		game/event/menu_event/textinput_event.c
+		game/event/menu_event/mapinput_event.c
+		game/event/menu_event/multichoice_event.c
+		game/event/menu_event/seed_event.c
 		game/event/c3d_default_event_mouse.c
 		game/event/c3d_default_event.c
 		game/event/c3d_event_mouse.c
 		game/event/c3d_event.c
 		game/event/c3d_menu_event_mouse.c
 		game/event/c3d_menu_event.c
+		game/event/c3d_player_action.c
 		game/event/c3d_startscreen_event_mouse.c
 		game/event/c3d_startscreen_event.c
 		game/init/objects/c3d_obj_init.c
+		game/init/objects/c3d_init_door.c
+		game/init/objects/c3d_init_endoor.c
 		game/init/objects/c3d_init_key.c
+		game/init/objects/c3d_init_lamp.c
 		game/init/c3d_init_game.c
 		game/init/c3d_init_images.c
 		game/init/c3d_init_menu.c
@@ -22,6 +34,8 @@ define SRCS :=
 		game/init/c3d_init_player.c
 		game/init/c3d_init_textures.c
 		game/init/c3d_load_screen.c
+		game/init/c3d_save_settings_load.c
+		game/init/c3d_save_settings.c
 		game/loop/display/menu/c3d_display_button.c
 		game/loop/display/menu/c3d_display_checkbox.c
 		game/loop/display/menu/c3d_display_keyinput.c
@@ -33,6 +47,8 @@ define SRCS :=
 		game/loop/display/start_screen/c3d_display_seed.c
 		game/loop/display/start_screen/c3d_startscreen_display.c
 		game/loop/display/raycasting/c3d_default_display.c
+		game/loop/display/raycasting/c3d_hand_display.c
+		game/loop/display/raycasting/c3d_inventory_display.c
 		game/loop/display/raycasting/c3d_raycasting_display.c
 		game/loop/display/raycasting/c3d_raycasting_getwall.c
 		game/loop/display/raycasting/c3d_raycasting.c
@@ -40,6 +56,7 @@ define SRCS :=
 		game/loop/update/default/c3d_minimap_update.c
 		game/loop/update/default/c3d_player_collide.c
 		game/loop/update/default/c3d_player_update.c
+		game/loop/update/default/c3d_objects_update.c
 		game/loop/update/menu/c3d_draw_button.c
 		game/loop/update/menu/c3d_draw_checkbox.c
 		game/loop/update/menu/c3d_draw_keyinput.c
@@ -62,9 +79,21 @@ define SRCS :=
 		menu/settings/c3d_checkbox_showmmap.c
 		menu/settings/c3d_checkbox_showseed.c
 		menu/settings/c3d_keyinput_backward.c
+		menu/settings/c3d_keyinput_drop.c
+		menu/settings/c3d_keyinput_run.c
+		menu/settings/c3d_keyinput_crouch.c
 		menu/settings/c3d_keyinput_forward.c
+		menu/settings/c3d_keyinput_interact.c
 		menu/settings/c3d_keyinput_left.c
 		menu/settings/c3d_keyinput_right.c
+		menu/settings/c3d_keyinput_slot1.c
+		menu/settings/c3d_keyinput_slot2.c
+		menu/settings/c3d_keyinput_slot3.c
+		menu/settings/c3d_keyinput_slot4.c
+		menu/settings/c3d_keyinput_slot5.c
+		menu/settings/c3d_keyinput_slot6.c
+		menu/settings/c3d_keyinput_slot7.c
+		menu/settings/c3d_keyinput_slot8.c
 		menu/settings/c3d_numinput_ceil.c
 		menu/settings/c3d_numinput_floor.c
 		menu/settings/c3d_scrollbar.c
@@ -84,6 +113,7 @@ define SRCS :=
 		menu/start/c3d_seed.c
 		menu/start/c3d_mapinput_mappath.c
 		parsing/c3d_parsing_check.c
+		parsing/c3d_parsing_getelem.c
 		parsing/c3d_parsing_readfile.c
 		parsing/c3d_parsing_set.c
 		parsing/c3d_parsing_square_map.c
@@ -95,6 +125,7 @@ define SRCS :=
 		utils/c3d_error.c
 		utils/c3d_event_utils.c
 		utils/c3d_init_image.c
+		utils/c3d_inventory_utils.c
 		utils/c3d_math.c
 		utils/c3d_math2.c
 		utils/c3d_menu_utils.c
@@ -102,6 +133,8 @@ define SRCS :=
 		utils/c3d_menu_utils3.c
 		utils/c3d_menu_utils4.c
 		utils/c3d_menu_utils5.c
+		utils/c3d_menu_utils6.c
+		utils/c3d_save_utils.c
 		utils/c3d_time.c
 		map_generator/mzg_generator.c
 		map_generator/mzg_clean.c

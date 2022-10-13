@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 11:13:57 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/10 15:49:21 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/11 13:54:50 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,12 @@ void	free_map(t_map *map)
 		free(map->ea);
 	if (map->all_objects)
 		dict_clear(map->all_objects, 0, free);
-	*map = (t_map){.map = 0, .no = 0, .so = 0,
-		.we = 0, .ea = 0, .all_objects = 0};
+	map->map = 0;
+	map->no = 0;
+	map->so = 0;
+	map->we = 0;
+	map->ea = 0;
+	map->all_objects = 0;
 }
 
 int	free_menu(t_menu *menu)

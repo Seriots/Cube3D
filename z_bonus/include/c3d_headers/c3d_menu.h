@@ -75,10 +75,22 @@ t_dict	*init_resolution_slidebar(t_game *game);
 t_dict	*init_fps_slidebar(t_game *game);
 t_dict	*init_showmmap_checkbox(t_game *game);
 t_dict	*init_showseed_checkbox(t_game *game);
+t_dict	*init_drop_keyinput(t_game *game);
+t_dict	*init_interact_keyinput(t_game *game);
+t_dict	*init_run_keyinput(t_game *game);
+t_dict	*init_crouch_keyinput(t_game *game);
+t_dict	*init_slot1_keyinput(t_game *game);
+t_dict	*init_slot2_keyinput(t_game *game);
+t_dict	*init_slot3_keyinput(t_game *game);
+t_dict	*init_slot4_keyinput(t_game *game);
+t_dict	*init_slot5_keyinput(t_game *game);
+t_dict	*init_slot6_keyinput(t_game *game);
+t_dict	*init_slot7_keyinput(t_game *game);
+t_dict	*init_slot8_keyinput(t_game *game);
 
 /*Utils*/
 int	clear_all_other_selected(t_game *game, void *keyinput, t_dict *dict);
-int	get_key_color(t_game *game, KeySym *key);
+int	get_key_color(t_game *game, t_menu *menu, KeySym *key);
 int	update_key_color(t_game *game, t_menu *menu);
 int	edit_rgb(t_numinput *numinput);
 int	get_number_from_key(KeySym key);
@@ -102,5 +114,8 @@ int		release_cond_textinput_start(t_game *game,
 int	scroll_up(t_game *game);
 int	scroll_down(t_game *game);
 int	add_number_seed(t_seed *seed, int keyint);
+int	set_map_settings(t_game *game, t_dict **menu);
+int	check_one_obj_press(t_game *game, int x, int y, t_dict *tmp);
+int	validate_seed(t_game *game, t_seed *seed);
 
 #endif

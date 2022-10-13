@@ -20,6 +20,7 @@
 #include "c3d_init.h"
 #include "mzg_incs.h"
 #include "c3d_parsing.h"
+#include "c3d_object.h"
 
 #include "ft.h"
 #include "dict.h"
@@ -35,7 +36,33 @@ int	load_random_map(t_game *game, t_genparams *params)
 	else
 		*params = (t_genparams){.width = 80, .height = 80, .door = 20,
 			.seed = game->settings.seed, .difficulty = 2};
-	return (get_maze(&game->map, *params, &game->settings.seed, 0));
+	return (get_maze(game, *params, &game->settings.seed, 0));
+}
+
+int	get_all_doors(t_game *game, t_map *map)
+{
+	int	i;
+	int	j;
+	int	error;
+
+	i = 0;
+	error = 0;
+	while (i < map->height)
+	{
+		j = 0;
+		while (j < map->width)
+		{
+			if (map->map[i][j] == '2')
+				error = init_obj(game, DOOR, j, i);
+			if (map->map[i][j] == '3')
+				error = init_obj(game, ENDOOR, j, i);
+			if (error)
+				return (error);
+			j++;
+		}
+		i++;
+	}
+	return (0);
 }
 
 int	load_new_map(t_game *game, char *map_path)
@@ -45,7 +72,7 @@ int	load_new_map(t_game *game, char *map_path)
 
 	if (map_path)
 	{
-		error = parsing(&(game->map), map_path);
+		error = parsing(game, &(game->map), map_path);
 		if (error)
 			return (free_map(&game->map), display_error(error));
 	}
@@ -55,6 +82,12 @@ int	load_new_map(t_game *game, char *map_path)
 		if (error)
 			return (free_map(&game->map), display_error(error));
 	}
+	error = get_all_doors(game, &game->map);
+	if (error)
+		return (free_map(&game->map), display_error(error));
+	error = init_obj(game, LAMP, 0, 0);
+	if (error)
+		return (free_map(&game->map), display_error(error));
 	error = init_player(game);
 	if (error)
 		return (free_map(&game->map), display_error(error));
@@ -65,20 +98,17 @@ int	load_new_map(t_game *game, char *map_path)
 	return (0);
 }
 
-int	set_map_settings(t_game *game, t_dict **menu)
+int	set_inventory(t_game *game)
 {
-	t_dict	*tmp;
-
-	(void)game;
-	tmp = *menu;
-	while (tmp)
-	{
-		if (ft_strcmp(tmp->key, TEXTINPUT) == 0)
-			init_textinput((t_textinput *)tmp->value);
-		else if (ft_strcmp(tmp->key, NUMINPUT) == 0)
-			edit_rgb((t_numinput *)tmp->value);
-		tmp = tmp->next;
-	}
+	ft_bzero(game->inventory.items, sizeof(game->inventory.items));
+	if (game->settings.difficulty == 0)
+		game->inventory.size = 8;
+	else if (game->settings.difficulty == 1)
+		game->inventory.size = 4;
+	else
+		game->inventory.size = 2;
+	game->inventory.selected = -1;
+	add_items(&game->inventory, dict_getelem_key(game->map.all_objects, LAMP)->value);
 	return (0);
 }
 
@@ -95,6 +125,10 @@ int	play_event(int button, int x, int y, t_game *game)
 		if (error)
 			return (set_error_value(&game->start_menu, error), error);
 		set_map_settings(game, &game->menu.all_objects);
+		set_inventory(game);
+		error = save_settings(game);
+		if (error)
+			display_error(error);
 	}
 	return (0);
 }
@@ -114,7 +148,7 @@ t_dict	*init_play_button(t_game *game)
 	box->box.y = (WIN_HEIGHT / 3 - box->box.height / 2);
 	ft_strlcpy(box->box.description, "Play", 5);
 	box->box.x_text = box->box.x + box->box.width / 2
-		- (6 * ft_strlen(box->box.description) / 2);
+		- (FONT_WIDTH * ft_strlen(box->box.description) / 2);
 	box->box.y_text = box->box.y + box->box.height / 2 + 10 / 2;
 	ft_strlcpy(box->box.font, FONT, ft_strlen(FONT));
 	box->box.mouse_press = NULL;

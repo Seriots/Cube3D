@@ -6,14 +6,16 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 15:40:39 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/10 15:51:54 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/12 20:56:42 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
 #include "c3d_struct.h"
+#include "c3d_settings.h"
 #include "c3d_init.h"
+#include "c3d_menu.h"
 
 #include "ft.h"
 #include "mlx.h"
@@ -70,4 +72,21 @@ void	reset_seed(t_seed *seed)
 void	set_error_value(t_menu *menu, int code)
 {
 	menu->error = code;
+}
+
+int	set_map_settings(t_game *game, t_dict **menu)
+{
+	t_dict	*tmp;
+
+	(void)game;
+	tmp = *menu;
+	while (tmp)
+	{
+		if (ft_strcmp(tmp->key, TEXTINPUT) == 0)
+			init_textinput((t_textinput *)tmp->value);
+		else if (ft_strcmp(tmp->key, NUMINPUT) == 0)
+			edit_rgb((t_numinput *)tmp->value);
+		tmp = tmp->next;
+	}
+	return (0);
 }

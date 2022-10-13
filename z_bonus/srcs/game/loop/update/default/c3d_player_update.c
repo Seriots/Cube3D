@@ -6,7 +6,7 @@
 /*   By: ppajot <ppajot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 10:38:52 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/13 20:29:27 by ppajot           ###   ########.fr       */
+/*   Updated: 2022/10/13 21:08:32 by ppajot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,38 +19,43 @@
 
 #include <stdio.h>
 
-int	get_movement(t_game *game, float *mov_x, float *mov_y)
+int	get_movement(t_game *game, double *mov_x, double *mov_y)
 {
+	game->player.speed = MOVE_SPEED;
+	if (game->player.crouch)
+		game->player.speed *= CROUCH_SPEED_FACTOR;
+	if (game->player.run)
+		game->player.speed *= RUN_SPEED_FACTOR;
 	*mov_x = 0;
 	*mov_y = 0;
 	if (game->player.forward == 1)
 	{
-		*mov_y -= MOVE_SPEED * sin(game->player.plane.value);
-		*mov_x += MOVE_SPEED * cos(game->player.plane.value);
+		*mov_y -= (game->player.speed * game->delay * game->player.plane.sin);
+		*mov_x += (game->player.speed * game->delay * game->player.plane.cos);
 	}
 	else if (game->player.backward == 1)
 	{
-		*mov_y += (MOVE_SPEED * sin(game->player.plane.value)) / 2.0;
-		*mov_x -= (MOVE_SPEED * cos(game->player.plane.value)) / 2.0;
+		*mov_y += ((game->player.speed * game->delay * game->player.plane.sin) / 2.0);
+		*mov_x -= ((game->player.speed * game->delay * game->player.plane.cos) / 2.0);
 	}
 	else if (game->player.left == 1)
 	{
-		*mov_y -= (MOVE_SPEED * cos(game->player.plane.value)) / 2.0;
-		*mov_x -= (MOVE_SPEED * sin(game->player.plane.value)) / 2.0;
+		*mov_y -= ((game->player.speed * game->delay * game->player.plane.cos) / 2.0);
+		*mov_x -= ((game->player.speed * game->delay * game->player.plane.sin) / 2.0);
 	}
 	else if (game->player.right == 1)
 	{
-		*mov_y += (MOVE_SPEED * cos(game->player.plane.value)) / 2.0;
-		*mov_x += (MOVE_SPEED * sin(game->player.plane.value)) / 2.0;
+		*mov_y += ((game->player.speed * game->delay * game->player.plane.cos) / 2.0);
+		*mov_x += ((game->player.speed * game->delay * game->player.plane.sin) / 2.0);
 	}
 	return (0);
 }
 
 int	update_movement(t_game *game)
 {
-	float	mov_x;
-	float	mov_y;
-	t_point	mov;
+	double	mov_x;
+	double	mov_y;
+	t_coord	mov;
 
 	get_movement(game, &mov_x, &mov_y);
 	mov.x = mov_x;

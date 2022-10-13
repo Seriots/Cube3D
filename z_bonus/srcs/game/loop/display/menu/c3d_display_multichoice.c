@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 12:11:20 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/10 16:29:55 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/12 20:42:06 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ int	display_multichoice_text(t_game *game, t_multichoice *multichoice)
 		y, 0xAAAAAA, multichoice->box.description);
 	mlx_string_put(game->mlx.display, game->mlx.window, multichoice->box.x
 		+ multichoice->box.width / 2
-		- (6 * ft_strlen(multichoice->all_values[multichoice->current])) / 2,
+		- (FONT_WIDTH
+			* ft_strlen(multichoice->all_values[multichoice->current])) / 2,
 		y, 0xAAAAAA, multichoice->all_values[multichoice->current]);
 	return (0);
 }
