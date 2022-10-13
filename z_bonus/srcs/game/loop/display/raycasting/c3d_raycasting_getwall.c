@@ -6,7 +6,7 @@
 /*   By: ppajot <ppajot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 10:39:05 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/10 21:04:27 by ppajot           ###   ########.fr       */
+/*   Updated: 2022/10/13 20:12:04 by ppajot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,20 +16,22 @@
 
 #include <math.h>
 
+#include <stdio.h>
+
 int	set_dist(double *dist_x, double *dist_y, t_vector pre_pos)
 {
-	if (cos(pre_pos.angle) > 0)
-		*dist_x = ((floor(pre_pos.x / CASE_SIZE) + sign(cos(pre_pos.angle)))
-				* CASE_SIZE - pre_pos.x) / cos(pre_pos.angle);
+	if (pre_pos.angle.cos > 0)
+		*dist_x = ((ft_floor(pre_pos.x / CASE_SIZE) + sign(pre_pos.angle.cos))
+				* CASE_SIZE - pre_pos.x) / pre_pos.angle.cos;
 	else
-		*dist_x = ((ceil(pre_pos.x / CASE_SIZE) + sign(cos(pre_pos.angle)))
-				* CASE_SIZE - pre_pos.x) / cos(pre_pos.angle);
-	if (sin(pre_pos.angle) > 0)
-		*dist_y = ((ceil(pre_pos.y / CASE_SIZE) - sign(sin(pre_pos.angle)))
-				* CASE_SIZE - pre_pos.y) / sin(pre_pos.angle);
+		*dist_x = ((ft_ceil(pre_pos.x / CASE_SIZE) + sign(pre_pos.angle.cos))
+				* CASE_SIZE - pre_pos.x) / pre_pos.angle.cos;
+	if (pre_pos.angle.sin > 0)
+		*dist_y = ((ft_ceil(pre_pos.y / CASE_SIZE) - sign(pre_pos.angle.sin))
+				* CASE_SIZE - pre_pos.y) / pre_pos.angle.sin;
 	else
-		*dist_y = ((floor(pre_pos.y / CASE_SIZE) - sign(sin(pre_pos.angle)))
-				* CASE_SIZE - pre_pos.y) / sin(pre_pos.angle);
+		*dist_y = ((ft_floor(pre_pos.y / CASE_SIZE) - sign(pre_pos.angle.sin))
+				* CASE_SIZE - pre_pos.y) / pre_pos.angle.sin;
 	return (0);
 }
 
@@ -38,33 +40,34 @@ t_vector	get_next_wall(t_vector pre_pos)
 	t_vector	result;
 
 	set_dist(&result.x, &result.y, pre_pos);
+	result.angle = pre_pos.angle;
 	if (dabs(result.x) < dabs(result.y))
 	{
-		if (cos(pre_pos.angle) > 0)
-			result.x = (floor(pre_pos.x / CASE_SIZE)
-					+ sign(cos(pre_pos.angle))) * CASE_SIZE;
+		if (pre_pos.angle.cos > 0)
+			result.x = (ft_floor(pre_pos.x / CASE_SIZE)
+					+ sign(pre_pos.angle.cos)) * CASE_SIZE;
 		else
-			result.x = (ceil(pre_pos.x / CASE_SIZE)
-					+ sign(cos(pre_pos.angle))) * CASE_SIZE;
-		result.y = (result.x - pre_pos.x) * -1 * tan(pre_pos.angle) + pre_pos.y;
+			result.x = (ft_ceil(pre_pos.x / CASE_SIZE)
+					+ sign(pre_pos.angle.cos)) * CASE_SIZE;
+		result.y = -(result.x - pre_pos.x) * pre_pos.angle.tan + pre_pos.y;
 	}
 	else
 	{
-		if (sin(pre_pos.angle) > 0)
-			result.y = (ceil(pre_pos.y / CASE_SIZE)
-					- sign(sin(pre_pos.angle))) * CASE_SIZE;
+		if (pre_pos.angle.sin > 0)
+			result.y = (ft_ceil(pre_pos.y / CASE_SIZE)
+					- sign(pre_pos.angle.sin)) * CASE_SIZE;
 		else
-			result.y = (floor(pre_pos.y / CASE_SIZE)
-					- sign(sin(pre_pos.angle))) * CASE_SIZE;
-		result.x = (result.y - pre_pos.y) * -1 / tan(pre_pos.angle) + pre_pos.x;
+			result.y = (ft_floor(pre_pos.y / CASE_SIZE)
+					- sign(pre_pos.angle.sin)) * CASE_SIZE;
+		result.x = -(result.y - pre_pos.y) / pre_pos.angle.tan + pre_pos.x;
 	}
-	result.angle = pre_pos.angle;
 	return (result);
 }
 
 int	check_wall(t_game *game, t_map *map, t_vector vec, t_wall *wall)
 {
 	(void)game;
+	
 	if (vec.x - (int)vec.x == 0 && (int)vec.x % CASE_SIZE == 0)
 	{
 		if (map->map[((int)vec.y) / CASE_SIZE][((int)vec.x + 1) / CASE_SIZE]

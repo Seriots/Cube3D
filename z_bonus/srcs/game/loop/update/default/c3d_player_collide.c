@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   c3d_player_collide.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pierre-yves <pierre-yves@student.42.fr>    +#+  +:+       +#+        */
+/*   By: ppajot <ppajot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 11:42:39 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/11 21:36:29 by pierre-yves      ###   ########.fr       */
+/*   Updated: 2022/10/13 20:23:15 by ppajot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int	get_new_wall(t_game *game, t_vector player, t_wall *wall)
 	wall->dist_from_start = 0;
 	intersect_wall(game, player, wall);
 	wall->dist = wall->dist * dabs(cos(get_wall_angle(wall->face)
-				+ M_PI / 2 - player.angle));
+				+ M_PI / 2 - player.angle.value));
 	return (0);
 }
 
@@ -76,16 +76,19 @@ int	check_collide(t_game *game, t_point mov)
 
 	if (mov.x == 0 && mov.y == 0)
 		return (0);
-	player.x = game->player.pos.x + VIEW_WIDTH * sin(game->player.angle_plane) / 2;
-	player.y = game->player.pos.y + VIEW_WIDTH * cos(game->player.angle_plane) / 2;
+	player.x = game->player.pos.x + VIEW_WIDTH * sin(game->player.plane.value) / 2;
+	player.y = game->player.pos.y + VIEW_WIDTH * cos(game->player.plane.value) / 2;
 	if (mov.y > 0)
-		player.angle = 2 * M_PI
+		player.angle.value = 2 * M_PI
 			- acos(mov.x / norm((double)mov.x, (double)mov.y));
 	else
-		player.angle = acos(mov.x / norm((double)mov.x, (double)mov.y));
+		player.angle.value = acos(mov.x / norm((double)mov.x, (double)mov.y));
+	player.angle.cos = cos(player.angle.value);
+	player.angle.sin = sin(player.angle.value);
+	player.angle.tan = player.angle.sin / player.angle.cos;
 	get_new_wall(game, player, &wall);
-	player.x = game->player.pos.x - VIEW_WIDTH * sin(game->player.angle_plane) / 2;
-	player.y = game->player.pos.y - VIEW_WIDTH * cos(game->player.angle_plane) / 2;
+	player.x = game->player.pos.x - VIEW_WIDTH * sin(game->player.plane.value) / 2;
+	player.y = game->player.pos.y - VIEW_WIDTH * cos(game->player.plane.value) / 2;
 	get_new_wall(game, player, &wall2);
 	if (min(wall.dist, wall2.dist) == wall2.dist)
 	{

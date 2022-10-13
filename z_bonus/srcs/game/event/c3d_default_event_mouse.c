@@ -3,15 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   c3d_default_event_mouse.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pierre-yves <pierre-yves@student.42.fr>    +#+  +:+       +#+        */
+/*   By: ppajot <ppajot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 11:04:48 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/11 19:45:25 by pierre-yves      ###   ########.fr       */
+/*   Updated: 2022/10/13 20:26:05 by ppajot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "c3d_settings.h"
 #include "c3d_struct.h"
+#include "c3d_utils.h"
+
 
 #include "mlx.h"
 
@@ -46,13 +48,24 @@ int	is_invert(t_game *game)
 
 int	default_mouse_move(int x, int y, t_game *game)
 {
-	(void)y;
-	game->player.angle_plane -= (((float)(x - WIN_WIDTH / 2))
+	double	z_move;
+	
+	game->player.plane.value -= (((float)(x - WIN_WIDTH / 2))
 			* (game->settings.cam_sensibility_x / 70000.0)) * (is_invert(game));
-	if (game->player.angle_plane > 2 * M_PI)
-		game->player.angle_plane -= 2 * M_PI;
-	else if (game->player.angle_plane < 0)
-		game->player.angle_plane += 2 * M_PI;
+	z_move = (((float)(y - WIN_HEIGHT / 2))
+			* (game->settings.cam_sensibility_y / 50000.0)) * (is_invert(game));
+	game->player.z -= z_move;
+	game->player.updown += z_move;
+	if (dabs(game->player.z) > 6)
+		game->player.z = 6.0 * sign(game->player.z);
+	if (dabs(game->player.updown) > 6)
+		game->player.updown = 6.0 * sign(game->player.updown);
+	if (game->player.plane.value > 2 * M_PI)
+		game->player.plane.value -= 2 * M_PI;
+	else if (game->player.plane.value < 0)
+		game->player.plane.value += 2 * M_PI;
+	game->player.plane.sin = sin(game->player.plane.value);
+	game->player.plane.cos = cos(game->player.plane.value);
 	mlx_mouse_move(game->mlx.display, game->mlx.window,
 		WIN_WIDTH / 2, WIN_HEIGHT / 2);
 	return (0);

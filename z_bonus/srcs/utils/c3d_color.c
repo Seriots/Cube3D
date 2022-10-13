@@ -3,23 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   c3d_color.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ppajot <ppajot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 13:54:10 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/08 12:50:26 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/13 17:37:32 by ppajot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "c3d_struct.h"
 
-unsigned int	get_color(t_game *game, unsigned int color)
+unsigned int	get_color(int color_setting, unsigned int color)
 {
 	unsigned int	bw_color;
 	int				r;
 	int				g;
 	int				b;
 
-	if (game->settings.color)
+	if (color_setting)
 		return (color);
 	r = (color >> 16) & 0xFF;
 	g = (color >> 8) & 0xFF;

@@ -16,7 +16,7 @@
 # include "c3d_struct.h"
 
 /*Color*/
-unsigned int	get_color(t_game *game, unsigned int color);
+unsigned int	get_color(int color_settings, unsigned int color);
 
 /*Math*/
 int	is_in_circle(int x, int y, unsigned int color);
@@ -27,6 +27,8 @@ int				sign(float x);
 int				pure_sign(float x);
 double			dabs(double nbr);
 double			norm(double x, double y);
+double			ft_floor(double nbr);
+double			ft_ceil(double nbr);
 
 /*Time*/		
 long			timestamp_msec(long start);

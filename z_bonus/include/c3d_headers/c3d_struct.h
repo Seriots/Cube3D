@@ -54,10 +54,18 @@ typedef struct s_coord
 	double	y;
 }	t_coord;
 
+typedef struct s_angle
+{
+	double	value;
+	double	cos;
+	double	sin;
+	double	tan;
+}	t_angle;
+
 typedef struct s_player
 {
 	t_coord			pos;
-	double			angle_plane;
+	t_angle			plane;
 	double			updown;
 	double			z;
 	int				forward;
@@ -142,7 +150,6 @@ typedef struct s_map
 	t_dict		*all_objects;
 }	t_map;
 
-
 typedef struct s_point
 {
 	int	x;
@@ -158,13 +165,15 @@ typedef struct s_display
 	double		fc_dist[WIN_HEIGHT];
 	t_img_data	*img;
 	int			x;
+	double		factor;
+	int			bpp;
 }	t_display;
 
 typedef struct s_vector
 {
 	double	x;
 	double	y;
-	double	angle;
+	t_angle	angle;
 }	t_vector;
 
 

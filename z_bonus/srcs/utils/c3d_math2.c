@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   c3d_math2.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ppajot <ppajot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 11:02:27 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/10 18:01:17 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/13 19:13:00 by ppajot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,22 @@ int	is_in_circle(int x, int y, unsigned int color)
 	if (norm(dist_x, dist_y) < MMAP_HEIGHT / 2)
 		return (color);
 	return (0xFF000000);
+}
+
+double	ft_floor(double nbr)
+{
+	if (nbr > 0)
+		return ((int)nbr + 0.0);
+	else if (nbr < 0 && nbr != (int)nbr)
+		return ((int)nbr - 1.0);
+	return (nbr);
+}
+
+double	ft_ceil(double nbr)
+{
+	if (nbr < 0)
+		return ((int)nbr + 0.0);
+	else if (nbr > 0 && nbr != (int)nbr)
+		return ((int)nbr + 1.0);
+	return (nbr);
 }
