@@ -159,6 +159,8 @@ typedef struct s_object
 	t_img_data	*hand_img;
 	t_img_data	*menu_img;
 	t_coord		pos;
+	int			img_height;
+	int			img_width;
 	int			state;
 	int			use_count;
 	int			is_visible;	
