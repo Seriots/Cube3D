@@ -6,16 +6,19 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 13:43:02 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/13 16:56:54 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/16 13:14:17 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "c3d_struct.h"
 #include "c3d_settings.h"
+#include "c3d_object.h"
 #include "c3d_loop.h"
 
 #include "ft.h"
 #include "mlx.h"
+
+#include <stdio.h>
 
 int	show_fps(t_game *game)
 {
@@ -37,6 +40,21 @@ int	show_seed(t_game *game)
 	return (0);
 }
 
+int	display_bar(t_game *game)
+{
+	t_dict	*dict;
+
+	display_staminabar(game);
+	display_lifebar(game);
+	if (game->inventory.selected >= 0)
+	{
+		dict = dict_getelem_ptr(game->map.all_objects, game->inventory.items[game->inventory.selected]);
+		if (dict && ft_strcmp(dict->key, LAMP) == 0)
+			display_lightbar(game, dict->value);
+	}
+	return (0);
+}
+
 int	default_display(t_game *game)
 {
 	raycasting(game);
@@ -49,6 +67,7 @@ int	default_display(t_game *game)
 		show_fps(game);
 	if (game->settings.show_seed)
 		show_seed(game);
+	display_bar(game);
 	display_hand(game);
 	display_inventory(game);
 	return (0);

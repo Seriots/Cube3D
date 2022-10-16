@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 21:05:06 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/13 17:06:27 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/16 12:59:04 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 #include "c3d_utils.h"
 
 #include "dict.h"
+
+#include <stdio.h>
 
 /*check les distance a tout les objets, si dist < x alors call la fonction interact de l'obj*/
 int	objects_interact(t_game *game)
@@ -55,6 +57,7 @@ int	objects_use(t_game *game)
 	t_dict		*d_obj;
 	t_object	*obj;
 
+	printf("game->inventory.selected = %d\n", game->inventory.selected);
 	if (game->inventory.selected < 0)
 		return (0);
 	obj = game->inventory.items[game->inventory.selected];

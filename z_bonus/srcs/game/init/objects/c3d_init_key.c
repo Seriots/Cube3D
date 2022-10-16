@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 14:43:09 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/13 16:39:43 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/16 12:52:17 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ int	init_key(t_game *game, t_object **obj)
 	(*obj)->hand_img = 0;
 	(*obj)->state = 0;
 	(*obj)->use_count = 0;
+	(*obj)->use_max = 1;
 	(*obj)->is_visible = 1;
 	(*obj)->is_collide = 0;
 	(*obj)->start_frame = game->last_frame + game->delay;

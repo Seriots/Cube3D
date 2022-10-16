@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 12:44:07 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/13 17:14:58 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/16 13:50:12 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,7 @@ int	lamp_use(t_game *game, t_dict *dict, t_object *obj)
 	(void)game;
 	(void)dict;
 	(void)obj;
-	obj->use_count = !obj->use_count;
-	printf("use count = %d\n", obj->use_count);
+	obj->state = !obj->state;
 	return (0);
 }
 
@@ -47,10 +46,17 @@ int	lamp_collide(t_game *game, t_dict *dict, t_object *obj)
 
 int	lamp_update(t_game *game, t_dict *dict, t_object *obj)
 {
-	(void)game;
+	t_object	*selected;
+
 	(void)dict;
-	(void)obj;
-	//printf("lamp_update, %f %f\n", obj->pos.x, obj->pos.y);
+	if (game->inventory.selected < 0)
+		return (0);
+	selected = game->inventory.items[game->inventory.selected];
+	if (obj == selected && obj->state == 1 && obj->use_count > 0)
+		obj->use_count -= LAMP_DECREASE * game->delay;
+	else if (obj->use_count < 100)
+		obj->use_count += LAMP_INCREASE * game->delay;
+		
 	return (0);
 }
 
@@ -77,7 +83,8 @@ int	init_lamp(t_game *game, t_object **obj)
 	(*obj)->menu_img = &game->all_img.flashlight[2];
 	(*obj)->hand_img = &game->all_img.flashlight[1];
 	(*obj)->state = 0;
-	(*obj)->use_count = 0;
+	(*obj)->use_count = 100;
+	(*obj)->use_max = 100;
 	(*obj)->is_visible = 1;
 	(*obj)->is_collide = 0;
 	(*obj)->start_frame = game->last_frame + game->delay;

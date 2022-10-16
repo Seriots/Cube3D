@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 12:13:27 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/14 21:57:22 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/16 11:05:54 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,7 @@ int	set_settings_loop(const t_savset *all, char *key, char *value)
 	while (i < 35)
 	{
 		if (ft_strcmp(all[i].tag, key) == 0)
-		{
-			printf("%s\n", key);
 			return (all[i].fct(all[i].ptr, value));
-		}
 		i++;
 	}
 	return (0);

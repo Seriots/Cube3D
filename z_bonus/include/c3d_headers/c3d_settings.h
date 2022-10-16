@@ -31,6 +31,17 @@
 # define HOTBAR_BIG_BORDER 2
 # define HOTBAR_CASE_BORDER 2
 
+/*Bar settings*/
+# define BAR_WIDTH 300
+# define BAR_HEIGHT 18
+
+# define STAMINA_LOSS 0.04
+# define STAMINA_GAIN 0.06
+# define STAMINA_BASE_GAIN 0.004
+
+# define LAMP_DECREASE 0.002
+# define LAMP_INCREASE 0.00035
+
 //HOTBAR_Y WIN_HEIGHT - HOTBAR_CASE_SIZE - 10
 # define HOTBAR_Y WIN_HEIGHT - HOTBAR_CASE_SIZE - 10
 
@@ -106,10 +117,10 @@
 # define VIEW_WIDTH 16
 # define RESOLUTION 100 // 1 - 100
 
-# define MOVE_SPEED 0.1
+# define MOVE_SPEED 0.15
 # define TURN_SPEED 0.06f
 
-# define RUN_SPEED_FACTOR 2.0
+# define RUN_SPEED_FACTOR 2.2
 # define CROUCH_SPEED_FACTOR 0.3
 
 # define MIN_DIST_OBJ 1.0f

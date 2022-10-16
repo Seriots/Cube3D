@@ -25,6 +25,8 @@
 #include "ft.h"
 #include "dict.h"
 
+#include <stdio.h>
+
 int	load_random_map(t_game *game, t_genparams *params)
 {
 	if (game->settings.difficulty == 0)

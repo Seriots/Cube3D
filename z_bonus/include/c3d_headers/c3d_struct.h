@@ -68,6 +68,7 @@ typedef struct s_all_img
 	t_img_data	*all_cursor_img;
 	t_img_data	key_icon;
 	t_img_data	flashlight[3];
+	t_img_data	hud[3];
 }	t_all_img;
 
 typedef struct s_coord
@@ -103,6 +104,10 @@ typedef struct s_player
 	double	speed;
 	double	angleup;
 	double	elevation;
+	int		life;
+	int		max_life;
+	float	stamina;
+	float	max_stamina;
 }	t_player;
 
 typedef struct s_wall
@@ -162,7 +167,8 @@ typedef struct s_object
 	int			img_height;
 	int			img_width;
 	int			state;
-	int			use_count;
+	float		use_count;
+	float		use_max;
 	int			is_visible;	
 	int			is_collide;
 	int			start_frame;

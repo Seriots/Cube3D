@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   c3d_default_event_mouse.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ppajot <ppajot@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 11:04:48 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/13 21:29:42 by ppajot           ###   ########.fr       */
+/*   Updated: 2022/10/16 13:00:31 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,14 +39,18 @@ int	default_mouse_release(int button, int x, int y, t_game *game)
 	(void)y;
 	if ((button == 4 && game->settings.invert_scroll)
 		|| (button == 5 && !game->settings.invert_scroll))
+	{
 		game->inventory.selected++;
+		if (game->inventory.selected >= game->inventory.size)
+			game->inventory.selected = 0;
+	}
 	if ((button == 5 && game->settings.invert_scroll)
 		|| (button == 4 && !game->settings.invert_scroll))
+	{
 		game->inventory.selected--;
-	if (game->inventory.selected < 0)
-		game->inventory.selected = game->inventory.size - 1;
-	if (game->inventory.selected >= game->inventory.size)
-		game->inventory.selected = 0;
+		if (game->inventory.selected < 0)
+			game->inventory.selected = game->inventory.size - 1;
+	}
 	return (0);
 }
 

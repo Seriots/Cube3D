@@ -25,6 +25,9 @@ int		display_wall(t_game *game, t_wall *wall, int i);
 int		raycasting(t_game *game);
 
 /*Display*/
+int		display_lightbar(t_game *game, t_object *obj);
+int		display_lifebar(t_game *game);
+int		display_staminabar(t_game *game);
 int		display_hand(t_game *game);
 int		display_inventory(t_game *game);
 int		show_fps(t_game *game);

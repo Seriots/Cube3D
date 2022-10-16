@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 10:32:49 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/14 21:58:38 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/16 14:30:34 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,9 @@ int	keyinput_press(int button, int x, int y, t_game *game)
 
 int	check_value_keyinput(KeySym *value, int default_value)
 {
-	if (*value < 32 || *value > 255)
+	if ((*value < 32 || *value > 255) && *value != XK_Shift_L
+		&& *value != XK_Control_L
+		&& *value != XK_Caps_Lock && *value != XK_Tab)
 		*value = default_value;
 	return (0);
 }

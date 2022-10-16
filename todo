@@ -145,6 +145,16 @@ x -> ajouter l'affichage d'image dans la hotbar
 x -> faire la gestion du player
 	x -> en fonction des inputs clavier
 	x -> en foction des frames
--> trouver des images
--> faire la bar de stamina
--> faire la bar d'epuisement de la lampe
+x -> trouver des images
+	x -> ghost 
+	x -> porte
+	x -> wall
+	x -> key
+	x -> flashlight
+x -> faire la bar de stamina
+x -> faire la bar d'epuisement de la lampe
+x-> faire la bar de vie
+	-> max 20hp ou 100hp a appliquer sur le spawn des boost comme ca ca ce voit pas
+-> ajouter le son
+-> link les fonctions des key, des lampes et des door
+-> faire l'aniamtaion de fin de map (fade noir)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   c3d_player_update.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ppajot <ppajot@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 10:38:52 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/13 21:29:40 by ppajot           ###   ########.fr       */
+/*   Updated: 2022/10/16 11:45:57 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	get_movement(t_game *game, double *mov_x, double *mov_y)
 	game->player.speed = MOVE_SPEED;
 	if (game->player.crouch)
 		game->player.speed *= CROUCH_SPEED_FACTOR;
-	if (game->player.run)
+	if (game->player.run && game->player.stamina > 2)
 		game->player.speed *= RUN_SPEED_FACTOR;
 	*mov_x = 0;
 	*mov_y = 0;

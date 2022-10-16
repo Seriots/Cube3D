@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 11:53:11 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/13 16:39:55 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/16 12:51:48 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ int	init_door(t_game *game, t_object **obj)
 	(*obj)->hand_img = 0;
 	(*obj)->state = 0;
 	(*obj)->use_count = 0;
+	(*obj)->use_max = 1;
 	(*obj)->is_visible = 1;
 	(*obj)->is_collide = 0;
 	(*obj)->start_frame = game->last_frame + game->delay;
