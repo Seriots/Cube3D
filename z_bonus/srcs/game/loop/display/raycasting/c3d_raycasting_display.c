@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   c3d_raycasting_display.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ppajot <ppajot@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 10:41:24 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/13 20:50:10 by ppajot           ###   ########.fr       */
+/*   Updated: 2022/10/16 15:26:50 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,19 @@ unsigned int	get_wall_color(int pixel, t_display *display)
 	return (*(unsigned int *)(color));
 }
 
-int	shade_pixel(int color, double dist, t_point p)
+int	is_lamp(t_game *game)
+{
+	t_object	*obj;
+	
+	if (game->inventory.selected < 0)
+		return (0);
+	obj = game->inventory.items[game->inventory.selected];
+	if (obj && obj->hand_img == &game->all_img.flashlight[1] && obj->state == 1)
+		return (1);
+	return (0);
+}
+
+int	shade_pixel(t_game *game, int color, double dist, t_point p)
 {
 	int	r;
 	int	g;
@@ -52,18 +64,23 @@ int	shade_pixel(int color, double dist, t_point p)
 
 	//if (p.x == 500)
 	//	printf("dist: %f\n", dist);
-	//if (pow(p.x - WIN_WIDTH / 2, 2) + pow(p.y - WIN_HEIGHT / 2, 2) < 40000)
-	//{
-	//	//if (dist < 256)
-	//	//	light = 1 - dist / (2 * 256);
-	//	//else
-	//	//	light = 1 / 2 - (dist - 256) / (2 * dist);
-	//	light = 1.0;
-	//}
-	//else
-		light = 0.4;
-	//light = max(light, 0.1);
-	//light = min(light, 1);
+	if (is_lamp(game))
+	{
+		if (pow(p.x - WIN_WIDTH / 2, 2) + pow(p.y - WIN_HEIGHT / 2, 2) < 90000)
+		{
+			if (dist < 256)
+				light = 1 - dist / (2 * 256);
+			else
+				light = 1 / 2 - (dist - 256) / (2 * dist);
+			light = 1.0;
+		}
+		else
+			light = 0.2;
+		light = max(light, 0.1);
+		light = min(light, 1);
+	}
+	else
+		light = 0.2;
 	r = light * ((color & 0xFF0000) >> 16);
 	g = light * ((color & 0X00FF00) >> 8);
 	b = light * (color & 0X0000FF);
@@ -76,11 +93,11 @@ int	shade_pixel(int color, double dist, t_point p)
 int	get_pixel_color(t_game *game, t_wall *wall, t_point p, t_display *display)
 {
 	if (p.y < display->min)
-		return (shade_pixel(game->map.c, display->fc_dist[p.y], p));
+		return (shade_pixel(game, game->map.c, display->fc_dist[p.y], p));
 	else if (p.y > display->max)
-		return (shade_pixel(game->map.f, display->fc_dist[p.y], p));
+		return (shade_pixel(game, game->map.f, display->fc_dist[p.y], p));
 	else
-		return (shade_pixel(get_wall_color(p.y, display), wall->dist, p));
+		return (shade_pixel(game, get_wall_color(p.y, display), wall->dist, p));
 	return (0);
 }
 

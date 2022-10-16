@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 12:44:07 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/16 13:50:12 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/16 15:31:42 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ int	lamp_update(t_game *game, t_dict *dict, t_object *obj)
 	if (game->inventory.selected < 0)
 		return (0);
 	selected = game->inventory.items[game->inventory.selected];
+	if ((int)obj->use_count == 0)
+		obj->state = 0;
 	if (obj == selected && obj->state == 1 && obj->use_count > 0)
 		obj->use_count -= LAMP_DECREASE * game->delay;
 	else if (obj->use_count < 100)
