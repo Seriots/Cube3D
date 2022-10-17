@@ -166,7 +166,8 @@ x -> ajouter du mouvement sur le hand object
 	-> map
 	-> stamina
 x -> ajouter les message d'erruer ingame
--> fix le spawn du player
+x -> fix le spawn du player
+	-> normalement le spawn est fix mais il y a un segfault dans la generation de map je sais pas ou
 -> faire les fonctions pour link le son
 -> faire l'aniamtaion de fin de map (fade noir)
 -> arreter la verification de la lampe avec l'image pour allumer

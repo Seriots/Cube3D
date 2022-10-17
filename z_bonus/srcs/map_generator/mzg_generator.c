@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mzg_generator.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ppajot <ppajot@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 11:05:33 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/13 21:10:54 by ppajot           ###   ########.fr       */
+/*   Updated: 2022/10/17 16:21:49 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,15 +63,16 @@ int	init_map(t_map *map, int width, int height)
 {
 	int		i;
 
+	(void)width;
 	map->map = ft_calloc(sizeof(char *), height + 1);
 	if (!map->map)
-		return (1);
+		return (10);
 	i = 0;
 	while (i < height)
 	{
 		map->map[i] = ft_calloc(sizeof(char), width + 1);
 		if (!map->map[i])
-			return (ft_free_tab(map->map), 1);
+			return (10);
 		i++;
 	}
 	return (0);
@@ -93,10 +94,10 @@ int	set_default_image(t_map *map, int width, int height)
 		return (10);
 	map->f = ft_color(map->default_floor);
 	if (map->f == -1)
-		map->f = ft_color(DEFAULT_FLOOR);
+		map->f = DEFAULT_FLOOR_VALUE;
 	map->c = ft_color(map->default_ceil);
 	if (map->c == -1)
-		map->c = ft_color(DEFAULT_CEIL);
+		map->c = DEFAULT_CEIL_VALUE;
 	map->width = width;
 	map->height = height;
 	return (0);
@@ -109,7 +110,7 @@ int	gen_maze(t_game *game, int width, int height, int door)
 
 	error = init_map(&game->map, width, height);
 	if (error)
-		return (1);
+		return (error);
 	set_space(game->map.map, width, height);
 	makeshape_maze(game->map.map, width, height);
 	fillmap(game->map.map);

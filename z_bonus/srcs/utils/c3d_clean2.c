@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 15:47:42 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/17 11:53:55 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/17 16:07:28 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,16 @@ void	free_img_array(t_game *game, t_img_data **imgs_ptr, int number)
 	*imgs_ptr = NULL;
 }
 
+void	free_object(t_game *game, t_img_data *data)
+{
+	if (data[0].img)
+		mlx_destroy_image(game->mlx.display, data[0].img);
+	if (data[1].img)
+		mlx_destroy_image(game->mlx.display, data[1].img);
+	if (data[2].img)
+		mlx_destroy_image(game->mlx.display, data[2].img);
+}
+
 void	free_images(t_game *game)
 {
 	if (game->all_img.menu_img.img)
@@ -56,4 +66,12 @@ void	free_images(t_game *game)
 		mlx_destroy_image(game->mlx.display, game->all_img.minimap_img.img);
 	if (game->all_img.all_cursor_img)
 		free_img_array(game, &game->all_img.all_cursor_img, 8);
+	free_object(game, game->all_img.key);
+	free_object(game, game->all_img.flashlight);
+	free_object(game, game->all_img.heal);
+	free_object(game, game->all_img.fullheal);
+	free_object(game, game->all_img.bonushp);
+	free_object(game, game->all_img.energy);
+	free_object(game, game->all_img.b_energy);
+	free_object(game, game->all_img.hud);
 }

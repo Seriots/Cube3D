@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 10:51:50 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/17 13:29:33 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/17 16:08:51 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 #include "c3d_object.h"
 
 #include "ft.h"
+
+#include <stdlib.h>
 
 int	init_objects_img(t_game *game, char *name, t_img_data dst[])
 {
@@ -35,9 +37,10 @@ int	init_objects_img(t_game *game, char *name, t_img_data dst[])
 		ft_strlcat(make_name, tab[i], ft_strlen(name) + 9 + 1);
 		error = init_xpm_image(game, &dst[i], make_name);
 		if (error)
-			return (error);
+			return (free(make_name), error);
 		i++;
 	}
+	free(make_name);
 	return (0);
 }
 

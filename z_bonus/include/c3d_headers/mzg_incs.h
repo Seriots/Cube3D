@@ -25,7 +25,9 @@
 # define DEFAULT_IMAGE_PATH_WE "imgs/xpm/purpleWall64x64.xpm"
 # define DEFAULT_IMAGE_PATH_EA "imgs/xpm/greenWall64x64.xpm"
 # define DEFAULT_CEIL	"37,37,37"
+# define DEFAULT_CEIL_VALUE	3618615
 # define DEFAULT_FLOOR	"110,110,110"
+# define DEFAULT_FLOOR_VALUE 11382190
 # define OPEN_FACTOR 4
 # include "c3d_struct.h"
 

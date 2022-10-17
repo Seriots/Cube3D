@@ -150,7 +150,6 @@ define SRCS :=
 		map_generator/mzg_makemaze.c
 		map_generator/mzg_makedoor.c
 		map_generator/mzg_makeshape.c
-		map_generator/mzg_post_player.c
 		map_generator/mzg_printmaze.c
 		map_generator/mzg_standardize.c
 		map_generator/mzg_openmaze_check.c

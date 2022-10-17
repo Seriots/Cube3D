@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 14:43:09 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/17 15:03:30 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/17 15:37:34 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,25 @@
 #include "c3d_struct.h"
 #include "c3d_init.h"
 #include "c3d_object.h"
+#include "c3d_utils.h"
 
 #include "dict.h"
 #include "ft.h"
 
 #include <stdio.h>
 
+t_dict	*get_nearest_door(t_game *game)
+{
+	(void)game;
+	return (0);
+}
+
 int	key_use(t_game *game, t_dict *dict, t_object *obj)
 {
 	t_dict		*d_search;
 	t_object	*search;		
 
-	d_search = get_nearest_door(game, dict, obj);
+	d_search = get_nearest_door(game);
 	search = d_search->value;
 	if (search)
 	{
