@@ -55,9 +55,9 @@ int	get_all_doors(t_game *game, t_map *map)
 		while (j < map->width)
 		{
 			if (map->map[i][j] == '2')
-				error = init_obj(game, DOOR, j, i);
+				error = init_obj(game, DOOR, j * CASE_SIZE, i * CASE_SIZE);
 			if (map->map[i][j] == '3')
-				error = init_obj(game, ENDOOR, j, i);
+				error = init_obj(game, ENDOOR, j * CASE_SIZE, i * CASE_SIZE);
 			if (error)
 				return (error);
 			j++;

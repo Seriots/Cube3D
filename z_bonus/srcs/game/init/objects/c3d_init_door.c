@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 11:53:11 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/17 14:48:06 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/17 16:39:33 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ int	door_update(t_game *game, t_dict *dict, t_object *obj)
 	(void)game;
 	(void)dict;
 	(void)obj;
-	//printf("door_update, %f %f\n", obj->pos.x, obj->pos.y);
 	return (0);
 }
 
@@ -67,7 +66,7 @@ int	door_interact(t_game *game, t_dict *dict, t_object *obj)
 {
 	(void)game;
 	(void)dict;
-	(void)obj;
+	obj->state = 1;
 	return (0);
 }
 
@@ -83,7 +82,7 @@ int	init_door(t_game *game, t_object **obj)
 	(*obj)->use_max = 1;
 	(*obj)->is_visible = 1;
 	(*obj)->is_collide = 0;
-	(*obj)->start_frame = game->last_frame + game->delay;
+	(*obj)->start_frame = game->last_frame;
 	(*obj)->nb_image = 1;
 	(*obj)->animation_duration = 0;
 	(*obj)->interact = door_interact;

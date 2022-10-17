@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 13:43:02 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/17 14:27:10 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/17 16:40:05 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int	display_bar(t_game *game)
 
 int	display_game_error(t_game *game)
 {
-	if (game->error.start_time + game->error.duration > game->last_frame + game->delay)
+	if (game->error.start_time + game->error.duration > game->last_frame)
 		mlx_string_put(game->mlx.display, game->mlx.window,
 			WIN_WIDTH / 2 - (FONT_WIDTH * ft_strlen(game->error.message) / 2),
 			5 * WIN_HEIGHT / 6, 0xFF0000, game->error.message);

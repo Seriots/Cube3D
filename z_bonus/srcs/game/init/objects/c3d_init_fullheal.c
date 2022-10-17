@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 13:49:50 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/17 14:46:54 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/17 16:39:43 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ int	init_fullheal(t_game *game, t_object **obj)
 	(*obj)->use_max = 1;
 	(*obj)->is_visible = 1;
 	(*obj)->is_collide = 0;
-	(*obj)->start_frame = game->last_frame + game->delay;
+	(*obj)->start_frame = game->last_frame;
 	(*obj)->nb_image = 1;
 	(*obj)->animation_duration = 0;
 	(*obj)->interact = fullheal_interact;

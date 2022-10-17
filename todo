@@ -168,8 +168,9 @@ x -> ajouter du mouvement sur le hand object
 x -> ajouter les message d'erruer ingame
 x -> fix le spawn du player
 	-> normalement le spawn est fix mais il y a un segfault dans la generation de map je sais pas ou
+x -> faire l'aniamtaion de fin de map (fade noir)
+-> afficher le nombre de level parcouru
 -> faire les fonctions pour link le son
--> faire l'aniamtaion de fin de map (fade noir)
 -> arreter la verification de la lampe avec l'image pour allumer
 -> faire spwn les object dans la map
 -> chercher des sons
@@ -179,4 +180,5 @@ x -> fix le spawn du player
 	-> heartbeat strong
 	-> ambient
 -> link les sons des pas correctement
--> 
+-> tester de changer de map avec un inventire vide
+-> trouver une image animer de chargement

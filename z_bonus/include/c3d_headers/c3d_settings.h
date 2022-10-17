@@ -47,6 +47,11 @@
 # define HAND_MAX_X 20
 # define HAND_MAX_Y 20
 
+/*Transition settings*/
+# define FADE_DURATION 750.0
+# define LOADING_DURATION 2000.0
+
+
 //HOTBAR_Y WIN_HEIGHT - HOTBAR_CASE_SIZE - 10
 # define HOTBAR_Y WIN_HEIGHT - HOTBAR_CASE_SIZE - 10
 
@@ -128,7 +133,7 @@
 # define RUN_SPEED_FACTOR 1.8
 # define CROUCH_SPEED_FACTOR 0.3
 
-# define MIN_DIST_OBJ 1.0f
+# define MIN_DIST_OBJ 64.0f
 
 /*Default Key*/
 /*

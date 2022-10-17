@@ -425,6 +425,7 @@ typedef struct s_game
 	int			pick_obj;
 	long		last_frame;
 	long		delay;
+	long		load_start_frame;
 	t_error		error;
 }	t_game;
 

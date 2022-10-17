@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 10:41:24 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/16 15:26:50 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/17 17:51:55 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 #include "c3d_settings.h"
 #include "c3d_loop.h"
 #include "c3d_utils.h"
+#include "c3d_object.h"
+
+#include "ft.h"
 
 #include <math.h>
 
@@ -50,7 +53,7 @@ int	is_lamp(t_game *game)
 	if (game->inventory.selected < 0)
 		return (0);
 	obj = game->inventory.items[game->inventory.selected];
-	if (obj && obj->hand_img == &game->all_img.flashlight[1] && obj->state == 1)
+	if (obj && !ft_strcmp(obj->tag, LAMP) && obj->state == 1)
 		return (1);
 	return (0);
 }

@@ -15,6 +15,10 @@
 
 # include "c3d_struct.h"
 
+/*NextStage*/
+int	next_stage(t_game *game);
+int	load_new_map(t_game *game, char *map_path);
+
 /*Menuing*/
 int	draw_all_objects(t_game *game, t_dict *dict);
 int	display_text(t_game *game, t_dict *dict);
@@ -42,7 +46,6 @@ int		update_minimap(t_game *game);
 /*Player update*/
 int		check_collide(t_game *game, t_coord mov);
 int		update_player(t_game *game);
-
 
 /*Update*/
 int		update_objects(t_game *game, t_dict *all_objects);
