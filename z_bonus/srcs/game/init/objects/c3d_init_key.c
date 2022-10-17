@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 14:43:09 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/17 16:39:50 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/17 18:06:13 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 
 #include <stdio.h>
 
+//door pos:  / casesize
 t_dict	*get_nearest_door(t_game *game)
 {
 	(void)game;

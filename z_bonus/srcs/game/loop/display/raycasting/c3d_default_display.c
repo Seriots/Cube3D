@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 13:43:02 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/17 16:40:05 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/17 18:00:02 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,20 @@ int	display_game_error(t_game *game)
 	return (0);
 }
 
+int	display_level(t_game *game)
+{
+	char	level[32];
+	char	lvl[32];
+	
+	ft_itoa_noalloc(lvl, game->level);
+	ft_strlcpy(level, "Level : ", 32);
+	ft_strlcat(level, lvl, 32);
+	mlx_string_put(game->mlx.display, game->mlx.window,
+		WIN_WIDTH / 2 - (FONT_WIDTH * ft_strlen("Level : ") / 2),
+		WIN_HEIGHT / 14, 0xDDDDDD, level);
+	return (0);
+}
+
 int	default_display(t_game *game)
 {
 	raycasting(game);
@@ -80,5 +94,6 @@ int	default_display(t_game *game)
 	display_hand(game);
 	display_inventory(game);
 	display_game_error(game);
+	display_level(game);
 	return (0);
 }

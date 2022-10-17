@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 13:17:26 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/17 14:17:37 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/17 17:54:59 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,8 @@ static int	set_variable(t_game *game)
 	game->all_img.flashlight[2].img = NULL;
 	game->all_img.key[0].img = NULL;
 	game->all_img.key[1].img = NULL;
-	game->all_img.key[2].img = NULL;
+	game->all_img.key[2].img = NULL; //proteger tous les obj
+	game->level = 1;
 	game->inventory.base_hand = (t_coord){.x = 0, .y = 0};
 	game->inventory.current_hand = game->inventory.base_hand;
 	game->map = (t_map){.c = -1, .f = -1, .ea = NULL, .no = NULL, .so = NULL,

@@ -154,7 +154,8 @@ x -> trouver des images
 x -> faire la bar de stamina
 x -> faire la bar d'epuisement de la lampe
 x -> faire la bar de vie
-	-> max 20hp ou 100hp a appliquer sur le spawn des boost comme ca ca ce voit pas
+	x -> max 20hp ou 100hp
+	-> a appliquer sur le spawn des boost comme ca ca ce voit pas
 x -> ajouter du mouvement sur le hand object
 -> faire les objets et leur fonctions
 		x-> trouver les images
@@ -169,9 +170,9 @@ x -> ajouter les message d'erruer ingame
 x -> fix le spawn du player
 	-> normalement le spawn est fix mais il y a un segfault dans la generation de map je sais pas ou
 x -> faire l'aniamtaion de fin de map (fade noir)
--> afficher le nombre de level parcouru
+x -> afficher le nombre de level parcouru
 -> faire les fonctions pour link le son
--> arreter la verification de la lampe avec l'image pour allumer
+x -> arreter la verification de la lampe avec l'image pour allumer
 -> faire spwn les object dans la map
 -> chercher des sons
 	-> pas
@@ -179,6 +180,12 @@ x -> faire l'aniamtaion de fin de map (fade noir)
 	-> heartbeat
 	-> heartbeat strong
 	-> ambient
+	-> ouverture de porte
+	-> activation d'objet / destruction
 -> link les sons des pas correctement
--> tester de changer de map avec un inventire vide
+x -> tester de changer de map avec un inventire vide
 -> trouver une image animer de chargement
+-> faire le fantome
+	-> spawn
+	-> update
+	-> collide

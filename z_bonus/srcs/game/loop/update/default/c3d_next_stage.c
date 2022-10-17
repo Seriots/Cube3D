@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 16:31:05 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/17 17:48:03 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/17 17:55:28 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int	loading(t_game *game)
 			return (load_startscreen(game),
 				set_error_value(&game->start_menu, error),
 				display_error(error));
+		game->level += 1;
 		set_map_settings(game, &game->menu.all_objects);
 	}
 	return (0);

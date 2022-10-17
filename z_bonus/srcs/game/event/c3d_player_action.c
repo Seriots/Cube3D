@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 21:05:06 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/17 17:15:30 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/17 18:01:04 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ int	objects_interact(t_game *game)
 	{
 		obj = dict->value;
 		dist = dist_to_obj(game->player.pos, obj->pos);
-		printf ("dist = %f, obj = %s\n", dist, obj->tag);
 		if (dist < MIN_DIST_OBJ && obj->is_visible == 1)
 		{
 			obj->interact(game, dict, obj);

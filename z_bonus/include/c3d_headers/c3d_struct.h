@@ -427,6 +427,7 @@ typedef struct s_game
 	long		delay;
 	long		load_start_frame;
 	t_error		error;
+	int			level;
 }	t_game;
 
 #endif
