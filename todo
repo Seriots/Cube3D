@@ -171,12 +171,12 @@ x -> fix le spawn du player
 	-> normalement le spawn est fix mais il y a un segfault dans la generation de map je sais pas ou
 x -> faire l'aniamtaion de fin de map (fade noir)
 x -> afficher le nombre de level parcouru
--> faire les fonctions pour link le son
+x -> faire les fonctions pour link le son
 x -> arreter la verification de la lampe avec l'image pour allumer
 -> faire spwn les object dans la map
 -> chercher des sons
-	-> pas
-	-> pas en course
+	x -> pas
+	x -> pas en course
 	-> heartbeat
 	-> heartbeat strong
 	-> ambient

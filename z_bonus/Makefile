@@ -76,6 +76,7 @@ define SRCS :=
 		game/loop/update/start_screen/c3d_startscreen_update.c
 		game/loop/update/start_screen/c3d_draw_seed.c
 		game/loop/c3d_loop.c
+		game/sound/c3d_play_sound.c
 		game/c3d_start.c
 		menu/settings/c3d_button_exit.c
 		menu/settings/c3d_button_resume.c

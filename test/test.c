@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 10:48:00 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/17 18:56:30 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/17 20:37:04 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,29 +108,14 @@ pid_t play_sound(char *file, int volume, int wait)
 
 int main(int argc, char *argv[])
 {
-    pthread_t	phi_thread1;
-    pthread_t	phi_thread2;
     pid_t       pid;
 
     if (argc < 2)
         exit(0);
-/*   for (int i = 0; i < 5; i++)
-    {
-        pid = fork();
-        if (pid == 0)
-        {
-            play_sound(argv[1]);
-            exit(0);
-        }
-        sleep(2);
-    }*/
     pid = play_sound(argv[1], 40, 0);
     sleep (5);
-    system("amixer -D pulse sset Master mute");
+    system("amixer -qD pulse sset Master mute");
     sleep (5);
-    system("amixer -D pulse sset Master unmute");
+    system("amixer -qD pulse sset Master unmute");
     waitpid(pid, NULL, 0);
-//    pthread_create(&phi_thread1, NULL, (void *)play_sound, argv[1]);
-  //  sleep(2);
-   // pthread_create(&phi_thread2, NULL, (void *)play_sound, argv[1]);
 }

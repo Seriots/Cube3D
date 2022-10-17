@@ -14,6 +14,8 @@
 # define C3D_STRUCT_BONUS_H
 # include <X11/X.h>
 # include <stdbool.h>
+# include <ao/ao.h>
+# include <mpg123.h>
 
 # include "dict.h"
 
@@ -393,6 +395,21 @@ typedef struct s_fct
 	int	(*mousereleased_fct)(int button, int x, int y, t_game *game);
 	int	(*mousemove_fct)(int x, int y, t_game *game);
 }	t_fct;
+
+typedef struct s_sound
+{
+    ao_sample_format	format;
+	mpg123_handle		*mh;
+    unsigned char		*buffer;
+    ao_device			*dev;
+    size_t				buffer_size;
+    size_t				done;
+    long				rate;
+    int					err;
+    int					driver;
+    int					channels;
+	int					encoding;
+}	t_sound;
 
 typedef struct s_inventory
 {

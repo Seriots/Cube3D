@@ -15,6 +15,9 @@
 
 # include "c3d_struct.h"
 
+/*Sound*/
+int	play_sound(char *file);
+
 /*NextStage*/
 int	next_stage(t_game *game);
 int	load_new_map(t_game *game, char *map_path);
