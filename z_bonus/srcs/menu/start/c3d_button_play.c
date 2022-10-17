@@ -67,6 +67,32 @@ int	get_all_doors(t_game *game, t_map *map)
 	return (0);
 }
 
+int	init_map_objects(t_game *game, t_map *map)
+{
+	int	error;
+
+	(void)map;
+	error = init_obj(game, LAMP, 0, 0);
+	if (error)
+		return (error);
+	error = init_obj(game, ENERGY, 0, 0);
+	if (error)
+		return (error);
+	error = init_obj(game, B_ENERGY, 0, 0);
+	if (error)
+		return (error);
+	error = init_obj(game, HEAL, 0, 0);
+	if (error)
+		return (error);
+	error = init_obj(game, FULLHEAL, 0, 0);
+	if (error)
+		return (error);
+	error = init_obj(game, BONUSHP, 0, 0);
+	if (error)
+		return (error);
+	return (0);
+}
+
 int	load_new_map(t_game *game, char *map_path)
 {
 	int			error;
@@ -84,10 +110,10 @@ int	load_new_map(t_game *game, char *map_path)
 		if (error)
 			return (free_map(&game->map), display_error(error));
 	}
-	error = get_all_doors(game, &game->map);
+	error = init_map_objects(game, &game->map);
 	if (error)
 		return (free_map(&game->map), display_error(error));
-	error = init_obj(game, LAMP, 0, 0);
+	error = get_all_doors(game, &game->map);
 	if (error)
 		return (free_map(&game->map), display_error(error));
 	error = init_player(game);
@@ -106,11 +132,20 @@ int	set_inventory(t_game *game)
 	if (game->settings.difficulty == 0)
 		game->inventory.size = 8;
 	else if (game->settings.difficulty == 1)
-		game->inventory.size = 4;
+		game->inventory.size = 6;
 	else
-		game->inventory.size = 2;
+		game->inventory.size = 4;
 	game->inventory.selected = -1;
-	add_items(&game->inventory, dict_getelem_key(game->map.all_objects, LAMP)->value);
+	/*TEST*/
+	add_items(game, &game->inventory, dict_getelem_key(game->map.all_objects, LAMP)->value);
+	add_items(game, &game->inventory, dict_getelem_key(game->map.all_objects, KEY)->value);
+	add_items(game, &game->inventory, dict_getelem_key(game->map.all_objects, ENERGY)->value);
+	add_items(game, &game->inventory, dict_getelem_key(game->map.all_objects, B_ENERGY)->value);
+	add_items(game, &game->inventory, dict_getelem_key(game->map.all_objects, HEAL)->value);
+	add_items(game, &game->inventory, dict_getelem_key(game->map.all_objects, FULLHEAL)->value);
+	add_items(game, &game->inventory, dict_getelem_key(game->map.all_objects, BONUSHP)->value);
+	add_items(game, &game->inventory, dict_getelem_key(game->map.all_objects, BONUSHP)->value);
+	add_items(game, &game->inventory, dict_getelem_key(game->map.all_objects, BONUSHP)->value);
 	return (0);
 }
 

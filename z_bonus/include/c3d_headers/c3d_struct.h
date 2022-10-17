@@ -66,8 +66,13 @@ typedef struct s_all_img
 	t_img_data	menu_img;
 	t_img_data	minimap_img;
 	t_img_data	*all_cursor_img;
-	t_img_data	key_icon;
 	t_img_data	flashlight[3];
+	t_img_data	key[3];
+	t_img_data	energy[3];
+	t_img_data	b_energy[3];
+	t_img_data	heal[3];
+	t_img_data	fullheal[3];
+	t_img_data	bonushp[3];
 	t_img_data	hud[3];
 }	t_all_img;
 
@@ -159,6 +164,7 @@ typedef struct s_settings
 
 typedef struct s_object
 {
+	char		tag[32];
 	t_img_data	*all_img;
 	t_img_data	*game_img;
 	t_img_data	*hand_img;
@@ -393,7 +399,16 @@ typedef struct s_inventory
 	t_object	*items[8];
 	int			size;
 	int			selected;
+	t_coord		current_hand;
+	t_coord		base_hand;
 }	t_inventory;
+
+typedef struct s_error
+{
+	char	message[256];
+	long	start_time;
+	long	duration;
+}	t_error;
 
 typedef struct s_game
 {
@@ -410,6 +425,7 @@ typedef struct s_game
 	int			pick_obj;
 	long		last_frame;
 	long		delay;
+	t_error		error;
 }	t_game;
 
 #endif

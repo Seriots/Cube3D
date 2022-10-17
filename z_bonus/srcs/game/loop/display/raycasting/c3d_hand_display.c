@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 16:52:24 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/14 17:53:49 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/17 10:43:13 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ int	display_hand(t_game *game)
 	if (obj->hand_img == NULL)
 		return (0);
 	img = obj->hand_img;
-	my_mlx_put_image_to_window(game, img, WIN_WIDTH - img->width - 50, WIN_HEIGHT - ((25 * img->height ) / 36));
+	my_mlx_put_image_to_window(game,
+		img, WIN_WIDTH - img->width - 50 + game->inventory.current_hand.x,
+		WIN_HEIGHT - ((25 * img->height ) / 36) + game->inventory.current_hand.y);
 	return (0);
 }

@@ -6,13 +6,14 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 11:31:24 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/13 12:41:06 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/17 14:31:12 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "c3d_struct.h"
+#include "c3d_utils.h"
 
-int	add_items(t_inventory *inventory, t_object *object)
+int	add_items(t_game *game, t_inventory *inventory, t_object *object)
 {
 	int	i;
 
@@ -29,6 +30,7 @@ int	add_items(t_inventory *inventory, t_object *object)
 		}
 		i++;
 	}
+	set_error_message(game, "Inventory is full", 2000);
 	return (0);
 }
 

@@ -14,8 +14,11 @@
 
 #include "c3d_struct.h"
 #include "c3d_init.h"
+#include "c3d_object.h"
+#include "c3d_utils.h"
 
 #include "dict.h"
+#include "ft.h"
 
 #include <stdio.h>
 
@@ -70,6 +73,7 @@ int	endoor_interact(t_game *game, t_dict *dict, t_object *obj)
 
 int	init_endoor(t_game *game, t_object **obj)
 {
+	ft_strlcpy((*obj)->tag, ENDOOR, 32);
 	(*obj)->all_img = 0;
 	(*obj)->game_img = 0;
 	(*obj)->menu_img = 0;

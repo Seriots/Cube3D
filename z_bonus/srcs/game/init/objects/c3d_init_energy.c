@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   c3d_init_key.c                                     :+:      :+:    :+:   */
+/*   c3d_init_energy.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/07 14:43:09 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/17 15:03:30 by lgiband          ###   ########.fr       */
+/*   Created: 2022/10/17 13:50:01 by lgiband           #+#    #+#             */
+/*   Updated: 2022/10/17 14:55:56 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,42 +15,44 @@
 #include "c3d_struct.h"
 #include "c3d_init.h"
 #include "c3d_object.h"
+#include "c3d_utils.h"
 
 #include "dict.h"
 #include "ft.h"
 
 #include <stdio.h>
 
-int	key_use(t_game *game, t_dict *dict, t_object *obj)
+int	energy_use(t_game *game, t_dict *dict, t_object *obj)
 {
-	t_dict		*d_search;
-	t_object	*search;		
+	t_object	*search;
+	int			i;
 
-	d_search = get_nearest_door(game, dict, obj);
-	search = d_search->value;
-	if (search)
+	i = 0;
+	while (i < game->inventory.size)
 	{
-		if (search->state == 0)
+		search = (t_object *)game->inventory.items[i];
+		if (search && ft_strcmp(search->tag, LAMP) == 0 && search->use_count < search->use_max)
 		{
-			search->interact(game, dict, search);
+			search->use_count += 30;
+			if (search->use_count > search->use_max)
+				search->use_count = search->use_max;
 			obj->delete(game, dict, obj);
+			return (0);
 		}
-		else
-			set_error_message(game, "Door is already open", 2000);
+		i++;
 	}
-	else
-		set_error_message(game, "Too Far from door", 2000);
+	set_error_message(game, "No uncharged flashlight found", 2000);
 	return (0);
 }
 
-int	key_drop(t_game *game, t_dict *dict, t_object *obj)
+int	energy_drop(t_game *game, t_dict *dict, t_object *obj)
 {
 	(void)dict;
 	drop_items(game, &game->inventory, obj);
 	return (0);
 }
 
-int	key_collide(t_game *game, t_dict *dict, t_object *obj)
+int	energy_collide(t_game *game, t_dict *dict, t_object *obj)
 {
 	(void)game;
 	(void)dict;
@@ -58,7 +60,7 @@ int	key_collide(t_game *game, t_dict *dict, t_object *obj)
 	return (0);
 }
 
-int	key_update(t_game *game, t_dict *dict, t_object *obj)
+int	energy_update(t_game *game, t_dict *dict, t_object *obj)
 {
 	(void)game;
 	(void)dict;
@@ -66,7 +68,7 @@ int	key_update(t_game *game, t_dict *dict, t_object *obj)
 	return (0);
 }
 
-int	key_delete(t_game *game, t_dict *dict, t_object *obj)
+int	energy_delete(t_game *game, t_dict *dict, t_object *obj)
 {
 	int	i;
 
@@ -84,20 +86,20 @@ int	key_delete(t_game *game, t_dict *dict, t_object *obj)
 	return (0);
 }
 
-int	key_interact(t_game *game, t_dict *dict, t_object *obj)
+int	energy_interact(t_game *game, t_dict *dict, t_object *obj)
 {
 	(void)dict;
 	add_items(game, &game->inventory, obj);
 	return (0);
 }
 
-int	init_key(t_game *game, t_object **obj)
+int	init_energy(t_game *game, t_object **obj)
 {
-	ft_strlcpy((*obj)->tag, KEY, 32);
+	ft_strlcpy((*obj)->tag, ENERGY, 32);
 	(*obj)->all_img = 0;
-	(*obj)->game_img = &game->all_img.key[GAME];
-	(*obj)->menu_img = &game->all_img.key[ICON];
-	(*obj)->hand_img = &game->all_img.key[HAND];
+	(*obj)->game_img = &game->all_img.energy[GAME];
+	(*obj)->menu_img = &game->all_img.energy[ICON];
+	(*obj)->hand_img = &game->all_img.energy[HAND];
 	(*obj)->state = 0;
 	(*obj)->use_count = 0;
 	(*obj)->use_max = 1;
@@ -106,11 +108,11 @@ int	init_key(t_game *game, t_object **obj)
 	(*obj)->start_frame = game->last_frame + game->delay;
 	(*obj)->nb_image = 1;
 	(*obj)->animation_duration = 0;
-	(*obj)->interact = key_interact;
-	(*obj)->use = key_use;
-	(*obj)->drop = key_drop;
-	(*obj)->collide = key_collide;
-	(*obj)->update = key_update;
-	(*obj)->delete = key_delete;
+	(*obj)->interact = energy_interact;
+	(*obj)->use = energy_use;
+	(*obj)->drop = energy_drop;
+	(*obj)->collide = energy_collide;
+	(*obj)->update = energy_update;
+	(*obj)->delete = energy_delete;
 	return (0);
 }

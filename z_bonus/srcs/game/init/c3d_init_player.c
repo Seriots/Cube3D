@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 10:51:13 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/16 11:25:58 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/17 14:34:02 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,8 @@ int	init_player(t_game *game)
 	game->player.angleup = 0;
 	game->player.elevation = 0;
 	game->player.max_life = 7;
-	game->player.life = game->player.max_life - 2;
+	game->player.life = game->player.max_life - 5;
 	game->player.max_stamina = 100;
-	game->player.stamina = game->player.max_stamina - 30;
+	game->player.stamina = game->player.max_stamina;
 	return (0);
 }

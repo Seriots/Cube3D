@@ -15,9 +15,12 @@
 
 # include "c3d_struct.h"
 
+/*Game Error*/
+int				set_error_message(t_game *game, char *message, int duration);
+
 /*Inventory*/
-int	add_items(t_inventory *inventory, t_object *object);
-int	drop_items(t_game *game, t_inventory *inventory, t_object *object);
+int				add_items(t_game *game, t_inventory *inventory, t_object *object);
+int				drop_items(t_game *game, t_inventory *inventory, t_object *object);
 
 /*Save*/
 int				sf(void *ptr, char *value);

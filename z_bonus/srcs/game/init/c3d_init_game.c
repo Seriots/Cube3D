@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   c3d_init_game.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ppajot <ppajot@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 13:17:26 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/13 21:06:28 by ppajot           ###   ########.fr       */
+/*   Updated: 2022/10/17 14:17:37 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,9 @@ static int	set_variable(t_game *game)
 	game->menu.all_objects = 0;
 	game->start_menu.all_objects = 0;
 	game->pick_obj = 0;
+	game->error.start_time = 0;
+	game->error.duration = 0;
+	game->error.message[0] = 0;
 	game->all_img.menu_img.img = NULL;
 	game->all_img.screen_img.img = NULL;
 	game->all_img.minimap_img.img = NULL;
@@ -97,7 +100,11 @@ static int	set_variable(t_game *game)
 	game->all_img.flashlight[0].img = NULL;
 	game->all_img.flashlight[1].img = NULL;
 	game->all_img.flashlight[2].img = NULL;
-	game->all_img.key_icon.img = NULL;
+	game->all_img.key[0].img = NULL;
+	game->all_img.key[1].img = NULL;
+	game->all_img.key[2].img = NULL;
+	game->inventory.base_hand = (t_coord){.x = 0, .y = 0};
+	game->inventory.current_hand = game->inventory.base_hand;
 	game->map = (t_map){.c = -1, .f = -1, .ea = NULL, .no = NULL, .so = NULL,
 		.we = NULL, .height = 0, .width = 0, .all_objects = 0, .map = NULL};
 	return (0);

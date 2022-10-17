@@ -27,6 +27,11 @@ define SRCS :=
 		game/init/objects/c3d_init_endoor.c
 		game/init/objects/c3d_init_key.c
 		game/init/objects/c3d_init_lamp.c
+		game/init/objects/c3d_init_heal.c
+		game/init/objects/c3d_init_fullheal.c
+		game/init/objects/c3d_init_energy.c
+		game/init/objects/c3d_init_benergy.c
+		game/init/objects/c3d_init_bonushp.c
 		game/init/c3d_init_game.c
 		game/init/c3d_init_images.c
 		game/init/c3d_init_menu.c
@@ -125,6 +130,7 @@ define SRCS :=
 		utils/c3d_color.c
 		utils/c3d_error.c
 		utils/c3d_event_utils.c
+		utils/c3d_game_error.c
 		utils/c3d_init_image.c
 		utils/c3d_inventory_utils.c
 		utils/c3d_math.c

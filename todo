@@ -153,8 +153,29 @@ x -> trouver des images
 	x -> flashlight
 x -> faire la bar de stamina
 x -> faire la bar d'epuisement de la lampe
-x-> faire la bar de vie
+x -> faire la bar de vie
 	-> max 20hp ou 100hp a appliquer sur le spawn des boost comme ca ca ce voit pas
--> ajouter le son
--> link les fonctions des key, des lampes et des door
+x -> ajouter du mouvement sur le hand object
+-> faire les objets et leur fonctions
+		x-> trouver les images
+	x -> Pile 30%
+	x -> grosse pile 80%
+	x -> heal 1hp
+	x -> +1 max hp
+	x -> full heal
+	-> map
+	-> stamina
+x -> ajouter les message d'erruer ingame
+-> fix le spawn du player
+-> faire les fonctions pour link le son
 -> faire l'aniamtaion de fin de map (fade noir)
+-> arreter la verification de la lampe avec l'image pour allumer
+-> faire spwn les object dans la map
+-> chercher des sons
+	-> pas
+	-> pas en course
+	-> heartbeat
+	-> heartbeat strong
+	-> ambient
+-> link les sons des pas correctement
+-> 
