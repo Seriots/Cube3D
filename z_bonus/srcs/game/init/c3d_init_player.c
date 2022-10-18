@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 10:51:13 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/17 14:34:02 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/18 12:56:50 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 #include "c3d_settings.h"
 
 #include "ft.h"
+
+#include <stdio.h>
 
 static float	get_rotation(char c)
 {
@@ -41,6 +43,7 @@ static void	set_player_coord(t_map *map, t_player *player)
 		{
 			if (ft_isinset(map->map[i][j], "NSWE"))
 			{
+				printf("player initialize, x = %d, y = %d\n", j, i);
 				player->pos.x = j * CASE_SIZE + CASE_SIZE / 2;
 				player->pos.y = i * CASE_SIZE + CASE_SIZE / 2;
 				player->plane.value = get_rotation(map->map[i][j]);

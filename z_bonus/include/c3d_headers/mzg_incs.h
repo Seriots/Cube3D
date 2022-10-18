@@ -24,11 +24,13 @@
 # define DEFAULT_IMAGE_PATH_SO "imgs/xpm/redWall64x64.xpm"
 # define DEFAULT_IMAGE_PATH_WE "imgs/xpm/purpleWall64x64.xpm"
 # define DEFAULT_IMAGE_PATH_EA "imgs/xpm/greenWall64x64.xpm"
-# define DEFAULT_CEIL	"37,37,37"
+# define DEFAULT_CEIL "37,37,37"
 # define DEFAULT_CEIL_VALUE	3618615
-# define DEFAULT_FLOOR	"110,110,110"
+# define DEFAULT_FLOOR "110,110,110"
 # define DEFAULT_FLOOR_VALUE 11382190
 # define OPEN_FACTOR 4
+# define SPAWN_OBJECTS_FACTOR 20
+
 # include "c3d_struct.h"
 
 typedef struct s_shape
@@ -87,5 +89,6 @@ int	make_door(char **map, int width, int height, int door);
 int open_maze(char **map, int width, int height);
 int generate_player(t_map *map, int width, int height);
 int	generate_key(t_game *game, int width, int height, int door);
+int	generate_objects(t_game *game, int width, int height);
 
 #endif

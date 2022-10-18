@@ -173,7 +173,7 @@ x -> faire l'aniamtaion de fin de map (fade noir)
 x -> afficher le nombre de level parcouru
 x -> faire les fonctions pour link le son
 x -> arreter la verification de la lampe avec l'image pour allumer
--> faire spwn les object dans la map
+x -> faire spwn les object dans la map
 -> chercher des sons
 	x -> pas
 	x -> pas en course

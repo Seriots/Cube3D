@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 11:13:33 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/17 13:52:41 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/18 11:43:23 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@
 # define DOOR "DOOR"
 # define ENDOOR "ENDOOR"
 # define LAMP "LAMP"
-# define ENERGY "ENERGY"
-# define B_ENERGY "BIG_ENERGY"
 # define HEAL "HEAL"
-# define FULLHEAL "FULL_HEAL"
+# define ENERGY "ENERGY"
 # define BONUSHP "BONUSHP"
+# define B_ENERGY "BIG_ENERGY"
+# define FULLHEAL "FULL_HEAL"
 # define MAP "MAP"
 # define GHOST "GHOST"
 

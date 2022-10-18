@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 10:48:00 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/18 11:16:24 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/18 11:19:57 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,3 +122,31 @@
 //    waitpid(pid, NULL, 0);
 //}*/
 //
+
+#include <SDL/SDL_mixer.h>
+#include <SDL/SDL.h>
+#include <stdio.h>
+#include <stdlib.h>
+ 
+int main(int argc, char *argv[])
+{
+   int continuer = 1;
+   SDL_Init(SDL_INIT_VIDEO);
+   SDL_Surface *ecran = NULL;
+   ecran = SDL_SetVideoMode(640, 480, 32, SDL_HWSURFACE | SDL_DOUBLEBUF);
+   SDL_Event event;
+   SDL_WM_SetCaption("SDL_Mixer", NULL);
+   SDL_Flip(ecran);
+   while(continuer)
+   {
+      SDL_WaitEvent(&amp;event);
+      switch(event.type)
+      {
+         case SDL_QUIT:
+            continuer = 0;
+            break;
+      }
+   }
+   SDL_Quit();
+   return EXIT_SUCCESS;
+}
