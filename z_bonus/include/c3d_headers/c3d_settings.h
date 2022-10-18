@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef C3D_SETTINGS_BONUS_H
-# define C3D_SETTINGS_BONUS_H
+#ifndef C3D_SETTINGS_H
+# define C3D_SETTINGS_H
 
 # include <X11/keysym.h>
 # include <math.h>
@@ -51,9 +51,8 @@
 # define FADE_DURATION 750.0
 # define LOADING_DURATION 2000.0
 
-
 //HOTBAR_Y WIN_HEIGHT - HOTBAR_CASE_SIZE - 10
-# define HOTBAR_Y WIN_HEIGHT - HOTBAR_CASE_SIZE - 10
+# define HOTBAR_Y 650
 
 /*Font settings*/
 # define FONT_WIDTH 6

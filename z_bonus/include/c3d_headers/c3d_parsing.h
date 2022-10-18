@@ -10,13 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef C3D_PARSING_BONUS_H
-# define C3D_PARSING_BONUS_H
+#ifndef C3D_PARSING_H
+# define C3D_PARSING_H
 
 # include "c3d_struct.h"
 
 /*get elem*/
-int	get_elem(t_game *game, t_map *map, char *line);
+int		get_elem(t_game *game, t_map *map, char *line);
 
 /*Square Map*/
 int		set_square_map(t_map *map);

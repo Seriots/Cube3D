@@ -6,14 +6,14 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 11:13:33 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/18 17:58:10 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/18 20:02:52 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef C3D_OBJECT_H
 # define C3D_OBJECT_H
 
-#include "dict.h"
+# include "dict.h"
 
 # define KEY "KEY"
 # define DOOR "DOOR"

@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef C3D_UTILS_BONUS_H
-# define C3D_UTILS_BONUS_H
+#ifndef C3D_UTILS_H
+# define C3D_UTILS_H
 
 # include "c3d_struct.h"
 
@@ -19,8 +19,10 @@
 int				set_error_message(t_game *game, char *message, int duration);
 
 /*Inventory*/
-int				add_items(t_game *game, t_inventory *inventory, t_object *object);
-int				drop_items(t_game *game, t_inventory *inventory, t_object *object);
+int				add_items(t_game *game, t_inventory *inventory,
+					t_object *object);
+int				drop_items(t_game *game, t_inventory *inventory,
+					t_object *object);
 
 /*Save*/
 int				sf(void *ptr, char *value);
@@ -50,7 +52,7 @@ long			timestamp_sec(long start);
 /*Error*/
 void			set_error_value(t_menu *menu, int code);
 char			*get_error(int code);
-void			display_error_on_screen(t_game *game, char *error, int x, int y);
+void			display_error_on_screen(t_game *game, char *err, int x, int y);
 int				display_error(int code);
 
 /*Free*/

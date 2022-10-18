@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef C3D_STRUCT_BONUS_H
-# define C3D_STRUCT_BONUS_H
+#ifndef C3D_STRUCT_H
+# define C3D_STRUCT_H
 # include <X11/X.h>
 # include <stdbool.h>
 //# include <ao/ao.h>
@@ -40,12 +40,11 @@ typedef struct s_savset
 	int		(*fct)(void *, char *);
 }	t_savset;
 
-typedef struct	s_save
+typedef struct s_save
 {
 	char	*key;
 	void	*value;
 }	t_save;
-
 
 typedef struct s_img_data
 {
@@ -243,7 +242,6 @@ typedef struct s_vector
 	double	y;
 	t_angle	angle;
 }	t_vector;
-
 
 /*x y are positive*/
 typedef struct s_collide_box
