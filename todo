@@ -192,8 +192,8 @@ x -> tester de changer de map avec un inventire vide
 
 --------------------------------------------------------------
 x -> Fix le segfault du generatuer de map
--> Faire les ghost
--> Norm
+x -> Faire les ghost
+x -> Norm
 -> Faire les portes affichage
 -> Faire les sprites affichage
 -> Faire les textures sol plafond

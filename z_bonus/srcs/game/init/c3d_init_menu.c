@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 10:10:34 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/18 21:47:05 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/18 23:39:37 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,27 @@
 #include "ft.h"
 #include "dict.h"
 
+int	init_settings_menu2(t_game *game)
+{
+	static t_dict		*(*objs[])(t_game *game) = {init_slot1_keyinput,
+		init_slot2_keyinput, init_slot3_keyinput, init_slot4_keyinput,
+		init_slot5_keyinput, init_slot6_keyinput, init_slot7_keyinput,
+		init_slot8_keyinput, init_run_keyinput, init_crouch_keyinput,
+		init_scrollbar};
+	long unsigned int	i;
+	t_dict				*elem;
+
+	i = -1;
+	while (++i < sizeof(objs) / sizeof(objs[0]))
+	{
+		elem = objs[i](game);
+		if (!elem)
+			return (10);
+		dict_add_back(&game->menu.all_objects, elem);
+	}
+	return (0);
+}
+
 int	init_settings_menu(t_game *game)
 {
 	static t_dict		*(*objs[])(t_game *game) = {init_resume_button,
@@ -32,13 +53,9 @@ int	init_settings_menu(t_game *game)
 		init_invertscroll_checkbox, init_camspeedx_slidebar,
 		init_camspeedy_slidebar, init_showfps_checkbox, init_showmmap_checkbox,
 		init_invertmouse_checkbox, init_resolution_slidebar, init_fps_slidebar,
-		init_drop_keyinput, init_interact_keyinput, init_slot1_keyinput,
-		init_slot2_keyinput, init_slot3_keyinput, init_slot4_keyinput,
-		init_slot5_keyinput, init_slot6_keyinput, init_slot7_keyinput,
-		init_slot8_keyinput, init_run_keyinput, init_crouch_keyinput,
-		init_scrollbar};
-	t_dict				*elem;
+		init_drop_keyinput, init_interact_keyinput};
 	long unsigned int	i;
+	t_dict				*elem;
 
 	i = -1;
 	game->menu = (t_menu){.scroll_amount = 0, .error = 0};
@@ -77,6 +94,9 @@ int	init_menu(t_game *game)
 	int	error;
 
 	error = init_settings_menu(game);
+	if (error)
+		return (error);
+	error = init_settings_menu2(game);
 	if (error)
 		return (error);
 	error = init_start_menu(game);

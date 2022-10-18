@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 11:13:33 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/18 20:54:57 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/18 23:57:45 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,17 +40,53 @@
 /*PLayer*/
 # define INVULNERABILITY_DURATION 500
 
+/*Player action*/
+int		benergy_use(t_game *game, t_dict *dict, t_object *obj);
+int		benergy_drop(t_game *game, t_dict *dict, t_object *obj);
+int		benergy_interact(t_game *game, t_dict *dict, t_object *obj);
+int		bonushp_use(t_game *game, t_dict *dict, t_object *obj);
+int		bonushp_drop(t_game *game, t_dict *dict, t_object *obj);
+int		bonushp_interact(t_game *game, t_dict *dict, t_object *obj);
+int		door_use(t_game *game, t_dict *dict, t_object *obj);
+int		door_drop(t_game *game, t_dict *dict, t_object *obj);
+int		door_interact(t_game *game, t_dict *dict, t_object *obj);
+int		endoor_use(t_game *game, t_dict *dict, t_object *obj);
+int		endoor_drop(t_game *game, t_dict *dict, t_object *obj);
+int		endoor_interact(t_game *game, t_dict *dict, t_object *obj);
+int		energy_use(t_game *game, t_dict *dict, t_object *obj);
+int		energy_drop(t_game *game, t_dict *dict, t_object *obj);
+int		energy_interact(t_game *game, t_dict *dict, t_object *obj);
+int		fullheal_use(t_game *game, t_dict *dict, t_object *obj);
+int		fullheal_drop(t_game *game, t_dict *dict, t_object *obj);
+int		fullheal_interact(t_game *game, t_dict *dict, t_object *obj);
+int		ghost_use(t_game *game, t_dict *dict, t_object *obj);
+int		ghost_drop(t_game *game, t_dict *dict, t_object *obj);
+int		ghost_interact(t_game *game, t_dict *dict, t_object *obj);
+int		heal_use(t_game *game, t_dict *dict, t_object *obj);
+int		heal_drop(t_game *game, t_dict *dict, t_object *obj);
+int		heal_interact(t_game *game, t_dict *dict, t_object *obj);
+int		key_use(t_game *game, t_dict *dict, t_object *obj);
+int		key_drop(t_game *game, t_dict *dict, t_object *obj);
+int		key_interact(t_game *game, t_dict *dict, t_object *obj);
+int		lamp_use(t_game *game, t_dict *dict, t_object *obj);
+int		lamp_drop(t_game *game, t_dict *dict, t_object *obj);
+int		lamp_interact(t_game *game, t_dict *dict, t_object *obj);
+
 /*Obj*/
-int	init_ghost(t_game *game, t_object **obj);
-int	init_key(t_game *game, t_object **obj);
-int	init_lamp(t_game *game, t_object **obj);
-int	init_door(t_game *game, t_object **obj);
-int	init_endoor(t_game *game, t_object **obj);
-int	init_fullheal(t_game *game, t_object **obj);
-int	init_energy(t_game *game, t_object **obj);
-int	init_benergy(t_game *game, t_object **obj);
-int	init_bonushp(t_game *game, t_object **obj);
-int	init_heal(t_game *game, t_object **obj);
-int	init_obj(t_game *game, char *tag, int x, int y);
+int		init_ghost(t_game *game, t_object **obj);
+int		init_key(t_game *game, t_object **obj);
+int		init_lamp(t_game *game, t_object **obj);
+int		init_door(t_game *game, t_object **obj);
+int		init_endoor(t_game *game, t_object **obj);
+int		init_fullheal(t_game *game, t_object **obj);
+int		init_energy(t_game *game, t_object **obj);
+int		init_benergy(t_game *game, t_object **obj);
+int		init_bonushp(t_game *game, t_object **obj);
+int		init_heal(t_game *game, t_object **obj);
+int		init_obj(t_game *game, char *tag, int x, int y);
+
+/*Utils*/
+int		move_ghost(t_game *game, t_object *obj);
+t_dict	*get_nearest_door(t_game *game, t_dict **all_obj);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 20:37:45 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/17 21:20:47 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/19 00:18:12 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ int	run_sound(char *file)
 			mpg123_delete(sound.mh), mpg123_exit(), ao_shutdown(), 0);
     while (mpg123_read(sound.mh, sound.buffer, sound.buffer_size, &sound.done)
 		== MPG123_OK)
-        ao_play(sound.dev, (char *)sound.buffer, sound.done);
+    ao_play(sound.dev, (char *)sound.buffer, sound.done);
 	free_sound(&sound);
     return (0);
 }

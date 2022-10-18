@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 16:04:48 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/18 20:54:27 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/18 23:58:53 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,53 +23,18 @@
 
 #include <stdio.h>
 
-int	ghost_use(t_game *game, t_dict *dict, t_object *obj)
-{
-	(void)game;
-	(void)dict;
-	(void)obj;
-	return (0);
-}
-
-int	ghost_drop(t_game *game, t_dict *dict, t_object *obj)
-{
-	(void)dict;
-	(void)obj;
-	(void)game;
-	return (0);
-}
-
 int	ghost_collide(t_game *game, t_dict *dict, t_object *obj)
 {
 	(void)dict;
 	(void)obj;
 	if (game->player.invincible_frames == 0)
 	{
-		game->player.life -= 1 * (1 + (game->level * (1 + game->settings.difficulty)) / 7);
+		game->player.life -= 1 * (1 + (game->level
+					* (1 + game->settings.difficulty)) / 7);
 		if (game->player.life < 0)
 			game->player.life = 0;
 		game->player.invincible_frames = INVULNERABILITY_DURATION;
 	}
-	return (0);
-}
-
-int	move_ghost(t_game *game, t_object *obj)
-{
-	double	dist_x;
-	double	dist_y;
-	double	angle;
-
-	dist_x = game->player.pos.x - obj->pos.x;
-	dist_y = game->player.pos.y - obj->pos.y;
-	angle = atan(dist_y / dist_x);
-	if (dist_x < 0)
-		obj->pos.x -= GHOST_SPEED * game->delay * dabs(cos(angle));
-	else
-		obj->pos.x += GHOST_SPEED * game->delay * dabs(cos(angle));
-	if (dist_y < 0)
-		obj->pos.y -= GHOST_SPEED * game->delay * dabs(sin(angle));
-	else
-		obj->pos.y += GHOST_SPEED * game->delay * dabs(sin(angle));
 	return (0);
 }
 
@@ -93,14 +58,6 @@ int	ghost_delete(t_game *game, t_dict *dict, t_object *obj)
 {
 	(void)obj;
 	dict_delone(&game->map.all_objects, dict, 0, free);
-	return (0);
-}
-
-int	ghost_interact(t_game *game, t_dict *dict, t_object *obj)
-{
-	(void)dict;
-	(void)obj;
-	(void)game;
 	return (0);
 }
 

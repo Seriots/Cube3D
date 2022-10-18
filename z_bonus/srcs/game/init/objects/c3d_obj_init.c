@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 14:45:40 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/18 17:35:19 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/18 23:43:03 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@
 int	set_obj(t_game *game, t_object **object, char *key)
 {
 	const t_init	all_tag[] = {{GHOST, init_ghost}, {KEY, init_key},
-		{DOOR, init_door}, {ENDOOR, init_endoor}, {LAMP, init_lamp},
-		{HEAL, init_heal}, {FULLHEAL, init_fullheal}, {ENERGY, init_energy},
-		{B_ENERGY, init_benergy}, {BONUSHP, init_bonushp}};
+	{DOOR, init_door}, {ENDOOR, init_endoor}, {LAMP, init_lamp},
+	{HEAL, init_heal}, {FULLHEAL, init_fullheal}, {ENERGY, init_energy},
+	{B_ENERGY, init_benergy}, {BONUSHP, init_bonushp}};
 	unsigned int	i;
 
 	i = 0;

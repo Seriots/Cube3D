@@ -1,32 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   c3d_collide_player_obj.c                           :+:      :+:    :+:   */
+/*   c3d_action_ghost.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/18 17:42:28 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/19 00:16:53 by lgiband          ###   ########.fr       */
+/*   Created: 2022/10/18 16:04:48 by lgiband           #+#    #+#             */
+/*   Updated: 2022/10/18 23:54:08 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
+#include <math.h>
+
 #include "c3d_struct.h"
-#include "c3d_settings.h"
+#include "c3d_init.h"
+#include "c3d_object.h"
 #include "c3d_utils.h"
 
-int	check_collisions_objects(t_game *game, t_dict *all_objects)
-{
-	t_dict		*tmp;
-	t_object	*obj;
+#include "dict.h"
+#include "ft.h"
 
-	tmp = all_objects;
-	while (tmp)
-	{
-		obj = tmp->value;
-		if (obj->is_collide && norm(obj->pos.x - game->player.pos.x,
-				obj->pos.y - game->player.pos.y) < MIN_DIST_COLLIDE)
-			obj->collide(game, all_objects, obj);
-		tmp = tmp->next;
-	}
+#include <stdio.h>
+
+int	ghost_use(t_game *game, t_dict *dict, t_object *obj)
+{
+	(void)game;
+	(void)dict;
+	(void)obj;
+	return (0);
+}
+
+int	ghost_drop(t_game *game, t_dict *dict, t_object *obj)
+{
+	(void)dict;
+	(void)obj;
+	(void)game;
+	return (0);
+}
+
+int	ghost_interact(t_game *game, t_dict *dict, t_object *obj)
+{
+	(void)dict;
+	(void)obj;
+	(void)game;
 	return (0);
 }

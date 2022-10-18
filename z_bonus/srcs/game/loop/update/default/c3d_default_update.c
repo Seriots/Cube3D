@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 13:42:48 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/18 17:42:13 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/19 00:16:13 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,14 @@ static int	refresh_mouse_move(t_game *game)
 static int	update_stamina(t_game *game)
 {
 	if (game->player.run && (game->player.right
-		|| game->player.left || game->player.forward
-		|| game->player.backward)
-			&& game->player.stamina > 0)
+			|| game->player.left || game->player.forward
+			|| game->player.backward)
+		&& game->player.stamina > 0)
 		game->player.stamina -= game->delay * STAMINA_LOSS;
 	else if (game->player.stamina < 100)
-		game->player.stamina += (STAMINA_BASE_GAIN + (game->player.stamina / game->player.max_stamina) * STAMINA_GAIN) * game->delay;
+		game->player.stamina += (STAMINA_BASE_GAIN
+				+ (game->player.stamina / game->player.max_stamina)
+				* STAMINA_GAIN) * game->delay;
 	if (game->player.stamina < 0)
 		game->player.stamina = 0;
 	if (game->player.stamina > 100)

@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 16:31:05 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/17 17:55:28 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/19 00:10:41 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,34 @@ int	loading(t_game *game)
 	return (0);
 }
 
+int	fade_update_loop(t_game *game, float percent, int limit_x, int limit_y)
+{
+	int	x;
+	int	y;
+
+	y = -1;
+	while (y <= limit_y)
+	{
+		x = -1;
+		while (++x <= limit_x)
+		{
+			my_mlx_pixel_put(&game->all_img.screen_img, x, y, 0x000000);
+			my_mlx_pixel_put(&game->all_img.screen_img,
+				WIN_WIDTH - x, y, 0x000000);
+			my_mlx_pixel_put(&game->all_img.screen_img,
+				x, WIN_HEIGHT - y, 0x000000);
+			my_mlx_pixel_put(&game->all_img.screen_img,
+				WIN_WIDTH - x, WIN_HEIGHT - y, 0x000000);
+		}
+	}
+	if (percent == 1)
+	{
+		game->load_start_frame = timestamp_msec(0);
+		game->fcts.update_fct = loading;
+	}
+	return (0);
+}
+
 int	fade_update(t_game *game)
 {
 	float	percent;
@@ -49,30 +77,13 @@ int	fade_update(t_game *game)
 	int		x;
 	int		y;
 
-	percent = ((float)(game->last_frame - game->load_start_frame) / FADE_DURATION);
+	percent = ((float)(game->last_frame - game->load_start_frame)
+			/ FADE_DURATION);
 	if (percent > 1)
 		percent = 1;
 	limit_x = percent * (WIN_WIDTH / 2);
 	limit_y = percent * (WIN_HEIGHT / 2);
-	y = 0;
-	while (y <= limit_y)
-	{
-		x = 0;
-		while (x <= limit_x)
-		{
-			my_mlx_pixel_put(&game->all_img.screen_img, x, y, 0x000000);
-			my_mlx_pixel_put(&game->all_img.screen_img, WIN_WIDTH - x, y, 0x000000);
-			my_mlx_pixel_put(&game->all_img.screen_img, x, WIN_HEIGHT - y, 0x000000);
-			my_mlx_pixel_put(&game->all_img.screen_img, WIN_WIDTH - x, WIN_HEIGHT - y, 0x000000);
-			x++;
-		}
-		y++;
-	}
-	if (percent == 1)
-	{
-		game->load_start_frame = timestamp_msec(0);
-		game->fcts.update_fct = loading;
-	}
+	fade_update_loop(game, percent, limit_x, limit_y);
 	return (0);
 }
 

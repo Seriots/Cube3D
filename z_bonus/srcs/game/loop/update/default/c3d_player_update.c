@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 10:38:52 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/18 17:55:42 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/19 00:15:21 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,24 @@
 #include <math.h>
 
 #include <stdio.h>
+
+int	apply_movement(t_game *game, double *mov_x, double *mov_y)
+{
+	if (game->player.left == 1)
+	{
+		*mov_y -= (game->player.speed * game->delay * game->player.plane.cos)
+			/ 2.0;
+		*mov_x -= (game->player.speed * game->delay * game->player.plane.sin)
+			/ 2.0;
+	}
+	else if (game->player.right == 1)
+	{
+		*mov_y += (game->player.speed * game->delay * game->player.plane.cos)
+			/ 2.0;
+		*mov_x += (game->player.speed * game->delay * game->player.plane.sin)
+			/ 2.0;
+	}
+}
 
 int	get_movement(t_game *game, double *mov_x, double *mov_y)
 {
@@ -35,19 +53,12 @@ int	get_movement(t_game *game, double *mov_x, double *mov_y)
 	}
 	else if (game->player.backward == 1)
 	{
-		*mov_y += ((game->player.speed * game->delay * game->player.plane.sin) / 2.0);
-		*mov_x -= ((game->player.speed * game->delay * game->player.plane.cos) / 2.0);
+		*mov_y += (game->player.speed * game->delay * game->player.plane.sin)
+			/ 2.0;
+		*mov_x -= (game->player.speed * game->delay * game->player.plane.cos)
+			/ 2.0;
 	}
-	else if (game->player.left == 1)
-	{
-		*mov_y -= ((game->player.speed * game->delay * game->player.plane.cos) / 2.0);
-		*mov_x -= ((game->player.speed * game->delay * game->player.plane.sin) / 2.0);
-	}
-	else if (game->player.right == 1)
-	{
-		*mov_y += ((game->player.speed * game->delay * game->player.plane.cos) / 2.0);
-		*mov_x += ((game->player.speed * game->delay * game->player.plane.sin) / 2.0);
-	}
+	apply_movement(game, mov_x, mov_y);
 	return (0);
 }
 
@@ -85,7 +96,6 @@ int	update_rotation(t_game *game)
 		game->player.angleup += 0.3;
 		if (game->player.angleup > 6.0)
 			game->player.angleup = 6.0;
-		
 	}
 	if (game->player.turn_up == 1)
 	{
@@ -109,14 +119,16 @@ int	replace_hand(t_game *game)
 	if (game->inventory.current_hand.x != 0)
 	{
 		signe = sign(game->inventory.current_hand.x);
-		game->inventory.current_hand.x += (HAND_CENTER_SPEED * -signe * game->delay);
+		game->inventory.current_hand.x
+			+= (HAND_CENTER_SPEED * -signe * game->delay);
 		if (signe != sign(game->inventory.current_hand.x))
 			game->inventory.current_hand.x = 0;
 	}
 	if (game->inventory.current_hand.y != 0)
 	{
 		signe = sign(game->inventory.current_hand.y);
-		game->inventory.current_hand.y += (HAND_CENTER_SPEED * -signe * game->delay);
+		game->inventory.current_hand.y
+			+= (HAND_CENTER_SPEED * -signe * game->delay);
 		if (signe != sign(game->inventory.current_hand.y))
 			game->inventory.current_hand.y = 0;
 	}

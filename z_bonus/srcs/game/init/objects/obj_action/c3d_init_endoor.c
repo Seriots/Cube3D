@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   c3d_init_enendoor.c                                  :+:      :+:    :+:   */
+/*   c3d_init_endoor.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 11:53:07 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/13 11:55:48 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/18 23:59:14 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,22 +23,6 @@
 
 #include <stdio.h>
 
-int	endoor_use(t_game *game, t_dict *dict, t_object *obj)
-{
-	(void)game;
-	(void)dict;
-	(void)obj;
-	return (0);
-}
-
-int	endoor_drop(t_game *game, t_dict *dict, t_object *obj)
-{
-	(void)game;
-	(void)dict;
-	(void)obj;
-	return (0);
-}
-
 int	endoor_collide(t_game *game, t_dict *dict, t_object *obj)
 {
 	(void)game;
@@ -52,7 +36,6 @@ int	endoor_update(t_game *game, t_dict *dict, t_object *obj)
 	(void)game;
 	(void)dict;
 	(void)obj;
-	//printf("endoor_update, %f %f\n", obj->pos.x, obj->pos.y);
 	return (0);
 }
 
@@ -61,15 +44,6 @@ int	endoor_delete(t_game *game, t_dict *dict, t_object *obj)
 	(void)game;
 	(void)dict;
 	(void)obj;
-	return (0);
-}
-
-int	endoor_interact(t_game *game, t_dict *dict, t_object *obj)
-{
-	(void)game;
-	(void)dict;
-	(void)obj;
-	next_stage(game);
 	return (0);
 }
 
