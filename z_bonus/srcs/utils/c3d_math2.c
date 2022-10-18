@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   c3d_math2.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ppajot <ppajot@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 11:02:27 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/13 21:11:20 by ppajot           ###   ########.fr       */
+/*   Updated: 2022/10/18 20:09:43 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,4 @@ double	ft_ceil(double nbr)
 	else if (nbr > 0 && nbr != (int)nbr)
 		return ((int)nbr + 1.0);
 	return (nbr);
-}
-
-double	dist_to_obj(t_coord player, t_coord obj)
-{
-	return (norm(player.x - obj.x, player.y - obj.y));
 }

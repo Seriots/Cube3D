@@ -120,6 +120,7 @@ define SRCS :=
 		menu/start/c3d_button_quit.c
 		menu/start/c3d_button_play.c
 		menu/start/c3d_seed.c
+		menu/start/c3d_start_map.c
 		menu/start/c3d_mapinput_mappath.c
 		parsing/c3d_parsing_check.c
 		parsing/c3d_parsing_getelem.c
@@ -138,6 +139,7 @@ define SRCS :=
 		utils/c3d_inventory_utils.c
 		utils/c3d_math.c
 		utils/c3d_math2.c
+		utils/c3d_math3.c
 		utils/c3d_menu_utils.c
 		utils/c3d_menu_utils2.c
 		utils/c3d_menu_utils3.c

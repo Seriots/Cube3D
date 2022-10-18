@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 16:04:48 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/18 18:14:54 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/18 20:54:27 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,14 +62,14 @@ int	move_ghost(t_game *game, t_object *obj)
 	dist_x = game->player.pos.x - obj->pos.x;
 	dist_y = game->player.pos.y - obj->pos.y;
 	angle = atan(dist_y / dist_x);
-	if (dist_x > 0)
-		obj->pos.x += GHOST_SPEED * game->delay * cos(angle);
-	else if (dist_x < 0)
-		obj->pos.x -= GHOST_SPEED * game->delay * cos(angle);
-	if (dist_y > 0)
-		obj->pos.y += GHOST_SPEED * game->delay * sin(angle);
-	else if (dist_y < 0)
-		obj->pos.y -= GHOST_SPEED * game->delay * sin(angle);
+	if (dist_x < 0)
+		obj->pos.x -= GHOST_SPEED * game->delay * dabs(cos(angle));
+	else
+		obj->pos.x += GHOST_SPEED * game->delay * dabs(cos(angle));
+	if (dist_y < 0)
+		obj->pos.y -= GHOST_SPEED * game->delay * dabs(sin(angle));
+	else
+		obj->pos.y += GHOST_SPEED * game->delay * dabs(sin(angle));
 	return (0);
 }
 
@@ -86,7 +86,6 @@ int	ghost_update(t_game *game, t_dict *dict, t_object *obj)
 		image_value = obj->nb_image - 1;
 	obj->game_img = &obj->all_img[image_value];
 	move_ghost(game, obj);
-	printf("ghost pos: %f, %f\n", obj->pos.x, obj->pos.y);
 	return (0);
 }
 

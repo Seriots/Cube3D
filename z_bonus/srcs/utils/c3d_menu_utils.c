@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 13:04:03 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/12 22:42:53 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/18 20:08:17 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int	get_key_color(t_game *game, t_menu *menu, KeySym *key)
 		}
 		tmp = tmp->next;
 	}
-		return (0x00DD00);
+	return (0x00DD00);
 }
 
 int	update_key_color(t_game *game, t_menu *menu)

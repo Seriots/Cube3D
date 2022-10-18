@@ -15,6 +15,9 @@
 
 # include "c3d_struct.h"
 
+/*load map*/
+int	load_new_map(t_game *game, char *map_path);
+
 /*Save*/
 int	load_settings(t_game *game);
 int	save_settings(t_game *game);
