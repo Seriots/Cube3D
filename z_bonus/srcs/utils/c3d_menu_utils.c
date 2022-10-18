@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 13:04:03 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/18 20:08:17 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/18 21:02:49 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	clear_all_other_selected(t_game *game, void *keyinput, t_dict *dict)
 	return (0);
 }
 
-int	get_key_color(t_game *game, t_menu *menu, KeySym *key)
+int	get_key_col(t_game *game, t_menu *menu, KeySym *key)
 {
 	t_dict	*tmp;
 
@@ -70,7 +70,7 @@ int	update_key_color(t_game *game, t_menu *menu)
 	while (tmp)
 	{
 		if (ft_strcmp(tmp->key, KEYINPUT) == 0)
-			((t_keyinput *)tmp->value)->color = get_key_color(game, menu,
+			((t_keyinput *)tmp->value)->color = get_key_col(game, menu,
 					((t_keyinput *)tmp->value)->modified_value);
 		tmp = tmp->next;
 	}

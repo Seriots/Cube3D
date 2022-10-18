@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 21:05:06 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/18 13:17:18 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/18 21:25:39 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 
 #include <stdio.h>
 
-/*check les distance a tout les objets, si dist < x alors call la fonction interact de l'obj*/
 int	objects_interact(t_game *game)
 {
 	t_dict		*dict;

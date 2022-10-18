@@ -90,7 +90,7 @@ t_dict	*init_slot8_keyinput(t_game *game);
 
 /*Utils*/
 int		clear_all_other_selected(t_game *game, void *keyinput, t_dict *dict);
-int		get_key_color(t_game *game, t_menu *menu, KeySym *key);
+int		get_key_col(t_game *game, t_menu *menu, KeySym *key);
 int		update_key_color(t_game *game, t_menu *menu);
 int		edit_rgb(t_numinput *numinput);
 int		get_number_from_key(KeySym key);

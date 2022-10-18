@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 11:25:13 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/18 20:33:37 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/18 21:21:35 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	get_nb_objects(t_game *game, int width, int height)
 int	choose_obj_map(char *obj)
 {
 	int	r;
-	
+
 	r = rand() % 100;
 	if (r < 30)
 		ft_strlcpy(obj, HEAL, 256);
@@ -62,7 +62,7 @@ int	choose_obj_map(char *obj)
 
 int	set_obj_map(t_game *game, char *obj, int width, int height)
 {
-	const char		*objs[256] = {HEAL, ENERGY, BONUSHP, B_ENERGY, FULLHEAL}; 
+	const char		*objs[256] = {HEAL, ENERGY, BONUSHP, B_ENERGY, FULLHEAL};
 	unsigned long	i;
 	int				x;
 	int				y;

@@ -39,11 +39,11 @@ int	set_inventory(t_game *game)
 	else
 		game->inventory.size = 4;
 	game->inventory.selected = -1;
-	/*TEST*/
 	elem = dict_getelem_key(game->map.all_objects, LAMP);
 	if (elem)
 		add_items(game, &game->inventory, elem->value);
-	add_items(game, &game->inventory, dict_getelem_key(game->map.all_objects, KEY)->value);
+	add_items(game, &game->inventory,
+		dict_getelem_key(game->map.all_objects, KEY)->value);
 	return (0);
 }
 

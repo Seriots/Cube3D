@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 20:12:58 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/18 20:25:01 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/18 21:01:04 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,10 @@ int	get_all_doors(t_game *game, t_map *map)
 		{
 			if (map->map[i][j] == '2')
 				error = init_obj(game, DOOR, j * CASE_SIZE + CASE_SIZE / 2,
-					i * CASE_SIZE + CASE_SIZE / 2);
+						i * CASE_SIZE + CASE_SIZE / 2);
 			if (map->map[i][j] == '3')
 				error = init_obj(game, ENDOOR, j * CASE_SIZE + CASE_SIZE / 2,
-					i * CASE_SIZE + CASE_SIZE / 2);
+						i * CASE_SIZE + CASE_SIZE / 2);
 			if (error)
 				return (error);
 			j++;
@@ -74,6 +74,25 @@ int	init_map_objects(t_game *game, t_map *map)
 	return (0);
 }
 
+int	init_all_map_parameters(t_game *game)
+{
+	int	error;
+
+	error = init_map_objects(game, &game->map);
+	if (error)
+		return (error);
+	error = get_all_doors(game, &game->map);
+	if (error)
+		return (error);
+	error = init_player(game);
+	if (error)
+		return (error);
+	error = open_textures(game, &game->map);
+	if (error)
+		return (error);
+	return (0);
+}
+
 int	load_new_map(t_game *game, char *map_path)
 {
 	int			error;
@@ -91,16 +110,7 @@ int	load_new_map(t_game *game, char *map_path)
 		if (error)
 			return (free_map(&game->map), display_error(error));
 	}
-	error = init_map_objects(game, &game->map);
-	if (error)
-		return (free_map(&game->map), display_error(error));
-	error = get_all_doors(game, &game->map);
-	if (error)
-		return (free_map(&game->map), display_error(error));
-	error = init_player(game);
-	if (error)
-		return (free_map(&game->map), display_error(error));
-	error = open_textures(game, &game->map);
+	error = init_all_map_parameters(game);
 	if (error)
 		return (free_map(&game->map), display_error(error));
 	load_default(game);
