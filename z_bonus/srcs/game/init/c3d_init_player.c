@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 10:51:13 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/18 12:56:50 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/18 18:05:47 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ static void	set_player_coord(t_map *map, t_player *player)
 		{
 			if (ft_isinset(map->map[i][j], "NSWE"))
 			{
-				printf("player initialize, x = %d, y = %d\n", j, i);
 				player->pos.x = j * CASE_SIZE + CASE_SIZE / 2;
 				player->pos.y = i * CASE_SIZE + CASE_SIZE / 2;
 				player->plane.value = get_rotation(map->map[i][j]);
@@ -58,6 +57,7 @@ static void	set_player_coord(t_map *map, t_player *player)
 		}
 		i++;
 	}
+	
 }
 
 int	init_player(t_game *game)
@@ -75,8 +75,9 @@ int	init_player(t_game *game)
 	game->player.crouch = 0;
 	game->player.angleup = 0;
 	game->player.elevation = 0;
-	game->player.max_life = 7;
-	game->player.life = game->player.max_life - 5;
+	game->player.invincible_frames = 0;
+	game->player.max_life = 20;
+	game->player.life = game->player.max_life;
 	game->player.max_stamina = 100;
 	game->player.stamina = game->player.max_stamina;
 	return (0);

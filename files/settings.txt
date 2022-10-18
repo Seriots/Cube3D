@@ -1,6 +1,6 @@
 fov=10
 x_sensibility=30
-y_sensibility=30
+y_sensibility=88
 resolution=100
 fps=60
 scroll_speed=8

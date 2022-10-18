@@ -134,6 +134,7 @@
 # define CROUCH_SPEED_FACTOR 0.3
 
 # define MIN_DIST_OBJ 48.0f
+# define MIN_DIST_COLLIDE 20.0f
 
 /*Default Key*/
 /*

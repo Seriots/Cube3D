@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 11:13:33 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/18 11:43:23 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/18 17:58:10 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,21 @@
 # define MAP "MAP"
 # define GHOST "GHOST"
 
-
 # define GAME 0
 # define HAND 1
 # define ICON 2
 
+/*Ghost*/
+# define GHOST_SPEED 0.1
+# define GHOST_DMG 1
+# define GHOST_NB_IMG 9
+# define GHOST_ANIM_DURATION 1000
+
+/*PLayer*/
+# define INVULNERABILITY_DURATION 300
+
 /*Obj*/
+int	init_ghost(t_game *game, t_object **obj);
 int	init_key(t_game *game, t_object **obj);
 int	init_lamp(t_game *game, t_object **obj);
 int	init_door(t_game *game, t_object **obj);

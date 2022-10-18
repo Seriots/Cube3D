@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 10:38:52 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/17 11:23:09 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/18 17:55:42 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,10 +145,20 @@ int	update_hand(t_game *game)
 	return (0);
 }
 
+int	update_invicibe_frame(t_game *game)
+{
+	if (game->player.invincible_frames > 0)
+		game->player.invincible_frames -= game->delay;
+	if (game->player.invincible_frames < 0)
+		game->player.invincible_frames = 0;
+	return (0);
+}
+
 int	update_player(t_game *game)
 {
 	update_movement(game);
 	update_rotation(game);
 	update_hand(game);
+	update_invicibe_frame(game);
 	return (0);
 }

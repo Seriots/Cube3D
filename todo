@@ -166,7 +166,8 @@ x -> ajouter du mouvement sur le hand object
 	-> stamina
 x -> ajouter les message d'erruer ingame
 x -> fix le spawn du player
-	-> normalement le spawn est fix mais il y a un segfault dans la generation de map je sais pas ou
+	-> il y a un segfault dans la generation de map je sais pas ou
+	-> il segfault parce aue la map n'est psa initialiser ou parce que on essaye de voir trop loin dans la map
 x -> faire l'aniamtaion de fin de map (fade noir)
 x -> afficher le nombre de level parcouru
 x -> faire les fonctions pour link le son
@@ -190,7 +191,9 @@ x -> tester de changer de map avec un inventire vide
 -> arreter de display en permanence quand ya rien qui ce passe
 
 --------------------------------------------------------------
+x -> Fix le segfault du generatuer de map
 -> Faire les ghost
+-> Norm
 -> Faire les portes affichage
 -> Faire les sprites affichage
 -> Faire les textures sol plafond
@@ -198,5 +201,6 @@ x -> tester de changer de map avec un inventire vide
 -> Faire le loading screen
 -> Ajouter le son
 -> Fix les bugs
--> Fix le segfault du generatuer de map
+-> Norm
 -> check tous les appels systeme
+-> Norm

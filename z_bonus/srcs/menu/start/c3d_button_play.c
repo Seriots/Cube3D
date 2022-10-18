@@ -75,6 +75,9 @@ int	init_map_objects(t_game *game, t_map *map)
 	error = init_obj(game, LAMP, 0, 0);
 	if (error)
 		return (error);
+	error = init_obj(game, GHOST, 0, 0);
+	if (error)
+		return (error);
 	return (0);
 }
 
@@ -127,9 +130,6 @@ int	set_inventory(t_game *game)
 	elem = dict_getelem_key(game->map.all_objects, LAMP);
 	if (elem)
 		add_items(game, &game->inventory, elem->value);
-	add_items(game, &game->inventory, dict_getelem_key(game->map.all_objects, KEY)->value);
-	add_items(game, &game->inventory, dict_getelem_key(game->map.all_objects, KEY)->value);
-	add_items(game, &game->inventory, dict_getelem_key(game->map.all_objects, KEY)->value);
 	add_items(game, &game->inventory, dict_getelem_key(game->map.all_objects, KEY)->value);
 //	add_items(game, &game->inventory, dict_getelem_key(game->map.all_objects, ENERGY)->value);
 //	add_items(game, &game->inventory, dict_getelem_key(game->map.all_objects, B_ENERGY)->value);

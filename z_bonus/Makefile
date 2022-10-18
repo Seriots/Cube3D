@@ -32,6 +32,7 @@ define SRCS :=
 		game/init/objects/c3d_init_energy.c
 		game/init/objects/c3d_init_benergy.c
 		game/init/objects/c3d_init_bonushp.c
+		game/init/objects/c3d_init_ghost.c
 		game/init/c3d_init_game.c
 		game/init/c3d_init_images.c
 		game/init/c3d_init_menu.c
@@ -62,6 +63,7 @@ define SRCS :=
 		game/loop/update/default/c3d_minimap_update.c
 		game/loop/update/default/c3d_player_collide.c
 		game/loop/update/default/c3d_player_update.c
+		game/loop/update/default/c3d_collide_player_obj.c
 		game/loop/update/default/c3d_next_stage.c
 		game/loop/update/default/c3d_objects_update.c
 		game/loop/update/menu/c3d_draw_button.c

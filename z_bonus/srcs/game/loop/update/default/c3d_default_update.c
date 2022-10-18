@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 13:42:48 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/18 14:05:31 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/18 17:42:13 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ int	default_update(t_game *game)
 	update_stamina(game);
 	update_player(game);
 	update_objects(game, game->map.all_objects);
+	check_collisions_objects(game, game->map.all_objects);
 	update_minimap(game);
 	return (0);
 }

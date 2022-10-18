@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 10:51:50 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/17 16:08:51 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/18 17:12:18 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,8 @@ int	init_images(t_game *game)
 		|| init_objects_img(game, "imgs/xpm/object/fullheal", game->all_img.fullheal)
 		|| init_objects_img(game, "imgs/xpm/object/bonushp", game->all_img.bonushp)
 		|| init_hud(game)
-		|| init_images_group(game, "imgs/xpm/cursor", 8, &game->all_img.all_cursor_img))
+		|| init_images_group(game, "imgs/xpm/cursor/cursor", 8, &game->all_img.all_cursor_img)
+		|| init_images_group(game, "imgs/xpm/ghost/ghost", 9, &game->all_img.all_ghost_img))
 		return (12);
 	return (0);
 }

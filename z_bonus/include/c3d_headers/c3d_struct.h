@@ -68,6 +68,7 @@ typedef struct s_all_img
 	t_img_data	menu_img;
 	t_img_data	minimap_img;
 	t_img_data	*all_cursor_img;
+	t_img_data	*all_ghost_img;
 	t_img_data	flashlight[3];
 	t_img_data	key[3];
 	t_img_data	energy[3];
@@ -115,6 +116,7 @@ typedef struct s_player
 	int		max_life;
 	float	stamina;
 	float	max_stamina;
+	int		invincible_frames;
 }	t_player;
 
 typedef struct s_wall
