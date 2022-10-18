@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   c3d_raycasting_display.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
+/*   By: pierre-yves <pierre-yves@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 10:41:24 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/16 15:26:50 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/17 22:32:16 by pierre-yves      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,38 @@ unsigned int	get_wall_color(int pixel, t_display *display)
 	color = (display->img->addr
 			+ (y * display->img->line_length
 				+ display->x * display->bpp));
+	return (*(unsigned int *)(color));
+}
+
+unsigned int	get_floor_color(int pixel, t_display *display)
+{
+	void	*color;
+	int		x;
+	int		y;
+
+	x = (int)(display->ray.x + display->fc_dist[pixel] * display->ray.angle.cos / display->angle);
+	y = (int)(display->ray.y - display->fc_dist[pixel] * display->ray.angle.sin / display->angle);
+	x = (x - (x / CASE_SIZE) * CASE_SIZE) * display->fl->width / CASE_SIZE;
+	y = (y - (y / CASE_SIZE) * CASE_SIZE) * display->fl->height / CASE_SIZE;
+	color = (display->fl->addr
+			+ (y * display->fl->line_length
+				+ x * display->bpp));	
+	return (*(unsigned int *)(color));
+}
+
+unsigned int	get_ceil_color(int pixel, t_display *display)
+{
+	void	*color;
+	int		x;
+	int		y;
+
+	x = (int)(display->ray.x + display->fc_dist[pixel] * display->ray.angle.cos / display->angle);
+	y = (int)(display->ray.y - display->fc_dist[pixel] * display->ray.angle.sin / display->angle);
+	x = (x - (x / CASE_SIZE) * CASE_SIZE) * display->ce->width / CASE_SIZE;
+	y = (y - (y / CASE_SIZE) * CASE_SIZE) * display->ce->height / CASE_SIZE;
+	color = (display->ce->addr
+			+ (y * display->ce->line_length
+				+ x * display->bpp));	
 	return (*(unsigned int *)(color));
 }
 
@@ -93,9 +125,9 @@ int	shade_pixel(t_game *game, int color, double dist, t_point p)
 int	get_pixel_color(t_game *game, t_wall *wall, t_point p, t_display *display)
 {
 	if (p.y < display->min)
-		return (shade_pixel(game, game->map.c, display->fc_dist[p.y], p));
+		return (shade_pixel(game, get_floor_color(p.y, display), display->fc_dist[p.y], p));
 	else if (p.y > display->max)
-		return (shade_pixel(game, game->map.f, display->fc_dist[p.y], p));
+		return (shade_pixel(game, get_ceil_color(p.y, display), display->fc_dist[p.y], p));
 	else
 		return (shade_pixel(game, get_wall_color(p.y, display), wall->dist, p));
 	return (0);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   c3d_raycasting.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ppajot <ppajot@student.42.fr>              +#+  +:+       +#+        */
+/*   By: pierre-yves <pierre-yves@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 14:42:38 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/13 20:42:43 by ppajot           ###   ########.fr       */
+/*   Updated: 2022/10/18 01:02:35 by pierre-yves      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,9 @@ int	cast_ray(t_game *game, int i)
 	wall.dist = 0;
 	wall.dist_from_start = 0;
 	intersect_wall(game, ray, &wall);
+	game->display.ray = ray;
 	display_wall(game, &wall, i);
+	game->display.wall_dist[i] = wall.dist;
 	return (0);
 }
 
@@ -60,9 +62,15 @@ int	fill_fc_dist(t_game *game)
 	{
 		dx = i * (double)VIEW_HEIGHT / (double)WIN_HEIGHT;
 		dx -= (double)VIEW_HEIGHT / 2;
-		game->display.fc_dist[i] = (CASE_SIZE / 2 - game->player.z + dx) * game->settings.fov / dabs(-game->player.z + game->player.updown + dx);
+		if (-game->player.z + game->player.updown + dx < 0)
+			game->display.fc_dist[i] = (CASE_SIZE / 2 - game->player.z + dx) * game->settings.fov / (game->player.z - game->player.updown - dx);
+		else
+			game->display.fc_dist[i] = (CASE_SIZE / 2 + game->player.z - dx) * game->settings.fov / (-game->player.z + game->player.updown + dx);
+		//printf("dx: %f, i: %i, dist: %f\n", dx, i, game->display.fc_dist[i]);
 		i++;
 	}
+	game->display.ce = &game->all_img.ce;
+	game->display.fl = &game->all_img.fl;
 	return (0);
 }
 

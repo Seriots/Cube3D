@@ -62,6 +62,8 @@ typedef struct s_all_img
 	t_img_data	so;
 	t_img_data	we;
 	t_img_data	ea;
+	t_img_data	ce;
+	t_img_data	fl;
 	t_img_data	screen_img;
 	t_img_data	menu_img;
 	t_img_data	minimap_img;
@@ -220,19 +222,6 @@ typedef struct s_point
 	int	y;
 }	t_point;
 
-typedef struct s_display
-{
-	double		min;
-	double		max;
-	double		d;
-	double		angle;
-	double		fc_dist[WIN_HEIGHT];
-	t_img_data	*img;
-	int			x;
-	double		factor;
-	int			bpp;
-}	t_display;
-
 typedef struct s_vector
 {
 	double	x;
@@ -240,6 +229,26 @@ typedef struct s_vector
 	t_angle	angle;
 }	t_vector;
 
+typedef struct s_display
+{
+	double		min;
+	double		max;
+	double		d;
+	double		angle;
+	double		fc_dist[WIN_HEIGHT];
+	double		wall_dist[WIN_WIDTH];
+	t_vector	ray;	
+	t_img_data	*img;
+	t_img_data	*ce;
+	t_img_data	*fl;
+	int			x;
+	double		xfov;
+	double		yfov;
+	double		left_angle;
+	double		right_angle;
+	double		factor;
+	int			bpp;
+}	t_display;
 
 /*x y are positive*/
 typedef struct s_collide_box
