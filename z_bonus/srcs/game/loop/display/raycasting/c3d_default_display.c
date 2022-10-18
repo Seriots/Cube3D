@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 13:43:02 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/17 18:00:02 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/18 15:07:54 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "c3d_settings.h"
 #include "c3d_object.h"
 #include "c3d_loop.h"
+#include "c3d_utils.h"
 
 #include "ft.h"
 #include "mlx.h"
@@ -42,15 +43,15 @@ int	show_seed(t_game *game)
 
 int	display_bar(t_game *game)
 {
-	t_dict	*dict;
+	t_object	*obj;
 
 	display_staminabar(game);
 	display_lifebar(game);
 	if (game->inventory.selected >= 0)
 	{
-		dict = dict_getelem_ptr(game->map.all_objects, game->inventory.items[game->inventory.selected]);
-		if (dict && ft_strcmp(dict->key, LAMP) == 0)
-			display_lightbar(game, dict->value);
+		obj = game->inventory.items[game->inventory.selected];
+		if (obj && ft_strcmp(obj->tag, LAMP) == 0)
+			display_lightbar(game, obj);
 	}
 	return (0);
 }
@@ -78,6 +79,26 @@ int	display_level(t_game *game)
 	return (0);
 }
 
+static int	set_cursor(t_game *game)
+{
+	int	x;
+	int	y;
+
+	y = -5;
+	while (y < 5)
+	{
+		x = -5;
+		while (x < 5)
+		{
+			if (norm(x, y) < 2)
+				my_mlx_pixel_put(&game->all_img.screen_img, WIN_WIDTH / 2 + x, WIN_HEIGHT / 2 + y, 0xDDDDDD);
+			x++;
+		}
+		y++;
+	}
+	return (0);
+}
+
 int	default_display(t_game *game)
 {
 	raycasting(game);
@@ -95,5 +116,6 @@ int	default_display(t_game *game)
 	display_inventory(game);
 	display_game_error(game);
 	display_level(game);
+	set_cursor(game);
 	return (0);
 }

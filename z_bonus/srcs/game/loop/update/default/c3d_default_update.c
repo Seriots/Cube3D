@@ -6,13 +6,15 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 13:42:48 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/16 13:19:31 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/18 14:05:31 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "c3d_struct.h"
 #include "c3d_loop.h"
 #include "c3d_event.h"
+
+#include <stdio.h>
 
 static int	refresh_mouse_move(t_game *game)
 {

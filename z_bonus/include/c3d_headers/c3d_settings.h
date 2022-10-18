@@ -133,7 +133,7 @@
 # define RUN_SPEED_FACTOR 1.8
 # define CROUCH_SPEED_FACTOR 0.3
 
-# define MIN_DIST_OBJ 64.0f
+# define MIN_DIST_OBJ 48.0f
 
 /*Default Key*/
 /*

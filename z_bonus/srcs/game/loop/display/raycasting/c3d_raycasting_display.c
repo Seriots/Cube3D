@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 10:41:24 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/17 17:51:55 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/18 15:14:47 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,10 +64,10 @@ int	shade_pixel(t_game *game, int color, double dist, t_point p)
 	int	g;
 	int	b;
 	double	light;
-
+	(void)game;
 	//if (p.x == 500)
 	//	printf("dist: %f\n", dist);
-	if (is_lamp(game))
+/*	if (is_lamp(game))
 	{
 		if (pow(p.x - WIN_WIDTH / 2, 2) + pow(p.y - WIN_HEIGHT / 2, 2) < 90000)
 		{
@@ -82,8 +82,8 @@ int	shade_pixel(t_game *game, int color, double dist, t_point p)
 		light = max(light, 0.1);
 		light = min(light, 1);
 	}
-	else
-		light = 0.2;
+	else*/
+		light = 1.0;
 	r = light * ((color & 0xFF0000) >> 16);
 	g = light * ((color & 0X00FF00) >> 8);
 	b = light * (color & 0X0000FF);
