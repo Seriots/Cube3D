@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 10:38:52 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/19 00:15:21 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/19 00:19:31 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int	apply_movement(t_game *game, double *mov_x, double *mov_y)
 		*mov_x += (game->player.speed * game->delay * game->player.plane.sin)
 			/ 2.0;
 	}
+	return (0);
 }
 
 int	get_movement(t_game *game, double *mov_x, double *mov_y)

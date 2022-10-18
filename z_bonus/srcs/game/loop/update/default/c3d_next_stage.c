@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 16:31:05 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/19 00:10:41 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/19 00:20:31 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,8 +74,6 @@ int	fade_update(t_game *game)
 	float	percent;
 	int		limit_x;
 	int		limit_y;
-	int		x;
-	int		y;
 
 	percent = ((float)(game->last_frame - game->load_start_frame)
 			/ FADE_DURATION);
