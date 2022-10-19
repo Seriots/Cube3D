@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 11:31:24 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/17 14:31:12 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/18 17:26:24 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ int	add_items(t_game *game, t_inventory *inventory, t_object *object)
 
 	i = 0;
 	if (!object || !inventory)
+		return (0);
+	if (object->is_visible == 0)
 		return (0);
 	while (i < inventory->size)
 	{

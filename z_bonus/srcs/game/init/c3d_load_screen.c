@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   c3d_load_screen.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ppajot <ppajot@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 13:30:36 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/13 21:06:42 by ppajot           ###   ########.fr       */
+/*   Updated: 2022/10/17 17:55:49 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ int	load_startscreen(t_game *game)
 	game->start_menu.scroll_amount = 0;
 	game->menu.scroll_amount = 0;
 	game->start_menu.error = 0;
+	game->level = 1;
 	if (HIDE)
 		mlx_mouse_show(game->mlx.display, game->mlx.window);
 	mlx_do_key_autorepeaton(game->mlx.display);

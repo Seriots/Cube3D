@@ -6,7 +6,7 @@
 /*   By: ppajot <ppajot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 13:54:10 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/13 17:37:32 by ppajot           ###   ########.fr       */
+/*   Updated: 2022/10/19 18:53:41 by ppajot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ unsigned int	get_color(int color_setting, unsigned int color)
 	return ((bw_color << 16) | (bw_color << 8) | bw_color);
 }
 
-void	my_mlx_pixel_put(t_img_data *data, int x, int y, int color)
+void	my_mlx_pixel_put(t_img_data *data, int x, int y, unsigned int color)
 {
 	char	*dst;
 

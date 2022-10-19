@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 10:51:13 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/17 14:34:02 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/18 21:45:34 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 #include "c3d_settings.h"
 
 #include "ft.h"
+
+#include <stdio.h>
 
 static float	get_rotation(char c)
 {
@@ -72,8 +74,9 @@ int	init_player(t_game *game)
 	game->player.crouch = 0;
 	game->player.angleup = 0;
 	game->player.elevation = 0;
-	game->player.max_life = 7;
-	game->player.life = game->player.max_life - 5;
+	game->player.invincible_frames = 0;
+	game->player.max_life = 20;
+	game->player.life = game->player.max_life;
 	game->player.max_stamina = 100;
 	game->player.stamina = game->player.max_stamina;
 	return (0);

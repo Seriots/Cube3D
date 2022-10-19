@@ -10,10 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef C3D_STRUCT_BONUS_H
-# define C3D_STRUCT_BONUS_H
+#ifndef C3D_STRUCT_H
+# define C3D_STRUCT_H
 # include <X11/X.h>
 # include <stdbool.h>
+//# include <ao/ao.h>
+//# include <mpg123.h>
 
 # include "dict.h"
 
@@ -38,12 +40,11 @@ typedef struct s_savset
 	int		(*fct)(void *, char *);
 }	t_savset;
 
-typedef struct	s_save
+typedef struct s_save
 {
 	char	*key;
 	void	*value;
 }	t_save;
-
 
 typedef struct s_img_data
 {
@@ -62,10 +63,14 @@ typedef struct s_all_img
 	t_img_data	so;
 	t_img_data	we;
 	t_img_data	ea;
+	t_img_data	ce;
+	t_img_data	fl;
+	t_img_data	ph;
 	t_img_data	screen_img;
 	t_img_data	menu_img;
 	t_img_data	minimap_img;
 	t_img_data	*all_cursor_img;
+	t_img_data	*all_ghost_img;
 	t_img_data	flashlight[3];
 	t_img_data	key[3];
 	t_img_data	energy[3];
@@ -113,6 +118,7 @@ typedef struct s_player
 	int		max_life;
 	float	stamina;
 	float	max_stamina;
+	int		invincible_frames;
 }	t_player;
 
 typedef struct s_wall
@@ -165,11 +171,15 @@ typedef struct s_settings
 typedef struct s_object
 {
 	char		tag[32];
+	int			width;
+	int			height;
 	t_img_data	*all_img;
 	t_img_data	*game_img;
 	t_img_data	*hand_img;
 	t_img_data	*menu_img;
 	t_coord		pos;
+	double		dist;
+	double		angle;
 	int			img_height;
 	int			img_width;
 	int			state;
@@ -220,19 +230,6 @@ typedef struct s_point
 	int	y;
 }	t_point;
 
-typedef struct s_display
-{
-	double		min;
-	double		max;
-	double		d;
-	double		angle;
-	double		fc_dist[WIN_HEIGHT];
-	t_img_data	*img;
-	int			x;
-	double		factor;
-	int			bpp;
-}	t_display;
-
 typedef struct s_vector
 {
 	double	x;
@@ -240,6 +237,27 @@ typedef struct s_vector
 	t_angle	angle;
 }	t_vector;
 
+typedef struct s_display
+{
+	double		min;
+	double		max;
+	double		d;
+	double		angle;
+	double		fc_dist[WIN_HEIGHT];
+	double		wall_dist[WIN_WIDTH];
+	t_vector	ray;	
+	t_img_data	*img;
+	t_img_data	*ce;
+	t_img_data	*fl;
+	int			x;
+	double		xfov;
+	double		yfov;
+	double		left_angle;
+	double		right_angle;
+	double		factor;
+	int			bpp;
+	int			vline;
+}	t_display;
 
 /*x y are positive*/
 typedef struct s_collide_box
@@ -393,6 +411,21 @@ typedef struct s_fct
 	int	(*mousereleased_fct)(int button, int x, int y, t_game *game);
 	int	(*mousemove_fct)(int x, int y, t_game *game);
 }	t_fct;
+/*
+typedef struct s_sound
+{
+    ao_sample_format	format;
+	mpg123_handle		*mh;
+    unsigned char		*buffer;
+    ao_device			*dev;
+    size_t				buffer_size;
+    size_t				done;
+    long				rate;
+    int					err;
+    int					driver;
+    int					channels;
+	int					encoding;
+}	t_sound;*/
 
 typedef struct s_inventory
 {
@@ -425,7 +458,9 @@ typedef struct s_game
 	int			pick_obj;
 	long		last_frame;
 	long		delay;
+	long		load_start_frame;
 	t_error		error;
+	int			level;
 }	t_game;
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   c3d_default_event_mouse.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ppajot <ppajot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 11:04:48 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/17 11:38:51 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/19 17:40:01 by ppajot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,8 +87,10 @@ int	default_mouse_move(int x, int y, t_game *game)
 	float	mov_x;
 	float	mov_y;
 
-	mov_x = (((float)(x - WIN_WIDTH / 2)) * (game->settings.cam_sensibility_x / 70000.0)) * (is_invert(game));
-	mov_y = (((float)(y - WIN_HEIGHT / 2)) * (game->settings.cam_sensibility_y / 50000.0)) * (is_invert(game));
+	mov_x = (((float)(x - WIN_WIDTH / 2))
+			* (game->settings.cam_sensibility_x / 70000.0)) * (is_invert(game));
+	mov_y = (((float)(y - WIN_HEIGHT / 2))
+			* (game->settings.cam_sensibility_y / 50000.0)) * (is_invert(game));
 	game->player.plane.value -= mov_x;
 	game->player.angleup += mov_y;
 	if (dabs(game->player.angleup) > 6)
