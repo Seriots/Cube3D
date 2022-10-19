@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   c3d_init_ghost.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ppajot <ppajot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 16:04:48 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/18 23:58:53 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/19 18:50:54 by ppajot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,8 @@ int	init_ghost(t_game *game, t_object **obj)
 	(*obj)->game_img = &game->all_img.all_ghost_img[0];
 	(*obj)->menu_img = 0;
 	(*obj)->hand_img = 0;
+	(*obj)->width = (*obj)->game_img->width * 6 / 100;
+	(*obj)->height = (*obj)->game_img->height * 6 / 100;
 	(*obj)->state = 0;
 	(*obj)->use_count = 0;
 	(*obj)->use_max = 100;

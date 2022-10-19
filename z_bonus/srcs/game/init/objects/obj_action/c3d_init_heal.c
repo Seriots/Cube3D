@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   c3d_init_heal.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ppajot <ppajot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 13:47:22 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/18 23:58:46 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/19 18:48:27 by ppajot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@ int	init_heal(t_game *game, t_object **obj)
 	(*obj)->game_img = &game->all_img.heal[GAME];
 	(*obj)->menu_img = &game->all_img.heal[ICON];
 	(*obj)->hand_img = &game->all_img.heal[HAND];
+	(*obj)->width = (*obj)->game_img->width * 10 / 100;
+	(*obj)->height = (*obj)->game_img->height * 10 / 100;
 	(*obj)->state = 0;
 	(*obj)->use_count = 0;
 	(*obj)->use_max = 1;

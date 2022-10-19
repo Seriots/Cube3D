@@ -171,11 +171,15 @@ typedef struct s_settings
 typedef struct s_object
 {
 	char		tag[32];
+	int			width;
+	int			height;
 	t_img_data	*all_img;
 	t_img_data	*game_img;
 	t_img_data	*hand_img;
 	t_img_data	*menu_img;
 	t_coord		pos;
+	double		dist;
+	double		angle;
 	int			img_height;
 	int			img_width;
 	int			state;

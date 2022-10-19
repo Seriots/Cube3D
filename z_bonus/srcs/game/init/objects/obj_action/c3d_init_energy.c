@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   c3d_init_energy.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ppajot <ppajot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 13:50:01 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/18 23:59:08 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/19 18:41:35 by ppajot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@ int	init_energy(t_game *game, t_object **obj)
 	(*obj)->game_img = &game->all_img.energy[GAME];
 	(*obj)->menu_img = &game->all_img.energy[ICON];
 	(*obj)->hand_img = &game->all_img.energy[HAND];
+	(*obj)->width = (*obj)->game_img->width / 100 * 20;
+	(*obj)->height = (*obj)->game_img->height / 100 * 20;
 	(*obj)->state = 0;
 	(*obj)->use_count = 0;
 	(*obj)->use_max = 1;

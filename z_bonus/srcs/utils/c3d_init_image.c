@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   c3d_init_image.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ppajot <ppajot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 10:04:14 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/10 12:27:00 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/19 18:13:32 by ppajot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ int	init_image(t_game *game, int width, int height, t_img_data *img)
 
 int	init_xpm_image(t_game *game, t_img_data *img, char *name)
 {
+	if (!name)
+		return (12);
 	img->img = mlx_xpm_file_to_image(game->mlx.display, name,
 			&img->width, &img->height);
 	if (!img->img)

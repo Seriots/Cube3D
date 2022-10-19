@@ -3,14 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   c3d_init_key.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ppajot <ppajot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 14:43:09 by lgiband           #+#    #+#             */
-<<<<<<< HEAD:z_bonus/srcs/game/init/objects/c3d_init_key.c
-/*   Updated: 2022/10/17 15:35:43 by lgiband          ###   ########.fr       */
-=======
-/*   Updated: 2022/10/18 23:58:23 by lgiband          ###   ########.fr       */
->>>>>>> sound:z_bonus/srcs/game/init/objects/obj_action/c3d_init_key.c
+/*   Updated: 2022/10/19 18:42:02 by ppajot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,44 +22,6 @@
 
 #include <stdio.h>
 
-<<<<<<< HEAD:z_bonus/srcs/game/init/objects/c3d_init_key.c
-t_dict	*get_nearest_door(t_game *game)
-{
-	(void)game;
-	return (0);
-}
-
-int	key_use(t_game *game, t_dict *dict, t_object *obj)
-{
-	t_dict		*d_search;
-	t_object	*search;		
-
-	d_search = get_nearest_door(game);
-	search = d_search->value;
-	if (search)
-	{
-		if (search->state == 0)
-		{
-			search->interact(game, dict, search);
-			obj->delete(game, dict, obj);
-		}
-		else
-			set_error_message(game, "Door is already open", 2000);
-	}
-	else
-		set_error_message(game, "Too Far from door", 2000);
-	return (0);
-}
-
-int	key_drop(t_game *game, t_dict *dict, t_object *obj)
-{
-	(void)dict;
-	drop_items(game, &game->inventory, obj);
-	return (0);
-}
-
-=======
->>>>>>> sound:z_bonus/srcs/game/init/objects/obj_action/c3d_init_key.c
 int	key_collide(t_game *game, t_dict *dict, t_object *obj)
 {
 	(void)game;
@@ -105,6 +63,8 @@ int	init_key(t_game *game, t_object **obj)
 	(*obj)->game_img = &game->all_img.key[GAME];
 	(*obj)->menu_img = &game->all_img.key[ICON];
 	(*obj)->hand_img = &game->all_img.key[HAND];
+	(*obj)->width = (*obj)->game_img->width / 100 * 20;
+	(*obj)->height = (*obj)->game_img->height / 100 * 20;
 	(*obj)->state = 0;
 	(*obj)->use_count = 0;
 	(*obj)->use_max = 1;

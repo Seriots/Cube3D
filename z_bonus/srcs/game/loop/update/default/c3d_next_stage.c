@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   c3d_next_stage.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ppajot <ppajot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 16:31:05 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/19 00:20:31 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/19 17:47:34 by ppajot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	fade_update_loop(t_game *game, float percent, int limit_x, int limit_y)
 	int	y;
 
 	y = -1;
-	while (y <= limit_y)
+	while (++y <= limit_y)
 	{
 		x = -1;
 		while (++x <= limit_x)
