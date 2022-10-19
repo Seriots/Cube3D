@@ -26,6 +26,7 @@
 # define DEFAULT_IMAGE_PATH_EA "imgs/xpm/greenWall64x64.xpm"
 # define DEFAULT_IMAGE_PATH_CE "imgs/xpm/woodwall.xpm"
 # define DEFAULT_IMAGE_PATH_FL "imgs/xpm/woodwall.xpm"
+# define DEFAULT_IMAGE_PATH_PH "imgs/xpm/object/key_game.xpm"
 # define DEFAULT_CEIL	"37,37,37"
 # define DEFAULT_FLOOR	"110,110,110"
 # define OPEN_FACTOR 4

@@ -6,7 +6,7 @@
 /*   By: pierre-yves <pierre-yves@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 10:41:24 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/18 19:27:13 by pierre-yves      ###   ########.fr       */
+/*   Updated: 2022/10/19 02:51:50 by pierre-yves      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ unsigned int	get_floor_color(int pixel, t_display *display)
 	y = (y - (y / CASE_SIZE) * CASE_SIZE) * display->fl->height / CASE_SIZE;
 	color = (display->fl->addr
 			+ (y * display->fl->line_length
-				+ x * display->bpp));	
+				+ x * display->fl->bits_per_pixel / 8));	
 	return (*(unsigned int *)(color));
 }
 
@@ -71,7 +71,7 @@ unsigned int	get_ceil_color(int pixel, t_display *display)
 	y = (y - (y / CASE_SIZE) * CASE_SIZE) * display->ce->height / CASE_SIZE;
 	color = (display->ce->addr
 			+ (y * display->ce->line_length
-				+ x * display->bpp));	
+				+ x * display->ce->bits_per_pixel / 8));	
 	return (*(unsigned int *)(color));
 }
 
@@ -148,7 +148,7 @@ int	display_wall(t_game *game, t_wall *wall, int i)
 	game->display.min = (double)VIEW_HEIGHT / 2 - game->player.updown + game->player.z - ((double)CASE_SIZE / 2 - game->player.updown) * game->settings.fov / (game->display.angle * (wall->dist + game->settings.fov / (game->display.angle)));
 	game->display.max = -(double)VIEW_HEIGHT / 2 + game->player.updown - game->player.z - ((double)CASE_SIZE / 2 + game->player.updown) * game->settings.fov / (game->display.angle * (wall->dist + game->settings.fov / (game->display.angle)));
 	game->display.min *= (double)WIN_HEIGHT / (double)VIEW_HEIGHT;
-	game->display.min *= -(double)WIN_HEIGHT / (double)VIEW_HEIGHT;
+	game->display.max *= -(double)WIN_HEIGHT / (double)VIEW_HEIGHT;
 	game->display.x = (int)(wall->dist_from_start * game->display.img->width / CASE_SIZE)
 		% game->display.img->width;
 	game->display.factor = game->display.img->height / (game->display.max - game->display.min);

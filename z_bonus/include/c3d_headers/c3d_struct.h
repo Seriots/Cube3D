@@ -64,6 +64,7 @@ typedef struct s_all_img
 	t_img_data	ea;
 	t_img_data	ce;
 	t_img_data	fl;
+	t_img_data	ph;
 	t_img_data	screen_img;
 	t_img_data	menu_img;
 	t_img_data	minimap_img;
@@ -248,6 +249,7 @@ typedef struct s_display
 	double		right_angle;
 	double		factor;
 	int			bpp;
+	int			vline;
 }	t_display;
 
 /*x y are positive*/

@@ -6,7 +6,7 @@
 /*   By: pierre-yves <pierre-yves@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 09:59:52 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/17 19:00:47 by pierre-yves      ###   ########.fr       */
+/*   Updated: 2022/10/19 03:39:31 by pierre-yves      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ int	open_textures(t_game *game, t_map *map)
 	game->all_img.we.img = 0;
 	game->all_img.ce.img = 0;
 	game->all_img.fl.img = 0;
+	game->all_img.ph.img = 0;
 	error = open_one_texture(game, &game->all_img.no,
 			map->no, DEFAULT_IMAGE_PATH_NO);
 	if (error)
@@ -65,6 +66,10 @@ int	open_textures(t_game *game, t_map *map)
 		return (error);
 	error = open_one_texture(game, &game->all_img.fl,
 			0, DEFAULT_IMAGE_PATH_FL);
+	if (error)
+		return (error);
+	error = open_one_texture(game, &game->all_img.ph,
+			0, DEFAULT_IMAGE_PATH_PH);
 	if (error)
 		return (error);
 	return (0);

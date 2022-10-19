@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   c3d_default_display.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
+/*   By: pierre-yves <pierre-yves@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 13:43:02 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/17 14:27:10 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/18 20:16:57 by pierre-yves      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ int	display_game_error(t_game *game)
 int	default_display(t_game *game)
 {
 	raycasting(game);
+	display_all_sprites(game);
 	if (game->settings.show_mmap)
 		my_mlx_put_image_to_window(game, &game->all_img.minimap_img,
 			10, WIN_HEIGHT - game->all_img.minimap_img.height - 10);

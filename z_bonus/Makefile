@@ -57,6 +57,7 @@ define SRCS :=
 		game/loop/display/raycasting/c3d_inventory_display.c
 		game/loop/display/raycasting/c3d_raycasting_display.c
 		game/loop/display/raycasting/c3d_raycasting_getwall.c
+		game/loop/display/raycasting/c3d_display_sprites.c
 		game/loop/display/raycasting/c3d_raycasting.c
 		game/loop/update/default/c3d_default_update.c
 		game/loop/update/default/c3d_minimap_update.c
