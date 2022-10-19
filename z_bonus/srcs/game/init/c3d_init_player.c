@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 10:51:13 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/18 21:45:34 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/19 23:37:24 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ static void	set_player_coord(t_map *map, t_player *player)
 	}
 }
 
-int	init_player(t_game *game)
+int	init_player(t_game *game, int first)
 {
 	set_player_coord(&game->map, &game->player);
 	game->player.forward = 0;
@@ -75,9 +75,12 @@ int	init_player(t_game *game)
 	game->player.angleup = 0;
 	game->player.elevation = 0;
 	game->player.invincible_frames = 0;
-	game->player.max_life = 20;
-	game->player.life = game->player.max_life;
-	game->player.max_stamina = 100;
-	game->player.stamina = game->player.max_stamina;
+	if (first)
+	{
+		game->player.max_life = 3;
+		game->player.life = game->player.max_life;
+		game->player.max_stamina = 100;
+		game->player.stamina = game->player.max_stamina;
+	}
 	return (0);
 }

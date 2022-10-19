@@ -49,7 +49,7 @@
 
 /*Transition settings*/
 # define FADE_DURATION 750.0
-# define LOADING_DURATION 2000.0
+# define LOADING_DURATION 5000.0
 
 //HOTBAR_Y WIN_HEIGHT - HOTBAR_CASE_SIZE - 10
 # define HOTBAR_Y 650

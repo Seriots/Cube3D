@@ -18,6 +18,7 @@
 #include "c3d_menu.h"
 #include "c3d_utils.h"
 #include "c3d_init.h"
+#include "c3d_loop.h"
 #include "mzg_incs.h"
 #include "c3d_parsing.h"
 #include "c3d_object.h"
@@ -39,11 +40,10 @@ int	set_inventory(t_game *game)
 	else
 		game->inventory.size = 4;
 	game->inventory.selected = -1;
-	elem = dict_getelem_key(game->map.all_objects, LAMP);
-	if (elem)
+	elem = dict_get_last(game->map.all_objects);
+	printf("elem = %s\n", (char *)elem->key);
+	if (elem && ft_strcmp(elem->key, LAMP) == 0)
 		add_items(game, &game->inventory, elem->value);
-	add_items(game, &game->inventory,
-		dict_getelem_key(game->map.all_objects, KEY)->value);
 	return (0);
 }
 
@@ -56,7 +56,7 @@ int	play_event(int button, int x, int y, t_game *game)
 	if (button == 1)
 	{
 		clear_all_other_selected(game, NULL, game->start_menu.all_objects);
-		error = load_new_map(game, game->settings.map_path);
+		error = load_new_map(game, game->settings.map_path, 1);
 		if (error)
 			return (set_error_value(&game->start_menu, error), error);
 		set_map_settings(game, &game->menu.all_objects);

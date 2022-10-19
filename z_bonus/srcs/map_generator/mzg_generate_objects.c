@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 11:25:13 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/18 21:21:35 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/19 23:02:08 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,8 +79,8 @@ int	set_obj_map(t_game *game, char *obj, int width, int height)
 	{
 		if (ft_strcmp(obj, objs[i]) == 0)
 			init_obj(game, (char *)objs[i],
-				x * CASE_SIZE + 8 + rand() % CASE_SIZE - 16,
-				y * CASE_SIZE + 8 + rand() % CASE_SIZE - 16);
+				x * CASE_SIZE + 16 + (rand() % 32),
+				y * CASE_SIZE + 16 + (rand() % 32));
 		i++;
 	}
 	return (0);

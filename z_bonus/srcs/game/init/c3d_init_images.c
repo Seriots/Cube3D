@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 10:51:50 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/18 23:26:36 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/19 22:32:19 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ int	init_images(t_game *game)
 	if (init_image(game, WIN_WIDTH, WIN_HEIGHT, &game->all_img.screen_img)
 		|| init_image(game, MENU_WIDTH, MENU_HEIGHT, &game->all_img.menu_img)
 		|| init_image(game, MMAP_WIDTH, MMAP_HEIGHT, &game->all_img.minimap_img)
+		|| init_xpm_image(game, &game->all_img.loading, "imgs/xpm/loading/loading.xpm")
 		|| init_objects_img(game, "imgs/xpm/object/black_flashlight",
 			game->all_img.flashlight)
 		|| init_objects_img(game, "imgs/xpm/object/key", game->all_img.key)
@@ -84,6 +85,8 @@ int	init_images(t_game *game)
 			&game->all_img.all_cursor_img)
 		|| init_images_group(game, "imgs/xpm/ghost/ghost", 9,
 			&game->all_img.all_ghost_img)
+		|| init_images_group(game, "imgs/xpm/loading/frame", 15,
+			&game->all_img.all_loading_img)
 		|| init_hud(game))
 		return (12);
 	return (0);

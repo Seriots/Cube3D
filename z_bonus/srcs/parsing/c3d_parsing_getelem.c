@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 12:12:09 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/12 20:41:36 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/19 21:07:46 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,10 @@ int	default_parse(t_game *game, char *tag, char *arg)
 
 int	get_object(t_game *game, char **split)
 {
-	const t_objinit	all_template[][2] = {{{KEY, default_parse}}};
+	const t_objinit	all_template[][2] = {{{KEY, default_parse}},
+		{{LAMP, default_parse}}, {{HEAL, default_parse}}, {{FULLHEAL, default_parse}},
+		{{BONUSHP, default_parse}}, {{ENERGY, default_parse}}, {{B_ENERGY, default_parse}},
+		{{GHOST, default_parse}}};
 	unsigned int	i;
 	int				error;
 

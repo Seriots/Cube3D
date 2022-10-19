@@ -15,9 +15,6 @@
 
 # include "c3d_struct.h"
 
-/*load map*/
-int	load_new_map(t_game *game, char *map_path);
-
 /*Save*/
 int	load_settings(t_game *game);
 int	save_settings(t_game *game);
@@ -43,7 +40,7 @@ int	open_textures(t_game *game, t_map *map);
 int	init_images(t_game *game);
 
 /*Player*/
-int	init_player(t_game *game);
+int	init_player(t_game *game, int first);
 
 /*Game*/
 int	init_game(t_game *game, char *path);

@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 23:43:59 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/18 23:45:55 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/19 21:50:38 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 #include "c3d_utils.h"
 
 #include "ft.h"
+
+#include <stdio.h>
 
 int	move_ghost(t_game *game, t_object *obj)
 {
@@ -36,6 +38,19 @@ int	move_ghost(t_game *game, t_object *obj)
 	return (0);
 }
 
+int	is_player_facing(t_game *game, t_object *obj)
+{
+	double	dist_x;
+	double	dist_y;
+	double	angle;
+
+	dist_x = game->player.pos.x - obj->pos.x;
+	dist_y = game->player.pos.y - obj->pos.y;
+	angle = tan(dist_y / dist_x);
+	printf("angle: %f, player angle: %f, %f\n", angle, game->player.plane.value - (2 * M_PI), game->player.plane.value);
+	return (1);
+}
+
 t_dict	*get_nearest_door(t_game *game, t_dict **all_obj)
 {
 	t_dict		*tmp;
@@ -54,7 +69,7 @@ t_dict	*get_nearest_door(t_game *game, t_dict **all_obj)
 		{
 			dist = norm(obj->pos.x - game->player.pos.x,
 					obj->pos.y - game->player.pos.y);
-			if (dist < MIN_DIST_OBJ && (!door || dist < min_dist))
+			if (dist < MIN_DIST_OBJ && (!door || dist < min_dist) && is_player_facing(game, obj))
 			{
 				door = tmp;
 				min_dist = dist;

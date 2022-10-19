@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 20:12:58 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/18 21:01:04 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/19 23:31:37 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,23 +68,20 @@ int	init_map_objects(t_game *game, t_map *map)
 	error = init_obj(game, LAMP, 0, 0);
 	if (error)
 		return (error);
-	error = init_obj(game, GHOST, 0, 0);
-	if (error)
-		return (error);
 	return (0);
 }
 
-int	init_all_map_parameters(t_game *game)
+int	init_all_map_parameters(t_game *game, int first)
 {
 	int	error;
 
-	error = init_map_objects(game, &game->map);
-	if (error)
-		return (error);
 	error = get_all_doors(game, &game->map);
 	if (error)
 		return (error);
-	error = init_player(game);
+	error = init_map_objects(game, &game->map);
+	if (error)
+		return (error);
+	error = init_player(game, first);
 	if (error)
 		return (error);
 	error = open_textures(game, &game->map);
@@ -93,7 +90,7 @@ int	init_all_map_parameters(t_game *game)
 	return (0);
 }
 
-int	load_new_map(t_game *game, char *map_path)
+int	load_new_map(t_game *game, char *map_path, int first)
 {
 	int			error;
 	t_genparams	params;
@@ -110,7 +107,7 @@ int	load_new_map(t_game *game, char *map_path)
 		if (error)
 			return (free_map(&game->map), display_error(error));
 	}
-	error = init_all_map_parameters(game);
+	error = init_all_map_parameters(game, first);
 	if (error)
 		return (free_map(&game->map), display_error(error));
 	load_default(game);

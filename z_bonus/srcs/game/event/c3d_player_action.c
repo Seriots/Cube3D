@@ -6,15 +6,17 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 21:05:06 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/18 21:25:39 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/19 21:19:10 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "c3d_struct.h"
 #include "c3d_settings.h"
 #include "c3d_utils.h"
+#include "c3d_object.h"
 
 #include "dict.h"
+#include "ft.h"
 
 #include <stdio.h>
 
@@ -29,7 +31,8 @@ int	objects_interact(t_game *game)
 	{
 		obj = dict->value;
 		dist = dist_to_obj(game->player.pos, obj->pos);
-		if (dist < MIN_DIST_OBJ && obj->is_visible == 1)
+		printf("obj: %s, dist: %f\n", obj->tag, dist);
+		if (dist < MIN_DIST_OBJ && obj->is_visible == 1 && ft_strcmp(obj->tag, DOOR))
 		{
 			obj->interact(game, dict, obj);
 			break ;

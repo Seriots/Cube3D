@@ -71,6 +71,8 @@ typedef struct s_all_img
 	t_img_data	minimap_img;
 	t_img_data	*all_cursor_img;
 	t_img_data	*all_ghost_img;
+	t_img_data	*all_loading_img;
+	t_img_data	loading;
 	t_img_data	flashlight[3];
 	t_img_data	key[3];
 	t_img_data	energy[3];

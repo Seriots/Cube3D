@@ -20,7 +20,7 @@ int		play_sound(char *file);
 
 /*NextStage*/
 int		next_stage(t_game *game);
-int		load_new_map(t_game *game, char *map_path);
+int		load_new_map(t_game *game, char *map_path, int first);
 
 /*Menuing*/
 int		draw_all_objects(t_game *game, t_dict *dict);

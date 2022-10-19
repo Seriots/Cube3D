@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   c3d_init_benergy.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ppajot <ppajot@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 13:50:48 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/19 18:41:05 by ppajot           ###   ########.fr       */
+/*   Updated: 2022/10/19 21:01:50 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,8 @@ int	init_benergy(t_game *game, t_object **obj)
 	(*obj)->game_img = &game->all_img.b_energy[GAME];
 	(*obj)->menu_img = &game->all_img.b_energy[ICON];
 	(*obj)->hand_img = &game->all_img.b_energy[HAND];
-	(*obj)->width = (*obj)->game_img->width / 100 * 20;
-	(*obj)->height = (*obj)->game_img->height / 100 * 20;
+	(*obj)->width = (*obj)->game_img->width * 10 / 100;
+	(*obj)->height = (*obj)->game_img->height * 10 / 100;
 	(*obj)->state = 0;
 	(*obj)->use_count = 0;
 	(*obj)->use_max = 1;

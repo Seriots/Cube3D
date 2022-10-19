@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   c3d_init_key.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ppajot <ppajot@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 14:43:09 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/19 18:42:02 by ppajot           ###   ########.fr       */
+/*   Updated: 2022/10/19 21:04:31 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,8 @@ int	init_key(t_game *game, t_object **obj)
 	(*obj)->game_img = &game->all_img.key[GAME];
 	(*obj)->menu_img = &game->all_img.key[ICON];
 	(*obj)->hand_img = &game->all_img.key[HAND];
-	(*obj)->width = (*obj)->game_img->width / 100 * 20;
-	(*obj)->height = (*obj)->game_img->height / 100 * 20;
+	(*obj)->width = (*obj)->game_img->width * 6 / 100;
+	(*obj)->height = (*obj)->game_img->height * 6 / 100;
 	(*obj)->state = 0;
 	(*obj)->use_count = 0;
 	(*obj)->use_max = 1;

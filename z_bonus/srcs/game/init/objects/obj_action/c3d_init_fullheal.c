@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   c3d_init_fullheal.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ppajot <ppajot@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 13:49:50 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/19 18:41:48 by ppajot           ###   ########.fr       */
+/*   Updated: 2022/10/19 21:06:39 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,8 @@ int	init_fullheal(t_game *game, t_object **obj)
 	(*obj)->game_img = &game->all_img.fullheal[GAME];
 	(*obj)->menu_img = &game->all_img.fullheal[ICON];
 	(*obj)->hand_img = &game->all_img.fullheal[HAND];
-	(*obj)->width = (*obj)->game_img->width / 100 * 20;
-	(*obj)->height = (*obj)->game_img->height / 100 * 20;
+	(*obj)->width = (*obj)->game_img->width * 10 / 100;
+	(*obj)->height = (*obj)->game_img->height * 10 / 100;
 	(*obj)->state = 0;
 	(*obj)->use_count = 0;
 	(*obj)->use_max = 1;
