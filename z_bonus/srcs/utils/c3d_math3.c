@@ -1,30 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mzg_post_player.c                                  :+:      :+:    :+:   */
+/*   c3d_math3.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/27 12:07:06 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/30 11:50:27 by lgiband          ###   ########.fr       */
+/*   Created: 2022/10/18 20:09:37 by lgiband           #+#    #+#             */
+/*   Updated: 2022/10/18 20:10:07 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "c3d_struct.h"
+#include "c3d_utils.h"
 
-int	post_player(char **map, int width, int height)
+double	dist_to_obj(t_coord player, t_coord obj)
 {
-	int			x;
-	int			y;
-	const char	base[4] = {'N', 'S', 'E', 'W'};
-
-	x = rand() % width;
-	y = rand() % height;
-	while (map[y][x] != '0')
-	{
-		x = rand() % width;
-		y = rand() % height;
-	}
-	map[y][x] = base[rand() % 4];
-	return (0);
+	return (norm(player.x - obj.x, player.y - obj.y));
 }

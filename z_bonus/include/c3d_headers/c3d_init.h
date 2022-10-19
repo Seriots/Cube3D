@@ -10,10 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef C3D_INIT_BONUS_H
-# define C3D_INIT_BONUS_H
+#ifndef C3D_INIT_H
+# define C3D_INIT_H
 
 # include "c3d_struct.h"
+
+/*load map*/
+int	load_new_map(t_game *game, char *map_path);
 
 /*Save*/
 int	load_settings(t_game *game);

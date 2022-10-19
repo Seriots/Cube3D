@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   c3d_init_enendoor.c                                  :+:      :+:    :+:   */
+/*   c3d_init_endoor.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 11:53:07 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/13 11:55:48 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/18 23:59:14 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,27 +16,12 @@
 #include "c3d_init.h"
 #include "c3d_object.h"
 #include "c3d_utils.h"
+#include "c3d_loop.h"
 
 #include "dict.h"
 #include "ft.h"
 
 #include <stdio.h>
-
-int	endoor_use(t_game *game, t_dict *dict, t_object *obj)
-{
-	(void)game;
-	(void)dict;
-	(void)obj;
-	return (0);
-}
-
-int	endoor_drop(t_game *game, t_dict *dict, t_object *obj)
-{
-	(void)game;
-	(void)dict;
-	(void)obj;
-	return (0);
-}
 
 int	endoor_collide(t_game *game, t_dict *dict, t_object *obj)
 {
@@ -51,19 +36,10 @@ int	endoor_update(t_game *game, t_dict *dict, t_object *obj)
 	(void)game;
 	(void)dict;
 	(void)obj;
-	//printf("endoor_update, %f %f\n", obj->pos.x, obj->pos.y);
 	return (0);
 }
 
 int	endoor_delete(t_game *game, t_dict *dict, t_object *obj)
-{
-	(void)game;
-	(void)dict;
-	(void)obj;
-	return (0);
-}
-
-int	endoor_interact(t_game *game, t_dict *dict, t_object *obj)
 {
 	(void)game;
 	(void)dict;
@@ -82,8 +58,8 @@ int	init_endoor(t_game *game, t_object **obj)
 	(*obj)->use_count = 0;
 	(*obj)->use_max = 1;
 	(*obj)->is_visible = 1;
-	(*obj)->is_collide = 0;
-	(*obj)->start_frame = game->last_frame + game->delay;
+	(*obj)->is_collide = 1;
+	(*obj)->start_frame = game->last_frame;
 	(*obj)->nb_image = 1;
 	(*obj)->animation_duration = 0;
 	(*obj)->interact = endoor_interact;

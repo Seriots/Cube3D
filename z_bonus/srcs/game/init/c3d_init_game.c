@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 13:17:26 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/17 14:17:37 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/19 00:01:39 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,8 @@
 
 #include "ft.h"
 
-static int	set_default_fcts(t_game *game)
-{
-	load_startscreen(game);
-	return (0);
-}
-
 static int	set_default_settings2(t_game *game)
 {
-	game->settings.fps = FPS;
-	game->settings.fov = FOV;
 	game->settings.scroll_speed = SCROLL_SPEED;
 	game->settings.cam_sensibility_x = CAM_SENSIBILITY_X;
 	game->settings.cam_sensibility_y = CAM_SENSIBILITY_Y;
@@ -71,6 +63,8 @@ static int	set_default_settings(t_game *game, char *path)
 	game->settings.show_mmap = 1;
 	game->settings.seed = 0;
 	game->settings.difficulty = 0;
+	game->settings.fps = FPS;
+	game->settings.fov = FOV;
 	ft_strlcpy(game->map.default_ceil, DEFAULT_CEIL, 256);
 	ft_strlcpy(game->map.default_floor, DEFAULT_FLOOR, 256);
 	ft_strlcpy(game->map.default_north, DEFAULT_IMAGE_PATH_NO, 256);
@@ -80,6 +74,14 @@ static int	set_default_settings(t_game *game, char *path)
 	game->settings.map_path = ft_strdup(path);
 	if (path && !game->settings.map_path)
 		return (10);
+	return (0);
+}
+
+static int	set_obj_null(t_img_data *imgs)
+{
+	imgs[0].img = 0;
+	imgs[1].img = 0;
+	imgs[2].img = 0;
 	return (0);
 }
 
@@ -97,12 +99,14 @@ static int	set_variable(t_game *game)
 	game->all_img.screen_img.img = NULL;
 	game->all_img.minimap_img.img = NULL;
 	game->all_img.all_cursor_img = NULL;
-	game->all_img.flashlight[0].img = NULL;
-	game->all_img.flashlight[1].img = NULL;
-	game->all_img.flashlight[2].img = NULL;
-	game->all_img.key[0].img = NULL;
-	game->all_img.key[1].img = NULL;
-	game->all_img.key[2].img = NULL;
+	set_obj_null(game->all_img.flashlight);
+	set_obj_null(game->all_img.key);
+	set_obj_null(game->all_img.heal);
+	set_obj_null(game->all_img.fullheal);
+	set_obj_null(game->all_img.bonushp);
+	set_obj_null(game->all_img.energy);
+	set_obj_null(game->all_img.b_energy);
+	game->level = 1;
 	game->inventory.base_hand = (t_coord){.x = 0, .y = 0};
 	game->inventory.current_hand = game->inventory.base_hand;
 	game->map = (t_map){.c = -1, .f = -1, .ea = NULL, .no = NULL, .so = NULL,
@@ -115,9 +119,11 @@ int	init_game(t_game *game, char *path)
 	int	error;
 
 	set_variable(game);
-	set_default_fcts(game);
-	set_default_settings2(game);
+	load_startscreen(game);
 	error = set_default_settings(game, path);
+	if (error)
+		return (error);
+	error = set_default_settings2(game);
 	if (error)
 		return (error);
 	error = load_settings(game);

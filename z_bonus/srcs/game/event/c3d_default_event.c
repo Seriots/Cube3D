@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   c3d_default_event.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ppajot <ppajot@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 11:22:31 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/13 21:06:22 by ppajot           ###   ########.fr       */
+/*   Updated: 2022/10/18 21:23:40 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,8 +83,7 @@ int	move_slot(KeySym keycode, t_game *game)
 
 int	default_key_press(KeySym keycode, t_game *game)
 {
-	if (keycode == game->settings.left
-		|| keycode == game->settings.right
+	if (keycode == game->settings.left || keycode == game->settings.right
 		|| keycode == game->settings.forward
 		|| keycode == game->settings.backward)
 		up_already_pressed(game);
@@ -108,8 +107,7 @@ int	default_key_press(KeySym keycode, t_game *game)
 		game->player.crouch = 1;
 	else if (keycode == game->settings.run)
 		game->player.run = 1;
-	move_slot(keycode, game);
-	return (0);
+	return (move_slot(keycode, game));
 }
 
 int	default_key_release(KeySym keycode, t_game *game)

@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef C3D_EVENT_BONUS_H
-# define C3D_EVENT_BONUS_H
+#ifndef C3D_EVENT_H
+# define C3D_EVENT_H
 
 # include "c3d_struct.h"
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   c3d_raycasting_display.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pierre-yves <pierre-yves@student.42.fr>    +#+  +:+       +#+        */
+/*   By: ppajot <ppajot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 10:41:24 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/19 02:51:50 by pierre-yves      ###   ########.fr       */
+/*   Updated: 2022/10/19 17:40:13 by ppajot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 #include "c3d_settings.h"
 #include "c3d_loop.h"
 #include "c3d_utils.h"
+#include "c3d_object.h"
+
+#include "ft.h"
 
 #include <math.h>
 
@@ -82,7 +85,7 @@ int	is_lamp(t_game *game)
 	if (game->inventory.selected < 0)
 		return (0);
 	obj = game->inventory.items[game->inventory.selected];
-	if (obj && obj->hand_img == &game->all_img.flashlight[1] && obj->state == 1)
+	if (obj && !ft_strcmp(obj->tag, LAMP) && obj->state == 1)
 		return (1);
 	return (0);
 }
@@ -93,10 +96,10 @@ int	shade_pixel(t_game *game, int color, double dist, t_point p)
 	int	g;
 	int	b;
 	double	light;
-
+	(void)game;
 	//if (p.x == 500)
 	//	printf("dist: %f\n", dist);
-	if (is_lamp(game))
+/*	if (is_lamp(game))
 	{
 		if (pow(p.x - WIN_WIDTH / 2, 2) + pow(p.y - WIN_HEIGHT / 2, 2) < 90000)
 		{
@@ -111,8 +114,8 @@ int	shade_pixel(t_game *game, int color, double dist, t_point p)
 		light = max(light, 0.1);
 		light = min(light, 1);
 	}
-	else
-		light = 0.2;
+	else*/
+		light = 1.0;
 	r = light * ((color & 0xFF0000) >> 16);
 	g = light * ((color & 0X00FF00) >> 8);
 	b = light * (color & 0X0000FF);

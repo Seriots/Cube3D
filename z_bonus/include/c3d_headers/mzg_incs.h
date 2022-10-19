@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MZG_INCS_BONUS_H
-# define MZG_INCS_BONUS_H
+#ifndef MZG_INCS_H
+# define MZG_INCS_H
 
 # define MAZE_HEIGHT 30
 # define MAZE_WIDTH 30
@@ -27,9 +27,13 @@
 # define DEFAULT_IMAGE_PATH_CE "imgs/xpm/woodwall.xpm"
 # define DEFAULT_IMAGE_PATH_FL "imgs/xpm/woodwall.xpm"
 # define DEFAULT_IMAGE_PATH_PH "imgs/xpm/object/key_game.xpm"
-# define DEFAULT_CEIL	"37,37,37"
-# define DEFAULT_FLOOR	"110,110,110"
+# define DEFAULT_CEIL "37,37,37"
+# define DEFAULT_CEIL_VALUE	3618615
+# define DEFAULT_FLOOR "110,110,110"
+# define DEFAULT_FLOOR_VALUE 11382190
 # define OPEN_FACTOR 4
+# define SPAWN_OBJECTS_FACTOR 20
+
 # include "c3d_struct.h"
 
 typedef struct s_shape
@@ -65,28 +69,29 @@ typedef struct s_genparams
 	int				door;
 }	t_genparams;
 
-int	gen_maze(t_game *game, int width, int height, int door);
-int	clean_maze(char **map, int width, int height);
-int	is_ver_ok(char **map, int x, int y);
-int	is_hor_ok(char **map, int x, int y);
-int	fillmap(char **map);
-int	make_maze(char **map, int width, int height);
-int	makeshape_maze(char **map, int width, int height);
-int	printmaze(t_map *map, int width, int height);
-int	standardize_maze(char **map, int width, int height);
-int	standardize_maze_predoor(char **map, int width, int height);
-int	post_player(char **map, int width, int height);
+int		gen_maze(t_game *game, int width, int height, int door);
+int		clean_maze(char **map, int width, int height);
+int		is_ver_ok(char **map, int x, int y);
+int		is_hor_ok(char **map, int x, int y);
+int		fillmap(char **map);
+int		make_maze(char **map, int width, int height);
+int		makeshape_maze(char **map, int width, int height);
+int		printmaze(t_map *map, int width, int height);
+int		standardize_maze(char **map, int width, int height);
+int		standardize_maze_predoor(char **map, int width, int height);
+int		post_player(char **map, int width, int height);
 
-int	get_maze(t_game *game, t_genparams params, unsigned long *seed, int print);
+int		get_maze(t_game *game, t_genparams p, unsigned long *seed, int print);
 
 /*V2*/
-int	is_door(char **map, int x, int y);
-int	is_aligned(char **map, int x, int y);
+int		is_door(char **map, int x, int y);
+int		is_aligned(char **map, int x, int y);
 char	is_between_room(char **map, int x, int y);
 char	is_destroyable(char **map, int x, int y);
-int	make_door(char **map, int width, int height, int door);
-int open_maze(char **map, int width, int height);
-int generate_player(t_map *map, int width, int height);
-int	generate_key(t_game *game, int width, int height, int door);
+int		make_door(char **map, int width, int height, int door);
+int		open_maze(char **map, int width, int height);
+int		generate_player(t_map *map, int width, int height);
+int		generate_key(t_game *game, int width, int height, int door);
+int		generate_objects(t_game *game, int width, int height);
 
 #endif

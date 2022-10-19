@@ -10,14 +10,21 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef C3D_LOOP_BONUS_H
-# define C3D_LOOP_BONUS_H
+#ifndef C3D_LOOP_H
+# define C3D_LOOP_H
 
 # include "c3d_struct.h"
 
+/*Sound*/
+int		play_sound(char *file);
+
+/*NextStage*/
+int		next_stage(t_game *game);
+int		load_new_map(t_game *game, char *map_path);
+
 /*Menuing*/
-int	draw_all_objects(t_game *game, t_dict *dict);
-int	display_text(t_game *game, t_dict *dict);
+int		draw_all_objects(t_game *game, t_dict *dict);
+int		display_text(t_game *game, t_dict *dict);
 
 /*Ray Casting*/
 int		intersect_wall(t_game *game, t_vector ray, t_wall *wall);
@@ -32,7 +39,8 @@ int		display_hand(t_game *game);
 int		display_inventory(t_game *game);
 int		show_fps(t_game *game);
 int		show_seed(t_game *game);
-void	my_mlx_put_image_to_window(t_game *game, t_img_data *data, int x, int y);
+void	my_mlx_put_image_to_window(t_game *game, t_img_data *data,
+			int x, int y);
 void	my_mlx_pixel_put(t_img_data *data, int x, int y, int color);
 int		display_all_sprites(t_game *game);
 int		default_display(t_game *game);
@@ -41,9 +49,9 @@ int		default_display(t_game *game);
 int		update_minimap(t_game *game);
 
 /*Player update*/
+int		check_collisions_objects(t_game *game, t_dict *all_objects);
 int		check_collide(t_game *game, t_coord mov);
 int		update_player(t_game *game);
-
 
 /*Update*/
 int		update_objects(t_game *game, t_dict *all_objects);

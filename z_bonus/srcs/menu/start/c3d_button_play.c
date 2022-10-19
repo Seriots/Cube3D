@@ -27,107 +27,10 @@
 
 #include <stdio.h>
 
-int	load_random_map(t_game *game, t_genparams *params)
-{
-	if (game->settings.difficulty == 0)
-		*params = (t_genparams){.width = 30, .height = 30, .door = 5,
-			.seed = game->settings.seed, .difficulty = 0};
-	else if (game->settings.difficulty == 1)
-		*params = (t_genparams){.width = 50, .height = 50, .door = 12,
-			.seed = game->settings.seed, .difficulty = 1};
-	else
-		*params = (t_genparams){.width = 80, .height = 80, .door = 20,
-			.seed = game->settings.seed, .difficulty = 2};
-	return (get_maze(game, *params, &game->settings.seed, 0));
-}
-
-int	get_all_doors(t_game *game, t_map *map)
-{
-	int	i;
-	int	j;
-	int	error;
-
-	i = 0;
-	error = 0;
-	while (i < map->height)
-	{
-		j = 0;
-		while (j < map->width)
-		{
-			if (map->map[i][j] == '2')
-				error = init_obj(game, DOOR, j, i);
-			if (map->map[i][j] == '3')
-				error = init_obj(game, ENDOOR, j, i);
-			if (error)
-				return (error);
-			j++;
-		}
-		i++;
-	}
-	return (0);
-}
-
-int	init_map_objects(t_game *game, t_map *map)
-{
-	int	error;
-
-	(void)map;
-	error = init_obj(game, LAMP, 0, 0);
-	if (error)
-		return (error);
-	error = init_obj(game, ENERGY, 0, 0);
-	if (error)
-		return (error);
-	error = init_obj(game, B_ENERGY, 0, 0);
-	if (error)
-		return (error);
-	error = init_obj(game, HEAL, 0, 0);
-	if (error)
-		return (error);
-	error = init_obj(game, FULLHEAL, 0, 0);
-	if (error)
-		return (error);
-	error = init_obj(game, BONUSHP, 0, 0);
-	if (error)
-		return (error);
-	return (0);
-}
-
-int	load_new_map(t_game *game, char *map_path)
-{
-	int			error;
-	t_genparams	params;
-
-	if (map_path)
-	{
-		error = parsing(game, &(game->map), map_path);
-		if (error)
-			return (free_map(&game->map), display_error(error));
-	}
-	else
-	{
-		error = load_random_map(game, &params);
-		if (error)
-			return (free_map(&game->map), display_error(error));
-	}
-	error = init_map_objects(game, &game->map);
-	if (error)
-		return (free_map(&game->map), display_error(error));
-	error = get_all_doors(game, &game->map);
-	if (error)
-		return (free_map(&game->map), display_error(error));
-	error = init_player(game);
-	if (error)
-		return (free_map(&game->map), display_error(error));
-	error = open_textures(game, &game->map);
-	if (error)
-		return (free_map(&game->map), display_error(error));
-	load_default(game);
-	return (0);
-}
-
 int	set_inventory(t_game *game)
 {
+	t_dict	*elem;
+
 	ft_bzero(game->inventory.items, sizeof(game->inventory.items));
 	if (game->settings.difficulty == 0)
 		game->inventory.size = 8;
@@ -136,16 +39,11 @@ int	set_inventory(t_game *game)
 	else
 		game->inventory.size = 4;
 	game->inventory.selected = -1;
-	/*TEST*/
-	add_items(game, &game->inventory, dict_getelem_key(game->map.all_objects, LAMP)->value);
-	add_items(game, &game->inventory, dict_getelem_key(game->map.all_objects, KEY)->value);
-	add_items(game, &game->inventory, dict_getelem_key(game->map.all_objects, ENERGY)->value);
-	add_items(game, &game->inventory, dict_getelem_key(game->map.all_objects, B_ENERGY)->value);
-	add_items(game, &game->inventory, dict_getelem_key(game->map.all_objects, HEAL)->value);
-	add_items(game, &game->inventory, dict_getelem_key(game->map.all_objects, FULLHEAL)->value);
-	add_items(game, &game->inventory, dict_getelem_key(game->map.all_objects, BONUSHP)->value);
-	add_items(game, &game->inventory, dict_getelem_key(game->map.all_objects, BONUSHP)->value);
-	add_items(game, &game->inventory, dict_getelem_key(game->map.all_objects, BONUSHP)->value);
+	elem = dict_getelem_key(game->map.all_objects, LAMP);
+	if (elem)
+		add_items(game, &game->inventory, elem->value);
+	add_items(game, &game->inventory,
+		dict_getelem_key(game->map.all_objects, KEY)->value);
 	return (0);
 }
 

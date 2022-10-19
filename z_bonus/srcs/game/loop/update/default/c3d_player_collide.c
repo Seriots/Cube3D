@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   c3d_player_collide.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ppajot <ppajot@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 11:42:39 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/13 21:06:57 by ppajot           ###   ########.fr       */
+/*   Updated: 2022/10/19 00:04:13 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,8 +76,10 @@ int	check_collide(t_game *game, t_coord mov)
 
 	if (mov.x == 0 && mov.y == 0)
 		return (0);
-	player.x = game->player.pos.x + VIEW_WIDTH * sin(game->player.plane.value) / 2;
-	player.y = game->player.pos.y + VIEW_WIDTH * cos(game->player.plane.value) / 2;
+	player.x = game->player.pos.x + VIEW_WIDTH
+		* sin(game->player.plane.value) / 2;
+	player.y = game->player.pos.y + VIEW_WIDTH
+		* cos(game->player.plane.value) / 2;
 	if (mov.y > 0)
 		player.angle.value = 2 * M_PI
 			- acos(mov.x / norm((double)mov.x, (double)mov.y));
@@ -87,8 +89,10 @@ int	check_collide(t_game *game, t_coord mov)
 	player.angle.sin = sin(player.angle.value);
 	player.angle.tan = player.angle.sin / player.angle.cos;
 	get_new_wall(game, player, &wall);
-	player.x = game->player.pos.x - VIEW_WIDTH * sin(game->player.plane.value) / 2;
-	player.y = game->player.pos.y - VIEW_WIDTH * cos(game->player.plane.value) / 2;
+	player.x = game->player.pos.x - VIEW_WIDTH
+		* sin(game->player.plane.value) / 2;
+	player.y = game->player.pos.y - VIEW_WIDTH
+		* cos(game->player.plane.value) / 2;
 	get_new_wall(game, player, &wall2);
 	if (min(wall.dist, wall2.dist) == wall2.dist)
 	{

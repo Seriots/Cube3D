@@ -2,7 +2,7 @@ NAME := cub3D
 CFLAGS := 
 CC := cc
 MAKE = /bin/make --no-print-directory
-
+#game/sound/c3d_play_sound.c
 define SRCS :=
 		main.c
 		game/event/menu_event/checkbox_event.c
@@ -22,16 +22,27 @@ define SRCS :=
 		game/event/c3d_player_action.c
 		game/event/c3d_startscreen_event_mouse.c
 		game/event/c3d_startscreen_event.c
+		game/init/objects/obj_action/c3d_init_door.c
+		game/init/objects/obj_action/c3d_init_endoor.c
+		game/init/objects/obj_action/c3d_init_key.c
+		game/init/objects/obj_action/c3d_init_lamp.c
+		game/init/objects/obj_action/c3d_init_heal.c
+		game/init/objects/obj_action/c3d_init_fullheal.c
+		game/init/objects/obj_action/c3d_init_energy.c
+		game/init/objects/obj_action/c3d_init_benergy.c
+		game/init/objects/obj_action/c3d_init_bonushp.c
+		game/init/objects/obj_action/c3d_init_ghost.c
+		game/init/objects/player_action/c3d_action_door.c
+		game/init/objects/player_action/c3d_action_endoor.c
+		game/init/objects/player_action/c3d_action_key.c
+		game/init/objects/player_action/c3d_action_lamp.c
+		game/init/objects/player_action/c3d_action_heal.c
+		game/init/objects/player_action/c3d_action_fullheal.c
+		game/init/objects/player_action/c3d_action_energy.c
+		game/init/objects/player_action/c3d_action_benergy.c
+		game/init/objects/player_action/c3d_action_bonushp.c
+		game/init/objects/player_action/c3d_action_ghost.c
 		game/init/objects/c3d_obj_init.c
-		game/init/objects/c3d_init_door.c
-		game/init/objects/c3d_init_endoor.c
-		game/init/objects/c3d_init_key.c
-		game/init/objects/c3d_init_lamp.c
-		game/init/objects/c3d_init_heal.c
-		game/init/objects/c3d_init_fullheal.c
-		game/init/objects/c3d_init_energy.c
-		game/init/objects/c3d_init_benergy.c
-		game/init/objects/c3d_init_bonushp.c
 		game/init/c3d_init_game.c
 		game/init/c3d_init_images.c
 		game/init/c3d_init_menu.c
@@ -63,6 +74,8 @@ define SRCS :=
 		game/loop/update/default/c3d_minimap_update.c
 		game/loop/update/default/c3d_player_collide.c
 		game/loop/update/default/c3d_player_update.c
+		game/loop/update/default/c3d_collide_player_obj.c
+		game/loop/update/default/c3d_next_stage.c
 		game/loop/update/default/c3d_objects_update.c
 		game/loop/update/menu/c3d_draw_button.c
 		game/loop/update/menu/c3d_draw_checkbox.c
@@ -118,6 +131,7 @@ define SRCS :=
 		menu/start/c3d_button_quit.c
 		menu/start/c3d_button_play.c
 		menu/start/c3d_seed.c
+		menu/start/c3d_start_map.c
 		menu/start/c3d_mapinput_mappath.c
 		parsing/c3d_parsing_check.c
 		parsing/c3d_parsing_getelem.c
@@ -131,11 +145,13 @@ define SRCS :=
 		utils/c3d_color.c
 		utils/c3d_error.c
 		utils/c3d_event_utils.c
+		utils/c3d_objects_utils.c
 		utils/c3d_game_error.c
 		utils/c3d_init_image.c
 		utils/c3d_inventory_utils.c
 		utils/c3d_math.c
 		utils/c3d_math2.c
+		utils/c3d_math3.c
 		utils/c3d_menu_utils.c
 		utils/c3d_menu_utils2.c
 		utils/c3d_menu_utils3.c
@@ -151,12 +167,12 @@ define SRCS :=
 		map_generator/mzg_makemaze.c
 		map_generator/mzg_makedoor.c
 		map_generator/mzg_makeshape.c
-		map_generator/mzg_post_player.c
 		map_generator/mzg_printmaze.c
 		map_generator/mzg_standardize.c
 		map_generator/mzg_openmaze_check.c
 		map_generator/mzg_openmaze.c
 		map_generator/mzg_generate_player.c
+		map_generator/mzg_generate_objects.c
 		map_generator/mzg_generatekey.c
 
 endef

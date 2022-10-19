@@ -6,7 +6,11 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 14:43:09 by lgiband           #+#    #+#             */
+<<<<<<< HEAD:z_bonus/srcs/game/init/objects/c3d_init_key.c
 /*   Updated: 2022/10/17 15:35:43 by lgiband          ###   ########.fr       */
+=======
+/*   Updated: 2022/10/18 23:58:23 by lgiband          ###   ########.fr       */
+>>>>>>> sound:z_bonus/srcs/game/init/objects/obj_action/c3d_init_key.c
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +26,7 @@
 
 #include <stdio.h>
 
+<<<<<<< HEAD:z_bonus/srcs/game/init/objects/c3d_init_key.c
 t_dict	*get_nearest_door(t_game *game)
 {
 	(void)game;
@@ -57,6 +62,8 @@ int	key_drop(t_game *game, t_dict *dict, t_object *obj)
 	return (0);
 }
 
+=======
+>>>>>>> sound:z_bonus/srcs/game/init/objects/obj_action/c3d_init_key.c
 int	key_collide(t_game *game, t_dict *dict, t_object *obj)
 {
 	(void)game;
@@ -91,13 +98,6 @@ int	key_delete(t_game *game, t_dict *dict, t_object *obj)
 	return (0);
 }
 
-int	key_interact(t_game *game, t_dict *dict, t_object *obj)
-{
-	(void)dict;
-	add_items(game, &game->inventory, obj);
-	return (0);
-}
-
 int	init_key(t_game *game, t_object **obj)
 {
 	ft_strlcpy((*obj)->tag, KEY, 32);
@@ -110,7 +110,7 @@ int	init_key(t_game *game, t_object **obj)
 	(*obj)->use_max = 1;
 	(*obj)->is_visible = 1;
 	(*obj)->is_collide = 0;
-	(*obj)->start_frame = game->last_frame + game->delay;
+	(*obj)->start_frame = game->last_frame;
 	(*obj)->nb_image = 1;
 	(*obj)->animation_duration = 0;
 	(*obj)->interact = key_interact;

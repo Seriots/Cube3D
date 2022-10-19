@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 11:59:11 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/12 22:15:40 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/18 20:03:43 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,5 @@
 # define V6 "slot6"
 # define V7 "slot7"
 # define V8 "slot8"
- 
+
 #endif

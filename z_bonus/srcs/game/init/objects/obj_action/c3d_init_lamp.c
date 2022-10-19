@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 12:44:07 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/17 15:05:16 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/18 23:58:37 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,22 +21,6 @@
 #include "ft.h"
 
 #include <stdio.h>
-
-int	lamp_use(t_game *game, t_dict *dict, t_object *obj)
-{
-	(void)game;
-	(void)dict;
-	(void)obj;
-	obj->state = !obj->state;
-	return (0);
-}
-
-int	lamp_drop(t_game *game, t_dict *dict, t_object *obj)
-{
-	(void)dict;
-	drop_items(game, &game->inventory, obj);
-	return (0);
-}
 
 int	lamp_collide(t_game *game, t_dict *dict, t_object *obj)
 {
@@ -60,7 +44,6 @@ int	lamp_update(t_game *game, t_dict *dict, t_object *obj)
 		obj->use_count -= LAMP_DECREASE * game->delay;
 	else if (obj->use_count < 100)
 		obj->use_count += LAMP_INCREASE * game->delay;
-		
 	return (0);
 }
 
@@ -82,13 +65,6 @@ int	lamp_delete(t_game *game, t_dict *dict, t_object *obj)
 	return (0);
 }
 
-int	lamp_interact(t_game *game, t_dict *dict, t_object *obj)
-{
-	(void)dict;
-	add_items(game, &game->inventory, obj);
-	return (0);
-}
-
 int	init_lamp(t_game *game, t_object **obj)
 {
 	ft_strlcpy((*obj)->tag, LAMP, 32);
@@ -101,7 +77,7 @@ int	init_lamp(t_game *game, t_object **obj)
 	(*obj)->use_max = 100;
 	(*obj)->is_visible = 1;
 	(*obj)->is_collide = 0;
-	(*obj)->start_frame = game->last_frame + game->delay;
+	(*obj)->start_frame = game->last_frame;
 	(*obj)->nb_image = 1;
 	(*obj)->animation_duration = 0;
 	(*obj)->interact = lamp_interact;

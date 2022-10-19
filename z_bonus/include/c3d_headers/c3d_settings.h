@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef C3D_SETTINGS_BONUS_H
-# define C3D_SETTINGS_BONUS_H
+#ifndef C3D_SETTINGS_H
+# define C3D_SETTINGS_H
 
 # include <X11/keysym.h>
 # include <math.h>
@@ -42,13 +42,17 @@
 # define LAMP_DECREASE 0.002
 # define LAMP_INCREASE 0.00035
 
-# define HAND_MOVEMENT_SPEED 0.25
-# define HAND_CENTER_SPEED 0.15
+# define HAND_MOVEMENT_SPEED 0.15
+# define HAND_CENTER_SPEED 0.09
 # define HAND_MAX_X 20
 # define HAND_MAX_Y 20
 
+/*Transition settings*/
+# define FADE_DURATION 750.0
+# define LOADING_DURATION 2000.0
+
 //HOTBAR_Y WIN_HEIGHT - HOTBAR_CASE_SIZE - 10
-# define HOTBAR_Y WIN_HEIGHT - HOTBAR_CASE_SIZE - 10
+# define HOTBAR_Y 650
 
 /*Font settings*/
 # define FONT_WIDTH 6
@@ -128,7 +132,8 @@
 # define RUN_SPEED_FACTOR 1.8
 # define CROUCH_SPEED_FACTOR 0.3
 
-# define MIN_DIST_OBJ 1.0f
+# define MIN_DIST_OBJ 48.0f
+# define MIN_DIST_COLLIDE 20.0f
 
 /*Default Key*/
 /*
