@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 12:17:42 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/19 22:37:12 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/20 17:20:29 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,23 +62,39 @@ char	make_player(t_map *map, int width, int height)
 	return (c);
 }
 
+int	is_enclosed(t_map *map, int width, int height, t_point p)
+{
+	int	k;
+
+	k = 0;
+	if (p.x != 0 && map->map[p.y][p.x - 1] != '+')
+		k++;
+	if (p.x != width - 1 && map->map[p.y][p.x + 1] != '+')
+		k++;
+	if (p.y != 0 && map->map[p.y - 1][p.x] != '+')
+		k++;
+	if (p.y != height - 1 && map->map[p.y + 1][p.x] != '+')
+		k++;
+	return (k);
+}
+
 char	make_exit(t_map *map, int width, int height, char c)
 {
-	int	x;
-	int	y;
+	t_point	p;
 
 	while (1)
 	{
-		x = rand() % width;
-		y = rand() % height;
-		if (map->map[y][x] != ' '
-			&& map->map[y][x] != '+'
-			&& map->map[y][x] != c
-			&& map->map[y][x] != '0'
-			&& map->map[y][x] != '-')
+		p.x = rand() % width;
+		p.y = rand() % height;
+		if (map->map[p.y][p.x] != ' '
+			&& map->map[p.y][p.x] != '+'
+			&& map->map[p.y][p.x] != c
+			&& map->map[p.y][p.x] != '0'
+			&& map->map[p.y][p.x] != '-'
+			&& is_enclosed(map, width, height, p) < 4)
 			break ;
 	}
-	map->map[y][x] = '.';
+	map->map[p.y][p.x] = '.';
 	return (c);
 }
 

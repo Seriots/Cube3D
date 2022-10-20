@@ -1,4 +1,4 @@
-fov=13
+fov=7
 x_sensibility=24
 y_sensibility=84
 resolution=82
