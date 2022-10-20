@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 11:53:07 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/18 23:53:15 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/19 16:14:30 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,6 @@ int	endoor_interact(t_game *game, t_dict *dict, t_object *obj)
 	(void)dict;
 	(void)obj;
 	next_stage(game);
+	printf("endoor_interact\n");
 	return (0);
 }
