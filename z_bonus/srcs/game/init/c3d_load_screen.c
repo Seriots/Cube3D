@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 13:30:36 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/17 17:55:49 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/20 21:30:38 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,24 @@
 #include "c3d_loop.h"
 
 #include "mlx.h"
+
+int	load_endscreen(t_game *game)
+{
+	game->fcts.update_fct = endmenu_update;
+	game->fcts.display_fct = endmenu_display;
+	game->fcts.keypressed_fct = end_key_press;
+	game->fcts.keyreleased_fct = end_key_release;
+	game->fcts.mousepressed_fct = end_mouse_press;
+	game->fcts.mousereleased_fct = end_mouse_release;
+	game->fcts.mousemove_fct = end_mouse_move;
+	game->end_menu.scroll_amount = 0;
+	game->menu.scroll_amount = 0;
+	game->end_menu.error = 0;
+	if (HIDE)
+		mlx_mouse_show(game->mlx.display, game->mlx.window);
+	mlx_do_key_autorepeaton(game->mlx.display);
+	return (0);
+}
 
 int	load_startscreen(t_game *game)
 {

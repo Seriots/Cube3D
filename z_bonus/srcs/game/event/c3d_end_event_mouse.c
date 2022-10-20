@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   c3d_menu_event_mouse.c                             :+:      :+:    :+:   */
+/*   c3d_end_event_mouse.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/30 15:03:03 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/20 21:01:54 by lgiband          ###   ########.fr       */
+/*   Created: 2022/10/20 20:47:58 by lgiband           #+#    #+#             */
+/*   Updated: 2022/10/20 21:36:22 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 
 #include <stdio.h>
 
-int	check_all_objects_press(t_game *game, int x, int y, t_dict *dict)
+int	check_all_objects_press_end(t_game *game, int x, int y, t_dict *dict)
 {
 	t_dict			*tmp;
 	t_collide_box	*box;
@@ -31,7 +31,7 @@ int	check_all_objects_press(t_game *game, int x, int y, t_dict *dict)
 	while (tmp)
 	{
 		box = tmp->value;
-		if (check_one_obj_press(game, x, y, tmp))
+		if (check_one_obj_press_end(game, x, y, tmp))
 		{
 			game->pick_obj = i;
 			box->mouse_press(1, x, y, game);
@@ -42,7 +42,7 @@ int	check_all_objects_press(t_game *game, int x, int y, t_dict *dict)
 	return (0);
 }
 
-int	check_all_objects_release(t_game *game, int x, int y, t_dict *dict)
+int	check_all_objects_release_end(t_game *game, int x, int y, t_dict *dict)
 {
 	t_dict			*tmp;
 	t_collide_box	*box;
@@ -53,10 +53,10 @@ int	check_all_objects_release(t_game *game, int x, int y, t_dict *dict)
 	while (tmp)
 	{
 		box = tmp->value;
-		if (x - (WIN_WIDTH / 2 - MENU_WIDTH / 2) >= box->x
-			&& x - (WIN_WIDTH / 2 - MENU_WIDTH / 2) <= box->x + box->width
-			&& y - (WIN_HEIGHT / 2 - MENU_HEIGHT / 2) >= box->y
-			&& y - (WIN_HEIGHT / 2 - MENU_HEIGHT / 2) <= box->y + box->height)
+		if (x - (WIN_WIDTH / 2 - ENDMENU_WIDTH / 2) >= box->x
+			&& x - (WIN_WIDTH / 2 - ENDMENU_WIDTH / 2) <= box->x + box->width
+			&& y - (WIN_HEIGHT / 2 - ENDMENU_HEIGHT / 2) >= box->y
+			&& y - (WIN_HEIGHT / 2 - ENDMENU_HEIGHT / 2) <= box->y + box->height)
 		{
 			if (box->mouse_release)
 			{
@@ -71,30 +71,30 @@ int	check_all_objects_release(t_game *game, int x, int y, t_dict *dict)
 	return (0);
 }
 
-int	menu_mouse_press(int button, int x, int y, t_game *game)
+int	end_mouse_press(int button, int x, int y, t_game *game)
 {
 	if (button == 1)
 	{
-		game->menu.error = 0;
-		check_all_objects_press(game, x, y, game->menu.all_objects);
+		game->end_menu.error = 0;
+		check_all_objects_press_end(game, x, y, game->end_menu.all_objects);
 	}
 	return (0);
 }
 
-int	menu_mouse_release(int button, int x, int y, t_game *game)
+int	end_mouse_release(int button, int x, int y, t_game *game)
 {
 	if (button == 1)
-		check_all_objects_release(game, x, y, game->menu.all_objects);
+		check_all_objects_release_end(game, x, y, game->end_menu.all_objects);
 	else if ((button == 4 && !game->settings.invert_scroll)
 		|| (button == 5 && game->settings.invert_scroll))
-		scroll_up(game, &game->menu);
+		scroll_up(game, &game->end_menu);
 	else if ((button == 4 && game->settings.invert_scroll)
 		|| (button == 5 && !game->settings.invert_scroll))
-		scroll_down(game, &game->menu);
+		scroll_down(game, &game->end_menu);
 	return (0);
 }
 
-int	menu_mouse_move(int x, int y, t_game *game)
+int	end_mouse_move(int x, int y, t_game *game)
 {
 	(void)y;
 	(void)x;

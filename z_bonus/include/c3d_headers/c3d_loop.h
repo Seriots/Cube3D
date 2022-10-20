@@ -21,6 +21,7 @@ int		play_sound(char *file);
 /*NextStage*/
 int		get_all_doors(t_game *game, t_map *map);
 int		next_stage(t_game *game);
+int		set_inventory(t_game *game);
 int		load_new_map(t_game *game, char *map_path, int first);
 
 /*Menuing*/

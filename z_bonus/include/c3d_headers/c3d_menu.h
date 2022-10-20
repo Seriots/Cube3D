@@ -111,11 +111,27 @@ int		release_cond_textinput(t_game *game,
 			t_textinput *textinput, int x, int y);
 int		release_cond_textinput_start(t_game *game,
 			t_textinput *textinput, int x, int y);
-int		scroll_up(t_game *game);
-int		scroll_down(t_game *game);
+int		scroll_up(t_game *game, t_menu *menu);
+int		scroll_down(t_game *game, t_menu *menu);
 int		add_number_seed(t_seed *seed, int keyint);
 int		set_map_settings(t_game *game, t_dict **menu);
 int		check_one_obj_press(t_game *game, int x, int y, t_dict *tmp);
+int		check_one_obj_press_end(t_game *game, int x, int y, t_dict *tmp);
 int		validate_seed(t_game *game, t_seed *seed);
 
+/*End Menu*/
+int	end_key_release(KeySym keycode, t_game *game);
+int	end_key_press(KeySym keycode, t_game *game);
+int	end_mouse_press(int button, int x, int y, t_game *game);
+int	end_mouse_release(int button, int x, int y, t_game *game);
+int	end_mouse_move(int x, int y, t_game *game);
+int	endmenu_update(t_game *game);
+int	endmenu_display(t_game *game);
+
+t_dict	*init_retry_button(t_game *game);
+t_dict	*init_mainmenu_button(t_game *game);
+t_dict	*init_scrollbar_end(t_game *game);
+
+int		draw_button_end(t_game *game, t_button *box);
+int		display_button_text_end(t_game *game, t_button *button);
 #endif

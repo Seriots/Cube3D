@@ -71,6 +71,7 @@ typedef struct s_all_img
 	t_img_data	start_fl;
 	t_img_data	ph;
 	t_img_data	screen_img;
+	t_img_data	end_img;
 	t_img_data	menu_img;
 	t_img_data	minimap_img;
 	t_img_data	cursor;
@@ -455,6 +456,8 @@ typedef struct s_game
 	t_settings	settings;
 	t_menu		menu;
 	t_menu		start_menu;
+	t_menu		end_menu;
+	t_menu		score_menu;
 	t_display	display;
 	t_start_map	start_map;
 	int			pick_obj;

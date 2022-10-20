@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 10:51:50 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/20 16:33:50 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/20 21:59:51 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ int	init_images(t_game *game)
 	if (init_image(game, WIN_WIDTH, WIN_HEIGHT, &game->all_img.screen_img)
 		|| init_image(game, MENU_WIDTH, MENU_HEIGHT, &game->all_img.menu_img)
 		|| init_image(game, MMAP_WIDTH, MMAP_HEIGHT, &game->all_img.minimap_img)
+		|| init_image(game, ENDMENU_WIDTH, ENDMENU_HEIGHT, &game->all_img.end_img)
 		|| init_xpm_image(game, &game->all_img.loading, "imgs/xpm/loading/loading.xpm")
 		|| init_xpm_image(game, &game->all_img.endoor, "imgs/xpm/object/endoor_game.xpm")
 		|| init_xpm_image(game, &game->all_img.cursor, "imgs/xpm/cursor/cursorv2.xpm")

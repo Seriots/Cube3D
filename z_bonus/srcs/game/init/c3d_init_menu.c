@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 10:10:34 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/18 23:39:37 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/20 22:18:49 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,28 @@ int	init_start_menu(t_game *game)
 		i++;
 	}
 	game->start_menu.error = 0;
+	game->end_menu.scroll_amount = 0;
+	return (0);
+}
+
+int	init_end_menu(t_game *game)
+{
+	static t_dict		*(*objs[])(t_game *game) = {init_retry_button,
+		init_mainmenu_button, init_scrollbar_end};
+	t_dict				*elem;
+	long unsigned int	i;
+
+	i = 0;
+	while (i < sizeof(objs) / sizeof(objs[0]))
+	{
+		elem = objs[i](game);
+		if (!elem)
+			return (10);
+		dict_add_back(&game->end_menu.all_objects, elem);
+		i++;
+	}
+	game->end_menu.error = 0;
+	game->end_menu.scroll_amount = 0;
 	return (0);
 }
 
@@ -100,6 +122,9 @@ int	init_menu(t_game *game)
 	if (error)
 		return (error);
 	error = init_start_menu(game);
+	if (error)
+		return (error);
+	error = init_end_menu(game);
 	if (error)
 		return (error);
 	return (0);

@@ -54,6 +54,8 @@ int	resume_event(int button, int x, int y, t_game *game);
 /*Utils*/
 int	press_collide_cond(t_game *game, int x, int y, t_dict *tmp);
 int	press_scrollbar_cond(t_game *game, int x, int y, t_dict *tmp);
+int	press_collide_cond_end(t_game *game, int x, int y, t_dict *tmp);
+int	press_scrollbar_cond_end(t_game *game, int x, int y, t_dict *tmp);
 
 /*Action*/
 int	objects_interact(t_game *game);

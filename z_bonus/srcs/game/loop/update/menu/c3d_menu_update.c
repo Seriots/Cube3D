@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 14:42:08 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/20 13:37:42 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/20 22:11:22 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,8 @@ int	check_draw_update(t_game *game, t_dict *tmp, void *value)
 		draw_button(game, (t_button *)value);
 	if (ft_strcmp(tmp->key, BUTTON2) == 0)
 		draw_button_start(game, (t_button *)value);
+	if (ft_strcmp(tmp->key, BUTTON3) == 0)
+		draw_button_end(game, (t_button *)value);
 	else if (ft_strcmp(tmp->key, SLIDEBAR) == 0)
 		draw_slidebar(game, (t_slidebar *)value);
 	else if (ft_strcmp(tmp->key, CHECKBOX) == 0)

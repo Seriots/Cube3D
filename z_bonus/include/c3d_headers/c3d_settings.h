@@ -26,6 +26,11 @@
 # define MENU_HEIGHT 600
 # define BORDER_SIZE 5
 
+/*Menu Settings*/
+# define ENDMENU_WIDTH 500
+# define ENDMENU_HEIGHT 600
+# define END_BORDER_SIZE 5
+
 /*Hot bar*/
 # define HOTBAR_CASE_SIZE 60
 # define HOTBAR_BIG_BORDER 2
@@ -59,6 +64,7 @@
 
 # define BUTTON "BUTTON"
 # define BUTTON2 "BUTTON2"
+# define BUTTON3 "BUTTON3"
 # define SLIDEBAR "SLIDEBAR"
 # define CHECKBOX "CHECKBOX"
 # define KEYINPUT "KEYINPUT"

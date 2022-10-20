@@ -17,6 +17,8 @@ define SRCS :=
 		game/event/c3d_default_event.c
 		game/event/c3d_event_mouse.c
 		game/event/c3d_event.c
+		game/event/c3d_end_event_mouse.c
+		game/event/c3d_end_event.c
 		game/event/c3d_menu_event_mouse.c
 		game/event/c3d_menu_event.c
 		game/event/c3d_player_action.c
@@ -57,6 +59,7 @@ define SRCS :=
 		game/init/c3d_load_screen.c
 		game/init/c3d_save_settings_load.c
 		game/init/c3d_save_settings.c
+		game/loop/display/end_menu/c3d_endmenu_display.c
 		game/loop/display/menu/c3d_display_button.c
 		game/loop/display/menu/c3d_display_checkbox.c
 		game/loop/display/menu/c3d_display_keyinput.c
@@ -82,6 +85,7 @@ define SRCS :=
 		game/loop/update/default/c3d_collide_player_obj.c
 		game/loop/update/default/c3d_next_stage.c
 		game/loop/update/default/c3d_objects_update.c
+		game/loop/update/end_menu/c3d_endmenu_update.c
 		game/loop/update/menu/c3d_draw_button.c
 		game/loop/update/menu/c3d_draw_checkbox.c
 		game/loop/update/menu/c3d_draw_keyinput.c
@@ -142,6 +146,9 @@ define SRCS :=
 		menu/start/c3d_seed.c
 		menu/start/c3d_start_map.c
 		menu/start/c3d_mapinput_mappath.c
+		menu/end/c3d_button_retry.c
+		menu/end/c3d_button_main_menu.c
+		menu/end/c3d_scrollbar_end.c
 		parsing/c3d_parsing_check.c
 		parsing/c3d_parsing_getelem.c
 		parsing/c3d_parsing_readfile.c

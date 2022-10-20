@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 13:42:48 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/20 16:11:52 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/20 22:07:55 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int	spawn_ennemies(t_game *game)
 
 	is_spawn = rand() % 5000;
 	i = 0;
-	if (is_spawn + (game->level * 6) + (game->settings.difficulty * game->level) > 4980)
+	if (is_spawn + (game->level * 6) + (game->settings.difficulty * game->level) > 4980 / 4)
 	{
 		while (1)
 		{
@@ -88,10 +88,12 @@ int	check_death(t_game *game)
 {
 	if (game->player.life == 0)
 	{
+		default_display(game);
 		game->settings.seed = 0;
 		free_textures(game, &game->all_img);
 		free_map(&game->map);
-		load_startscreen(game);
+		load_endscreen(game);
+		return (1);
 	}
 	return (0);
 }
@@ -132,7 +134,7 @@ int	kill_ennemies(t_game *game)
 int	default_update(t_game *game)
 {
 	refresh_mouse_move(game);
-	//spawn_ennemies(game);
+	spawn_ennemies(game);
 	update_stamina(game);
 	update_player(game);
 	update_objects(game, game->map.all_objects);
