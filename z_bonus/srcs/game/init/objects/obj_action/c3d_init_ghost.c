@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   c3d_init_ghost.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ppajot <ppajot@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 16:04:48 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/19 18:50:54 by ppajot           ###   ########.fr       */
+/*   Updated: 2022/10/20 14:50:40 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,9 @@ int	ghost_update(t_game *game, t_dict *dict, t_object *obj)
 	long int	cur_frame;
 	int			image_value;
 
-	(void)dict;
+	printf("ghost: %f, %f\n", obj->use_count, obj->use_max);
+	if (obj->use_count >= obj->use_max)
+		return (obj->delete(game, dict, obj));
 	cur_frame = (game->last_frame - obj->start_frame)
 		% obj->animation_duration;
 	image_value = cur_frame / (obj->animation_duration / obj->nb_image);
@@ -72,7 +74,7 @@ int	init_ghost(t_game *game, t_object **obj)
 	(*obj)->height = (*obj)->game_img->height * 6 / 100;
 	(*obj)->state = 0;
 	(*obj)->use_count = 0;
-	(*obj)->use_max = 100;
+	(*obj)->use_max = 3000;
 	(*obj)->is_visible = 1;
 	(*obj)->is_collide = 1;
 	(*obj)->start_frame = game->last_frame;

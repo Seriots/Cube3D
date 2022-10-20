@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 11:25:13 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/19 23:02:08 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/20 13:22:16 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,16 +53,21 @@ int	choose_obj_map(char *obj)
 		ft_strlcpy(obj, ENERGY, 256);
 	else if (r < 80)
 		ft_strlcpy(obj, BONUSHP, 256);
-	else if (r < 95)
+	else if (r < 87)
+		ft_strlcpy(obj, SYRINGE, 256);
+	else if (r < 92)
 		ft_strlcpy(obj, B_ENERGY, 256);
-	else if (r < 100)
+	else if (r < 98)
 		ft_strlcpy(obj, FULLHEAL, 256);
+	else if (r < 100)
+		ft_strlcpy(obj, MAP, 256);
 	return (0);
 }
 
 int	set_obj_map(t_game *game, char *obj, int width, int height)
 {
-	const char		*objs[256] = {HEAL, ENERGY, BONUSHP, B_ENERGY, FULLHEAL};
+	const char		*objs[256] = {HEAL, ENERGY, BONUSHP, B_ENERGY,
+		FULLHEAL, MAP, SYRINGE};
 	unsigned long	i;
 	int				x;
 	int				y;

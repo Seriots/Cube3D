@@ -15,6 +15,10 @@
 
 # include "c3d_struct.h"
 
+/*Object*/
+int				is_player_facing(t_game *game, t_object *obj, double marge);
+double			get_angle_player_obj(t_game *game, t_object *obj, double marge);
+
 /*Game Error*/
 int				set_error_message(t_game *game, char *message, int duration);
 
@@ -44,6 +48,8 @@ double			norm(double x, double y);
 double			ft_floor(double nbr);
 double			ft_ceil(double nbr);
 double			dist_to_obj(t_coord player, t_coord obj);
+double			get_obj_angle(double x, double y);
+int				cmp_obj_dist(t_dict *dict1, t_dict *dict2);
 
 /*Time*/		
 long			timestamp_msec(long start);

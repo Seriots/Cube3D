@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 14:42:08 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/10 16:47:30 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/20 13:37:42 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,8 +112,12 @@ int	draw_all_objects(t_game *game, t_dict *dict)
 
 int	menu_update(t_game *game)
 {
+	if (game->is_update == 0)
+		return (0);
 	make_background(game);
 	draw_all_objects(game, game->menu.all_objects);
 	make_border(game);
+	game->is_update = 0;
+	game->is_display = 1;
 	return (0);
 }

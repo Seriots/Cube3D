@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 14:34:59 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/10 16:33:44 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/20 13:39:13 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,8 @@ int	display_text(t_game *game, t_dict *dict)
 
 int	menu_display(t_game *game)
 {
+	if (game->is_display == 0)
+		return (0);
 	my_mlx_put_image_to_window(
 		game, &game->all_img.menu_img,
 		WIN_WIDTH / 2 - MENU_WIDTH / 2,
@@ -71,12 +73,11 @@ int	menu_display(t_game *game)
 	mlx_put_image_to_window(game->mlx.display, game->mlx.window,
 		game->all_img.screen_img.img, 0, 0);
 	display_text(game, game->menu.all_objects);
-	if (game->settings.show_fps)
-		show_fps(game);
 	if (game->settings.show_seed)
 		show_seed(game);
 	if (game->menu.error != 0)
 		display_error_on_screen(game, get_error(game->menu.error),
 			MENU_ERROR_X, MENU_ERROR_Y);
+	game->is_display = 0;
 	return (0);
 }

@@ -14,8 +14,6 @@
 # define C3D_STRUCT_H
 # include <X11/X.h>
 # include <stdbool.h>
-//# include <ao/ao.h>
-//# include <mpg123.h>
 
 # include "dict.h"
 
@@ -65,13 +63,21 @@ typedef struct s_all_img
 	t_img_data	ea;
 	t_img_data	ce;
 	t_img_data	fl;
+	t_img_data	start_no;
+	t_img_data	start_so;
+	t_img_data	start_we;
+	t_img_data	start_ea;
+	t_img_data	start_ce;
+	t_img_data	start_fl;
 	t_img_data	ph;
 	t_img_data	screen_img;
 	t_img_data	menu_img;
 	t_img_data	minimap_img;
+	t_img_data	cursor;
 	t_img_data	*all_cursor_img;
 	t_img_data	*all_ghost_img;
 	t_img_data	*all_loading_img;
+	t_img_data	endoor;
 	t_img_data	loading;
 	t_img_data	flashlight[3];
 	t_img_data	key[3];
@@ -80,6 +86,8 @@ typedef struct s_all_img
 	t_img_data	heal[3];
 	t_img_data	fullheal[3];
 	t_img_data	bonushp[3];
+	t_img_data	omap[3];
+	t_img_data	syringe[3];
 	t_img_data	hud[3];
 }	t_all_img;
 
@@ -413,21 +421,6 @@ typedef struct s_fct
 	int	(*mousereleased_fct)(int button, int x, int y, t_game *game);
 	int	(*mousemove_fct)(int x, int y, t_game *game);
 }	t_fct;
-/*
-typedef struct s_sound
-{
-    ao_sample_format	format;
-	mpg123_handle		*mh;
-    unsigned char		*buffer;
-    ao_device			*dev;
-    size_t				buffer_size;
-    size_t				done;
-    long				rate;
-    int					err;
-    int					driver;
-    int					channels;
-	int					encoding;
-}	t_sound;*/
 
 typedef struct s_inventory
 {
@@ -445,6 +438,12 @@ typedef struct s_error
 	long	duration;
 }	t_error;
 
+typedef struct s_start_map
+{
+	t_map		map;
+	t_player 	player;
+}	t_start_map;
+
 typedef struct s_game
 {
 	t_mlx		mlx;
@@ -457,12 +456,15 @@ typedef struct s_game
 	t_menu		menu;
 	t_menu		start_menu;
 	t_display	display;
+	t_start_map	start_map;
 	int			pick_obj;
 	long		last_frame;
 	long		delay;
 	long		load_start_frame;
 	t_error		error;
 	int			level;
+	int			is_update;
+	int			is_display;
 }	t_game;
 
 #endif

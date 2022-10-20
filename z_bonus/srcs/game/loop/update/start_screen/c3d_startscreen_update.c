@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 12:53:03 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/10 17:59:13 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/20 11:10:42 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,24 @@ int	make_background_startscreen(t_game *game)
 	return (0);
 }
 
+int	update_camera(t_game *game)
+{
+	game->start_map.player.plane.value += 0.00001 * game->delay;
+	game->player.angleup = cos(game->start_map.player.plane.value);
+	if (game->start_map.player.plane.value > 2 * M_PI)
+		game->start_map.player.plane.value -= 2 * M_PI;
+	game->start_map.player.plane.cos = cos(game->start_map.player.plane.value);
+	game->start_map.player.plane.sin = sin(game->start_map.player.plane.value);
+	game->start_map.player.plane.tan = tan(game->start_map.player.plane.value);
+	return (0);
+}
+
 int	startscreen_update(t_game *game)
 {
-	make_background_startscreen(game);
+	//make_background_startscreen(game);
+	start_raycasting(game);
+	start_display_all_sprites(game);
 	draw_all_objects(game, game->start_menu.all_objects);
+	update_camera(game);
 	return (0);
 }

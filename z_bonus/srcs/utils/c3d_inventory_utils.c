@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 11:31:24 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/18 17:26:24 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/20 14:54:37 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ int	drop_items(t_game *game, t_inventory *inventory, t_object *object)
 {
 	inventory->items[inventory->selected] = NULL;
 	object->is_visible = 1;
-	object->pos = game->player.pos;
+	object->pos.x = game->player.pos.x + 32 * game->player.plane.cos;
+	object->pos.y = game->player.pos.y + 32 * -game->player.plane.sin;
 	return (0);
 }

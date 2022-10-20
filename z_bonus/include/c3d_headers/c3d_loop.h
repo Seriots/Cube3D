@@ -19,6 +19,7 @@
 int		play_sound(char *file);
 
 /*NextStage*/
+int		get_all_doors(t_game *game, t_map *map);
 int		next_stage(t_game *game);
 int		load_new_map(t_game *game, char *map_path, int first);
 
@@ -26,7 +27,21 @@ int		load_new_map(t_game *game, char *map_path, int first);
 int		draw_all_objects(t_game *game, t_dict *dict);
 int		display_text(t_game *game, t_dict *dict);
 
+/*Start Raycasting*/
+int	check_angle(double angle, double left_angle, double right_angle);
+unsigned int	get_sprite_color(t_game *game, t_img_data *img, int j, int i, int width);
+int		start_display_all_sprites(t_game *game);
+int		start_intersect_wall(t_game *game, t_vector ray, t_wall *wall);
+int		start_display_wall(t_game *game, t_wall *wall, int i);
+int		start_raycasting(t_game *game);
+
 /*Ray Casting*/
+int	is_lamp(t_game *game);
+int	set_dist(double *dist_x, double *dist_y, t_vector pre_pos);
+int	check_wall(t_game *game, t_map *map, t_vector vec, t_wall *wall);
+t_vector	get_next_wall(t_vector pre_pos);
+t_img_data	*get_image(t_all_img *all_img, char c);
+int		get_pixel_color(t_game *game, t_wall *wall, t_point p, t_display *display);
 int		intersect_wall(t_game *game, t_vector ray, t_wall *wall);
 int		display_wall(t_game *game, t_wall *wall, int i);
 int		raycasting(t_game *game);

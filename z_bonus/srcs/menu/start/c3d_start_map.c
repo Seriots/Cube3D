@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 20:12:58 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/19 23:31:37 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/20 16:48:14 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ int	init_all_map_parameters(t_game *game, int first)
 	error = init_map_objects(game, &game->map);
 	if (error)
 		return (error);
-	error = init_player(game, first);
+	error = init_player(game, &game->map, &game->player, first);
 	if (error)
 		return (error);
 	error = open_textures(game, &game->map);

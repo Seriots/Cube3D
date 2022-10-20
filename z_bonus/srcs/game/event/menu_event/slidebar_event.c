@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 10:41:56 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/11 13:17:41 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/20 13:40:58 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ int	slidebar_mouse_move(int x, int y, t_game *game)
 	t_slidebar	*value;
 
 	(void)y;
+	game->is_update = 1;
 	value = dict_getelem_number(game->menu.all_objects, game->pick_obj)->value;
 	x = x - (WIN_WIDTH / 2 - MENU_WIDTH / 2);
 	if (x < value->box.x)

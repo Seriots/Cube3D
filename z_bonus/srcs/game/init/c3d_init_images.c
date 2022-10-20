@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 10:51:50 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/19 22:32:19 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/20 16:33:50 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,8 @@ int	init_images(t_game *game)
 		|| init_image(game, MENU_WIDTH, MENU_HEIGHT, &game->all_img.menu_img)
 		|| init_image(game, MMAP_WIDTH, MMAP_HEIGHT, &game->all_img.minimap_img)
 		|| init_xpm_image(game, &game->all_img.loading, "imgs/xpm/loading/loading.xpm")
+		|| init_xpm_image(game, &game->all_img.endoor, "imgs/xpm/object/endoor_game.xpm")
+		|| init_xpm_image(game, &game->all_img.cursor, "imgs/xpm/cursor/cursorv2.xpm")
 		|| init_objects_img(game, "imgs/xpm/object/black_flashlight",
 			game->all_img.flashlight)
 		|| init_objects_img(game, "imgs/xpm/object/key", game->all_img.key)
@@ -77,6 +79,8 @@ int	init_images(t_game *game)
 		|| init_objects_img(game, "imgs/xpm/object/b_energy",
 			game->all_img.b_energy)
 		|| init_objects_img(game, "imgs/xpm/object/heal", game->all_img.heal)
+		|| init_objects_img(game, "imgs/xpm/object/map", game->all_img.omap)
+		|| init_objects_img(game, "imgs/xpm/object/syringe", game->all_img.syringe)
 		|| init_objects_img(game, "imgs/xpm/object/fullheal",
 			game->all_img.fullheal)
 		|| init_objects_img(game, "imgs/xpm/object/bonushp",

@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 10:41:01 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/19 00:03:37 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/20 16:50:27 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,40 @@
 #include "c3d_utils.h"
 
 #include <stdio.h>
+
+
+unsigned int	get_image_color(t_img_data *img, int x, int y)
+{
+	unsigned int	color;
+	
+	color = *(unsigned int *)(img->addr + (y * img->line_length + x * (img->bits_per_pixel / 8)));
+	return (color);
+}
+
+void drawRotateSprite(t_game* game, int x, int y)
+{
+	t_img_data	*img;
+	int			cx;
+	int			cy;
+
+	img = &game->all_img.all_cursor_img[0];	
+	cx = (img->width / 2);
+	cy = (img->height / 2);
+    for (int dy = 0; dy < img->height; dy++)
+    {
+        for (int dx = 0; dx < img->width; dx++)
+        {
+            float ex = cos(-game->player.plane.value) * (dx - cx) + sin(-game->player.plane.value) * (dy - cy);
+            float ey = -sin(-game->player.plane.value) * (dx - cx) + cos(-game->player.plane.value) * (dy - cy);
+
+			ex += cx;
+			ey += cy;
+			unsigned int color = get_image_color(img, ex, ey);
+			if (color == 0xCB1212)
+            	my_mlx_pixel_put(&game->all_img.minimap_img, x - cx + dx, y - cy + dy, get_image_color(img, ex, ey));
+        }
+    }
+}
 
 int	get_cursor_image(t_game *game)
 {
@@ -98,5 +132,6 @@ int	update_minimap(t_game *game)
 		i++;
 	}
 	put_player(game);
+	//drawRotateSprite(game, MMAP_WIDTH / 2, MMAP_HEIGHT / 2);
 	return (0);
 }

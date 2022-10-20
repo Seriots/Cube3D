@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 11:13:33 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/18 23:57:45 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/20 13:18:38 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 # define B_ENERGY "BIG_ENERGY"
 # define FULLHEAL "FULL_HEAL"
 # define MAP "MAP"
+# define SYRINGE "SYRINGE"
 # define GHOST "GHOST"
 
 # define GAME 0
@@ -71,6 +72,12 @@ int		key_interact(t_game *game, t_dict *dict, t_object *obj);
 int		lamp_use(t_game *game, t_dict *dict, t_object *obj);
 int		lamp_drop(t_game *game, t_dict *dict, t_object *obj);
 int		lamp_interact(t_game *game, t_dict *dict, t_object *obj);
+int		omap_use(t_game *game, t_dict *dict, t_object *obj);
+int		omap_drop(t_game *game, t_dict *dict, t_object *obj);
+int		omap_interact(t_game *game, t_dict *dict, t_object *obj);
+int		syringe_interact(t_game *game, t_dict *dict, t_object *obj);
+int		syringe_drop(t_game *game, t_dict *dict, t_object *obj);
+int		syringe_use(t_game *game, t_dict *dict, t_object *obj);
 
 /*Obj*/
 int		init_ghost(t_game *game, t_object **obj);
@@ -83,6 +90,8 @@ int		init_energy(t_game *game, t_object **obj);
 int		init_benergy(t_game *game, t_object **obj);
 int		init_bonushp(t_game *game, t_object **obj);
 int		init_heal(t_game *game, t_object **obj);
+int		init_omap(t_game *game, t_object **obj);
+int		init_syringe(t_game *game, t_object **obj);
 int		init_obj(t_game *game, char *tag, int x, int y);
 
 /*Utils*/

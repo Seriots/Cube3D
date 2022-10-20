@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   c3d_default_display.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ppajot <ppajot@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 13:43:02 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/19 17:53:30 by ppajot           ###   ########.fr       */
+/*   Updated: 2022/10/20 16:03:32 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,11 +99,22 @@ static int	set_cursor(t_game *game)
 	return (0);
 }
 
+int	is_map_in_hand(t_game *game)
+{
+	if (game->inventory.selected == -1)
+		return (0);
+	if (game->inventory.items[game->inventory.selected] == NULL)
+		return (0);
+	if (ft_strcmp(game->inventory.items[game->inventory.selected]->tag, MAP) == 0 && game->inventory.items[game->inventory.selected]->state == 1)
+		return (1);
+	return (0);
+}
+
 int	default_display(t_game *game)
 {
 	raycasting(game);
 	display_all_sprites(game);
-	if (game->settings.show_mmap)
+	if (game->settings.show_mmap || is_map_in_hand(game))
 		my_mlx_put_image_to_window(game, &game->all_img.minimap_img,
 			10, WIN_HEIGHT - game->all_img.minimap_img.height - 10);
 	mlx_put_image_to_window(game->mlx.display, game->mlx.window,

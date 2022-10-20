@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 10:51:13 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/19 23:37:24 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/20 13:47:04 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,28 +59,29 @@ static void	set_player_coord(t_map *map, t_player *player)
 	}
 }
 
-int	init_player(t_game *game, int first)
+int	init_player(t_game *game, t_map *map, t_player *player, int first)
 {
-	set_player_coord(&game->map, &game->player);
-	game->player.forward = 0;
-	game->player.backward = 0;
-	game->player.left = 0;
-	game->player.right = 0;
-	game->player.turn_right = 0;
-	game->player.turn_left = 0;
-	game->player.turn_up = 0;
-	game->player.turn_down = 0;
-	game->player.run = 0;
-	game->player.crouch = 0;
-	game->player.angleup = 0;
-	game->player.elevation = 0;
-	game->player.invincible_frames = 0;
+	(void)game;
+	set_player_coord(map, player);
+	player->forward = 0;
+	player->backward = 0;
+	player->left = 0;
+	player->right = 0;
+	player->turn_right = 0;
+	player->turn_left = 0;
+	player->turn_up = 0;
+	player->turn_down = 0;
+	player->run = 0;
+	player->crouch = 0;
+	player->angleup = 0;
+	player->elevation = 0;
+	player->invincible_frames = 0;
 	if (first)
 	{
-		game->player.max_life = 3;
-		game->player.life = game->player.max_life;
-		game->player.max_stamina = 100;
-		game->player.stamina = game->player.max_stamina;
+		player->max_life = 3;
+		player->life = player->max_life;
+		player->max_stamina = 100;
+		player->stamina = player->max_stamina;
 	}
 	return (0);
 }

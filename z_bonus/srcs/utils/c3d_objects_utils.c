@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 23:43:59 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/19 21:50:38 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/20 14:35:08 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,17 +38,32 @@ int	move_ghost(t_game *game, t_object *obj)
 	return (0);
 }
 
-int	is_player_facing(t_game *game, t_object *obj)
+int	is_player_facing(t_game *game, t_object *obj, double marge)
 {
-	double	dist_x;
-	double	dist_y;
 	double	angle;
 
-	dist_x = game->player.pos.x - obj->pos.x;
-	dist_y = game->player.pos.y - obj->pos.y;
-	angle = tan(dist_y / dist_x);
-	printf("angle: %f, player angle: %f, %f\n", angle, game->player.plane.value - (2 * M_PI), game->player.plane.value);
-	return (1);
+	angle = get_obj_angle(obj->pos.x - game->display.xfov, -obj->pos.y + game->display.yfov);
+	if (angle > game->player.plane.value - marge
+		&& angle < game->player.plane.value + marge)
+		return (1);
+	if (angle > game->player.plane.value - (2 * M_PI) - marge
+		&& angle < game->player.plane.value - (2 * M_PI) + marge)
+		return (1);
+	return (0);
+}
+
+double	get_angle_player_obj(t_game *game, t_object *obj, double marge)
+{
+	double	angle;
+
+	angle = get_obj_angle(obj->pos.x - game->display.xfov, -obj->pos.y + game->display.yfov);
+	if (angle > game->player.plane.value - marge
+		&& angle < game->player.plane.value + marge)
+		return (dabs(angle - game->player.plane.value));
+	if (angle > game->player.plane.value - (2 * M_PI) - marge
+		&& angle < game->player.plane.value - (2 * M_PI) + marge)
+		return (dabs(angle - game->player.plane.value - (2 * M_PI)));
+	return (0);
 }
 
 t_dict	*get_nearest_door(t_game *game, t_dict **all_obj)
@@ -69,7 +84,9 @@ t_dict	*get_nearest_door(t_game *game, t_dict **all_obj)
 		{
 			dist = norm(obj->pos.x - game->player.pos.x,
 					obj->pos.y - game->player.pos.y);
-			if (dist < MIN_DIST_OBJ && (!door || dist < min_dist) && is_player_facing(game, obj))
+			if (dist < MIN_DIST_OBJ
+				&& (!door || dist < min_dist)
+				&& is_player_facing(game, obj, 0.3))
 			{
 				door = tmp;
 				min_dist = dist;

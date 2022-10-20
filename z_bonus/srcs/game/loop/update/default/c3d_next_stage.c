@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 16:31:05 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/19 23:33:01 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/20 11:53:20 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,16 +64,22 @@ int	loading_display(t_game *game)
 	image_value = frame / (600 / 15);
 	if (image_value >= 15)
 		image_value = 15 - 1;
-	my_mlx_put_image_to_window(game,
-		&game->all_img.all_loading_img[image_value], WIN_WIDTH - 60,
+	mlx_put_image_to_window(game->mlx.display, game->mlx.window,
+		game->all_img.all_loading_img[image_value].img, WIN_WIDTH - 60,
 			WIN_HEIGHT - 20 - game->all_img.all_loading_img[image_value].height);
-	my_mlx_put_image_to_window(game,
-		&game->all_img.loading, WIN_WIDTH - 300,
+	mlx_put_image_to_window(game->mlx.display, game->mlx.window,
+		game->all_img.loading.img, WIN_WIDTH - 300,
 			WIN_HEIGHT - 10 - game->all_img.loading.height);
+	mlx_mouse_move(game->mlx.display, game->mlx.window,
+		WIN_WIDTH / 2, WIN_HEIGHT / 2);
+	return (0);
+}
+
+int	fade_display(t_game *game)
+{
 	mlx_put_image_to_window(game->mlx.display,
 		game->mlx.window,
 		game->all_img.screen_img.img, 0, 0);
-	display_loading_message(game);
 	mlx_mouse_move(game->mlx.display, game->mlx.window,
 		WIN_WIDTH / 2, WIN_HEIGHT / 2);
 	return (0);
@@ -101,9 +107,11 @@ int	fade_update_loop(t_game *game, float percent, int limit_x, int limit_y)
 	}
 	if (percent == 1)
 	{
+		fade_display(game);
 		game->load_start_frame = timestamp_msec(0);
 		game->fcts.update_fct = loading;
 		game->fcts.display_fct = loading_display;
+		display_loading_message(game);
 	}
 	return (0);
 }
@@ -124,15 +132,6 @@ int	fade_update(t_game *game)
 	return (0);
 }
 
-int	fade_display(t_game *game)
-{
-	mlx_put_image_to_window(game->mlx.display,
-		game->mlx.window,
-		game->all_img.screen_img.img, 0, 0);
-	mlx_mouse_move(game->mlx.display, game->mlx.window,
-		WIN_WIDTH / 2, WIN_HEIGHT / 2);
-	return (0);
-}
 
 int	next_stage(t_game *game)
 {

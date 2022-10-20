@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   c3d_display_sprites.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ppajot <ppajot@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 00:48:35 by pierre-yves       #+#    #+#             */
-/*   Updated: 2022/10/19 19:40:56 by ppajot           ###   ########.fr       */
+/*   Updated: 2022/10/20 12:31:34 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,18 +25,6 @@
 
 #define SPRITE_WIDTH 1 / 3
 #define	SPRITE_HEIGHT 1 / 2
-
-double	get_obj_angle(double x, double y)
-{
-	double	angle;
-
-	angle = atan(y / x);
-	if (x < 0)
-		angle += M_PI;
-	if (angle < 0)
-		angle += 2 * M_PI;
-	return (angle);
-}
 
 unsigned int	get_sprite_color(t_game *game, t_img_data *img, int j, int i, int width)
 {
@@ -109,20 +97,6 @@ int	check_angle(double angle, double left_angle, double right_angle)
 	if (angle + 2 * M_PI < left_angle && angle + 2 * M_PI > right_angle)
 		return (1);
 	if (angle - 2 * M_PI < left_angle && angle - 2 * M_PI > right_angle)
-		return (1);
-	return (0);
-}
-
-int	cmp_obj_dist(t_dict *dict1, t_dict *dict2)
-{
-	t_object *obj1;
-	t_object *obj2;
-
-	obj1 = dict1->value;
-	obj2 = dict2->value;
-	if (obj1->dist > obj2->dist)
-		return (-1);
-	else if (obj1->dist < obj2->dist)
 		return (1);
 	return (0);
 }

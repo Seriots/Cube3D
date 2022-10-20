@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 15:40:39 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/12 20:56:42 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/20 13:28:51 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,10 +55,12 @@ char	get_char_from_key(KeySym key, int shift, int caps)
 
 	if (key >= 65429 && key <= 65438)
 		return (base[key - 65429]);
-	if (key < 32 || key > 126)
+	if (key < 32 || key > 255)
 		return (0);
 	if ((shift && caps) || (!shift && !caps))
 		return (key);
+	else if (key == XK_minus)
+		return (XK_underscore);
 	else
 		return (key - 32);
 }

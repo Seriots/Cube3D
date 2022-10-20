@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   c3d_init_textures.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ppajot <ppajot@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 09:59:52 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/19 18:13:41 by ppajot           ###   ########.fr       */
+/*   Updated: 2022/10/20 10:47:05 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,43 @@ int	open_textures(t_game *game, t_map *map)
 		return (error);
 	error = open_one_texture(game, &game->all_img.ph,
 			0, DEFAULT_IMAGE_PATH_PH);
+	if (error)
+		return (error);
+	return (0);
+}
+
+int	open_start_textures(t_game *game, t_map *map)
+{
+	int	error;
+
+	game->all_img.no.img = 0;
+	game->all_img.so.img = 0;
+	game->all_img.ea.img = 0;
+	game->all_img.we.img = 0;
+	game->all_img.ce.img = 0;
+	game->all_img.fl.img = 0;
+	error = open_one_texture(game, &game->all_img.start_no,
+			map->no, DEFAULT_IMAGE_PATH_NO);
+	if (error)
+		return (error);
+	error = open_one_texture(game, &game->all_img.start_so,
+			map->so, DEFAULT_IMAGE_PATH_SO);
+	if (error)
+		return (error);
+	error = open_one_texture(game, &game->all_img.start_ea,
+			map->ea, DEFAULT_IMAGE_PATH_EA);
+	if (error)
+		return (error);
+	error = open_one_texture(game, &game->all_img.start_we,
+			map->we, DEFAULT_IMAGE_PATH_WE);
+	if (error)
+		return (error);
+	error = open_one_texture(game, &game->all_img.start_ce,
+			0, DEFAULT_IMAGE_PATH_CE);
+	if (error)
+		return (error);
+	error = open_one_texture(game, &game->all_img.start_fl,
+			0, DEFAULT_IMAGE_PATH_FL);
 	if (error)
 		return (error);
 	return (0);

@@ -41,7 +41,6 @@ int	set_inventory(t_game *game)
 		game->inventory.size = 4;
 	game->inventory.selected = -1;
 	elem = dict_get_last(game->map.all_objects);
-	printf("elem = %s\n", (char *)elem->key);
 	if (elem && ft_strcmp(elem->key, LAMP) == 0)
 		add_items(game, &game->inventory, elem->value);
 	return (0);

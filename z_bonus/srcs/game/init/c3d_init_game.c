@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 13:17:26 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/19 00:01:39 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/20 13:31:59 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,7 @@ static int	set_variable(t_game *game)
 	game->error.start_time = 0;
 	game->error.duration = 0;
 	game->error.message[0] = 0;
+	game->is_update = 1;
 	game->all_img.menu_img.img = NULL;
 	game->all_img.screen_img.img = NULL;
 	game->all_img.minimap_img.img = NULL;
@@ -133,6 +134,9 @@ int	init_game(t_game *game, char *path)
 	if (error)
 		return (error);
 	error = init_menu(game);
+	if (error)
+		return (error);
+	error = init_start_map(game);
 	if (error)
 		return (error);
 	return (0);

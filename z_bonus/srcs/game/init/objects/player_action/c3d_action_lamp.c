@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 12:44:07 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/18 23:56:04 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/20 14:36:24 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int	lamp_use(t_game *game, t_dict *dict, t_object *obj)
 	(void)dict;
 	(void)obj;
 	obj->state = !obj->state;
+	printf("Lamp state: %d\n", 		obj->state);
 	return (0);
 }
 

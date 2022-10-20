@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 11:53:07 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/18 23:59:14 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/20 12:04:08 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,11 @@ int	init_endoor(t_game *game, t_object **obj)
 {
 	ft_strlcpy((*obj)->tag, ENDOOR, 32);
 	(*obj)->all_img = 0;
-	(*obj)->game_img = 0;
+	(*obj)->game_img = &game->all_img.endoor;
 	(*obj)->menu_img = 0;
 	(*obj)->hand_img = 0;
+	(*obj)->width = (*obj)->game_img->width * 20 / 100;
+	(*obj)->height = (*obj)->game_img->height * 20 / 100;
 	(*obj)->state = 0;
 	(*obj)->use_count = 0;
 	(*obj)->use_max = 1;

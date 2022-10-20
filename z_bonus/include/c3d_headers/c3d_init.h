@@ -35,15 +35,19 @@ int	init_menu(t_game *game);
 
 /*Textures*/
 int	open_textures(t_game *game, t_map *map);
+int	open_start_textures(t_game *game, t_map *map);
 
 /*Image*/
 int	init_images(t_game *game);
 
 /*Player*/
-int	init_player(t_game *game, int first);
+int	init_player(t_game *game, t_map *map, t_player *player, int first);
 
 /*Game*/
 int	init_game(t_game *game, char *path);
+
+/*Start map*/
+int	init_start_map(t_game *game);
 
 /*Mlx*/
 int	init_mlx(t_game *game);

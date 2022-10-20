@@ -32,6 +32,8 @@ define SRCS :=
 		game/init/objects/obj_action/c3d_init_benergy.c
 		game/init/objects/obj_action/c3d_init_bonushp.c
 		game/init/objects/obj_action/c3d_init_ghost.c
+		game/init/objects/obj_action/c3d_init_omap.c
+		game/init/objects/obj_action/c3d_init_syringe.c
 		game/init/objects/player_action/c3d_action_door.c
 		game/init/objects/player_action/c3d_action_endoor.c
 		game/init/objects/player_action/c3d_action_key.c
@@ -42,9 +44,12 @@ define SRCS :=
 		game/init/objects/player_action/c3d_action_benergy.c
 		game/init/objects/player_action/c3d_action_bonushp.c
 		game/init/objects/player_action/c3d_action_ghost.c
+		game/init/objects/player_action/c3d_action_omap.c
+		game/init/objects/player_action/c3d_action_syringe.c
 		game/init/objects/c3d_obj_init.c
 		game/init/c3d_init_game.c
 		game/init/c3d_init_images.c
+		game/init/c3d_init_startmap.c
 		game/init/c3d_init_menu.c
 		game/init/c3d_init_mlx.c
 		game/init/c3d_init_player.c
@@ -88,6 +93,10 @@ define SRCS :=
 		game/loop/update/menu/c3d_menu_update.c
 		game/loop/update/start_screen/c3d_startscreen_update.c
 		game/loop/update/start_screen/c3d_draw_seed.c
+		game/loop/update/start_screen/c3d_start_display_sprites.c
+		game/loop/update/start_screen/c3d_start_raycasting_display.c
+		game/loop/update/start_screen/c3d_start_raycasting_getwall.c
+		game/loop/update/start_screen/c3d_start_raycasting.c
 		game/loop/c3d_loop.c
 		game/c3d_start.c
 		menu/settings/c3d_button_exit.c
