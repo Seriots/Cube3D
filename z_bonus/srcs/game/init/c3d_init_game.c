@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 13:17:26 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/20 22:28:58 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/21 16:55:48 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@
 #include "mzg_incs.h"
 
 #include "ft.h"
+
+#include <stdlib.h>
 
 static int	set_default_settings2(t_game *game)
 {
@@ -71,6 +73,7 @@ static int	set_default_settings(t_game *game, char *path)
 	ft_strlcpy(game->map.default_south, DEFAULT_IMAGE_PATH_SO, 256);
 	ft_strlcpy(game->map.default_west, DEFAULT_IMAGE_PATH_WE, 256);
 	ft_strlcpy(game->map.default_east, DEFAULT_IMAGE_PATH_EA, 256);
+	ft_strlcpy(game->settings.name, "Default", 20);
 	game->settings.map_path = ft_strdup(path);
 	if (path && !game->settings.map_path)
 		return (10);
@@ -141,5 +144,6 @@ int	init_game(t_game *game, char *path)
 	error = init_start_map(game);
 	if (error)
 		return (error);
+	//system("cvlc --play-and-exit test/ladidie.mp3 &");
 	return (0);
 }

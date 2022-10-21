@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 10:51:13 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/21 16:09:04 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/21 17:20:20 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,12 +76,12 @@ int	init_player(t_game *game, t_map *map, t_player *player, int first)
 	player->crouch = 0;
 	player->angleup = 0;
 	player->elevation = 0;
-	player->footstep_speed = 2000;
+	player->footstep_speed = 0;
 	player->last_footstep = 0;
 	player->invincible_frames = 0;
 	if (first)
 	{
-		player->max_life = 3;
+		player->max_life = 0;
 		player->life = player->max_life;
 		player->max_stamina = 100;
 		player->stamina = player->max_stamina;

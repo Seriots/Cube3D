@@ -198,6 +198,7 @@ typedef struct s_settings
 	bool			show_seed;
 	int				difficulty;
 	char			*map_path;
+	char			name[20];
 	unsigned long	seed;
 }	t_settings;
 
@@ -363,6 +364,20 @@ typedef struct s_textinput
 	int				start_display;
 	char			path[256];
 }	t_textinput;
+
+typedef struct s_nameinput
+{
+	t_collide_box	box;
+	int				shift;
+	int				caps_lock;
+	bool			is_selected;
+	int				size;
+	int				max_size;
+	char			*modified_path[20];
+	int				max_char_display;
+	int				start_display;
+	char			path[256];
+}	t_nameinput;
 
 typedef struct s_mapinput
 {

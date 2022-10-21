@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 11:13:57 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/21 15:43:39 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/21 16:32:12 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ int	free_menu(t_menu *menu)
 
 void	free_game(t_game *game)
 {
-	system("pkill cvlc");
+	system("pkill vlc");
 	mlx_do_key_autorepeaton(game->mlx.display);
 	if (HIDE)
 		mlx_mouse_show(game->mlx.display, game->mlx.window);

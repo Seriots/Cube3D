@@ -150,6 +150,7 @@ define SRCS :=
 		menu/end/c3d_button_main_menu.c
 		menu/end/c3d_gameover.c
 		menu/end/c3d_scrollbar_end.c
+		menu/end/c3d_textinput_name.c
 		parsing/c3d_parsing_check.c
 		parsing/c3d_parsing_getelem.c
 		parsing/c3d_parsing_readfile.c

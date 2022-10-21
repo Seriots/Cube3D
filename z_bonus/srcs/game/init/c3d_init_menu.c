@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 10:10:34 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/20 22:18:49 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/21 17:19:51 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ int	init_start_menu(t_game *game)
 int	init_end_menu(t_game *game)
 {
 	static t_dict		*(*objs[])(t_game *game) = {init_retry_button,
-		init_mainmenu_button, init_scrollbar_end};
+		init_mainmenu_button, init_nameinput_end, init_scrollbar_end};
 	t_dict				*elem;
 	long unsigned int	i;
 

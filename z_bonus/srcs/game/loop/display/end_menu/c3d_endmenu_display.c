@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 14:34:59 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/21 13:59:47 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/21 17:33:11 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int	display_stat(t_game *game, t_player *player, double n)
 	i = 0;
 	while (i < (unsigned int)(sizeof(all_stats) / sizeof(all_stats[0]) * n))
 	{
-		display_one_stat(game, all_stats[i], 30 + (15 * MENU_HEIGHT / 100) + i * END_STAT_MARGE + game->end_menu.scroll_amount);
+		display_one_stat(game, all_stats[i], 70 + (15 * MENU_HEIGHT / 100) + i * END_STAT_MARGE + game->end_menu.scroll_amount);
 		i++;
 	}
 	return (0);

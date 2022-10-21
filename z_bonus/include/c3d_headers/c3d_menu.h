@@ -131,8 +131,14 @@ int	endmenu_display(t_game *game);
 t_dict	*init_retry_button(t_game *game);
 t_dict	*init_mainmenu_button(t_game *game);
 t_dict	*init_scrollbar_end(t_game *game);
+t_dict	*init_nameinput_end(t_game *game);
 
+int	draw_nameinput(t_game *game, t_nameinput *box);
+int		display_nameinput_text(t_game *game, t_nameinput *textinput);
 int		draw_button_end(t_game *game, t_button *box);
 int		display_button_text_end(t_game *game, t_button *button);
-int	draw_scrollbar_end(t_game *game, t_scrollbar *box);
+int		draw_scrollbar_end(t_game *game, t_scrollbar *box);
+int		nameinput_press(int button, int x, int y, t_game *game);
+void	init_nameinput(t_game *game, t_nameinput *nameinput);
+int	release_cond_nameinput(t_game *game, t_nameinput *textinput, int x, int y);
 #endif

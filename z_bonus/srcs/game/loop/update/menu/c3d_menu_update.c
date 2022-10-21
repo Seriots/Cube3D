@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 14:42:08 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/21 11:03:28 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/21 17:27:34 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,8 @@ int	check_draw_update(t_game *game, t_dict *tmp, void *value)
 		draw_scrollbar(game, (t_scrollbar *)value);
 	else if (ft_strcmp(tmp->key, SCROLLBAR2) == 0)
 		draw_scrollbar_end(game, (t_scrollbar *)value);
+	else if (ft_strcmp(tmp->key, NAMEINPUT) == 0)
+		draw_nameinput(game, (t_nameinput *)value);
 	return (0);
 }
 
