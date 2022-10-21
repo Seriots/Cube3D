@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 10:41:01 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/20 16:50:27 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/20 17:34:32 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 #include <stdio.h>
 
-
+/*
 unsigned int	get_image_color(t_img_data *img, int x, int y)
 {
 	unsigned int	color;
@@ -49,7 +49,7 @@ void drawRotateSprite(t_game* game, int x, int y)
             	my_mlx_pixel_put(&game->all_img.minimap_img, x - cx + dx, y - cy + dy, get_image_color(img, ex, ey));
         }
     }
-}
+}*/
 
 int	get_cursor_image(t_game *game)
 {
