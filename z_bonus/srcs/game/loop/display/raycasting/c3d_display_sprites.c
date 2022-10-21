@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   c3d_display_sprites.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ppajot <ppajot@student.42.fr>              +#+  +:+       +#+        */
+/*   By: pierre-yves <pierre-yves@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 00:48:35 by pierre-yves       #+#    #+#             */
-/*   Updated: 2022/10/19 19:40:56 by ppajot           ###   ########.fr       */
+/*   Updated: 2022/10/21 20:12:45 by pierre-yves      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include "c3d_utils.h"
 
 #include "dict.h"
+#include "ft.h"
 
 #include "mlx.h"
 
@@ -79,7 +80,7 @@ int	display_sprite(t_game *game, t_object *obj, double dist, double angle)
 	int	i;
 
 	game->display.vline = -game->settings.fov * tan(angle) * (double)WIN_WIDTH / (double)VIEW_WIDTH + (double)WIN_WIDTH / 2;
-	sprite_width = (((double)WIN_WIDTH / (double)VIEW_WIDTH ) * obj->width) * game->settings.fov / (dist + game->settings.fov / cos(angle));
+	sprite_width = (((double)WIN_WIDTH / (double)VIEW_WIDTH ) * obj->width) * game->settings.fov / ((dist + game->settings.fov / cos(angle)) * cos(angle));
 	i = -sprite_width / 2;
 	game->display.d = (game->display.vline - (double)WIN_WIDTH / 2.0)
 		* (double)VIEW_WIDTH / (double)WIN_WIDTH;
@@ -98,6 +99,77 @@ int	display_sprite(t_game *game, t_object *obj, double dist, double angle)
 				draw_sprite_vline(game, obj->game_img, i + game->display.vline, sprite_width);
 		}
 		i++;
+	}
+	return (0);
+}
+
+unsigned int	get_door_color(t_game *game, t_img_data *img, int j, double x_from_start)
+{
+	void	*color;
+	int		x;
+	int		y;
+
+	x = (x_from_start * img->width) / CASE_SIZE;
+	y = (j * img->height) / (game->display.max - game->display.min);
+	color = (img->addr
+			+ (y * img->line_length
+				+ x * img->bits_per_pixel / 8));
+	return (*(unsigned int *)color);
+	//(void)game;
+	//(void)img;
+	//return (0xFFFFFF);
+}
+
+int	draw_door_vline(t_game *game, t_img_data *img, int i, double x_from_start)
+{
+	int	j;
+	unsigned int	color;
+
+	j = max(game->display.min - 1, -1);
+	while (++j < WIN_HEIGHT && j < game->display.max)
+	{
+		//printf("row: %i\n", j);
+		color = get_door_color(game, img, j - game->display.min, x_from_start);
+		if (color != 0xFF000000)
+			my_mlx_pixel_put(&game->all_img.screen_img, i, j, color);
+	}
+	return (0);
+}
+
+int	display_door(t_game *game, t_object *obj, double dist, double angle)
+{
+	double	x0;
+	int		i;
+	double	relat_angle;
+	double	xn;
+	double	beta;
+	double	newdist;
+	double	y;
+
+	i = 0;
+	x0 = -game->settings.fov * tan(angle);
+	angle = -angle;
+	relat_angle = 3 * M_PI_4;
+	xn = (ft_ceil(x0 * (double)WIN_WIDTH / (double)VIEW_WIDTH) + i) * (double)VIEW_WIDTH / (double)WIN_WIDTH;
+	beta = atan(xn / game->settings.fov);
+	newdist = sin (M_PI_2 + angle + relat_angle) * dist / sin (M_PI_2 - beta - relat_angle);
+	y = sin(beta - angle) * dist / sin(M_PI_2 - beta - relat_angle);
+	printf("i: %i, xn: %f, angle: %f, beta: %f, dist: %f, y: %f\n", i, xn, angle,  beta, newdist, y);
+	while (y < CASE_SIZE && y >= 0)
+	{
+		game->display.angle = cos(beta);
+		game->display.min = (double)VIEW_HEIGHT / 2 - game->player.updown + game->player.z - ((double)CASE_SIZE / 2 - game->player.updown) * game->settings.fov / (game->display.angle * (newdist + game->settings.fov / (game->display.angle)));
+		game->display.max = -(double)VIEW_HEIGHT / 2 + game->player.updown - game->player.z - ((double)CASE_SIZE / 2 + game->player.updown) * game->settings.fov / (game->display.angle * (newdist + game->settings.fov / (game->display.angle)));
+		game->display.min *= (double)WIN_HEIGHT / (double)VIEW_HEIGHT;
+		game->display.max *= -(double)WIN_HEIGHT / (double)VIEW_HEIGHT;
+		if (beta < M_PI_2 && beta > -M_PI_2)
+			draw_door_vline(game, obj->game_img, (int)(xn * (double)WIN_WIDTH / (double)VIEW_WIDTH + (double)WIN_WIDTH / 2), y);
+		i++;
+		xn = (ft_ceil(x0 * (double)WIN_WIDTH / (double)VIEW_WIDTH) + i) * (double)VIEW_WIDTH / (double)WIN_WIDTH;
+		beta = atan(xn / game->settings.fov);
+		newdist = sin (M_PI_2 + angle + relat_angle) * dist / sin (M_PI_2 - beta - relat_angle);	
+		y = sin(beta - angle) * dist / sin(M_PI_2 - beta - relat_angle);
+		printf("i: %i, xn: %f, angle: %f, beta: %f, dist: %f, y: %f\n", i, xn, angle,  beta, newdist, y);
 	}
 	return (0);
 }
@@ -173,7 +245,12 @@ int	display_all_sprites(t_game *game)
 	{
 		obj = tmp->value;
 		if (obj && obj->dist >= 0 && obj->is_visible && obj->game_img)
-			display_sprite(game, obj, obj->dist, obj->angle - game->player.plane.value);
+		{
+			if (ft_strcmp("DOOR", obj->tag) == 0)
+				display_door(game, obj, obj->dist, obj->angle - game->player.plane.value);
+			else
+				display_sprite(game, obj, obj->dist, obj->angle - game->player.plane.value);
+		}
 		tmp = tmp->next;
 	}
 	return (0);

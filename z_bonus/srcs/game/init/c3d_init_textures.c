@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   c3d_init_textures.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ppajot <ppajot@student.42.fr>              +#+  +:+       +#+        */
+/*   By: pierre-yves <pierre-yves@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 09:59:52 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/19 18:13:41 by ppajot           ###   ########.fr       */
+/*   Updated: 2022/10/20 19:08:07 by pierre-yves      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,15 +61,15 @@ int	open_textures(t_game *game, t_map *map)
 	if (error)
 		return (error);
 	error = open_one_texture(game, &game->all_img.ce,
-			0, DEFAULT_IMAGE_PATH_CE);
+			"", DEFAULT_IMAGE_PATH_CE);
 	if (error)
 		return (error);
 	error = open_one_texture(game, &game->all_img.fl,
-			0, DEFAULT_IMAGE_PATH_FL);
+			"", DEFAULT_IMAGE_PATH_FL);
 	if (error)
 		return (error);
 	error = open_one_texture(game, &game->all_img.ph,
-			0, DEFAULT_IMAGE_PATH_PH);
+			"", DEFAULT_IMAGE_PATH_PH);
 	if (error)
 		return (error);
 	return (0);

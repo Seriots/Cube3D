@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   c3d_start_map.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
+/*   By: pierre-yves <pierre-yves@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 20:12:58 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/18 21:01:04 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/21 20:03:17 by pierre-yves      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ int	get_all_doors(t_game *game, t_map *map)
 		while (j < map->width)
 		{
 			if (map->map[i][j] == '2')
-				error = init_obj(game, DOOR, j * CASE_SIZE + CASE_SIZE / 2,
-						i * CASE_SIZE + CASE_SIZE / 2);
+				error = init_obj(game, DOOR, j * CASE_SIZE,
+						i * CASE_SIZE);
 			if (map->map[i][j] == '3')
 				error = init_obj(game, ENDOOR, j * CASE_SIZE + CASE_SIZE / 2,
 						i * CASE_SIZE + CASE_SIZE / 2);
@@ -68,7 +68,7 @@ int	init_map_objects(t_game *game, t_map *map)
 	error = init_obj(game, LAMP, 0, 0);
 	if (error)
 		return (error);
-	error = init_obj(game, GHOST, 0, 0);
+	//error = init_obj(game, GHOST, 0, 0);
 	if (error)
 		return (error);
 	return (0);

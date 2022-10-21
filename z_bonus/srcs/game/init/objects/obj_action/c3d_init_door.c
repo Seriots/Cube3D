@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   c3d_init_door.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
+/*   By: pierre-yves <pierre-yves@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 11:53:11 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/18 23:59:25 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/20 19:38:55 by pierre-yves      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,11 @@ int	init_door(t_game *game, t_object **obj)
 {
 	ft_strlcpy((*obj)->tag, DOOR, 32);
 	(*obj)->all_img = 0;
-	(*obj)->game_img = 0;
+	(*obj)->game_img = &game->all_img.ph;
 	(*obj)->menu_img = 0;
 	(*obj)->hand_img = 0;
+	(*obj)->width = CASE_SIZE;
+	(*obj)->height = CASE_SIZE;
 	(*obj)->state = 0;
 	(*obj)->use_count = 0;
 	(*obj)->use_max = 1;
