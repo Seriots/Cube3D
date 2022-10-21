@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 14:42:08 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/20 22:09:00 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/21 13:55:26 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ int	make_background_end(t_game *game)
 			if (x < END_BORDER_SIZE || x >= ENDMENU_WIDTH - END_BORDER_SIZE
 				|| y < END_BORDER_SIZE || y >= ENDMENU_HEIGHT - END_BORDER_SIZE)
 				my_mlx_pixel_put(&game->all_img.end_img, x, y, 0xDDDDDD);
+			else if (y <= ((15 * MENU_HEIGHT / 100)))
+				my_mlx_pixel_put(&game->all_img.end_img, x, y, 0x353535);
 			else if (y >= (MENU_HEIGHT - (15 * MENU_HEIGHT / 100)))
 				my_mlx_pixel_put(&game->all_img.end_img, x, y, 0x282828);
 			else
@@ -70,7 +72,7 @@ int	make_background_end(t_game *game)
 
 int	endmenu_update(t_game *game)
 {
-	if (game->is_update == 0)
+	if (game->is_update == 0 && game->last_frame - game->load_start_frame > END_ANIMATION_DURATION * 2)
 		return (0);
 	make_background_end(game);
 	draw_all_objects(game, game->end_menu.all_objects);

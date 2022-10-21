@@ -24,6 +24,7 @@ int	load_endscreen(t_game *game);
 int	load_startscreen(t_game *game);
 int	load_default(t_game *game);
 int	load_menu(t_game *game);
+int	load_gameover(t_game *game);
 
 /*Init images*/
 int	init_images_group(t_game *game, char *path,

@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 10:38:52 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/19 00:19:31 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/21 16:15:02 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 #include "c3d_loop.h"
 
 #include <math.h>
+
+#include <stdlib.h>
 
 #include <stdio.h>
 
@@ -167,11 +169,29 @@ int	update_invicibe_frame(t_game *game)
 	return (0);
 }
 
+int	play_footstep(t_game *game)
+{
+	if (game->player.footstep_speed < 0)
+	{
+		if (game->player.last_footstep == 0)
+			system("cvlc --play-and-exit ./test/left_foot.mp3 &");
+		else
+			system("cvlc --play-and-exit ./test/right_foot.mp3 &");
+		game->player.last_footstep = !game->player.last_footstep;
+		game->player.footstep_speed = 2000 * game->player.speed;
+	}
+	return (0);
+}
+
 int	update_player(t_game *game)
 {
 	update_movement(game);
 	update_rotation(game);
 	update_hand(game);
 	update_invicibe_frame(game);
+	if (game->player.left == 1 || game->player.right == 1
+		|| game->player.forward == 1 || game->player.backward == 1)
+		play_footstep(game);
+	game->player.footstep_speed -= game->delay;
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 15:03:03 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/20 21:01:54 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/21 12:11:34 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,10 +87,10 @@ int	menu_mouse_release(int button, int x, int y, t_game *game)
 		check_all_objects_release(game, x, y, game->menu.all_objects);
 	else if ((button == 4 && !game->settings.invert_scroll)
 		|| (button == 5 && game->settings.invert_scroll))
-		scroll_up(game, &game->menu);
+		scroll_up(game, &game->menu, SCROLLBAR);
 	else if ((button == 4 && game->settings.invert_scroll)
 		|| (button == 5 && !game->settings.invert_scroll))
-		scroll_down(game, &game->menu);
+		scroll_down(game, &game->menu, SCROLLBAR);
 	return (0);
 }
 

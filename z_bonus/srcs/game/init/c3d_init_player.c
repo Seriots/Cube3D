@@ -6,12 +6,13 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 10:51:13 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/20 13:47:04 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/21 16:09:04 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "c3d_struct.h"
 #include "c3d_settings.h"
+#include "c3d_utils.h"
 
 #include "ft.h"
 
@@ -75,6 +76,8 @@ int	init_player(t_game *game, t_map *map, t_player *player, int first)
 	player->crouch = 0;
 	player->angleup = 0;
 	player->elevation = 0;
+	player->footstep_speed = 2000;
+	player->last_footstep = 0;
 	player->invincible_frames = 0;
 	if (first)
 	{
@@ -82,6 +85,11 @@ int	init_player(t_game *game, t_map *map, t_player *player, int first)
 		player->life = player->max_life;
 		player->max_stamina = 100;
 		player->stamina = player->max_stamina;
+		player->stats = (t_stat){(t_tagint){"Score", 0}, (t_tagint){"Level", 1},
+			(t_tagint){"Number of ghost kill", 0}, (t_tagint){"Temps (sec)", 0},
+			(t_tagint){"Number of object use", 0}, (t_tagint){"Door open", 0},
+			(t_tagint){"Damage Taken", 0}};
+		game->start_game = timestamp_sec(0);
 	}
 	return (0);
 }

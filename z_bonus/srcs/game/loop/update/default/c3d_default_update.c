@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 13:42:48 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/20 22:07:55 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/21 15:42:04 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,23 +63,29 @@ int	spawn_ennemies(t_game *game)
 	int	x;
 	int	y;
 	int	i;
+	int	j;
 
-	is_spawn = rand() % 5000;
-	i = 0;
-	if (is_spawn + (game->level * 6) + (game->settings.difficulty * game->level) > 4980 / 4)
+	j = 0;
+	while (j < game->delay / 20)
 	{
-		while (1)
+		is_spawn = rand() % 5000;
+		i = 0;
+		if (is_spawn + (game->level * 6) + (game->settings.difficulty * game->level) > 4980)
 		{
-			x = rand() % game->map.width * CASE_SIZE;
-			y = rand() % game->map.height * CASE_SIZE;
-			if (norm(x - game->player.pos.x, y - game->player.pos.y) > 1000 || i > 100)
-				break ;
-			i++;
+			while (1)
+			{
+				x = rand() % game->map.width * CASE_SIZE;
+				y = rand() % game->map.height * CASE_SIZE;
+				if (norm(x - game->player.pos.x, y - game->player.pos.y) > 1000 || i > 100)
+					break ;
+				i++;
+			}
+			if (i > 100)
+				return (0);
+			init_obj(game, GHOST, x, y);
+			printf("ennemy spawn\n");
 		}
-		if (i > 100)
-			return (0);
-		init_obj(game, GHOST, x, y);
-		printf("ennemy spawn\n");
+		j++;
 	}
 	return (0);
 }
@@ -90,9 +96,8 @@ int	check_death(t_game *game)
 	{
 		default_display(game);
 		game->settings.seed = 0;
-		free_textures(game, &game->all_img);
-		free_map(&game->map);
-		load_endscreen(game);
+		game->player.stats.time.value = timestamp_sec(game->start_game);
+		load_gameover(game);
 		return (1);
 	}
 	return (0);
@@ -108,7 +113,6 @@ int	take_damage(t_game *game, t_object *obj, double angle)
 	if (damage < 0)
 		damage = 0;
 	obj->use_count += damage;
-	//printf("damage : %f\n", obj->use_count);
 	return (0);
 }
 

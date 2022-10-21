@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 20:12:58 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/20 16:48:14 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/21 15:33:40 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,7 @@ int	load_new_map(t_game *game, char *map_path, int first)
 	error = init_all_map_parameters(game, first);
 	if (error)
 		return (free_map(&game->map), display_error(error));
+	game->map_start_frame = game->last_frame;
 	load_default(game);
 	return (0);
 }

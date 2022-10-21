@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 16:04:48 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/20 14:50:40 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/21 15:22:35 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,16 @@
 
 int	ghost_collide(t_game *game, t_dict *dict, t_object *obj)
 {
+	int	damage;
+
 	(void)dict;
 	(void)obj;
 	if (game->player.invincible_frames == 0)
 	{
-		game->player.life -= 1 * (1 + (game->level
+		damage = 1 * (1 + (game->level
 					* (1 + game->settings.difficulty)) / 7);
+		game->player.life -= damage;
+		game->player.stats.life_loss.value += damage;
 		if (game->player.life < 0)
 			game->player.life = 0;
 		game->player.invincible_frames = INVULNERABILITY_DURATION;
@@ -43,7 +47,6 @@ int	ghost_update(t_game *game, t_dict *dict, t_object *obj)
 	long int	cur_frame;
 	int			image_value;
 
-	printf("ghost: %f, %f\n", obj->use_count, obj->use_max);
 	if (obj->use_count >= obj->use_max)
 		return (obj->delete(game, dict, obj));
 	cur_frame = (game->last_frame - obj->start_frame)
@@ -60,6 +63,7 @@ int	ghost_delete(t_game *game, t_dict *dict, t_object *obj)
 {
 	(void)obj;
 	dict_delone(&game->map.all_objects, dict, 0, free);
+	game->player.stats.kill.value += 1;
 	return (0);
 }
 

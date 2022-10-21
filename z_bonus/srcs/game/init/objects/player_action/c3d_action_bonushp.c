@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 13:51:56 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/18 23:52:30 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/21 15:18:44 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,13 @@ int	bonushp_use(t_game *game, t_dict *dict, t_object *obj)
 	if (game->player.max_life < 20)
 	{
 		game->player.max_life ++;
+		game->player.stats.use_object.value += 1;
 		obj->delete(game, dict, obj);
 	}
 	else if (game->player.life < game->player.max_life)
 	{
 		game->player.life ++;
+		game->player.stats.use_object.value += 1;
 		obj->delete(game, dict, obj);
 	}
 	else

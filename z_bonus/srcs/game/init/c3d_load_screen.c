@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 13:30:36 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/20 21:30:38 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/21 13:48:39 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ int	load_endscreen(t_game *game)
 	game->end_menu.scroll_amount = 0;
 	game->menu.scroll_amount = 0;
 	game->end_menu.error = 0;
+	game->load_start_frame = game->last_frame;
 	if (HIDE)
 		mlx_mouse_show(game->mlx.display, game->mlx.window);
 	mlx_do_key_autorepeaton(game->mlx.display);

@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 10:51:50 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/20 21:59:51 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/21 14:51:19 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,8 @@ int	init_images(t_game *game)
 		|| init_image(game, ENDMENU_WIDTH, ENDMENU_HEIGHT, &game->all_img.end_img)
 		|| init_xpm_image(game, &game->all_img.loading, "imgs/xpm/loading/loading.xpm")
 		|| init_xpm_image(game, &game->all_img.endoor, "imgs/xpm/object/endoor_game.xpm")
-		|| init_xpm_image(game, &game->all_img.cursor, "imgs/xpm/cursor/cursorv2.xpm")
+		|| init_xpm_image(game, &game->all_img.score, "imgs/xpm/menu/score.xpm")
+		|| init_xpm_image(game, &game->all_img.game_over, "imgs/xpm/menu/game_over.xpm")
 		|| init_objects_img(game, "imgs/xpm/object/black_flashlight",
 			game->all_img.flashlight)
 		|| init_objects_img(game, "imgs/xpm/object/key", game->all_img.key)
@@ -92,6 +93,8 @@ int	init_images(t_game *game)
 			&game->all_img.all_ghost_img)
 		|| init_images_group(game, "imgs/xpm/loading/frame", 15,
 			&game->all_img.all_loading_img)
+		|| init_images_group(game, "imgs/xpm/number/number", 10,
+			&game->all_img.all_number_img)
 		|| init_hud(game))
 		return (12);
 	return (0);

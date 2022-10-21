@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 14:43:09 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/18 23:54:30 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/21 15:19:22 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ int	key_use(t_game *game, t_dict *dict, t_object *obj)
 		if (search->state == 0)
 		{
 			search->interact(game, dict, search);
+			game->player.stats.use_object.value += 1;
+			game->player.stats.door_open.value += 1;
 			obj->delete(game, dict, obj);
 		}
 		else

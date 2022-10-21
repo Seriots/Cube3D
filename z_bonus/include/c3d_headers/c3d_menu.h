@@ -111,8 +111,8 @@ int		release_cond_textinput(t_game *game,
 			t_textinput *textinput, int x, int y);
 int		release_cond_textinput_start(t_game *game,
 			t_textinput *textinput, int x, int y);
-int		scroll_up(t_game *game, t_menu *menu);
-int		scroll_down(t_game *game, t_menu *menu);
+int		scroll_up(t_game *game, t_menu *menu, char *tag);
+int		scroll_down(t_game *game, t_menu *menu, char *tag);
 int		add_number_seed(t_seed *seed, int keyint);
 int		set_map_settings(t_game *game, t_dict **menu);
 int		check_one_obj_press(t_game *game, int x, int y, t_dict *tmp);
@@ -134,4 +134,5 @@ t_dict	*init_scrollbar_end(t_game *game);
 
 int		draw_button_end(t_game *game, t_button *box);
 int		display_button_text_end(t_game *game, t_button *button);
+int	draw_scrollbar_end(t_game *game, t_scrollbar *box);
 #endif

@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 16:31:05 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/20 11:53:20 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/21 15:36:44 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ int	loading(t_game *game)
 				set_error_value(&game->start_menu, error),
 				display_error(error));
 		game->level += 1;
+		game->player.stats.level.value += 1;
 		set_map_settings(game, &game->menu.all_objects);
 	}
 	return (0);
@@ -143,6 +144,10 @@ int	next_stage(t_game *game)
 	game->fcts.update_fct = fade_update;
 	game->fcts.display_fct = fade_display;
 	game->load_start_frame = game->last_frame;
+	game->player.stats.score.value += game->player.stats.level.value
+		* (1000 + (100000 - timestamp_msec(game->map_start_frame)) / 100);
+	if (game->player.stats.score.value < game->player.stats.level.value * 1000)
+		game->player.stats.score.value = game->player.stats.level.value * 1000;
 	free_textures(game, &game->all_img);
 	free_map_with_inventory(game, &game->map);
 	return (0);

@@ -32,7 +32,7 @@ int	mainmenu_event(int button, int x, int y, t_game *game)
 	(void)y;
 	if (button == 1)
 	{
-		scrollbar = dict_getelem_key(game->end_menu.all_objects, SCROLLBAR)->value;
+		scrollbar = dict_getelem_key(game->end_menu.all_objects, SCROLLBAR2)->value;
 		load_startscreen(game);
 		game->menu.scroll_amount = 0;
 		if (scrollbar)

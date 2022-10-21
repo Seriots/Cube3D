@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 17:55:22 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/20 22:12:33 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/21 14:03:22 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	scrollbar_mouse_release_end(int button, int x, int y, t_game *game)
 	(void)y;
 	if (button == 1)
 	{
-		value = (dict_getelem_key(game->end_menu.all_objects, SCROLLBAR)->value);
+		value = (dict_getelem_key(game->end_menu.all_objects, SCROLLBAR2)->value);
 		game->fcts.mousereleased_fct = end_mouse_release;
 		game->fcts.mousemove_fct = end_mouse_move;
 		value->is_selected = 0;
@@ -47,7 +47,8 @@ int	scrollbar_mouse_move_end(int x, int y, t_game *game)
 	float		percent_pos;
 
 	(void)x;
-	bar = dict_getelem_key(game->end_menu.all_objects, SCROLLBAR);
+	game->is_update = 1;
+	bar = dict_getelem_key(game->end_menu.all_objects, SCROLLBAR2);
 	value = bar->value;
 	y = y - (WIN_HEIGHT / 2 - ENDMENU_HEIGHT / 2);
 	if (y - value->click_position < value->min)
@@ -70,7 +71,7 @@ int	scrollbar_press_end(int button, int x, int y, t_game *game)
 	(void)y;
 	if (button == 1)
 	{
-		value = (dict_getelem_key(game->end_menu.all_objects, SCROLLBAR)->value);
+		value = (dict_getelem_key(game->end_menu.all_objects, SCROLLBAR2)->value);
 		value->is_selected = 1;
 		value->click_position = y - (WIN_HEIGHT / 2 - ENDMENU_HEIGHT / 2)
 			- value->box.y;
@@ -82,27 +83,17 @@ int	scrollbar_press_end(int button, int x, int y, t_game *game)
 
 int	set_height_end(t_game *game, int *max_obj)
 {
-	t_dict	*elem;
 	int		max;
 
-	elem = game->end_menu.all_objects;
-	max = 0;
-	while (elem)
-	{
-		if (ft_strcmp(elem->key, BUTTON3) != 0
-			&& (((t_collide_box *)elem->value)->y
-				+ ((t_collide_box *)elem->value)->height + 50 > max))
-			max = ((t_collide_box *)elem->value)->y
-				+ ((t_collide_box *)elem->value)->height + 50;
-		elem = elem->next;
-	}
-	*max_obj = max - MENU_HEIGHT + (15 * MENU_HEIGHT / 100);
+	(void)game;
+	max = 30 + (15 * MENU_HEIGHT / 100) + (sizeof(t_stat) / sizeof(t_tagint) - 2) * END_STAT_MARGE;
+	*max_obj = max - MENU_HEIGHT + (30 * MENU_HEIGHT / 100);
 	if (*max_obj < 0)
 		*max_obj = 0;
-	if (max <= MENU_HEIGHT - (15 * MENU_HEIGHT / 100))
+	if (max <= MENU_HEIGHT - (30 * MENU_HEIGHT / 100))
 		return (0);
-	return ((float)(MENU_HEIGHT - (15 * MENU_HEIGHT / 100) - 14)
-		*((float)(MENU_HEIGHT - (15 * MENU_HEIGHT / 100) - 14)
+	return ((float)(MENU_HEIGHT - (30 * MENU_HEIGHT / 100) - 14)
+		*((float)(MENU_HEIGHT - (30 * MENU_HEIGHT / 100) - 14)
 		/ ((float)max)));
 }
 
@@ -117,7 +108,7 @@ t_dict	*init_scrollbar_end(t_game *game)
 	scrollbar->box.height = set_height_end(game, &scrollbar->max_obj);
 	scrollbar->max = (MENU_HEIGHT - (15 * MENU_HEIGHT / 100))
 		- 7 - scrollbar->box.height;
-	scrollbar->min = 7;
+	scrollbar->min = (15 * MENU_HEIGHT / 100) + 7;
 	scrollbar->is_selected = 0;
 	scrollbar->box.width = 12;
 	scrollbar->box.x = ENDMENU_WIDTH - 19;
@@ -128,7 +119,7 @@ t_dict	*init_scrollbar_end(t_game *game)
 	scrollbar->box.mouse_press = scrollbar_press_end;
 	scrollbar->box.mouse_release = NULL;
 	scrollbar->modified_value = &game->end_menu.scroll_amount;
-	obj = dict_new(SCROLLBAR, scrollbar);
+	obj = dict_new(SCROLLBAR2, scrollbar);
 	if (!obj)
 		return (free(scrollbar), (void *)0);
 	return (obj);

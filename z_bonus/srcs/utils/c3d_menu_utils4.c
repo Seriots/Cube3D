@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 10:36:50 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/20 21:03:43 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/21 12:11:59 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,13 +59,13 @@ int	event_enter_textinput_start(t_game *game, t_textinput *textinput)
 	return (0);
 }
 
-int	scroll_up(t_game *game, t_menu *menu)
+int	scroll_up(t_game *game, t_menu *menu, char *tag)
 {
 	t_scrollbar	*scrollbar;
 	float		percent_pos;
 	int			y;
 
-	scrollbar = dict_getelem_key(menu->all_objects, SCROLLBAR)->value;
+	scrollbar = dict_getelem_key(menu->all_objects, tag)->value;
 	y = scrollbar->box.y - (game->settings.scroll_speed * scrollbar->max / 100);
 	if (y < scrollbar->min)
 		scrollbar->box.y = scrollbar->min;
@@ -79,13 +79,13 @@ int	scroll_up(t_game *game, t_menu *menu)
 	return (0);
 }
 
-int	scroll_down(t_game *game, t_menu *menu)
+int	scroll_down(t_game *game, t_menu *menu, char *tag)
 {
 	t_scrollbar	*scrollbar;
 	float		percent_pos;
 	int			y;
 
-	scrollbar = dict_getelem_key(menu->all_objects, SCROLLBAR)->value;
+	scrollbar = dict_getelem_key(menu->all_objects, tag)->value;
 	y = scrollbar->box.y + (game->settings.scroll_speed * scrollbar->max / 100);
 	if (y < scrollbar->min)
 		scrollbar->box.y = scrollbar->min;

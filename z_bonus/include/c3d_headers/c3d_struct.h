@@ -74,12 +74,14 @@ typedef struct s_all_img
 	t_img_data	end_img;
 	t_img_data	menu_img;
 	t_img_data	minimap_img;
-	t_img_data	cursor;
 	t_img_data	*all_cursor_img;
 	t_img_data	*all_ghost_img;
 	t_img_data	*all_loading_img;
+	t_img_data	*all_number_img;
 	t_img_data	endoor;
 	t_img_data	loading;
+	t_img_data	score;
+	t_img_data	game_over;
 	t_img_data	flashlight[3];
 	t_img_data	key[3];
 	t_img_data	energy[3];
@@ -106,6 +108,23 @@ typedef struct s_angle
 	double	tan;
 }	t_angle;
 
+typedef struct s_tagint
+{
+	char	tag[256];
+	int		value;
+}	t_tagint;
+
+typedef struct s_stat
+{
+	t_tagint	score;
+	t_tagint	level;
+	t_tagint	kill;
+	t_tagint	time;
+	t_tagint	use_object;
+	t_tagint	door_open;
+	t_tagint	life_loss;
+}	t_stat;
+
 typedef struct s_player
 {
 	t_coord	pos;
@@ -130,6 +149,9 @@ typedef struct s_player
 	float	stamina;
 	float	max_stamina;
 	int		invincible_frames;
+	int		footstep_speed;
+	int		last_footstep;
+	t_stat	stats;
 }	t_player;
 
 typedef struct s_wall
@@ -464,6 +486,8 @@ typedef struct s_game
 	long		last_frame;
 	long		delay;
 	long		load_start_frame;
+	long		start_game;
+	long		map_start_frame;
 	t_error		error;
 	int			level;
 	int			is_update;

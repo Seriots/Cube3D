@@ -148,6 +148,7 @@ define SRCS :=
 		menu/start/c3d_mapinput_mappath.c
 		menu/end/c3d_button_retry.c
 		menu/end/c3d_button_main_menu.c
+		menu/end/c3d_gameover.c
 		menu/end/c3d_scrollbar_end.c
 		parsing/c3d_parsing_check.c
 		parsing/c3d_parsing_getelem.c
