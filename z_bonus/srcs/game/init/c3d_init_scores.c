@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 10:54:59 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/22 13:12:55 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/22 19:01:38 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,12 @@ int	save_scores(t_game *game, t_score *score, char *file)
 		j = 0;
 		while (j < score->size)
 		{
-			if (score->score[i].pos == i + 1)
+			if (score->score[j].pos == i + 1)
 			{
-				if (ft_strlen(score->score[i].name) > 0)
-					save_int(fd, score->score[i].name, score->score[i].score);
+				if (ft_strlen(score->score[j].name) > 0)
+					save_int(fd, score->score[j].name, score->score[j].score);
 				else
-					save_int(fd, "Default", score->score[i].score);
+					save_int(fd, "Default", score->score[j].score);
 				break ;
 			}
 			j++;
