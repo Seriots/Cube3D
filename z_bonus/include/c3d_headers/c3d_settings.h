@@ -147,6 +147,11 @@
 # define MIN_DIST_OBJ 48.0f
 # define MIN_DIST_COLLIDE 20.0f
 
+/*Save files*/
+# define EASY_FILE "files/easy_scores.txt"
+# define MEDIUM_FILE "files/medium_scores.txt"
+# define HARD_FILE "files/hard_scores.txt"
+
 /*Default Key*/
 /*
 # define DEFAULT_LEFT XK_a

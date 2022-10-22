@@ -161,6 +161,19 @@ typedef struct s_wall
 	char			face;
 }				t_wall;
 
+typedef struct s_scorev
+{
+	char	name[20];
+	int		score;
+	int		pos;
+}	t_scorev;
+
+typedef struct s_score
+{
+	t_scorev	score[200];
+	int			size;
+}	t_score;
+
 typedef struct s_settings
 {
 	float			fov;
@@ -198,8 +211,11 @@ typedef struct s_settings
 	bool			show_seed;
 	int				difficulty;
 	char			*map_path;
-	char			name[20];
 	unsigned long	seed;
+	char			name[20];
+	t_score			easy_score;
+	t_score			medium_score;
+	t_score			hard_score;
 }	t_settings;
 
 typedef struct s_object

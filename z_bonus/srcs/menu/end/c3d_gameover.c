@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 14:13:12 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/21 15:11:19 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/22 12:59:05 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,5 +82,8 @@ int	load_gameover(t_game *game)
 	game->load_start_frame = game->last_frame;
 	free_textures(game, &game->all_img);
 	free_map_with_inventory(game, &game->map);
+	game->player.stats.score.value += game->player.stats.kill.value * 50;
+	game->player.stats.score.value += game->player.stats.use_object.value * 20;
+	game->player.stats.score.value += game->player.stats.time.value * 10;
 	return (0);
 }

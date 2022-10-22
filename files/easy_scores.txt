@@ -1,0 +1,2 @@
+Seriots=6198
+Default=180

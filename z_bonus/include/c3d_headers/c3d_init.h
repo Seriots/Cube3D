@@ -15,6 +15,14 @@
 
 # include "c3d_struct.h"
 
+/*Add score*/
+int	save_scores(t_game *game, t_score *score, char *file);
+char	*get_score_file(t_game *game);
+t_score	*get_score_array(t_game *game);
+int	print_scores(t_score *score);
+int	add_scores(t_game *game, t_score *score, char *key, int value);
+int	init_scores(t_game *game, t_score *score, char *file);
+
 /*Save*/
 int	load_settings(t_game *game);
 int	save_settings(t_game *game);

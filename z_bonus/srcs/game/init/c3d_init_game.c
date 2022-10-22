@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 13:17:26 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/21 16:55:48 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/22 12:46:54 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,9 @@ static int	set_variable(t_game *game)
 	set_obj_null(game->all_img.bonushp);
 	set_obj_null(game->all_img.energy);
 	set_obj_null(game->all_img.b_energy);
+	ft_memset(&game->settings.easy_score, 0, sizeof(game->settings.easy_score));
+	ft_memset(&game->settings.medium_score, 0, sizeof(game->settings.medium_score));
+	ft_memset(&game->settings.hard_score, 0, sizeof(game->settings.hard_score));
 	game->level = 1;
 	game->inventory.base_hand = (t_coord){.x = 0, .y = 0};
 	game->inventory.current_hand = game->inventory.base_hand;
@@ -144,6 +147,16 @@ int	init_game(t_game *game, char *path)
 	error = init_start_map(game);
 	if (error)
 		return (error);
+	error = init_scores(game, &game->settings.easy_score, EASY_FILE);
+	if (error)
+		return (error);
+	error = init_scores(game, &game->settings.medium_score, MEDIUM_FILE);
+	if (error)
+		return (error);
+	error = init_scores(game, &game->settings.hard_score, HARD_FILE);
+	if (error)
+		return (error);
+	//print_scores(&game->settings.easy_score);
 	//system("cvlc --play-and-exit test/ladidie.mp3 &");
 	return (0);
 }

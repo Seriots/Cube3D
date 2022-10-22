@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 10:51:13 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/21 17:20:20 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/21 22:17:26 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ int	init_player(t_game *game, t_map *map, t_player *player, int first)
 	player->invincible_frames = 0;
 	if (first)
 	{
-		player->max_life = 0;
+		player->max_life = 3;
 		player->life = player->max_life;
 		player->max_stamina = 100;
 		player->stamina = player->max_stamina;

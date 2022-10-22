@@ -32,6 +32,8 @@ int	mainmenu_event(int button, int x, int y, t_game *game)
 	(void)y;
 	if (button == 1)
 	{
+		add_scores(game, get_score_array(game), game->settings.name, game->player.stats.score.value);
+		save_scores(game, get_score_array(game), get_score_file(game));
 		scrollbar = dict_getelem_key(game->end_menu.all_objects, SCROLLBAR2)->value;
 		load_startscreen(game);
 		game->menu.scroll_amount = 0;

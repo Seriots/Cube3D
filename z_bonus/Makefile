@@ -55,6 +55,7 @@ define SRCS :=
 		game/init/c3d_init_menu.c
 		game/init/c3d_init_mlx.c
 		game/init/c3d_init_player.c
+		game/init/c3d_init_scores.c
 		game/init/c3d_init_textures.c
 		game/init/c3d_load_screen.c
 		game/init/c3d_save_settings_load.c

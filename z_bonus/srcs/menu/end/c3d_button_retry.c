@@ -31,6 +31,8 @@ int	retry_event(int button, int x, int y, t_game *game)
 	(void)y;
 	if (button == 1)
 	{
+		add_scores(game, get_score_array(game), game->settings.name, game->player.stats.score.value);
+		save_scores(game, get_score_array(game), get_score_file(game));
 		error = load_new_map(game, game->settings.map_path, 1);
 		if (error)
 			return (set_error_value(&game->end_menu, error), error);
