@@ -27,8 +27,9 @@ int		load_new_map(t_game *game, char *map_path, int first);
 /*Menuing*/
 int		draw_all_objects(t_game *game, t_dict *dict);
 int		display_text(t_game *game, t_dict *dict);
-
+;
 /*Start Raycasting*/
+int	update_camera(t_game *game);
 int	check_angle(double angle, double left_angle, double right_angle);
 unsigned int	get_sprite_color(t_game *game, t_img_data *img, int j, int i, int width);
 int		start_display_all_sprites(t_game *game);

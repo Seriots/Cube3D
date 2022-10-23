@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 12:56:26 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/18 19:54:25 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/23 16:12:54 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,4 +41,5 @@ t_dict	*init_quit_button(t_game *game);
 t_dict	*init_multichoice_difficulty(t_game *game);
 t_dict	*init_seed(t_game *game);
 t_dict	*init_textinput_mappath(t_game *game);
+t_dict	*init_score_button(t_game *game);
 #endif

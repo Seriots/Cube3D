@@ -26,7 +26,7 @@
 # define MENU_HEIGHT 600
 # define BORDER_SIZE 5
 
-/*Menu Settings*/
+/*End Menu Settings*/
 # define ENDMENU_WIDTH 500
 # define ENDMENU_HEIGHT 600
 # define END_BORDER_SIZE 5
@@ -34,6 +34,11 @@
 # define END_FADE_DURATION 1100.0
 # define END_GAMEOVER_DURATION 1400.0
 # define END_STAT_MARGE 30
+
+/*Score menu settings*/
+# define SCOREMENU_WIDTH 300
+# define SCOREMENU_HEIGHT 550
+# define SCORE_MARGE 30
 
 /*Hot bar*/
 # define HOTBAR_CASE_SIZE 60
@@ -78,6 +83,7 @@
 # define NUMINPUT "NUMINPUT"
 # define SCROLLBAR "SCROLLBAR"
 # define SCROLLBAR2 "SCROLLBAR2"
+# define SCROLLBAR3 "SCROLLBAR3"
 # define MULTICHOICE "MULTICHOICE"
 # define SEED "SEED"
 

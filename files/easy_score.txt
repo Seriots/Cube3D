@@ -1,0 +1,5 @@
+Seriots=6198
+la=2466
+loi=350
+here=330
+Default=330

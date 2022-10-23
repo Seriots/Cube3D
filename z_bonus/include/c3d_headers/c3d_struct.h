@@ -165,7 +165,6 @@ typedef struct s_scorev
 {
 	char	name[20];
 	int		score;
-	int		pos;
 }	t_scorev;
 
 typedef struct s_score

@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 10:10:34 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/21 17:19:51 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/23 17:11:13 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,8 @@ int	init_settings_menu(t_game *game)
 int	init_start_menu(t_game *game)
 {
 	static t_dict		*(*objs[])(t_game *game) = {init_multichoice_difficulty,
-		init_play_button, init_quit_button, init_seed, init_textinput_mappath};
+		init_play_button, init_quit_button, init_seed, init_textinput_mappath,
+		init_score_button};
 	t_dict				*elem;
 	long unsigned int	i;
 
@@ -86,7 +87,29 @@ int	init_start_menu(t_game *game)
 		i++;
 	}
 	game->start_menu.error = 0;
+	game->start_menu.scroll_amount = 0;
 	game->end_menu.scroll_amount = 0;
+	return (0);
+}
+
+int	init_score_menu(t_game *game)
+{
+	static t_dict		*(*objs[])(t_game *game) = {init_multichoice_difficulty_score,
+	init_return_button, init_scrollbar_score};
+	t_dict				*elem;
+	long unsigned int	i;
+
+	i = 0;
+	while (i < sizeof(objs) / sizeof(objs[0]))
+	{
+		elem = objs[i](game);
+		if (!elem)
+			return (10);
+		dict_add_back(&game->score_menu.all_objects, elem);
+		i++;
+	}
+	game->score_menu.error = 0;
+	game->score_menu.scroll_amount = 0;
 	return (0);
 }
 
@@ -125,6 +148,9 @@ int	init_menu(t_game *game)
 	if (error)
 		return (error);
 	error = init_end_menu(game);
+	if (error)
+		return (error);
+	error = init_score_menu(game);
 	if (error)
 		return (error);
 	return (0);

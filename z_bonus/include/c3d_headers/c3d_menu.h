@@ -141,4 +141,29 @@ int		draw_scrollbar_end(t_game *game, t_scrollbar *box);
 int		nameinput_press(int button, int x, int y, t_game *game);
 void	init_nameinput(t_game *game, t_nameinput *nameinput);
 int	release_cond_nameinput(t_game *game, t_nameinput *textinput, int x, int y);
+
+/*Score Menu*/
+int	check_all_objects_press_start(t_game *game, int x, int y, t_dict *dict);
+int	check_all_objects_release_start(t_game *game, int x, int y, t_dict *dict);
+int	draw_scrollbar_score(t_game *game, t_scrollbar *box);
+
+int	multichoice_press_score(int button, int x, int y, t_game *game);
+int	set_height_s(t_game *game, t_scrollbar *scrollbar, t_score *score);
+
+int	scorescreen_key_press(KeySym keycode, t_game *game);
+int	scorescreen_key_release(KeySym keycode, t_game *game);
+int	scorescreen_mouse_press(int button, int x, int y, t_game *game);
+int	scorescreen_mouse_release(int button, int x, int y, t_game *game);
+int	scorescreen_mouse_move(int x, int y, t_game *game);
+
+int	score_update(t_game *game);
+int	score_display(t_game *game);
+
+t_dict	*init_return_button(t_game *game);
+t_dict	*init_multichoice_difficulty_score(t_game *game);
+t_dict	*init_scrollbar_score(t_game *game);
+
+
+
+
 #endif

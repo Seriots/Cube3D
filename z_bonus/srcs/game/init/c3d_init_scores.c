@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 10:54:59 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/22 19:01:38 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/23 14:06:44 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ int	save_scores(t_game *game, t_score *score, char *file)
 {
 	int		fd;
 	int		i;
-	int		j;
 
 	i = 0;
 	(void)game;
@@ -34,19 +33,10 @@ int	save_scores(t_game *game, t_score *score, char *file)
 		return (0);
 	while (i < score->size)
 	{
-		j = 0;
-		while (j < score->size)
-		{
-			if (score->score[j].pos == i + 1)
-			{
-				if (ft_strlen(score->score[j].name) > 0)
-					save_int(fd, score->score[j].name, score->score[j].score);
-				else
-					save_int(fd, "Default", score->score[j].score);
-				break ;
-			}
-			j++;
-		}
+		if (ft_strlen(score->score[i].name) > 0)
+			save_int(fd, score->score[i].name, score->score[i].score);
+		else
+			save_int(fd, "Default", score->score[i].score);
 		i++;
 	}
 	close(fd);
@@ -61,7 +51,7 @@ int	print_scores(t_score *score)
 	while (i < score->size)
 	{
 		printf("%s -> %d, pos: %d\n", score->score[i].name,
-			score->score[i].score, score->score[i].pos);
+			score->score[i].score, i);
 		i++;
 	}
 	return (0);
@@ -87,30 +77,40 @@ char	*get_score_file(t_game *game)
 		return (HARD_FILE);
 }
 
-int	sort_scores(t_score *score, int new, int value, int pre_value)
+int	swap_score(t_scorev *score_a, t_scorev *score_b)
 {
-	int	score_pos;
+	t_scorev	tmp;
+
+	ft_strlcpy(tmp.name, score_a->name, 20);
+	tmp.score = score_a->score;
+	ft_strlcpy(score_a->name, score_b->name, 20);
+	score_a->score = score_b->score;
+	ft_strlcpy(score_b->name, tmp.name, 20);
+	score_b->score = tmp.score;
+	return (0);
+}
+
+int	sort_scores(t_score *score)
+{
 	int	i;
 
-	score_pos = 0;
-	i = 0;
-	while (i < score->size)
+	i = score->size - 1;
+	while (i > 0)
 	{
-		if (i != new && score->score[i].score >= value)
-			score_pos++;
-		else if (i != new && score->score[i].score <= value
-			&& score->score[i].score > pre_value)
-			score->score[i].pos += 1;
-		i++;
+		if (score->score[i].score > score->score[i - 1].score)
+		{
+			swap_score(&score->score[i], &score->score[i - 1]);
+			i = score->size - 1;
+		}
+		i--;
 	}
-	score->score[new].pos = score_pos + 1;
+	print_scores(score);
 	return (0);
 }
 
 int	add_scores(t_game *game, t_score *score, char *key, int value)
 {
 	int	i;
-	int	tmp;
 
 	(void)game;
 	i = 0;
@@ -119,12 +119,7 @@ int	add_scores(t_game *game, t_score *score, char *key, int value)
 		if (ft_strcmp(score->score[i].name, key) == 0)
 		{
 			if (value > score->score[i].score)
-			{
-				tmp = score->score[i].score;
 				score->score[i].score = value;
-				sort_scores(score, i, value, tmp);
-			}
-			print_scores(score);
 			return (0);
 		}
 		i++;
@@ -135,14 +130,12 @@ int	add_scores(t_game *game, t_score *score, char *key, int value)
 		{
 			ft_strlcpy(score->score[199].name, key, 20);
 			score->score[i].score = value;
-			sort_scores(score, 199, value, 0);
 		}
 	}
 	else
 	{
 		ft_strlcpy(score->score[score->size].name, key, 20);
 		score->score[score->size].score = value;
-		sort_scores(score, score->size, value, 0);
 		score->size++;
 	}
 	return (0);
@@ -167,6 +160,7 @@ int	init_scores(t_game *game, t_score *score, char *file)
 		ft_free_tab(split);
 		free(line);
 	}
+	sort_scores(score);
 	close(fd);
 	return (0);
 }

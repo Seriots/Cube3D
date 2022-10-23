@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 18:34:06 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/21 11:03:59 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/23 17:48:57 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 #include "c3d_loop.h"
 
 #include <stdlib.h>
+
+#include <stdio.h>
 
 int	draw_scrollbar(t_game *game, t_scrollbar *box)
 {
@@ -59,6 +61,28 @@ int	draw_scrollbar_end(t_game *game, t_scrollbar *box)
 				else
 					my_mlx_pixel_put(&game->all_img.end_img, x, y, 0x383838);
 			}
+			x++;
+		}
+		y++;
+	}
+	return (0);
+}
+
+int	draw_scrollbar_score(t_game *game, t_scrollbar *box)
+{
+	int	x;
+	int	y;
+
+	y = box->box.y;
+	while (y < box->box.y + box->box.height)
+	{
+		x = box->box.x;
+		while (x < box->box.x + box->box.width)
+		{
+			if (box->is_selected)
+				my_mlx_pixel_put(&game->all_img.screen_img, x, y, 0x999999);
+			else
+				my_mlx_pixel_put(&game->all_img.screen_img, x, y, 0x383838);
 			x++;
 		}
 		y++;

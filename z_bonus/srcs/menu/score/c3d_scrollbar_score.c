@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   c3d_scrollbar_end.c                                :+:      :+:    :+:   */
+/*   c3d_scrollbar_score.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/04 17:55:22 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/23 17:37:34 by lgiband          ###   ########.fr       */
+/*   Created: 2022/10/23 16:55:10 by lgiband           #+#    #+#             */
+/*   Updated: 2022/10/23 17:49:09 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 
 #include <stdio.h>
 
-int	scrollbar_mouse_release_end(int button, int x, int y, t_game *game)
+int	scrollbar_mouse_release_score(int button, int x, int y, t_game *game)
 {
 	t_scrollbar	*value;
 
@@ -32,25 +32,23 @@ int	scrollbar_mouse_release_end(int button, int x, int y, t_game *game)
 	(void)y;
 	if (button == 1)
 	{
-		value = (dict_getelem_key(game->end_menu.all_objects, SCROLLBAR2)->value);
-		game->fcts.mousereleased_fct = end_mouse_release;
-		game->fcts.mousemove_fct = end_mouse_move;
+		value = (dict_getelem_key(game->score_menu.all_objects, SCROLLBAR3)->value);
+		game->fcts.mousereleased_fct = scorescreen_mouse_release;
+		game->fcts.mousemove_fct = scorescreen_mouse_move;
 		value->is_selected = 0;
 	}
 	return (0);
 }
 
-int	scrollbar_mouse_move_end(int x, int y, t_game *game)
+int	scrollbar_mouse_move_score(int x, int y, t_game *game)
 {
 	t_dict		*bar;
 	t_scrollbar	*value;
 	float		percent_pos;
 
 	(void)x;
-	game->is_update = 1;
-	bar = dict_getelem_key(game->end_menu.all_objects, SCROLLBAR2);
+	bar = dict_getelem_key(game->score_menu.all_objects, SCROLLBAR3);
 	value = bar->value;
-	y = y - (WIN_HEIGHT / 2 - ENDMENU_HEIGHT / 2);
 	if (y - value->click_position < value->min)
 		value->box.y = value->min;
 	else if (y - value->click_position > value->max)
@@ -63,7 +61,7 @@ int	scrollbar_mouse_move_end(int x, int y, t_game *game)
 	return (0);
 }
 
-int	scrollbar_press_end(int button, int x, int y, t_game *game)
+int	scrollbar_press_score(int button, int x, int y, t_game *game)
 {
 	t_scrollbar	*value;
 
@@ -71,33 +69,38 @@ int	scrollbar_press_end(int button, int x, int y, t_game *game)
 	(void)y;
 	if (button == 1)
 	{
-		value = (dict_getelem_key(game->end_menu.all_objects, SCROLLBAR2)->value);
+		value = (dict_getelem_key(game->score_menu.all_objects, SCROLLBAR3)->value);
 		value->is_selected = 1;
-		value->click_position = y - (WIN_HEIGHT / 2 - ENDMENU_HEIGHT / 2)
-			- value->box.y;
-		game->fcts.mousereleased_fct = scrollbar_mouse_release_end;
-		game->fcts.mousemove_fct = scrollbar_mouse_move_end;
+		value->click_position = y - value->box.y;
+		game->fcts.mousereleased_fct = scrollbar_mouse_release_score;
+		game->fcts.mousemove_fct = scrollbar_mouse_move_score;
 	}
 	return (0);
 }
 
-int	set_height_end(t_game *game, int *max_obj)
+int	set_height_score(t_game *game, int *max_obj, int size)
 {
 	int		max;
 
 	(void)game;
-	max = 30 + (15 * MENU_HEIGHT / 100) + (sizeof(t_stat) / sizeof(t_tagint) - 2) * END_STAT_MARGE;
-	*max_obj = max - MENU_HEIGHT + (30 * MENU_HEIGHT / 100);
+	max = 60 + size * SCORE_MARGE;
+	*max_obj = max - 594;
 	if (*max_obj < 0)
 		*max_obj = 0;
-	if (max <= MENU_HEIGHT - (30 * MENU_HEIGHT / 100))
+	if (max <= 594)
 		return (0);
-	return ((float)(MENU_HEIGHT - (30 * MENU_HEIGHT / 100) - 14)
-		*((float)(MENU_HEIGHT - (30 * MENU_HEIGHT / 100) - 14)
-		/ ((float)max)));
+	return ((float)(594 * 594) / (float)max);
 }
 
-t_dict	*init_scrollbar_end(t_game *game)
+int	set_height_s(t_game *game, t_scrollbar *scrollbar, t_score *score)
+{
+	scrollbar->box.height = set_height_score(game,
+			&scrollbar->max_obj, score->size);
+	scrollbar->max = 594 - scrollbar->box.height;
+	return (0);
+}
+
+t_dict	*init_scrollbar_score(t_game *game)
 {
 	t_scrollbar	*scrollbar;
 	t_dict		*obj;
@@ -105,21 +108,21 @@ t_dict	*init_scrollbar_end(t_game *game)
 	scrollbar = malloc(sizeof(t_scrollbar));
 	if (!scrollbar)
 		return (0);
-	scrollbar->box.height = set_height_end(game, &scrollbar->max_obj);
-	scrollbar->max = (MENU_HEIGHT - (15 * MENU_HEIGHT / 100))
-		- 7 - scrollbar->box.height;
-	scrollbar->min = (15 * MENU_HEIGHT / 100) + 7;
+	scrollbar->box.height = 0;
+	scrollbar->max = 594;
+	scrollbar->min = 57;
+	scrollbar->max_obj = 0;
 	scrollbar->is_selected = 0;
-	scrollbar->box.width = 12;
-	scrollbar->box.x = ENDMENU_WIDTH - 19;
+	scrollbar->box.width = 18;
+	scrollbar->box.x = WIN_WIDTH / 2 + SCOREMENU_WIDTH / 2 - 24;
 	scrollbar->box.y = scrollbar->min;
 	scrollbar->box.x_text = 0;
 	scrollbar->box.y_text = 0;
 	ft_strlcpy(scrollbar->box.font, FONT, ft_strlen(FONT));
-	scrollbar->box.mouse_press = scrollbar_press_end;
+	scrollbar->box.mouse_press = scrollbar_press_score;
 	scrollbar->box.mouse_release = NULL;
-	scrollbar->modified_value = &game->end_menu.scroll_amount;
-	obj = dict_new(SCROLLBAR2, scrollbar);
+	scrollbar->modified_value = &game->score_menu.scroll_amount;
+	obj = dict_new(SCROLLBAR3, scrollbar);
 	if (!obj)
 		return (free(scrollbar), (void *)0);
 	return (obj);

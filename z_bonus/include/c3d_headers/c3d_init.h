@@ -16,6 +16,7 @@
 # include "c3d_struct.h"
 
 /*Add score*/
+int	sort_scores(t_score *score);
 int	save_scores(t_game *game, t_score *score, char *file);
 char	*get_score_file(t_game *game);
 t_score	*get_score_array(t_game *game);
@@ -28,6 +29,7 @@ int	load_settings(t_game *game);
 int	save_settings(t_game *game);
 
 /*Load*/
+int	load_scorescreen(t_game *game);
 int	load_endscreen(t_game *game);
 int	load_startscreen(t_game *game);
 int	load_default(t_game *game);
