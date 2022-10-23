@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 10:51:50 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/21 14:51:19 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/23 18:51:50 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,8 @@ int	init_images(t_game *game)
 		|| init_xpm_image(game, &game->all_img.endoor, "imgs/xpm/object/endoor_game.xpm")
 		|| init_xpm_image(game, &game->all_img.score, "imgs/xpm/menu/score.xpm")
 		|| init_xpm_image(game, &game->all_img.game_over, "imgs/xpm/menu/game_over.xpm")
+		|| init_xpm_image(game, &game->all_img.leaderboard, "imgs/xpm/menu/leaderboard.xpm")
+		|| init_xpm_image(game, &game->all_img.return_arrow, "imgs/xpm/menu/return.xpm")
 		|| init_objects_img(game, "imgs/xpm/object/black_flashlight",
 			game->all_img.flashlight)
 		|| init_objects_img(game, "imgs/xpm/object/key", game->all_img.key)

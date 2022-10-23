@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 16:08:05 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/23 16:18:51 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/23 18:52:14 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ t_dict	*init_score_button(t_game *game)
 	box->box.width = 80;
 	box->box.x = WIN_WIDTH - box->box.width - 20;
 	box->box.y = 20;
-	ft_strlcpy(box->box.description, "Score", 6);
+	ft_strlcpy(box->box.description, "", 1);
 	box->box.y_text = box->box.y + box->box.height / 2 + 10 / 2;
 	box->box.x_text = box->box.x + box->box.width / 2
 		- (FONT_WIDTH * ft_strlen(box->box.description) / 2);
