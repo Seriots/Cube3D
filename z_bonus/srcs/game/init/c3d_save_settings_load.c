@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 12:13:27 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/24 12:32:19 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/24 14:45:26 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ int	load_settings(t_game *game)
 	fd = open("files/settings.txt", O_RDONLY);
 	if (fd == -1)
 		return (5);
-	get_next_line(fd, &line);
+	get_next_line(fd, &line, 0);
 	while (line)
 	{
 		split = ft_split(line, '=');
@@ -81,7 +81,7 @@ int	load_settings(t_game *game)
 			set_settings(game, split[0], split[1]);
 		ft_free_tab(split);
 		free(line);
-		get_next_line(fd, &line);
+		get_next_line(fd, &line, 0);
 	}
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 14:45:40 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/24 13:46:36 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/24 15:04:52 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int	init_obj(t_game *game, char *tag, int x, int y)
 		free(obj);
 		dict_clear(game->map.all_objects, 0, free);
 		game->map.all_objects = 0;
-		return (printf("dict\n"), 10);
+		return (10);
 	}
 	dict_add_back(&game->map.all_objects, new);
 	return (0);

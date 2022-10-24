@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 19:48:44 by lgiband           #+#    #+#             */
-/*   Updated: 2022/09/19 11:25:25 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/24 14:56:44 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,12 +116,17 @@ void	remake_save(char *save)
 	save[j] = 0;
 }
 
-char	*get_next_line(int fd, char **out)
+char	*get_next_line(int fd, char **out, int clear)
 {
 	static char	save[1024][BUFFER_SIZE + 1];
 	char		*buffer;
 	char		*line;
 
+	if (clear)
+	{
+		ft_memset(save[fd], 0, BUFFER_SIZE + 1);
+		return (0);
+	}
 	if (fd < 0 || BUFFER_SIZE == 0)
 		return (0);
 	buffer = ft_read(fd, save[fd]);

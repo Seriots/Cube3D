@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 13:43:02 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/20 16:03:32 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/24 15:07:02 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ int	is_map_in_hand(t_game *game)
 		return (0);
 	if (game->inventory.items[game->inventory.selected] == NULL)
 		return (0);
-	if (ft_strcmp(game->inventory.items[game->inventory.selected]->tag, MAP) == 0 && game->inventory.items[game->inventory.selected]->state == 1)
+	if (ft_strcmp(game->inventory.items[game->inventory.selected]->tag, MAP) == 0 && game->inventory.items[game->inventory.selected]->state == game->level)
 		return (1);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 16:31:05 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/24 14:10:06 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/24 15:14:43 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,6 @@ int	loading_display(t_game *game)
 	image_value = frame / (600 / 15);
 	if (image_value >= 15)
 		image_value = 15 - 1;
-	printf("image_value = %d\n", image_value);
 	mlx_put_image_to_window(game->mlx.display, game->mlx.window,
 		game->all_img.all_loading_img[image_value].img, WIN_WIDTH - 60,
 			WIN_HEIGHT - 20 - game->all_img.all_loading_img[image_value].height);
@@ -145,10 +144,12 @@ int	next_stage(t_game *game)
 	game->fcts.update_fct = fade_update;
 	game->fcts.display_fct = fade_display;
 	game->load_start_frame = game->last_frame;
-	game->player.stats.score.value += game->player.stats.level.value
-		* (1000 + (100000 - game->last_frame - game->map_start_frame) / 100);
-	if (game->player.stats.score.value < game->player.stats.level.value * 1000)
-		game->player.stats.score.value = game->player.stats.level.value * 1000;
+	if (100000 - (game->last_frame - game->map_start_frame) < 0)
+		game->player.stats.score.value += game->player.stats.level.value * 1000;
+	else
+		game->player.stats.score.value += game->player.stats.level.value
+		* (1000 + (100000 - (game->last_frame - game->map_start_frame)) / 100);
+		
 	free_textures(game, &game->all_img);
 	free_map_with_inventory(game, &game->map);
 	return (0);

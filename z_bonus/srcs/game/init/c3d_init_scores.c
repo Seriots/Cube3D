@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 10:54:59 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/24 11:33:05 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/24 14:44:57 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,7 +149,7 @@ int	init_scores(t_game *game, t_score *score, char *file)
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
 		return (0);
-	while (get_next_line(fd, &line))
+	while (get_next_line(fd, &line, 0))
 	{
 		split = ft_split(line, '=');
 		if (!split)

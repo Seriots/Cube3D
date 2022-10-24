@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 14:19:52 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/13 11:23:28 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/24 15:04:35 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 #include "c3d_struct.h"
 
 #include "ft.h"
+
+#include <stdio.h>
 
 void	set_map(t_map *map)
 {
@@ -41,7 +43,7 @@ int	set_map_size(char *file, int *size)
 	line = 0;
 	if (fd == -1)
 		return (5);
-	while (get_next_line(fd, &line) != 0)
+	while (get_next_line(fd, &line, 0) != 0)
 	{
 		if (is_only_set(line, " 0123NSEW"))
 			break ;
@@ -54,8 +56,9 @@ int	set_map_size(char *file, int *size)
 		else
 			break ;
 		free(line);
-		get_next_line(fd, &line);
+		get_next_line(fd, &line, 0);
 	}
+	get_next_line(fd, &line, 1);
 	if (line != 0)
 		return (free(line), close(fd), 4);
 	return (close(fd), 0);
