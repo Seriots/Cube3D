@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 16:04:48 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/21 15:22:35 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/25 00:17:51 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,8 @@ int	init_ghost(t_game *game, t_object **obj)
 	(*obj)->height = (*obj)->game_img->height * 6 / 100;
 	(*obj)->state = 0;
 	(*obj)->use_count = 0;
-	(*obj)->use_max = 3000;
+	(*obj)->use_max = 3000 + 100
+		* game->level * (game->settings.difficulty + 1);
 	(*obj)->is_visible = 1;
 	(*obj)->is_collide = 1;
 	(*obj)->start_frame = game->last_frame;

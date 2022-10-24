@@ -1,6 +1,7 @@
 Pascal=1027416093
 Edorad=7260
 Seriots=6198
+Test1=3396
 Pierre=2809
 Chouette=2509
 la=2466
@@ -9,6 +10,7 @@ Default=560
 Mort=420
 loi=350
 here=330
+test2=300
 lllllllllllll=180
 michel=180
 Wsh=0

@@ -155,6 +155,7 @@ typedef struct s_player
 	int		max_life;
 	float	stamina;
 	float	max_stamina;
+	double	damage;
 	int		invincible_frames;
 	int		footstep_speed;
 	int		last_footstep;

@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 10:51:13 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/24 18:01:46 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/25 00:12:55 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ static void	set_player_coord(t_map *map, t_player *player)
 
 static int	init_player_start_map(t_game *game, t_player *player)
 {
+	player->damage = 0;
 	player->max_life = 3;
 	player->life = player->max_life;
 	player->max_stamina = 100;

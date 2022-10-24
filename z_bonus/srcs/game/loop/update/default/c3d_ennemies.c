@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 19:11:05 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/24 19:35:48 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/25 00:14:56 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ int	take_damage(t_game *game, t_object *obj, double angle)
 	float	damage;
 
 	dist = dist_to_obj(game->player.pos, obj->pos);
-	damage = (1 + (15 - (angle * 15))) * (1000 - dist) / 200;
+	damage = (game->player.damage + (15 - (angle * 15))) * (1000 - dist) / 200;
 	if (damage < 0)
 		damage = 0;
 	obj->use_count += damage;

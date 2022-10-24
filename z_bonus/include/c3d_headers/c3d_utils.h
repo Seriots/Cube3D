@@ -69,6 +69,7 @@ void			free_map_with_inventory(t_game *game, t_map *map);
 void			free_textures(t_game *game, t_all_img *all_img);
 void			free_img_array(t_game *game, t_img_data **imgs_ptr, int number);
 void			free_images(t_game *game);
+void			free_images2(t_game *game);
 void			free_map(t_map *map);
 void			free_game(t_game *game);
 
