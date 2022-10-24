@@ -6,13 +6,15 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 13:11:55 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/06 12:52:13 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/24 15:39:31 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "c3d_struct.h"
 #include "c3d_init.h"
+#include "c3d_utils.h"
 
+#include "ft.h"
 #include "mlx.h"
 
 int	start_game(t_game *game)

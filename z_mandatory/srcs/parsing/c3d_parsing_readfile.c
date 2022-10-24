@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 14:17:54 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/24 14:46:44 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/24 15:39:04 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 #include "c3d_parsing.h"
 
 #include "ft.h"
+
+#include <stdio.h>
 
 static int	get_elem(t_map *map, char *line)
 {
