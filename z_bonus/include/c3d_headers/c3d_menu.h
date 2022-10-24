@@ -64,6 +64,8 @@ t_dict	*init_right_keyinput(t_game *game);
 t_dict	*init_textinput_south(t_game *game);
 t_dict	*init_textinput_east(t_game *game);
 t_dict	*init_textinput_west(t_game *game);
+t_dict	*init_textinput_floor(t_game *game);
+t_dict	*init_textinput_ceil(t_game *game);
 t_dict	*init_numinput_ceil(t_game *game);
 t_dict	*init_scrollspeed_slidebar(t_game *game);
 t_dict	*init_invertscroll_checkbox(t_game *game);

@@ -145,6 +145,8 @@ define SRCS :=
 		menu/settings/c3d_textinput_north.c
 		menu/settings/c3d_textinput_south.c
 		menu/settings/c3d_textinput_west.c
+		menu/settings/c3d_textinput_floor.c
+		menu/settings/c3d_textinput_ceil.c
 		menu/start/c3d_multichoice_difficulty.c
 		menu/start/c3d_button_quit.c
 		menu/start/c3d_button_play.c

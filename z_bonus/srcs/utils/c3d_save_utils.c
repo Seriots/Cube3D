@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 21:50:35 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/12 21:51:05 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/24 11:41:24 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,11 @@ int	si(void *ptr, char *value)
 int	ss(void *ptr, char *value)
 {
 	ft_strlcpy((char *)ptr, value, 256);
+	return (0);
+}
+
+int	ssn(void *ptr, char *value)
+{
+	ft_strlcpy((char *)ptr, value, 20);
 	return (0);
 }

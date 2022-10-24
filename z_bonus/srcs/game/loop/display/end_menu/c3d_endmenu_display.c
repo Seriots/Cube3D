@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 14:34:59 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/21 17:33:11 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/24 11:14:39 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,9 +72,9 @@ int	display_stat(t_game *game, t_player *player, double n)
 
 int	display_score(t_game *game, t_player *player)
 {
-	char	str[32];
-	int		size;
-	int		i;
+	char			str[32];
+	int				size;
+	unsigned long	i;
 
 	ft_itoa_noalloc(str, player->stats.score.value);
 	size = 0;
@@ -82,7 +82,7 @@ int	display_score(t_game *game, t_player *player)
 	my_mlx_put_image_to_window(game,
 		&game->all_img.score, (WIN_WIDTH / 2 - ENDMENU_WIDTH / 2) + 20,
 		(WIN_HEIGHT / 2 - ENDMENU_HEIGHT / 2) + 10);
-	while (str[ft_strlen(str) - i - 1])
+	while (i < ft_strlen(str))
 	{
 		size -= game->all_img.all_number_img[str[ft_strlen(str) - i - 1] - '0'].width;
 		my_mlx_put_image_to_window(game,

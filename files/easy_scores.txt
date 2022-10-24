@@ -1,5 +1,11 @@
 Seriots=6198
+Chouette=2509
 la=2466
+bisounours=2358
+Mort=420
 loi=350
 here=330
 Default=330
+lllllllllllll=180
+michel=180
+Wsh=0

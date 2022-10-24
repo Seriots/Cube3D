@@ -6,13 +6,14 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 10:55:28 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/21 17:18:34 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/24 11:47:14 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "c3d_struct.h"
 #include "c3d_settings.h"
 #include "c3d_menu.h"
+#include "c3d_init.h"
 
 #include "ft.h"
 
@@ -105,6 +106,7 @@ int	valid_name_textinput(t_game *game, t_nameinput *textinput)
 	game->fcts.keyreleased_fct = end_key_release;
 	textinput->is_selected = 0;
 	textinput->start_display = 0;
+	save_settings(game);
 	return (0);
 }
 

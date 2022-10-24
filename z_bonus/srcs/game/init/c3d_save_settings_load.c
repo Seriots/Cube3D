@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 12:13:27 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/16 11:05:54 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/24 12:32:19 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	set_settings_loop(const t_savset *all, char *key, char *value)
 	unsigned long	i;
 
 	i = 0;
-	while (i < 35)
+	while (i < 38)
 	{
 		if (ft_strcmp(all[i].tag, key) == 0)
 			return (all[i].fct(all[i].ptr, value));
@@ -37,6 +37,7 @@ int	set_settings_loop(const t_savset *all, char *key, char *value)
 int	set_settings(t_game *game, char *key, char *value)
 {
 	const t_savset	all[] = {{VSCROLL_SPEED, &game->settings.scroll_speed, sf},
+	{VINTER, &game->settings.interact, si}, {VNAME, &game->settings.name, ssn},
 	{VPAUSE, &game->settings.pause, si}, {VCEIL, &game->map.default_ceil, ss},
 	{VNO, &game->map.default_north, ss}, {VSO, &game->map.default_south, ss},
 	{VRES, &game->settings.resolution, sf}, {VFOV, &game->settings.fov, sf},
@@ -44,6 +45,7 @@ int	set_settings(t_game *game, char *key, char *value)
 	{VLEFT, &game->settings.left, si}, {VRIGHT, &game->settings.right, si},
 	{VCOLOR, &game->settings.color, si}, {VDROP, &game->settings.drop, si},
 	{VEA, &game->map.default_east, ss}, {VWE, &game->map.default_west, ss},
+	{VCE, &game->map.default_ceil_path, ss}, {VFL, &game->map.default_floor_path, ss},
 	{VRUN, &game->settings.run, si}, {VCR, &game->settings.crouch, si},
 	{V1, &game->settings.slot1, si}, {V2, &game->settings.slot2, si},
 	{V3, &game->settings.slot3, si}, {V4, &game->settings.slot4, si},
@@ -57,8 +59,7 @@ int	set_settings(t_game *game, char *key, char *value)
 	{VSHOWSEED, &game->settings.show_seed, si},
 	{VSHOWFPS, &game->settings.show_fps, si},
 	{VFORWARD, &game->settings.forward, si},
-	{VBACKWARD, &game->settings.backward, si},
-	{VINTER, &game->settings.interact, si}};
+	{VBACKWARD, &game->settings.backward, si}};
 
 	return (set_settings_loop(all, key, value));
 }

@@ -32,6 +32,7 @@ int				drop_items(t_game *game, t_inventory *inventory,
 int				sf(void *ptr, char *value);
 int				si(void *ptr, char *value);
 int				ss(void *ptr, char *value);
+int				ssn(void *ptr, char *value);
 
 /*Color*/
 unsigned int	get_color(int color_settings, unsigned int color);

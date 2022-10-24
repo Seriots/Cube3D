@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 09:59:52 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/20 10:47:05 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/24 12:27:07 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,27 @@
 
 #include "ft.h"
 
+#include <stdlib.h>
+
 #include <stdio.h>
 
 int	open_one_texture(t_game *game, t_img_data *img,
-	char *path, char *default_path)
+	char **path, char *default_path)
 {
 	int	error;
 
-	error = init_xpm_image(game, img, path);
-	if (error)
+	if (path)
+		error = init_xpm_image(game, img, *path);
+	if (!path || error)
 	{
+		if (path)
+		{
+			printf("path = %s\n", *path);
+			free(*path);
+			*path = ft_strdup(default_path);
+			if (!*path)
+				return (10);
+		}
 		error = init_xpm_image(game, img, default_path);
 		if (error)
 			return (error);
@@ -37,39 +48,28 @@ int	open_textures(t_game *game, t_map *map)
 {
 	int	error;
 
-	game->all_img.no.img = 0;
-	game->all_img.so.img = 0;
-	game->all_img.ea.img = 0;
-	game->all_img.we.img = 0;
-	game->all_img.ce.img = 0;
-	game->all_img.fl.img = 0;
-	game->all_img.ph.img = 0;
 	error = open_one_texture(game, &game->all_img.no,
-			map->no, DEFAULT_IMAGE_PATH_NO);
+			&map->no, DEFAULT_IMAGE_PATH_NO);
 	if (error)
 		return (error);
 	error = open_one_texture(game, &game->all_img.so,
-			map->so, DEFAULT_IMAGE_PATH_SO);
+			&map->so, DEFAULT_IMAGE_PATH_SO);
 	if (error)
 		return (error);
 	error = open_one_texture(game, &game->all_img.ea,
-			map->ea, DEFAULT_IMAGE_PATH_EA);
+			&map->ea, DEFAULT_IMAGE_PATH_EA);
 	if (error)
 		return (error);
 	error = open_one_texture(game, &game->all_img.we,
-			map->we, DEFAULT_IMAGE_PATH_WE);
+			&map->we, DEFAULT_IMAGE_PATH_WE);
 	if (error)
 		return (error);
 	error = open_one_texture(game, &game->all_img.ce,
-			0, DEFAULT_IMAGE_PATH_CE);
+			&map->ce, DEFAULT_IMAGE_PATH_CE);
 	if (error)
 		return (error);
 	error = open_one_texture(game, &game->all_img.fl,
-			0, DEFAULT_IMAGE_PATH_FL);
-	if (error)
-		return (error);
-	error = open_one_texture(game, &game->all_img.ph,
-			0, DEFAULT_IMAGE_PATH_PH);
+			&map->fl, DEFAULT_IMAGE_PATH_FL);
 	if (error)
 		return (error);
 	return (0);
@@ -79,26 +79,21 @@ int	open_start_textures(t_game *game, t_map *map)
 {
 	int	error;
 
-	game->all_img.no.img = 0;
-	game->all_img.so.img = 0;
-	game->all_img.ea.img = 0;
-	game->all_img.we.img = 0;
-	game->all_img.ce.img = 0;
-	game->all_img.fl.img = 0;
+	(void)map;
 	error = open_one_texture(game, &game->all_img.start_no,
-			map->no, DEFAULT_IMAGE_PATH_NO);
+			0, DEFAULT_IMAGE_PATH_NO);
 	if (error)
 		return (error);
 	error = open_one_texture(game, &game->all_img.start_so,
-			map->so, DEFAULT_IMAGE_PATH_SO);
+			0, DEFAULT_IMAGE_PATH_SO);
 	if (error)
 		return (error);
 	error = open_one_texture(game, &game->all_img.start_ea,
-			map->ea, DEFAULT_IMAGE_PATH_EA);
+			0, DEFAULT_IMAGE_PATH_EA);
 	if (error)
 		return (error);
 	error = open_one_texture(game, &game->all_img.start_we,
-			map->we, DEFAULT_IMAGE_PATH_WE);
+			0, DEFAULT_IMAGE_PATH_WE);
 	if (error)
 		return (error);
 	error = open_one_texture(game, &game->all_img.start_ce,

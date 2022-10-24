@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 23:58:22 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/21 17:17:16 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/24 11:03:21 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	init_nameinput(t_game *game, t_nameinput *nameinput)
 	nameinput->max_size = 20;
 	nameinput->start_display = 0;
 	nameinput->max_char_display = (nameinput->box.width / 6) - 1;
-	if (game->settings.name)
+	if (game->settings.name[0])
 		ft_strlcpy(nameinput->path, game->settings.name, 20);
 	else
 		nameinput->path[0] = 0;

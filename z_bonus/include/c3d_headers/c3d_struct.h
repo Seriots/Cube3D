@@ -69,7 +69,6 @@ typedef struct s_all_img
 	t_img_data	start_ea;
 	t_img_data	start_ce;
 	t_img_data	start_fl;
-	t_img_data	ph;
 	t_img_data	screen_img;
 	t_img_data	end_img;
 	t_img_data	menu_img;
@@ -264,6 +263,8 @@ typedef struct s_map
 	char		*so;
 	char		*we;
 	char		*ea;
+	char		*fl;
+	char		*ce;
 	int			f;
 	int			c;
 	t_dict		*all_objects;
@@ -273,6 +274,8 @@ typedef struct s_map
 	char		default_east[256];
 	char		default_ceil[256];
 	char		default_floor[256];
+	char		default_ceil_path[256];
+	char		default_floor_path[256];
 }	t_map;
 
 typedef struct s_point

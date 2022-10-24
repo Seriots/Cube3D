@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 10:54:59 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/23 14:06:44 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/24 11:33:05 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,6 @@ int	sort_scores(t_score *score)
 		}
 		i--;
 	}
-	print_scores(score);
 	return (0);
 }
 

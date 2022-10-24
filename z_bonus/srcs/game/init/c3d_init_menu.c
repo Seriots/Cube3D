@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 10:10:34 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/23 17:11:13 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/24 12:14:53 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 
 #include "ft.h"
 #include "dict.h"
+
+#include <stdio.h>
 
 int	init_settings_menu2(t_game *game)
 {
@@ -49,6 +51,7 @@ int	init_settings_menu(t_game *game)
 		init_forward_keyinput, init_left_keyinput, init_textinput_north,
 		init_numinput_floor, init_backward_keyinput, init_right_keyinput,
 		init_textinput_south, init_textinput_east, init_textinput_west,
+		init_textinput_floor, init_textinput_ceil,
 		init_numinput_ceil, init_scrollspeed_slidebar, init_showseed_checkbox,
 		init_invertscroll_checkbox, init_camspeedx_slidebar,
 		init_camspeedy_slidebar, init_showfps_checkbox, init_showmmap_checkbox,

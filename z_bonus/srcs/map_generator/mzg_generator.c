@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 11:05:33 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/18 11:30:49 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/24 12:30:31 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,12 @@ int	set_default_image(t_map *map, int width, int height)
 		return (10);
 	map->ea = ft_strdup(map->default_east);
 	if (!map->ea)
+		return (10);
+	map->fl = ft_strdup(map->default_floor_path);
+	if (!map->fl)
+		return (10);
+	map->ce = ft_strdup(map->default_ceil_path);
+	if (!map->ce)
 		return (10);
 	map->f = ft_color(map->default_floor);
 	if (map->f == -1)

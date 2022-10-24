@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 12:15:01 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/19 23:02:49 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/24 11:32:41 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ int	get_key_pos_force(t_game *game, int width, int height)
 		y = rand() % height;
 		i++;
 	}
-	printf("no placement for key if 500: %d\n", i);
 	init_obj(game, KEY,
 			x * CASE_SIZE + 16 + (rand() % 32),
 			y * CASE_SIZE + 16 + (rand() % 32));
