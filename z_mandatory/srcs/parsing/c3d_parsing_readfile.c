@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 14:17:54 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/06 13:14:48 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/24 15:57:13 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 #include "c3d_parsing.h"
 
 #include "ft.h"
+
+#include <stdio.h>
 
 static int	get_elem(t_map *map, char *line)
 {
@@ -57,7 +59,7 @@ static int	get_map(int fd, t_map *map, char *line, int size)
 		map->map[i] = line;
 		if (line && (int)ft_strlen(line) > map->width)
 			map->width = ft_strlen(line);
-		get_next_line(fd, &line);
+		get_next_line(fd, &line, 0);
 		i++;
 	}
 	if (i != size)
@@ -93,7 +95,7 @@ int	read_file(t_map *map, char *file, int size)
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
 		return (5);
-	while (error == 0 && get_next_line(fd, &line) != 0)
+	while (error == 0 && get_next_line(fd, &line, 0) != 0)
 		error = get_all_elem(map, line);
 	if (error != -1)
 		return (error);

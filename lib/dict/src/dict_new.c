@@ -6,12 +6,14 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 19:10:37 by lgiband           #+#    #+#             */
-/*   Updated: 2022/08/15 23:24:07 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/24 13:48:00 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "dict.h"
 #include <stdlib.h>
+
+#include <stdio.h>
 
 t_dict	*dict_new(void *key, void *value)
 {

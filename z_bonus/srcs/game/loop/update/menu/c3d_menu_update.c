@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 14:42:08 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/20 13:37:42 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/24 19:25:24 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,28 +70,26 @@ int	make_background(t_game *game)
 
 int	check_draw_update(t_game *game, t_dict *tmp, void *value)
 {
-	if (ft_strcmp(tmp->key, BUTTON) == 0)
-		draw_button(game, (t_button *)value);
-	if (ft_strcmp(tmp->key, BUTTON2) == 0)
-		draw_button_start(game, (t_button *)value);
-	else if (ft_strcmp(tmp->key, SLIDEBAR) == 0)
-		draw_slidebar(game, (t_slidebar *)value);
-	else if (ft_strcmp(tmp->key, CHECKBOX) == 0)
-		draw_checkbox(game, (t_checkbox *)value);
-	else if (ft_strcmp(tmp->key, KEYINPUT) == 0)
-		draw_keyinput(game, (t_keyinput *)value);
-	else if (ft_strcmp(tmp->key, TEXTINPUT) == 0)
-		draw_textinput(game, (t_textinput *)value);
-	else if (ft_strcmp(tmp->key, NUMINPUT) == 0)
-		draw_numinput(game, (t_numinput *)value);
-	else if (ft_strcmp(tmp->key, MULTICHOICE) == 0)
-		draw_multichoice(game, (t_multichoice *)value);
-	else if (ft_strcmp(tmp->key, SEED) == 0)
-		draw_seed(game, (t_seed *)value);
-	else if (ft_strcmp(tmp->key, TEXTINPUT2) == 0)
-		draw_textinput_start(game, (t_textinput *)value);
-	else if (ft_strcmp(tmp->key, SCROLLBAR) == 0)
-		draw_scrollbar(game, (t_scrollbar *)value);
+	const t_drawobj	all[] = {{BUTTON, draw_button},
+	{BUTTON2, draw_button_start}, {BUTTON3, draw_button_end},
+	{SLIDEBAR, draw_slidebar}, {CHECKBOX, draw_checkbox},
+	{KEYINPUT, draw_keyinput}, {TEXTINPUT, draw_textinput},
+	{TEXTINPUT2, draw_textinput_start}, {NUMINPUT, draw_numinput},
+	{MULTICHOICE, draw_multichoice}, {SEED, draw_seed},
+	{SCROLLBAR, draw_scrollbar}, {SCROLLBAR2, draw_scrollbar_end},
+	{SCROLLBAR3, draw_scrollbar_score}, {NAMEINPUT, draw_nameinput}};
+	unsigned long	i;
+
+	i = 0;
+	while (i < sizeof(all) / sizeof(t_drawobj))
+	{
+		if (ft_strcmp(tmp->key, all[i].tag) == 0)
+		{
+			all[i].fct(game, value);
+			return (0);
+		}
+		i++;
+	}
 	return (0);
 }
 

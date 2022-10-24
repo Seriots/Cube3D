@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 14:42:38 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/20 10:53:42 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/24 19:50:55 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,25 +26,22 @@ int	start_cast_ray(t_game *game, int i)
 	double		d;
 	t_vector	ray;
 	t_wall		wall;
-	double	t;
-	double	cost;
-	double	sint;
+	double		t;
+	t_coord		angle;
 
-	d = (i - (double)WIN_WIDTH / 2.0) * (double)VIEW_WIDTH / (double)WIN_WIDTH;
+	d = (i - (double)WIN_WIDTH / 2.0)
+		* (double)VIEW_WIDTH / (double)WIN_WIDTH;
 	t = -d / game->settings.fov;
-	//ray.angle.value = atan (-d / game->settings.fov) + game->start_map.player.plane.value;
-	cost = 1 / sqrt(1 + pow(t, 2));
-	sint = t * cost;
-	//ray.angle.cos = cos(ray.angle.value);
-	//ray.angle.sin = sin(ray.angle.value);
-	ray.angle.cos = cost * game->start_map.player.plane.cos - sint * game->start_map.player.plane.sin;
-	ray.angle.sin = sint * game->start_map.player.plane.cos + cost * game->start_map.player.plane.sin;
+	angle.x = 1 / sqrt(1 + pow(t, 2));
+	angle.y = t * angle.x;
+	ray.angle.cos = angle.x * game->start_map.player.plane.cos - angle.y
+		* game->start_map.player.plane.sin;
+	ray.angle.sin = angle.y * game->start_map.player.plane.cos + angle.x
+		* game->start_map.player.plane.sin;
 	ray.angle.tan = ray.angle.sin / ray.angle.cos;
 	ray.x = game->start_map.player.pos.x + d * game->start_map.player.plane.sin;
 	ray.y = game->start_map.player.pos.y + d * game->start_map.player.plane.cos;
-	wall.face = 0;
-	wall.dist = 0;
-	wall.dist_from_start = 0;
+	wall = (t_wall){.dist = 0, .dist_from_start = 0, .face = 0};
 	start_intersect_wall(game, ray, &wall);
 	game->display.ray = ray;
 	start_display_wall(game, &wall, i);
@@ -54,7 +51,7 @@ int	start_cast_ray(t_game *game, int i)
 
 int	start_fill_fc_dist(t_game *game)
 {
-	int	i;
+	int		i;
 	double	dx;
 
 	i = 0;
@@ -63,10 +60,15 @@ int	start_fill_fc_dist(t_game *game)
 		dx = i * (double)VIEW_HEIGHT / (double)WIN_HEIGHT;
 		dx -= (double)VIEW_HEIGHT / 2;
 		if (-game->start_map.player.z + game->start_map.player.updown + dx < 0)
-			game->display.fc_dist[i] = (CASE_SIZE / 2 - game->start_map.player.z + dx) * game->settings.fov / (game->start_map.player.z - game->start_map.player.updown - dx);
+			game->display.fc_dist[i]
+				= (CASE_SIZE / 2 - game->start_map.player.z + dx)
+				* game->settings.fov / (game->start_map.player.z
+					- game->start_map.player.updown - dx);
 		else
-			game->display.fc_dist[i] = (CASE_SIZE / 2 + game->start_map.player.z - dx) * game->settings.fov / (-game->start_map.player.z + game->start_map.player.updown + dx);
-		//printf("dx: %f, i: %i, dist: %f\n", dx, i, game->display.fc_dist[i]);
+			game->display.fc_dist[i]
+				= (CASE_SIZE / 2 + game->start_map.player.z - dx)
+				* game->settings.fov / (-game->start_map.player.z
+					+ game->start_map.player.updown + dx);
 		i++;
 	}
 	game->display.ce = &game->all_img.start_ce;

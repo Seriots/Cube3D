@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 16:56:08 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/06 21:20:50 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/24 14:37:05 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int	check_walls(t_map *map)
 		j = 0;
 		while (j < map->width)
 		{
-			if (ft_isinset(map->map[i][j], "0NSWE")
+			if (ft_isinset(map->map[i][j], "023NSWE")
 				&& check_around(map, i, j) != 0)
 				return (9);
 			j++;

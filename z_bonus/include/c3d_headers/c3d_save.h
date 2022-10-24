@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 11:59:11 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/18 20:03:43 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/24 11:39:28 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,12 @@
 # define V6 "slot6"
 # define V7 "slot7"
 # define V8 "slot8"
+# define VNAME "name"
+# define VFL "floor_img"
+# define VCE "ceil_img"
+
+void	save_str(int fd, char *key, char *value);
+void	save_int(int fd, char *key, int value);
+void	save_color(int fd, char *key, int value);
 
 #endif

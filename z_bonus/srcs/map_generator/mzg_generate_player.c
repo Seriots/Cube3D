@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 12:17:42 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/20 17:20:29 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/24 20:45:19 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ char	make_player(t_map *map, int width, int height)
 			&& map->map[y][x] != '+'
 			&& map->map[y][x] != '/'
 			&& map->map[y][x] != '0'
+			&& map->map[y][x] != 'A'
 			&& get_size_area(map->map, width, height, map->map[y][x]) > 10)
 			break ;
 	}

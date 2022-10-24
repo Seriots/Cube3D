@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 13:50:48 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/20 13:16:56 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/21 15:20:29 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int	syringe_use(t_game *game, t_dict *dict, t_object *obj)
 {
 	game->player.max_stamina += 10;
 	obj->delete(game, dict, obj);
+	game->player.stats.use_object.value += 1;
 	return (0);
 }
 

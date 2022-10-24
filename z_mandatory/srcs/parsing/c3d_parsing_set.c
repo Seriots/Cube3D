@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 14:19:52 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/06 13:14:50 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/24 14:46:40 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	set_map_size(char *file, int *size)
 	line = 0;
 	if (fd == -1)
 		return (5);
-	while (get_next_line(fd, &line) != 0)
+	while (get_next_line(fd, &line, 0) != 0)
 	{
 		if (is_only_set(line, " 01NSEW") && !is_only_set(line, " "))
 			break ;
@@ -54,7 +54,7 @@ int	set_map_size(char *file, int *size)
 		else
 			break ;
 		free(line);
-		get_next_line(fd, &line);
+		get_next_line(fd, &line, 0);
 	}
 	if (line != 0)
 		return (free(line), close(fd), 4);

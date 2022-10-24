@@ -25,8 +25,12 @@
 int	omap_use(t_game *game, t_dict *dict, t_object *obj)
 {
 	(void)dict;
-	obj->use_count++;
-	obj->state = game->level;
+	if (obj->use_count == 0)
+	{
+		obj->use_count++;
+		obj->state = game->level;
+		game->player.stats.use_object.value += 1;
+	}
 	return (0);
 }
 

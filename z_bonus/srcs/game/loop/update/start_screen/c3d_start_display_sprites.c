@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 00:48:35 by pierre-yves       #+#    #+#             */
-/*   Updated: 2022/10/20 11:05:23 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/24 20:04:22 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,10 @@
 
 #include <stdio.h>
 
-int start_draw_sprite_vline(t_game *game, t_img_data *img, int i, int width)
+int	start_draw_sprite_vline(t_game *game, t_img_data *img, int i, int width)
 {
-	int	j;
+	int				j;
+	t_point			p;
 	unsigned int	color;
 
 	j = game->display.min - 1;
@@ -33,61 +34,64 @@ int start_draw_sprite_vline(t_game *game, t_img_data *img, int i, int width)
 	{
 		if (j < 0)
 			continue ;
-		//printf("row: %i\n", j);
-		color = get_sprite_color(game, img, j - game->display.min, i - game->display.vline + width / 2, width);
+		p.x = i - game->display.vline + width / 2;
+		p.y = j - game->display.min;
+		color = get_sprite_color(game, img, p, width);
 		if (color != 0xFF000000)
 			my_mlx_pixel_put(&game->all_img.screen_img, i, j, color);
 	}
 	return (0);
 }
 
+static void	start_set_display_sprite(t_game *game, t_object *obj, double dist)
+{
+	game->display.d = (game->display.vline - (double)WIN_WIDTH / 2.0)
+		* (double)VIEW_WIDTH / (double)WIN_WIDTH;
+	game->display.angle = 1
+		/ sqrt(1 + pow(game->display.d / game->settings.fov, 2));
+	game->display.min = (double)VIEW_HEIGHT / 2 - game->start_map.player.updown
+		+ game->start_map.player.z
+		- ((double)CASE_SIZE / 2 - game->start_map.player.updown)
+		* game->settings.fov / (game->display.angle
+			* (dist + game->settings.fov / (game->display.angle)));
+	game->display.max = -(double)VIEW_HEIGHT / 2 + game->start_map.player.updown
+		- game->start_map.player.z
+		- ((double)CASE_SIZE / 2 + game->start_map.player.updown)
+		* game->settings.fov / (game->display.angle
+			* (dist + game->settings.fov / (game->display.angle)));
+	game->display.min *= (double)WIN_HEIGHT / (double)VIEW_HEIGHT;
+	game->display.max *= -(double)WIN_HEIGHT / (double)VIEW_HEIGHT;
+	game->display.min = game->display.max
+		- (game->display.max - game->display.min) * obj->height / CASE_SIZE;
+}
+
 int	start_display_sprite(t_game *game, t_object *obj, double dist, double angle)
 {
 	double	sprite_width;
-	int	i;
+	int		i;
 
-	game->display.vline = -game->settings.fov * tan(angle) * (double)WIN_WIDTH / (double)VIEW_WIDTH + (double)WIN_WIDTH / 2;
-	sprite_width = (((double)WIN_WIDTH / (double)VIEW_WIDTH ) * obj->width) * game->settings.fov / (dist + game->settings.fov / cos(angle));
+	game->display.vline = -game->settings.fov * tan(angle)
+		* (double)WIN_WIDTH / (double)VIEW_WIDTH + (double)WIN_WIDTH / 2;
+	sprite_width = (((double)WIN_WIDTH / (double)VIEW_WIDTH) * obj->width)
+		* game->settings.fov / (dist + game->settings.fov / cos(angle));
 	i = -sprite_width / 2;
-	game->display.d = (game->display.vline - (double)WIN_WIDTH / 2.0)
-		* (double)VIEW_WIDTH / (double)WIN_WIDTH;
-	game->display.angle = 1 / sqrt(1 + pow(game->display.d / game->settings.fov, 2));
-	game->display.min = (double)VIEW_HEIGHT / 2 - game->start_map.player.updown + game->start_map.player.z - ((double)CASE_SIZE / 2 - game->start_map.player.updown) * game->settings.fov / (game->display.angle * (dist + game->settings.fov / (game->display.angle)));
-	game->display.max = -(double)VIEW_HEIGHT / 2 + game->start_map.player.updown - game->start_map.player.z - ((double)CASE_SIZE / 2 + game->start_map.player.updown) * game->settings.fov / (game->display.angle * (dist + game->settings.fov / (game->display.angle)));
-	game->display.min *= (double)WIN_HEIGHT / (double)VIEW_HEIGHT;
-	game->display.max *= -(double)WIN_HEIGHT / (double)VIEW_HEIGHT;
-	game->display.min = game->display.max - (game->display.max - game->display.min) * obj->height / CASE_SIZE;
+	start_set_display_sprite(game, obj, dist);
 	while (i < sprite_width / 2)
 	{
 		if (i + game->display.vline >= 0 && i + game->display.vline < WIN_WIDTH)
 		{
-			//printf("line: %i\n", i + game->display.vline);
 			if (game->display.wall_dist[i + game->display.vline] > dist)
-				start_draw_sprite_vline(game, obj->game_img, i + game->display.vline, sprite_width);
+				start_draw_sprite_vline(game, obj->game_img,
+					i + game->display.vline, sprite_width);
 		}
 		i++;
 	}
 	return (0);
 }
 
-double	start_get_dist_obj(t_game *game, t_object *obj)
-{
-	double	dist;
-
-	obj->angle = get_obj_angle(obj->pos.x - game->display.xfov, -obj->pos.y + game->display.yfov);
-	//printf("angle: %f, angle left: %f, angle right: %f\n", obj->angle, game->display.left_angle, game->display.right_angle);
-	if (check_angle(obj->angle, game->display.left_angle, game->display.right_angle) == 0)
-		return (-1.0);
-	dist = sqrt(pow(obj->pos.x - game->display.xfov, 2) + pow(obj->pos.y - game->display.yfov, 2));
-	if (dist <= game->settings.fov / cos(dabs(obj->angle - game->start_map.player.plane.value)))
-		return (-1.0);
-	dist -= game->settings.fov / cos(dabs(obj->angle - game->start_map.player.plane.value));
-	return (dist);
-}
-
 int	start_get_all_obj_dist(t_game *game)
 {
-	t_dict	*tmp;
+	t_dict		*tmp;
 	t_object	*obj;
 
 	tmp = game->start_map.map.all_objects;
@@ -105,10 +109,12 @@ int	start_display_all_sprites(t_game *game)
 	t_dict		*tmp;
 	t_object	*obj;
 
-	game->display.xfov = game->start_map.player.pos.x - game->settings.fov * game->start_map.player.plane.cos;
-	game->display.yfov = game->start_map.player.pos.y + game->settings.fov * game->start_map.player.plane.sin;
-	game->display.left_angle = /*atan ((((double)WIN_WIDTH / 2.0) * (double)VIEW_WIDTH / (double)WIN_WIDTH) / game->settings.fov) + */game->start_map.player.plane.value + M_PI / 2;
-	game->display.right_angle = /*atan (-(((WIN_WIDTH - 1) - (double)WIN_WIDTH / 2.0) * (double)VIEW_WIDTH / (double)WIN_WIDTH) / game->settings.fov) + */game->start_map.player.plane.value - M_PI / 2;
+	game->display.xfov = game->start_map.player.pos.x - game->settings.fov
+		* game->start_map.player.plane.cos;
+	game->display.yfov = game->start_map.player.pos.y + game->settings.fov
+		* game->start_map.player.plane.sin;
+	game->display.left_angle = game->start_map.player.plane.value + M_PI / 2;
+	game->display.right_angle = game->start_map.player.plane.value - M_PI / 2;
 	start_get_all_obj_dist(game);
 	dict_sort_fct(&game->start_map.map.all_objects, &cmp_obj_dist);
 	tmp = game->start_map.map.all_objects;
@@ -116,7 +122,8 @@ int	start_display_all_sprites(t_game *game)
 	{
 		obj = tmp->value;
 		if (obj && obj->dist >= 0 && obj->is_visible && obj->game_img)
-			start_display_sprite(game, obj, obj->dist, obj->angle - game->start_map.player.plane.value);
+			start_display_sprite(game, obj, obj->dist, obj->angle
+				- game->start_map.player.plane.value);
 		tmp = tmp->next;
 	}
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 13:30:36 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/17 17:55:49 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/24 14:30:56 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,50 @@
 #include "c3d_event.h"
 #include "c3d_menu.h"
 #include "c3d_loop.h"
+#include "c3d_init.h"
 
 #include "mlx.h"
+
+int	load_endscreen(t_game *game)
+{
+	game->fcts.update_fct = endmenu_update;
+	game->fcts.display_fct = endmenu_display;
+	game->fcts.keypressed_fct = end_key_press;
+	game->fcts.keyreleased_fct = end_key_release;
+	game->fcts.mousepressed_fct = end_mouse_press;
+	game->fcts.mousereleased_fct = end_mouse_release;
+	game->fcts.mousemove_fct = end_mouse_move;
+	game->end_menu.scroll_amount = 0;
+	game->menu.scroll_amount = 0;
+	game->end_menu.error = 0;
+	game->load_start_frame = game->last_frame;
+	if (HIDE)
+		mlx_mouse_show(game->mlx.display, game->mlx.window);
+	mlx_do_key_autorepeaton(game->mlx.display);
+	return (0);
+}
+
+int	load_scorescreen(t_game *game)
+{
+	t_dict	*scrollbar;
+
+	game->fcts.update_fct = score_update;
+	game->fcts.display_fct = score_display;
+	game->fcts.keypressed_fct = scorescreen_key_press;
+	game->fcts.keyreleased_fct = scorescreen_key_release;
+	game->fcts.mousepressed_fct = scorescreen_mouse_press;
+	game->fcts.mousereleased_fct = scorescreen_mouse_release;
+	game->fcts.mousemove_fct = scorescreen_mouse_move;
+	game->score_menu.scroll_amount = 0;
+	game->start_menu.error = 0;
+	scrollbar = dict_getelem_key(game->score_menu.all_objects, SCROLLBAR3);
+	if (scrollbar)
+		set_height_s(game, scrollbar->value, get_score_array(game));
+	if (HIDE)
+		mlx_mouse_show(game->mlx.display, game->mlx.window);
+	mlx_do_key_autorepeaton(game->mlx.display);
+	return (0);
+}
 
 int	load_startscreen(t_game *game)
 {
@@ -32,6 +74,8 @@ int	load_startscreen(t_game *game)
 	game->menu.scroll_amount = 0;
 	game->start_menu.error = 0;
 	game->level = 1;
+	game->map = (t_map){.c = -1, .f = -1, .ea = NULL, .no = NULL, .so = NULL,
+		.we = NULL, .height = 0, .width = 0, .all_objects = 0, .map = NULL};
 	if (HIDE)
 		mlx_mouse_show(game->mlx.display, game->mlx.window);
 	mlx_do_key_autorepeaton(game->mlx.display);

@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 13:49:50 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/18 23:53:56 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/21 15:18:59 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ int	fullheal_use(t_game *game, t_dict *dict, t_object *obj)
 	if (game->player.life < game->player.max_life)
 	{
 		game->player.life = game->player.max_life;
+		game->player.stats.use_object.value += 1;
 		obj->delete(game, dict, obj);
 	}
 	else

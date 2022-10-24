@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 14:34:59 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/20 13:39:13 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/21 17:24:01 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ int	check_display_menu(t_game *game, t_dict *tmp)
 		display_button_text(game, (t_button *)tmp->value);
 	else if (ft_strcmp(tmp->key, BUTTON2) == 0)
 		display_button_text_start(game, (t_button *)tmp->value);
+	else if (ft_strcmp(tmp->key, BUTTON3) == 0)
+		display_button_text_end(game, (t_button *)tmp->value);
 	else if (ft_strcmp(tmp->key, SLIDEBAR) == 0)
 		display_slidebar_text(game, (t_slidebar *)tmp->value);
 	else if (ft_strcmp(tmp->key, CHECKBOX) == 0)
@@ -46,6 +48,8 @@ int	check_display_menu(t_game *game, t_dict *tmp)
 		display_seed_text(game, (t_seed *)tmp->value);
 	else if (ft_strcmp(tmp->key, TEXTINPUT2) == 0)
 		display_textinput_text_start(game, (t_textinput *)tmp->value);
+	else if (ft_strcmp(tmp->key, NAMEINPUT) == 0)
+		display_nameinput_text(game, (t_nameinput *)tmp->value);
 	return (0);
 }
 

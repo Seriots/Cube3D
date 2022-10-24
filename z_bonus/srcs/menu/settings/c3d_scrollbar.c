@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 17:55:22 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/12 21:22:35 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/21 11:17:57 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ int	scrollbar_mouse_move(int x, int y, t_game *game)
 	float		percent_pos;
 
 	(void)x;
+	game->is_update = 1;
 	bar = dict_getelem_key(game->menu.all_objects, SCROLLBAR);
 	value = bar->value;
 	y = y - (WIN_HEIGHT / 2 - MENU_HEIGHT / 2);

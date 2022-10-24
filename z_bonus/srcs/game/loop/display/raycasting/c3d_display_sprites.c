@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 00:48:35 by pierre-yves       #+#    #+#             */
-/*   Updated: 2022/10/20 12:31:34 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/24 17:38:07 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,14 @@
 #define SPRITE_WIDTH 1 / 3
 #define	SPRITE_HEIGHT 1 / 2
 
-unsigned int	get_sprite_color(t_game *game, t_img_data *img, int j, int i, int width)
+unsigned int	get_sprite_color(t_game *game, t_img_data *img, t_point p, int width)
 {
 	void	*color;
 	int		x;
 	int		y;
 
-	x = (i * img->width) / width;
-	y = (j * img->height) / (game->display.max - game->display.min);
+	x = (p.x * img->width) / width;
+	y = (p.y * img->height) / (game->display.max - game->display.min);
 	color = (img->addr
 			+ (y * img->line_length
 				+ x * img->bits_per_pixel / 8));
@@ -45,7 +45,8 @@ unsigned int	get_sprite_color(t_game *game, t_img_data *img, int j, int i, int w
 
 int draw_sprite_vline(t_game *game, t_img_data *img, int i, int width)
 {
-	int	j;
+	int				j;
+	t_point			p;
 	unsigned int	color;
 
 	j = game->display.min - 1;
@@ -53,8 +54,9 @@ int draw_sprite_vline(t_game *game, t_img_data *img, int i, int width)
 	{
 		if (j < 0)
 			continue ;
-		//printf("row: %i\n", j);
-		color = get_sprite_color(game, img, j - game->display.min, i - game->display.vline + width / 2, width);
+		p.x = i - game->display.vline + width / 2;
+		p.y = j - game->display.min;
+		color = get_sprite_color(game, img, p, width);
 		if (color != 0xFF000000)
 			my_mlx_pixel_put(&game->all_img.screen_img, i, j, color);
 	}

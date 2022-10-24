@@ -6,12 +6,14 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 09:59:52 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/06 13:14:32 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/24 15:40:18 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "c3d_struct.h"
 #include "c3d_init.h"
+
+#include <stdio.h>
 
 int	open_textures(t_game *game, t_map *map)
 {

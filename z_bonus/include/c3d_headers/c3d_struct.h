@@ -31,6 +31,12 @@ typedef struct s_objinit
 	int		(*fct)(t_game *, char *, char *);
 }	t_objinit;
 
+typedef struct s_drawobj
+{
+	char	*tag;
+	int		(*fct)(t_game *, void *);
+}	t_drawobj;
+
 typedef struct s_savset
 {
 	char	*tag;
@@ -69,16 +75,20 @@ typedef struct s_all_img
 	t_img_data	start_ea;
 	t_img_data	start_ce;
 	t_img_data	start_fl;
-	t_img_data	ph;
 	t_img_data	screen_img;
+	t_img_data	end_img;
 	t_img_data	menu_img;
 	t_img_data	minimap_img;
-	t_img_data	cursor;
 	t_img_data	*all_cursor_img;
 	t_img_data	*all_ghost_img;
 	t_img_data	*all_loading_img;
+	t_img_data	*all_number_img;
 	t_img_data	endoor;
 	t_img_data	loading;
+	t_img_data	score;
+	t_img_data	game_over;
+	t_img_data	return_arrow;
+	t_img_data	leaderboard;
 	t_img_data	flashlight[3];
 	t_img_data	key[3];
 	t_img_data	energy[3];
@@ -105,6 +115,23 @@ typedef struct s_angle
 	double	tan;
 }	t_angle;
 
+typedef struct s_tagint
+{
+	char	tag[256];
+	int		value;
+}	t_tagint;
+
+typedef struct s_stat
+{
+	t_tagint	score;
+	t_tagint	level;
+	t_tagint	kill;
+	t_tagint	time;
+	t_tagint	use_object;
+	t_tagint	door_open;
+	t_tagint	life_loss;
+}	t_stat;
+
 typedef struct s_player
 {
 	t_coord	pos;
@@ -129,6 +156,9 @@ typedef struct s_player
 	float	stamina;
 	float	max_stamina;
 	int		invincible_frames;
+	int		footstep_speed;
+	int		last_footstep;
+	t_stat	stats;
 }	t_player;
 
 typedef struct s_wall
@@ -137,6 +167,18 @@ typedef struct s_wall
 	double			dist_from_start;
 	char			face;
 }				t_wall;
+
+typedef struct s_scorev
+{
+	char	name[20];
+	int		score;
+}	t_scorev;
+
+typedef struct s_score
+{
+	t_scorev	score[200];
+	int			size;
+}	t_score;
 
 typedef struct s_settings
 {
@@ -176,6 +218,10 @@ typedef struct s_settings
 	int				difficulty;
 	char			*map_path;
 	unsigned long	seed;
+	char			name[20];
+	t_score			easy_score;
+	t_score			medium_score;
+	t_score			hard_score;
 }	t_settings;
 
 typedef struct s_object
@@ -223,6 +269,8 @@ typedef struct s_map
 	char		*so;
 	char		*we;
 	char		*ea;
+	char		*fl;
+	char		*ce;
 	int			f;
 	int			c;
 	t_dict		*all_objects;
@@ -232,6 +280,8 @@ typedef struct s_map
 	char		default_east[256];
 	char		default_ceil[256];
 	char		default_floor[256];
+	char		default_ceil_path[256];
+	char		default_floor_path[256];
 }	t_map;
 
 typedef struct s_point
@@ -341,6 +391,20 @@ typedef struct s_textinput
 	char			path[256];
 }	t_textinput;
 
+typedef struct s_nameinput
+{
+	t_collide_box	box;
+	int				shift;
+	int				caps_lock;
+	bool			is_selected;
+	int				size;
+	int				max_size;
+	char			*modified_path[20];
+	int				max_char_display;
+	int				start_display;
+	char			path[256];
+}	t_nameinput;
+
 typedef struct s_mapinput
 {
 	t_collide_box	box;
@@ -441,7 +505,7 @@ typedef struct s_error
 typedef struct s_start_map
 {
 	t_map		map;
-	t_player 	player;
+	t_player	player;
 }	t_start_map;
 
 typedef struct s_game
@@ -455,12 +519,16 @@ typedef struct s_game
 	t_settings	settings;
 	t_menu		menu;
 	t_menu		start_menu;
+	t_menu		end_menu;
+	t_menu		score_menu;
 	t_display	display;
 	t_start_map	start_map;
 	int			pick_obj;
 	long		last_frame;
 	long		delay;
 	long		load_start_frame;
+	long		start_game;
+	long		map_start_frame;
 	t_error		error;
 	int			level;
 	int			is_update;

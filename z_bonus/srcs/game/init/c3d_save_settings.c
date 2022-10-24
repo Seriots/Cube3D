@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 11:29:25 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/12 22:17:06 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/24 11:44:15 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,9 @@ int	save_settings2(t_game *game, int fd)
 	save_str(fd, VSO, game->map.so);
 	save_str(fd, VWE, game->map.we);
 	save_str(fd, VEA, game->map.ea);
+	save_str(fd, VFL, game->map.fl);
+	save_str(fd, VCE, game->map.ce);
+	save_str(fd, VNAME, game->settings.name);
 	save_color(fd, VCEIL, game->map.c);
 	save_color(fd, VFLOOR, game->map.f);
 	save_int(fd, VINTER, (int)game->settings.interact);

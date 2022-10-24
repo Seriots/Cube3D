@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 13:42:48 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/20 16:11:52 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/24 19:11:23 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,82 +57,29 @@ static int	update_stamina(t_game *game)
 	return (0);
 }
 
-int	spawn_ennemies(t_game *game)
-{
-	int	is_spawn;
-	int	x;
-	int	y;
-	int	i;
-
-	is_spawn = rand() % 5000;
-	i = 0;
-	if (is_spawn + (game->level * 6) + (game->settings.difficulty * game->level) > 4980)
-	{
-		while (1)
-		{
-			x = rand() % game->map.width * CASE_SIZE;
-			y = rand() % game->map.height * CASE_SIZE;
-			if (norm(x - game->player.pos.x, y - game->player.pos.y) > 1000 || i > 100)
-				break ;
-			i++;
-		}
-		if (i > 100)
-			return (0);
-		init_obj(game, GHOST, x, y);
-		printf("ennemy spawn\n");
-	}
-	return (0);
-}
-
 int	check_death(t_game *game)
 {
 	if (game->player.life == 0)
 	{
+		default_display(game);
 		game->settings.seed = 0;
-		free_textures(game, &game->all_img);
-		free_map(&game->map);
-		load_startscreen(game);
-	}
-	return (0);
-}
-
-int	take_damage(t_game *game, t_object *obj, double angle)
-{
-	double	dist;
-	float	damage;
-
-	dist = dist_to_obj(game->player.pos, obj->pos);
-	damage = (1 + (15 - (angle * 15))) * (1000 - dist) / 200;
-	if (damage < 0)
-		damage = 0;
-	obj->use_count += damage;
-	//printf("damage : %f\n", obj->use_count);
-	return (0);
-}
-
-int	kill_ennemies(t_game *game)
-{
-	t_dict	*tmp;
-	t_object	*obj;
-
-	if (!is_lamp(game))
-		return (0);
-	tmp = game->map.all_objects;
-	while (tmp)
-	{
-		obj = tmp->value;
-		if (obj && ft_strcmp(obj->tag, GHOST) == 0
-			&& is_player_facing(game, obj, 0.3))
-			take_damage(game, obj, get_angle_player_obj(game, obj, 0.3));
-		tmp = tmp->next;
+		game->player.stats.time.value = timestamp_sec(game->start_game);
+		load_gameover(game);
+		return (1);
 	}
 	return (0);
 }
 
 int	default_update(t_game *game)
 {
+	int	error;
+
 	refresh_mouse_move(game);
-	//spawn_ennemies(game);
+	error = spawn_ennemies(game);
+	if (error)
+		return (free_map(&game->map),
+			free_textures(game, &game->all_img),
+			load_startscreen(game), display_error(error));
 	update_stamina(game);
 	update_player(game);
 	update_objects(game, game->map.all_objects);

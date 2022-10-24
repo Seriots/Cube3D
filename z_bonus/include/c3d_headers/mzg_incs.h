@@ -26,7 +26,6 @@
 # define DEFAULT_IMAGE_PATH_EA "imgs/xpm/wall/default_junglewood.xpm"
 # define DEFAULT_IMAGE_PATH_CE "imgs/xpm/wall/default_junglewood.xpm"
 # define DEFAULT_IMAGE_PATH_FL "imgs/xpm/wall/default_junglewood.xpm"
-# define DEFAULT_IMAGE_PATH_PH "imgs/xpm/object/key_game.xpm"
 # define DEFAULT_CEIL "37,37,37"
 # define DEFAULT_CEIL_VALUE	3618615
 # define DEFAULT_FLOOR "110,110,110"

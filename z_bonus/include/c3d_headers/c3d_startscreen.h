@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 12:56:26 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/18 19:54:25 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/24 19:34:12 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ int		startscreen_key_release(KeySym keycode, t_game *game);
 int		startscreen_key_press(KeySym keycode, t_game *game);
 
 /*Update*/
-int		draw_button_start(t_game *game, t_button *box);
-int		draw_seed(t_game *game, t_seed *box);
-int		draw_textinput_start(t_game *game, t_textinput *box);
+int		draw_button_start(t_game *game, void *box);
+int		draw_seed(t_game *game, void *box);
+int		draw_textinput_start(t_game *game, void *box);
 
 /*Display*/
 int		display_seed_text(t_game *game, t_seed *seed);
@@ -41,4 +41,5 @@ t_dict	*init_quit_button(t_game *game);
 t_dict	*init_multichoice_difficulty(t_game *game);
 t_dict	*init_seed(t_game *game);
 t_dict	*init_textinput_mappath(t_game *game);
+t_dict	*init_score_button(t_game *game);
 #endif

@@ -23,6 +23,7 @@ double			get_angle_player_obj(t_game *game, t_object *obj, double marge);
 int				set_error_message(t_game *game, char *message, int duration);
 
 /*Inventory*/
+int				move_slot(KeySym keycode, t_game *game);
 int				add_items(t_game *game, t_inventory *inventory,
 					t_object *object);
 int				drop_items(t_game *game, t_inventory *inventory,
@@ -32,6 +33,7 @@ int				drop_items(t_game *game, t_inventory *inventory,
 int				sf(void *ptr, char *value);
 int				si(void *ptr, char *value);
 int				ss(void *ptr, char *value);
+int				ssn(void *ptr, char *value);
 
 /*Color*/
 unsigned int	get_color(int color_settings, unsigned int color);
@@ -62,6 +64,7 @@ void			display_error_on_screen(t_game *game, char *err, int x, int y);
 int				display_error(int code);
 
 /*Free*/
+void			dict_clear_with_inventory(t_game *game, t_dict **dict);
 void			free_map_with_inventory(t_game *game, t_map *map);
 void			free_textures(t_game *game, t_all_img *all_img);
 void			free_img_array(t_game *game, t_img_data **imgs_ptr, int number);

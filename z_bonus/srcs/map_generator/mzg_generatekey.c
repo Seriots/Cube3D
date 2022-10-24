@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 12:15:01 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/19 23:02:49 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/24 20:09:11 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,29 +22,32 @@ int	get_key_pos_force(t_game *game, int width, int height)
 	int	x;
 	int	y;
 	int	i;
+	int	error;
 
 	x = rand() % width;
 	y = rand() % height;
 	i = 0;
+	error = 0;
 	while (game->map.map[y][x] < 'A' && i < 500)
 	{
 		x = rand() % width;
 		y = rand() % height;
 		i++;
 	}
-	printf("no placement for key if 500: %d\n", i);
-	init_obj(game, KEY,
+	error = init_obj(game, KEY,
 			x * CASE_SIZE + 16 + (rand() % 32),
 			y * CASE_SIZE + 16 + (rand() % 32));
-	return (0);
+	return (error);
 }
 
 int	get_key_pos(t_game *game, int width, int height, char c)
 {
 	int	i;
 	int	j;
+	int	error;
 
 	i = 0;
+	error = 0;
 	while (i < height)
 	{
 		j = 0;
@@ -52,17 +55,17 @@ int	get_key_pos(t_game *game, int width, int height, char c)
 		{
 			if (game->map.map[i][j] == c)
 			{
-				init_obj(game, KEY,
-					j * CASE_SIZE + 16 + (rand() % 32),
-					i * CASE_SIZE + 16 + (rand() % 32));
-				return (1);
+				error = init_obj(game, KEY,
+						j * CASE_SIZE + 16 + (rand() % 32),
+						i * CASE_SIZE + 16 + (rand() % 32));
+				return (error);
 			}
 			j++;
 		}
 		i++;
 	}
-	get_key_pos_force(game, width, height);
-	return (0);
+	error = get_key_pos_force(game, width, height);
+	return (error);
 }
 
 int	make_key(t_game *game, int width, int height, char c)
@@ -70,10 +73,12 @@ int	make_key(t_game *game, int width, int height, char c)
 	int	x;
 	int	y;
 	int	i;
+	int	error;
 
 	x = rand() % width;
 	y = rand() % height;
 	i = 0;
+	error = 0;
 	while (game->map.map[y][x] != c && i < 500)
 	{
 		x = rand() % width;
@@ -81,22 +86,25 @@ int	make_key(t_game *game, int width, int height, char c)
 		i++;
 	}
 	if (i == 100)
-		get_key_pos(game, width, height, c);
+		error = get_key_pos(game, width, height, c);
 	else
-		init_obj(game, KEY,
-			x * CASE_SIZE + 16 + (rand() % 32),
-			y * CASE_SIZE + 16 + (rand() % 32));
-	return (0);
+		error = init_obj(game, KEY,
+				x * CASE_SIZE + 16 + (rand() % 32),
+				y * CASE_SIZE + 16 + (rand() % 32));
+	return (error);
 }
 
 int	generate_key(t_game *game, int width, int height, int door)
 {
 	int	i;
+	int	error;
 
 	i = 0;
 	while (i < door)
 	{
-		make_key(game, width, height, 'A' + i);
+		error = make_key(game, width, height, 'A' + i);
+		if (error)
+			return (error);
 		i++;
 	}
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 10:22:00 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/20 10:37:06 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/24 19:46:11 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,34 @@ t_img_data	*start_get_image(t_all_img *all_img, char c)
 		return (&all_img->start_we);
 }
 
+static void	set_display(t_game *game, t_wall *wall, t_point p)
+{
+	game->display.img = start_get_image(&game->all_img, wall->face);
+	game->display.d = (p.x - (double)WIN_WIDTH / 2.0)
+		* (double)VIEW_WIDTH / (double)WIN_WIDTH;
+	game->display.angle = 1
+		/ sqrt(1 + pow(game->display.d / game->settings.fov, 2));
+	game->display.min = (double)VIEW_HEIGHT / 2
+		- game->start_map.player.updown
+		+ game->start_map.player.z
+		- ((double)CASE_SIZE / 2 - game->start_map.player.updown)
+		* game->settings.fov / (game->display.angle
+			* (wall->dist + game->settings.fov / (game->display.angle)));
+	game->display.max = -(double)VIEW_HEIGHT / 2 + game->start_map.player.updown
+		- game->start_map.player.z
+		- ((double)CASE_SIZE / 2 + game->start_map.player.updown)
+		* game->settings.fov / (game->display.angle
+			* (wall->dist + game->settings.fov / (game->display.angle)));
+	game->display.min *= (double)WIN_HEIGHT / (double)VIEW_HEIGHT;
+	game->display.max *= -(double)WIN_HEIGHT / (double)VIEW_HEIGHT;
+	game->display.x = (int)(wall->dist_from_start
+			* game->display.img->width / CASE_SIZE)
+		% game->display.img->width;
+	game->display.factor = game->display.img->height
+		/ (game->display.max - game->display.min);
+	game->display.bpp = game->display.img->bits_per_pixel / 8;
+}
+
 int	start_display_wall(t_game *game, t_wall *wall, int i)
 {
 	t_point		p;
@@ -41,19 +69,7 @@ int	start_display_wall(t_game *game, t_wall *wall, int i)
 
 	p.y = 0;
 	p.x = i;
-	game->display.img = start_get_image(&game->all_img, wall->face);
-	game->display.d = (p.x - (double)WIN_WIDTH / 2.0)
-		* (double)VIEW_WIDTH / (double)WIN_WIDTH;
-	//game->display.angle = cos(dabs(atan(game->display.d / game->settings.fov)));
-	game->display.angle = 1 / sqrt(1 + pow(game->display.d / game->settings.fov, 2));
-	game->display.min = (double)VIEW_HEIGHT / 2 - game->start_map.player.updown + game->start_map.player.z - ((double)CASE_SIZE / 2 - game->start_map.player.updown) * game->settings.fov / (game->display.angle * (wall->dist + game->settings.fov / (game->display.angle)));
-	game->display.max = -(double)VIEW_HEIGHT / 2 + game->start_map.player.updown - game->start_map.player.z - ((double)CASE_SIZE / 2 + game->start_map.player.updown) * game->settings.fov / (game->display.angle * (wall->dist + game->settings.fov / (game->display.angle)));
-	game->display.min *= (double)WIN_HEIGHT / (double)VIEW_HEIGHT;
-	game->display.max *= -(double)WIN_HEIGHT / (double)VIEW_HEIGHT;
-	game->display.x = (int)(wall->dist_from_start * game->display.img->width / CASE_SIZE)
-		% game->display.img->width;
-	game->display.factor = game->display.img->height / (game->display.max - game->display.min);
-	game->display.bpp = game->display.img->bits_per_pixel / 8;
+	set_display(game, wall, p);
 	while (p.y < WIN_HEIGHT)
 	{
 		color = get_pixel_color(game, wall, p, &game->display);

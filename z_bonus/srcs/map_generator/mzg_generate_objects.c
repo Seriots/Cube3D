@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 11:25:13 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/20 13:22:16 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/24 20:11:25 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int	choose_obj_map(char *obj)
 		ft_strlcpy(obj, B_ENERGY, 256);
 	else if (r < 98)
 		ft_strlcpy(obj, FULLHEAL, 256);
-	else if (r < 100)
+	else
 		ft_strlcpy(obj, MAP, 256);
 	return (0);
 }
@@ -69,24 +69,26 @@ int	set_obj_map(t_game *game, char *obj, int width, int height)
 	const char		*objs[256] = {HEAL, ENERGY, BONUSHP, B_ENERGY,
 		FULLHEAL, MAP, SYRINGE};
 	unsigned long	i;
-	int				x;
-	int				y;
+	t_point			p;
+	int				error;
 
 	while (1)
 	{
-		x = rand() % width;
-		y = rand() % height;
-		if (game->map.map[y][x] == '0')
+		p.x = rand() % width;
+		p.y = rand() % height;
+		if (game->map.map[p.y][p.x] == '0')
 			break ;
 	}
-	i = 0;
-	while (i < sizeof(objs) / sizeof(objs[0]))
+	i = -1;
+	while (++i < sizeof(objs) / sizeof(objs[0]))
 	{
-		if (ft_strcmp(obj, objs[i]) == 0)
-			init_obj(game, (char *)objs[i],
-				x * CASE_SIZE + 16 + (rand() % 32),
-				y * CASE_SIZE + 16 + (rand() % 32));
-		i++;
+		if (ft_strcmp(obj, objs[i]) == 0 && objs[i] != NULL)
+		{
+			error = init_obj(game, (char *)objs[i],
+					p.x * CASE_SIZE + 16 + (rand() % 32),
+					p.y * CASE_SIZE + 16 + (rand() % 32));
+			return (error);
+		}
 	}
 	return (0);
 }
@@ -96,13 +98,16 @@ int	generate_objects(t_game *game, int width, int height)
 	int		nb_objects;
 	char	obj[256];
 	int		i;
+	int		error;
 
 	i = 0;
 	nb_objects = get_nb_objects(game, width, height);
 	while (i < nb_objects)
 	{
 		choose_obj_map(obj);
-		set_obj_map(game, obj, width, height);
+		error = set_obj_map(game, obj, width, height);
+		if (error)
+			return (error);
 		i++;
 	}
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 10:04:14 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/06 13:40:41 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/24 15:43:32 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 #include "mlx.h"
 #include "ft.h"
 
+#include <stdio.h>
+
 int	init_image(t_game *game, int width, int height, t_img_data *img)
 {
 	img->img = mlx_new_image(game->mlx.display, width, height);
@@ -25,7 +27,7 @@ int	init_image(t_game *game, int width, int height, t_img_data *img)
 	img->addr = mlx_get_data_addr(img->img, &img->bits_per_pixel,
 			&img->line_length, &img->endian);
 	if (!img->addr)
-		return (mlx_destroy_image(game->mlx.display, img->img), 12);
+		return (12);
 	img->width = width;
 	img->height = height;
 	return (0);
@@ -40,7 +42,7 @@ int	init_xpm_image(t_game *game, t_img_data *img, char *name)
 	img->addr = mlx_get_data_addr(img->img, &img->bits_per_pixel,
 			&img->line_length, &img->endian);
 	if (!img->addr)
-		return (mlx_destroy_image(game->mlx.display, img->img), 12);
+		return (12);
 	return (0);
 }
 

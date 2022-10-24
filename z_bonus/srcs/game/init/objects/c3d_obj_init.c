@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 14:45:40 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/20 13:23:42 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/24 15:04:52 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,12 @@
 
 #include "c3d_struct.h"
 #include "c3d_object.h"
+#include "c3d_utils.h"
 
 #include "ft.h"
 #include "dict.h"
+
+#include <stdio.h>
 
 int	set_obj(t_game *game, t_object **object, char *key)
 {
@@ -44,12 +47,21 @@ int	init_obj(t_game *game, char *tag, int x, int y)
 
 	obj = malloc(sizeof(t_object));
 	if (!obj)
+	{
+		dict_clear(game->map.all_objects, 0, free);
+		game->map.all_objects = 0;
 		return (10);
+	}
 	*obj = (t_object){.pos.x = x, .pos.y = y};
 	set_obj(game, &obj, tag);
 	new = dict_new(tag, obj);
 	if (!new)
-		return (free(obj), 10);
+	{
+		free(obj);
+		dict_clear(game->map.all_objects, 0, free);
+		game->map.all_objects = 0;
+		return (10);
+	}
 	dict_add_back(&game->map.all_objects, new);
 	return (0);
 }

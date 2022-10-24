@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 12:12:09 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/20 13:20:57 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/24 20:14:27 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int	default_parse(t_game *game, char *tag, char *arg)
 	char	**split;
 	int		x;
 	int		y;
+	int		error;
 
 	if (!arg)
 		return (3);
@@ -37,8 +38,8 @@ int	default_parse(t_game *game, char *tag, char *arg)
 	{
 		x = ft_atoi(split[0]);
 		y = ft_atoi(split[1]);
-		init_obj(game, tag, x, y);
-		return (ft_free_tab(split), 0);
+		error = init_obj(game, tag, x, y);
+		return (ft_free_tab(split), error);
 	}
 	return (ft_free_tab(split), 3);
 }
@@ -46,9 +47,11 @@ int	default_parse(t_game *game, char *tag, char *arg)
 int	get_object(t_game *game, char **split)
 {
 	const t_objinit	all_template[][2] = {{{KEY, default_parse}},
-		{{LAMP, default_parse}}, {{HEAL, default_parse}}, {{FULLHEAL, default_parse}},
-		{{BONUSHP, default_parse}}, {{ENERGY, default_parse}}, {{B_ENERGY, default_parse}},
-		{{GHOST, default_parse}}, {{MAP, default_parse}}, {{SYRINGE, default_parse}}};
+	{{LAMP, default_parse}}, {{HEAL, default_parse}},
+	{{FULLHEAL, default_parse}}, {{BONUSHP, default_parse}},
+	{{ENERGY, default_parse}}, {{B_ENERGY, default_parse}},
+	{{GHOST, default_parse}}, {{MAP, default_parse}},
+	{{SYRINGE, default_parse}}};
 	unsigned int	i;
 	int				error;
 

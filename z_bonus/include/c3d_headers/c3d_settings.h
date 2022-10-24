@@ -26,6 +26,20 @@
 # define MENU_HEIGHT 600
 # define BORDER_SIZE 5
 
+/*End Menu Settings*/
+# define END_WIDTH 500
+# define END_HEIGHT 600
+# define END_BORDER_SIZE 5
+# define END_ANIMATION_DURATION 1500.0
+# define END_FADE_DURATION 1100.0
+# define END_GAMEOVER_DURATION 1400.0
+# define END_STAT_MARGE 30
+
+/*Score menu settings*/
+# define SCOREMENU_WIDTH 300
+# define SCOREMENU_HEIGHT 550
+# define SCORE_MARGE 30
+
 /*Hot bar*/
 # define HOTBAR_CASE_SIZE 60
 # define HOTBAR_BIG_BORDER 2
@@ -59,13 +73,17 @@
 
 # define BUTTON "BUTTON"
 # define BUTTON2 "BUTTON2"
+# define BUTTON3 "BUTTON3"
 # define SLIDEBAR "SLIDEBAR"
 # define CHECKBOX "CHECKBOX"
 # define KEYINPUT "KEYINPUT"
 # define TEXTINPUT "TEXTINPUT"
 # define TEXTINPUT2 "TEXTINPUT2"
+# define NAMEINPUT "NAMEINPUT"
 # define NUMINPUT "NUMINPUT"
 # define SCROLLBAR "SCROLLBAR"
+# define SCROLLBAR2 "SCROLLBAR2"
+# define SCROLLBAR3 "SCROLLBAR3"
 # define MULTICHOICE "MULTICHOICE"
 # define SEED "SEED"
 
@@ -80,11 +98,11 @@
 # define TEXTINPUT_START_Y 50
 
 # define NUMINPUT_START_X 325
-# define NUMINPUT_START_Y 225
+# define NUMINPUT_START_Y 305
 
 /*MENU_WIDTH - 275*/
 # define SLIDEBAR_START_X 325
-# define SLIDEBAR_START_Y 350
+# define SLIDEBAR_START_Y 430
 
 /*MENU_WIDTH - 275*/
 # define CHECKBOX_START_X 700
@@ -134,6 +152,11 @@
 
 # define MIN_DIST_OBJ 48.0f
 # define MIN_DIST_COLLIDE 20.0f
+
+/*Save files*/
+# define EASY_FILE "files/easy_scores.txt"
+# define MEDIUM_FILE "files/medium_scores.txt"
+# define HARD_FILE "files/hard_scores.txt"
 
 /*Default Key*/
 /*

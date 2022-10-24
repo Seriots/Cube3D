@@ -6,13 +6,16 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 10:55:28 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/12 21:45:45 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/24 17:54:50 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "c3d_struct.h"
 #include "c3d_settings.h"
 #include "c3d_menu.h"
+#include "c3d_init.h"
+
+#include "ft.h"
 
 int	textinput_keypress(KeySym key, t_game *game)
 {

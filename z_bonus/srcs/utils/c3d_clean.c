@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 11:13:57 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/17 17:42:59 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/24 12:23:28 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,10 @@ void	free_map(t_map *map)
 		free(map->we);
 	if (map->ea)
 		free(map->ea);
+	if (map->fl)
+		free(map->fl);
+	if (map->ce)
+		free(map->ce);
 	if (map->all_objects)
 		dict_clear(map->all_objects, 0, free);
 	map->map = 0;
@@ -82,6 +86,10 @@ void	free_map_with_inventory(t_game *game, t_map *map)
 		free(map->we);
 	if (map->ea)
 		free(map->ea);
+	if (map->fl)
+		free(map->fl);
+	if (map->ce)
+		free(map->ce);
 	if (map->all_objects)
 		dict_clear_with_inventory(game, &map->all_objects);
 	map->map = 0;
@@ -99,6 +107,7 @@ int	free_menu(t_menu *menu)
 
 void	free_game(t_game *game)
 {
+	system("pkill vlc");
 	mlx_do_key_autorepeaton(game->mlx.display);
 	if (HIDE)
 		mlx_mouse_show(game->mlx.display, game->mlx.window);
@@ -106,6 +115,9 @@ void	free_game(t_game *game)
 	free_images(game);
 	free_menu(&game->menu);
 	free_menu(&game->start_menu);
+	free_menu(&game->end_menu);
+	free_menu(&game->score_menu);
+	free_map(&game->start_map.map);
 	mlx_destroy_window(game->mlx.display, game->mlx.window);
 	mlx_destroy_display(game->mlx.display);
 	free(game->mlx.display);

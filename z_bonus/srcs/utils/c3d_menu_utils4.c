@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 10:36:50 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/11 10:15:03 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/24 20:28:15 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,24 +48,24 @@ int	event_enter_textinput_start(t_game *game, t_textinput *textinput)
 	path = ft_strdup(textinput->path);
 	if (!path)
 	{
+		if (!*textinput->modified_path)
+			return (0);
 		ft_strlcpy(textinput->path, *textinput->modified_path, 256);
 		set_error_value(&game->menu, 10);
+		return (0);
 	}
-	else
-	{
-		free(*textinput->modified_path);
-		*textinput->modified_path = path;
-	}
+	free(*textinput->modified_path);
+	*textinput->modified_path = path;
 	return (0);
 }
 
-int	scroll_up(t_game *game)
+int	scroll_up(t_game *game, t_menu *menu, char *tag)
 {
 	t_scrollbar	*scrollbar;
 	float		percent_pos;
 	int			y;
 
-	scrollbar = dict_getelem_key(game->menu.all_objects, SCROLLBAR)->value;
+	scrollbar = dict_getelem_key(menu->all_objects, tag)->value;
 	y = scrollbar->box.y - (game->settings.scroll_speed * scrollbar->max / 100);
 	if (y < scrollbar->min)
 		scrollbar->box.y = scrollbar->min;
@@ -79,13 +79,13 @@ int	scroll_up(t_game *game)
 	return (0);
 }
 
-int	scroll_down(t_game *game)
+int	scroll_down(t_game *game, t_menu *menu, char *tag)
 {
 	t_scrollbar	*scrollbar;
 	float		percent_pos;
 	int			y;
 
-	scrollbar = dict_getelem_key(game->menu.all_objects, SCROLLBAR)->value;
+	scrollbar = dict_getelem_key(menu->all_objects, tag)->value;
 	y = scrollbar->box.y + (game->settings.scroll_speed * scrollbar->max / 100);
 	if (y < scrollbar->min)
 		scrollbar->box.y = scrollbar->min;

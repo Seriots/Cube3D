@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 11:22:31 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/18 21:23:40 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/24 17:49:44 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include "c3d_menu.h"
 #include "c3d_loop.h"
 #include "c3d_init.h"
+#include "c3d_utils.h"
 
 #include "mlx.h"
 
@@ -52,35 +53,6 @@ int	down_everyone(t_game *game, int *value)
 	return (0);
 }
 
-int	move_slot(KeySym keycode, t_game *game)
-{
-	int	value;
-
-	if (keycode == game->settings.slot1)
-		value = 0;
-	else if (keycode == game->settings.slot2)
-		value = 1;
-	else if (keycode == game->settings.slot3)
-		value = 2;
-	else if (keycode == game->settings.slot4)
-		value = 3;
-	else if (keycode == game->settings.slot5)
-		value = 4;
-	else if (keycode == game->settings.slot6)
-		value = 5;
-	else if (keycode == game->settings.slot7)
-		value = 6;
-	else if (keycode == game->settings.slot8)
-		value = 7;
-	else
-		return (0);
-	if (value > game->inventory.size - 1)
-		return (0);
-	else
-		game->inventory.selected = value;
-	return (0);
-}
-
 int	default_key_press(KeySym keycode, t_game *game)
 {
 	if (keycode == game->settings.left || keycode == game->settings.right
@@ -110,6 +82,17 @@ int	default_key_press(KeySym keycode, t_game *game)
 	return (move_slot(keycode, game));
 }
 
+int	default_key_release2(KeySym keycode, t_game *game)
+{
+	if (keycode == XK_Escape)
+		load_menu(game);
+	else if (keycode == game->settings.interact)
+		objects_interact(game);
+	else if (keycode == game->settings.drop)
+		objects_drop(game);
+	return (0);
+}
+
 int	default_key_release(KeySym keycode, t_game *game)
 {
 	if (keycode == game->settings.left)
@@ -132,11 +115,7 @@ int	default_key_release(KeySym keycode, t_game *game)
 		game->player.crouch = 0;
 	else if (keycode == game->settings.run)
 		game->player.run = 0;
-	else if (keycode == XK_Escape)
-		load_menu(game);
-	else if (keycode == game->settings.interact)
-		objects_interact(game);
-	else if (keycode == game->settings.drop)
-		objects_drop(game);
+	else
+		return (default_key_release2(keycode, game));
 	return (0);
 }

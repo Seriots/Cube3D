@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 10:43:52 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/11 11:08:56 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/23 16:23:41 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ void	set_multichoice_difficulty(t_game *game, t_multichoice *multichoice)
 	ft_strlcpy(multichoice->all_values[1], "MEDIUM", 7);
 	ft_strlcpy(multichoice->all_values[2], "HARD", 5);
 	multichoice->modified_value = &game->settings.difficulty;
-	multichoice->current = *multichoice->modified_value;
 }
 
 t_dict	*init_multichoice_difficulty(t_game *game)

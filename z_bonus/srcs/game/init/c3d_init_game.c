@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 13:17:26 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/20 13:31:59 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/24 18:18:30 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@
 #include "mzg_incs.h"
 
 #include "ft.h"
+
+#include <stdlib.h>
 
 static int	set_default_settings2(t_game *game)
 {
@@ -60,7 +62,7 @@ static int	set_default_settings(t_game *game, char *path)
 	game->settings.invert_mouse = 0;
 	game->settings.show_fps = 0;
 	game->settings.show_seed = 0;
-	game->settings.show_mmap = 1;
+	game->settings.show_mmap = 0;
 	game->settings.seed = 0;
 	game->settings.difficulty = 0;
 	game->settings.fps = FPS;
@@ -71,47 +73,44 @@ static int	set_default_settings(t_game *game, char *path)
 	ft_strlcpy(game->map.default_south, DEFAULT_IMAGE_PATH_SO, 256);
 	ft_strlcpy(game->map.default_west, DEFAULT_IMAGE_PATH_WE, 256);
 	ft_strlcpy(game->map.default_east, DEFAULT_IMAGE_PATH_EA, 256);
+	ft_strlcpy(game->map.default_floor_path, DEFAULT_IMAGE_PATH_WE, 256);
+	ft_strlcpy(game->map.default_ceil_path, DEFAULT_IMAGE_PATH_WE, 256);
+	ft_strlcpy(game->settings.name, "Default", 20);
 	game->settings.map_path = ft_strdup(path);
 	if (path && !game->settings.map_path)
 		return (10);
 	return (0);
 }
 
-static int	set_obj_null(t_img_data *imgs)
-{
-	imgs[0].img = 0;
-	imgs[1].img = 0;
-	imgs[2].img = 0;
-	return (0);
-}
-
 static int	set_variable(t_game *game)
 {
 	game->last_frame = timestamp_msec(0);
-	game->delay = 0;
-	game->menu.all_objects = 0;
-	game->start_menu.all_objects = 0;
-	game->pick_obj = 0;
-	game->error.start_time = 0;
-	game->error.duration = 0;
-	game->error.message[0] = 0;
 	game->is_update = 1;
-	game->all_img.menu_img.img = NULL;
-	game->all_img.screen_img.img = NULL;
-	game->all_img.minimap_img.img = NULL;
-	game->all_img.all_cursor_img = NULL;
-	set_obj_null(game->all_img.flashlight);
-	set_obj_null(game->all_img.key);
-	set_obj_null(game->all_img.heal);
-	set_obj_null(game->all_img.fullheal);
-	set_obj_null(game->all_img.bonushp);
-	set_obj_null(game->all_img.energy);
-	set_obj_null(game->all_img.b_energy);
+	game->is_display = 1;
 	game->level = 1;
 	game->inventory.base_hand = (t_coord){.x = 0, .y = 0};
 	game->inventory.current_hand = game->inventory.base_hand;
 	game->map = (t_map){.c = -1, .f = -1, .ea = NULL, .no = NULL, .so = NULL,
 		.we = NULL, .height = 0, .width = 0, .all_objects = 0, .map = NULL};
+	return (0);
+}
+
+int	init_all_highscores(t_game *game)
+{
+	int		error;
+
+	error = init_start_map(game);
+	if (error)
+		return (error);
+	error = init_scores(game, &game->settings.easy_score, EASY_FILE);
+	if (error)
+		return (error);
+	error = init_scores(game, &game->settings.medium_score, MEDIUM_FILE);
+	if (error)
+		return (error);
+	error = init_scores(game, &game->settings.hard_score, HARD_FILE);
+	if (error)
+		return (error);
 	return (0);
 }
 
@@ -136,8 +135,8 @@ int	init_game(t_game *game, char *path)
 	error = init_menu(game);
 	if (error)
 		return (error);
-	error = init_start_map(game);
-	if (error)
-		return (error);
-	return (0);
+	error = init_all_highscores(game);
+	return (error);
 }
+/*print_scores(&game->settings.easy_score);
+system("cvlc --play-and-exit test/ladidie.mp3 &");*/
