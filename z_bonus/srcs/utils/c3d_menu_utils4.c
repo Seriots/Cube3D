@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 10:36:50 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/21 12:11:59 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/24 16:03:49 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ int	event_enter_textinput_start(t_game *game, t_textinput *textinput)
 	path = ft_strdup(textinput->path);
 	if (!path)
 	{
+		if (!*textinput->modified_path)
+			return (0);
 		ft_strlcpy(textinput->path, *textinput->modified_path, 256);
 		set_error_value(&game->menu, 10);
 	}
