@@ -63,6 +63,7 @@ void			display_error_on_screen(t_game *game, char *err, int x, int y);
 int				display_error(int code);
 
 /*Free*/
+void			dict_clear_with_inventory(t_game *game, t_dict **dict);
 void			free_map_with_inventory(t_game *game, t_map *map);
 void			free_textures(t_game *game, t_all_img *all_img);
 void			free_img_array(t_game *game, t_img_data **imgs_ptr, int number);

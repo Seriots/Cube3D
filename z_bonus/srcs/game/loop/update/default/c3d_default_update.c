@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 13:42:48 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/21 15:42:04 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/24 13:51:08 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,10 +60,10 @@ static int	update_stamina(t_game *game)
 int	spawn_ennemies(t_game *game)
 {
 	int	is_spawn;
-	int	x;
-	int	y;
+	t_point	p;
 	int	i;
 	int	j;
+	int	error;
 
 	j = 0;
 	while (j < game->delay / 20)
@@ -74,15 +74,17 @@ int	spawn_ennemies(t_game *game)
 		{
 			while (1)
 			{
-				x = rand() % game->map.width * CASE_SIZE;
-				y = rand() % game->map.height * CASE_SIZE;
-				if (norm(x - game->player.pos.x, y - game->player.pos.y) > 1000 || i > 100)
+				p.x = rand() % game->map.width * CASE_SIZE;
+				p.y = rand() % game->map.height * CASE_SIZE;
+				if (norm(p.x - game->player.pos.x, p.y - game->player.pos.y) > 1000 || i > 100)
 					break ;
 				i++;
 			}
 			if (i > 100)
 				return (0);
-			init_obj(game, GHOST, x, y);
+			error = init_obj(game, GHOST, p.x, p.y);
+			if (error)
+				return (error);
 			printf("ennemy spawn\n");
 		}
 		j++;
@@ -137,8 +139,13 @@ int	kill_ennemies(t_game *game)
 
 int	default_update(t_game *game)
 {
+	int	error;
 	refresh_mouse_move(game);
-	spawn_ennemies(game);
+	error = spawn_ennemies(game);
+	if (error)
+		return (free_map(&game->map),
+			free_textures(game, &game->all_img),
+			load_startscreen(game), display_error(error));
 	update_stamina(game);
 	update_player(game);
 	update_objects(game, game->map.all_objects);

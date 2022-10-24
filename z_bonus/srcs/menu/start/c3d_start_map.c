@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 20:12:58 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/21 15:33:40 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/24 13:53:04 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,10 @@
 #include "c3d_init.h"
 #include "c3d_utils.h"
 #include "c3d_parsing.h"
+
+#include <stdlib.h>
+
+#include <stdio.h>
 
 int	load_random_map(t_game *game, t_genparams *params)
 {

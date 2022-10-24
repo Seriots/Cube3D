@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 11:05:33 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/24 12:30:31 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/24 12:45:57 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,9 +126,13 @@ int	gen_maze(t_game *game, int width, int height, int door)
 	open_maze(game->map.map, width, height);
 	clean_maze(game->map.map, width, height);
 	generate_player(&game->map, width, height);
-	generate_key(game, width, height, door);
+	error = generate_key(game, width, height, door);
+	if (error)
+		return (error);
 	standardize_maze(game->map.map, width, height);
-	generate_objects(game, width, height);
+	error = generate_objects(game, width, height);
+	if (error)
+		return (error);
 	error = set_default_image(&game->map, width, height);
 	if (error)
 		return (error);

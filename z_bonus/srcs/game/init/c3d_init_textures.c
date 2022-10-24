@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 09:59:52 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/24 12:27:07 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/24 13:45:52 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ int	open_one_texture(t_game *game, t_img_data *img,
 	{
 		if (path)
 		{
-			printf("path = %s\n", *path);
 			free(*path);
 			*path = ft_strdup(default_path);
 			if (!*path)

@@ -32,7 +32,7 @@ int	retry_event(int button, int x, int y, t_game *game)
 	if (button == 1)
 	{
 		free_textures(game, &game->all_img);
-		free_map_with_inventory(game, &game->map);
+		free_map(&game->map);
 		add_scores(game, get_score_array(game), game->settings.name, game->player.stats.score.value);
 		sort_scores(get_score_array(game));
 		save_scores(game, get_score_array(game), get_score_file(game));
