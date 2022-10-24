@@ -17,6 +17,13 @@
 
 # include "dict.h"
 
+/*Loop*/
+int		init_settings_menu2(t_game *game);
+int		init_settings_menu(t_game *game);
+int		init_start_menu(t_game *game);
+int		init_score_menu(t_game *game);
+int		init_end_menu(t_game *game);
+
 /*Display*/
 int		display_slidebar_text(t_game *game, t_slidebar *slidebar);
 int		display_button_text(t_game *game, t_button *button);
@@ -28,14 +35,14 @@ int		display_multichoice_text(t_game *game, t_multichoice *multichoice);
 int		menu_display(t_game *game);
 
 /*Update*/
-int		draw_slidebar(t_game *game, t_slidebar *slidebar);
-int		draw_button(t_game *game, t_button *box);
-int		draw_checkbox(t_game *game, t_checkbox *checkbox);
-int		draw_keyinput(t_game *game, t_keyinput *box);
-int		draw_textinput(t_game *game, t_textinput *box);
-int		draw_numinput(t_game *game, t_numinput *box);
-int		draw_multichoice(t_game *game, t_multichoice *box);
-int		draw_scrollbar(t_game *game, t_scrollbar *box);
+int		draw_slidebar(t_game *game, void *slidebar);
+int		draw_button(t_game *game, void *box);
+int		draw_checkbox(t_game *game, void *checkbox);
+int		draw_keyinput(t_game *game, void *box);
+int		draw_textinput(t_game *game, void *box);
+int		draw_numinput(t_game *game, void *box);
+int		draw_multichoice(t_game *game, void *box);
+int		draw_scrollbar(t_game *game, void *box);
 int		menu_update(t_game *game);
 
 /*Event*/
@@ -122,50 +129,49 @@ int		check_one_obj_press_end(t_game *game, int x, int y, t_dict *tmp);
 int		validate_seed(t_game *game, t_seed *seed);
 
 /*End Menu*/
-int	end_key_release(KeySym keycode, t_game *game);
-int	end_key_press(KeySym keycode, t_game *game);
-int	end_mouse_press(int button, int x, int y, t_game *game);
-int	end_mouse_release(int button, int x, int y, t_game *game);
-int	end_mouse_move(int x, int y, t_game *game);
-int	endmenu_update(t_game *game);
-int	endmenu_display(t_game *game);
+int		end_key_release(KeySym keycode, t_game *game);
+int		end_key_press(KeySym keycode, t_game *game);
+int		end_mouse_press(int button, int x, int y, t_game *game);
+int		end_mouse_release(int button, int x, int y, t_game *game);
+int		end_mouse_move(int x, int y, t_game *game);
+int		endmenu_update(t_game *game);
+int		endmenu_display(t_game *game);
 
 t_dict	*init_retry_button(t_game *game);
 t_dict	*init_mainmenu_button(t_game *game);
 t_dict	*init_scrollbar_end(t_game *game);
 t_dict	*init_nameinput_end(t_game *game);
 
-int	draw_nameinput(t_game *game, t_nameinput *box);
+int		draw_nameinput(t_game *game, void *box);
 int		display_nameinput_text(t_game *game, t_nameinput *textinput);
-int		draw_button_end(t_game *game, t_button *box);
+int		draw_button_end(t_game *game, void *box);
 int		display_button_text_end(t_game *game, t_button *button);
-int		draw_scrollbar_end(t_game *game, t_scrollbar *box);
+int		draw_scrollbar_end(t_game *game, void *box);
 int		nameinput_press(int button, int x, int y, t_game *game);
 void	init_nameinput(t_game *game, t_nameinput *nameinput);
-int	release_cond_nameinput(t_game *game, t_nameinput *textinput, int x, int y);
+int		release_cond_nameinput(t_game *game, t_nameinput *textinput,
+			int x, int y);
 
 /*Score Menu*/
-int	check_all_objects_press_start(t_game *game, int x, int y, t_dict *dict);
-int	check_all_objects_release_start(t_game *game, int x, int y, t_dict *dict);
-int	draw_scrollbar_score(t_game *game, t_scrollbar *box);
+int		check_all_objects_press_start(t_game *game, int x, int y, t_dict *dict);
+int		check_all_objects_release_start(t_game *game, int x, int y,
+			t_dict *dict);
+int		draw_scrollbar_score(t_game *game, void *box);
 
-int	multichoice_press_score(int button, int x, int y, t_game *game);
-int	set_height_s(t_game *game, t_scrollbar *scrollbar, t_score *score);
+int		multichoice_press_score(int button, int x, int y, t_game *game);
+int		set_height_score(t_game *game, int *max_obj, int size);
+int		set_height_s(t_game *game, t_scrollbar *scrollbar, t_score *score);
 
-int	scorescreen_key_press(KeySym keycode, t_game *game);
-int	scorescreen_key_release(KeySym keycode, t_game *game);
-int	scorescreen_mouse_press(int button, int x, int y, t_game *game);
-int	scorescreen_mouse_release(int button, int x, int y, t_game *game);
-int	scorescreen_mouse_move(int x, int y, t_game *game);
+int		scorescreen_key_press(KeySym keycode, t_game *game);
+int		scorescreen_key_release(KeySym keycode, t_game *game);
+int		scorescreen_mouse_press(int button, int x, int y, t_game *game);
+int		scorescreen_mouse_release(int button, int x, int y, t_game *game);
+int		scorescreen_mouse_move(int x, int y, t_game *game);
 
-int	score_update(t_game *game);
-int	score_display(t_game *game);
+int		score_update(t_game *game);
+int		score_display(t_game *game);
 
 t_dict	*init_return_button(t_game *game);
 t_dict	*init_multichoice_difficulty_score(t_game *game);
 t_dict	*init_scrollbar_score(t_game *game);
-
-
-
-
 #endif

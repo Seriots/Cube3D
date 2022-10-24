@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 16:55:10 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/23 17:49:09 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/24 20:36:46 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ int	scrollbar_mouse_release_score(int button, int x, int y, t_game *game)
 	(void)y;
 	if (button == 1)
 	{
-		value = (dict_getelem_key(game->score_menu.all_objects, SCROLLBAR3)->value);
+		value = (dict_getelem_key(game->score_menu.all_objects,
+					SCROLLBAR3)->value);
 		game->fcts.mousereleased_fct = scorescreen_mouse_release;
 		game->fcts.mousemove_fct = scorescreen_mouse_move;
 		value->is_selected = 0;
@@ -69,7 +70,8 @@ int	scrollbar_press_score(int button, int x, int y, t_game *game)
 	(void)y;
 	if (button == 1)
 	{
-		value = (dict_getelem_key(game->score_menu.all_objects, SCROLLBAR3)->value);
+		value = (dict_getelem_key(game->score_menu.all_objects,
+					SCROLLBAR3)->value);
 		value->is_selected = 1;
 		value->click_position = y - value->box.y;
 		game->fcts.mousereleased_fct = scrollbar_mouse_release_score;
@@ -90,14 +92,6 @@ int	set_height_score(t_game *game, int *max_obj, int size)
 	if (max <= 594)
 		return (0);
 	return ((float)(594 * 594) / (float)max);
-}
-
-int	set_height_s(t_game *game, t_scrollbar *scrollbar, t_score *score)
-{
-	scrollbar->box.height = set_height_score(game,
-			&scrollbar->max_obj, score->size);
-	scrollbar->max = 594 - scrollbar->box.height;
-	return (0);
 }
 
 t_dict	*init_scrollbar_score(t_game *game)

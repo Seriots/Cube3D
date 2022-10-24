@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 20:48:01 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/23 14:03:26 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/24 17:43:44 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ int	end_key_release(KeySym keycode, t_game *game)
 {
 	if (keycode == XK_Escape)
 	{
-		add_scores(game, get_score_array(game), game->settings.name, game->player.stats.score.value);
+		add_scores(game, get_score_array(game), game->settings.name,
+			game->player.stats.score.value);
 		sort_scores(get_score_array(game));
 		save_scores(game, get_score_array(game), get_score_file(game));
 		load_startscreen(game);

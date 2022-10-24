@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 11:25:13 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/24 13:58:34 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/24 20:11:25 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,29 +69,26 @@ int	set_obj_map(t_game *game, char *obj, int width, int height)
 	const char		*objs[256] = {HEAL, ENERGY, BONUSHP, B_ENERGY,
 		FULLHEAL, MAP, SYRINGE};
 	unsigned long	i;
-	int				x;
-	int				y;
+	t_point			p;
 	int				error;
 
 	while (1)
 	{
-		x = rand() % width;
-		y = rand() % height;
-		if (game->map.map[y][x] == '0')
+		p.x = rand() % width;
+		p.y = rand() % height;
+		if (game->map.map[p.y][p.x] == '0')
 			break ;
 	}
-	i = 0;
-	error = 0;
-	while (i < sizeof(objs) / sizeof(objs[0]))
+	i = -1;
+	while (++i < sizeof(objs) / sizeof(objs[0]))
 	{
 		if (ft_strcmp(obj, objs[i]) == 0 && objs[i] != NULL)
 		{
 			error = init_obj(game, (char *)objs[i],
-				x * CASE_SIZE + 16 + (rand() % 32),
-				y * CASE_SIZE + 16 + (rand() % 32));
+					p.x * CASE_SIZE + 16 + (rand() % 32),
+					p.y * CASE_SIZE + 16 + (rand() % 32));
 			return (error);
 		}
-		i++;
 	}
 	return (0);
 }

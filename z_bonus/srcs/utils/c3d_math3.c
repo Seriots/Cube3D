@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 20:09:37 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/20 10:18:49 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/24 20:19:02 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ double	get_obj_angle(double x, double y)
 
 int	cmp_obj_dist(t_dict *dict1, t_dict *dict2)
 {
-	t_object *obj1;
-	t_object *obj2;
+	t_object	*obj1;
+	t_object	*obj2;
 
 	obj1 = dict1->value;
 	obj2 = dict2->value;

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   c3d_multichoice_difficulty.c                       :+:      :+:    :+:   */
+/*   c3d_multichoice_difficulty_score.c                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 10:43:52 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/23 16:24:19 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/24 20:36:14 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@
 
 #include <stdio.h>
 
-void	set_multichoice_difficulty_score(t_game *game, t_multichoice *multichoice)
+void	set_multichoice_difficulty_score(t_game *game,
+			t_multichoice *multichoice)
 {
 	multichoice->min = 0;
 	multichoice->max = 2;

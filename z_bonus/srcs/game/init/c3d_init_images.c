@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 10:51:50 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/24 14:11:01 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/24 18:12:47 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,19 +63,9 @@ int	init_hud(t_game *game)
 	return (0);
 }
 
-int	init_images(t_game *game)
+static int	init_all_objects_img(t_game *game)
 {
-	if (init_image(game, WIN_WIDTH, WIN_HEIGHT, &game->all_img.screen_img)
-		|| init_image(game, MENU_WIDTH, MENU_HEIGHT, &game->all_img.menu_img)
-		|| init_image(game, MMAP_WIDTH, MMAP_HEIGHT, &game->all_img.minimap_img)
-		|| init_image(game, ENDMENU_WIDTH, ENDMENU_HEIGHT, &game->all_img.end_img)
-		|| init_xpm_image(game, &game->all_img.loading, "imgs/xpm/loading/loading.xpm")
-		|| init_xpm_image(game, &game->all_img.endoor, "imgs/xpm/object/endoor_game.xpm")
-		|| init_xpm_image(game, &game->all_img.score, "imgs/xpm/menu/score.xpm")
-		|| init_xpm_image(game, &game->all_img.game_over, "imgs/xpm/menu/game_over.xpm")
-		|| init_xpm_image(game, &game->all_img.leaderboard, "imgs/xpm/menu/leaderboard.xpm")
-		|| init_xpm_image(game, &game->all_img.return_arrow, "imgs/xpm/menu/return.xpm")
-		|| init_objects_img(game, "imgs/xpm/object/black_flashlight",
+	if (init_objects_img(game, "imgs/xpm/object/black_flashlight",
 			game->all_img.flashlight)
 		|| init_objects_img(game, "imgs/xpm/object/key", game->all_img.key)
 		|| init_objects_img(game, "imgs/xpm/object/energy",
@@ -84,11 +74,29 @@ int	init_images(t_game *game)
 			game->all_img.b_energy)
 		|| init_objects_img(game, "imgs/xpm/object/heal", game->all_img.heal)
 		|| init_objects_img(game, "imgs/xpm/object/map", game->all_img.omap)
-		|| init_objects_img(game, "imgs/xpm/object/syringe", game->all_img.syringe)
+		|| init_objects_img(game,
+			"imgs/xpm/object/syringe", game->all_img.syringe)
 		|| init_objects_img(game, "imgs/xpm/object/fullheal",
 			game->all_img.fullheal)
 		|| init_objects_img(game, "imgs/xpm/object/bonushp",
-			game->all_img.bonushp)
+			game->all_img.bonushp))
+		return (1);
+	return (0);
+}
+
+static int	init_all_xpm_img(t_game *game)
+{
+	if (init_xpm_image(game,
+			&game->all_img.loading, "imgs/xpm/loading/loading.xpm")
+		|| init_xpm_image(game,
+			&game->all_img.endoor, "imgs/xpm/object/endoor_game.xpm")
+		|| init_xpm_image(game, &game->all_img.score, "imgs/xpm/menu/score.xpm")
+		|| init_xpm_image(game,
+			&game->all_img.game_over, "imgs/xpm/menu/game_over.xpm")
+		|| init_xpm_image(game,
+			&game->all_img.leaderboard, "imgs/xpm/menu/leaderboard.xpm")
+		|| init_xpm_image(game,
+			&game->all_img.return_arrow, "imgs/xpm/menu/return.xpm")
 		|| init_images_group(game, "imgs/xpm/cursor/cursor", 8,
 			&game->all_img.all_cursor_img)
 		|| init_images_group(game, "imgs/xpm/ghost/ghost", 9,
@@ -96,7 +104,19 @@ int	init_images(t_game *game)
 		|| init_images_group(game, "imgs/xpm/loading/frame", 15,
 			&game->all_img.all_loading_img)
 		|| init_images_group(game, "imgs/xpm/number/number", 10,
-			&game->all_img.all_number_img)
+			&game->all_img.all_number_img))
+		return (1);
+	return (0);
+}
+
+int	init_images(t_game *game)
+{
+	if (init_image(game, WIN_WIDTH, WIN_HEIGHT, &game->all_img.screen_img)
+		|| init_image(game, MENU_WIDTH, MENU_HEIGHT, &game->all_img.menu_img)
+		|| init_image(game, MMAP_WIDTH, MMAP_HEIGHT, &game->all_img.minimap_img)
+		|| init_image(game, END_WIDTH, END_HEIGHT, &game->all_img.end_img)
+		|| init_all_xpm_img(game)
+		|| init_all_objects_img(game)
 		|| init_hud(game))
 		return (12);
 	return (0);

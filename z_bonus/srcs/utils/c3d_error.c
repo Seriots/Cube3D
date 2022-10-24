@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 10:50:47 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/24 14:39:01 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/24 20:17:46 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,8 @@ int	display_error(int code)
 	else if (code == 3)
 		ft_putstr_fd("Invalid number of element in description line\n", 2);
 	else if (code == 4)
-		ft_putstr_fd("Map is only composed of these character: ` 0123NSEW`\n", 2);
+		ft_putstr_fd("Map is only composed of these character: ` 0123NSEW`\n",
+			2);
 	else if (code == 5)
 		ft_putstr_fd("Open Fail\n", 2);
 	else if (code == 6)

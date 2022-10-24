@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 09:59:52 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/24 15:59:31 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/24 18:15:13 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,16 +69,13 @@ int	open_textures(t_game *game, t_map *map)
 		return (error);
 	error = open_one_texture(game, &game->all_img.fl,
 			&map->fl, DEFAULT_IMAGE_PATH_FL);
-	if (error)
-		return (error);
-	return (0);
+	return (error);
 }
 
-int	open_start_textures(t_game *game, t_map *map)
+int	open_start_textures(t_game *game)
 {
 	int	error;
 
-	(void)map;
 	error = open_one_texture(game, &game->all_img.start_no,
 			0, DEFAULT_IMAGE_PATH_NO);
 	if (error)
@@ -101,7 +98,5 @@ int	open_start_textures(t_game *game, t_map *map)
 		return (error);
 	error = open_one_texture(game, &game->all_img.start_fl,
 			0, DEFAULT_IMAGE_PATH_FL);
-	if (error)
-		return (error);
-	return (0);
+	return (error);
 }

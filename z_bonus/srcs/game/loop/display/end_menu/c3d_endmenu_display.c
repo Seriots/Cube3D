@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 14:34:59 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/24 11:14:39 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/24 18:41:14 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,25 +30,25 @@ int	display_one_stat(t_game *game, const t_tagint *stat, int y)
 	int		size;
 	int		i;
 
-	if (y > (15 * MENU_HEIGHT / 100) + 13 && y < (MENU_HEIGHT - (15 * MENU_HEIGHT / 100)))
+	if (y > (15 * MENU_HEIGHT / 100) + 13
+		&& y < (MENU_HEIGHT - (15 * MENU_HEIGHT / 100)))
 	{
 		mlx_string_put(game->mlx.display, game->mlx.window,
-			(WIN_WIDTH / 2 - ENDMENU_WIDTH / 2) + 20,
-			(WIN_HEIGHT / 2 - ENDMENU_HEIGHT / 2) + y, 0xDDDDDD, (char *)stat->tag);
+			(WIN_WIDTH / 2 - END_WIDTH / 2) + 20,
+			(WIN_HEIGHT / 2 - END_HEIGHT / 2) + y, 0xDDDDDD, (char *)stat->tag);
 		size = ft_size_int(stat->value);
-		i = 0;
-		while (i < 40 - size - 1)
+		i = -1;
+		while (++i < 40 - size - 1)
 		{
 			if (i == 40 - size - 2)
 				str[i] = ' ';
 			else
 				str[i] = '.';
-			i++;
 		}	
 		ft_itoa_noalloc(&str[40 - size - 1], stat->value);
 		mlx_string_put(game->mlx.display, game->mlx.window,
-			(WIN_WIDTH / 2 - ENDMENU_WIDTH / 2) + 20 + 200,
-			(WIN_HEIGHT / 2 - ENDMENU_HEIGHT / 2) + y, 0xDDDDDD, str);
+			(WIN_WIDTH / 2 - END_WIDTH / 2) + 20 + 200,
+			(WIN_HEIGHT / 2 - END_HEIGHT / 2) + y, 0xDDDDDD, str);
 	}
 	return (0);
 }
@@ -64,7 +64,9 @@ int	display_stat(t_game *game, t_player *player, double n)
 	i = 0;
 	while (i < (unsigned int)(sizeof(all_stats) / sizeof(all_stats[0]) * n))
 	{
-		display_one_stat(game, all_stats[i], 70 + (15 * MENU_HEIGHT / 100) + i * END_STAT_MARGE + game->end_menu.scroll_amount);
+		display_one_stat(game, all_stats[i],
+			70 + (15 * MENU_HEIGHT / 100)
+			+ i * END_STAT_MARGE + game->end_menu.scroll_amount);
 		i++;
 	}
 	return (0);
@@ -80,15 +82,16 @@ int	display_score(t_game *game, t_player *player)
 	size = 0;
 	i = 0;
 	my_mlx_put_image_to_window(game,
-		&game->all_img.score, (WIN_WIDTH / 2 - ENDMENU_WIDTH / 2) + 20,
-		(WIN_HEIGHT / 2 - ENDMENU_HEIGHT / 2) + 10);
+		&game->all_img.score, (WIN_WIDTH / 2 - END_WIDTH / 2) + 20,
+		(WIN_HEIGHT / 2 - END_HEIGHT / 2) + 10);
 	while (i < ft_strlen(str))
 	{
-		size -= game->all_img.all_number_img[str[ft_strlen(str) - i - 1] - '0'].width;
+		size -= game->all_img.all_number_img[str[ft_strlen(str)
+			- i - 1] - '0'].width;
 		my_mlx_put_image_to_window(game,
 			&game->all_img.all_number_img[str[ft_strlen(str) - i - 1] - '0'],
-			(WIN_WIDTH / 2 - ENDMENU_WIDTH / 2) + 20 + 450 + size,
-			(WIN_HEIGHT / 2 - ENDMENU_HEIGHT / 2) + 34);
+			(WIN_WIDTH / 2 - END_WIDTH / 2) + 20 + 450 + size,
+			(WIN_HEIGHT / 2 - END_HEIGHT / 2) + 34);
 		i++;
 	}
 	return (0);
@@ -102,12 +105,13 @@ int	endmenu_display(t_game *game)
 		return (0);
 	my_mlx_put_image_to_window(
 		game, &game->all_img.end_img,
-		WIN_WIDTH / 2 - ENDMENU_WIDTH / 2,
-		WIN_HEIGHT / 2 - ENDMENU_HEIGHT / 2);
+		WIN_WIDTH / 2 - END_WIDTH / 2,
+		WIN_HEIGHT / 2 - END_HEIGHT / 2);
 	display_score(game, &game->player);
 	mlx_put_image_to_window(game->mlx.display, game->mlx.window,
 		game->all_img.screen_img.img, 0, 0);
-	n = (double)(game->last_frame - game->load_start_frame) / END_ANIMATION_DURATION;
+	n = (double)(game->last_frame - game->load_start_frame)
+		/ END_ANIMATION_DURATION;
 	if (n > 1)
 		n = 1;
 	display_stat(game, &game->player, n);

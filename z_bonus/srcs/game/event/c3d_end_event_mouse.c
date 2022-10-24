@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 20:47:58 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/21 12:11:23 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/24 17:52:05 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,10 @@ int	check_all_objects_release_end(t_game *game, int x, int y, t_dict *dict)
 	while (tmp)
 	{
 		box = tmp->value;
-		if (x - (WIN_WIDTH / 2 - ENDMENU_WIDTH / 2) >= box->x
-			&& x - (WIN_WIDTH / 2 - ENDMENU_WIDTH / 2) <= box->x + box->width
-			&& y - (WIN_HEIGHT / 2 - ENDMENU_HEIGHT / 2) >= box->y
-			&& y - (WIN_HEIGHT / 2 - ENDMENU_HEIGHT / 2) <= box->y + box->height)
+		if (x - (WIN_WIDTH / 2 - END_WIDTH / 2) >= box->x
+			&& x - (WIN_WIDTH / 2 - END_WIDTH / 2) <= box->x + box->width
+			&& y - (WIN_HEIGHT / 2 - END_HEIGHT / 2) >= box->y
+			&& y - (WIN_HEIGHT / 2 - END_HEIGHT / 2) <= box->y + box->height)
 		{
 			if (box->mouse_release)
 			{

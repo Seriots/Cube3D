@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 12:53:03 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/23 16:45:44 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/24 19:26:34 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,15 @@ int	draw_score_background(t_game *game)
 		x = 0;
 		while (x < SCOREMENU_WIDTH)
 		{
-			if (x < BORDER_SIZE || x > SCOREMENU_WIDTH - BORDER_SIZE || y < BORDER_SIZE
-				|| y > SCOREMENU_HEIGHT - BORDER_SIZE)
+			if (x < BORDER_SIZE || x > SCOREMENU_WIDTH - BORDER_SIZE
+				|| y < BORDER_SIZE || y > SCOREMENU_HEIGHT - BORDER_SIZE)
 				my_mlx_pixel_put(&game->all_img.screen_img,
-				x + WIN_WIDTH / 2 - SCOREMENU_WIDTH / 2,
-				y + 50, 0xDDDDDD);
+					x + WIN_WIDTH / 2 - SCOREMENU_WIDTH / 2,
+					y + 50, 0xDDDDDD);
 			else
 				my_mlx_pixel_put(&game->all_img.screen_img,
-				x + WIN_WIDTH / 2 - SCOREMENU_WIDTH / 2,
-				y + 50, 0x222222);
+					x + WIN_WIDTH / 2 - SCOREMENU_WIDTH / 2,
+					y + 50, 0x222222);
 			x++;
 		}
 		y++;

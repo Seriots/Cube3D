@@ -23,6 +23,7 @@ double			get_angle_player_obj(t_game *game, t_object *obj, double marge);
 int				set_error_message(t_game *game, char *message, int duration);
 
 /*Inventory*/
+int				move_slot(KeySym keycode, t_game *game);
 int				add_items(t_game *game, t_inventory *inventory,
 					t_object *object);
 int				drop_items(t_game *game, t_inventory *inventory,

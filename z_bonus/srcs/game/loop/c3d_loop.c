@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 11:12:19 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/21 13:20:46 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/24 20:07:58 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 
 #include <stdio.h>
 
-/* bonus*/
 int	fps(t_game *game)
 {
 	long	new_frame;
@@ -35,7 +34,6 @@ int	fps(t_game *game)
 int	game_loop(t_game *game)
 {
 	fps(game);
-	//printf("delay = %ld\n", game->delay);
 	if (game->fcts.update_fct)
 		game->fcts.update_fct(game);
 	if (game->fcts.display_fct)

@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 14:19:52 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/24 15:04:35 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/24 20:15:51 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,9 @@ int	set_map_size(char *file, int *size)
 	}
 	while (line)
 	{
-		if (is_only_set(line, " 0123NSEW"))
-			*size += 1;
-		else
+		if (!is_only_set(line, " 0123NSEW"))
 			break ;
+		*size += 1;
 		free(line);
 		get_next_line(fd, &line, 0);
 	}

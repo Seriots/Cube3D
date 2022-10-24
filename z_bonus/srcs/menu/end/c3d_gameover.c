@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 14:13:12 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/24 11:49:37 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/24 20:42:50 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 
 int	gameover_text_update(t_game *game)
 {
-	double n;
+	double	n;
 
 	n = (game->last_frame - game->load_start_frame) / END_GAMEOVER_DURATION;
 	if (n > 1)
@@ -40,23 +40,19 @@ int	gameover_display(t_game *game)
 
 int	gameover_update(t_game *game)
 {
-	double n;
-	int	i;
-	int	j;
+	double	n;
+	int		i;
+	int		j;
 
 	n = (game->last_frame - game->load_start_frame) / END_FADE_DURATION;
 	if (n > 1)
 		n = 1;
-	j = 0;
-	while (j < (int)(WIN_HEIGHT * n))
+	j = -1;
+	while (++j < (int)(WIN_HEIGHT * n))
 	{
-		i = 0;
-		while (i < WIN_WIDTH)
-		{
+		i = -1;
+		while (++i < WIN_WIDTH)
 			my_mlx_pixel_put(&game->all_img.screen_img, i, j, 0x111111);
-			i++;
-		}
-		j++;
 	}
 	if (n == 1)
 	{

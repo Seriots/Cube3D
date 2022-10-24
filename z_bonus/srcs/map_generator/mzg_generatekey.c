@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 12:15:01 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/24 12:45:22 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/24 20:09:11 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,8 @@ int	get_key_pos(t_game *game, int width, int height, char c)
 			if (game->map.map[i][j] == c)
 			{
 				error = init_obj(game, KEY,
-					j * CASE_SIZE + 16 + (rand() % 32),
-					i * CASE_SIZE + 16 + (rand() % 32));
+						j * CASE_SIZE + 16 + (rand() % 32),
+						i * CASE_SIZE + 16 + (rand() % 32));
 				return (error);
 			}
 			j++;
@@ -89,8 +89,8 @@ int	make_key(t_game *game, int width, int height, char c)
 		error = get_key_pos(game, width, height, c);
 	else
 		error = init_obj(game, KEY,
-			x * CASE_SIZE + 16 + (rand() % 32),
-			y * CASE_SIZE + 16 + (rand() % 32));
+				x * CASE_SIZE + 16 + (rand() % 32),
+				y * CASE_SIZE + 16 + (rand() % 32));
 	return (error);
 }
 

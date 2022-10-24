@@ -10,6 +10,7 @@ define SRCS :=
 		game/event/menu_event/numinput_event.c
 		game/event/menu_event/slidebar_event.c
 		game/event/menu_event/textinput_event.c
+		game/event/menu_event/nameinput_event.c
 		game/event/menu_event/mapinput_event.c
 		game/event/menu_event/multichoice_event.c
 		game/event/menu_event/seed_event.c
@@ -54,6 +55,7 @@ define SRCS :=
 		game/init/c3d_init_game.c
 		game/init/c3d_init_images.c
 		game/init/c3d_init_startmap.c
+		game/init/c3d_init_menu_loop.c
 		game/init/c3d_init_menu.c
 		game/init/c3d_init_mlx.c
 		game/init/c3d_init_player.c
@@ -83,11 +85,13 @@ define SRCS :=
 		game/loop/display/raycasting/c3d_display_sprites.c
 		game/loop/display/raycasting/c3d_raycasting.c
 		game/loop/update/default/c3d_default_update.c
+		game/loop/update/default/c3d_ennemies.c
 		game/loop/update/default/c3d_minimap_update.c
 		game/loop/update/default/c3d_player_collide.c
 		game/loop/update/default/c3d_player_update.c
 		game/loop/update/default/c3d_collide_player_obj.c
 		game/loop/update/default/c3d_next_stage.c
+		game/loop/update/default/c3d_loading.c
 		game/loop/update/default/c3d_objects_update.c
 		game/loop/update/end_menu/c3d_endmenu_update.c
 		game/loop/update/menu/c3d_draw_button.c
@@ -98,6 +102,7 @@ define SRCS :=
 		game/loop/update/menu/c3d_draw_scrollbar.c
 		game/loop/update/menu/c3d_draw_slidebar.c
 		game/loop/update/menu/c3d_draw_textinput.c
+		game/loop/update/menu/c3d_draw_nameinput.c
 		game/loop/update/menu/c3d_menu_update.c
 		game/loop/update/start_screen/c3d_startscreen_update.c
 		game/loop/update/start_screen/c3d_draw_seed.c
@@ -176,6 +181,7 @@ define SRCS :=
 		utils/c3d_event_utils.c
 		utils/c3d_objects_utils.c
 		utils/c3d_game_error.c
+		utils/c3d_score_utils.c
 		utils/c3d_init_image.c
 		utils/c3d_inventory_utils.c
 		utils/c3d_math.c
@@ -189,6 +195,7 @@ define SRCS :=
 		utils/c3d_menu_utils6.c
 		utils/c3d_save_utils.c
 		utils/c3d_time.c
+		utils/c3d_display_utils.c
 		map_generator/mzg_generator.c
 		map_generator/mzg_clean.c
 		map_generator/mzg_fillmap_check.c

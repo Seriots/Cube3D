@@ -31,6 +31,12 @@ typedef struct s_objinit
 	int		(*fct)(t_game *, char *, char *);
 }	t_objinit;
 
+typedef struct s_drawobj
+{
+	char	*tag;
+	int		(*fct)(t_game *, void *);
+}	t_drawobj;
+
 typedef struct s_savset
 {
 	char	*tag;
@@ -499,7 +505,7 @@ typedef struct s_error
 typedef struct s_start_map
 {
 	t_map		map;
-	t_player 	player;
+	t_player	player;
 }	t_start_map;
 
 typedef struct s_game

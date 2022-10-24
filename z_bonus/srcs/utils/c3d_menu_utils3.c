@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 23:58:22 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/24 11:03:21 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/24 20:30:48 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,31 +98,6 @@ int	release_cond_textinput(t_game *game, t_textinput *textinput, int x, int y)
 		>= textinput->box.y + game->menu.scroll_amount
 		&& y - (WIN_HEIGHT / 2 - MENU_HEIGHT / 2)
 		<= textinput->box.y + game->menu.scroll_amount + textinput->box.height)
-		return (1);
-	return (0);
-}
-
-int	release_cond_nameinput(t_game *game, t_nameinput *textinput, int x, int y)
-{
-	if (x - (WIN_WIDTH / 2 - ENDMENU_WIDTH / 2) >= textinput->box.x
-		&& x - (WIN_WIDTH / 2 - ENDMENU_WIDTH / 2)
-		<= textinput->box.x + textinput->box.width
-		&& y - (WIN_HEIGHT / 2 - ENDMENU_HEIGHT / 2)
-		>= textinput->box.y + game->end_menu.scroll_amount
-		&& y - (WIN_HEIGHT / 2 - ENDMENU_HEIGHT / 2)
-		<= textinput->box.y + game->end_menu.scroll_amount + textinput->box.height)
-		return (1);
-	return (0);
-}
-
-int	release_cond_textinput_start(t_game *game, t_textinput *textinput,
-	int x, int y)
-{
-	(void)game;
-	if (x >= textinput->box.x
-		&& x <= textinput->box.x + textinput->box.width
-		&& y >= textinput->box.y
-		&& y <= textinput->box.y + textinput->box.height)
 		return (1);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 11:05:33 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/24 16:00:29 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/24 20:13:29 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ int	init_map(t_map *map, int width, int height)
 	return (0);
 }
 
-int	set_default_image(t_map *map, int width, int height)
+int	set_default_image(t_map *map)
 {
 	map->no = ft_strdup(map->default_north);
 	if (!map->no)
@@ -104,12 +104,9 @@ int	set_default_image(t_map *map, int width, int height)
 	map->c = ft_color(map->default_ceil);
 	if (map->c == -1)
 		map->c = DEFAULT_CEIL_VALUE;
-	map->width = width;
-	map->height = height;
 	return (0);
 }
 
-/*generate_player(map, width, height); //generate lampe in hard mode*/
 int	gen_maze(t_game *game, int width, int height, int door)
 {
 	int		error;
@@ -133,7 +130,7 @@ int	gen_maze(t_game *game, int width, int height, int door)
 	error = generate_objects(game, width, height);
 	if (error)
 		return (error);
-	error = set_default_image(&game->map, width, height);
+	error = set_default_image(&game->map);
 	if (error)
 		return (error);
 	return (0);
@@ -152,5 +149,7 @@ int	get_maze(t_game *game, t_genparams params, unsigned long *seed, int print)
 		return (error);
 	if (print)
 		printmaze(&game->map, params.width, params.height);
+	game->map.width = params.width;
+	game->map.height = params.height;
 	return (0);
 }

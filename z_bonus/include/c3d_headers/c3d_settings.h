@@ -27,8 +27,8 @@
 # define BORDER_SIZE 5
 
 /*End Menu Settings*/
-# define ENDMENU_WIDTH 500
-# define ENDMENU_HEIGHT 600
+# define END_WIDTH 500
+# define END_HEIGHT 600
 # define END_BORDER_SIZE 5
 # define END_ANIMATION_DURATION 1500.0
 # define END_FADE_DURATION 1100.0

@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 14:54:12 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/21 17:38:48 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/24 18:42:38 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,22 +97,23 @@ int	display_nameinput_text(t_game *game, t_nameinput *textinput)
 	char	path[256];
 
 	path[0] = 0;
-	if (textinput->box.y_text + game->end_menu.scroll_amount >= (15 * MENU_HEIGHT / 100) + 13
+	if (textinput->box.y_text + game->end_menu.scroll_amount
+		>= (15 * MENU_HEIGHT / 100) + 13
 		&& textinput->box.y_text + game->end_menu.scroll_amount
 		< (MENU_HEIGHT - (15 * MENU_HEIGHT / 100)))
 		mlx_string_put(game->mlx.display, game->mlx.window,
-			(WIN_WIDTH / 2) - (ENDMENU_WIDTH / 2) + textinput->box.x_text,
-			(WIN_HEIGHT / 2) - (ENDMENU_HEIGHT / 2)
+			(WIN_WIDTH / 2) - (END_WIDTH / 2) + textinput->box.x_text,
+			(WIN_HEIGHT / 2) - (END_HEIGHT / 2)
 			+ textinput->box.y_text + game->end_menu.scroll_amount,
 			0xDDDDDD, textinput->box.description);
-	if (textinput->box.y_text + game->end_menu.scroll_amount >= (15 * MENU_HEIGHT / 100) + 13
+	if (textinput->box.y_text + game->end_menu.scroll_amount
+		>= (15 * MENU_HEIGHT / 100) + 13
 		&& textinput->box.y_text + game->end_menu.scroll_amount
 		< (MENU_HEIGHT - (15 * MENU_HEIGHT / 100)))
 		mlx_string_put(game->mlx.display, game->mlx.window,
-			(WIN_WIDTH / 2) - (ENDMENU_WIDTH / 2) + textinput->box.x + 2,
-			(WIN_HEIGHT / 2) - (ENDMENU_HEIGHT / 2)
+			(WIN_WIDTH / 2) - (END_WIDTH / 2) + textinput->box.x + 2,
+			(WIN_HEIGHT / 2) - (END_HEIGHT / 2)
 			+ textinput->box.y_text + game->end_menu.scroll_amount,
 			0xDDDDDD, get_reduce_path_end(path, textinput));
 	return (0);
 }
-

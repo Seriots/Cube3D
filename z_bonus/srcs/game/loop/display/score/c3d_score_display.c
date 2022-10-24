@@ -41,7 +41,7 @@ int	display_ranking(t_game *game, t_score *score)
 {
 	int		i;
 	char	str[40];
-	
+
 	i = 0;
 	while (75 + i * SCORE_MARGE + game->score_menu.scroll_amount < 60)
 		i++;
@@ -51,9 +51,9 @@ int	display_ranking(t_game *game, t_score *score)
 			break ;
 		set_string(str, i + 1, &score->score[i]);
 		mlx_string_put(game->mlx.display, game->mlx.window,
-		WIN_WIDTH / 2 - SCOREMENU_WIDTH / 2 + 20,
-		75 + i * SCORE_MARGE + game->score_menu.scroll_amount, 
-		0xDDDDDD, str);
+			WIN_WIDTH / 2 - SCOREMENU_WIDTH / 2 + 20,
+			75 + i * SCORE_MARGE + game->score_menu.scroll_amount,
+			0xDDDDDD, str);
 		i++;
 	}
 	return (0);
@@ -62,8 +62,8 @@ int	display_ranking(t_game *game, t_score *score)
 int	score_display(t_game *game)
 {
 	my_mlx_put_image_to_window(game, &game->all_img.return_arrow,
-	20 + (80 - game->all_img.return_arrow.width) / 2, 
-	20 + (80 - game->all_img.return_arrow.height) / 2);
+		20 + (80 - game->all_img.return_arrow.width) / 2,
+		20 + (80 - game->all_img.return_arrow.height) / 2);
 	mlx_put_image_to_window(game->mlx.display, game->mlx.window,
 		game->all_img.screen_img.img, 0, 0);
 	display_ranking(game, get_score_array(game));

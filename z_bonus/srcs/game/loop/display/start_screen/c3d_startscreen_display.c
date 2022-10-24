@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 12:49:56 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/23 18:56:33 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/24 18:44:07 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 int	startscreen_display(t_game *game)
 {
 	my_mlx_put_image_to_window(game, &game->all_img.leaderboard,
-	WIN_WIDTH - 100 + (80 - game->all_img.leaderboard.width) / 2, 
-	20 + (80 - game->all_img.leaderboard.height) / 2);
+		WIN_WIDTH - 100 + (80 - game->all_img.leaderboard.width) / 2,
+		20 + (80 - game->all_img.leaderboard.height) / 2);
 	mlx_put_image_to_window(game->mlx.display, game->mlx.window,
 		game->all_img.screen_img.img, 0, 0);
 	display_text(game, game->start_menu.all_objects);

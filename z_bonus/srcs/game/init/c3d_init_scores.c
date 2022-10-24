@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 10:54:59 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/24 14:44:57 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/24 18:35:22 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,64 +18,6 @@
 #include <fcntl.h>
 #include <stdlib.h>
 #include <unistd.h>
-
-#include <stdio.h>
-
-int	save_scores(t_game *game, t_score *score, char *file)
-{
-	int		fd;
-	int		i;
-
-	i = 0;
-	(void)game;
-	fd = open(file, O_WRONLY | O_CREAT | O_TRUNC, 0644);
-	if (fd == -1)
-		return (0);
-	while (i < score->size)
-	{
-		if (ft_strlen(score->score[i].name) > 0)
-			save_int(fd, score->score[i].name, score->score[i].score);
-		else
-			save_int(fd, "Default", score->score[i].score);
-		i++;
-	}
-	close(fd);
-	return (0);
-}
-
-int	print_scores(t_score *score)
-{
-	int	i;
-
-	i = 0;
-	while (i < score->size)
-	{
-		printf("%s -> %d, pos: %d\n", score->score[i].name,
-			score->score[i].score, i);
-		i++;
-	}
-	return (0);
-}
-
-t_score	*get_score_array(t_game *game)
-{
-	if (game->settings.difficulty == 0)
-		return (&game->settings.easy_score);
-	else if (game->settings.difficulty == 1)
-		return (&game->settings.medium_score);
-	else
-		return (&game->settings.hard_score);
-}
-
-char	*get_score_file(t_game *game)
-{
-	if (game->settings.difficulty == 0)
-		return (EASY_FILE);
-	else if (game->settings.difficulty == 1)
-		return (MEDIUM_FILE);
-	else
-		return (HARD_FILE);
-}
 
 int	swap_score(t_scorev *score_a, t_scorev *score_b)
 {
@@ -107,6 +49,25 @@ int	sort_scores(t_score *score)
 	return (0);
 }
 
+int	add_new_scores(t_score *score, char *key, int value)
+{
+	if (score->size >= 200)
+	{
+		if (value > score->score[199].score)
+		{
+			ft_strlcpy(score->score[199].name, key, 20);
+			score->score[199].score = value;
+		}
+	}
+	else
+	{
+		ft_strlcpy(score->score[score->size].name, key, 20);
+		score->score[score->size].score = value;
+		score->size++;
+	}
+	return (0);
+}
+
 int	add_scores(t_game *game, t_score *score, char *key, int value)
 {
 	int	i;
@@ -123,27 +84,14 @@ int	add_scores(t_game *game, t_score *score, char *key, int value)
 		}
 		i++;
 	}
-	if (score->size >= 200)
-	{
-		if (value > score->score[199].score)
-		{
-			ft_strlcpy(score->score[199].name, key, 20);
-			score->score[i].score = value;
-		}
-	}
-	else
-	{
-		ft_strlcpy(score->score[score->size].name, key, 20);
-		score->score[score->size].score = value;
-		score->size++;
-	}
+	add_new_scores(score, key, value);
 	return (0);
 }
 
 int	init_scores(t_game *game, t_score *score, char *file)
 {
 	int		fd;
-	char 	*line;
+	char	*line;
 	char	**split;
 
 	fd = open(file, O_RDONLY);
@@ -163,4 +111,3 @@ int	init_scores(t_game *game, t_score *score, char *file)
 	close(fd);
 	return (0);
 }
-
