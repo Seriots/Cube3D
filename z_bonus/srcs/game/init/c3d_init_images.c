@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 10:51:50 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/24 18:12:47 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/25 12:12:40 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	init_objects_img(t_game *game, char *name, t_img_data dst[])
 	while (i < 3)
 	{
 		ft_memset(make_name, 0, ft_strlen(name) + 9 + 1);
-		ft_strlcat(make_name, name, ft_strlen(name) + 1);
+		ft_strlcat(make_name, name, ft_strlen(name) + 9 + 1);
 		ft_strlcat(make_name, tab[i], ft_strlen(name) + 9 + 1);
 		error = init_xpm_image(game, &dst[i], make_name);
 		if (error)
@@ -99,12 +99,14 @@ static int	init_all_xpm_img(t_game *game)
 			&game->all_img.return_arrow, "imgs/xpm/menu/return.xpm")
 		|| init_images_group(game, "imgs/xpm/cursor/cursor", 8,
 			&game->all_img.all_cursor_img)
-		|| init_images_group(game, "imgs/xpm/ghost/ghost", 9,
+		|| init_images_group(game, "imgs/xpm/ghost/ghost", 16,
 			&game->all_img.all_ghost_img)
 		|| init_images_group(game, "imgs/xpm/loading/frame", 15,
 			&game->all_img.all_loading_img)
 		|| init_images_group(game, "imgs/xpm/number/number", 10,
-			&game->all_img.all_number_img))
+			&game->all_img.all_number_img)
+		|| init_images_group(game, "imgs/xpm/door/door", 9,
+			&game->all_img.all_door_img))
 		return (1);
 	return (0);
 }

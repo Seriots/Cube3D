@@ -56,6 +56,10 @@
 # define LAMP_DECREASE 0.002
 # define LAMP_INCREASE 0.00035
 
+/*Door settings*/
+# define DOOR_DURATION 1000
+# define DOOR_NB_IMAGE 9
+
 # define HAND_MOVEMENT_SPEED 0.15
 # define HAND_CENTER_SPEED 0.09
 # define HAND_MAX_X 20

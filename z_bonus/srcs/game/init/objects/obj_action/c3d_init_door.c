@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 11:53:11 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/18 23:59:25 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/25 11:51:47 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,25 @@ int	door_collide(t_game *game, t_dict *dict, t_object *obj)
 
 int	door_update(t_game *game, t_dict *dict, t_object *obj)
 {
+	int	image_value;
+
 	(void)game;
 	(void)dict;
-	(void)obj;
+	if (obj->state == 0)
+		obj->game_img = &obj->all_img[0];
+	else
+	{
+		if (game->last_frame - obj->start_frame > obj->animation_duration)
+			obj->game_img = &obj->all_img[8];
+		else
+		{
+			image_value = (game->last_frame - obj->start_frame)
+				/ (obj->animation_duration / obj->nb_image);
+			if (image_value > 8)
+				image_value = 8;
+			obj->game_img = &obj->all_img[image_value];
+		}
+	}
 	return (0);
 }
 
@@ -49,8 +65,11 @@ int	door_delete(t_game *game, t_dict *dict, t_object *obj)
 int	init_door(t_game *game, t_object **obj)
 {
 	ft_strlcpy((*obj)->tag, DOOR, 32);
-	(*obj)->all_img = 0;
-	(*obj)->game_img = 0;
+	(*obj)->all_img = game->all_img.all_door_img;
+	(*obj)->collide = door_collide;
+	(*obj)->update = door_update;
+	(*obj)->delete = door_delete;
+	(*obj)->game_img = &game->all_img.all_door_img[0];
 	(*obj)->menu_img = 0;
 	(*obj)->hand_img = 0;
 	(*obj)->state = 0;
@@ -59,8 +78,8 @@ int	init_door(t_game *game, t_object **obj)
 	(*obj)->is_visible = 1;
 	(*obj)->is_collide = 0;
 	(*obj)->start_frame = game->last_frame;
-	(*obj)->nb_image = 1;
-	(*obj)->animation_duration = 0;
+	(*obj)->nb_image = DOOR_NB_IMAGE;
+	(*obj)->animation_duration = DOOR_DURATION;
 	(*obj)->interact = door_interact;
 	(*obj)->use = door_use;
 	(*obj)->drop = door_drop;

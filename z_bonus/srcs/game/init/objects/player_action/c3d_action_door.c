@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 11:53:11 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/24 18:36:00 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/25 11:12:42 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,6 @@ int	door_interact(t_game *game, t_dict *dict, t_object *obj)
 	(void)game;
 	(void)dict;
 	obj->state = 1;
+	obj->start_frame = game->last_frame;
 	return (0);
 }

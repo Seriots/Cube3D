@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 16:04:48 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/25 00:17:51 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/25 12:08:24 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,13 +42,36 @@ int	ghost_collide(t_game *game, t_dict *dict, t_object *obj)
 	return (0);
 }
 
+int	ghost_del_update(t_game *game, t_dict *dict, t_object *obj)
+{
+	int			image_value;
+
+	if (game->last_frame - obj->start_frame > obj->animation_duration)
+		return (obj->delete(game, dict, obj));
+	image_value = (game->last_frame - obj->start_frame)
+		/ (obj->animation_duration / obj->nb_image);
+	if (image_value >= obj->nb_image)
+		image_value = obj->nb_image - 1;
+	obj->game_img = &obj->all_img[7 + image_value];
+	return (0);
+}
+
 int	ghost_update(t_game *game, t_dict *dict, t_object *obj)
 {
 	long int	cur_frame;
 	int			image_value;
 
+	(void)dict;
 	if (obj->use_count >= obj->use_max)
-		return (obj->delete(game, dict, obj));
+	{
+		obj->update = ghost_del_update;
+		obj->start_frame = game->last_frame;
+		obj->animation_duration = 400;
+		obj->nb_image = 9;
+		obj->is_collide = 0;
+		game->player.stats.kill.value += 1;
+		return (0);
+	}
 	cur_frame = (game->last_frame - obj->start_frame)
 		% obj->animation_duration;
 	image_value = cur_frame / (obj->animation_duration / obj->nb_image);
@@ -63,7 +86,6 @@ int	ghost_delete(t_game *game, t_dict *dict, t_object *obj)
 {
 	(void)obj;
 	dict_delone(&game->map.all_objects, dict, 0, free);
-	game->player.stats.kill.value += 1;
 	return (0);
 }
 
@@ -83,7 +105,7 @@ int	init_ghost(t_game *game, t_object **obj)
 	(*obj)->is_visible = 1;
 	(*obj)->is_collide = 1;
 	(*obj)->start_frame = game->last_frame;
-	(*obj)->nb_image = GHOST_NB_IMG;
+	(*obj)->nb_image = 7;
 	(*obj)->animation_duration = GHOST_ANIM_DURATION;
 	(*obj)->interact = ghost_interact;
 	(*obj)->use = ghost_use;

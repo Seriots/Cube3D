@@ -83,6 +83,7 @@ typedef struct s_all_img
 	t_img_data	*all_ghost_img;
 	t_img_data	*all_loading_img;
 	t_img_data	*all_number_img;
+	t_img_data	*all_door_img;
 	t_img_data	endoor;
 	t_img_data	loading;
 	t_img_data	score;
@@ -244,7 +245,7 @@ typedef struct s_object
 	float		use_max;
 	int			is_visible;	
 	int			is_collide;
-	int			start_frame;
+	long		start_frame;
 	int			nb_image;
 	int			animation_duration;
 	int			(*interact)(t_game *game, t_dict *elem, struct s_object *obj);
