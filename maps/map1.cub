@@ -1,7 +1,7 @@
-NO imgs/xpm/blueWall64x64.xpm
-SO imgs/xpm/blueWall64x64.xpm
-EA imgs/xpm/blueWall64x64.xpm
-WE imgs/xpm/blueWall64x64.xpm
+NO imgs/xpm/wall/default_junglewood.xpm
+SO imgs/xpm/wall/default_junglewood.xpm
+EA imgs/xpm/wall/default_junglewood.xpm
+WE imgs/xpm/wall/default_junglewood.xpm
 F 255,0,0
 C 0,0,255
 KEY 128,400
