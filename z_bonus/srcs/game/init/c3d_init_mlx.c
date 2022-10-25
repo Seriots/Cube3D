@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 13:17:23 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/10 10:30:17 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/25 13:11:47 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 #include "c3d_loop.h"
 
 #include "mlx.h"
+
+#include <stdio.h>
 
 static int	init_hooks(t_game *game)
 {

@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 19:11:05 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/25 00:14:56 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/25 13:30:53 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 #include "ft.h"
 
 #include <stdlib.h>
+
+#include <stdio.h>
 
 int	do_spawn(t_game *game, int i, int is_spawn, t_point p)
 {
@@ -72,10 +74,10 @@ int	take_damage(t_game *game, t_object *obj, double angle)
 	float	damage;
 
 	dist = dist_to_obj(game->player.pos, obj->pos);
-	damage = (game->player.damage + (15 - (angle * 15))) * (1000 - dist) / 200;
-	if (damage < 0)
+	damage = game->player.damage + ((15 - ((angle * 15))) * (1000 - dist) / 100) / 2;
+	if (damage < 0 || 1000 - dist < 0)
 		damage = 0;
-	obj->use_count += damage;
+	obj->use_count += damage * game->delay / 50;
 	return (0);
 }
 

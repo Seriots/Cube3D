@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 16:55:10 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/24 20:36:46 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/25 13:38:20 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,9 @@ int	set_height_score(t_game *game, int *max_obj, int size)
 
 	(void)game;
 	max = 60 + size * SCORE_MARGE;
+	if (max >= 600 && max < 660)
+		max = 660;
+	printf("max = %d\n", max);
 	*max_obj = max - 594;
 	if (*max_obj < 0)
 		*max_obj = 0;

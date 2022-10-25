@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 15:47:42 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/24 20:21:56 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/25 13:27:56 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,12 @@ void	free_textures(t_game *game, t_all_img *all_img)
 		mlx_destroy_image(game->mlx.display, all_img->fl.img);
 	if (all_img->ce.img)
 		mlx_destroy_image(game->mlx.display, all_img->ce.img);
+	all_img->ce.img = 0;
+	all_img->fl.img = 0;
+	all_img->no.img = 0;
+	all_img->so.img = 0;
+	all_img->ea.img = 0;
+	all_img->we.img = 0;
 }
 
 void	free_img_array(t_game *game, t_img_data **imgs_ptr, int number)
@@ -92,9 +98,11 @@ void	free_images2(t_game *game)
 void	free_images(t_game *game)
 {
 	if (game->all_img.all_ghost_img)
-		free_img_array(game, &game->all_img.all_ghost_img, 9);
+		free_img_array(game, &game->all_img.all_ghost_img, 16);
 	if (game->all_img.all_loading_img)
 		free_img_array(game, &game->all_img.all_loading_img, 15);
+	if (game->all_img.all_door_img)
+		free_img_array(game, &game->all_img.all_door_img, 9);
 	if (game->all_img.start_no.img)
 		mlx_destroy_image(game->mlx.display, game->all_img.start_no.img);
 	if (game->all_img.start_so.img)

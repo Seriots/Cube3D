@@ -79,7 +79,7 @@ t_dict	*init_play_button(t_game *game)
 	box->box.height = 100;
 	box->box.width = 300;
 	box->box.x = WIN_WIDTH / 2 - box->box.width / 2;
-	box->box.y = (WIN_HEIGHT / 3 - box->box.height / 2);
+	box->box.y = (WIN_HEIGHT / 3 - box->box.height / 2) + 70;
 	ft_strlcpy(box->box.description, "Play", 5);
 	box->box.x_text = box->box.x + box->box.width / 2
 		- (FONT_WIDTH * ft_strlen(box->box.description) / 2);

@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 13:07:58 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/11 11:28:31 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/25 13:03:40 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ t_dict	*init_quit_button(t_game *game)
 	box->box.height = 100;
 	box->box.width = 300;
 	box->box.x = WIN_WIDTH / 2 - box->box.width / 2;
-	box->box.y = 1.8 * (WIN_HEIGHT / 3 - box->box.height / 2);
+	box->box.y = 1.8 * (WIN_HEIGHT / 3 - box->box.height / 2) + 70;
 	ft_strlcpy(box->box.description, "Quit Game", 10);
 	box->box.y_text = box->box.y + box->box.height / 2 + 10 / 2;
 	box->box.x_text = box->box.x + box->box.width / 2
