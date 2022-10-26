@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 11:12:38 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/10 15:30:32 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/26 14:02:04 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,6 @@ int	generate_door(char **map, int width, int height, char newroom)
 	int	y;
 	int	door;
 
-	x = 1 + rand() % (width - 2);
-	y = 1 + rand() % (height - 2);
 	while (1)
 	{
 		x = 1 + rand() % (width - 2);

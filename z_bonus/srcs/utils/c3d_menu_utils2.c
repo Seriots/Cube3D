@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 14:57:29 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/06 21:20:50 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/26 14:04:40 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ int	delete_number(t_numinput *numinput)
 		value = &numinput->green;
 	if (numinput->is_selected == 3)
 		value = &numinput->blue;
-	if (*value > 0)
+	if (numinput->is_selected > 0 && numinput->is_selected <= 3
+		&& *value > 0)
 		*value = *value / 10;
 	return (0);
 }
@@ -40,7 +41,8 @@ int	add_number(t_numinput *numinput, int n)
 		value = &numinput->green;
 	if (numinput->is_selected == 3)
 		value = &numinput->blue;
-	if (*value * 10 + n < 256)
+	if (numinput->is_selected > 0 && numinput->is_selected <= 3
+		&& *value * 10 + n < 256)
 		*value = *value * 10 + n;
 	return (0);
 }

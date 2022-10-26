@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 14:17:54 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/24 14:53:15 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/26 14:01:32 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ static int	get_all_elem(t_game *game, t_map *map, char *line)
 			return (-1);
 		error = get_elem(game, map, line);
 		free(line);
+		line = NULL;
 		if (error)
 			return (error);
 	}
@@ -70,7 +71,7 @@ int	read_file(t_game *game, t_map *map, char *file, int size)
 		return (5);
 	while (error == 0 && get_next_line(fd, &line, 0) != 0)
 		error = get_all_elem(game, map, line);
-	if (error != -1)
+	if (error != -1 || line == NULL)
 		return (error);
 	error = get_map(fd, map, line, size);
 	if (error)

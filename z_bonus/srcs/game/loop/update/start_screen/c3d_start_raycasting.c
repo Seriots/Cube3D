@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 14:42:38 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/24 19:50:55 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/26 14:11:59 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ int	start_cast_ray(t_game *game, int i)
 	ray.angle.sin = angle.y * game->start_map.player.plane.cos + angle.x
 		* game->start_map.player.plane.sin;
 	ray.angle.tan = ray.angle.sin / ray.angle.cos;
+	ray.angle.value = 0;
 	ray.x = game->start_map.player.pos.x + d * game->start_map.player.plane.sin;
 	ray.y = game->start_map.player.pos.y + d * game->start_map.player.plane.cos;
 	wall = (t_wall){.dist = 0, .dist_from_start = 0, .face = 0};

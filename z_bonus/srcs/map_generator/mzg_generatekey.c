@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 12:15:01 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/24 20:09:11 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/26 14:02:43 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ int	get_key_pos_force(t_game *game, int width, int height)
 	x = rand() % width;
 	y = rand() % height;
 	i = 0;
-	error = 0;
 	while (game->map.map[y][x] < 'A' && i < 500)
 	{
 		x = rand() % width;
@@ -47,7 +46,6 @@ int	get_key_pos(t_game *game, int width, int height, char c)
 	int	error;
 
 	i = 0;
-	error = 0;
 	while (i < height)
 	{
 		j = 0;
@@ -78,7 +76,6 @@ int	make_key(t_game *game, int width, int height, char c)
 	x = rand() % width;
 	y = rand() % height;
 	i = 0;
-	error = 0;
 	while (game->map.map[y][x] != c && i < 500)
 	{
 		x = rand() % width;
