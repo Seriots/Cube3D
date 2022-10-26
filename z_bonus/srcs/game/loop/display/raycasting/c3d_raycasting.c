@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 14:42:38 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/26 14:11:01 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/26 15:54:12 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	cast_ray(t_game *game, int i)
 	wall.face = 0;
 	wall.dist = 0;
 	wall.dist_from_start = 0;
-	intersect_wall(game, ray, &wall);
+	intersect_wall(game, ray, &wall, i);
 	game->display.ray = ray;
 	display_wall(game, &wall, i);
 	game->display.wall_dist[i] = wall.dist;

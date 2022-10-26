@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 10:41:24 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/26 12:38:32 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/26 15:54:19 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,13 +123,20 @@ int	shade_pixel(t_game *game, int color, double dist, t_point p)
 		light = 0.2;
 	if (light < 0.2)
 		light = 0.2;
+	/*light = game->display.light_mask[p.y][p.x] / (dist * dist);
+	//if (light > 0.2)
+	//	light = light * 20000 / pow(dist, 2);
+	//light = max(light, 0.0);
+	//light = min(light, 0.85);
+	//light += 0.15;
+	//light *= game->display.light_mask[p.y][p.x];
+	light = max(light, 0.15);
+	light = min(light, 1);*/
 	r = light * ((color & 0xFF0000) >> 16);
 	g = light * ((color & 0X00FF00) >> 8);
 	b = light * (color & 0X0000FF);
 	return ((r << 16) | (g << 8) | b);
 	(void)dist;
-	(void)p;
-	return (color);
 }
 
 int	get_pixel_color(t_game *game, t_wall *wall, t_point p, t_display *display)
@@ -159,6 +166,7 @@ int	display_wall(t_game *game, t_wall *wall, int i)
 	game->display.max = -(double)VIEW_HEIGHT / 2 + game->player.updown - game->player.z - ((double)CASE_SIZE / 2 + game->player.updown) * game->settings.fov / (game->display.angle * (wall->dist + game->settings.fov / (game->display.angle)));
 	game->display.min *= (double)WIN_HEIGHT / (double)VIEW_HEIGHT;
 	game->display.max *= -(double)WIN_HEIGHT / (double)VIEW_HEIGHT;
+	//printf("i: %i, min: %f, max: %f\n", i, game->display.min, game->display.max);
 	game->display.x = (int)(wall->dist_from_start * game->display.img->width / CASE_SIZE)
 		% game->display.img->width;
 	game->display.factor = game->display.img->height / (game->display.max - game->display.min);
