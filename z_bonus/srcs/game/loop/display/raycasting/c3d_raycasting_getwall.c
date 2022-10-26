@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 10:39:05 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/26 17:07:09 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/26 17:21:19 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,8 +133,10 @@ int	intersect_wall(t_game *game, t_vector ray, t_wall *wall, int i)
 {
 	t_vector	next_inter;
 	char		is_wall;
+	int			j;
 
 	is_wall = 0;
+	j = 0;
 	next_inter = ray;
 	while (!is_wall)
 	{
@@ -144,14 +146,15 @@ int	intersect_wall(t_game *game, t_vector ray, t_wall *wall, int i)
 		{
 			wall->dist = sqrt(pow(ray.x - next_inter.x, 2)
 			+ pow(ray.y - next_inter.y, 2));
-			game->display.doors[i].door = *wall;
-			game->display.doors[i].need_display = 1;
+			game->display.doors[j][i].door = *wall;
+			game->display.doors[j][i].need_display = 1;
 			if (is_wall == 's')
-				game->display.doors[i].img = find_door(game, next_inter.x / CASE_SIZE, next_inter.y / CASE_SIZE - 1)->game_img;
+				game->display.doors[j][i].img = find_door(game, next_inter.x / CASE_SIZE, next_inter.y / CASE_SIZE - 1)->game_img;
 			else if (is_wall == 'e')
-				game->display.doors[i].img = find_door(game, next_inter.x / CASE_SIZE - 1, next_inter.y / CASE_SIZE)->game_img;
+				game->display.doors[j][i].img = find_door(game, next_inter.x / CASE_SIZE - 1, next_inter.y / CASE_SIZE)->game_img;
 			else
-				game->display.doors[i].img = find_door(game, next_inter.x / CASE_SIZE, next_inter.y / CASE_SIZE)->game_img;
+				game->display.doors[j][i].img = find_door(game, next_inter.x / CASE_SIZE, next_inter.y / CASE_SIZE)->game_img;
+			j++;
 			wall->face = 0;
 			is_wall = 0;
 		}

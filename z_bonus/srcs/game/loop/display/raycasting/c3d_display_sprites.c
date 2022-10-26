@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 00:48:35 by pierre-yves       #+#    #+#             */
-/*   Updated: 2022/10/26 17:12:05 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/26 17:33:52 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,6 +144,7 @@ int	display_sprite(t_game *game, t_object *obj, double dist, double angle)
 {
 	double	sprite_width;
 	int	i;
+	int	j;
 
 	game->display.vline = -game->settings.fov * tan(angle) * (double)WIN_WIDTH / (double)VIEW_WIDTH + (double)WIN_WIDTH / 2;
 	sprite_width = (((double)WIN_WIDTH / (double)VIEW_WIDTH ) * obj->width) * game->settings.fov / ((dist + game->settings.fov / cos(angle)) * cos(angle));
@@ -160,19 +161,26 @@ int	display_sprite(t_game *game, t_object *obj, double dist, double angle)
 	{
 		if (i + game->display.vline >= 0 && i + game->display.vline < WIN_WIDTH)
 		{
+			j = -1;
 			//printf("line: %i\n", i + game->display.vline);
 			if (game->display.wall_dist[i + game->display.vline] > dist)
 			{
-				if (game->display.doors[i + game->display.vline].door.dist > dist
-					&& game->display.doors[i + game->display.vline].need_display)
+				while (j < 20 && game->display.doors[++j][i + game->display.vline].need_display)
 				{
-					display_door_vline(game, &game->display.doors[i + game->display.vline], i + game->display.vline);
-					game->display.doors[i + game->display.vline].need_display = 0;
+					if (game->display.doors[j][i + game->display.vline].door.dist > dist
+						&& game->display.doors[j][i + game->display.vline].need_display)
+					{
+						display_door_vline(game, &game->display.doors[j][i + game->display.vline], i + game->display.vline);
+						game->display.doors[j][i + game->display.vline].need_display = 0;
+					}
 				}
 				draw_sprite_vline(game, obj, i + game->display.vline, sprite_width);
-				if (game->display.doors[i + game->display.vline].door.dist < dist
-					&& game->display.doors[i + game->display.vline].need_display)
-					display_door_vline(game, &game->display.doors[i + game->display.vline], i + game->display.vline);
+				while (j < 20 && game->display.doors[++j][i + game->display.vline].need_display)
+				{
+					if (game->display.doors[j][i + game->display.vline].door.dist < dist
+						&& game->display.doors[j][i + game->display.vline].need_display)
+						display_door_vline(game, &game->display.doors[j][i + game->display.vline], i + game->display.vline);
+				}
 			}
 		}
 		i++;
@@ -224,14 +232,18 @@ int	get_all_obj_dist(t_game *game)
 int	display_restof_doors(t_game *game)
 {
 	int	i;
+	int	j;
 
 	i = -1;
 	while (++i < WIN_WIDTH)
-		if (game->display.doors[i].need_display)
+	{
+		j = -1;
+		while (++j < 20 && game->display.doors[j][i].need_display)
 		{
-			display_door_vline(game, &game->display.doors[i], i);
-			game->display.doors[i].need_display = 0;
+			display_door_vline(game, &game->display.doors[j][i], i);
+			game->display.doors[][i].need_display = 0;
 		}
+	}
 	return (0);
 }
 

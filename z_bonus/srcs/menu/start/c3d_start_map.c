@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 20:12:58 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/26 17:06:10 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/26 17:19:39 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 #include "c3d_init.h"
 #include "c3d_utils.h"
 #include "c3d_parsing.h"
+
+#include "ft.h"
 
 #include <stdlib.h>
 
@@ -145,11 +147,7 @@ int	init_light(t_display *display)
 
 int	init_display(t_display *display)
 {
-	int	i;
-
-	i = -1;
-	while (++i < WIN_WIDTH)
-		display->doors[i].need_display = 0;
+	ft_memset(display->doors, 0, sizeof(display->doors));
 	init_light(display);
 	return (0);
 }
