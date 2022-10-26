@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   c3d_raycasting_display.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ppajot <ppajot@student.42.fr>              +#+  +:+       +#+        */
+/*   By: pierre-yves <pierre-yves@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 10:41:24 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/19 17:40:13 by ppajot           ###   ########.fr       */
+/*   Updated: 2022/10/26 10:40:31 by pierre-yves      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,14 +115,20 @@ int	shade_pixel(t_game *game, int color, double dist, t_point p)
 		light = min(light, 1);
 	}
 	else*/
-		light = 1.0;
+	light = game->display.light_mask[p.y][p.x] / (dist * dist);
+	//if (light > 0.2)
+	//	light = light * 20000 / pow(dist, 2);
+	//light = max(light, 0.0);
+	//light = min(light, 0.85);
+	//light += 0.15;
+	//light *= game->display.light_mask[p.y][p.x];
+	light = max(light, 0.15);
+	light = min(light, 1);
 	r = light * ((color & 0xFF0000) >> 16);
 	g = light * ((color & 0X00FF00) >> 8);
 	b = light * (color & 0X0000FF);
 	return ((r << 16) | (g << 8) | b);
 	(void)dist;
-	(void)p;
-	return (color);
 }
 
 int	get_pixel_color(t_game *game, t_wall *wall, t_point p, t_display *display)

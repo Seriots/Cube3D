@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   c3d_player_collide.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ppajot <ppajot@student.42.fr>              +#+  +:+       +#+        */
+/*   By: pierre-yves <pierre-yves@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 11:42:39 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/19 21:06:40 by ppajot           ###   ########.fr       */
+/*   Updated: 2022/10/26 12:12:44 by pierre-yves      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 #include "c3d_utils.h"
 
 #include <math.h>
+
+#include <stdio.h>
 
 double	get_wall_angle(char c)
 {
@@ -58,12 +60,12 @@ int	apply_collide(t_game *game, t_wall wall, t_coord mov)
 	return (0);
 }
 
-int	get_new_wall(t_game *game, t_vector player, t_wall *wall)
+int	get_new_wall(t_game *game, t_vector player, t_wall *wall, int i)
 {
 	wall->face = 0;
 	wall->dist = 0;
 	wall->dist_from_start = 0;
-	intersect_wall(game, player, wall);
+	intersect_wall(game, player, wall, i);
 	return (0);
 }
 
@@ -83,20 +85,21 @@ int	check_collide(t_game *game, t_coord mov)
 	player.angle.cos = cos(player.angle.value);
 	player.angle.sin = sin(player.angle.value);
 	player.angle.tan = player.angle.sin / player.angle.cos;
-	player.x = game->player.pos.x + mov.x + VIEW_WIDTH
+	player.x = game->player.pos.x + VIEW_WIDTH
 		* player.angle.sin / 2;
-	player.y = game->player.pos.y + mov.y + VIEW_WIDTH
+	player.y = game->player.pos.y + VIEW_WIDTH
 		* player.angle.cos / 2;
-	get_new_wall(game, player, &wall);
+	get_new_wall(game, player, &wall, WIN_WIDTH);
 	player.x = player.x - VIEW_WIDTH
 		* sin(game->player.plane.value);
 	player.y = player.y - VIEW_WIDTH
 		* cos(game->player.plane.value);
-	get_new_wall(game, player, &wall2);
+	get_new_wall(game, player, &wall2, WIN_WIDTH);
 	if (min(wall.dist, wall2.dist) == wall2.dist)
 	{
 		wall.dist = wall2.dist;
 		wall.face = wall2.face;
+		printf("face: %c\n", wall.face);
 	}
 	apply_collide(game, wall, mov);
 	return (0);

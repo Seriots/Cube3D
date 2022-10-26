@@ -27,7 +27,7 @@ int		draw_all_objects(t_game *game, t_dict *dict);
 int		display_text(t_game *game, t_dict *dict);
 
 /*Ray Casting*/
-int		intersect_wall(t_game *game, t_vector ray, t_wall *wall);
+int		intersect_wall(t_game *game, t_vector ray, t_wall *wall, int i);
 int		display_wall(t_game *game, t_wall *wall, int i);
 int		raycasting(t_game *game);
 

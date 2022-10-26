@@ -178,6 +178,8 @@ typedef struct s_object
 	t_img_data	*hand_img;
 	t_img_data	*menu_img;
 	t_coord		pos;
+	char		face;
+	double		dist_from_start;
 	double		dist;
 	double		angle;
 	int			img_height;
@@ -237,6 +239,13 @@ typedef struct s_vector
 	t_angle	angle;
 }	t_vector;
 
+typedef struct s_door
+{
+	t_wall	door;
+	int		need_display;
+}	t_door;
+
+
 typedef struct s_display
 {
 	double		min;
@@ -245,6 +254,8 @@ typedef struct s_display
 	double		angle;
 	double		fc_dist[WIN_HEIGHT];
 	double		wall_dist[WIN_WIDTH];
+	double		light_mask[WIN_HEIGHT][WIN_WIDTH];
+	t_door		doors[WIN_WIDTH + 1];
 	t_vector	ray;	
 	t_img_data	*img;
 	t_img_data	*ce;

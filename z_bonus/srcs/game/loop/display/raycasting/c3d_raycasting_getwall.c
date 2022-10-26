@@ -3,16 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   c3d_raycasting_getwall.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ppajot <ppajot@student.42.fr>              +#+  +:+       +#+        */
+/*   By: pierre-yves <pierre-yves@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 10:39:05 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/13 20:12:04 by ppajot           ###   ########.fr       */
+/*   Updated: 2022/10/26 09:08:04 by pierre-yves      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "c3d_struct.h"
 #include "c3d_utils.h"
 #include "c3d_settings.h"
+
+#include "ft.h"
 
 #include <math.h>
 
@@ -64,6 +66,24 @@ t_vector	get_next_wall(t_vector pre_pos)
 	return (result);
 }
 
+t_object	*find_door(t_game *game, int i, int j)
+{
+	t_dict		*tmp;
+	t_object	*obj;
+
+	tmp = game->map.all_objects;
+	while (tmp)
+	{
+		obj = tmp->value;
+		if (obj && !ft_strcmp(obj->tag, "DOOR")
+			&& obj->pos.x == i * CASE_SIZE + CASE_SIZE / 2
+			&& obj->pos.y == j * CASE_SIZE + CASE_SIZE / 2)
+			return (obj);
+		tmp = tmp->next;
+	}
+	return (0);
+}
+
 int	check_wall(t_game *game, t_map *map, t_vector vec, t_wall *wall)
 {
 	(void)game;
@@ -77,6 +97,14 @@ int	check_wall(t_game *game, t_map *map, t_vector vec, t_wall *wall)
 				== '1')
 			wall->face = 'E';
 		wall->dist_from_start = vec.y;
+		if (map->map[((int)vec.y) / CASE_SIZE][((int)vec.x + 1) / CASE_SIZE]
+				== '2')
+			if (find_door(game, ((int)vec.x + 1) / CASE_SIZE, ((int)vec.y) / CASE_SIZE)->face == 'W')
+				wall->face = 'w';
+		if (map->map[((int)vec.y) / CASE_SIZE][((int)vec.x - 1) / CASE_SIZE]
+				== '2')
+			if (find_door(game, ((int)vec.x - 1) / CASE_SIZE, ((int)vec.y) / CASE_SIZE)->face == 'E')
+				wall->face = 'e';
 	}
 	else
 	{
@@ -87,11 +115,19 @@ int	check_wall(t_game *game, t_map *map, t_vector vec, t_wall *wall)
 				== '1')
 			wall->face = 'S';
 		wall->dist_from_start = vec.x;
+		if (map->map[((int)vec.y + 1) / CASE_SIZE][((int)vec.x) / CASE_SIZE]
+				== '2')
+			if (find_door(game, ((int)vec.x) / CASE_SIZE, ((int)vec.y + 1) / CASE_SIZE)->face == 'N')
+				wall->face = 'n';
+		if (map->map[((int)vec.y - 1) / CASE_SIZE][((int)vec.x) / CASE_SIZE]
+				== '2')
+			if (find_door(game, ((int)vec.x) / CASE_SIZE, ((int)vec.y - 1) / CASE_SIZE)->face == 'S')
+				wall->face = 's';
 	}
 	return (wall->face);
 }
 
-int	intersect_wall(t_game *game, t_vector ray, t_wall *wall)
+int	intersect_wall(t_game *game, t_vector ray, t_wall *wall, int i)
 {
 	t_vector	next_inter;
 	char		is_wall;
@@ -102,6 +138,14 @@ int	intersect_wall(t_game *game, t_vector ray, t_wall *wall)
 	{
 		next_inter = get_next_wall(next_inter);
 		is_wall = check_wall(game, &game->map, next_inter, wall);
+		if (is_wall && ft_tolower(is_wall) == is_wall)
+		{
+			wall->dist = sqrt(pow(ray.x - next_inter.x, 2)
+			+ pow(ray.y - next_inter.y, 2));
+			game->display.doors[i].door = *wall;
+			game->display.doors[i].need_display = 1;
+			wall->face = 0;
+		}
 	}
 	wall->dist = sqrt(pow(ray.x - next_inter.x, 2)
 			+ pow(ray.y - next_inter.y, 2));
