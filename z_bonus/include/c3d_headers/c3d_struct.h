@@ -88,6 +88,7 @@ typedef struct s_all_img
 	t_img_data	loading;
 	t_img_data	score;
 	t_img_data	game_over;
+	t_img_data	logo;
 	t_img_data	return_arrow;
 	t_img_data	leaderboard;
 	t_img_data	flashlight[3];

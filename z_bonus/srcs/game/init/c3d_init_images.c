@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 10:51:50 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/25 12:12:40 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/26 13:24:52 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,8 @@ static int	init_all_xpm_img(t_game *game)
 			&game->all_img.leaderboard, "imgs/xpm/menu/leaderboard.xpm")
 		|| init_xpm_image(game,
 			&game->all_img.return_arrow, "imgs/xpm/menu/return.xpm")
+		|| init_xpm_image(game,
+			&game->all_img.logo, "imgs/xpm/menu/logo.xpm")
 		|| init_images_group(game, "imgs/xpm/cursor/cursor", 8,
 			&game->all_img.all_cursor_img)
 		|| init_images_group(game, "imgs/xpm/ghost/ghost", 16,

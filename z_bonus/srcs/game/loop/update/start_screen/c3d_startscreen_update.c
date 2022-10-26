@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 12:53:03 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/26 12:11:15 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/26 13:34:56 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,11 +52,24 @@ int	update_camera(t_game *game)
 	return (0);
 }
 
+int	draw_logo(t_game *game)
+{
+	static double	y;
+	static double	incr = 0.1;
+
+	y += incr;
+	if (y > 20 || y < 0)
+		incr *= -1;
+	my_mlx_put_image_to_window(game, &game->all_img.logo, WIN_WIDTH / 2 -  game->all_img.logo.width / 2, 70 + y);
+	return (0);
+}
+
 int	startscreen_update(t_game *game)
 {
 	start_raycasting(game);
 	start_display_all_sprites(game);
 	update_camera(game);
 	draw_all_objects(game, game->start_menu.all_objects);
+	draw_logo(game);
 	return (0);
 }
