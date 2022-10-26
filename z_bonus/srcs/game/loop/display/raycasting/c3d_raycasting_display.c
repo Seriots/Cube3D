@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   c3d_raycasting_display.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pierre-yves <pierre-yves@student.42.fr>    +#+  +:+       +#+        */
+/*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 10:41:24 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/26 10:40:31 by pierre-yves      ###   ########.fr       */
+/*   Updated: 2022/10/26 15:23:42 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,6 +158,7 @@ int	display_wall(t_game *game, t_wall *wall, int i)
 	game->display.max = -(double)VIEW_HEIGHT / 2 + game->player.updown - game->player.z - ((double)CASE_SIZE / 2 + game->player.updown) * game->settings.fov / (game->display.angle * (wall->dist + game->settings.fov / (game->display.angle)));
 	game->display.min *= (double)WIN_HEIGHT / (double)VIEW_HEIGHT;
 	game->display.max *= -(double)WIN_HEIGHT / (double)VIEW_HEIGHT;
+	//printf("i: %i, min: %f, max: %f\n", i, game->display.min, game->display.max);
 	game->display.x = (int)(wall->dist_from_start * game->display.img->width / CASE_SIZE)
 		% game->display.img->width;
 	game->display.factor = game->display.img->height / (game->display.max - game->display.min);

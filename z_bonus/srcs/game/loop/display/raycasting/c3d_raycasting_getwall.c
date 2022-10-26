@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   c3d_raycasting_getwall.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pierre-yves <pierre-yves@student.42.fr>    +#+  +:+       +#+        */
+/*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 10:39:05 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/26 09:08:04 by pierre-yves      ###   ########.fr       */
+/*   Updated: 2022/10/26 14:49:55 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,6 +145,7 @@ int	intersect_wall(t_game *game, t_vector ray, t_wall *wall, int i)
 			game->display.doors[i].door = *wall;
 			game->display.doors[i].need_display = 1;
 			wall->face = 0;
+			is_wall = 0;
 		}
 	}
 	wall->dist = sqrt(pow(ray.x - next_inter.x, 2)

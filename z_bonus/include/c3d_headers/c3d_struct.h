@@ -252,6 +252,10 @@ typedef struct s_display
 	double		max;
 	double		d;
 	double		angle;
+	double		doormin;
+	double		doormax;
+	double		doord;
+	double		doorangle;
 	double		fc_dist[WIN_HEIGHT];
 	double		wall_dist[WIN_WIDTH];
 	double		light_mask[WIN_HEIGHT][WIN_WIDTH];

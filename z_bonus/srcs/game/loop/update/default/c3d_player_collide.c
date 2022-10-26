@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   c3d_player_collide.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pierre-yves <pierre-yves@student.42.fr>    +#+  +:+       +#+        */
+/*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 11:42:39 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/26 12:12:44 by pierre-yves      ###   ########.fr       */
+/*   Updated: 2022/10/26 15:17:54 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,11 +95,11 @@ int	check_collide(t_game *game, t_coord mov)
 	player.y = player.y - VIEW_WIDTH
 		* cos(game->player.plane.value);
 	get_new_wall(game, player, &wall2, WIN_WIDTH);
+	//printf("face: %c, face2: %c\n", wall.face, wall2.face);
 	if (min(wall.dist, wall2.dist) == wall2.dist)
 	{
 		wall.dist = wall2.dist;
 		wall.face = wall2.face;
-		printf("face: %c\n", wall.face);
 	}
 	apply_collide(game, wall, mov);
 	return (0);

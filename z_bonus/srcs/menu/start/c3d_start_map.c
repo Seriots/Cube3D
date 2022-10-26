@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   c3d_start_map.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pierre-yves <pierre-yves@student.42.fr>    +#+  +:+       +#+        */
+/*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 20:12:58 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/26 10:39:33 by pierre-yves      ###   ########.fr       */
+/*   Updated: 2022/10/26 14:28:19 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,11 +108,11 @@ double	get_light_value(int i, int j)
 	double	dist_center;
 
 	dist_center = sqrt(pow(i - WIN_WIDTH / 2, 2) + pow(j - WIN_HEIGHT / 2, 2));
-	if (dist_center > 400)
+	if (dist_center > 600)
 		return (0.0);
-	if (dist_center < 20)
+	if (dist_center < 0)
 		return (1);
-	return (1 - (1 - 0.0) * sqrt((dist_center - 20) / (400 - 10)));
+	return (1 - (1 - 0.0) * sqrt((dist_center - 0) / (600)));
 }
 
 int	init_light(t_display *display)
@@ -125,7 +125,7 @@ int	init_light(t_display *display)
 	{
 		i = -1;
 		while (++i < WIN_WIDTH)
-			display->light_mask[j][i] = 20000 * pow(get_light_value(i, j), 2);
+			display->light_mask[j][i] = 80000 * pow(get_light_value(i, j), 2);
 	}
 	return (0);
 }
