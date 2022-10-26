@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 00:48:35 by pierre-yves       #+#    #+#             */
-/*   Updated: 2022/10/26 17:33:52 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/26 17:54:56 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -161,26 +161,26 @@ int	display_sprite(t_game *game, t_object *obj, double dist, double angle)
 	{
 		if (i + game->display.vline >= 0 && i + game->display.vline < WIN_WIDTH)
 		{
-			j = -1;
+			j = 20;
 			//printf("line: %i\n", i + game->display.vline);
 			if (game->display.wall_dist[i + game->display.vline] > dist)
 			{
-				while (j < 20 && game->display.doors[++j][i + game->display.vline].need_display)
+				while (--j >= 0)
 				{
-					if (game->display.doors[j][i + game->display.vline].door.dist > dist
-						&& game->display.doors[j][i + game->display.vline].need_display)
+					if (game->display.doors[j][i + game->display.vline].need_display
+						&& game->display.doors[j][i + game->display.vline].door.dist > dist)
 					{
 						display_door_vline(game, &game->display.doors[j][i + game->display.vline], i + game->display.vline);
 						game->display.doors[j][i + game->display.vline].need_display = 0;
 					}
 				}
 				draw_sprite_vline(game, obj, i + game->display.vline, sprite_width);
-				while (j < 20 && game->display.doors[++j][i + game->display.vline].need_display)
+				/*while (j < 20 && game->display.doors[++j][i + game->display.vline].need_display)
 				{
 					if (game->display.doors[j][i + game->display.vline].door.dist < dist
 						&& game->display.doors[j][i + game->display.vline].need_display)
 						display_door_vline(game, &game->display.doors[j][i + game->display.vline], i + game->display.vline);
-				}
+				}*/
 			}
 		}
 		i++;
@@ -237,11 +237,14 @@ int	display_restof_doors(t_game *game)
 	i = -1;
 	while (++i < WIN_WIDTH)
 	{
-		j = -1;
-		while (++j < 20 && game->display.doors[j][i].need_display)
+		j = 20;
+		while (--j >= 0)
 		{
-			display_door_vline(game, &game->display.doors[j][i], i);
-			game->display.doors[][i].need_display = 0;
+			if (game->display.doors[j][i].need_display)
+			{
+				display_door_vline(game, &game->display.doors[j][i], i);
+				game->display.doors[j][i].need_display = 0;
+			}
 		}
 	}
 	return (0);

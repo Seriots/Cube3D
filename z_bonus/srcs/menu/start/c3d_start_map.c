@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 20:12:58 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/26 17:19:39 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/26 18:09:37 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,11 +123,11 @@ double	get_light_value(int i, int j)
 	double	dist_center;
 
 	dist_center = sqrt(pow(i - WIN_WIDTH / 2, 2) + pow(j - WIN_HEIGHT / 2, 2));
-	if (dist_center > 600)
+	if (dist_center > 400)
 		return (0.0);
 	if (dist_center < 0)
 		return (1);
-	return (1 - (1 - 0.0) * sqrt((dist_center - 0) / (600)));
+	return (1 - (1 - 0.0) * sqrt((dist_center - 0) / (400)));
 }
 
 int	init_light(t_display *display)
@@ -147,7 +147,18 @@ int	init_light(t_display *display)
 
 int	init_display(t_display *display)
 {
-	ft_memset(display->doors, 0, sizeof(display->doors));
+	int	j;
+
+	display->doors = ft_calloc(sizeof(t_door), 20);
+	if (!display->doors)
+		return (10);
+	j = -1;
+	while (++j < 20)
+	{
+		display->doors[j] = ft_calloc(sizeof(t_door), WIN_WIDTH + 1);
+		if (!display->doors[j])
+			return (10);
+	}
 	init_light(display);
 	return (0);
 }
@@ -168,7 +179,9 @@ int	init_all_map_parameters(t_game *game, int first)
 	error = open_textures(game, &game->map);
 	if (error)
 		return (error);
-	init_display(&game->display);
+	error = init_display(&game->display);
+	if (error)
+		return (error);
 	return (0);
 }
 

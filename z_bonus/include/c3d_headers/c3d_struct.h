@@ -323,7 +323,7 @@ typedef struct s_display
 	double		fc_dist[WIN_HEIGHT];
 	double		wall_dist[WIN_WIDTH];
 	double		light_mask[WIN_HEIGHT][WIN_WIDTH];
-	t_door		doors[20][WIN_WIDTH + 1];
+	t_door		**doors;
 	t_vector	ray;	
 	t_img_data	*img;
 	t_img_data	*ce;

@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 10:41:24 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/26 15:54:19 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/26 18:53:36 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,26 +115,31 @@ int	shade_pixel(t_game *game, int color, double dist, t_point p)
 		light = min(light, 1);
 	}
 	else*/
-	if (dist > 1000)
+	/*if (dist > 1000)
 		light = 0.2;
 	else if (is_lamp(game))
 		light = game->lightmask[p.y][p.x] * (1 - (dist / 10.0) / 100.0);
 	else
 		light = 0.2;
 	if (light < 0.2)
-		light = 0.2;
-	/*light = game->display.light_mask[p.y][p.x] / (dist * dist);
-	//if (light > 0.2)
-	//	light = light * 20000 / pow(dist, 2);
-	//light = max(light, 0.0);
-	//light = min(light, 0.85);
-	//light += 0.15;
-	//light *= game->display.light_mask[p.y][p.x];
-	light = max(light, 0.15);
-	light = min(light, 1);*/
-	r = light * ((color & 0xFF0000) >> 16);
-	g = light * ((color & 0X00FF00) >> 8);
-	b = light * (color & 0X0000FF);
+		light = 0.2;*/
+	if (!is_lamp(game))
+		light = 0.15;
+	else
+	{
+		light = game->display.light_mask[p.y][p.x] * 2 / (dist * dist);
+		//if (light > 0.2)
+		//	light = light * 20000 / pow(dist, 2);
+		//light = max(light, 0.0);
+		//light = min(light, 0.85);
+		//light += 0.15;
+		//light *= game->display.light_mask[p.y][p.x];
+		light = max(light, 0.15);
+		light = min(light, 3);
+	}
+	r = min(255, light * ((color & 0xFF0000) >> 16));
+	g = min(255, light * ((color & 0X00FF00) >> 8));
+	b = min(255, light * (color & 0X0000FF));
 	return ((r << 16) | (g << 8) | b);
 	(void)dist;
 }
