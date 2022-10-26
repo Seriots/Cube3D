@@ -6,13 +6,14 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 10:39:05 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/26 14:49:55 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/26 17:07:09 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "c3d_struct.h"
 #include "c3d_utils.h"
 #include "c3d_settings.h"
+#include "c3d_object.h"
 
 #include "ft.h"
 
@@ -75,9 +76,10 @@ t_object	*find_door(t_game *game, int i, int j)
 	while (tmp)
 	{
 		obj = tmp->value;
-		if (obj && !ft_strcmp(obj->tag, "DOOR")
-			&& obj->pos.x == i * CASE_SIZE + CASE_SIZE / 2
-			&& obj->pos.y == j * CASE_SIZE + CASE_SIZE / 2)
+		if (obj && !ft_strcmp(obj->tag, DOOR)
+			&& (obj->pos.x < i * CASE_SIZE + CASE_SIZE
+				&& obj->pos.x >= i * CASE_SIZE) && (obj->pos.y < j * CASE_SIZE
+					+ CASE_SIZE && obj->pos.y >= j * CASE_SIZE))
 			return (obj);
 		tmp = tmp->next;
 	}
@@ -144,6 +146,12 @@ int	intersect_wall(t_game *game, t_vector ray, t_wall *wall, int i)
 			+ pow(ray.y - next_inter.y, 2));
 			game->display.doors[i].door = *wall;
 			game->display.doors[i].need_display = 1;
+			if (is_wall == 's')
+				game->display.doors[i].img = find_door(game, next_inter.x / CASE_SIZE, next_inter.y / CASE_SIZE - 1)->game_img;
+			else if (is_wall == 'e')
+				game->display.doors[i].img = find_door(game, next_inter.x / CASE_SIZE - 1, next_inter.y / CASE_SIZE)->game_img;
+			else
+				game->display.doors[i].img = find_door(game, next_inter.x / CASE_SIZE, next_inter.y / CASE_SIZE)->game_img;
 			wall->face = 0;
 			is_wall = 0;
 		}

@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 00:48:35 by pierre-yves       #+#    #+#             */
-/*   Updated: 2022/10/26 16:05:51 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/26 17:12:05 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ int draw_sprite_vline(t_game *game, t_object *obj, int i, int width)
 	return (0);
 }
 
-unsigned int	get_door_color(t_game *game, t_img_data *img, int j, double x_from_start)
+unsigned int	get_door_color(t_game *game, t_img_data *img, int j)
 {
 	void	*color;
 	//int		x;
@@ -96,45 +96,47 @@ unsigned int	get_door_color(t_game *game, t_img_data *img, int j, double x_from_
 			+ (y * img->line_length
 				+ game->display.x * game->display.bpp));
 	return (*(unsigned int *)color);
-	(void)x_from_start;
 	//(void)game;
 	//(void)img;
 	//return (0xFFFFFF);
 }
 
-int	draw_door_vline(t_game *game, t_img_data *img, int i, double x_from_start)
+int	draw_door_vline(t_game *game, t_img_data *img, int i, double dist)
 {
 	int	j;
 	unsigned int	color;
+	t_point	p;
 
 	j = max(ft_ceil(game->display.doormin) - 1, -1);
 	while (++j < WIN_HEIGHT && j < game->display.doormax)
 	{
+		p.x = i;
+		p.y = j;
 		//printf("row: %i\n", j);
-		color = get_door_color(game, img, j, x_from_start);
+		color = get_door_color(game, img, j);
 		if (color != 0xFF000000)
-			my_mlx_pixel_put(&game->all_img.screen_img, i, j, color);
+			my_mlx_pixel_put(&game->all_img.screen_img, i, j, shade_pixel(game, color, dist, p));
 	}
 	return (0);
 }
 
-int	display_door_vline(t_game *game, t_wall *door, int i)
+int	display_door_vline(t_game *game, t_door *door, int i)
 {
-	game->display.img = &game->all_img.all_door_img[0];
+	game->display.img = door->img;
 	game->display.d = (i - (double)WIN_WIDTH / 2.0)
 		* (double)VIEW_WIDTH / (double)WIN_WIDTH;
 	//game->display.angle = cos(dabs(atan(game->display.d / game->settings.fov)));
 	game->display.doorangle = 1 / sqrt(1 + pow(game->display.d / game->settings.fov, 2));
-	game->display.doormin = (double)VIEW_HEIGHT / 2 - game->player.updown + game->player.z - ((double)CASE_SIZE / 2 - game->player.updown) * game->settings.fov / (game->display.doorangle * (door->dist + game->settings.fov / (game->display.doorangle)));
-	game->display.doormax = -(double)VIEW_HEIGHT / 2 + game->player.updown - game->player.z - ((double)CASE_SIZE / 2 + game->player.updown) * game->settings.fov / (game->display.doorangle * (door->dist + game->settings.fov / (game->display.doorangle)));
+	game->display.doormin = (double)VIEW_HEIGHT / 2 - game->player.updown + game->player.z - ((double)CASE_SIZE / 2 - game->player.updown) * game->settings.fov / (game->display.doorangle * (door->door.dist + game->settings.fov / (game->display.doorangle)));
+	game->display.doormax = -(double)VIEW_HEIGHT / 2 + game->player.updown - game->player.z - ((double)CASE_SIZE / 2 + game->player.updown) * game->settings.fov / (game->display.doorangle * (door->door.dist + game->settings.fov / (game->display.doorangle)));
 	game->display.doormin *= (double)WIN_HEIGHT / (double)VIEW_HEIGHT;
 	game->display.doormax *= -(double)WIN_HEIGHT / (double)VIEW_HEIGHT;
-	game->display.x = (int)(door->dist_from_start * game->display.img->width / CASE_SIZE)
+	game->display.x = (int)(door->door.dist_from_start * game->display.img->width / CASE_SIZE)
 		% game->display.img->width;
 	game->display.factor = game->display.img->height / (game->display.doormax - game->display.doormin);
 	game->display.bpp = game->display.img->bits_per_pixel / 8;
 	//printf("i: %i, min: %f, max: %f\n", i, game->display.doormin, game->display.doormax);
-	draw_door_vline(game, game->display.img, i, door->dist_from_start);
+	draw_door_vline(game, game->display.img, i, door->door.dist);
 	return (0);
 }
 
@@ -164,13 +166,13 @@ int	display_sprite(t_game *game, t_object *obj, double dist, double angle)
 				if (game->display.doors[i + game->display.vline].door.dist > dist
 					&& game->display.doors[i + game->display.vline].need_display)
 				{
-					display_door_vline(game, &game->display.doors[i + game->display.vline].door, i + game->display.vline);
+					display_door_vline(game, &game->display.doors[i + game->display.vline], i + game->display.vline);
 					game->display.doors[i + game->display.vline].need_display = 0;
 				}
 				draw_sprite_vline(game, obj, i + game->display.vline, sprite_width);
 				if (game->display.doors[i + game->display.vline].door.dist < dist
 					&& game->display.doors[i + game->display.vline].need_display)
-					display_door_vline(game, &game->display.doors[i + game->display.vline].door, i + game->display.vline);
+					display_door_vline(game, &game->display.doors[i + game->display.vline], i + game->display.vline);
 			}
 		}
 		i++;
@@ -227,7 +229,7 @@ int	display_restof_doors(t_game *game)
 	while (++i < WIN_WIDTH)
 		if (game->display.doors[i].need_display)
 		{
-			display_door_vline(game, &game->display.doors[i].door, i);
+			display_door_vline(game, &game->display.doors[i], i);
 			game->display.doors[i].need_display = 0;
 		}
 	return (0);

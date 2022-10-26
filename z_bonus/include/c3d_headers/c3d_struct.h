@@ -304,8 +304,9 @@ typedef struct s_vector
 
 typedef struct s_door
 {
-	t_wall	door;
-	int		need_display;
+	t_wall		door;
+	int			need_display;
+	t_img_data	*img;
 }	t_door;
 
 

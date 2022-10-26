@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 11:53:11 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/26 16:03:34 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/26 16:38:41 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,13 @@ int	door_update(t_game *game, t_dict *dict, t_object *obj)
 	else
 	{
 		if (game->last_frame - obj->start_frame > obj->animation_duration)
-			obj->game_img = &obj->all_img[8];
+			obj->game_img = &obj->all_img[obj->nb_image - 1];
 		else
 		{
 			image_value = (game->last_frame - obj->start_frame)
 				/ (obj->animation_duration / obj->nb_image);
-			if (image_value > 8)
-				image_value = 8;
+			if (image_value > obj->nb_image - 1)
+				image_value = obj->nb_image - 1;
 			obj->game_img = &obj->all_img[image_value];
 		}
 	}

@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 20:12:58 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/26 16:07:03 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/26 17:06:10 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,27 @@ int	load_random_map(t_game *game, t_genparams *params)
 	return (get_maze(game, *params, &game->settings.seed, 0));
 }
 
+int	set_door_coord(char face, t_point *p)
+{
+	p->x = 0;
+	p->y = 0;
+	if (face == 'N')
+		p->y = -CASE_SIZE / 2;
+	else if (face == 'S')
+		p->y = CASE_SIZE / 2 - 1;
+	else if (face == 'E')
+		p->x = CASE_SIZE / 2 - 1;
+	else if (face == 'W')
+		p->x = -CASE_SIZE / 2;
+	return (0);
+}
+
 int	init_one_door(t_game *game, t_map *map, int i, int j)
 {
 	char	face;
 	int		error;
-	t_object	*door;
-
+	t_point	coord;
+	
 	if (map->map[j - 1][i] == '0' && (map->map[j - 1][i + 1] == '0' || map->map[j - 1][i - 1] == '0'))
 		face = 'N';
 	else if (map->map[j + 1][i] == '0' && (map->map[j + 1][i + 1] == '0' || map->map[j + 1][i - 1] == '0'))
@@ -54,13 +69,12 @@ int	init_one_door(t_game *game, t_map *map, int i, int j)
 		face = 'N';
 	else
 		face = 'W';
-	error = init_obj(game, DOOR, i * CASE_SIZE + CASE_SIZE / 2,
-		j * CASE_SIZE + CASE_SIZE / 2);
+	set_door_coord(face, &coord);
+	error = init_obj(game, DOOR, i * CASE_SIZE + CASE_SIZE / 2 + coord.x,
+		j * CASE_SIZE + CASE_SIZE / 2 + coord.y);
 	if (error)
 		return (error);
-	door = find_door(game, i, j);
-	if (door)
-		door->face = face;
+	find_door(game, i, j)->face = face;
 	return (0);
 }
 
@@ -80,8 +94,8 @@ int	get_all_doors(t_game *game, t_map *map)
 			if (map->map[j][i] == '2')
 				error = init_one_door(game, map, i, j);
 			if (map->map[j][i] == '3')
-				error = init_obj(game, ENDOOR, j * CASE_SIZE + CASE_SIZE / 2,
-						i * CASE_SIZE + CASE_SIZE / 2);
+				error = init_obj(game, ENDOOR, i * CASE_SIZE + CASE_SIZE / 2,
+						j * CASE_SIZE + CASE_SIZE / 2);
 			if (error)
 				return (error);
 			i++;

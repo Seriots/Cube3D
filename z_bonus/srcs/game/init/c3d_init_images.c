@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 10:51:50 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/26 13:24:52 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/26 16:37:08 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ static int	init_all_xpm_img(t_game *game)
 			&game->all_img.all_loading_img)
 		|| init_images_group(game, "imgs/xpm/number/number", 10,
 			&game->all_img.all_number_img)
-		|| init_images_group(game, "imgs/xpm/door/door", 9,
+		|| init_images_group(game, "imgs/xpm/door/door", 10,
 			&game->all_img.all_door_img))
 		return (1);
 	return (0);

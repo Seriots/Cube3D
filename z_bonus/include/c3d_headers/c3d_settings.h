@@ -58,7 +58,7 @@
 
 /*Door settings*/
 # define DOOR_DURATION 1000
-# define DOOR_NB_IMAGE 9
+# define DOOR_NB_IMAGE 10
 
 # define HAND_MOVEMENT_SPEED 0.15
 # define HAND_CENTER_SPEED 0.09
