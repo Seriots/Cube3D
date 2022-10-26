@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   c3d_raycasting_display.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ppajot <ppajot@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 10:41:24 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/19 17:40:13 by ppajot           ###   ########.fr       */
+/*   Updated: 2022/10/26 12:38:32 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,14 @@ int	shade_pixel(t_game *game, int color, double dist, t_point p)
 		light = min(light, 1);
 	}
 	else*/
-		light = 1.0;
+	if (dist > 1000)
+		light = 0.2;
+	else if (is_lamp(game))
+		light = game->lightmask[p.y][p.x] * (1 - (dist / 10.0) / 100.0);
+	else
+		light = 0.2;
+	if (light < 0.2)
+		light = 0.2;
 	r = light * ((color & 0xFF0000) >> 16);
 	g = light * ((color & 0X00FF00) >> 8);
 	b = light * (color & 0X0000FF);

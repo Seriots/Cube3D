@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 00:48:35 by pierre-yves       #+#    #+#             */
-/*   Updated: 2022/10/24 20:04:22 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/26 12:23:15 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 
 #include <stdio.h>
 
-int	start_draw_sprite_vline(t_game *game, t_img_data *img, int i, int width)
+int	start_draw_sprite_vline(t_game *game, t_object *obj, int i, int width)
 {
 	int				j;
 	t_point			p;
@@ -36,7 +36,7 @@ int	start_draw_sprite_vline(t_game *game, t_img_data *img, int i, int width)
 			continue ;
 		p.x = i - game->display.vline + width / 2;
 		p.y = j - game->display.min;
-		color = get_sprite_color(game, img, p, width);
+		color = get_sprite_color(game, obj, p, width);
 		if (color != 0xFF000000)
 			my_mlx_pixel_put(&game->all_img.screen_img, i, j, color);
 	}
@@ -81,7 +81,7 @@ int	start_display_sprite(t_game *game, t_object *obj, double dist, double angle)
 		if (i + game->display.vline >= 0 && i + game->display.vline < WIN_WIDTH)
 		{
 			if (game->display.wall_dist[i + game->display.vline] > dist)
-				start_draw_sprite_vline(game, obj->game_img,
+				start_draw_sprite_vline(game, obj,
 					i + game->display.vline, sprite_width);
 		}
 		i++;

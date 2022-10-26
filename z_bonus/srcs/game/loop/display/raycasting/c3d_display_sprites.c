@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 00:48:35 by pierre-yves       #+#    #+#             */
-/*   Updated: 2022/10/24 17:38:07 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/26 12:40:03 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,10 @@
 #include "c3d_settings.h"
 #include "c3d_loop.h"
 #include "c3d_utils.h"
+#include "c3d_object.h"
 
 #include "dict.h"
+#include "ft.h"
 
 #include "mlx.h"
 
@@ -26,27 +28,43 @@
 #define SPRITE_WIDTH 1 / 3
 #define	SPRITE_HEIGHT 1 / 2
 
-unsigned int	get_sprite_color(t_game *game, t_img_data *img, t_point p, int width)
+unsigned int	damaged_ghost(t_object *obj, unsigned int color)
+{
+	double	damage;
+	double	max;
+	int		r;
+
+	max = 100;
+	damage = obj->use_count / (double)obj->use_max * max;
+	
+	r = (int)(color >> 16) + (int)damage;
+	if (r > 255)
+		r = 255;
+	return ((r << 16) + (color & 0x00FF00) + (color & 0x0000FF));
+}
+
+unsigned int	get_sprite_color(t_game *game, t_object *obj, t_point p, int width)
 {
 	void	*color;
 	int		x;
 	int		y;
 
-	x = (p.x * img->width) / width;
-	y = (p.y * img->height) / (game->display.max - game->display.min);
-	color = (img->addr
-			+ (y * img->line_length
-				+ x * img->bits_per_pixel / 8));
-	return (*(unsigned int *)color);
-	//(void)game;
-	//(void)img;
-	//return (0xFFFFFF);
+	x = (p.x * obj->game_img->width) / width;
+	y = (p.y * obj->game_img->height) / (game->display.max - game->display.min);
+	color = (obj->game_img->addr
+			+ (y * obj->game_img->line_length
+				+ x * obj->game_img->bits_per_pixel / 8));
+	if (*(unsigned int *)color != 0xFF000000 && !ft_strcmp(obj->tag, GHOST))
+		return (damaged_ghost(obj, *(unsigned int *)color));
+	else
+		return (*(unsigned int *)color);
 }
 
-int draw_sprite_vline(t_game *game, t_img_data *img, int i, int width)
+int draw_sprite_vline(t_game *game, t_object *obj, int i, int width)
 {
 	int				j;
 	t_point			p;
+	t_point			p2;
 	unsigned int	color;
 
 	j = game->display.min - 1;
@@ -54,11 +72,13 @@ int draw_sprite_vline(t_game *game, t_img_data *img, int i, int width)
 	{
 		if (j < 0)
 			continue ;
+		p2.x = i;
+		p2.y = j;
 		p.x = i - game->display.vline + width / 2;
 		p.y = j - game->display.min;
-		color = get_sprite_color(game, img, p, width);
+		color = get_sprite_color(game, obj, p, width);
 		if (color != 0xFF000000)
-			my_mlx_pixel_put(&game->all_img.screen_img, i, j, color);
+			my_mlx_pixel_put(&game->all_img.screen_img, i, j, shade_pixel(game, color, obj->dist, p2));
 	}
 	return (0);
 }
@@ -85,7 +105,7 @@ int	display_sprite(t_game *game, t_object *obj, double dist, double angle)
 		{
 			//printf("line: %i\n", i + game->display.vline);
 			if (game->display.wall_dist[i + game->display.vline] > dist)
-				draw_sprite_vline(game, obj->game_img, i + game->display.vline, sprite_width);
+				draw_sprite_vline(game, obj, i + game->display.vline, sprite_width);
 		}
 		i++;
 	}

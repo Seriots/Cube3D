@@ -53,6 +53,7 @@ int		open_start_textures(t_game *game);
 int		init_images(t_game *game);
 
 /*Player*/
+int		init_lightmask(t_game *game);
 int		init_player(t_game *game, t_map *map, t_player *player, int first);
 
 /*Game*/

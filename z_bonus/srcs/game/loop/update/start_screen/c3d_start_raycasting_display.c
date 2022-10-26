@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 10:22:00 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/24 19:46:11 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/26 12:20:58 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,19 @@ static void	set_display(t_game *game, t_wall *wall, t_point p)
 	game->display.bpp = game->display.img->bits_per_pixel / 8;
 }
 
+int	get_pixel_color_start(t_game *game, t_wall *wall, t_point p, t_display *display)
+{
+	(void)wall;
+	(void)game;
+	if (p.y < display->min)
+		return (get_floor_color(p.y, display));
+	else if (p.y > display->max)
+		return (get_ceil_color(p.y, display));
+	else
+		return (get_wall_color(p.y, display));
+	return (0);
+}
+
 int	start_display_wall(t_game *game, t_wall *wall, int i)
 {
 	t_point		p;
@@ -72,7 +85,7 @@ int	start_display_wall(t_game *game, t_wall *wall, int i)
 	set_display(game, wall, p);
 	while (p.y < WIN_HEIGHT)
 	{
-		color = get_pixel_color(game, wall, p, &game->display);
+		color = get_pixel_color_start(game, wall, p, &game->display);
 		my_mlx_pixel_put(&game->all_img.screen_img,
 			p.x, p.y, get_color(game->settings.color, color));
 		p.y++;

@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 12:53:03 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/21 11:33:42 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/26 12:11:15 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int	startscreen_update(t_game *game)
 {
 	start_raycasting(game);
 	start_display_all_sprites(game);
-	draw_all_objects(game, game->start_menu.all_objects);
 	update_camera(game);
+	draw_all_objects(game, game->start_menu.all_objects);
 	return (0);
 }

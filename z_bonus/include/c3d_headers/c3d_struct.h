@@ -535,6 +535,7 @@ typedef struct s_game
 	int			level;
 	int			is_update;
 	int			is_display;
+	double		**lightmask;
 }	t_game;
 
 #endif

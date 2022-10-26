@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 11:13:57 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/25 13:27:10 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/26 12:59:00 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,20 @@ int	free_menu(t_menu *menu)
 	return (0);
 }
 
+int	ft_free_double_array(double **array, int height)
+{
+	int	i;
+
+	i = 0;
+	while (i < height && array[i])
+	{
+		free(array[i]);
+		i++;
+	}
+	free(array);
+	return (0);
+}
+
 void	free_game(t_game *game)
 {
 	system("pkill vlc");
@@ -114,6 +128,7 @@ void	free_game(t_game *game)
 		mlx_do_key_autorepeaton(game->mlx.display);
 	if (HIDE && game->mlx.display && game->mlx.window)
 		mlx_mouse_show(game->mlx.display, game->mlx.window);
+	ft_free_double_array(game->lightmask, WIN_HEIGHT);
 	free(game->settings.map_path);
 	free_images(game);
 	free_images2(game);

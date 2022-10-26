@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 23:43:59 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/25 00:09:41 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/26 11:02:00 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,16 +48,16 @@ int	move_ghost(t_game *game, t_object *obj)
 	dist_y = game->player.pos.y - obj->pos.y;
 	angle = atan(dist_y / dist_x);
 	if (dist_x < 0)
-		obj->pos.x -= (GHOST_SPEED + 0.03 * game->settings.difficulty
+		obj->pos.x -= (GHOST_SPEED + 0.015 * game->settings.difficulty
 			+ 0.005 * game->level) * game->delay * dabs(cos(angle));
 	else
-		obj->pos.x += (GHOST_SPEED + 0.03 * game->settings.difficulty
+		obj->pos.x += (GHOST_SPEED + 0.015 * game->settings.difficulty
 			+ 0.005 * game->level) * game->delay * dabs(cos(angle));
 	if (dist_y < 0)
-		obj->pos.y -= (GHOST_SPEED + 0.03 * game->settings.difficulty
+		obj->pos.y -= (GHOST_SPEED + 0.015 * game->settings.difficulty
 			+ 0.005 * game->level) * game->delay * dabs(sin(angle));
 	else
-		obj->pos.y += (GHOST_SPEED + 0.03 * game->settings.difficulty
+		obj->pos.y += (GHOST_SPEED + 0.015 * game->settings.difficulty
 			+ 0.005 * game->level) * game->delay * dabs(sin(angle));
 	ghost_touch_player(game, obj, dist_x, dist_y);
 	return (0);

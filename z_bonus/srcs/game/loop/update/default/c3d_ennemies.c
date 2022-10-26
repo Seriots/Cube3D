@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 19:11:05 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/25 13:30:53 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/26 12:56:07 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,28 @@
 
 #include <stdio.h>
 
+int	nb_ghost(t_dict *all_obj)
+{
+	int		count;
+	t_dict	*tmp;
+
+	count = 0;
+	tmp = all_obj;
+	while (tmp)
+	{
+		if (!ft_strcmp(tmp->key, GHOST))
+			count++;
+		tmp = tmp->next;
+	}
+	return (count);
+}
+
 int	do_spawn(t_game *game, int i, int is_spawn, t_point p)
 {
 	int	error;
 
-	if (is_spawn + (game->level * 6)
-		+ (game->settings.difficulty * game->level) > 4980)
+	if (is_spawn + (game->level * 6) + (game->settings.difficulty * game->level)
+		> 4980 && nb_ghost(game->map.all_objects) < 12)
 	{
 		while (1)
 		{
@@ -74,7 +90,7 @@ int	take_damage(t_game *game, t_object *obj, double angle)
 	float	damage;
 
 	dist = dist_to_obj(game->player.pos, obj->pos);
-	damage = game->player.damage + ((15 - ((angle * 15))) * (1000 - dist) / 100) / 2;
+	damage = game->player.damage + ((15 - ((angle * 15))) * (750 - dist) / 75) / 2;
 	if (damage < 0 || 1000 - dist < 0)
 		damage = 0;
 	obj->use_count += damage * game->delay / 50;

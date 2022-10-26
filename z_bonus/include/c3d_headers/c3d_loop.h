@@ -33,7 +33,7 @@ double			start_get_dist_obj(t_game *game, t_object *obj);
 int				update_camera(t_game *game);
 int				check_angle(double angle, double left_angle,
 					double right_angle);
-unsigned int	get_sprite_color(t_game *game, t_img_data *img,
+unsigned int	get_sprite_color(t_game *game, t_object *img,
 					t_point p, int width);
 int				start_display_all_sprites(t_game *game);
 int				start_intersect_wall(t_game *game, t_vector ray, t_wall *wall);
@@ -41,6 +41,10 @@ int				start_display_wall(t_game *game, t_wall *wall, int i);
 int				start_raycasting(t_game *game);
 
 /*Ray Casting*/
+int				shade_pixel(t_game *game, int color, double dist, t_point p);
+unsigned int	get_wall_color(int pixel, t_display *display);
+unsigned int	get_floor_color(int pixel, t_display *display);
+unsigned int	get_ceil_color(int pixel, t_display *display);
 int				is_lamp(t_game *game);
 int				set_dist(double *dist_x, double *dist_y, t_vector pre_pos);
 int				check_wall(t_game *game, t_map *map, t_vector vec,

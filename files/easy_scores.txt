@@ -1,12 +1,15 @@
+Seriots=29588
 Pascal=10093
 Edorad=7260
-Seriots=6198
 Test1=3396
+Poile=3074
 Pierre=2809
 Eudelelag=2524
 Chouette=2509
 la=2466
 bisounours=2358
+mirp=1380
+Pataat=730
 Default=560
 Segfault c chiant=550
 test2=480
