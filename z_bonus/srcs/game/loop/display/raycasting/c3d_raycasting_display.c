@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 10:41:24 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/26 18:53:36 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/27 12:20:42 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,51 +97,39 @@ int	shade_pixel(t_game *game, int color, double dist, t_point p)
 	int	b;
 	double	light;
 	(void)game;
-	//if (p.x == 500)
-	//	printf("dist: %f\n", dist);
-/*	if (is_lamp(game))
-	{
-		if (pow(p.x - WIN_WIDTH / 2, 2) + pow(p.y - WIN_HEIGHT / 2, 2) < 90000)
-		{
-			if (dist < 256)
-				light = 1 - dist / (2 * 256);
-			else
-				light = 1 / 2 - (dist - 256) / (2 * dist);
-			light = 1.0;
-		}
-		else
-			light = 0.2;
-		light = max(light, 0.1);
-		light = min(light, 1);
-	}
-	else*/
-	/*if (dist > 1000)
-		light = 0.2;
-	else if (is_lamp(game))
-		light = game->lightmask[p.y][p.x] * (1 - (dist / 10.0) / 100.0);
-	else
-		light = 0.2;
-	if (light < 0.2)
-		light = 0.2;*/
 	if (!is_lamp(game))
 		light = 0.15;
 	else
 	{
 		light = game->display.light_mask[p.y][p.x] * 2 / (dist * dist);
-		//if (light > 0.2)
-		//	light = light * 20000 / pow(dist, 2);
-		//light = max(light, 0.0);
-		//light = min(light, 0.85);
-		//light += 0.15;
-		//light *= game->display.light_mask[p.y][p.x];
 		light = max(light, 0.15);
-		light = min(light, 3);
+		light = min(light, 2);
 	}
 	r = min(255, light * ((color & 0xFF0000) >> 16));
 	g = min(255, light * ((color & 0X00FF00) >> 8));
 	b = min(255, light * (color & 0X0000FF));
 	return ((r << 16) | (g << 8) | b);
-	(void)dist;
+}
+
+int	shade_pixel_sprite(t_game *game, int color, double dist, t_point p)
+{
+	int	r;
+	int	g;
+	int	b;
+	double	light;
+	(void)game;
+	if (!is_lamp(game))
+		light = 0.15;
+	else
+	{
+		light = game->display.light_mask[p.y][p.x] * 1 / (dist * dist);
+		light = max(light, 0.15);
+		light = min(light, 1.0);
+	}
+	r = min(255, light * ((color & 0xFF0000) >> 16));
+	g = min(255, light * ((color & 0X00FF00) >> 8));
+	b = min(255, light * (color & 0X0000FF));
+	return ((r << 16) | (g << 8) | b);
 }
 
 int	get_pixel_color(t_game *game, t_wall *wall, t_point p, t_display *display)

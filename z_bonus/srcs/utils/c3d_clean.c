@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 11:13:57 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/26 12:59:00 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/27 12:13:19 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,7 +128,6 @@ void	free_game(t_game *game)
 		mlx_do_key_autorepeaton(game->mlx.display);
 	if (HIDE && game->mlx.display && game->mlx.window)
 		mlx_mouse_show(game->mlx.display, game->mlx.window);
-	ft_free_double_array(game->lightmask, WIN_HEIGHT);
 	free(game->settings.map_path);
 	free_images(game);
 	free_images2(game);

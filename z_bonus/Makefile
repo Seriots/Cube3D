@@ -59,7 +59,6 @@ define SRCS :=
 		game/init/c3d_init_menu.c
 		game/init/c3d_init_mlx.c
 		game/init/c3d_init_player.c
-		game/init/c3d_init_lightmask.c
 		game/init/c3d_init_scores.c
 		game/init/c3d_init_textures.c
 		game/init/c3d_load_screen.c
@@ -84,6 +83,8 @@ define SRCS :=
 		game/loop/display/raycasting/c3d_raycasting_display.c
 		game/loop/display/raycasting/c3d_raycasting_getwall.c
 		game/loop/display/raycasting/c3d_display_sprites.c
+		game/loop/display/raycasting/c3d_display_sprites2.c
+		game/loop/display/raycasting/c3d_display_doorsprites.c
 		game/loop/display/raycasting/c3d_raycasting.c
 		game/loop/update/default/c3d_default_update.c
 		game/loop/update/default/c3d_ennemies.c

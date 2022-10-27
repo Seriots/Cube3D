@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 10:22:00 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/26 12:20:58 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/27 12:41:38 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,8 @@ static void	set_display(t_game *game, t_wall *wall, t_point p)
 	game->display.bpp = game->display.img->bits_per_pixel / 8;
 }
 
-int	get_pixel_color_start(t_game *game, t_wall *wall, t_point p, t_display *display)
+int	get_pixel_color_start(t_game *game, t_wall *wall,
+		t_point p, t_display *display)
 {
 	(void)wall;
 	(void)game;

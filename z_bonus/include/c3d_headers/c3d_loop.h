@@ -41,6 +41,15 @@ int				start_display_wall(t_game *game, t_wall *wall, int i);
 int				start_raycasting(t_game *game);
 
 /*Ray Casting*/
+unsigned int	damaged_ghost(t_object *obj, unsigned int color);
+double			get_dist_obj(t_game *game, t_object *obj);
+int				get_all_obj_dist(t_game *game);
+unsigned int	get_door_color(t_game *game, t_img_data *img, int j);
+int				draw_door_vline(t_game *game, t_img_data *img, int i, double dist);
+int				display_door_vline(t_game *game, t_door *door, int i);
+void			display_all_door(t_game *game, t_point *p, double dist);
+int				shade_pixel_sprite(t_game *game, int color,
+					double dist, t_point p);
 int				shade_pixel(t_game *game, int color, double dist, t_point p);
 unsigned int	get_wall_color(int pixel, t_display *display);
 unsigned int	get_floor_color(int pixel, t_display *display);

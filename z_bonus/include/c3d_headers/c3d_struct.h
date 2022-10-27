@@ -309,7 +309,6 @@ typedef struct s_door
 	t_img_data	*img;
 }	t_door;
 
-
 typedef struct s_display
 {
 	double		min;
@@ -552,7 +551,6 @@ typedef struct s_game
 	int			level;
 	int			is_update;
 	int			is_display;
-	double		**lightmask;
 }	t_game;
 
 #endif
