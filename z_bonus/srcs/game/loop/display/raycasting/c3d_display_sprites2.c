@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 13:18:59 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/27 13:19:36 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/27 13:33:03 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ unsigned int	get_sprite_color(t_game *game, t_object *obj,
 	else
 		return (*(unsigned int *)color);
 }
-
 
 int	check_angle(double angle, double left_angle, double right_angle)
 {

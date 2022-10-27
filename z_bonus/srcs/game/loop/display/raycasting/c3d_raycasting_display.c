@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 10:41:24 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/27 12:20:42 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/27 13:38:53 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,12 +46,14 @@ unsigned int	get_wall_color(int pixel, t_display *display)
 	return (*(unsigned int *)(color));
 }
 
-unsigned int	get_floor_color(int pixel, t_display *display)
+unsigned int	get_floor_color(t_game *game, int pixel, t_display *display, int start)
 {
 	void	*color;
 	int		x;
 	int		y;
 
+	if (game->settings.show_fl_ce == 0 && !start)
+		return (game->map.f);
 	x = (int)(display->ray.x + display->fc_dist[pixel] * display->ray.angle.cos / display->angle);
 	y = (int)(display->ray.y - display->fc_dist[pixel] * display->ray.angle.sin / display->angle);
 	x = (x - (x / CASE_SIZE) * CASE_SIZE) * display->fl->width / CASE_SIZE;
@@ -62,12 +64,14 @@ unsigned int	get_floor_color(int pixel, t_display *display)
 	return (*(unsigned int *)(color));
 }
 
-unsigned int	get_ceil_color(int pixel, t_display *display)
+unsigned int	get_ceil_color(t_game *game, int pixel, t_display *display, int start)
 {
 	void	*color;
 	int		x;
 	int		y;
 
+	if (game->settings.show_fl_ce == 0 && !start)
+		return (game->map.c);
 	x = (int)(display->ray.x + display->fc_dist[pixel] * display->ray.angle.cos / display->angle);
 	y = (int)(display->ray.y - display->fc_dist[pixel] * display->ray.angle.sin / display->angle);
 	x = (x - (x / CASE_SIZE) * CASE_SIZE) * display->ce->width / CASE_SIZE;
@@ -135,9 +139,9 @@ int	shade_pixel_sprite(t_game *game, int color, double dist, t_point p)
 int	get_pixel_color(t_game *game, t_wall *wall, t_point p, t_display *display)
 {
 	if (p.y < display->min)
-		return (shade_pixel(game, get_floor_color(p.y, display), display->fc_dist[p.y], p));
+		return (shade_pixel(game, get_floor_color(game, p.y, display, 0), display->fc_dist[p.y], p));
 	else if (p.y > display->max)
-		return (shade_pixel(game, get_ceil_color(p.y, display), display->fc_dist[p.y], p));
+		return (shade_pixel(game, get_ceil_color(game, p.y, display, 0), display->fc_dist[p.y], p));
 	else
 		return (shade_pixel(game, get_wall_color(p.y, display), wall->dist, p));
 	return (0);

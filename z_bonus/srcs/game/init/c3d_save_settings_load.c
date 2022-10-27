@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 12:13:27 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/24 18:26:24 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/27 13:42:16 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ int	set_settings_2(t_game *game, char *key, char *value)
 	{VSHOWMINIMAP, &game->settings.show_mmap, si},
 	{VSHOWSEED, &game->settings.show_seed, si},
 	{VSHOWFPS, &game->settings.show_fps, si},
+	{VSHOWFLCE, &game->settings.show_fl_ce, si},
 	{VFL, &game->map.default_floor_path, ss},
 	{VCE, &game->map.default_ceil_path, ss},
 	{VFORWARD, &game->settings.forward, si},

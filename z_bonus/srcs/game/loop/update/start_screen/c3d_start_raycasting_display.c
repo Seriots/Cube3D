@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 10:22:00 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/27 12:41:38 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/27 13:38:23 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,9 +68,9 @@ int	get_pixel_color_start(t_game *game, t_wall *wall,
 	(void)wall;
 	(void)game;
 	if (p.y < display->min)
-		return (get_floor_color(p.y, display));
+		return (get_floor_color(game, p.y, display, 1));
 	else if (p.y > display->max)
-		return (get_ceil_color(p.y, display));
+		return (get_ceil_color(game, p.y, display, 1));
 	else
 		return (get_wall_color(p.y, display));
 	return (0);

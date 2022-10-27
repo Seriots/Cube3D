@@ -96,6 +96,7 @@ t_dict	*init_slot5_keyinput(t_game *game);
 t_dict	*init_slot6_keyinput(t_game *game);
 t_dict	*init_slot7_keyinput(t_game *game);
 t_dict	*init_slot8_keyinput(t_game *game);
+t_dict	*init_showflce_checkbox(t_game *game);
 
 /*Utils*/
 int		clear_all_other_selected(t_game *game, void *keyinput, t_dict *dict);

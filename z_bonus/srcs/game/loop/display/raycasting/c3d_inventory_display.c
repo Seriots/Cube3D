@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 13:18:11 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/13 12:50:07 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/27 13:33:35 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,10 @@ int	draw_image(t_game *game, int i, t_point p)
 	int	x;
 	int	y;
 
-	x = p.x + HOTBAR_CASE_SIZE / 2 - game->inventory.items[i]->menu_img->width / 2;
-	y = p.y + HOTBAR_CASE_SIZE / 2 - game->inventory.items[i]->menu_img->height / 2;
+	x = p.x + HOTBAR_CASE_SIZE / 2
+		- game->inventory.items[i]->menu_img->width / 2;
+	y = p.y + HOTBAR_CASE_SIZE / 2
+		- game->inventory.items[i]->menu_img->height / 2;
 	my_mlx_put_image_to_window(game, game->inventory.items[i]->menu_img, x, y);
 	return (0);
 }
@@ -81,7 +83,8 @@ int	draw_hotbar(t_game *game)
 	while (i < game->inventory.size)
 	{
 		draw_slot(game, p, game->inventory, i);
-		if (game->inventory.items[i] != NULL && game->inventory.items[i]->menu_img != NULL)
+		if (game->inventory.items[i] != NULL
+			&& game->inventory.items[i]->menu_img != NULL)
 			draw_image(game, i, p);
 		p.x += HOTBAR_CASE_SIZE;
 		i++;

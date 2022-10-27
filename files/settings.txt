@@ -15,6 +15,7 @@ invert_mouse=0
 show_fps=1
 show_minimap=1
 show_seed=0
+showflce=1
 north_image=imgs/xpm/wall/default_junglewood.xpm
 south_image=imgs/xpm/wall/default_junglewood.xpm
 west_image=imgs/xpm/wall/default_junglewood.xpm

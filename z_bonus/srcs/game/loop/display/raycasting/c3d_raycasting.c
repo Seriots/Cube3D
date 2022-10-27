@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 14:42:38 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/26 15:54:12 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/27 13:34:18 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,17 +26,14 @@ int	cast_ray(t_game *game, int i)
 	double		d;
 	t_vector	ray;
 	t_wall		wall;
-	double	t;
-	double	cost;
-	double	sint;
+	double		t;
+	double		cost;
+	double		sint;
 
 	d = (i - (double)WIN_WIDTH / 2.0) * (double)VIEW_WIDTH / (double)WIN_WIDTH;
 	t = -d / game->settings.fov;
-	//ray.angle.value = atan (-d / game->settings.fov) + game->player.plane.value;
 	cost = 1 / sqrt(1 + pow(t, 2));
 	sint = t * cost;
-	//ray.angle.cos = cos(ray.angle.value);
-	//ray.angle.sin = sin(ray.angle.value);
 	ray.angle.cos = cost * game->player.plane.cos - sint * game->player.plane.sin;
 	ray.angle.sin = sint * game->player.plane.cos + cost * game->player.plane.sin;
 	ray.angle.tan = ray.angle.sin / ray.angle.cos;
@@ -67,7 +64,6 @@ int	fill_fc_dist(t_game *game)
 			game->display.fc_dist[i] = (CASE_SIZE / 2 - game->player.z + dx) * game->settings.fov / (game->player.z - game->player.updown - dx);
 		else
 			game->display.fc_dist[i] = (CASE_SIZE / 2 + game->player.z - dx) * game->settings.fov / (-game->player.z + game->player.updown + dx);
-		//printf("dx: %f, i: %i, dist: %f\n", dx, i, game->display.fc_dist[i]);
 		i++;
 	}
 	game->display.ce = &game->all_img.ce;
