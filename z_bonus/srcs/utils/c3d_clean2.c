@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 15:47:42 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/27 12:33:13 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/27 21:53:05 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,21 +90,11 @@ void	free_images2(t_game *game)
 		mlx_destroy_image(game->mlx.display, game->all_img.endoor.img);
 	if (game->all_img.logo.img)
 		mlx_destroy_image(game->mlx.display, game->all_img.logo.img);
-	if (game->all_img.all_cursor_img)
-		free_img_array(game, &game->all_img.all_cursor_img, 8);
-	if (game->all_img.all_number_img)
-		free_img_array(game, &game->all_img.all_number_img, 10);
 	free_object(game, game->all_img.omap);
 }
 
 void	free_images(t_game *game)
 {
-	if (game->all_img.all_ghost_img)
-		free_img_array(game, &game->all_img.all_ghost_img, 16);
-	if (game->all_img.all_loading_img)
-		free_img_array(game, &game->all_img.all_loading_img, 15);
-	if (game->all_img.all_door_img)
-		free_img_array(game, &game->all_img.all_door_img, 10);
 	if (game->all_img.start_no.img)
 		mlx_destroy_image(game->mlx.display, game->all_img.start_no.img);
 	if (game->all_img.start_so.img)

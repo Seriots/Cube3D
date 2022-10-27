@@ -43,9 +43,6 @@ int	set_inventory(t_game *game)
 	elem = dict_get_last(game->map.all_objects);
 	if (elem && ft_strcmp(elem->key, LAMP) == 0)
 		add_items(game, &game->inventory, elem->value);
-	elem = dict_getelem_key(game->map.all_objects, KEY);
-	if (elem && ft_strcmp(elem->key, KEY) == 0)
-		add_items(game, &game->inventory, elem->value);
 	return (0);
 }
 

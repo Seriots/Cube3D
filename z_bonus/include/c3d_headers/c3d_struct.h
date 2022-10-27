@@ -25,6 +25,7 @@
 
 typedef struct s_game	t_game;
 
+
 typedef struct s_objinit
 {
 	char	*tag;
@@ -302,6 +303,14 @@ typedef struct s_vector
 	double	y;
 	t_angle	angle;
 }	t_vector;
+
+typedef struct s_intwall
+{
+	t_vector	next_inter;
+	char		is_wall;
+	int			i;
+	int			j;
+}	t_intwall;
 
 typedef struct s_door
 {

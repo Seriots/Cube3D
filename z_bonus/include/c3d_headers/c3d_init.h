@@ -60,6 +60,8 @@ int		init_player(t_game *game, t_map *map, t_player *player, int first);
 int		init_game(t_game *game, char *path);
 
 /*Start map*/
+int		init_all_map_parameters(t_game *game, int first);
+int		get_all_doors(t_game *game, t_map *map);
 int		init_start_map(t_game *game);
 
 /*Mlx*/

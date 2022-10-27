@@ -41,6 +41,7 @@ int				start_display_wall(t_game *game, t_wall *wall, int i);
 int				start_raycasting(t_game *game);
 
 /*Ray Casting*/
+int				display_wall_loop(t_game *game, t_wall *wall, t_point p);
 unsigned int	damaged_ghost(t_object *obj, unsigned int color);
 double			get_dist_obj(t_game *game, t_object *obj);
 int				get_all_obj_dist(t_game *game);

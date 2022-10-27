@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 20:12:58 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/26 18:09:37 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/27 22:04:22 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,22 +58,22 @@ int	init_one_door(t_game *game, t_map *map, int i, int j)
 	char	face;
 	int		error;
 	t_point	coord;
-	
-	if (map->map[j - 1][i] == '0' && (map->map[j - 1][i + 1] == '0' || map->map[j - 1][i - 1] == '0'))
+
+	if ((map->map[j - 1][i] == '0' && (map->map[j - 1][i + 1] == '0'
+		|| map->map[j - 1][i - 1] == '0')) || map->map[j - 1][i] == '0'
+		|| map->map[j + 1][i] == '0')
 		face = 'N';
-	else if (map->map[j + 1][i] == '0' && (map->map[j + 1][i + 1] == '0' || map->map[j + 1][i - 1] == '0'))
+	else if (map->map[j + 1][i] == '0' && (map->map[j + 1][i + 1] == '0'
+		|| map->map[j + 1][i - 1] == '0'))
 		face = 'S';
-	else if (map->map[j][i - 1] == '0' && (map->map[j - 1][i - 1] == '0' || map->map[j + 1][i - 1] == '0'))
-		face = 'W';
-	else if (map->map[j][i + 1] == '0' && (map->map[j - 1][i + 1] == '0' || map->map[j + 1][i + 1] == '0'))
+	else if (map->map[j][i + 1] == '0' && (map->map[j - 1][i + 1] == '0'
+		|| map->map[j + 1][i + 1] == '0'))
 		face = 'E';
-	else if (map->map[j - 1][i] == '0' || map->map[j + 1][i] == '0')
-		face = 'N';
 	else
 		face = 'W';
 	set_door_coord(face, &coord);
 	error = init_obj(game, DOOR, i * CASE_SIZE + CASE_SIZE / 2 + coord.x,
-		j * CASE_SIZE + CASE_SIZE / 2 + coord.y);
+			j * CASE_SIZE + CASE_SIZE / 2 + coord.y);
 	if (error)
 		return (error);
 	find_door(game, i, j)->face = face;
@@ -104,84 +104,6 @@ int	get_all_doors(t_game *game, t_map *map)
 		}
 		j++;
 	}
-	return (0);
-}
-
-int	init_map_objects(t_game *game, t_map *map)
-{
-	int	error;
-
-	(void)map;
-	error = init_obj(game, LAMP, 0, 0);
-	if (error)
-		return (error);
-	return (0);
-}
-
-double	get_light_value(int i, int j)
-{
-	double	dist_center;
-
-	dist_center = sqrt(pow(i - WIN_WIDTH / 2, 2) + pow(j - WIN_HEIGHT / 2, 2));
-	if (dist_center > 400)
-		return (0.0);
-	if (dist_center < 0)
-		return (1);
-	return (1 - (1 - 0.0) * sqrt((dist_center - 0) / (400)));
-}
-
-int	init_light(t_display *display)
-{
-	int	j;
-	int	i;
-
-	j = -1;
-	while (++j < WIN_HEIGHT)
-	{
-		i = -1;
-		while (++i < WIN_WIDTH)
-			display->light_mask[j][i] = 80000 * pow(get_light_value(i, j), 2);
-	}
-	return (0);
-}
-
-int	init_display(t_display *display)
-{
-	int	j;
-
-	display->doors = ft_calloc(sizeof(t_door), 20);
-	if (!display->doors)
-		return (10);
-	j = -1;
-	while (++j < 20)
-	{
-		display->doors[j] = ft_calloc(sizeof(t_door), WIN_WIDTH + 1);
-		if (!display->doors[j])
-			return (10);
-	}
-	init_light(display);
-	return (0);
-}
-
-int	init_all_map_parameters(t_game *game, int first)
-{
-	int	error;
-
-	error = get_all_doors(game, &game->map);
-	if (error)
-		return (error);
-	error = init_map_objects(game, &game->map);
-	if (error)
-		return (error);
-	error = init_player(game, &game->map, &game->player, first);
-	if (error)
-		return (error);
-	error = open_textures(game, &game->map);
-	if (error)
-		return (error);
-	error = init_display(&game->display);
-	if (error)
-		return (error);
 	return (0);
 }
 

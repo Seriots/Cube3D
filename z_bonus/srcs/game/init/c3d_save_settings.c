@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 11:29:25 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/27 13:42:30 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/27 22:08:40 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ void	save_color(int fd, char *key, int value)
 
 int	save_settings2(t_game *game, int fd)
 {
+	save_int(fd, VSHOWFLCE, (int)game->settings.show_fl_ce);
 	save_str(fd, VNO, game->map.no);
 	save_str(fd, VSO, game->map.so);
 	save_str(fd, VWE, game->map.we);
@@ -94,7 +95,6 @@ int	save_settings(t_game *game)
 	save_int(fd, VSHOWFPS, (int)game->settings.show_fps);
 	save_int(fd, VSHOWMINIMAP, (int)game->settings.show_mmap);
 	save_int(fd, VSHOWSEED, (int)game->settings.show_seed);
-	save_int(fd, VSHOWFLCE, (int)game->settings.show_fl_ce);
 	save_settings2(game, fd);
 	close(fd);
 	return (0);

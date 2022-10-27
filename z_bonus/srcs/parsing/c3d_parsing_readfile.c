@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 14:17:54 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/27 12:28:31 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/27 21:56:04 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static int	get_all_elem(t_game *game, t_map *map, char **line)
 		free(*line);
 		*line = NULL;
 		if (error)
-			return ( error);
+			return (error);
 	}
 	return (0);
 }

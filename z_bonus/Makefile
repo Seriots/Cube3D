@@ -81,8 +81,10 @@ define SRCS :=
 		game/loop/display/raycasting/c3d_default_display.c
 		game/loop/display/raycasting/c3d_hand_display.c
 		game/loop/display/raycasting/c3d_inventory_display.c
+		game/loop/display/raycasting/c3d_raycasting_display_wall.c
 		game/loop/display/raycasting/c3d_raycasting_display.c
 		game/loop/display/raycasting/c3d_raycasting_getwall.c
+		game/loop/display/raycasting/c3d_raycasting_checkwall.c
 		game/loop/display/raycasting/c3d_display_show.c
 		game/loop/display/raycasting/c3d_display_sprites.c
 		game/loop/display/raycasting/c3d_display_sprites2.c
@@ -163,6 +165,7 @@ define SRCS :=
 		menu/start/c3d_button_score.c
 		menu/start/c3d_seed.c
 		menu/start/c3d_start_map.c
+		menu/start/c3d_startinit_map.c
 		menu/start/c3d_mapinput_mappath.c
 		menu/end/c3d_button_retry.c
 		menu/end/c3d_button_main_menu.c
@@ -181,11 +184,13 @@ define SRCS :=
 		parsing/c3d_parsing.c
 		utils/c3d_clean.c
 		utils/c3d_clean2.c
+		utils/c3d_clean3.c
 		utils/c3d_color.c
 		utils/c3d_error.c
 		utils/c3d_event_utils.c
 		utils/c3d_objects_utils.c
 		utils/c3d_game_error.c
+		utils/c3d_ghost_utils.c
 		utils/c3d_score_utils.c
 		utils/c3d_init_image.c
 		utils/c3d_inventory_utils.c
