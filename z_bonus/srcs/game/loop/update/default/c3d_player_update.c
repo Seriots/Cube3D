@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 10:38:52 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/21 16:47:27 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/28 00:03:22 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,21 +21,41 @@
 
 #include <stdio.h>
 
+int	nb_touch_pressed(t_game *game)
+{
+	int	n;
+
+	n = 0;
+	if (game->player.left)
+		n++;
+	if (game->player.right)
+		n++;
+	if (game->player.forward)
+		n++;
+	if (game->player.backward)
+		n++;
+	if (game->player.right && game->player.left)
+		n -= 2;
+	if (game->player.backward && game->player.forward)
+		n -= 2;
+	return (n);
+}
+
 int	apply_movement(t_game *game, double *mov_x, double *mov_y)
 {
-	if (game->player.left == 1)
+	if (game->player.left >= 1)
 	{
-		*mov_y -= (game->player.speed * game->delay * game->player.plane.cos)
-			/ 2.0;
-		*mov_x -= (game->player.speed * game->delay * game->player.plane.sin)
-			/ 2.0;
+		*mov_y -= ((game->player.speed * game->delay * game->player.plane.cos)
+			/ 2.0) / nb_touch_pressed(game);
+		*mov_x -= ((game->player.speed * game->delay * game->player.plane.sin)
+			/ 2.0) / nb_touch_pressed(game);
 	}
-	else if (game->player.right == 1)
+	if (game->player.right >= 1)
 	{
-		*mov_y += (game->player.speed * game->delay * game->player.plane.cos)
-			/ 2.0;
-		*mov_x += (game->player.speed * game->delay * game->player.plane.sin)
-			/ 2.0;
+		*mov_y += ((game->player.speed * game->delay * game->player.plane.cos)
+			/ 2.0) / nb_touch_pressed(game);
+		*mov_x += ((game->player.speed * game->delay * game->player.plane.sin)
+			/ 2.0) / nb_touch_pressed(game);
 	}
 	return (0);
 }
@@ -49,17 +69,19 @@ int	get_movement(t_game *game, double *mov_x, double *mov_y)
 		game->player.speed *= RUN_SPEED_FACTOR;
 	*mov_x = 0;
 	*mov_y = 0;
-	if (game->player.forward == 1)
+	if (game->player.forward >= 1)
 	{
-		*mov_y -= (game->player.speed * game->delay * game->player.plane.sin);
-		*mov_x += (game->player.speed * game->delay * game->player.plane.cos);
+		*mov_y -= (game->player.speed * game->delay * game->player.plane.sin)
+			/ nb_touch_pressed(game);
+		*mov_x += (game->player.speed * game->delay * game->player.plane.cos)
+			/ nb_touch_pressed(game);
 	}
-	else if (game->player.backward == 1)
+	if (game->player.backward >= 1)
 	{
-		*mov_y += (game->player.speed * game->delay * game->player.plane.sin)
-			/ 2.0;
-		*mov_x -= (game->player.speed * game->delay * game->player.plane.cos)
-			/ 2.0;
+		*mov_y += ((game->player.speed * game->delay * game->player.plane.sin)
+			/ 2.0) / nb_touch_pressed(game);
+		*mov_x -= ((game->player.speed * game->delay * game->player.plane.cos)
+			/ 2.0) / nb_touch_pressed(game);
 	}
 	apply_movement(game, mov_x, mov_y);
 	return (0);
