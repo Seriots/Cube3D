@@ -59,7 +59,6 @@ define SRCS :=
 		game/init/c3d_init_menu.c
 		game/init/c3d_init_mlx.c
 		game/init/c3d_init_player.c
-		game/init/c3d_init_lightmask.c
 		game/init/c3d_init_scores.c
 		game/init/c3d_init_textures.c
 		game/init/c3d_load_screen.c
@@ -78,12 +77,16 @@ define SRCS :=
 		game/loop/display/start_screen/c3d_startscreen_display.c
 		game/loop/display/score/c3d_score_display.c
 		game/loop/display/raycasting/c3d_bar_display.c
+		game/loop/display/raycasting/c3d_bar_display2.c
 		game/loop/display/raycasting/c3d_default_display.c
 		game/loop/display/raycasting/c3d_hand_display.c
 		game/loop/display/raycasting/c3d_inventory_display.c
 		game/loop/display/raycasting/c3d_raycasting_display.c
 		game/loop/display/raycasting/c3d_raycasting_getwall.c
+		game/loop/display/raycasting/c3d_display_show.c
 		game/loop/display/raycasting/c3d_display_sprites.c
+		game/loop/display/raycasting/c3d_display_sprites2.c
+		game/loop/display/raycasting/c3d_display_doorsprites.c
 		game/loop/display/raycasting/c3d_raycasting.c
 		game/loop/update/default/c3d_default_update.c
 		game/loop/update/default/c3d_ennemies.c
@@ -122,6 +125,7 @@ define SRCS :=
 		menu/settings/c3d_checkbox_showfps.c
 		menu/settings/c3d_checkbox_showmmap.c
 		menu/settings/c3d_checkbox_showseed.c
+		menu/settings/c3d_checkbox_isfloorceil.c
 		menu/settings/c3d_keyinput_backward.c
 		menu/settings/c3d_keyinput_drop.c
 		menu/settings/c3d_keyinput_run.c

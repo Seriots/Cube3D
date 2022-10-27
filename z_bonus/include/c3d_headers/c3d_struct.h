@@ -218,6 +218,7 @@ typedef struct s_settings
 	bool			show_fps;
 	bool			show_mmap;
 	bool			show_seed;
+	bool			show_fl_ce;
 	int				difficulty;
 	char			*map_path;
 	unsigned long	seed;
@@ -308,7 +309,6 @@ typedef struct s_door
 	int			need_display;
 	t_img_data	*img;
 }	t_door;
-
 
 typedef struct s_display
 {
@@ -552,7 +552,6 @@ typedef struct s_game
 	int			level;
 	int			is_update;
 	int			is_display;
-	double		**lightmask;
 }	t_game;
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 19:11:05 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/26 12:56:07 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/27 12:42:59 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,10 @@ int	nb_ghost(t_dict *all_obj)
 	return (count);
 }
 
-int	do_spawn(t_game *game, int i, int is_spawn, t_point p)
+int	do_spawn(t_game *game, int i, int is_spawn)
 {
-	int	error;
+	int		error;
+	t_point	p;
 
 	if (is_spawn + (game->level * 6) + (game->settings.difficulty * game->level)
 		> 4980 && nb_ghost(game->map.all_objects) < 12)
@@ -65,7 +66,6 @@ int	do_spawn(t_game *game, int i, int is_spawn, t_point p)
 
 int	spawn_ennemies(t_game *game)
 {
-	t_point	p;
 	int		is_spawn;
 	int		i;
 	int		j;
@@ -76,7 +76,7 @@ int	spawn_ennemies(t_game *game)
 	{
 		is_spawn = rand() % 5000;
 		i = 0;
-		error = do_spawn(game, i, is_spawn, p);
+		error = do_spawn(game, i, is_spawn);
 		if (error)
 			return (error);
 		j++;
@@ -90,7 +90,8 @@ int	take_damage(t_game *game, t_object *obj, double angle)
 	float	damage;
 
 	dist = dist_to_obj(game->player.pos, obj->pos);
-	damage = game->player.damage + ((15 - ((angle * 15))) * (750 - dist) / 75) / 2;
+	damage = game->player.damage + ((15 - ((angle * 15)))
+			* (750 - dist) / 75) / 2;
 	if (damage < 0 || 1000 - dist < 0)
 		damage = 0;
 	obj->use_count += damage * game->delay / 50;

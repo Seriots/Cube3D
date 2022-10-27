@@ -39,7 +39,7 @@ int				ssn(void *ptr, char *value);
 unsigned int	get_color(int color_settings, unsigned int color);
 
 /*Doors*/
-t_object	*find_door(t_game *game, int i, int j);
+t_object		*find_door(t_game *game, int i, int j);
 
 /*Math*/
 int				is_in_circle(int x, int y, unsigned int color);

@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 11:53:11 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/26 16:38:41 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/27 12:40:02 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,6 @@ int	init_door(t_game *game, t_object **obj)
 	(*obj)->face = 0;
 	(*obj)->use_count = 0;
 	(*obj)->use_max = 1;
-	(*obj)->is_visible = 0;
-	(*obj)->is_collide = 0;
 	(*obj)->start_frame = game->last_frame;
 	(*obj)->nb_image = DOOR_NB_IMAGE;
 	(*obj)->animation_duration = DOOR_DURATION;

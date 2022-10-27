@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 11:59:11 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/24 11:39:28 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/27 13:41:50 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@
 # define VINVERT_MOUSE "invert_mouse"
 # define VSHOWFPS "show_fps"
 # define VSHOWMINIMAP "show_minimap"
+# define VSHOWFLCE "showflce"
 # define VSHOWSEED "show_seed"
 # define VNO "north_image"
 # define VSO "south_image"
