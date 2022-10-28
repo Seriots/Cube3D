@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   c3d_player_collide.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
+/*   By: pierre-yves <pierre-yves@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 11:42:39 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/26 15:17:54 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/28 06:43:25 by pierre-yves      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,38 +69,60 @@ int	get_new_wall(t_game *game, t_vector player, t_wall *wall, int i)
 	return (0);
 }
 
+int	check_angle(double angle, double playerangle)
+{
+	if (angle - playerangle < M_PI_2 && angle - playerangle > -M_PI_2)
+		return (1);
+	if (angle + 2 * M_PI - playerangle < M_PI_2 && angle + 2 * M_PI - playerangle > -M_PI_2)
+		return (1);
+	if (angle - 2 * M_PI- playerangle < M_PI_2 && angle - 2 * M_PI- playerangle > -M_PI_2)
+		return (1);
+	return (0);
+}
+
+int	get_corner_dist(t_game *game, double dist)
+{
+	int	i;
+	int	j;
+	double	angle1;
+	double	angle2;
+	double	angle3;
+	double	angle4;
+
+	i = game->player.pos.x / CASE_SIZE;
+	j = game->player.pos.y / CASE_SIZE;
+	angle1 = atan(((j + 1) * CASE_SIZE - game->player.pos.y) / (i * CASE_SIZE - game->player.pos.x)) + M_PI;
+	angle2 = atan(((j) * CASE_SIZE - game->player.pos.y) / (i * CASE_SIZE - game->player.pos.x)) + M_PI;
+	angle3 = atan(((j + 1) * CASE_SIZE - game->player.pos.y) / ((i + 1) * CASE_SIZE - game->player.pos.x));
+	angle4 = atan(((j) * CASE_SIZE - game->player.pos.y) / ((i + 1) * CASE_SIZE - game->player.pos.x));
+	if (check_angle(angle1, game->player.plane.value) && dist >)
+}
+
 int	check_collide(t_game *game, t_coord mov)
 {
-	t_wall		wall;
-	t_wall		wall2;
+	t_wall		wallh;
+	t_wall		wallv;
 	t_vector	player;
 
 	if (mov.x == 0 && mov.y == 0)
 		return (0);
-	if (mov.y > 0)
-		player.angle.value = 2 * M_PI
-			- acos(mov.x / norm((double)mov.x, (double)mov.y));
-	else
-		player.angle.value = acos(mov.x / norm((double)mov.x, (double)mov.y));
-	player.angle.cos = cos(player.angle.value);
-	player.angle.sin = sin(player.angle.value);
+	player.x = game->player.pos.x;
+	player.y = game->player.pos.y;
+	player.angle.value = M_PI_2 - sign(mov.x) * M_PI_2;
+	player.angle.cos = sign(mov.x);
+	player.angle.sin = 0;
+	player.angle.tan = 0;
+	get_new_wall(game, player, &wallh, WIN_WIDTH);
+	player.angle.value = M_PI + sign(mov.y) * M_PI_2;
+	player.angle.cos = 0;
+	player.angle.sin = -sign(mov.y);
 	player.angle.tan = player.angle.sin / player.angle.cos;
-	player.x = game->player.pos.x + VIEW_WIDTH
-		* player.angle.sin / 2;
-	player.y = game->player.pos.y + VIEW_WIDTH
-		* player.angle.cos / 2;
-	get_new_wall(game, player, &wall, WIN_WIDTH);
-	player.x = player.x - VIEW_WIDTH
-		* sin(game->player.plane.value);
-	player.y = player.y - VIEW_WIDTH
-		* cos(game->player.plane.value);
-	get_new_wall(game, player, &wall2, WIN_WIDTH);
-	//printf("face: %c, face2: %c\n", wall.face, wall2.face);
-	if (min(wall.dist, wall2.dist) == wall2.dist)
-	{
-		wall.dist = wall2.dist;
-		wall.face = wall2.face;
-	}
-	apply_collide(game, wall, mov);
+	get_new_wall(game, player, &wallv, WIN_WIDTH);
+	if (wallh.dist - CASE_SIZE / 4 < dabs(mov.x))
+		mov.x = pure_sign(mov.x) * (wallh.dist - CASE_SIZE / 4);
+	if (wallv.dist - CASE_SIZE / 4 < dabs(mov.y))
+		mov.y = pure_sign(mov.y) * (wallv.dist - CASE_SIZE / 4);
+	game->player.pos.x += mov.x;
+	game->player.pos.y += mov.y;
 	return (0);
 }
