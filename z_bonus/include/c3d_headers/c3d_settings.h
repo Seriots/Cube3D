@@ -116,7 +116,7 @@
 
 /*WIN WIDTH / 2*/
 # define START_MENU_ERROR_X 640 
-# define START_MENU_ERROR_Y 150
+# define START_MENU_ERROR_Y 250
 
 /*WIN WIDTH / 2*/
 # define MENU_ERROR_X 640
