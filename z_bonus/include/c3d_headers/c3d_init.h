@@ -57,6 +57,7 @@ int		init_lightmask(t_game *game);
 int		init_player(t_game *game, t_map *map, t_player *player, int first);
 
 /*Game*/
+int		init_display(t_display *display);
 int		init_game(t_game *game, char *path);
 
 /*Start map*/

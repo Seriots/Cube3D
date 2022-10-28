@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 13:17:26 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/27 12:14:41 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/28 12:09:01 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,8 @@ static int	set_default_settings(t_game *game, char *path)
 	ft_strlcpy(game->map.default_south, DEFAULT_IMAGE_PATH_SO, 256);
 	ft_strlcpy(game->map.default_west, DEFAULT_IMAGE_PATH_WE, 256);
 	ft_strlcpy(game->map.default_east, DEFAULT_IMAGE_PATH_EA, 256);
-	ft_strlcpy(game->map.default_floor_path, DEFAULT_IMAGE_PATH_WE, 256);
-	ft_strlcpy(game->map.default_ceil_path, DEFAULT_IMAGE_PATH_WE, 256);
+	ft_strlcpy(game->map.default_floor_path, DEFAULT_IMAGE_PATH_FL, 256);
+	ft_strlcpy(game->map.default_ceil_path, DEFAULT_IMAGE_PATH_CE, 256);
 	ft_strlcpy(game->settings.name, "Default", 20);
 	game->settings.map_path = ft_strdup(path);
 	if (path && !game->settings.map_path)
@@ -133,6 +133,9 @@ int	init_game(t_game *game, char *path)
 	if (error)
 		return (error);
 	error = init_menu(game);
+	if (error)
+		return (error);
+	error = init_display(&game->display);
 	if (error)
 		return (error);
 	error = init_all_highscores(game);

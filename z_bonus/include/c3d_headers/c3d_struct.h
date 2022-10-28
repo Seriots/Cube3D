@@ -25,7 +25,6 @@
 
 typedef struct s_game	t_game;
 
-
 typedef struct s_objinit
 {
 	char	*tag;
@@ -331,7 +330,7 @@ typedef struct s_display
 	double		doorangle;
 	double		fc_dist[WIN_HEIGHT];
 	double		wall_dist[WIN_WIDTH];
-	double		light_mask[WIN_HEIGHT][WIN_WIDTH];
+	double		**light_mask;
 	t_door		**doors;
 	t_vector	ray;	
 	t_img_data	*img;

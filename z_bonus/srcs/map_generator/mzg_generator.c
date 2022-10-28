@@ -6,21 +6,22 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 11:05:33 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/24 20:13:29 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/28 11:05:28 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <stdio.h>
-#include <time.h>
-#include <sys/types.h>
-#include <unistd.h>
+#include "mzg_incs.h"
+#include "c3d_parsing.h"
 
 #include "mlx.h"
 #include "ft.h"
 
-#include "mzg_incs.h"
-#include "c3d_parsing.h"
+#include <stdlib.h>
+#include <time.h>
+#include <sys/types.h>
+#include <unistd.h>
+
+#include <stdio.h>
 
 /*
 * Parmaeters:
@@ -122,7 +123,7 @@ int	gen_maze(t_game *game, int width, int height, int door)
 	make_door(game->map.map, width, height, door);
 	open_maze(game->map.map, width, height);
 	clean_maze(game->map.map, width, height);
-	generate_player(&game->map, width, height);
+	generate_player(game, width, height);
 	error = generate_key(game, width, height, door);
 	if (error)
 		return (error);

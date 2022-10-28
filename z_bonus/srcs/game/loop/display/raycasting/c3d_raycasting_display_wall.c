@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 21:08:53 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/27 21:10:09 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/28 12:02:09 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,10 +69,10 @@ int	shade_pixel_sprite(t_game *game, int color, double dist, t_point p)
 int	get_pixel_color(t_game *game, t_wall *wall, t_point p, t_display *display)
 {
 	if (p.y < display->min)
-		return (shade_pixel(game, get_floor_color(game, p.y, display, 0),
+		return (shade_pixel(game, get_ceil_color(game, p.y, display, 0),
 				display->fc_dist[p.y], p));
 	else if (p.y > display->max)
-		return (shade_pixel(game, get_ceil_color(game, p.y, display, 0),
+		return (shade_pixel(game, get_floor_color(game, p.y, display, 0),
 				display->fc_dist[p.y], p));
 	else
 		return (shade_pixel(game, get_wall_color(p.y, display), wall->dist, p));

@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 19:11:05 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/27 12:42:59 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/28 10:53:33 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	do_spawn(t_game *game, int i, int is_spawn)
 	t_point	p;
 
 	if (is_spawn + (game->level * 6) + (game->settings.difficulty * game->level)
-		> 4980 && nb_ghost(game->map.all_objects) < 12)
+		> 8980 && nb_ghost(game->map.all_objects) < 12)
 	{
 		while (1)
 		{
@@ -74,7 +74,7 @@ int	spawn_ennemies(t_game *game)
 	j = 0;
 	while (j < game->delay / 20)
 	{
-		is_spawn = rand() % 5000;
+		is_spawn = rand() % 9000;
 		i = 0;
 		error = do_spawn(game, i, is_spawn);
 		if (error)

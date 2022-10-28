@@ -67,6 +67,8 @@ void			display_error_on_screen(t_game *game, char *err, int x, int y);
 int				display_error(int code);
 
 /*Free*/
+int				free_doors(t_game *game);
+void			free_lightmask(double **array);
 void			dict_clear_with_inventory(t_game *game, t_dict **dict);
 void			free_map_with_inventory(t_game *game, t_map *map);
 void			free_textures(t_game *game, t_all_img *all_img);
@@ -74,7 +76,7 @@ void			free_img_array(t_game *game, t_img_data **imgs_ptr, int number);
 void			free_images(t_game *game);
 void			free_images2(t_game *game);
 void			free_images3(t_game *game);
-void			free_map(t_map *map);
+void			free_map(t_game *game, t_map *map);
 void			free_game(t_game *game);
 
 #endif

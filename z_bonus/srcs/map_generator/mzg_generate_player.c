@@ -6,13 +6,14 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 12:17:42 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/24 20:45:19 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/28 11:06:27 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
 #include "c3d_struct.h"
+#include "mzg_incs.h"
 
 #include "ft.h"
 
@@ -99,11 +100,12 @@ char	make_exit(t_map *map, int width, int height, char c)
 	return (c);
 }
 
-int	generate_player(t_map *map, int width, int height)
+int	generate_player(t_game *game, int width, int height)
 {
 	char	c;
 
-	c = make_player(map, width, height);
-	make_exit(map, width, height, c);
+	c = make_player(&game->map, width, height);
+	make_key(game, width, height, c);
+	make_exit(&game->map, width, height, c);
 	return (0);
 }

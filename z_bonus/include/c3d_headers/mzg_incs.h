@@ -24,8 +24,8 @@
 # define DEFAULT_IMAGE_PATH_SO "imgs/xpm/wall/default_junglewood.xpm"
 # define DEFAULT_IMAGE_PATH_WE "imgs/xpm/wall/default_junglewood.xpm"
 # define DEFAULT_IMAGE_PATH_EA "imgs/xpm/wall/default_junglewood.xpm"
-# define DEFAULT_IMAGE_PATH_CE "imgs/xpm/wall/default_junglewood.xpm"
-# define DEFAULT_IMAGE_PATH_FL "imgs/xpm/wall/default_junglewood.xpm"
+# define DEFAULT_IMAGE_PATH_CE "imgs/xpm/wall/default_ceil.xpm"
+# define DEFAULT_IMAGE_PATH_FL "imgs/xpm/wall/default_floor.xpm"
 # define DEFAULT_CEIL "37,37,37"
 # define DEFAULT_CEIL_VALUE	3618615
 # define DEFAULT_FLOOR "110,110,110"
@@ -83,13 +83,14 @@ int		post_player(char **map, int width, int height);
 int		get_maze(t_game *game, t_genparams p, unsigned long *seed, int print);
 
 /*V2*/
+int		make_key(t_game *game, int width, int height, char c);
 int		is_door(char **map, int x, int y);
 int		is_aligned(char **map, int x, int y);
 char	is_between_room(char **map, int x, int y);
 char	is_destroyable(char **map, int x, int y);
 int		make_door(char **map, int width, int height, int door);
 int		open_maze(char **map, int width, int height);
-int		generate_player(t_map *map, int width, int height);
+int		generate_player(t_game *game, int width, int height);
 int		generate_key(t_game *game, int width, int height, int door);
 int		generate_objects(t_game *game, int width, int height);
 

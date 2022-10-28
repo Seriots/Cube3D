@@ -53,6 +53,7 @@ define SRCS :=
 		game/init/objects/player_action/c3d_action_syringe.c
 		game/init/objects/c3d_obj_init.c
 		game/init/c3d_init_game.c
+		game/init/c3d_init_light.c
 		game/init/c3d_init_images.c
 		game/init/c3d_init_startmap.c
 		game/init/c3d_init_menu_loop.c
@@ -95,6 +96,7 @@ define SRCS :=
 		game/loop/update/default/c3d_minimap_update.c
 		game/loop/update/default/c3d_player_collide.c
 		game/loop/update/default/c3d_player_update.c
+		game/loop/update/default/c3d_player_update2.c
 		game/loop/update/default/c3d_collide_player_obj.c
 		game/loop/update/default/c3d_next_stage.c
 		game/loop/update/default/c3d_loading.c

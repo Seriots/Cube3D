@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 11:13:57 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/27 21:53:58 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/28 12:28:35 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,9 @@
 #include "ft.h"
 #include "mlx.h"
 
-void	free_map(t_map *map)
+void	free_map(t_game *game, t_map *map)
 {
+	(void)game;
 	if (map->map)
 		ft_free_tab(map->map);
 	if (map->no)
@@ -114,6 +115,10 @@ void	free_game(t_game *game)
 		mlx_do_key_autorepeaton(game->mlx.display);
 	if (HIDE && game->mlx.display && game->mlx.window)
 		mlx_mouse_show(game->mlx.display, game->mlx.window);
+	if (game->display.doors)
+		free_doors(game);
+	if (game->display.light_mask)
+		free_lightmask(game->display.light_mask);
 	free(game->settings.map_path);
 	free_images(game);
 	free_images2(game);
@@ -122,7 +127,7 @@ void	free_game(t_game *game)
 	free_menu(&game->start_menu);
 	free_menu(&game->end_menu);
 	free_menu(&game->score_menu);
-	free_map(&game->start_map.map);
+	free_map(game, &game->start_map.map);
 	if (game->mlx.display && game->mlx.window)
 		mlx_destroy_window(game->mlx.display, game->mlx.window);
 	if (game->mlx.window)

@@ -1,6 +1,8 @@
 Seriots=29588
+Map is op=19108
 Pascal=10093
 Edorad=7260
+Real player=4000
 Test1=3396
 Poile=3074
 Pierre=2809
@@ -13,6 +15,7 @@ mirp=1380
 Pataat=730
 Default=560
 Segfault c chiant=550
+Mechant=500
 test2=480
 Mort=420
 loi=350

@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 13:07:58 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/12 22:26:26 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/28 11:29:01 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	exit_event(int button, int x, int y, t_game *game)
 			display_error(error);
 		game->settings.seed = 0;
 		free_textures(game, &game->all_img);
-		free_map(&game->map);
+		free_map(game, &game->map);
 		clear_all_other_selected(game, 0, game->menu.all_objects);
 		load_startscreen(game);
 	}

@@ -6,12 +6,14 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 21:52:07 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/27 21:54:53 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/28 12:31:25 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "c3d_struct.h"
 #include "c3d_utils.h"
+
+#include <stdlib.h>
 
 void	free_images3(t_game *game)
 {
@@ -25,4 +27,33 @@ void	free_images3(t_game *game)
 		free_img_array(game, &game->all_img.all_loading_img, 15);
 	if (game->all_img.all_door_img)
 		free_img_array(game, &game->all_img.all_door_img, 10);
+}
+
+int	free_doors(t_game *game)
+{
+	int	i;
+
+	i = 0;
+	while (i < 20 && game->display.doors[i])
+	{
+		free(game->display.doors[i]);
+		i++;
+	}
+	free(game->display.doors);
+	game->display.doors = 0;
+	return (0);
+}
+
+void	free_lightmask(double **array)
+{
+	int	i;
+
+	i = 0;
+	while (i < WIN_HEIGHT && array[i])
+	{
+		free(array[i]);
+		i++;
+	}
+	free(array);
+	array = 0;
 }

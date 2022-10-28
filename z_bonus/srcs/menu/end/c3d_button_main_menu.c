@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 20:41:42 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/24 20:41:53 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/28 11:28:50 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	mainmenu_event(int button, int x, int y, t_game *game)
 	if (button == 1)
 	{
 		free_textures(game, &game->all_img);
-		free_map(&game->map);
+		free_map(game, &game->map);
 		add_scores(game, get_score_array(game), game->settings.name,
 			game->player.stats.score.value);
 		sort_scores(get_score_array(game));

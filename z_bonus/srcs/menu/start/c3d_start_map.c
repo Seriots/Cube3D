@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 20:12:58 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/27 22:04:22 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/28 11:45:25 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 int	load_random_map(t_game *game, t_genparams *params)
 {
 	if (game->settings.difficulty == 0)
-		*params = (t_genparams){.width = 30, .height = 30, .door = 5,
+		*params = (t_genparams){.width = 20, .height = 30, .door = 5,
 			.seed = game->settings.seed, .difficulty = 0};
 	else if (game->settings.difficulty == 1)
 		*params = (t_genparams){.width = 50, .height = 50, .door = 12,
@@ -35,7 +35,7 @@ int	load_random_map(t_game *game, t_genparams *params)
 	else
 		*params = (t_genparams){.width = 80, .height = 80, .door = 20,
 			.seed = game->settings.seed, .difficulty = 2};
-	return (get_maze(game, *params, &game->settings.seed, 0));
+	return (get_maze(game, *params, &game->settings.seed, 1));
 }
 
 int	set_door_coord(char face, t_point *p)
@@ -116,17 +116,17 @@ int	load_new_map(t_game *game, char *map_path, int first)
 	{
 		error = parsing(game, &(game->map), map_path);
 		if (error)
-			return (free_map(&game->map), display_error(error));
+			return (free_map(game, &game->map), display_error(error));
 	}
 	else
 	{
 		error = load_random_map(game, &params);
 		if (error)
-			return (free_map(&game->map), display_error(error));
+			return (free_map(game, &game->map), display_error(error));
 	}
 	error = init_all_map_parameters(game, first);
 	if (error)
-		return (free_map(&game->map), display_error(error));
+		return (free_map(game, &game->map), display_error(error));
 	game->map_start_frame = game->last_frame;
 	load_default(game);
 	return (0);
