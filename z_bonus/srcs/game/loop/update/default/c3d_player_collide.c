@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   c3d_player_collide.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pierre-yves <pierre-yves@student.42.fr>    +#+  +:+       +#+        */
+/*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 11:42:39 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/28 06:43:25 by pierre-yves      ###   ########.fr       */
+/*   Updated: 2022/10/28 19:34:17 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,49 +17,6 @@
 
 #include <math.h>
 
-#include <stdio.h>
-
-double	get_wall_angle(char c)
-{
-	if (c == 'N')
-		return (0);
-	if (c == 'E')
-		return (M_PI / 2);
-	if (c == 'S')
-		return (M_PI);
-	if (c == 'W')
-		return (3 * M_PI / 2);
-	return (0);
-}
-
-int	slide(t_game *game, t_wall wall, t_coord mov)
-{
-	t_coord	new_mov;
-
-	new_mov.x = 0;
-	new_mov.y = 0;
-	wall.dist = wall.dist * dabs(cos(get_wall_angle(wall.face) - game->player.plane.value));
-	if (wall.face == 'N' || wall.face == 'S')
-		new_mov.x = mov.x * dabs(cos(get_wall_angle(wall.face) - game->player.plane.value));
-	else
-		new_mov.y = mov.y * dabs(cos(get_wall_angle(wall.face) - game->player.plane.value));
-	check_collide(game, new_mov);
-	return (0);
-}
-
-int	apply_collide(t_game *game, t_wall wall, t_coord mov)
-{
-	if (wall.dist > norm(mov.x, mov.y)
-		&& wall.dist > 3 * VIEW_WIDTH / 2)
-	{
-		game->player.pos.x += mov.x;
-		game->player.pos.y += mov.y;	
-	}
-	else
-		slide (game, wall, mov);
-	return (0);
-}
-
 int	get_new_wall(t_game *game, t_vector player, t_wall *wall, int i)
 {
 	wall->face = 0;
@@ -69,33 +26,48 @@ int	get_new_wall(t_game *game, t_vector player, t_wall *wall, int i)
 	return (0);
 }
 
-int	check_angle(double angle, double playerangle)
-{
-	if (angle - playerangle < M_PI_2 && angle - playerangle > -M_PI_2)
-		return (1);
-	if (angle + 2 * M_PI - playerangle < M_PI_2 && angle + 2 * M_PI - playerangle > -M_PI_2)
-		return (1);
-	if (angle - 2 * M_PI- playerangle < M_PI_2 && angle - 2 * M_PI- playerangle > -M_PI_2)
-		return (1);
-	return (0);
-}
-
-int	get_corner_dist(t_game *game, double dist)
+double	corner_coll(t_game *game, t_coord *mov)
 {
 	int	i;
 	int	j;
-	double	angle1;
-	double	angle2;
-	double	angle3;
-	double	angle4;
+	int	k;
+	t_point	point;	
+	double	x;
+	double	y;
 
-	i = game->player.pos.x / CASE_SIZE;
-	j = game->player.pos.y / CASE_SIZE;
-	angle1 = atan(((j + 1) * CASE_SIZE - game->player.pos.y) / (i * CASE_SIZE - game->player.pos.x)) + M_PI;
-	angle2 = atan(((j) * CASE_SIZE - game->player.pos.y) / (i * CASE_SIZE - game->player.pos.x)) + M_PI;
-	angle3 = atan(((j + 1) * CASE_SIZE - game->player.pos.y) / ((i + 1) * CASE_SIZE - game->player.pos.x));
-	angle4 = atan(((j) * CASE_SIZE - game->player.pos.y) / ((i + 1) * CASE_SIZE - game->player.pos.x));
-	if (check_angle(angle1, game->player.plane.value) && dist >)
+	i = (mov->x + game->player.pos.x) / CASE_SIZE;
+	j = (mov->y + game->player.pos.y) / CASE_SIZE;
+	x = mov->x + game->player.pos.x - i * CASE_SIZE;
+	y = (mov->y + game->player.pos.y) - j * CASE_SIZE;
+	k = -1;
+	while (++k < 4)
+	{
+		point.x = k % 2;
+		point.y = k / 2;
+		if (x > point.x * CASE_SIZE - point.x * (CASE_SIZE / 4) && x < CASE_SIZE * point.x + (1 - point.x) * CASE_SIZE / 4
+			&& y > point.y * CASE_SIZE - point.y * (CASE_SIZE / 4) && y < CASE_SIZE * point.y + (1 - point.y) * CASE_SIZE / 4)
+		{
+			if ((game->map.map[j + point.y - (1 - point.y)][i + point.x - (1 - point.x)] == '1'
+				|| (game->map.map[j + point.y - (1 - point.y)][i] == '1'
+				|| game->map.map[j][i + point.x - (1 - point.x)] == '1')))
+			{
+				if (x - mov->x < 0 || x - mov->x > 64)
+					mov->y = (CASE_SIZE / 4 + (CASE_SIZE / 2) * point.y - (y - mov->y)); 
+				else if (y - mov->y < 0 || y - mov->y > 64)
+					mov->x = (CASE_SIZE / 4 + (CASE_SIZE / 2) * point.x - (x - mov->x)); 
+				else
+				{
+					if (dabs(CASE_SIZE / 4 + (CASE_SIZE / 2) * point.y - (y - mov->y))
+						< dabs(CASE_SIZE / 4 + (CASE_SIZE / 2) * point.x - (x - mov->x)))
+						mov->y = (CASE_SIZE / 4 + (CASE_SIZE / 2) * point.y - (y - mov->y));
+					else
+						mov->x = (CASE_SIZE / 4 + (CASE_SIZE / 2) * point.x - (x - mov->x));
+				}
+				return (1);
+			}			
+		}
+	}
+	return (0);
 }
 
 int	check_collide(t_game *game, t_coord mov)
@@ -118,11 +90,14 @@ int	check_collide(t_game *game, t_coord mov)
 	player.angle.sin = -sign(mov.y);
 	player.angle.tan = player.angle.sin / player.angle.cos;
 	get_new_wall(game, player, &wallv, WIN_WIDTH);
-	if (wallh.dist - CASE_SIZE / 4 < dabs(mov.x))
-		mov.x = pure_sign(mov.x) * (wallh.dist - CASE_SIZE / 4);
-	if (wallv.dist - CASE_SIZE / 4 < dabs(mov.y))
-		mov.y = pure_sign(mov.y) * (wallv.dist - CASE_SIZE / 4);
+	if (!corner_coll(game, &mov))
+	{
+		if (wallh.dist - CASE_SIZE / 4 < dabs(mov.x))
+			mov.x = pure_sign(mov.x) * (wallh.dist - CASE_SIZE / 4);
+		if (wallv.dist - CASE_SIZE / 4 < dabs(mov.y))
+			mov.y = pure_sign(mov.y) * (wallv.dist - CASE_SIZE / 4);
+	}
 	game->player.pos.x += mov.x;
-	game->player.pos.y += mov.y;
+	game->player.pos.y += mov.y;;
 	return (0);
 }
