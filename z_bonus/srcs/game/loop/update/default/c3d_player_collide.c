@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 11:42:39 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/26 15:17:54 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/28 13:20:36 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	slide(t_game *game, t_wall wall, t_coord mov)
 	new_mov.x = 0;
 	new_mov.y = 0;
 	wall.dist = wall.dist * dabs(cos(get_wall_angle(wall.face) - game->player.plane.value));
-	if (wall.face == 'N' || wall.face == 'S')
+	if (wall.face == 'N' || wall.face == 'S' || wall.face == 'n' || wall.face == 's')
 		new_mov.x = mov.x * dabs(cos(get_wall_angle(wall.face) - game->player.plane.value));
 	else
 		new_mov.y = mov.y * dabs(cos(get_wall_angle(wall.face) - game->player.plane.value));
