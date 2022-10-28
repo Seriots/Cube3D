@@ -62,13 +62,10 @@ int				is_lamp(t_game *game);
 int				set_dist(double *dist_x, double *dist_y, t_vector pre_pos);
 int				check_wall(t_game *game, t_map *map, t_vector vec,
 					t_wall *wall);
-int				check_wall_collide(t_game *game, t_map *map,
-					t_vector vec, t_wall *wall);
 t_vector		get_next_wall(t_vector pre_pos);
 t_img_data		*get_image(t_all_img *all_img, char c);
 int				get_pixel_color(t_game *game, t_wall *wall, t_point p,
 					t_display *display);
-int				intersect_wall_collide(t_game *game, t_vector ray, t_wall *wall, int i);
 int				intersect_wall(t_game *game, t_vector ray, t_wall *wall, int i);
 int				display_wall(t_game *game, t_wall *wall, int i);
 int				raycasting(t_game *game);

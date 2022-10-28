@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 13:42:48 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/28 13:13:17 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/28 13:40:56 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,14 +72,14 @@ int	check_death(t_game *game)
 
 int	default_update(t_game *game)
 {
-	int	error;
+	//int	error;
 
 	refresh_mouse_move(game);
-	error = spawn_ennemies(game);
-	if (error)
-		return (free_map(game, &game->map),
-			free_textures(game, &game->all_img),
-			load_startscreen(game), display_error(error));
+	//error = spawn_ennemies(game);
+	//if (error)
+	//	return (free_map(game, &game->map),
+	//		free_textures(game, &game->all_img),
+	//		load_startscreen(game), display_error(error));
 	update_stamina(game);
 	update_player(game);
 	update_objects(game, game->map.all_objects);

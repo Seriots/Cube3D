@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 10:39:05 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/28 12:37:33 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/28 13:37:58 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,25 +129,6 @@ int	intersect_wall(t_game *game, t_vector ray, t_wall *wall, int i)
 			wall->face = 0;
 			intwall.is_wall = 0;
 		}
-	}
-	wall->dist = sqrt(pow(ray.x - intwall.next_inter.x, 2)
-			+ pow(ray.y - intwall.next_inter.y, 2));
-	return (0);
-}
-
-int	intersect_wall_collide(t_game *game, t_vector ray, t_wall *wall, int i)
-{
-	t_intwall	intwall;
-
-	intwall.is_wall = 0;
-	intwall.j = 0;
-	intwall.i = i;
-	intwall.next_inter = ray;
-	while (!intwall.is_wall)
-	{
-		intwall.next_inter = get_next_wall(intwall.next_inter);
-		intwall.is_wall = check_wall_collide(game, &game->map,
-				intwall.next_inter, wall);
 	}
 	wall->dist = sqrt(pow(ray.x - intwall.next_inter.x, 2)
 			+ pow(ray.y - intwall.next_inter.y, 2));

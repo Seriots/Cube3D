@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 11:42:39 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/28 13:20:36 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/28 13:22:37 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,6 @@ int	check_collide(t_game *game, t_coord mov)
 	player.y = player.y - VIEW_WIDTH
 		* cos(game->player.plane.value);
 	get_new_wall(game, player, &wall2, WIN_WIDTH);
-	//printf("face: %c, face2: %c\n", wall.face, wall2.face);
 	if (min(wall.dist, wall2.dist) == wall2.dist)
 	{
 		wall.dist = wall2.dist;

@@ -149,7 +149,7 @@
 # define RESOLUTION 100 // 1 - 100
 
 # define MOVE_SPEED 0.15
-# define TURN_SPEED 0.06f
+# define TURN_SPEED 1.5f
 
 # define RUN_SPEED_FACTOR 1.8
 # define CROUCH_SPEED_FACTOR 0.3
@@ -162,14 +162,4 @@
 # define MEDIUM_FILE "files/medium_scores.txt"
 # define HARD_FILE "files/hard_scores.txt"
 
-/*Default Key*/
-/*
-# define DEFAULT_LEFT XK_a
-# define DEFAULT_RIGHT XK_d
-# define DEFAULT_FORWARD XK_w
-# define DEFAULT_BACKWARD XK_s
-# define DEFAULT_TURN_LEFT XK_Left
-# define DEFAULT_TURN_RIGHT XK_Right
-# define DEFAULT_PAUSE XK_Escape
-*/
 #endif
