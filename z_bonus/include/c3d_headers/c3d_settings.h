@@ -149,7 +149,7 @@
 # define RESOLUTION 100 // 1 - 100
 
 # define MOVE_SPEED 0.15
-# define TURN_SPEED 1.5f
+# define TURN_SPEED 0.05f
 
 # define RUN_SPEED_FACTOR 1.8
 # define CROUCH_SPEED_FACTOR 0.3
