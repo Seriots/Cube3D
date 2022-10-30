@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 11:22:31 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/24 17:49:44 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/29 23:26:19 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,13 +42,13 @@ int	up_already_pressed(t_game *game)
 int	down_everyone(t_game *game, int *value)
 {
 	if (game->player.backward > *value)
-		game->player.backward -= 1;
+		game->player.backward = max(0, game->player.backward - 1);
 	if (game->player.forward > *value)
-		game->player.forward -= 1;
+		game->player.forward = max(0, game->player.forward - 1);
 	if (game->player.left > *value)
-		game->player.left -= 1;
+		game->player.left = max(0, game->player.left - 1);
 	if (game->player.right > *value)
-		game->player.right -= 1;
+		game->player.right = max(0, game->player.right - 1);
 	*value = 0;
 	return (0);
 }

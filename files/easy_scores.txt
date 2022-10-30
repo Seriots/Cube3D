@@ -12,7 +12,6 @@ la=2466
 bisounours=2358
 dort=1710
 mirp=1380
-dort=840
 Pataat=730
 Default=560
 Segfault c chiant=550
