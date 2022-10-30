@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   c3d_clean3.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
+/*   By: pierre-yves <pierre-yves@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 21:52:07 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/28 12:31:25 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/30 21:39:46 by pierre-yves      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,9 @@ int	free_doors(t_game *game)
 	int	i;
 
 	i = 0;
-	while (i < 20 && game->display.doors[i])
+	while (i < WIN_WIDTH && game->display.doors[i].door_tab)
 	{
-		free(game->display.doors[i]);
+		free(game->display.doors[i].door_tab);
 		i++;
 	}
 	free(game->display.doors);

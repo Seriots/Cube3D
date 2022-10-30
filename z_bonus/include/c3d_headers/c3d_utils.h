@@ -38,6 +38,9 @@ int				ssn(void *ptr, char *value);
 /*Color*/
 unsigned int	get_color(int color_settings, unsigned int color);
 
+/*Display*/
+int				set_screen_data(t_screen_data *pixel, double dist, int color);
+
 /*Doors*/
 t_object		*find_door(t_game *game, int i, int j);
 

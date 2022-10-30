@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   c3d_init_light.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
+/*   By: pierre-yves <pierre-yves@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 12:08:53 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/28 12:29:52 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/30 22:14:06 by pierre-yves      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,14 +60,22 @@ int	init_display(t_display *display)
 {
 	int	j;
 
-	display->doors = ft_calloc(sizeof(t_door), 20);
+	display->doors = ft_calloc(sizeof(t_door_data), WIN_WIDTH + 1);
 	if (!display->doors)
 		return (10);
 	j = -1;
-	while (++j < 20)
+	while (++j < WIN_WIDTH + 1)
 	{
-		display->doors[j] = ft_calloc(sizeof(t_door), WIN_WIDTH + 1);
-		if (!display->doors[j])
+		display->doors[j].door_tab = ft_calloc(sizeof(t_door), 20);
+		if (!display->doors[j].door_tab)
+			return (10);
+	}
+	display->screen = ft_calloc(sizeof(t_screen_data *), WIN_HEIGHT);
+	j = -1;
+	while (++j < WIN_HEIGHT)
+	{
+		display->screen[j] = ft_calloc(sizeof(t_screen_data), WIN_WIDTH);
+		if (!display->screen[j])
 			return (10);
 	}
 	return (init_light(display));

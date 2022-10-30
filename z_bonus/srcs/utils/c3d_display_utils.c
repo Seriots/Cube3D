@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   c3d_display_utils.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
+/*   By: pierre-yves <pierre-yves@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 20:04:43 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/24 20:17:26 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/30 22:27:26 by pierre-yves      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,11 @@ double	start_get_dist_obj(t_game *game, t_object *obj)
 	dist -= game->settings.fov / cos(dabs(obj->angle
 				- game->start_map.player.plane.value));
 	return (dist);
+}
+
+int	set_screen_data(t_screen_data *pixel, double dist, int color)
+{
+	pixel->color = color;
+	pixel->dist = dist;
+	return (0);
 }
