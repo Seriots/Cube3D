@@ -263,7 +263,7 @@ DEP_FILES := $(OBJ_FILES:.o=.d)
 CFLAGS := $(CFLAGS) -Wall -Wextra -g3
 
 ifdef DEBUG
-	CFLAGS := $(CFLAGS) -g3 -D DEBUG=1
+	CFLAGS := $(CFLAGS) -fsanitize=address -g3 -D DEBUG=1
 else
 	CFLAGS := $(CFLAGS) -Werror -D DEBUG=0
 endif

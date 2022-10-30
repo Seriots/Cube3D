@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 11:42:39 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/29 22:54:56 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/30 13:38:45 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,13 +90,12 @@ int	check_collide(t_game *game, t_coord mov)
 	player.angle.sin = -sign(mov.y);
 	player.angle.tan = player.angle.sin / player.angle.cos;
 	get_new_wall(game, player, &wallv, WIN_WIDTH);
-	if (!corner_coll(game, &mov))
-	{
-		if (wallh.dist - CASE_SIZE / 4 < dabs(mov.x))
-			mov.x = pure_sign(mov.x) * (wallh.dist - CASE_SIZE / 4);
-		if (wallv.dist - CASE_SIZE / 4 < dabs(mov.y))
-			mov.y = pure_sign(mov.y) * (wallv.dist - CASE_SIZE / 4);
-	}
+	while (corner_coll(game, &mov))
+	 ;
+	if (wallh.dist - CASE_SIZE / 4 < dabs(mov.x))
+		mov.x = pure_sign(mov.x) * (wallh.dist - CASE_SIZE / 4);
+	if (wallv.dist - CASE_SIZE / 4 < dabs(mov.y))
+		mov.y = pure_sign(mov.y) * (wallv.dist - CASE_SIZE / 4);
 	game->player.pos.x += mov.x;
 	game->player.pos.y += mov.y;;
 	return (0);

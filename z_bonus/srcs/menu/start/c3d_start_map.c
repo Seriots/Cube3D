@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 20:12:58 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/28 11:45:25 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/30 13:37:48 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	load_random_map(t_game *game, t_genparams *params)
 	else
 		*params = (t_genparams){.width = 80, .height = 80, .door = 20,
 			.seed = game->settings.seed, .difficulty = 2};
-	return (get_maze(game, *params, &game->settings.seed, 1));
+	return (get_maze(game, *params, &game->settings.seed, 0));
 }
 
 int	set_door_coord(char face, t_point *p)

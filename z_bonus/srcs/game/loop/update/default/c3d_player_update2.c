@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 12:16:27 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/28 12:17:12 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/30 13:34:16 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@ int	nb_touch_pressed(t_game *game)
 	if (game->player.backward)
 		n++;
 	if (game->player.right && game->player.left)
-		n -= 2;
+		n -= 1;
 	if (game->player.backward && game->player.forward)
-		n -= 2;
+		n -= 1;
 	return (n);
 }
 
