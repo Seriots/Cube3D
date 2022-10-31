@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 12:37:56 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/12 20:40:35 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/31 08:40:46 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@
 #include "dict.h"
 
 #include "mlx.h"
-
-#include <stdio.h>
 
 void	camspeedx_init(t_slidebar *slidebar)
 {

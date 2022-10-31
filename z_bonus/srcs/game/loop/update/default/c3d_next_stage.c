@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 16:31:05 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/28 14:01:13 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/31 08:43:11 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@
 
 #include <time.h>
 #include <stdlib.h>
-
-#include <stdio.h>
 
 int	fade_display(t_game *game)
 {

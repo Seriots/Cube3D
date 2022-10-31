@@ -20,8 +20,6 @@
 #include "dict.h"
 #include "ft.h"
 
-#include <stdio.h>
-
 int	omap_use(t_game *game, t_dict *dict, t_object *obj)
 {
 	(void)dict;

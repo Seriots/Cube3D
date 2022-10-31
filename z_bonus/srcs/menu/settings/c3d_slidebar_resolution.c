@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 13:45:30 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/12 20:40:45 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/31 08:41:02 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@
 #include "dict.h"
 
 #include "mlx.h"
-
-#include <stdio.h>
 
 void	resolution_init(t_slidebar *slidebar)
 {

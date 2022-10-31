@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 12:17:42 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/28 11:06:27 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/31 08:40:00 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@
 #include "mzg_incs.h"
 
 #include "ft.h"
-
-#include <stdio.h>
 
 char	get_size_area(char **map, int width, int height, char c)
 {

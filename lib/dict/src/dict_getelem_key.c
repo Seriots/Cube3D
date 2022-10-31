@@ -6,14 +6,12 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 18:29:00 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/18 12:45:41 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/31 08:34:57 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "dict.h"
 #include "ft.h"
-
-#include <stdio.h>
 
 t_dict	*dict_getelem_key(t_dict *dict, void *key)
 {

@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 12:16:18 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/12 20:40:28 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/31 08:41:05 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@
 #include "dict.h"
 
 #include "mlx.h"
-
-#include <stdio.h>
 
 void	scrollspeed_init(t_slidebar *slidebar)
 {

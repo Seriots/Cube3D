@@ -26,8 +26,6 @@
 #include "ft.h"
 #include "dict.h"
 
-#include <stdio.h>
-
 int	set_inventory(t_game *game)
 {
 	t_dict	*elem;

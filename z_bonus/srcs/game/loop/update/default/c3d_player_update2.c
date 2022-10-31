@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 12:16:27 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/30 13:34:16 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/31 08:43:24 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@
 #include <math.h>
 
 #include <stdlib.h>
-
-#include <stdio.h>
 
 int	nb_touch_pressed(t_game *game)
 {

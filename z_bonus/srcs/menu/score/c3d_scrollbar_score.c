@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 16:55:10 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/26 11:02:21 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/31 08:40:24 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,6 @@
 #include "dict.h"
 
 #include "mlx.h"
-
-#include <stdio.h>
 
 int	scrollbar_mouse_release_score(int button, int x, int y, t_game *game)
 {

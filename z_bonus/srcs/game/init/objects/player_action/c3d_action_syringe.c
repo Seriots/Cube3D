@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 13:50:48 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/21 15:20:29 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/31 08:45:43 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@
 
 #include "dict.h"
 #include "ft.h"
-
-#include <stdio.h>
 
 int	syringe_use(t_game *game, t_dict *dict, t_object *obj)
 {

@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 15:42:42 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/23 18:09:21 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/31 08:46:49 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@
 
 #include "ft.h"
 #include "mlx.h"
-
-#include <stdio.h>
 
 int	scorescreen_mouse_press(int button, int x, int y, t_game *game)
 {

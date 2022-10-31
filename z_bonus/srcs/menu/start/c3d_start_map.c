@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 20:12:58 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/30 13:37:48 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/31 08:41:49 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,6 @@
 #include "ft.h"
 
 #include <stdlib.h>
-
-#include <stdio.h>
 
 int	load_random_map(t_game *game, t_genparams *params)
 {

@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 11:03:58 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/24 14:49:34 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/31 08:48:06 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@
 #include "c3d_init.h"
 
 #include "ft.h"
-
-#include <stdio.h>
 
 int	check_file_extension(char *line)
 {

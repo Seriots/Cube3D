@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 10:22:00 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/28 12:03:07 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/31 08:42:15 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@
 #include "ft.h"
 
 #include <math.h>
-
-#include <stdio.h>
 
 t_img_data	*start_get_image(t_all_img *all_img, char c)
 {

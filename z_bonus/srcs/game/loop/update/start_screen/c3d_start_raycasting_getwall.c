@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 10:39:05 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/20 10:29:01 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/31 08:42:18 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@
 #include "c3d_loop.h"
 
 #include <math.h>
-
-#include <stdio.h>
 
 int	start_intersect_wall(t_game *game, t_vector ray, t_wall *wall)
 {

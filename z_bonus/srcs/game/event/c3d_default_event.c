@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 11:22:31 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/29 23:26:19 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/31 08:35:42 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,6 @@
 #include <X11/X.h>
 #include <stdbool.h>
 #include <X11/keysym.h>
-
-#include <stdio.h>
 
 int	up_already_pressed(t_game *game)
 {

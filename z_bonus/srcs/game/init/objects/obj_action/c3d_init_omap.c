@@ -20,8 +20,6 @@
 #include "dict.h"
 #include "ft.h"
 
-#include <stdio.h>
-
 int	omap_collide(t_game *game, t_dict *dict, t_object *obj)
 {
 	(void)game;

@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 11:02:33 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/12 21:44:40 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/31 08:47:01 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 #include "c3d_settings.h"
 #include "c3d_menu.h"
 #include "c3d_startscreen.h"
-
-#include <stdio.h>
 
 int	mapinput_keypress(KeySym key, t_game *game)
 {

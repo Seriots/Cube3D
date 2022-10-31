@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   c3d_display_doorsprites.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pierre-yves <pierre-yves@student.42.fr>    +#+  +:+       +#+        */
+/*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 13:05:02 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/31 05:37:19 by pierre-yves      ###   ########.fr       */
+/*   Updated: 2022/10/31 08:51:00 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ int	draw_door_vline(t_game *game, t_img_data *img, int i, double dist)
 
 	j = max(ft_ceil(game->display.doormin) - 1, -1);
 	displaymax = min(WIN_HEIGHT, game->display.doormax);
-	
 	while (++j < displaymax)
 	{
 		p.x = i;
@@ -97,7 +96,7 @@ void	display_all_door(t_game *game, t_point *p, double dist)
 			break ;
 		display_door_vline(game, &game->display.doors
 		[p->x + game->display.vline].door_tab[p->y],
-		p->x + game->display.vline);
+			p->x + game->display.vline);
 		game->display.doors
 		[p->x + game->display.vline].door_tab[p->y].need_display = 0;
 	}

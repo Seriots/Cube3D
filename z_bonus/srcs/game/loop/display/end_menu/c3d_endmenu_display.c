@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 14:34:59 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/24 18:41:14 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/31 08:44:31 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,6 @@
 #include "ft.h"
 
 #include "mlx.h"
-
-#include <stdio.h>
 
 int	display_one_stat(t_game *game, const t_tagint *stat, int y)
 {

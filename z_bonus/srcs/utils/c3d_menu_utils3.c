@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 23:58:22 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/24 20:30:48 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/31 08:48:26 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@
 
 #include "ft.h"
 #include "mlx.h"
-
-#include <stdio.h>
 
 void	init_textinput(t_textinput *textinput)
 {

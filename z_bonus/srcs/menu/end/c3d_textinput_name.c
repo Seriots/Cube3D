@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 16:56:46 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/21 17:32:51 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/31 08:40:15 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@
 
 #include "ft.h"
 #include "mlx.h"
-
-#include <stdio.h>
 
 t_dict	*init_nameinput_end(t_game *game)
 {

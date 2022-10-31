@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 13:52:10 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/11 13:16:31 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/31 08:40:55 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@
 #include "dict.h"
 
 #include "mlx.h"
-
-#include <stdio.h>
 
 void	fov_init(t_slidebar *slidebar)
 {

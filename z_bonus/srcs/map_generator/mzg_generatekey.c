@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 12:15:01 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/26 14:02:43 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/31 08:39:56 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 #include "c3d_struct.h"
 #include "c3d_object.h"
-
-#include <stdio.h>
 
 int	get_key_pos_force(t_game *game, int width, int height)
 {

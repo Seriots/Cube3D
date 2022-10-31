@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 00:48:35 by pierre-yves       #+#    #+#             */
-/*   Updated: 2022/10/26 12:23:15 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/31 08:42:12 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@
 #include "mlx.h"
 
 #include <math.h>
-
-#include <stdio.h>
 
 int	start_draw_sprite_vline(t_game *game, t_object *obj, int i, int width)
 {

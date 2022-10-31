@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 14:54:16 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/10 16:28:50 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/31 08:44:17 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 
 #include "mlx.h"
 #include "ft.h"
-
-#include <stdio.h>
 
 int	display_slidebar_text(t_game *game, t_slidebar *slidebar)
 {

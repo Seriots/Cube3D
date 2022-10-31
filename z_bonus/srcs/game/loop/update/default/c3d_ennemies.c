@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 19:11:05 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/30 14:05:47 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/31 08:42:59 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@
 #include "ft.h"
 
 #include <stdlib.h>
-
-#include <stdio.h>
 
 int	nb_ghost(t_dict *all_obj)
 {

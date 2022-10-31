@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 10:43:52 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/23 16:23:41 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/31 08:41:43 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@
 #include "ft.h"
 
 #include <stdlib.h>
-
-#include <stdio.h>
 
 void	set_multichoice_difficulty(t_game *game, t_multichoice *multichoice)
 {

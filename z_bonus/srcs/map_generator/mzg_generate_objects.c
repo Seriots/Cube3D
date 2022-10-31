@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 11:25:13 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/24 20:11:25 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/31 08:40:03 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@
 #include "ft.h"
 
 #include <stdlib.h>
-
-#include <stdio.h>
 
 int	get_nb_objects(t_game *game, int width, int height)
 {

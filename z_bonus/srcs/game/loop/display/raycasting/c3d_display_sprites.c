@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   c3d_display_sprites.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pierre-yves <pierre-yves@student.42.fr>    +#+  +:+       +#+        */
+/*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 00:48:35 by pierre-yves       #+#    #+#             */
-/*   Updated: 2022/10/31 05:40:47 by pierre-yves      ###   ########.fr       */
+/*   Updated: 2022/10/31 08:53:12 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,8 @@ int	display_restof_doors(t_game *game)
 		{
 			if (game->display.doors[i].door_tab[j].need_display)
 			{
-				display_door_vline(game, &game->display.doors[i].door_tab[j], i);
+				display_door_vline(game, &game->display.doors[i].door_tab[j],
+					i);
 				game->display.doors[i].door_tab[j].need_display = 0;
 			}
 		}

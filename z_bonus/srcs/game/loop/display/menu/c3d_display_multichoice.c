@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 12:11:20 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/24 19:27:48 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/31 08:44:14 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 
 #include "mlx.h"
 #include "ft.h"
-
-#include <stdio.h>
 
 int	display_multichoice_text(t_game *game, t_multichoice *multichoice)
 {

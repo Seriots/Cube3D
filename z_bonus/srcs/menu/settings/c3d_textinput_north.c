@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 14:25:01 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/11 10:58:09 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/31 08:41:20 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@
 
 #include "ft.h"
 #include "mlx.h"
-
-#include <stdio.h>
 
 t_dict	*init_textinput_north(t_game *game)
 {

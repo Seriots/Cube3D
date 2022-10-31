@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 14:34:59 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/21 17:24:01 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/31 08:44:24 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,6 @@
 #include "ft.h"
 
 #include "mlx.h"
-
-#include <stdio.h>
 
 int	check_display_menu(t_game *game, t_dict *tmp)
 {

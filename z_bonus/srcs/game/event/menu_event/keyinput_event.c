@@ -6,15 +6,13 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 10:32:49 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/16 14:30:34 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/31 08:46:58 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "c3d_struct.h"
 #include "c3d_settings.h"
 #include "c3d_menu.h"
-
-#include <stdio.h>
 
 int	keyinput_keypress(KeySym key, t_game *game)
 {

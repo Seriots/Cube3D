@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 14:45:40 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/24 15:04:52 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/31 08:45:06 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@
 
 #include "ft.h"
 #include "dict.h"
-
-#include <stdio.h>
 
 int	set_obj(t_game *game, t_object **object, char *key)
 {

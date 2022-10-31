@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 16:13:22 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/24 17:52:05 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/31 08:48:19 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 #include "c3d_settings.h"
 
 #include "ft.h"
-
-#include <stdio.h>
 
 int	press_collide_cond(t_game *game, int x, int y, t_dict *tmp)
 {

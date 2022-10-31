@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 10:38:52 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/28 12:17:07 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/31 08:43:20 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@
 #include <math.h>
 
 #include <stdlib.h>
-
-#include <stdio.h>
 
 int	update_rotation2(t_game *game)
 {

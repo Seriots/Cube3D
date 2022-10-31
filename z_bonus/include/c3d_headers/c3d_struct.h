@@ -330,34 +330,33 @@ typedef struct s_screen_data
 	double	dist;
 }	t_screen_data;
 
-
 typedef struct s_display
 {
-	double		min;
-	double		max;
-	double		d;
-	double		angle;
-	double		doormin;
-	double		doormax;
-	double		doord;
-	double		doorangle;
-	double		fc_dist[WIN_HEIGHT];
-	double		wall_dist[WIN_WIDTH];
-	double		**light_mask;
+	double			min;
+	double			max;
+	double			d;
+	double			angle;
+	double			doormin;
+	double			doormax;
+	double			doord;
+	double			doorangle;
+	double			fc_dist[WIN_HEIGHT];
+	double			wall_dist[WIN_WIDTH];
+	double			**light_mask;
 	t_screen_data	**screen;
 	t_door_data		*doors;
-	t_vector	ray;	
-	t_img_data	*img;
-	t_img_data	*ce;
-	t_img_data	*fl;
-	int			x;
-	double		xfov;
-	double		yfov;
-	double		left_angle;
-	double		right_angle;
-	double		factor;
-	int			bpp;
-	int			vline;
+	t_vector		ray;	
+	t_img_data		*img;
+	t_img_data		*ce;
+	t_img_data		*fl;
+	int				x;
+	double			xfov;
+	double			yfov;
+	double			left_angle;
+	double			right_angle;
+	double			factor;
+	int				bpp;
+	int				vline;
 }	t_display;
 
 /*x y are positive*/

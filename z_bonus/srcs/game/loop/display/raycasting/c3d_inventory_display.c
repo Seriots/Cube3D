@@ -6,15 +6,13 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 13:18:11 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/27 13:33:35 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/31 08:43:48 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "c3d_struct.h"
 #include "c3d_settings.h"
 #include "c3d_loop.h"
-
-#include <stdio.h>
 
 unsigned int	get_hotbar_color(int x, int y, int is_selected)
 {

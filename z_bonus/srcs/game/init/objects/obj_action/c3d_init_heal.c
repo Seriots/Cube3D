@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   c3d_init_heal.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ppajot <ppajot@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 13:47:22 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/19 18:48:27 by ppajot           ###   ########.fr       */
+/*   Updated: 2022/10/31 08:46:11 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@
 
 #include "dict.h"
 #include "ft.h"
-
-#include <stdio.h>
 
 int	heal_collide(t_game *game, t_dict *dict, t_object *obj)
 {

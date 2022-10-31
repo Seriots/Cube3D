@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 14:19:52 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/24 20:15:51 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/31 08:47:59 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@
 #include "c3d_struct.h"
 
 #include "ft.h"
-
-#include <stdio.h>
 
 void	set_map(t_map *map)
 {

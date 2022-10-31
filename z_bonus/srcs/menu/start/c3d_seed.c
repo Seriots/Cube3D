@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 15:21:16 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/11 11:20:01 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/31 08:41:46 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,6 @@
 
 #include "ft.h"
 #include "mlx.h"
-
-#include <stdio.h>
 
 t_dict	*init_seed(t_game *game)
 {

@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 23:43:59 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/27 21:49:16 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/31 08:48:30 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 #include "c3d_utils.h"
 
 #include "ft.h"
-
-#include <stdio.h>
 
 int	is_player_facing(t_game *game, t_object *obj, double marge)
 {

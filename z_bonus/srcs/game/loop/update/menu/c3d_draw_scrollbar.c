@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 18:34:06 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/23 17:48:57 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/31 08:42:36 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 #include "c3d_loop.h"
 
 #include <stdlib.h>
-
-#include <stdio.h>
 
 int	draw_scrollbar(t_game *game, t_scrollbar *box)
 {

@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 11:04:48 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/28 10:51:34 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/31 08:35:28 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@
 #include "mlx.h"
 
 #include <math.h>
-
-#include <stdio.h>
 
 int	default_mouse_press(int button, int x, int y, t_game *game)
 {

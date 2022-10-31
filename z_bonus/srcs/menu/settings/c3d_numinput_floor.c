@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 12:13:00 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/11 10:41:12 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/31 08:40:39 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@
 
 #include "ft.h"
 #include "mlx.h"
-
-#include <stdio.h>
 
 t_dict	*init_numinput_floor(t_game *game)
 {

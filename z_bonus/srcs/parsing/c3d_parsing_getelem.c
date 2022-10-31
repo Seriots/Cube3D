@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 12:12:09 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/26 16:02:11 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/31 08:47:55 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@
 #include "c3d_object.h"
 
 #include "ft.h"
-
-#include <stdio.h>
 
 int	default_parse(t_game *game, char *tag, char *arg)
 {

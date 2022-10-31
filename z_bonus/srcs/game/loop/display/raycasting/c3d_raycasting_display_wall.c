@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   c3d_raycasting_display_wall.c                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pierre-yves <pierre-yves@student.42.fr>    +#+  +:+       +#+        */
+/*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 21:08:53 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/31 06:50:35 by pierre-yves      ###   ########.fr       */
+/*   Updated: 2022/10/31 08:49:30 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@
 #include "ft.h"
 
 #include <math.h>
-
-#include <stdio.h>
 
 int	shade_pixel(t_game *game, int i, int j)
 {
@@ -36,12 +34,12 @@ int	shade_pixel(t_game *game, int i, int j)
 	{
 		light = game->display.light_mask[j][i] * 2
 			/ (game->display.screen[j][i].dist
-			* game->display.screen[j][i].dist);
+				* game->display.screen[j][i].dist);
 		light = max(light, 0.15);
 		light = min(light, 2);
 	}
 	r = min(255,
-		light * ((game->display.screen[j][i].color & 0xFF0000) >> 16));
+			light * ((game->display.screen[j][i].color & 0xFF0000) >> 16));
 	g = min(255, light * ((game->display.screen[j][i].color & 0X00FF00) >> 8));
 	b = min(255, light * (game->display.screen[j][i].color & 0X0000FF));
 	return ((r << 16) | (g << 8) | b);

@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 13:09:29 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/13 10:41:55 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/31 08:40:30 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,6 @@
 
 #include "ft.h"
 #include "dict.h"
-
-#include <stdio.h>
 
 int	resume_event(int button, int x, int y, t_game *game)
 {

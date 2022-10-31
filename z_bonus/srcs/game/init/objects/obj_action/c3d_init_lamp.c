@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 12:44:07 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/19 21:04:38 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/31 08:46:18 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@
 
 #include "dict.h"
 #include "ft.h"
-
-#include <stdio.h>
 
 int	lamp_collide(t_game *game, t_dict *dict, t_object *obj)
 {

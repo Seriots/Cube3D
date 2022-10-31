@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 10:04:14 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/24 15:43:32 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/31 08:39:11 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@
 
 #include "mlx.h"
 #include "ft.h"
-
-#include <stdio.h>
 
 int	init_image(t_game *game, int width, int height, t_img_data *img)
 {

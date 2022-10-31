@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 16:04:48 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/18 23:54:08 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/31 08:45:28 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@
 
 #include "dict.h"
 #include "ft.h"
-
-#include <stdio.h>
 
 int	ghost_use(t_game *game, t_dict *dict, t_object *obj)
 {

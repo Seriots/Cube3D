@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 17:55:22 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/24 20:41:05 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/31 08:40:12 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,6 @@
 #include "dict.h"
 
 #include "mlx.h"
-
-#include <stdio.h>
 
 int	scrollbar_mouse_release_end(int button, int x, int y, t_game *game)
 {

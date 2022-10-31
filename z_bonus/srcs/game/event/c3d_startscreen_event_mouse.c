@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 13:27:27 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/16 11:11:32 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/31 08:46:53 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@
 
 #include "ft.h"
 #include "mlx.h"
-
-#include <stdio.h>
 
 int	check_all_objects_press_start(t_game *game, int x, int y, t_dict *dict)
 {

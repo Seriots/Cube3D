@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 11:12:19 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/29 22:54:22 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/31 08:42:06 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@
 #include "c3d_settings.h"
 #include "c3d_utils.h"
 #include "c3d_menu.h"
-
-#include <stdio.h>
 
 int	fps(t_game *game)
 {

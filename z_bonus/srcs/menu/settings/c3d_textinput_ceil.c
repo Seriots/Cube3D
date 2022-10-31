@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 12:15:12 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/24 12:15:35 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/31 08:41:09 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@
 
 #include "ft.h"
 #include "mlx.h"
-
-#include <stdio.h>
 
 t_dict	*init_textinput_ceil(t_game *game)
 {

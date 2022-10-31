@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 19:03:40 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/24 19:04:10 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/31 08:43:04 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@
 
 #include <time.h>
 #include <stdlib.h>
-
-#include <stdio.h>
 
 int	loading(t_game *game)
 {

@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 10:41:01 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/24 18:48:53 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/31 08:43:07 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 #include "c3d_settings.h"
 #include "c3d_loop.h"
 #include "c3d_utils.h"
-
-#include <stdio.h>
 
 int	get_cursor_image(t_game *game)
 {

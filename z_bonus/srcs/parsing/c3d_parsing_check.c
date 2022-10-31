@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 16:56:08 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/24 14:37:05 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/31 08:47:48 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 #include "c3d_parsing.h"
 
 #include "ft.h"
-
-#include <stdio.h>
 
 int	check_elements(t_map *map)
 {

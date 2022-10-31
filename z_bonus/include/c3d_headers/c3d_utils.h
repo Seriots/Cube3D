@@ -20,6 +20,7 @@ int				is_player_facing(t_game *game, t_object *obj, double marge);
 double			get_angle_player_obj(t_game *game, t_object *obj, double marge);
 
 /*Game Error*/
+int				display_game_error(t_game *game);
 int				set_error_message(t_game *game, char *message, int duration);
 
 /*Inventory*/

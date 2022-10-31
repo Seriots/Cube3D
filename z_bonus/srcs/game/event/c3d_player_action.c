@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 21:05:06 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/24 17:50:58 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/31 08:36:05 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@
 
 #include "dict.h"
 #include "ft.h"
-
-#include <stdio.h>
 
 int	objects_interact(t_game *game)
 {

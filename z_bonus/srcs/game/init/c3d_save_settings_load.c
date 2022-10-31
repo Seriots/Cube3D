@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 12:13:27 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/27 13:42:16 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/31 08:44:40 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 
 #include <fcntl.h>
 #include <stdlib.h>
-#include <stdio.h>
 
 int	set_settings_2(t_game *game, char *key, char *value)
 {

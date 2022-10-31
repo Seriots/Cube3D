@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   c3d_default_display.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pierre-yves <pierre-yves@student.42.fr>    +#+  +:+       +#+        */
+/*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 13:43:02 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/30 22:24:18 by pierre-yves      ###   ########.fr       */
+/*   Updated: 2022/10/31 08:51:51 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@
 
 #include "ft.h"
 #include "mlx.h"
-
-#include <stdio.h>
 
 int	display_bar(t_game *game)
 {
@@ -33,15 +31,6 @@ int	display_bar(t_game *game)
 		if (obj && ft_strcmp(obj->tag, LAMP) == 0)
 			display_lightbar(game, obj);
 	}
-	return (0);
-}
-
-int	display_game_error(t_game *game)
-{
-	if (game->error.start_time + game->error.duration > game->last_frame)
-		mlx_string_put(game->mlx.display, game->mlx.window,
-			WIN_WIDTH / 2 - (FONT_WIDTH * ft_strlen(game->error.message) / 2),
-			5 * WIN_HEIGHT / 6, 0xFF0000, game->error.message);
 	return (0);
 }
 
@@ -89,7 +78,8 @@ int	display_screen(t_game *game)
 	{
 		i = -1;
 		while (++i < WIN_WIDTH)
-			my_mlx_pixel_put(&game->all_img.screen_img, i, j, shade_pixel(game, i, j));
+			my_mlx_pixel_put(&game->all_img.screen_img,
+				i, j, shade_pixel(game, i, j));
 	}
 	return (0);
 }

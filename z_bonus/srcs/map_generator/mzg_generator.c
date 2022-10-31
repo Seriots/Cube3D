@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 11:05:33 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/28 11:05:28 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/31 08:39:53 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@
 #include <time.h>
 #include <sys/types.h>
 #include <unistd.h>
-
-#include <stdio.h>
 
 /*
 * Parmaeters:

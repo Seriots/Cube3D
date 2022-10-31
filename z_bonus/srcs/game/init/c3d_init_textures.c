@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 09:59:52 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/26 15:50:49 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/31 08:44:46 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@
 #include "ft.h"
 
 #include <stdlib.h>
-
-#include <stdio.h>
 
 int	open_one_texture(t_game *game, t_img_data *img,
 	char **path, char *default_path)

@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 20:41:42 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/28 11:28:50 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/31 08:40:09 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,6 @@
 
 #include "ft.h"
 #include "dict.h"
-
-#include <stdio.h>
 
 int	mainmenu_event(int button, int x, int y, t_game *game)
 {

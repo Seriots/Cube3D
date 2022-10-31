@@ -94,6 +94,7 @@ define SRCS :=
 		game/loop/update/default/c3d_default_update.c
 		game/loop/update/default/c3d_ennemies.c
 		game/loop/update/default/c3d_minimap_update.c
+		game/loop/update/default/c3d_player_collide2.c
 		game/loop/update/default/c3d_player_collide.c
 		game/loop/update/default/c3d_player_update.c
 		game/loop/update/default/c3d_player_update2.c

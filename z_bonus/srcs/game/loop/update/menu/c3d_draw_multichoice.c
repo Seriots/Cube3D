@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 10:54:10 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/10 16:41:56 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/31 08:42:31 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@
 
 #include <stdlib.h>
 #include <math.h>
-
-#include <stdio.h>
 
 static int	is_border(t_game *game, t_multichoice *box, int x, int y)
 {

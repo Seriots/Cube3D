@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 15:52:04 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/10 16:39:07 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/31 08:43:34 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 
 #include "ft.h"
 #include "mlx.h"
-
-#include <stdio.h>
 
 int	get_seed_text(char path[256], t_seed *seed)
 {

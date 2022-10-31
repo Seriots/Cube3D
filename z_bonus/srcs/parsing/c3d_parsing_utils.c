@@ -6,13 +6,11 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 14:48:31 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/11 13:55:18 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/31 08:48:03 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft.h"
-
-#include <stdio.h>
 
 int	is_only_set(char *line, char *set)
 {

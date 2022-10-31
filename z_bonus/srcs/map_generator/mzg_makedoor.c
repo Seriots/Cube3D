@@ -6,15 +6,13 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 11:12:38 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/26 14:02:04 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/31 08:39:49 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
 #include "ft.h"
-
-#include <stdio.h>
 
 int	is_doorable(char **map, int x, int y)
 {

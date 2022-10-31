@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 10:51:13 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/31 02:44:04 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/31 08:44:51 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 #include "c3d_utils.h"
 
 #include "ft.h"
-
-#include <stdio.h>
 
 static float	get_rotation(char c)
 {

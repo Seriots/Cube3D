@@ -6,14 +6,12 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 10:25:11 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/27 13:27:51 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/31 08:43:41 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "c3d_struct.h"
 #include "c3d_loop.h"
-
-#include <stdio.h>
 
 int	choose_color_stamina(t_game *game, int x, int y, int limit)
 {

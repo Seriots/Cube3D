@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 18:04:42 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/27 13:43:55 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/31 08:44:58 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@
 
 #include "ft.h"
 #include "dict.h"
-
-#include <stdio.h>
 
 int	init_settings_menu2(t_game *game)
 {
