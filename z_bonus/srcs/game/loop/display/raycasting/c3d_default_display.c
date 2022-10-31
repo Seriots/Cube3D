@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   c3d_default_display.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
+/*   By: pierre-yves <pierre-yves@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 13:43:02 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/28 14:48:33 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/30 22:24:18 by pierre-yves      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,21 @@ int	is_map_in_hand(t_game *game)
 	return (0);
 }
 
+int	display_screen(t_game *game)
+{
+	int	i;
+	int	j;
+
+	j = -1;
+	while (++j < WIN_HEIGHT)
+	{
+		i = -1;
+		while (++i < WIN_WIDTH)
+			my_mlx_pixel_put(&game->all_img.screen_img, i, j, shade_pixel(game, i, j));
+	}
+	return (0);
+}
+
 int	default_display(t_game *game)
 {
 	raycasting(game);
@@ -86,6 +101,7 @@ int	default_display(t_game *game)
 	if (game->settings.show_mmap || is_map_in_hand(game))
 		my_mlx_put_image_to_window(game, &game->all_img.minimap_img,
 			10, WIN_HEIGHT - game->all_img.minimap_img.height - 10);
+	display_screen(game);
 	mlx_put_image_to_window(game->mlx.display, game->mlx.window,
 		game->all_img.screen_img.img, 0, 0);
 	if (game->settings.show_fps)

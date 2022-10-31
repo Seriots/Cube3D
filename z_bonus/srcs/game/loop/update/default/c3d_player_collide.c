@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   c3d_player_collide.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
+/*   By: pierre-yves <pierre-yves@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 11:42:39 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/30 13:38:45 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/31 06:35:58 by pierre-yves      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,47 +26,75 @@ int	get_new_wall(t_game *game, t_vector player, t_wall *wall, int i)
 	return (0);
 }
 
+int	is_in_corner(t_coord movpos, int k)
+{
+	if (movpos.x > (k % 2) * CASE_SIZE - (k % 2) * (CASE_SIZE / 4)
+		&& movpos.x < CASE_SIZE * (k % 2) + (1 - (k % 2)) * CASE_SIZE / 4
+		&& movpos.y > (k / 2) * CASE_SIZE - (k / 2) * (CASE_SIZE / 4)
+		&& movpos.y < CASE_SIZE * (k / 2) + (1 - (k / 2)) * CASE_SIZE / 4)
+		return (1);
+	return (0);
+}
+
+int	is_a_corner(t_game *game, t_point casepos, int k)
+{
+	if ((game->map.map[casepos.y + (k / 2) - (1 - (k / 2))]
+		[casepos.x + (k % 2) - (1 - (k % 2))] == '1'
+		|| (game->map.map[casepos.y + (k / 2) - (1 - (k / 2))]
+		[casepos.x] == '1'
+		|| game->map.map[casepos.y]
+		[casepos.x + (k % 2) - (1 - (k % 2))] == '1')))
+		return (1);
+	return (0);
+}
+
+int	corner_move(t_coord *mov, t_coord movpos, int k)
+{
+	if (movpos.x - mov->x < 0 || movpos.x - mov->x > 64)
+		mov->y = (CASE_SIZE / 4 + (CASE_SIZE / 2) * (k / 2) - (movpos.y - mov->y)); 
+	else if (movpos.y - mov->y < 0 || movpos.y - mov->y > 64)
+		mov->x = (CASE_SIZE / 4 + (CASE_SIZE / 2) * (k % 2) - (movpos.x - mov->x)); 
+	else
+	{
+		if (dabs(CASE_SIZE / 4 + (CASE_SIZE / 2) * (k / 2) - (movpos.y - mov->y))
+			< dabs(CASE_SIZE / 4 + (CASE_SIZE / 2) * (k % 2) - (movpos.x - mov->x)))
+			mov->y = (CASE_SIZE / 4 + (CASE_SIZE / 2) * (k / 2) - (movpos.y - mov->y));
+		else
+			mov->x = (CASE_SIZE / 4 + (CASE_SIZE / 2) * (k % 2) - (movpos.x - mov->x));
+	}
+	return (0);
+}
+
 double	corner_coll(t_game *game, t_coord *mov)
 {
-	int	i;
-	int	j;
 	int	k;
-	t_point	point;	
-	double	x;
-	double	y;
+	t_point	casepos;
+	t_coord	movpos;
 
-	i = (mov->x + game->player.pos.x) / CASE_SIZE;
-	j = (mov->y + game->player.pos.y) / CASE_SIZE;
-	x = mov->x + game->player.pos.x - i * CASE_SIZE;
-	y = (mov->y + game->player.pos.y) - j * CASE_SIZE;
+	casepos.x = (mov->x + game->player.pos.x) / CASE_SIZE;
+	casepos.y = (mov->y + game->player.pos.y) / CASE_SIZE;
+	movpos.x = mov->x + game->player.pos.x - casepos.x * CASE_SIZE;
+	movpos.y = (mov->y + game->player.pos.y) - casepos.y * CASE_SIZE;
 	k = -1;
 	while (++k < 4)
 	{
-		point.x = k % 2;
-		point.y = k / 2;
-		if (x > point.x * CASE_SIZE - point.x * (CASE_SIZE / 4) && x < CASE_SIZE * point.x + (1 - point.x) * CASE_SIZE / 4
-			&& y > point.y * CASE_SIZE - point.y * (CASE_SIZE / 4) && y < CASE_SIZE * point.y + (1 - point.y) * CASE_SIZE / 4)
+		if (is_in_corner(movpos, k))
 		{
-			if ((game->map.map[j + point.y - (1 - point.y)][i + point.x - (1 - point.x)] == '1'
-				|| (game->map.map[j + point.y - (1 - point.y)][i] == '1'
-				|| game->map.map[j][i + point.x - (1 - point.x)] == '1')))
+			if (is_a_corner(game, casepos, k))
 			{
-				if (x - mov->x < 0 || x - mov->x > 64)
-					mov->y = (CASE_SIZE / 4 + (CASE_SIZE / 2) * point.y - (y - mov->y)); 
-				else if (y - mov->y < 0 || y - mov->y > 64)
-					mov->x = (CASE_SIZE / 4 + (CASE_SIZE / 2) * point.x - (x - mov->x)); 
-				else
-				{
-					if (dabs(CASE_SIZE / 4 + (CASE_SIZE / 2) * point.y - (y - mov->y))
-						< dabs(CASE_SIZE / 4 + (CASE_SIZE / 2) * point.x - (x - mov->x)))
-						mov->y = (CASE_SIZE / 4 + (CASE_SIZE / 2) * point.y - (y - mov->y));
-					else
-						mov->x = (CASE_SIZE / 4 + (CASE_SIZE / 2) * point.x - (x - mov->x));
-				}
+				corner_move(mov, movpos, k);
 				return (1);
 			}			
 		}
 	}
+	return (0);
+}
+
+int	set_player_angle(t_vector *player, double cos, double sin)
+{
+	player->angle.cos = cos;
+	player->angle.sin = sin;
+	player->angle.tan = sin / cos;
 	return (0);
 }
 
@@ -81,14 +109,10 @@ int	check_collide(t_game *game, t_coord mov)
 	player.x = game->player.pos.x;
 	player.y = game->player.pos.y;
 	player.angle.value = M_PI_2 - sign(mov.x) * M_PI_2;
-	player.angle.cos = sign(mov.x);
-	player.angle.sin = 0;
-	player.angle.tan = 0;
+	set_player_angle(&player, sign(mov.x), 0);
 	get_new_wall(game, player, &wallh, WIN_WIDTH);
 	player.angle.value = M_PI + sign(mov.y) * M_PI_2;
-	player.angle.cos = 0;
-	player.angle.sin = -sign(mov.y);
-	player.angle.tan = player.angle.sin / player.angle.cos;
+	set_player_angle(&player, 0, -sign(mov.y));
 	get_new_wall(game, player, &wallv, WIN_WIDTH);
 	while (corner_coll(game, &mov))
 	 ;

@@ -318,6 +318,19 @@ typedef struct s_door
 	t_img_data	*img;
 }	t_door;
 
+typedef struct s_door_data
+{
+	t_door	*door_tab;
+	int		door_max;
+}	t_door_data;
+
+typedef struct s_screen_data
+{
+	int		color;
+	double	dist;
+}	t_screen_data;
+
+
 typedef struct s_display
 {
 	double		min;
@@ -331,7 +344,8 @@ typedef struct s_display
 	double		fc_dist[WIN_HEIGHT];
 	double		wall_dist[WIN_WIDTH];
 	double		**light_mask;
-	t_door		**doors;
+	t_screen_data	**screen;
+	t_door_data		*doors;
 	t_vector	ray;	
 	t_img_data	*img;
 	t_img_data	*ce;

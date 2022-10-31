@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   c3d_display_sprites.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
+/*   By: pierre-yves <pierre-yves@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 00:48:35 by pierre-yves       #+#    #+#             */
-/*   Updated: 2022/10/27 13:36:59 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/31 05:40:47 by pierre-yves      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,10 @@ int	draw_sprite_vline(t_game *game, t_object *obj, int i, int width)
 		p.y = j - game->display.min;
 		color = get_sprite_color(game, obj, p, width);
 		if (color != 0xFF000000)
-			my_mlx_pixel_put(&game->all_img.screen_img, i, j,
-				shade_pixel_sprite(game, color, obj->dist, p2));
+			set_screen_data(&game->display.screen[j][i], obj->dist, color);
 	}
 	return (0);
+	(void)p2;
 }
 
 void	display_sprite_loop(t_game *game, t_object *obj,
@@ -58,7 +58,7 @@ void	display_sprite_loop(t_game *game, t_object *obj,
 		if (p.x + game->display.vline >= 0
 			&& p.x + game->display.vline < WIN_WIDTH)
 		{
-			p.y = 20;
+			p.y = game->display.doors[p.x + game->display.vline].door_max;
 			if (game->display.wall_dist[p.x + game->display.vline] > dist)
 			{
 				display_all_door(game, &p, dist);
@@ -106,13 +106,13 @@ int	display_restof_doors(t_game *game)
 	i = -1;
 	while (++i < WIN_WIDTH)
 	{
-		j = 20;
+		j = game->display.doors[i].door_max;
 		while (--j >= 0)
 		{
-			if (game->display.doors[j][i].need_display)
+			if (game->display.doors[i].door_tab[j].need_display)
 			{
-				display_door_vline(game, &game->display.doors[j][i], i);
-				game->display.doors[j][i].need_display = 0;
+				display_door_vline(game, &game->display.doors[i].door_tab[j], i);
+				game->display.doors[i].door_tab[j].need_display = 0;
 			}
 		}
 	}

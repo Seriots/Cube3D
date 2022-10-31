@@ -52,7 +52,7 @@ int				display_door_vline(t_game *game, t_door *door, int i);
 void			display_all_door(t_game *game, t_point *p, double dist);
 int				shade_pixel_sprite(t_game *game, int color,
 					double dist, t_point p);
-int				shade_pixel(t_game *game, int color, double dist, t_point p);
+int				shade_pixel(t_game *game, int i, int j);
 unsigned int	get_wall_color(int pixel, t_display *display);
 unsigned int	get_floor_color(t_game *game, int pixel,
 					t_display *display, int start);
