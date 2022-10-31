@@ -6,7 +6,7 @@
 /*   By: pierre-yves <pierre-yves@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 13:05:02 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/30 22:44:47 by pierre-yves      ###   ########.fr       */
+/*   Updated: 2022/10/31 05:37:19 by pierre-yves      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,6 @@ int	draw_door_vline(t_game *game, t_img_data *img, int i, double dist)
 		color = get_door_color(game, img, j);
 		if (color != 0xFF000000)
 			set_screen_data(&game->display.screen[j][i], dist, color);
-			//my_mlx_pixel_put(&game->all_img.screen_img, i, j,
-			//	shade_pixel(game, color, dist, p));
 	}
 	return (0);
 	(void)p;
@@ -95,12 +93,13 @@ void	display_all_door(t_game *game, t_point *p, double dist)
 		if (game->display.doors
 			[p->x + game->display.vline].door_tab[p->y].need_display
 			&& game->display.doors
-			[p->x + game->display.vline].door_tab[p->y].door.dist > dist)
-		{
-			display_door_vline(game, &game->display.doors
-			[p->x + game->display.vline].door_tab[p->y], p->x + game->display.vline);
-			game->display.doors
-			[p->x + game->display.vline].door_tab[p->y].need_display = 0;
-		}
+			[p->x + game->display.vline].door_tab[p->y].door.dist <= dist)
+			break ;
+		display_door_vline(game, &game->display.doors
+		[p->x + game->display.vline].door_tab[p->y],
+		p->x + game->display.vline);
+		game->display.doors
+		[p->x + game->display.vline].door_tab[p->y].need_display = 0;
 	}
+	game->display.doors[p->x + game->display.vline].door_max = p->y + 1;
 }

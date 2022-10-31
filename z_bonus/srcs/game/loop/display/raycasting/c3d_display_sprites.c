@@ -6,7 +6,7 @@
 /*   By: pierre-yves <pierre-yves@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 00:48:35 by pierre-yves       #+#    #+#             */
-/*   Updated: 2022/10/30 22:44:06 by pierre-yves      ###   ########.fr       */
+/*   Updated: 2022/10/31 05:40:47 by pierre-yves      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,6 @@ int	draw_sprite_vline(t_game *game, t_object *obj, int i, int width)
 		color = get_sprite_color(game, obj, p, width);
 		if (color != 0xFF000000)
 			set_screen_data(&game->display.screen[j][i], obj->dist, color);
-			//my_mlx_pixel_put(&game->all_img.screen_img, i, j,
-			//	shade_pixel_sprite(game, color, obj->dist, p2));
 	}
 	return (0);
 	(void)p2;
@@ -60,7 +58,7 @@ void	display_sprite_loop(t_game *game, t_object *obj,
 		if (p.x + game->display.vline >= 0
 			&& p.x + game->display.vline < WIN_WIDTH)
 		{
-			p.y = 20;
+			p.y = game->display.doors[p.x + game->display.vline].door_max;
 			if (game->display.wall_dist[p.x + game->display.vline] > dist)
 			{
 				display_all_door(game, &p, dist);

@@ -6,7 +6,7 @@
 /*   By: pierre-yves <pierre-yves@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 21:08:53 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/30 22:43:46 by pierre-yves      ###   ########.fr       */
+/*   Updated: 2022/10/31 05:43:29 by pierre-yves      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,9 @@ int	shade_pixel(t_game *game, int i, int j)
 		light = 0.15;
 	else
 	{
-		light = game->display.light_mask[j][i] * 2 / (game->display.screen[j][i].dist * game->display.screen[j][i].dist);
+		light = game->display.light_mask[j][i] * 2
+			/ (game->display.screen[j][i].dist
+			* game->display.screen[j][i].dist);
 		light = max(light, 0.15);
 		light = min(light, 2);
 	}
@@ -69,11 +71,14 @@ int	shade_pixel_sprite(t_game *game, int color, double dist, t_point p)
 int	get_pixel_color(t_game *game, t_wall *wall, t_point p, t_display *display)
 {
 	if (p.y < display->min)
-		return (set_screen_data(&game->display.screen[p.y][p.x], display->fc_dist[p.y], get_ceil_color(game, p.y, display, 0)));
+		return (set_screen_data(&game->display.screen[p.y][p.x],
+			display->fc_dist[p.y], get_ceil_color(game, p.y, display, 0)));
 	else if (p.y > display->max)
-		return (set_screen_data(&game->display.screen[p.y][p.x], display->fc_dist[p.y], get_floor_color(game, p.y, display, 0)));
+		return (set_screen_data(&game->display.screen[p.y][p.x],
+			display->fc_dist[p.y], get_floor_color(game, p.y, display, 0)));
 	else
-		return (set_screen_data(&game->display.screen[p.y][p.x], wall->dist, get_wall_color(p.y, display)));
+		return (set_screen_data(&game->display.screen[p.y][p.x],
+			wall->dist, get_wall_color(p.y, display)));
 	return (0);
 }
 
@@ -84,9 +89,6 @@ int	display_wall_loop(t_game *game, t_wall *wall, t_point p)
 	while (p.y < WIN_HEIGHT)
 	{
 		get_pixel_color(game, wall, p, &game->display);
-		//set_screen_data(&game->display.screen[p.y][p.x], wall->dist, color);
-		//my_mlx_pixel_put(&game->all_img.screen_img,
-		//	p.x, p.y, get_color(game->settings.color, color));
 		p.y++;
 	}
 	return (0);
