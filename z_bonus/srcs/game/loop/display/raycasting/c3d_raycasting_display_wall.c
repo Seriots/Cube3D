@@ -6,7 +6,7 @@
 /*   By: pierre-yves <pierre-yves@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 21:08:53 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/31 05:43:29 by pierre-yves      ###   ########.fr       */
+/*   Updated: 2022/10/31 06:50:35 by pierre-yves      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,8 @@ int	shade_pixel(t_game *game, int i, int j)
 		light = max(light, 0.15);
 		light = min(light, 2);
 	}
-	r = min(255, light * ((game->display.screen[j][i].color & 0xFF0000) >> 16));
+	r = min(255,
+		light * ((game->display.screen[j][i].color & 0xFF0000) >> 16));
 	g = min(255, light * ((game->display.screen[j][i].color & 0X00FF00) >> 8));
 	b = min(255, light * (game->display.screen[j][i].color & 0X0000FF));
 	return ((r << 16) | (g << 8) | b);
