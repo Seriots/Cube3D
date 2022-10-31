@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 10:51:13 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/30 14:06:47 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/31 02:44:04 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static float	get_rotation(char c)
 	else if (c == 'W')
 		return (M_PI);
 	else if (c == 'E')
-		return (0.01);
+		return (2 * M_PI);
 	return (0);
 }
 
