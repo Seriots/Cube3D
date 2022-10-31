@@ -72,6 +72,7 @@ int				display_error(int code);
 
 /*Free*/
 int				free_doors(t_game *game);
+void			free_screen(t_screen_data **array);
 void			free_lightmask(double **array);
 void			dict_clear_with_inventory(t_game *game, t_dict **dict);
 void			free_map_with_inventory(t_game *game, t_map *map);

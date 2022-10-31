@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 11:13:57 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/28 12:28:35 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/31 11:08:07 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,6 @@ int	free_menu(t_menu *menu)
 
 void	free_game(t_game *game)
 {
-	system("pkill vlc");
 	if (game->mlx.display)
 		mlx_do_key_autorepeaton(game->mlx.display);
 	if (HIDE && game->mlx.display && game->mlx.window)
@@ -119,6 +118,8 @@ void	free_game(t_game *game)
 		free_doors(game);
 	if (game->display.light_mask)
 		free_lightmask(game->display.light_mask);
+	if (game->display.screen)
+		free_screen(game->display.screen);
 	free(game->settings.map_path);
 	free_images(game);
 	free_images2(game);
@@ -131,8 +132,7 @@ void	free_game(t_game *game)
 	if (game->mlx.display && game->mlx.window)
 		mlx_destroy_window(game->mlx.display, game->mlx.window);
 	if (game->mlx.window)
-	{
 		mlx_destroy_display(game->mlx.display);
+	if (game->mlx.window)
 		free(game->mlx.display);
-	}
 }

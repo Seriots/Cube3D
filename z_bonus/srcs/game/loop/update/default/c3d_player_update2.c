@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 12:16:27 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/31 08:43:24 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/31 11:09:21 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,17 +43,17 @@ int	apply_movement(t_game *game, double *mov_x, double *mov_y)
 {
 	if (game->player.left >= 1)
 	{
-		*mov_y -= ((game->player.speed * game->delay * game->player.plane.cos)
-				/ 2.0) / nb_touch_pressed(game);
-		*mov_x -= ((game->player.speed * game->delay * game->player.plane.sin)
-				/ 2.0) / nb_touch_pressed(game);
+		*mov_y -= ((min(80.0, game->player.speed * game->delay)
+					* game->player.plane.cos) / 2.0) / nb_touch_pressed(game);
+		*mov_x -= ((min(80.0, game->player.speed * game->delay)
+					* game->player.plane.sin) / 2.0) / nb_touch_pressed(game);
 	}
 	if (game->player.right >= 1)
 	{
-		*mov_y += ((game->player.speed * game->delay * game->player.plane.cos)
-				/ 2.0) / nb_touch_pressed(game);
-		*mov_x += ((game->player.speed * game->delay * game->player.plane.sin)
-				/ 2.0) / nb_touch_pressed(game);
+		*mov_y += ((min(80.0, game->player.speed * game->delay)
+					* game->player.plane.cos) / 2.0) / nb_touch_pressed(game);
+		*mov_x += ((min(80.0, game->player.speed * game->delay)
+					* game->player.plane.sin) / 2.0) / nb_touch_pressed(game);
 	}
 	return (0);
 }
@@ -69,17 +69,17 @@ int	get_movement(t_game *game, double *mov_x, double *mov_y)
 	*mov_y = 0;
 	if (game->player.forward >= 1)
 	{
-		*mov_y -= (game->player.speed * game->delay * game->player.plane.sin)
-			/ nb_touch_pressed(game);
-		*mov_x += (game->player.speed * game->delay * game->player.plane.cos)
-			/ nb_touch_pressed(game);
+		*mov_y -= (min(80.0, game->player.speed * game->delay)
+				* game->player.plane.sin) / nb_touch_pressed(game);
+		*mov_x += (min(80.0, game->player.speed * game->delay)
+				* game->player.plane.cos) / nb_touch_pressed(game);
 	}
 	if (game->player.backward >= 1)
 	{
-		*mov_y += ((game->player.speed * game->delay * game->player.plane.sin)
-				/ 2.0) / nb_touch_pressed(game);
-		*mov_x -= ((game->player.speed * game->delay * game->player.plane.cos)
-				/ 2.0) / nb_touch_pressed(game);
+		*mov_y += ((min(80.0, game->player.speed * game->delay)
+					* game->player.plane.sin) / 2.0) / nb_touch_pressed(game);
+		*mov_x -= ((min(80.0, game->player.speed * game->delay)
+					* game->player.plane.cos) / 2.0) / nb_touch_pressed(game);
 	}
 	apply_movement(game, mov_x, mov_y);
 	return (0);

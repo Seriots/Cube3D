@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   c3d_clean3.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pierre-yves <pierre-yves@student.42.fr>    +#+  +:+       +#+        */
+/*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 21:52:07 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/30 21:39:46 by pierre-yves      ###   ########.fr       */
+/*   Updated: 2022/10/31 10:56:20 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	free_doors(t_game *game)
 	int	i;
 
 	i = 0;
-	while (i < WIN_WIDTH && game->display.doors[i].door_tab)
+	while (i < WIN_WIDTH + 1 && game->display.doors[i].door_tab)
 	{
 		free(game->display.doors[i].door_tab);
 		i++;
@@ -45,6 +45,20 @@ int	free_doors(t_game *game)
 }
 
 void	free_lightmask(double **array)
+{
+	int	i;
+
+	i = 0;
+	while (i < WIN_HEIGHT && array[i])
+	{
+		free(array[i]);
+		i++;
+	}
+	free(array);
+	array = 0;
+}
+
+void	free_screen(t_screen_data **array)
 {
 	int	i;
 

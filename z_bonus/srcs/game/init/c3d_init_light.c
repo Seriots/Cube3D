@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   c3d_init_light.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pierre-yves <pierre-yves@student.42.fr>    +#+  +:+       +#+        */
+/*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 12:08:53 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/30 22:14:06 by pierre-yves      ###   ########.fr       */
+/*   Updated: 2022/10/31 10:59:43 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,8 @@ int	init_display(t_display *display)
 			return (10);
 	}
 	display->screen = ft_calloc(sizeof(t_screen_data *), WIN_HEIGHT);
+	if (!display->screen)
+		return (10);
 	j = -1;
 	while (++j < WIN_HEIGHT)
 	{
