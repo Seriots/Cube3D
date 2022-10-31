@@ -1,4 +1,6 @@
 Seriots=29588
+Seriote=27539
+Serioteli=26053
 Map is op=19108
 Demo=12364
 Pascal=10093

@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 13:43:02 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/31 08:51:51 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/31 12:52:17 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,10 +88,10 @@ int	default_display(t_game *game)
 {
 	raycasting(game);
 	display_all_sprites(game);
+	display_screen(game);
 	if (game->settings.show_mmap || is_map_in_hand(game))
 		my_mlx_put_image_to_window(game, &game->all_img.minimap_img,
 			10, WIN_HEIGHT - game->all_img.minimap_img.height - 10);
-	display_screen(game);
 	mlx_put_image_to_window(game->mlx.display, game->mlx.window,
 		game->all_img.screen_img.img, 0, 0);
 	if (game->settings.show_fps)
