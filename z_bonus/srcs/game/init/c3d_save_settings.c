@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 11:29:25 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/31 08:37:03 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/31 15:03:33 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,10 +78,8 @@ int	save_settings(t_game *game)
 	fd = open("files/settings.txt", O_WRONLY | O_CREAT | O_TRUNC, 0644);
 	if (fd == -1)
 		return (5);
-	save_int(fd, VFOV, (int)game->settings.fov);
 	save_int(fd, VCAM_X, (int)game->settings.cam_sensibility_x);
 	save_int(fd, VCAM_Y, (int)game->settings.cam_sensibility_y);
-	save_int(fd, VRES, (int)game->settings.resolution);
 	save_int(fd, VFPS, (int)game->settings.fps);
 	save_int(fd, VSCROLL_SPEED, (int)game->settings.scroll_speed);
 	save_int(fd, VLEFT, (int)game->settings.left);

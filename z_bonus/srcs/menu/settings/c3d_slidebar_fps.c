@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 16:00:25 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/31 08:40:59 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/31 15:02:45 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ t_dict	*init_fps_slidebar(t_game *game)
 	if (!slidebar)
 		return (0);
 	slidebar->box.x = SLIDEBAR_START_X;
-	slidebar->box.y = SLIDEBAR_START_Y + 5 * MARGE;
+	slidebar->box.y = SLIDEBAR_START_Y;
 	slidebar->box.width = 200;
 	slidebar->box.height = 18;
 	slidebar->min = 10;

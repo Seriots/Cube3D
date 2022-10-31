@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 12:13:27 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/31 08:44:40 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/31 15:02:05 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ int	set_settings(t_game *game, char *key, char *value)
 	{VINTER, &game->settings.interact, si}, {VNAME, &game->settings.name, ssn},
 	{VPAUSE, &game->settings.pause, si}, {VCEIL, &game->map.default_ceil, ss},
 	{VNO, &game->map.default_north, ss}, {VSO, &game->map.default_south, ss},
-	{VRES, &game->settings.resolution, sf}, {VFOV, &game->settings.fov, sf},
 	{VFLOOR, &game->map.default_floor, ss}, {VFPS, &game->settings.fps, sf},
 	{VLEFT, &game->settings.left, si}, {VRIGHT, &game->settings.right, si},
 	{VCOLOR, &game->settings.color, si}, {VDROP, &game->settings.drop, si},

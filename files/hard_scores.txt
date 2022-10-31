@@ -1,2 +1,3 @@
+hard=impossible=4920
 Map is op=880
 Seriots=460
