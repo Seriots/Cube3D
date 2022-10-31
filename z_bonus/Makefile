@@ -255,18 +255,18 @@ LIB_NAMES := $(strip $(LIB_NAMES))
 OBJ_FILES := $(patsubst %.c,$(OBJS_DIR)/%.o, $(SRCS))
 DEP_FILES := $(OBJ_FILES:.o=.d)
 
-CFLAGS := $(CFLAGS) -Wall -Wextra -g3
+CFLAGS := $(CFLAGS) -Wall -Wextra -Werror
 
 ifdef DEBUG
-	CFLAGS := $(CFLAGS) -fsanitize=address -g3 -D DEBUG=1
+	CFLAGS := $(CFLAGS) -fsanitize=address -D DEBUG=1
 else
-	CFLAGS := $(CFLAGS) -Werror -D DEBUG=0
+	CFLAGS := $(CFLAGS) -D DEBUG=0
 endif
 
 ifdef HIDE
-	CFLAGS := $(CFLAGS) -g3 -D HIDE=1
+	CFLAGS := $(CFLAGS) -D HIDE=1
 else
-	CFLAGS := $(CFLAGS) -Werror -D HIDE=0
+	CFLAGS := $(CFLAGS) -D HIDE=0
 endif
 
 # ============================================================================ #
