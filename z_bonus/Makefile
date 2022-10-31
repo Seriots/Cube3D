@@ -2,7 +2,7 @@ NAME := cub3D
 CFLAGS := 
 CC := cc
 MAKE = /bin/make --no-print-directory
-#game/sound/c3d_play_sound.c
+
 define SRCS :=
 		main.c
 		game/event/menu_event/checkbox_event.c
@@ -235,20 +235,14 @@ LIB_DIR  := ../lib
 
 define LIBS :=
 	$(LIB_DIR)/dict/libdict.a
-	$(LIB_DIR)/ft_printf/libft_printf.a
 	$(LIB_DIR)/ft/libft.a
-	$(LIB_DIR)/list/liblist.a
-	$(LIB_DIR)/tree/libtree.a
 	$(LIB_DIR)/mlx/libmlx_Linux.a
 endef
 LIBS := $(strip $(LIBS))
 
 define LIB_NAMES :=
 	dict
-	ft_printf
 	ft
-	list
-	tree
 	mlx
 endef
 LIB_NAMES := $(strip $(LIB_NAMES))
