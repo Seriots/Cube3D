@@ -2,6 +2,7 @@ Seriots=29588
 Map is op=19108
 Pascal=10093
 Edorad=7260
+Final,=6876
 Real player=4000
 Test1=3396
 Poile=3074
