@@ -2,8 +2,8 @@ NO imgs/xpm/wall/default_junglewood.xpm
 SO imgs/xpm/wall/default_junglewood.xpm
 EA imgs/xpm/wall/default_junglewood.xpm
 WE imgs/xpm/wall/default_junglewood.xpm
-F 055,0,0
-C 0,0,055
+F 255,0,0
+C 0,0,255
 
 
 11111111111
