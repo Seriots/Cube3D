@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 13:52:10 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/31 08:40:55 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/31 15:50:34 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,10 @@ t_dict	*init_fov_slidebar(t_game *game)
 	if (!slidebar)
 		return (0);
 	slidebar->box.x = SLIDEBAR_START_X;
-	slidebar->box.y = SLIDEBAR_START_Y;
+	slidebar->box.y = SLIDEBAR_START_Y + 5 * MARGE;
 	slidebar->box.width = 200;
 	slidebar->box.height = 18;
-	slidebar->min = 1;
+	slidebar->min = 4;
 	slidebar->max = 60;
 	slidebar->height = 18;
 	slidebar->width = 6;

@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 21:08:53 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/31 08:49:30 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/10/31 15:49:15 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	shade_pixel(t_game *game, int i, int j)
 			/ (game->display.screen[j][i].dist
 				* game->display.screen[j][i].dist);
 		light = max(light, 0.15);
-		light = min(light, 2);
+		light = min(light, 1.0);
 	}
 	r = min(255,
 			light * ((game->display.screen[j][i].color & 0xFF0000) >> 16));
