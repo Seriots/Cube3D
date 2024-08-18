@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 12:13:27 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/31 15:02:05 by lgiband          ###   ########.fr       */
+/*   Updated: 2024/08/18 12:42:58 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ int	set_settings(t_game *game, char *key, char *value)
 	{VFLOOR, &game->map.default_floor, ss}, {VFPS, &game->settings.fps, sf},
 	{VLEFT, &game->settings.left, si}, {VRIGHT, &game->settings.right, si},
 	{VCOLOR, &game->settings.color, si}, {VDROP, &game->settings.drop, si},
+	{VOSMODE, &game->settings.osmode, si},
 	{VEA, &game->map.default_east, ss}, {VWE, &game->map.default_west, ss},
 	{VRUN, &game->settings.run, si}, {VCR, &game->settings.crouch, si},
 	{V1, &game->settings.slot1, si}, {V2, &game->settings.slot2, si},

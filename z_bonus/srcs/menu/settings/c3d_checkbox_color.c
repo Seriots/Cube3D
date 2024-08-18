@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 10:50:39 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/11 12:50:10 by lgiband          ###   ########.fr       */
+/*   Updated: 2024/08/18 12:40:02 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ t_dict	*init_color_checkbox(t_game *game)
 	if (!checkbox)
 		return (0);
 	checkbox->box.x = CHECKBOX_START_X;
-	checkbox->box.y = CHECKBOX_START_Y;
+	checkbox->box.y = CHECKBOX_START_Y + 1 * MARGE;
 	check_value_checkbox(&game->settings.color);
 	checkbox->modified_value = &game->settings.color;
 	checkbox->is_check = *checkbox->modified_value;

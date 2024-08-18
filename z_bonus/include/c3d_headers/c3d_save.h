@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 11:59:11 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/27 13:41:50 by lgiband          ###   ########.fr       */
+/*   Updated: 2024/08/18 12:41:42 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@
 # define VTURN_RIGHT "key_turn_right"
 # define VPAUSE "key_pause"
 # define VCOLOR "color"
+# define VOSMODE "osmode"
 # define VINVERT_SCROLL "invert_scroll"
 # define VINVERT_MOUSE "invert_mouse"
 # define VSHOWFPS "show_fps"

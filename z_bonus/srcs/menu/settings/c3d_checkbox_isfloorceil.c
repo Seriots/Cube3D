@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 13:39:41 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/27 13:44:47 by lgiband          ###   ########.fr       */
+/*   Updated: 2024/08/18 12:39:41 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ t_dict	*init_showflce_checkbox(t_game *game)
 	if (!checkbox)
 		return (0);
 	checkbox->box.x = CHECKBOX_START_X;
-	checkbox->box.y = CHECKBOX_START_Y + 6 * MARGE;
+	checkbox->box.y = CHECKBOX_START_Y + 7 * MARGE;
 	check_value_checkbox(&game->settings.show_fl_ce);
 	checkbox->modified_value = &game->settings.show_fl_ce;
 	checkbox->is_check = *checkbox->modified_value;

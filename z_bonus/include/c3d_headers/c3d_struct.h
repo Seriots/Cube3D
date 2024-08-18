@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 10:25:54 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/31 10:51:20 by lgiband          ###   ########.fr       */
+/*   Updated: 2024/08/18 12:55:39 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -213,6 +213,7 @@ typedef struct s_settings
 	KeySym			slot7;
 	KeySym			slot8;
 	bool			color;
+	bool 			osmode;
 	bool			invert_scroll;
 	bool			invert_mouse;
 	bool			show_fps;
@@ -573,6 +574,7 @@ typedef struct s_game
 	int			level;
 	int			is_update;
 	int			is_display;
+	t_coord		previous_mouse_location;
 }	t_game;
 
 #endif

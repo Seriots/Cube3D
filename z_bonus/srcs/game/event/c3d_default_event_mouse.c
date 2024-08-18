@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 11:04:48 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/31 08:35:28 by lgiband          ###   ########.fr       */
+/*   Updated: 2024/08/18 12:59:15 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,16 +79,27 @@ int	mov_hand_img(t_game *game, float mov_x, float mov_y)
 		game->inventory.current_hand.y = -HAND_MAX_Y;
 	return (0);
 }
-
+#include <stdio.h>
 int	default_mouse_move(int x, int y, t_game *game)
 {
 	float	mov_x;
 	float	mov_y;
 
-	mov_x = (((float)(x - WIN_WIDTH / 2))
-			* (game->settings.cam_sensibility_x / 70000.0)) * (is_invert(game));
-	mov_y = (((float)(y - WIN_HEIGHT / 2))
-			* (game->settings.cam_sensibility_y / 40000.0)) * (is_invert(game));
+	if (game->settings.osmode == 0) {
+		printf("x: %d, y: %d\n", x, y);
+		mov_x = (((float)(x - game->previous_mouse_location.x))
+				* (game->settings.cam_sensibility_x / 7000.0)) * (is_invert(game));
+		mov_y = (((float)(y - game->previous_mouse_location.y))
+				* (game->settings.cam_sensibility_y / 4000.0)) * (is_invert(game));
+		game->previous_mouse_location.x = x;
+		game->previous_mouse_location.y = y;
+	}
+	else {
+		mov_x = (((float)(x - WIN_WIDTH / 2))
+				* (game->settings.cam_sensibility_x / 70000.0)) * (is_invert(game));
+		mov_y = (((float)(y - WIN_HEIGHT / 2))
+				* (game->settings.cam_sensibility_y / 40000.0)) * (is_invert(game));
+	}
 	game->player.plane.value -= mov_x;
 	game->player.angleup += mov_y;
 	if (dabs(game->player.angleup) > 6)
@@ -101,8 +112,10 @@ int	default_mouse_move(int x, int y, t_game *game)
 		game->player.plane.value += 2 * M_PI;
 	game->player.plane.sin = sin(game->player.plane.value);
 	game->player.plane.cos = cos(game->player.plane.value);
-	mlx_mouse_move(game->mlx.display, game->mlx.window,
-		WIN_WIDTH / 2, WIN_HEIGHT / 2);
+	if (game->settings.osmode == 1) {
+		mlx_mouse_move(game->mlx.display, game->mlx.window,
+			WIN_WIDTH / 2, WIN_HEIGHT / 2);
+	}
 	mov_hand_img(game, mov_x, mov_y);
 	return (0);
 }

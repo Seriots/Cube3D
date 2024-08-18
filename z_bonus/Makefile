@@ -130,6 +130,7 @@ define SRCS :=
 		menu/settings/c3d_checkbox_showfps.c
 		menu/settings/c3d_checkbox_showmmap.c
 		menu/settings/c3d_checkbox_showseed.c
+		menu/settings/c3d_checkbox_windows_linux.c
 		menu/settings/c3d_checkbox_isfloorceil.c
 		menu/settings/c3d_keyinput_backward.c
 		menu/settings/c3d_keyinput_drop.c

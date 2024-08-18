@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 13:14:42 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/11 12:52:06 by lgiband          ###   ########.fr       */
+/*   Updated: 2024/08/18 12:39:51 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ t_dict	*init_invertmouse_checkbox(t_game *game)
 	if (!checkbox)
 		return (0);
 	checkbox->box.x = CHECKBOX_START_X;
-	checkbox->box.y = CHECKBOX_START_Y + 3 * MARGE;
+	checkbox->box.y = CHECKBOX_START_Y + 4 * MARGE;
 	check_value_checkbox(&game->settings.invert_mouse);
 	checkbox->modified_value = &game->settings.invert_mouse;
 	checkbox->is_check = *checkbox->modified_value;

@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 11:29:25 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/31 15:03:33 by lgiband          ###   ########.fr       */
+/*   Updated: 2024/08/18 12:44:47 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@ int	save_settings(t_game *game)
 	save_int(fd, VBACKWARD, (int)game->settings.backward);
 	save_int(fd, VPAUSE, (int)game->settings.pause);
 	save_int(fd, VCOLOR, (int)game->settings.color);
+	save_int(fd, VOSMODE, (int)game->settings.osmode);
 	save_int(fd, VINVERT_SCROLL, (int)game->settings.invert_scroll);
 	save_int(fd, VINVERT_MOUSE, (int)game->settings.invert_mouse);
 	save_int(fd, VSHOWFPS, (int)game->settings.show_fps);

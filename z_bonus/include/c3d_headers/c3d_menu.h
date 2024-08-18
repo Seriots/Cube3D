@@ -61,6 +61,7 @@ t_dict	*init_exit_button(t_game *game);
 t_dict	*init_resume_button(t_game *game);
 t_dict	*init_fov_slidebar(t_game *game);
 t_dict	*init_color_checkbox(t_game *game);
+t_dict	*init_windows_linux_checkbox(t_game *game);
 t_dict	*init_forward_keyinput(t_game *game);
 t_dict	*init_left_keyinput(t_game *game);
 t_dict	*init_textinput_north(t_game *game);

@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 13:17:26 by lgiband           #+#    #+#             */
-/*   Updated: 2022/10/28 12:09:01 by lgiband          ###   ########.fr       */
+/*   Updated: 2024/08/18 12:56:07 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ static int	set_default_settings(t_game *game, char *path)
 
 static int	set_variable(t_game *game)
 {
+	game->previous_mouse_location = (t_coord){.x = WIN_WIDTH / 2, .y = WIN_HEIGHT / 2};
 	game->last_frame = timestamp_msec(0);
 	game->is_update = 1;
 	game->is_display = 1;
